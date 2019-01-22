@@ -1,0 +1,6 @@
+//Comment
+myvar @= "a";
+
+/* Block Comment */
+another @= "c";
+
