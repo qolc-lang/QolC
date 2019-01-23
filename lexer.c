@@ -26,7 +26,7 @@ int main(){
 	FILE *fp;
 	int i,j=0;
 	
-	fp = fopen("program.txt","r");
+	fp = fopen("input_program.txt","r");
 	
 	if(fp == NULL){
 		printf("error while opening the file\n");
