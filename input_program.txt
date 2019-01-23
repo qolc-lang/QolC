@@ -1,0 +1,6 @@
+myint @= 10;
+myString @= "Hi!";
+counter@int = 0;
+name@string = "Jon";
+x@int;
+y@float;

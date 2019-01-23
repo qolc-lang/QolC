@@ -2,5 +2,49 @@
 myvar @= "a";
 
 /* Block Comment */
-another @= "c";
+anotherVar @= "c";
 
+/* Nested /* Block /* Comment */ */ */
+hello@string = "Hello World!";
+
+/* Multi-
+	Line- /*
+	 Bloack- */
+	 Comment   */
+global_int@int;
+
+x @= 3;
+
+y@float = 5.0;
+
+//Function definition
+myFunc @@ (x@float, y@float, z@float) -> float {
+	return x+y+z;
+}
+
+//Struct_1
+vector3 @@ struct
+{
+	x@float;
+	y@float;
+	z@float;
+};
+
+//Struct_2
+node @@ struct
+{
+	node_a@node*! = null;
+	node_b@node*! = null;
+	myValue@int;
+};
+
+//Struct_3
+super_node @@ struct
+{
+	anode@node;
+	bnode@node;
+};
+
+//Arrays
+a@[50]int;
+b@[..]int;
