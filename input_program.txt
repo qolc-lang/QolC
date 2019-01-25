@@ -1,4 +1,4 @@
-myint @= 10;
+myint@= 10+422-2;
 myString @= "Hi!";
 counter@int = 0;
 name@string = "Jon";
