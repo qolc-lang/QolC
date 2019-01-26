@@ -1,5 +1,5 @@
-#include "headers.h"
-#include "checking_functions.h"
+#include "../inc/headers.h"
+#include "../inc/checking_functions.h"
 
 int isKeyword(char buffer[]){
 	char keywords[10][10] = {"string","else","enum","float","for",

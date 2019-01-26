@@ -1,5 +1,5 @@
-#include "headers.h"
-#include "checking_functions.h"
+#include "../inc/headers.h"
+#include "../inc/checking_functions.h"
  
 int main(){
 	char buffer[20], blankBuffer[20], digitBuffer[20];
@@ -8,7 +8,7 @@ int main(){
 	FILE *fp;
 	int j=0;
 	
-	fp = fopen("input_program.txt","r");
+	fp = fopen("input/input_program.txt","r");
 	
 	if(fp == NULL){
 		printf("error while opening the file\n");

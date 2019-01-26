@@ -1,26 +1,41 @@
 # In order to execute this "makefile" just type "make"
 
-OBJS 	=  lexer.o checking_functions.o
-SOURCE	=  lexer.c checking_functions.c
-HEADER  =  headers.h checking_functions.h
-OUT  	= lexerout
+PrjRoot  = .
+SrcDir  = $(PrjRoot)/src
+ObjDir  = $(PrjRoot)/obj
+OutDir  = $(PrjRoot)/out
+IncludeDir = $(PrjRoot)/inc
+
+Includes = -I $(IncludeDir) -I $(PrjRoot)
 CC	= gcc
-FLAGS   = -g -c
+COptions =  -g -c
+linkOptions = -g
+BuildCommand= $(Includes)  $(COptions)
 
-all: $(OBJS)
-	$(CC) -g $(OBJS) -o $(OUT)
 
-# create/compile the individual files
-lexer.o: lexer.c headers.h checking_functions.h
-	$(CC) $(FLAGS) lexer.c
+AppObjects = \
+$(ObjDir)/lexer.o \
+$(ObjDir)/checking_functions.o \
+#--------------------------
 
-checking_functions.o: checking_functions.c headers.h checking_functions.h
-	$(CC) $(FLAGS) checking_functions.c	
+
+$(OutDir)/lexerout.out : $(AppObjects)
+	$(CC) $(linkOptions) $(AppObjects) -o $(OutDir)/lexerout
+
+
+
+$(ObjDir)/lexer.o: $(SrcDir)/lexer.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h
+	$(CC) $(BuildCommand) $(SrcDir)/lexer.c -o $(ObjDir)/lexer.o
+
+$(ObjDir)/checking_functions.o: $(SrcDir)/checking_functions.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h
+	$(CC) $(BuildCommand) $(SrcDir)/checking_functions.c -o $(ObjDir)/checking_functions.o
+
 
 # clean 
 clean:
-	rm -f $(OBJS) $(OUT) 
+	rm -rf $(ObjDir)/*.o
+	rm $(OutDir)/*.exe
 
 #accounting
 count:
-	wc $(SOURCE) $(HEADER)
+	wc $(SrcDir)
