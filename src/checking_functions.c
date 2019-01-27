@@ -35,11 +35,11 @@ int isNumber(char buffer[]) {
 }
 
 int isOperator(char buffer) {
-	char operators[10][3] = {"+", "-", "*", "/", "%", "#"};
+	char operators[10][3] = {"+", "-", "*", "/", "%", "#", "="};
 	size_t op_pos;
 
 	//check if it is in operators
-	for (op_pos = 0; op_pos < 6; ++op_pos)
+	for (op_pos = 0; op_pos < 7; ++op_pos)
 	{
 		//printf("op_pos : %c\n", *operators[op_pos]);
 		if (buffer == *operators[op_pos]) {
@@ -53,18 +53,42 @@ int isOperator(char buffer) {
 
 int isAtOperator(char buffer[], int pos, int len) {
 	//check for @ operations
+	int count = 0;
 	if (buffer[pos] == '@') {
 		++pos;
 		if (pos < len) {
 			if (buffer[pos] == '=') {
+				++count;
 				printf("@@@@@@@@ : found our operator @= \n");
-				return 1;
+				return count;
 			}
 			else {
 				printf("@@@@@@@@ : found our operator @ \n");
-				return 1;
+				return count;
 			}
 		}
 	}
-	return 0;
+	return -1;
+}
+
+
+int isStringLiteral(char buffer[], int pos, int len) {
+	//check for "" string
+	int count = 0;
+	char buf[len];
+	int j = 0;
+	if (buffer[pos] == '"') {
+		++pos;
+		do {
+			if (pos < len) {
+				++count;
+				buf[j++] = buffer[pos];
+			}
+			++pos;
+		}while (buffer[pos] != '"');
+		printf("@@@@@@@@ : found a string literal : %s\n", buf);
+		++count;
+		return count;
+	}
+	return -1;
 }

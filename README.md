@@ -10,8 +10,8 @@
 
 ## Warnings
 
-@@ This is still in development and the language's design is quite volatile.
-@@ Syntax is not fixed.
+* This is still in development and the language's design is quite volatile.
+* Syntax is not fixed.
 
 ## Demonstrations
 

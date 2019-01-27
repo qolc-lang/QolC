@@ -4,7 +4,8 @@
 int main(){
 	char buffer[20], blankBuffer[20], digitBuffer[20];
 	char reading_buffer[50];
-	
+	int new_pos = 0;
+	int new_string_pos = 0;
 	FILE *fp;
 	int j=0;
 	
@@ -21,17 +22,26 @@ int main(){
 		for (pos = 0; pos < strlen(reading_buffer); ++pos)
 		{
 			printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
-			
-			//check if it is identifier of keyword
+
+			if ((new_pos = isAtOperator(reading_buffer, pos, strlen(reading_buffer))) != -1)
+			{
+				pos += new_pos;
+				continue;
+			}
+
+			if ((new_string_pos = isStringLiteral(reading_buffer, pos, strlen(reading_buffer))) != -1)
+			{
+				pos += new_string_pos;
+				continue;
+			}
+
+			//check if it is identifier, number or keyword
 			if (isalnum(reading_buffer[pos])) {
-				//printf("in isalnum with reading_buffer[pos] : %c", reading_buffer[pos]);
-				//printf("\n");
 				buffer[j++] = reading_buffer[pos];
 			}
 			else if ((reading_buffer[pos] == ' ' 
 				     || reading_buffer[pos] == '\n' 
-				     || isOperator(reading_buffer[pos])
-				     || isAtOperator(reading_buffer, pos, strlen(reading_buffer)) ) 
+				     || isOperator(reading_buffer[pos]) ) 
 				     && (j!=0)) 
 			{
 				buffer[j] = '\0';
@@ -45,7 +55,10 @@ int main(){
    					printf("@@@@@@@@ : %s is indentifier\n", buffer);
 			}
 			else {
-				printf("reading_buffer : %c\n", reading_buffer[pos]);
+				if (reading_buffer[pos] == ';')
+				{
+					printf("end of this command, going to next one\n");
+				}
 			}
 		}
 	}
