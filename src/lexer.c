@@ -26,6 +26,15 @@ int main(){
 			if ((new_pos = isAtOperator(reading_buffer, pos, strlen(reading_buffer))) != -1)
 			{
 				pos += new_pos;
+				buffer[j] = '\0';
+				j = 0;
+
+				if(isKeyword(buffer) == 1)
+   					printf("@@@@@@@@ : %s is keyword\n", buffer);
+   				else if(isNumber(buffer) == 1)
+   					printf("@@@@@@@@ : %s is number\n", buffer);
+   				else
+   					printf("@@@@@@@@ : %s is indentifier\n", buffer);
 				continue;
 			}
 
@@ -41,6 +50,7 @@ int main(){
 			}
 			else if ((reading_buffer[pos] == ' ' 
 				     || reading_buffer[pos] == '\n' 
+				     || reading_buffer[pos] == ';'
 				     || isOperator(reading_buffer[pos]) ) 
 				     && (j!=0)) 
 			{
