@@ -43,7 +43,7 @@ int isOperator(char buffer) {
 	{
 		//printf("op_pos : %c\n", *operators[op_pos]);
 		if (buffer == *operators[op_pos]) {
-			printf("@@@@@@@@ : %c is operator\n", buffer);
+			printf("@@@@@@@@ : operator : %c \n", buffer);
 			return 1;
 		}
 	}
@@ -59,11 +59,11 @@ int isAtOperator(char buffer[], int pos, int len) {
 		if (pos < len) {
 			if (buffer[pos] == '=') {
 				++count;
-				printf("@@@@@@@@ : found our operator @= \n");
+				printf("@@@@@@@@ : operator : @= \n");
 				return count;
 			}
 			else {
-				printf("@@@@@@@@ : found our operator @ \n");
+				printf("@@@@@@@@ : operator : @ \n");
 				return count;
 			}
 		}
@@ -86,7 +86,7 @@ int isStringLiteral(char buffer[], int pos, int len) {
 			}
 			++pos;
 		}while (buffer[pos] != '"');
-		printf("@@@@@@@@ : found a string literal : %s\n", buf);
+		printf("@@@@@@@@ : string literal : \"%s\"\n", buf);
 		++count;
 		return count;
 	}

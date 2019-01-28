@@ -11,7 +11,7 @@ int main(){
 	
 	fp = fopen("input/input_program.txt","r");
 	
-	if(fp == NULL){
+	if(fp == NULL) {
 		printf("error while opening the file\n");
 		exit(0);
 	}
@@ -21,7 +21,7 @@ int main(){
 		size_t pos;
 		for (pos = 0; pos < strlen(reading_buffer); ++pos)
 		{
-			printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
+			//printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
 
 			if ((new_pos = isAtOperator(reading_buffer, pos, strlen(reading_buffer))) != -1)
 			{
@@ -30,12 +30,11 @@ int main(){
 				j = 0;
 
 				if(isKeyword(buffer) == 1)
-   					printf("@@@@@@@@ : %s is keyword\n", buffer);
+   					printf("@@@@@@@@ : keyword : %s\n", buffer);
    				else if(isNumber(buffer) == 1)
-   					printf("@@@@@@@@ : %s is number\n", buffer);
+   					printf("@@@@@@@@ : number : %s\n", buffer);
    				else
-   					printf("@@@@@@@@ : %s is indentifier\n", buffer);
-				continue;
+   					printf("@@@@@@@@ : indentifier : %s\n", buffer);
 			}
 
 			if ((new_string_pos = isStringLiteral(reading_buffer, pos, strlen(reading_buffer))) != -1)
@@ -58,19 +57,20 @@ int main(){
 				j = 0;
 
 				if(isKeyword(buffer) == 1)
-   					printf("@@@@@@@@ : %s is keyword\n", buffer);
+   					printf("@@@@@@@@ : keyword : %s\n", buffer);
    				else if(isNumber(buffer) == 1)
-   					printf("@@@@@@@@ : %s is number\n", buffer);
+   					printf("@@@@@@@@ : number : %s\n", buffer);
    				else
-   					printf("@@@@@@@@ : %s is indentifier\n", buffer);
+   					printf("@@@@@@@@ : indentifier : %s\n", buffer);
 			}
 			else {
 				if (reading_buffer[pos] == ';')
 				{
-					printf("end of this command, going to next one\n");
+					//printf("end of this command, going to next one\n");
 				}
 			}
 		}
+		printf("\n");
 	}
 	if (feof(fp)) {
    		printf("End of file\n");
