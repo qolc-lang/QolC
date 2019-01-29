@@ -23,13 +23,10 @@
 	name@string = "Jon";
 	average@float = 0.5*(x+y);
 
-	```
 	counter @= 0;
 	name @= "Jon";
 	average @= 0.5*(x+y);
-	```
 
-	```
 	counter@int;
 	name@string;
 	average@float;
