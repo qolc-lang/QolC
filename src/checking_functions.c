@@ -1,6 +1,7 @@
 #include "../inc/headers.h"
 #include "../inc/checking_functions.h"
 
+//Check for keyword
 int isKeyword(char buffer[]){
 	char keywords[10][10] = {"string","else","enum","float","for",
 							"if","int","return", "struct", "while"};
@@ -12,21 +13,19 @@ int isKeyword(char buffer[]){
 			break;
 		}
 	}
-	
 	return flag;
 }
 
-int isNumber(char buffer[]) {
-
+//Check for number
+int isNumber(char buffer[]){
 	int i, flag = 0;
 	for (i = 0; i < strlen(buffer); ++i)
 	{
-		//printf("i pos the digit : %c\n", buffer[i]);
-		if (isdigit(buffer[i])) {
+		if (isdigit(buffer[i])){
 			flag = 1;
 			continue;
 		}
-		else {
+		else{
 			flag = 0;
 			break;
 		}
@@ -34,6 +33,7 @@ int isNumber(char buffer[]) {
 	return flag;
 }
 
+//Check for operator
 int isOperator(char buffer) {
 	char operators[10][3] = {"+", "-", "*", "/", "%", "#", "="};
 	size_t op_pos;

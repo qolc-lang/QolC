@@ -1,7 +1,6 @@
 #ifndef _CHECK_FUNC_H_
 #define _CHECK_FUNC_H_
 
-
 int isKeyword(char buffer[]);
 int isNumber(char buffer[]);
 int isOperator(char buffer);
