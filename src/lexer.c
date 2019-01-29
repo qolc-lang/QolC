@@ -33,8 +33,14 @@ int main(){
    					printf("@@@@@@@@ : keyword : %s\n", buffer);
    				else if(isNumber(buffer) == 1)
    					printf("@@@@@@@@ : number : %s\n", buffer);
-   				else
+   				else{
+   					if (buffer[0] == '\0') {
+   						continue;
+   					}
    					printf("@@@@@@@@ : indentifier : %s\n", buffer);
+   				}
+
+   				continue;
 			}
 
 			if ((new_string_pos = isStringLiteral(reading_buffer, pos, strlen(reading_buffer))) != -1)
