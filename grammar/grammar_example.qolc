@@ -25,9 +25,9 @@ myFunc @@ (x@float, y@float, z@float) -> float {
 //Struct_1
 vector3 @@ struct
 {
-	x@float;
-	y@float;
-	z@float;
+	a@int;
+	b@float;
+	c@float;
 };
 
 //Struct_2

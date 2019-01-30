@@ -1,17 +1,22 @@
 # The QolC Programming Language
 
-@@ 
-	The QolC programming language is being created for the purposes of a game creation environment which will 
-	provide a limitless amount of choices to its users, run games faster and most importantly make debugging
-	and coding fun! 
-@@
+@@ \
+	The QolC programming language is being developed for the purposes of a game creation environment which will\
+	provide a limitless amount of choices to its users, run games faster and most importantly make coding\
+	and debugging fun! 
+@@ \
 
 # FAQ
 
-@@
-	"Are you a madman? Why all the fuss?" : 
-	I just want to learn, have fun and make my life easier. Woudl be a dream if I make someone else's life easier also!
-@@
+@@ \
+	1."Are you a madman? Why all the fuss?" :
+		I just want to learn, have fun and make my life easier. Woudl be a dream if I make someone else's life easier also! \
+	2."Do you just copy-paste Jai?" : 
+		Truth is that Jonathan Blow is one of my favourite creators out there, and his dedication really inspires me. But 
+		I definitely don't copy his own work, more like collecting data and adding my own taste. 
+	3."Why not wait for Jai to come out?" : \
+		@Answer 1, Sentence 1.
+@@ \
 
 ## Documentation
 
@@ -19,32 +24,32 @@
 	
 	Just some declarations and initializations
 	```
-	counter@ int = 0;
-	name@string = "Jon";
-	average@float = 0.5*(x+y);
-
+	x@int;
+	myInt@ int = 0;
 	counter @= 0;
-	name @= "Jon";
-	average @= 0.5*(x+y);
 
-	counter@int;
-	name@string;
-	average@float;
+	y@string;
+	myString@string = "Vasileios";
+	hello_world @= "Hello World!";
+
+	z@float;
+	myFloat@float = 0.5 * (0.2 + z + w);	
+	gpa @= (grade * credits)/credits;
 	```
 
 	A simple "sum" function
 	```
-	sum @@ (x@float, y@float, z@float) -> float {
-		return x+y+z;
+	sum @@ (x1@float, x2@float) -> float {
+		return x1+x2;
 	}
 	```
 
 	A struct
 	```
-	Vector3 @@ struct {
-		x@float;
-		y@float;
-		z@float;
+	myStruct @@ struct {
+		a@int;
+		b@string;
+		c@anotherStruct;
 	}
 	```
 
