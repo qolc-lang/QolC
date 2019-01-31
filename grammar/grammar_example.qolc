@@ -1,50 +1,52 @@
-//Comment
-myvar @= "a";
+/@ Comment
+myvar @= "just a string";
 
-/* Block Comment */
-anotherVar @= "c";
+/@ Block Comment
+	anotherVar @= 5;
+@/
 
-/* Nested /* Block /* Comment */ */ */
+/@ Nested /@ Block /@ Comment @/ @/ @/
 hello@string = "Hello World!";
 
-/* Multi-
-	Line- /*
-	 Bloack- */
-	 Comment   */
-global_int@int;
+/@ Multi-
+	Line- /@
+	 Bloack- @/
+	 Comment   @/
+an_int@int;
 
 x @= 3;
 
 y@float = 5.0;
 
-//Function definition
-myFunc @@ (x@float, y@float, z@float) -> float {
-	return x+y+z;
-}
+/@ Function definition
+myFunc @@ (x@float, y@float, z@float) -> float {@
+	return x*y*z;
+@}
 
-//Struct_1
-vector3 @@ struct
-{
+/@ Struct_1
+vector3 @@ struct {@
 	a@int;
 	b@float;
 	c@float;
-};
+@};
 
-//Struct_2
-node @@ struct
-{
-	node_a@node*! = null;
+/@ Struct_2
+node @@ struct {@
+	node_a@node*! = null; 	/@ ! : memory ownership, if we delete this node struct, it will delete all of its child nodes 
 	node_b@node*! = null;
 	myValue@int;
-};
+@};
 
-//Struct_3
-super_node @@ struct
-{
+/@ Struct_3
+super_node @@ struct {@
 	anode@node;
 	bnode@node;
-};
+@};
 
-//Arrays
-a@[50]int;
-b@[..]int;
+
+/@ Hex number
+
+
+/@ Arrays
+a@int[50];
+b@int[..];

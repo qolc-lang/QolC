@@ -4,3 +4,11 @@ counter@int = 0;
 name@string = "Jon";
 x@int;
 y@float;
+
+sum @@ (x@int, y@int) {@ 
+	if (x @== y)
+	{
+		print(x);
+	}
+	return x+y; 
+@}

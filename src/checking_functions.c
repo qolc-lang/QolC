@@ -61,8 +61,21 @@ int isAtOperator(char buffer[], int pos, int len) {
 		++pos;
 		if (pos < len) {
 			if (buffer[pos] == '='){
+				++pos;
 				++count;
-				printf("@@@@@@@@ : operator : @= \n");
+				if (buffer[pos] == '='){
+					++count;
+					printf("@@@@@@@@ : operator : @== \n");
+					return count;
+				}
+				else{
+					printf("@@@@@@@@ : operator : @= \n");
+					return count;
+				}
+			}
+			else if (buffer[pos] == '@'){
+				++count;
+				printf("@@@@@@@@ : operator : @@ \n");
 				return count;
 			}
 			else {
