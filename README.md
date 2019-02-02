@@ -38,8 +38,8 @@
 	```
 
 	As you can notice in QolC, we have strong and dynamic data types. So we can declare \
-	something like "counter" that has no type. But, giving it a specific value will \
-	determine its type dynamically. \
+	something like "counter" that has no type. But, giving it a specific value will determine \ 
+	its type dynamically. 
 
 	Next, we can define a function : 
 	```
