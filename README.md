@@ -30,27 +30,31 @@
 
 	y@string;
 	myString@string = "Vasileios";
-	hello_world @= "Hello World!";
+	myString @= "Hello World!";
 
 	z@float;
 	myFloat@float = 0.5 * (0.2 + z + w);	
 	gpa @= (grade * credits)/credits;
 	```
 
-	A simple "sum" function
+	As you can notice in QolC, we have strong and dynamic data types. So we can declare \
+	something like "counter" that has no type. But, giving it a specific value will \
+	determine its type dynamically. \
+
+	Next, we can define a function : 
 	```
-	sum @@ (x1@float, x2@float) -> float {
+	sum @@ (x1@float, x2@float) -> float {@
 		return x1+x2;
-	}
+	@}
 	```
 
-	A struct
+	A simple struct : 
 	```
-	myStruct @@ struct {
-		a@int;
-		b@string;
-		c@anotherStruct;
-	}
+	myStruct @@ struct {@
+		a@int = 4;
+		b@string = "Yo!";
+		c@anotherStruct ^;
+	@};
 	```
 
 ## Setup
