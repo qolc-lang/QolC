@@ -1,52 +1,104 @@
 /@ Comment
-myvar @= "just a string";
+myvar @= "just a string";		/@ type inferred to string and initialized with that value
+
+-----------------------
 
 /@ Block Comment
-	anotherVar @= 5;
+	anotherVar @= 5;			
 @/
+
+-----------------------
 
 /@ Nested /@ Block /@ Comment @/ @/ @/
 hello@string = "Hello World!";
 
+-----------------------
+
 /@ Multi-
 	Line- /@
-	 Bloack- @/
+	 Block- @/
 	 Comment   @/
 an_int@int;
-
 x @= 3;
-
 y@float = 5.0;
+m@float^ = null;				/@ ^ : pointer
 
-/@ Function definition
+-----------------------
+
 myFunc @@ (x@float, y@float, z@float) -> float {@
 	return x*y*z;
 @}
 
-/@ Struct_1
+x @= myFunc(2.0, 3.0, 5.0) + 6.0      /@ x's type is going to be float
+f @float = x + 12;
+
+-----------------------
+
 vector3 @@ struct {@
 	a@int;
 	b@float;
 	c@float;
 @};
 
-/@ Struct_2
+-----------------------
+
 node @@ struct {@
-	node_a@node*! = null; 	/@ ! : memory ownership, if we delete this node struct, it will delete all of its child nodes 
-	node_b@node*! = null;
-	myValue@int;
+	node_a@node ^! = null; 		/@ ! : memory ownership, if we delete this node struct, it will delete all of its child nodes 
+	node_b@node ^! = null;		
+	myValue@int = ---;			/@ --- : Intentional uninitialization for possible performance reasons 
 @};
 
-/@ Struct_3
+
+my_node @= new node;			/@ initialize the memory and returns it casted
+my_node@.node_a = new node;
+my_node@.node_b = new node;
+
+delete my_node;
+
+-----------------------
+
 super_node @@ struct {@
 	anode@node;
 	bnode@node;
 @};
 
+new_super_node@super_node ^! = new super_node;
+
+hiNode@node = &new_super_node@.anode;
+
+-----------------------
 
 /@ Hex number
 
+hexNum @= 0xfedcba9876543210	/@ type inferred - int 64bit
 
-/@ Arrays
-a@int[50];
-b@int[..];
+-----------------------
+
+a@[50]int;
+b@[..]float;
+
+-----------------------
+
+value @@ enum {@
+	x @= 0,
+	y,
+	z @= y,
+	v @= f,						/@ Don't know what this is, might find its value later
+	g @= 10,
+@};
+
+f @= 2;
+
+-----------------------
+
+flag@bool = true;
+
+-----------------------
+
+defer print("hello there")		/@ will compile that at the end of the scope
+
+-----------------------
+
+
+
+-----------------------
