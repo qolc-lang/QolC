@@ -38,6 +38,7 @@ vector3 @@ struct {@
 	a@int;
 	b@float;
 	c@float;
+	d @= 'd;
 @};
 
 -----------------------
@@ -99,6 +100,41 @@ defer print("hello there")		/@ will compile that at the end of the scope
 
 -----------------------
 
+while x < y {@
+	print(x);
+	x += y;
+	y -= x;
+	break;	
+@}
+
+-----------------------
+
+if x < y {@
+	print("Hello x", x);
+	--y;
+	x++;
+	continue;
+@}
+else {@
+	print("Hello y", y)
+@}
+
+if (y < z) then return;
 
 
 -----------------------
+
+myArray@[..]int;
+
+each i@ 1..n-1 {@
+	
+	print(i);
+	array_add(&myArray, cast(i, void*));
+	sleep(2);	
+@}
+
+it@int;
+for myArray print(it);
+
+-----------------------
+

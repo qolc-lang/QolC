@@ -7,9 +7,10 @@
 int isKeyword(char buffer[]){
 	char keywords[10][10] = {"string","else","enum","float","for",
 							"if","int","return", "struct", "while",
-							"new", "delete"};
+							"new", "delete", "defer", "print", "break",
+							"continue", "then"};
 	int i, flag = 0;
-	for(i = 0; i < 12; ++i){
+	for(i = 0; i < 17; ++i){
 		if(strcmp(keywords[i], buffer) == 0){
 			flag = 1;
 			break;
