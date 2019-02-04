@@ -5,12 +5,12 @@
 //@@@ Check for keyword @@@
 //@@@@@@@@@@@@@@@@@@@@@@@@@
 int isKeyword(char buffer[]){
-	char keywords[10][10] = {"string","else","enum","float","for",
+	char keywords[19][10] = {"string","else","enum","float","for",
 							"if","int","return", "struct", "while",
 							"new", "delete", "defer", "print", "break",
-							"continue", "then"};
+							"continue", "then", "import", "load"};
 	int i, flag = 0;
-	for(i = 0; i < 17; ++i){
+	for(i = 0; i < 19; ++i){
 		if(strcmp(keywords[i], buffer) == 0){
 			flag = 1;
 			break;
@@ -41,11 +41,11 @@ int isNumber(char buffer[]){
 //@@@ Check for operator @@@
 //@@@@@@@@@@@@@@@@@@@@@@@@@@
 int isOperator(char buffer) {
-	char operators[10][3] = {"+", "-", "*", "/", "%", "#", "="};
+	char operators[10][3] = {"+", "-", "*", "/", "%", "="};
 	size_t op_pos;
 
 	//check if it is in operators
-	for (op_pos = 0; op_pos < 7; ++op_pos){
+	for (op_pos = 0; op_pos < 6; ++op_pos){
 		if (buffer == *operators[op_pos]){
 			printf("@@@@@@@@ : operator : %c \n", buffer);
 			return 1;
@@ -116,5 +116,39 @@ int isStringLiteral(char buffer[], int pos, int len) {
 		++count;
 		return count;
 	}
+	return -1;
+}
+
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//@@@ Check for special symbol @@@
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+int isSpecialSymbol(char buffer[], int pos, int len) {
+	int count = 0;
+	char buf[len];
+	int j = 0;
+	memset(buf, 0, sizeof(buf));
+
+	if (buffer[pos] == '#')
+		return 1;
+
+	if (buffer[pos] == '/'){
+		++pos;
+		if (pos < len) {
+			if (buffer[pos] == '@'){
+				++pos;
+				do {
+					if (pos < len) {
+						++count;
+						buf[j++] = buffer[pos];
+					}
+					++pos;
+				}while (buffer[pos] != '\0');
+				++count;
+				printf("@@@@@@@@ : comment : /@ %s\n", buf);
+				return count;
+			}
+		}
+	}
+
 	return -1;
 }

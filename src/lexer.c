@@ -4,8 +4,7 @@
 int main(){
 	char buffer[20];
 	char reading_buffer[50];
-	int new_pos = 0;
-	int new_string_pos = 0;
+	int new_pos = 0, new_string_pos = 0, special_pos=0;
 	FILE *fp;
 	int index=0;
 
@@ -46,6 +45,13 @@ int main(){
 				pos += new_string_pos;
 				continue;
 			}
+
+			if ((special_pos = isSpecialSymbol(reading_buffer, pos, strlen(reading_buffer))) != -1){
+				pos += special_pos;
+				continue;
+			}
+
+			// if ()
 
 			if (isalnum(reading_buffer[pos])) {
 				buffer[index++] = reading_buffer[pos];
