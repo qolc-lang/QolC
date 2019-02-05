@@ -83,6 +83,17 @@ int main(){
 	}
 	if (feof(fp)) {
    		printf("End of file\n");
+
+   		//catching end of file buffer
+		buffer[index] = '\0';
+		index = 0;
+
+		if(isKeyword(buffer) == 1)
+				printf("@@@@@@@@ : keyword : %s\n", buffer);
+		else if(isNumber(buffer) == 1)
+			printf("@@@@@@@@ : number : %s\n", buffer);
+		else
+			printf("@@@@@@@@ : indentifier : %s\n", buffer);
  	}
  	else {
 		printf("Some other error interrupted the read.\n");

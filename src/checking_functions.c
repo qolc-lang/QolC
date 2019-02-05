@@ -136,15 +136,8 @@ int isSpecialSymbol(char buffer[], int pos, int len) {
 		if (pos < len) {
 			if (buffer[pos] == '@'){
 				++pos;
-				do {
-					if (pos < len) {
-						++count;
-						buf[j++] = buffer[pos];
-					}
-					++pos;
-				}while (buffer[pos] != '\0');
 				++count;
-				printf("@@@@@@@@ : comment : /@ %s\n", buf);
+				printf("@@@@@@@@ : comment : /@ \n");
 				return count;
 			}
 		}
