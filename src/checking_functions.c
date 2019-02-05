@@ -5,12 +5,12 @@
 //@@@ Check for keyword @@@
 //@@@@@@@@@@@@@@@@@@@@@@@@@
 int isKeyword(char buffer[]){
-	char keywords[19][10] = {"string","else","enum","float","for",
+	char keywords[20][10] = {"string","else","enum","float","for",
 							"if","int","return", "struct", "while",
 							"new", "delete", "defer", "print", "break",
-							"continue", "then", "import", "load"};
+							"continue", "then", "import", "load", "null"};
 	int i, flag = 0;
-	for(i = 0; i < 19; ++i){
+	for(i = 0; i < 20; ++i){
 		if(strcmp(keywords[i], buffer) == 0){
 			flag = 1;
 			break;
@@ -85,6 +85,11 @@ int isAtOperator(char buffer[], int pos, int len) {
 				printf("@@@@@@@@ : operator : @. \n");
 				return count;
 			}
+			else if (buffer[pos] == '/'){
+				++count;
+				printf("@@@@@@@@ : comment : @/ \n");
+				return count;
+			}
 			else {
 				printf("@@@@@@@@ : operator : @ \n");
 				return count;
@@ -128,8 +133,15 @@ int isSpecialSymbol(char buffer[], int pos, int len) {
 	int j = 0;
 	memset(buf, 0, sizeof(buf));
 
-	if (buffer[pos] == '#')
+	if (buffer[pos] == '#') {
+		printf("@@@@@@@@ : special symbol : # \n");
 		return 1;
+	}
+
+	if (buffer[pos] == '^'){
+		printf("@@@@@@@@ : special symbol : ^ \n");
+		return 1;
+	}
 
 	if (buffer[pos] == '/'){
 		++pos;

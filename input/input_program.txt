@@ -2,3 +2,21 @@
 @load "myFile";
 
 /@ MyComment
+myvar @= "a string";
+
+/@ Block Comment
+	anotherVar @= 5;			
+@/
+
+/@ Nested /@ Block /@ Comment @/ @/ @/
+hello@string = "Hello World!";
+
+
+/@ Multi
+	Line /@
+	 Block @/
+	 Comment   @/
+an_int@int;
+x @= 3;
+y@float = 5.0;
+m@float^ = null;
