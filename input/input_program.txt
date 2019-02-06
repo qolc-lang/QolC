@@ -20,3 +20,10 @@ an_int@int;
 x @= 3;
 y@float = 5.0;
 m@float^ = null;
+
+vector3 @@ struct {@
+	a@int;
+	b@float;
+	c@float;
+	d @= 'd;
+@};

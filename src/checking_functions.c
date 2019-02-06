@@ -102,6 +102,11 @@ int isAtOperator(char buffer[], int pos, int len) {
 				printf("@@@@@@@@ : comment : @/ \n");
 				return count;
 			}
+			else if (buffer[pos] == '}'){
+				++count;
+				printf("@@@@@@@@ : block : @} \n");
+				return count;
+			}
 			else {
 				printf("@@@@@@@@ : operator : @ \n");
 				return count;
@@ -167,5 +172,45 @@ int isSpecialSymbol(char buffer[], int pos, int len) {
 		}
 	}
 
+	if (buffer[pos] == '{'){
+		++pos;
+		if (pos < len) {
+			if (buffer[pos] == '@'){
+				++pos;
+				++count;
+				printf("@@@@@@@@ : block : {@ \n");
+				return count;
+			}
+		}
+	}
+
+	return -1;
+}
+
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//@@@  Check for character     @@@
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+int isChar(char buffer[], int pos, int len) {
+	int count = 0;
+	char buf[len];
+	int j = 0;
+
+	memset(buf, 0, sizeof(buf));
+	if (buffer[pos] == '\'') {
+		buf[j] = buffer[pos];
+		++j;
+		++pos;
+		do {
+			if (pos < len) {
+				++count;
+				buf[j] = buffer[pos];
+				++j;
+			}
+			++pos;
+		}while (buffer[pos] != ';');
+		printf("@@@@@@@@ : character : %s\n", buf);
+		++count;
+		return count;
+	}
 	return -1;
 }

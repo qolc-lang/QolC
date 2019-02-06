@@ -4,7 +4,7 @@
 int main(){
 	char buffer[20];
 	char reading_buffer[50];
-	int new_pos = 0, new_string_pos = 0, special_pos=0, floating_pos = 0;
+	int new_pos = 0, new_string_pos = 0, special_pos=0, floating_pos = 0, char_pos = 0;
 	FILE *fp;
 	int index=0;
 	size_t pos;
@@ -57,12 +57,12 @@ int main(){
 				continue;
 			}
 
-			// if ((floating_pos = isFloatingNumber(reading_buffer, pos, strlen(reading_buffer))) != -1){
-			// 	pos += floating_pos;
-			// 	continue;
-			// }
+			if ((char_pos = isChar(reading_buffer, pos, strlen(reading_buffer))) != -1){
+				pos += char_pos;
+				continue;
+			}
 
-			if (isalnum(reading_buffer[pos])) {
+			if (isalnum(reading_buffer[pos]) || reading_buffer[pos] == '_') {
 				buffer[index++] = reading_buffer[pos];
 			}
 			else if ((reading_buffer[pos] == ' ' 
