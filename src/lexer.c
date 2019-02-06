@@ -4,9 +4,10 @@
 int main(){
 	char buffer[20];
 	char reading_buffer[50];
-	int new_pos = 0, new_string_pos = 0, special_pos=0;
+	int new_pos = 0, new_string_pos = 0, special_pos=0, floating_pos = 0;
 	FILE *fp;
 	int index=0;
+	size_t pos;
 
 	memset(buffer, 0, sizeof(buffer));
 	memset(reading_buffer, 0, sizeof(reading_buffer));
@@ -20,7 +21,7 @@ int main(){
 
 	while (fgets(reading_buffer,sizeof(reading_buffer), fp) != NULL) {
 		printf("@@@@@@@@ : buffer : %s\n", reading_buffer);
-		size_t pos;
+
 		for (pos = 0; pos < strlen(reading_buffer); ++pos){
 			//printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
 
@@ -30,7 +31,7 @@ int main(){
 				index = 0;
 				if(isKeyword(buffer) == 1)
    					printf("@@@@@@@@ : keyword : %s\n", buffer);
-   				else if(isNumber(buffer) == 1)
+   				else if(isNumber(reading_buffer, pos, strlen(reading_buffer)) != -1)
    					printf("@@@@@@@@ : number : %s\n", buffer);
    				else{
    					if (buffer[0] == '\0') {
@@ -46,12 +47,20 @@ int main(){
 				continue;
 			}
 
+			if ((floating_pos = isNumber(reading_buffer, pos, strlen(reading_buffer))) != -1){
+				pos += floating_pos;
+				continue;
+			}
+
 			if ((special_pos = isSpecialSymbol(reading_buffer, pos, strlen(reading_buffer))) != -1){
 				pos += special_pos;
 				continue;
 			}
 
-			// if ()
+			// if ((floating_pos = isFloatingNumber(reading_buffer, pos, strlen(reading_buffer))) != -1){
+			// 	pos += floating_pos;
+			// 	continue;
+			// }
 
 			if (isalnum(reading_buffer[pos])) {
 				buffer[index++] = reading_buffer[pos];
@@ -67,8 +76,6 @@ int main(){
 
 				if(isKeyword(buffer) == 1)
    					printf("@@@@@@@@ : keyword : %s\n", buffer);
-   				else if(isNumber(buffer) == 1)
-   					printf("@@@@@@@@ : number : %s\n", buffer);
    				else
    					printf("@@@@@@@@ : indentifier : %s\n", buffer);
 			}
@@ -91,7 +98,7 @@ int main(){
 
 			if(isKeyword(buffer) == 1)
 					printf("@@@@@@@@ : keyword : %s\n", buffer);
-			else if(isNumber(buffer) == 1)
+			else if(isNumber(reading_buffer, pos, strlen(reading_buffer)) != -1)
 				printf("@@@@@@@@ : number : %s\n", buffer);
 			else
 				printf("@@@@@@@@ : indentifier : %s\n", buffer);

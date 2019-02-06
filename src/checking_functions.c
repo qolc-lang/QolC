@@ -22,19 +22,31 @@ int isKeyword(char buffer[]){
 //@@@@@@@@@@@@@@@@@@@@@@
 //@@ Check for number @@
 //@@@@@@@@@@@@@@@@@@@@@@
-int isNumber(char buffer[]){
-	int i, flag = 0;
-	for (i = 0; i < strlen(buffer); ++i){
-		if (isdigit(buffer[i])){
-			flag = 1;
-			continue;
-		}
-		else{
-			flag = 0;
-			break;
-		}
+int isNumber(char buffer[], int pos, int len){
+	int count = 0;
+	char buf[len];
+	int j = 0;
+
+	memset(buf, 0, sizeof(buf));
+	if (isdigit(buffer[pos])) {
+		buf[j] = buffer[pos];
+		++j;
+		++pos;
+		do {
+			if (pos < len) {
+				if (isdigit(buffer[pos]) || buffer[pos] == '.') {
+					++count;
+					buf[j] = buffer[pos];
+					++j;
+				}
+			}
+			++pos;
+		}while (isdigit(buffer[pos]) || buffer[pos] == '.');
+		printf("@@@@@@@@ : number : %s\n", buf);
+		++count;
+		return count;
 	}
-	return flag;
+	return -1;
 }
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@
