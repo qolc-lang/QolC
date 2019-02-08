@@ -5,12 +5,13 @@
 //@@@ Check for keyword @@@
 //@@@@@@@@@@@@@@@@@@@@@@@@@
 int isKeyword(char buffer[]){
-	char keywords[20][10] = {"string","else","enum","float","for",
+	char keywords[21][10] = {"string","else","enum","float","for",
 							"if","int","return", "struct", "while",
 							"new", "delete", "defer", "print", "break",
-							"continue", "then", "import", "load", "null"};
+							"continue", "then", "import", "load", "null",
+							"main"};
 	int i, flag = 0;
-	for(i = 0; i < 20; ++i){
+	for(i = 0; i < 21; ++i){
 		if(strcmp(keywords[i], buffer) == 0){
 			flag = 1;
 			break;
@@ -99,12 +100,12 @@ int isAtOperator(char buffer[], int pos, int len) {
 			}
 			else if (buffer[pos] == '/'){
 				++count;
-				printf("@@@@@@@@ : comment : @/ \n");
+				printf("@@@@@@@@ : comment end : @/ \n");
 				return count;
 			}
 			else if (buffer[pos] == '}'){
 				++count;
-				printf("@@@@@@@@ : block : @} \n");
+				printf("@@@@@@@@ : block end : @} \n");
 				return count;
 			}
 			else {
@@ -166,7 +167,7 @@ int isSpecialSymbol(char buffer[], int pos, int len) {
 			if (buffer[pos] == '@'){
 				++pos;
 				++count;
-				printf("@@@@@@@@ : comment : /@ \n");
+				printf("@@@@@@@@ : comment start : /@ \n");
 				return count;
 			}
 		}
@@ -178,7 +179,7 @@ int isSpecialSymbol(char buffer[], int pos, int len) {
 			if (buffer[pos] == '@'){
 				++pos;
 				++count;
-				printf("@@@@@@@@ : block : {@ \n");
+				printf("@@@@@@@@ : block start : {@ \n");
 				return count;
 			}
 		}

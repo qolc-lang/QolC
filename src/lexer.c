@@ -7,6 +7,7 @@ int main(){
 	int new_pos = 0, new_string_pos = 0, special_pos=0, floating_pos = 0, char_pos = 0;
 	FILE *fp;
 	int index=0;
+	int temp_pos = 0;
 	size_t pos;
 
 	memset(buffer, 0, sizeof(buffer));
@@ -48,6 +49,13 @@ int main(){
 			}
 
 			if ((floating_pos = isNumber(reading_buffer, pos, strlen(reading_buffer))) != -1){
+				temp_pos = --pos;
+				if (isalnum(reading_buffer[temp_pos]) || reading_buffer[temp_pos] == '_') {
+					pos++;
+					buffer[index++] = reading_buffer[pos];
+					continue;
+				}
+				++pos;
 				pos += floating_pos;
 				continue;
 			}
