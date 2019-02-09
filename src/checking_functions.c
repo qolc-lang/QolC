@@ -40,6 +40,11 @@ int isNumber(char buffer[], int pos, int len){
 					buf[j] = buffer[pos];
 					++j;
 				}
+				else 
+				{
+					printf("@@@@@@@@ : number : %s\n", buf);
+					return count;
+				}
 			}
 			++pos;
 		}while (isdigit(buffer[pos]) || buffer[pos] == '.');
