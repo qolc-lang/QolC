@@ -9,6 +9,7 @@ int main(){
 	int index=0;
 	int temp_pos = 0;
 	size_t pos;
+	int temp = 0;
 
 	memset(buffer, 0, sizeof(buffer));
 	memset(reading_buffer, 0, sizeof(reading_buffer));
@@ -24,7 +25,7 @@ int main(){
 		printf("@@@@@@@@ : buffer : %s\n", reading_buffer);
 
 		for (pos = 0; pos < strlen(reading_buffer); ++pos){
-			//printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
+			printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
 
 			if ((new_pos = isAtOperator(reading_buffer, pos, strlen(reading_buffer))) != -1){
 				pos += new_pos;
@@ -49,13 +50,17 @@ int main(){
 			}
 
 			if ((num_pos = isNumber(reading_buffer, pos, strlen(reading_buffer))) != -1){
-				temp_pos = --pos;
+				temp_pos = pos;
+				--temp_pos;
+				//if previous is alphanumeric or underscore
 				if (isalnum(reading_buffer[temp_pos]) || reading_buffer[temp_pos] == '_') {
-					pos++;
-					buffer[index++] = reading_buffer[pos];
+					for (temp = 0; temp < num_pos; ++temp)
+					{
+						buffer[index++] = reading_buffer[pos];
+						pos++;
+					}
 					continue;
 				}
-				++pos;
 				pos += num_pos;
 				continue;
 			}

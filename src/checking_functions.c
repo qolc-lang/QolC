@@ -30,12 +30,15 @@ int isNumber(char buffer[], int pos, int len){
 
 	memset(buf, 0, sizeof(buf));
 	if (isdigit(buffer[pos])) {
+		printf("1 in the nuuu m : %c\n", buffer[pos]);
 		buf[j] = buffer[pos];
 		++j;
 		++pos;
 		do {
 			if (pos < len) {
+				printf("3 in the nuuu m : %c\n", buffer[pos]);
 				if (isdigit(buffer[pos]) || buffer[pos] == '.') {
+					printf("2 in the nuuu m : %c\n", buffer[pos]);
 					++count;
 					buf[j] = buffer[pos];
 					++j;
@@ -43,7 +46,7 @@ int isNumber(char buffer[], int pos, int len){
 				else 
 				{
 					printf("@@@@@@@@ : number : %s\n", buf);
-					return count;
+					++count;
 				}
 			}
 			++pos;
