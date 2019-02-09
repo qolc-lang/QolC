@@ -39,7 +39,7 @@ int main(){
    					if (buffer[0] == '\0') {
    						continue;
    					}
-   					printf("@@@@@@@@ : indentifier : %s\n", buffer);
+   					printf("@@@@@@@@ : indentifier in @ : %s\n", buffer);
    				}
    				continue;
 			}
@@ -51,17 +51,21 @@ int main(){
 
 			if ((num_pos = isNumber(reading_buffer, pos, strlen(reading_buffer))) != -1){
 				temp_pos = pos;
+				int temp = pos;
+				int temp2 = temp;
 				--temp_pos;
 				//if previous is alphanumeric or underscore
 				if (isalnum(reading_buffer[temp_pos]) || reading_buffer[temp_pos] == '_') {
 					for (temp = 0; temp < num_pos; ++temp)
 					{
+						printf("1 buffer[index] : %c %d\n", buffer[index], num_pos);
+						printf("thteeeeee : %c\n", reading_buffer[pos]);
 						buffer[index++] = reading_buffer[pos];
+						printf("2 buffer[index] : %c %d\n", buffer[index], num_pos);
 						pos++;
 					}
-					continue;
 				}
-				pos += num_pos;
+				pos = temp2;
 				continue;
 			}
 
@@ -76,6 +80,7 @@ int main(){
 			}
 
 			if (isalnum(reading_buffer[pos]) || reading_buffer[pos] == '_') {
+				printf(" 0 buffer[index] : %c\n", buffer[index]);
 				buffer[index++] = reading_buffer[pos];
 			}
 			else if ((reading_buffer[pos] == ' ' 

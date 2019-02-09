@@ -34,6 +34,7 @@ int isNumber(char buffer[], int pos, int len){
 		buf[j] = buffer[pos];
 		++j;
 		++pos;
+		++count;
 		do {
 			if (pos < len) {
 				printf("3 in the nuuu m : %c\n", buffer[pos]);
@@ -46,7 +47,7 @@ int isNumber(char buffer[], int pos, int len){
 				else 
 				{
 					printf("@@@@@@@@ : number : %s\n", buf);
-					++count;
+					return count;
 				}
 			}
 			++pos;
