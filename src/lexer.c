@@ -2,8 +2,8 @@
 #include "../inc/checking_functions.h"
  
 int main(){
-	char buffer[50];
-	char reading_buffer[50];
+	char buffer[150];
+	char reading_buffer[150];
 	int new_pos = 0, new_string_pos = 0, special_pos=0, num_pos = 0, char_pos = 0;
 	FILE *fp;
 	int index=0;

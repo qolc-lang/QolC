@@ -191,16 +191,17 @@ int isSpecialSymbol(char buffer[], int pos, int len) {
 			if (buffer[pos] == '+'){
 				++pos;
 				++count;
-				printf("@@@@@@@@ : special symbol : ++ \n");
+				printf("@@@@@@@@ : operator : ++ \n");
 				return count;
 			}
 			else if (buffer[pos] == '='){
 				++pos;
 				++count;
-				printf("@@@@@@@@ : special symbol : += \n");
+				printf("@@@@@@@@ : operator : += \n");
 				return count;
 			}
 			else {
+				printf("@@@@@@@@ : operator : + \n");
 				return count;
 			}
 		}
@@ -212,18 +213,39 @@ int isSpecialSymbol(char buffer[], int pos, int len) {
 			if (buffer[pos] == '-'){
 				++pos;
 				++count;
-				printf("@@@@@@@@ : special symbol : -- \n");
+				printf("@@@@@@@@ : operator : -- \n");
 				return count;
 			}
 			else if (buffer[pos] == '='){
 				++pos;
 				++count;
-				printf("@@@@@@@@ : special symbol : -= \n");
+				printf("@@@@@@@@ : operator : -= \n");
+				return count;
+			}
+			else if (buffer[pos] == '>'){
+				++pos;
+				++count;
+				printf("@@@@@@@@ : operator : -> \n");
 				return count;
 			}
 			else {
+				printf("@@@@@@@@ : operator : - \n");
 				return count;
 			}
+		}
+	}
+
+	if (buffer[pos] == '*'){
+		++pos;
+		if (buffer[pos] == '='){
+			++pos;
+			++count;
+			printf("@@@@@@@@ : operator : *= \n");
+			return count;
+		}
+		else {
+			printf("@@@@@@@@ : operator : * \n");
+			return count;
 		}
 	}
 
