@@ -2,14 +2,13 @@
 #include "../inc/checking_functions.h"
  
 int main(){
-	char buffer[20];
+	char buffer[50];
 	char reading_buffer[50];
 	int new_pos = 0, new_string_pos = 0, special_pos=0, num_pos = 0, char_pos = 0;
 	FILE *fp;
 	int index=0;
 	int temp_pos = 0;
 	size_t pos;
-	int temp = 0;
 
 	memset(buffer, 0, sizeof(buffer));
 	memset(reading_buffer, 0, sizeof(reading_buffer));
@@ -25,7 +24,7 @@ int main(){
 		printf("@@@@@@@@ : buffer : %s\n", reading_buffer);
 
 		for (pos = 0; pos < strlen(reading_buffer); ++pos){
-			printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
+			//printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
 
 			if ((new_pos = isAtOperator(reading_buffer, pos, strlen(reading_buffer))) != -1){
 				pos += new_pos;
@@ -39,7 +38,7 @@ int main(){
    					if (buffer[0] == '\0') {
    						continue;
    					}
-   					printf("@@@@@@@@ : indentifier in @ : %s\n", buffer);
+   					printf("@@@@@@@@ : identifier : %s\n", buffer);
    				}
    				continue;
 			}
@@ -50,22 +49,22 @@ int main(){
 			}
 
 			if ((num_pos = isNumber(reading_buffer, pos, strlen(reading_buffer))) != -1){
-				temp_pos = pos;
-				int temp = pos;
-				int temp2 = temp;
-				--temp_pos;
-				//if previous is alphanumeric or underscore
+				temp_pos = --pos;
 				if (isalnum(reading_buffer[temp_pos]) || reading_buffer[temp_pos] == '_') {
+					int temp;
+					++pos;
 					for (temp = 0; temp < num_pos; ++temp)
 					{
-						printf("1 buffer[index] : %c %d\n", buffer[index], num_pos);
-						printf("thteeeeee : %c\n", reading_buffer[pos]);
 						buffer[index++] = reading_buffer[pos];
-						printf("2 buffer[index] : %c %d\n", buffer[index], num_pos);
-						pos++;
+						++pos;
 					}
 				}
-				pos = temp2;
+				else {
+					++pos;
+					pos += num_pos;
+					continue;
+				}
+				--pos;
 				continue;
 			}
 
@@ -79,8 +78,7 @@ int main(){
 				continue;
 			}
 
-			if (isalnum(reading_buffer[pos]) || reading_buffer[pos] == '_') {
-				printf(" 0 buffer[index] : %c\n", buffer[index]);
+			if (isalnum(reading_buffer[pos]) || reading_buffer[pos] == '_' || isdigit(reading_buffer[pos])) {
 				buffer[index++] = reading_buffer[pos];
 			}
 			else if ((reading_buffer[pos] == ' ' 
@@ -95,7 +93,7 @@ int main(){
 				if(isKeyword(buffer) == 1)
    					printf("@@@@@@@@ : keyword : %s\n", buffer);
    				else
-   					printf("@@@@@@@@ : indentifier : %s\n", buffer);
+   					printf("@@@@@@@@ : identifier : %s\n", buffer);
 			}
 			else {
 				if (reading_buffer[pos] == ';')
@@ -119,7 +117,7 @@ int main(){
 			else if(isNumber(reading_buffer, pos, strlen(reading_buffer)) != -1)
 				printf("@@@@@@@@ : number : %s\n", buffer);
 			else
-				printf("@@@@@@@@ : indentifier : %s\n", buffer);
+				printf("@@@@@@@@ : identifier : %s\n", buffer);
    		}
 
 

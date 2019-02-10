@@ -30,5 +30,6 @@ vector3 @@ struct {@
 	e8i9o2@int= 78;
 	theNum3tyr33 @= 53;
 	_hi57_32doo3y5@float = 65;
+	hello4537_npno212op33t1@float;
 	d @= 'd;
 @};
