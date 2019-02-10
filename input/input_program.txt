@@ -4,6 +4,13 @@
 /@ MyComment
 myvar @= "a string";
 
+--d;
+x--;
+++y;
+g++;
+g += d;
+d -= g;
+
 /@ Block Comment
 	anotherVar @= 5;			
 @/
@@ -17,7 +24,7 @@ hello@string = "Hello World!";
 	 Block @/
 	 Comment   @/
 an_int@int;
-x @= 3;
+x @= 3 + 5;
 y@float = 5.0;
 m@float^ = null;
 

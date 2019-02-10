@@ -157,7 +157,7 @@ int isSpecialSymbol(char buffer[], int pos, int len) {
 	}
 
 	if (buffer[pos] == '^'){
-		printf("@@@@@@@@ : special symbol : ^ \n");
+		printf("@@@@@@@@ : pointer symbol : ^ \n");
 		return 1;
 	}
 
@@ -180,6 +180,48 @@ int isSpecialSymbol(char buffer[], int pos, int len) {
 				++pos;
 				++count;
 				printf("@@@@@@@@ : block start : {@ \n");
+				return count;
+			}
+		}
+	}
+
+	if (buffer[pos] == '+'){
+		++pos;
+		if (pos < len) {
+			if (buffer[pos] == '+'){
+				++pos;
+				++count;
+				printf("@@@@@@@@ : special symbol : ++ \n");
+				return count;
+			}
+			else if (buffer[pos] == '='){
+				++pos;
+				++count;
+				printf("@@@@@@@@ : special symbol : += \n");
+				return count;
+			}
+			else {
+				return count;
+			}
+		}
+	}
+
+	if (buffer[pos] == '-'){
+		++pos;
+		if (pos < len) {
+			if (buffer[pos] == '-'){
+				++pos;
+				++count;
+				printf("@@@@@@@@ : special symbol : -- \n");
+				return count;
+			}
+			else if (buffer[pos] == '='){
+				++pos;
+				++count;
+				printf("@@@@@@@@ : special symbol : -= \n");
+				return count;
+			}
+			else {
 				return count;
 			}
 		}
