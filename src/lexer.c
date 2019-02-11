@@ -83,8 +83,13 @@ int main(){
 	   					printf("@@@@@@@@ : keyword : %s\n", buffer);
 	   				else
 	   					printf("@@@@@@@@ : identifier : %s\n", buffer);
+
+	   				continue;
 				}
-				continue;
+				else {
+					--pos;
+					continue;
+				}
 			}
 
 			if ((char_pos = isChar(reading_buffer, pos, strlen(reading_buffer))) != -1){

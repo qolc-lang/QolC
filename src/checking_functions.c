@@ -156,8 +156,15 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 		return 1;
 	}
 
+	if (buffer[pos] == '!') {
+		printf("@@@@@@@@ : special symbol : ! \n");
+		*flag = 0;
+		return 1;
+	}
+
 	if (buffer[pos] == '^'){
 		printf("@@@@@@@@ : pointer symbol : ^ \n");
+		*flag = 0;
 		return 1;
 	}
 
@@ -216,9 +223,20 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 			if (buffer[pos] == '-'){
 				++pos;
 				++count;
-				printf("@@@@@@@@ : operator : -- \n");
-				*flag = 1;
-				return count;
+				if (pos < len) {
+					if (buffer[pos] == '-'){
+						++pos;
+						++count;
+						printf("@@@@@@@@ : operator : --- \n");
+						*flag = 1;
+						return count;
+					}
+					else {
+						printf("@@@@@@@@ : operator : -- \n");
+						*flag = 1;
+						return count;
+					}
+				}
 			}
 			else if (buffer[pos] == '='){
 				++pos;
