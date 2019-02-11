@@ -75,6 +75,10 @@ int main(){
 					buffer[index] = '\0';
 					index = 0;
 
+					if(buffer[0] == '\0') {
+						continue;
+					}
+
 					if(isKeyword(buffer) == 1)
 	   					printf("@@@@@@@@ : keyword : %s\n", buffer);
 	   				else

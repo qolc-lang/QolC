@@ -58,7 +58,7 @@ int isOperator(char buffer) {
 	size_t op_pos;
 
 	//check if it is in operators
-	for (op_pos = 0; op_pos < 6; ++op_pos){
+	for (op_pos = 0; op_pos < 3; ++op_pos){
 		if (buffer == *operators[op_pos]){
 			printf("@@@@@@@@ : operator : %c \n", buffer);
 			return 1;
