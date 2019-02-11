@@ -54,7 +54,7 @@ int isNumber(char buffer[], int pos, int len){
 //@@@ Check for operator @@@
 //@@@@@@@@@@@@@@@@@@@@@@@@@@
 int isOperator(char buffer) {
-	char operators[10][3] = {"+", "-", "*", "/", "%", "="};
+	char operators[10][3] = {"/", "%", "="};
 	size_t op_pos;
 
 	//check if it is in operators
@@ -145,7 +145,7 @@ int isStringLiteral(char buffer[], int pos, int len) {
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 //@@@ Check for special symbol @@@
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-int isSpecialSymbol(char buffer[], int pos, int len) {
+int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 	int count = 0;
 	char buf[len];
 	int j = 0;
@@ -192,16 +192,19 @@ int isSpecialSymbol(char buffer[], int pos, int len) {
 				++pos;
 				++count;
 				printf("@@@@@@@@ : operator : ++ \n");
+				*flag = 1;
 				return count;
 			}
 			else if (buffer[pos] == '='){
 				++pos;
 				++count;
 				printf("@@@@@@@@ : operator : += \n");
+				*flag = 1;
 				return count;
 			}
 			else {
 				printf("@@@@@@@@ : operator : + \n");
+				*flag = 1;
 				return count;
 			}
 		}
@@ -214,22 +217,26 @@ int isSpecialSymbol(char buffer[], int pos, int len) {
 				++pos;
 				++count;
 				printf("@@@@@@@@ : operator : -- \n");
+				*flag = 1;
 				return count;
 			}
 			else if (buffer[pos] == '='){
 				++pos;
 				++count;
 				printf("@@@@@@@@ : operator : -= \n");
+				*flag = 1;
 				return count;
 			}
 			else if (buffer[pos] == '>'){
 				++pos;
 				++count;
 				printf("@@@@@@@@ : operator : -> \n");
+				*flag = 1;
 				return count;
 			}
 			else {
 				printf("@@@@@@@@ : operator : - \n");
+				*flag = 1;
 				return count;
 			}
 		}
@@ -241,10 +248,12 @@ int isSpecialSymbol(char buffer[], int pos, int len) {
 			++pos;
 			++count;
 			printf("@@@@@@@@ : operator : *= \n");
+			*flag = 1;
 			return count;
 		}
 		else {
 			printf("@@@@@@@@ : operator : * \n");
+			*flag = 1;
 			return count;
 		}
 	}

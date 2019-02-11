@@ -8,6 +8,7 @@ int main(){
 	FILE *fp;
 	int index=0;
 	int temp_pos = 0;
+	int *flag;
 	size_t pos;
 
 	memset(buffer, 0, sizeof(buffer));
@@ -68,8 +69,17 @@ int main(){
 				continue;
 			}
 
-			if ((special_pos = isSpecialSymbol(reading_buffer, pos, strlen(reading_buffer))) != -1){
+			if ((special_pos = isSpecialSymbol(reading_buffer, pos, strlen(reading_buffer), flag)) != -1){
 				pos += special_pos;
+				if (*flag == 1) {
+					buffer[index] = '\0';
+					index = 0;
+
+					if(isKeyword(buffer) == 1)
+	   					printf("@@@@@@@@ : keyword : %s\n", buffer);
+	   				else
+	   					printf("@@@@@@@@ : identifier : %s\n", buffer);
+				}
 				continue;
 			}
 
