@@ -86,8 +86,11 @@ int main(){
 
 	   				continue;
 				}
-				else {
+				else if (*flag == 2) {
 					--pos;
+					continue;
+				}
+				else {
 					continue;
 				}
 			}

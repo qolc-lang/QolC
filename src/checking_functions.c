@@ -158,18 +158,19 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 
 	if (buffer[pos] == '!') {
 		printf("@@@@@@@@ : special symbol : ! \n");
-		*flag = 0;
+		*flag = 2;
 		return 1;
 	}
 
 	if (buffer[pos] == '^'){
 		printf("@@@@@@@@ : pointer symbol : ^ \n");
-		*flag = 0;
+		*flag = 2;
 		return 1;
 	}
 
 	if (buffer[pos] == '/'){
 		++pos;
+		++count;
 		if (pos < len) {
 			if (buffer[pos] == '@'){
 				++pos;
