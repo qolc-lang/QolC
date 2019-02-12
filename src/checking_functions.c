@@ -162,6 +162,21 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 		return 1;
 	}
 
+	if (buffer[pos] == '(') {
+		printf("@@@@@@@@ : parenthesis start : ( \n");
+		return 1;
+	}
+
+	if (buffer[pos] == ')') {
+		printf("@@@@@@@@ : parenthesis end : ) \n");
+		return 1;
+	}
+
+	if (buffer[pos] == ',') {
+		printf("@@@@@@@@ : comma : , \n");
+		return 1;
+	}
+
 	if (buffer[pos] == '^'){
 		printf("@@@@@@@@ : pointer symbol : ^ \n");
 		*flag = 2;
