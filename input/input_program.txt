@@ -56,3 +56,20 @@ node @@ struct {@
 	node_b@node ^! = null;		
 	myValue@int = ---;			/@ --- : Intentional uninitialization for possible performance reasons 
 @};
+
+
+my_node @= new node;			/@ initialize the memory and returns it casted
+my_node@.node_a = new node;
+my_node@.node_b = new node;
+
+delete my_node;
+
+
+super_node @@ struct {@
+	anode@node;
+	bnode@node;
+@};
+
+new_super_node@super_node ^! = new super_node;
+
+hiNode@node = &new_super_node@.anode;

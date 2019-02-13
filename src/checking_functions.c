@@ -172,6 +172,11 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 		return 1;
 	}
 
+	if (buffer[pos] == '&') {
+		printf("@@@@@@@@ : reference symbol : & \n");
+		return 1;
+	}
+
 	if (buffer[pos] == ',') {
 		printf("@@@@@@@@ : comma : , \n");
 		return 1;
