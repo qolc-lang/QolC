@@ -73,3 +73,69 @@ super_node @@ struct {@
 new_super_node@super_node ^! = new super_node;
 
 hiNode@node = &new_super_node@.anode;
+
+
+
+hexNum @= 0xfedcba9876543210	
+
+
+a@[50]int;
+b@[..]float;
+
+
+value @@ enum {@
+	x @= 0,
+	y,
+	z @= y,
+	v @= f,				
+	g @= 10,
+@};
+
+f @= 2;
+
+
+flag@bool = true;
+
+
+defer print("hello there")	
+
+
+while x < y {@
+	print(x);
+	x += y;
+	y -= x;
+	break;	
+@}
+
+
+if x < y {@
+	print("Hello x", x);
+	--y;
+	x++;
+	continue;
+@}
+else {@
+	print("Hello y", y)
+@}
+
+if (y < z) then return;
+
+
+myArray@[..]int;
+
+each i@ 1..n-1 {@
+	
+	print(i);
+	array_add(&myArray, cast(i, void*));
+	sleep(2);	
+@}
+
+it@int;
+for myArray print(it);
+
+
+main @@ () {@
+	
+	function_call();
+
+@}

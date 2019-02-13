@@ -203,6 +203,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 
 	if (buffer[pos] == '{'){
 		++pos;
+		++count;
 		if (pos < len) {
 			if (buffer[pos] == '@'){
 				++pos;
