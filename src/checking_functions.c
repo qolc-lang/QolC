@@ -42,9 +42,33 @@ int isNumber(char buffer[], int pos, int len){
 					++pos;
 					++j;
 				}
+				else if (buffer[pos] == 'x') {
+					if (buf [0] == '0') {
+						++count;
+						buf[j] = buffer[pos];
+						++pos;
+						++j;
+						while (isalnum(buffer[pos]))
+						{
+							++count;
+							buf[j] = buffer[pos];
+							++pos;
+							++j;
+						}
+					}
+				}
+				else {
+
+				}
 			}
-		}while (isdigit(buffer[pos]) || buffer[pos] == '.');
-		printf("@@@@@@@@ : number : %s\n", buf);
+		}while (isdigit(buffer[pos]) || buffer[pos] == '.' || buffer[pos] == 'x');
+		if (buf[1] == 'x') {
+			printf("@@@@@@@@ : hexadecimal number : %s\n", buf);
+		}
+		else {
+			printf("@@@@@@@@ : number : %s\n", buf);
+		}
+
 		return count;
 	}
 	return -1;
@@ -156,6 +180,16 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 		return 1;
 	}
 
+	if (buffer[pos] == '[') {
+		printf("@@@@@@@@ : array start : [ \n");
+		return 1;
+	}
+
+	if (buffer[pos] == ']') {
+		printf("@@@@@@@@ : array end : ] \n");
+		return 1;
+	}
+
 	if (buffer[pos] == '!') {
 		printf("@@@@@@@@ : special symbol : ! \n");
 		*flag = 2;
@@ -164,11 +198,13 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 
 	if (buffer[pos] == '(') {
 		printf("@@@@@@@@ : parenthesis start : ( \n");
+		*flag = 2;
 		return 1;
 	}
 
 	if (buffer[pos] == ')') {
 		printf("@@@@@@@@ : parenthesis end : ) \n");
+		*flag = 2;
 		return 1;
 	}
 

@@ -76,7 +76,7 @@ hiNode@node = &new_super_node@.anode;
 
 
 
-hexNum @= 0xfedcba9876543210	
+hexNum @= 0xfedcba9876543210;
 
 
 a@[50]int;
