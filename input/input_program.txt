@@ -97,7 +97,7 @@ f @= 2;
 flag@bool = true;
 
 
-defer print("hello there")	
+defer print("hello there");
 
 
 while x < y {@
@@ -115,7 +115,7 @@ if x < y {@
 	continue;
 @}
 else {@
-	print("Hello y", y)
+	print("Hello y", y);
 @}
 
 if (y < z) then return;

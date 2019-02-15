@@ -44,6 +44,12 @@ int main(){
    				continue;
 			}
 
+			if (reading_buffer[pos] == ';')
+			{
+				printf("@@@@@@@@ : end of command : ; \n");
+				continue;
+			}
+
 			if ((new_string_pos = isStringLiteral(reading_buffer, pos, strlen(reading_buffer))) != -1){
 				pos += new_string_pos;
 				continue;
@@ -59,14 +65,18 @@ int main(){
 						buffer[index++] = reading_buffer[pos];
 						++pos;
 					}
+					--pos;
+					continue;
 				}
 				else {
 					++pos;
 					pos += num_pos;
-					continue;
+					if (reading_buffer[pos] == ';')
+					{
+						printf("@@@@@@@@ : end of command : ; \n");
+						continue;
+					}
 				}
-				--pos;
-				continue;
 			}
 
 			if ((special_pos = isSpecialSymbol(reading_buffer, pos, strlen(reading_buffer), flag)) != -1){
@@ -97,6 +107,11 @@ int main(){
 
 			if ((char_pos = isChar(reading_buffer, pos, strlen(reading_buffer))) != -1){
 				pos += char_pos;
+				if (reading_buffer[pos] == ';')
+				{
+					printf("@@@@@@@@ : end of command : ; \n");
+					continue;
+				}
 				continue;
 			}
 
