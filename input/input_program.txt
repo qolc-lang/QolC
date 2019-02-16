@@ -95,7 +95,7 @@ f @= 2;
 
 
 flag@bool = true;
-
+flag2@bool = false;
 
 defer print("hello there");
 
@@ -114,6 +114,9 @@ if x >= y {@
 	x++;
 	continue;
 @}
+else_if x >= 10 {@
+	print("nanana");
+@}
 else {@
 	print("Hello y", y);
 @}
@@ -123,10 +126,10 @@ if (z > z) then return;
 
 myArray@[---]int;
 
-each i@ 1..n-1 {@
+each i@ 1 to n-1 {@
 	
 	print(i);
-	array_add(&myArray, cast(i, void*));
+	array_add(&myArray, cast(i, void^));
 	sleep(2);	
 @}
 

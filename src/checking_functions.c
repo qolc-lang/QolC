@@ -5,13 +5,14 @@
 //@@@ Check for keyword @@@
 //@@@@@@@@@@@@@@@@@@@@@@@@@
 int isKeyword(char buffer[]){
-	char keywords[21][10] = {"string","else","enum","float","for",
+	char keywords[29][10] = {"string","else","enum","float","for",
 							"if","int","return", "struct", "while",
 							"new", "delete", "defer", "print", "break",
 							"continue", "then", "import", "load", "null",
-							"main"};
+							"main", "to", "cast", "sleep", "bool",
+							"else_if", "array_add", "true", "false"};
 	int i, flag = 0;
-	for(i = 0; i < 21; ++i){
+	for(i = 0; i < 29; ++i){
 		if(strcmp(keywords[i], buffer) == 0){
 			flag = 1;
 			break;
