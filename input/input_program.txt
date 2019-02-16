@@ -80,7 +80,7 @@ hexNum @= 0xfedcba9876543210;
 
 
 a@[50]int;
-b@[..]float;
+b@[---]float;
 
 
 value @@ enum {@
@@ -100,7 +100,7 @@ flag@bool = true;
 defer print("hello there");
 
 
-while x < y {@
+while x <= y {@
 	print(x);
 	x += y;
 	y -= x;
@@ -108,7 +108,7 @@ while x < y {@
 @}
 
 
-if x < y {@
+if x >= y {@
 	print("Hello x", x);
 	--y;
 	x++;
@@ -119,9 +119,9 @@ else {@
 @}
 
 if (y < z) then return;
+if (z > z) then return;
 
-
-myArray@[..]int;
+myArray@[---]int;
 
 each i@ 1..n-1 {@
 	

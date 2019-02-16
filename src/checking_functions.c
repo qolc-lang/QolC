@@ -182,11 +182,13 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 
 	if (buffer[pos] == '[') {
 		printf("@@@@@@@@ : array start : [ \n");
+		*flag = 2;
 		return 1;
 	}
 
 	if (buffer[pos] == ']') {
 		printf("@@@@@@@@ : array end : ] \n");
+		*flag = 2;
 		return 1;
 	}
 
@@ -329,6 +331,54 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 		}
 		else {
 			printf("@@@@@@@@ : operator : * \n");
+			*flag = 1;
+			return count;
+		}
+	}
+
+	if (buffer[pos] == '<'){
+		++pos;
+		if (buffer[pos] == '='){
+			++pos;
+			++count;
+			printf("@@@@@@@@ : operator : <= \n");
+			*flag = 1;
+			return count;
+		}
+		else {
+			printf("@@@@@@@@ : operator : < \n");
+			*flag = 1;
+			return count;
+		}
+	}
+
+	if (buffer[pos] == '>'){
+		++pos;
+		if (buffer[pos] == '='){
+			++pos;
+			++count;
+			printf("@@@@@@@@ : operator : >= \n");
+			*flag = 1;
+			return count;
+		}
+		else {
+			printf("@@@@@@@@ : operator : > \n");
+			*flag = 1;
+			return count;
+		}
+	}
+
+	if (buffer[pos] == '.'){
+		++pos;
+		if (buffer[pos] == '.'){
+			++pos;
+			++count;
+			printf("@@@@@@@@ : operator : .. \n");
+			*flag = 1;
+			return count;
+		}
+		else {
+			printf("@@@@@@@@ : operator : . \n");
 			*flag = 1;
 			return count;
 		}
