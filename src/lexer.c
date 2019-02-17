@@ -84,11 +84,9 @@ int main(){
 				if (*flag == 1) {
 					buffer[index] = '\0';
 					index = 0;
-
 					if(buffer[0] == '\0') {
 						continue;
 					}
-
 					if(isKeyword(buffer) == 1)
 	   					printf("@@@@@@@@ : keyword : %s\n", buffer);
 	   				else
@@ -98,15 +96,11 @@ int main(){
 				}
 				else if (*flag == 2) {
 					--pos;
-					// buffer[index++] = reading_buffer[pos];
-
 					buffer[index] = '\0';
 					index = 0;
-
 					if(buffer[0] == '\0') {
 						continue;
 					}
-
 					if(isKeyword(buffer) == 1)
 	   					printf("@@@@@@@@ : keyword : %s\n", buffer);
 	   				else
@@ -148,7 +142,6 @@ int main(){
 			else {
 				if (reading_buffer[pos] == ';')
 				{
-					//printf("end of this command, going to next one\n");
 				}
 			}
 		}
@@ -169,8 +162,6 @@ int main(){
 			else
 				printf("@@@@@@@@ : identifier : %s\n", buffer);
    		}
-
-
  	}
  	else {
 		printf("Some other error interrupted the read.\n");

@@ -18,7 +18,6 @@ d -= g;
 /@ Nested /@ Block /@ Comment @/ @/ @/
 hello@string = "Hello World!";
 
-
 /@ Multi
 	Line /@
 	 Block @/
@@ -28,14 +27,12 @@ x @= 3 + 5;
 y@float = 5.0;
 m@float^ = null;
 
-
 myFunc @@ (x@float, y@float, z@float) -> float {@
 	return x*y*z;
 @}
 
 x @= myFunc(2.0, 3.0, 5.0) + 6.0      /@ x is type is going to be float
 f @float = x + 12;
-
 
 vector3 @@ struct {@
 	a@int;
@@ -50,13 +47,11 @@ vector3 @@ struct {@
 	d @= 'd;
 @};
 
-
 node @@ struct {@
 	node_a@node ^! = null; 		/@ ! : memory ownership, if we delete this node struct, it will delete all of its child nodes 
 	node_b@node ^! = null;		
 	myValue@int = ---;			/@ --- : Intentional uninitialization for possible performance reasons 
 @};
-
 
 my_node @= new node;			/@ initialize the memory and returns it casted
 my_node@.node_a = new node;
@@ -74,14 +69,10 @@ new_super_node@super_node ^! = new super_node;
 
 hiNode@node = &new_super_node@.anode;
 
-
-
 hexNum @= 0xfedcba9876543210;
-
 
 a@[50]int;
 b@[---]float;
-
 
 value @@ enum {@
 	x @= 0,
@@ -93,12 +84,10 @@ value @@ enum {@
 
 f @= 2;
 
-
 flag@bool = true;
 flag2@bool = false;
 
 defer print("hello there");
-
 
 while x <= y {@
 	print(x);
@@ -107,14 +96,13 @@ while x <= y {@
 	break;	
 @}
 
-
 if x >= y {@
 	print("Hello x", x);
 	--y;
 	x++;
 	continue;
 @}
-else_if x >= 10 {@
+else if x >= 10 {@
 	print("nanana");
 @}
 else {@
@@ -127,7 +115,6 @@ if (z > z) then return;
 myArray@[---]int;
 
 each i@ 1 to n-1 {@
-	
 	print(i);
 	array_add(&myArray, cast(i, void^));
 	sleep(2);	
@@ -138,7 +125,5 @@ for myArray print(it);
 
 
 main @@ () {@
-	
 	function_call();
-
 @}

@@ -1,18 +1,16 @@
 #include "../inc/headers.h"
 #include "../inc/checking_functions.h"
 
-//@@@@@@@@@@@@@@@@@@@@@@@@@
-//@@@ Check for keyword @@@
-//@@@@@@@@@@@@@@@@@@@@@@@@@
+//Check for keyword 
 int isKeyword(char buffer[]){
-	char keywords[29][10] = {"string","else","enum","float","for",
+	char keywords[28][10] = {"string","else","enum","float","for",
 							"if","int","return", "struct", "while",
 							"new", "delete", "defer", "print", "break",
 							"continue", "then", "import", "load", "null",
 							"main", "to", "cast", "sleep", "bool",
-							"else_if", "array_add", "true", "false"};
+							"array_add", "true", "false"};
 	int i, flag = 0;
-	for(i = 0; i < 29; ++i){
+	for(i = 0; i < 28; ++i){
 		if(strcmp(keywords[i], buffer) == 0){
 			flag = 1;
 			break;
@@ -21,9 +19,7 @@ int isKeyword(char buffer[]){
 	return flag;
 }
 
-//@@@@@@@@@@@@@@@@@@@@@@
-//@@ Check for number @@
-//@@@@@@@@@@@@@@@@@@@@@@
+//Check for number
 int isNumber(char buffer[], int pos, int len){
 	int count = 0;
 	char buf[len];
@@ -58,9 +54,6 @@ int isNumber(char buffer[], int pos, int len){
 						}
 					}
 				}
-				else {
-
-				}
 			}
 		}while (isdigit(buffer[pos]) || buffer[pos] == '.' || buffer[pos] == 'x');
 		if (buf[1] == 'x') {
@@ -69,20 +62,16 @@ int isNumber(char buffer[], int pos, int len){
 		else {
 			printf("@@@@@@@@ : number : %s\n", buf);
 		}
-
 		return count;
 	}
 	return -1;
 }
 
-//@@@@@@@@@@@@@@@@@@@@@@@@@@
-//@@@ Check for operator @@@
-//@@@@@@@@@@@@@@@@@@@@@@@@@@
+//Check for operator
 int isOperator(char buffer) {
 	char operators[10][3] = {"/", "%", "="};
 	size_t op_pos;
 
-	//check if it is in operators
 	for (op_pos = 0; op_pos < 3; ++op_pos){
 		if (buffer == *operators[op_pos]){
 			printf("@@@@@@@@ : operator : %c \n", buffer);
@@ -92,9 +81,7 @@ int isOperator(char buffer) {
 	return 0;
 }
 
-//@@@@@@@@@@@@@@@@@@@@@@@@@@
-//@ Check for @ operations @
-//@@@@@@@@@@@@@@@@@@@@@@@@@@
+//Check for @ operations
 int isAtOperator(char buffer[], int pos, int len) {
 	int count = 0;
 	if (buffer[pos] == '@'){
@@ -142,9 +129,7 @@ int isAtOperator(char buffer[], int pos, int len) {
 	return -1;
 }
 
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-//@@@ Check for string literal @@@
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//Check for string literal
 int isStringLiteral(char buffer[], int pos, int len) {
 	int count = 0;
 	char buf[len];
@@ -167,9 +152,7 @@ int isStringLiteral(char buffer[], int pos, int len) {
 	return -1;
 }
 
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-//@@@ Check for special symbol @@@
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//Check for special symbol
 int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 	int count = 0;
 	char buf[len];
@@ -388,9 +371,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 	return -1;
 }
 
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-//@@@  Check for character     @@@
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//Check for character
 int isChar(char buffer[], int pos, int len) {
 	int count = 0;
 	char buf[len];

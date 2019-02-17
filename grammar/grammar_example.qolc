@@ -74,7 +74,7 @@ hiNode@node = &new_super_node@.anode;
 
 /@ Hex number
 
-hexNum @= 0xfedcba9876543210	/@ type inferred - int 64bit
+hexNum @= 0xfedcba9876543210;	/@ type inferred - int 64bit
 
 -----------------------
 
