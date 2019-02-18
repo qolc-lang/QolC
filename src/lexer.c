@@ -1,7 +1,7 @@
 #include "../inc/headers.h"
 #include "../inc/checking_functions.h"
  
-int main(){
+int lex(){
 	char buffer[150];
 	char reading_buffer[150];
 	int new_pos = 0, new_string_pos = 0, special_pos=0, num_pos = 0, char_pos = 0;
@@ -25,7 +25,7 @@ int main(){
 		printf("@@@@@@@@ : buffer : %s\n", reading_buffer);
 
 		for (pos = 0; pos < strlen(reading_buffer); ++pos){
-			//printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
+			printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
 
 			if ((new_pos = isAtOperator(reading_buffer, pos, strlen(reading_buffer))) != -1){
 				pos += new_pos;
@@ -81,6 +81,7 @@ int main(){
 
 			if ((special_pos = isSpecialSymbol(reading_buffer, pos, strlen(reading_buffer), flag)) != -1){
 				pos += special_pos;
+				printf("having new pos\n");
 				if (*flag == 1) {
 					buffer[index] = '\0';
 					index = 0;
@@ -108,6 +109,7 @@ int main(){
 					continue;
 				}
 				else {
+					printf("going to continue\n");
 					continue;
 				}
 			}

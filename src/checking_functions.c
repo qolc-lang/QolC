@@ -157,10 +157,12 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 	int count = 0;
 	char buf[len];
 	int j = 0;
+	int temp = 10;
 	memset(buf, 0, sizeof(buf));
 
 	if (buffer[pos] == '#') {
 		printf("@@@@@@@@ : special symbol : # \n");
+		*flag = 10;
 		return 1;
 	}
 
@@ -196,11 +198,13 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 
 	if (buffer[pos] == '&') {
 		printf("@@@@@@@@ : reference symbol : & \n");
+		*flag = 10;
 		return 1;
 	}
 
 	if (buffer[pos] == ',') {
 		printf("@@@@@@@@ : comma : , \n");
+		*flag = 10;
 		return 1;
 	}
 
@@ -218,6 +222,9 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 				++pos;
 				++count;
 				printf("@@@@@@@@ : comment start : /@ \n");
+				printf("after that\n");
+				flag = &temp;
+				printf("we have a flag\n");
 				return count;
 			}
 		}
@@ -231,6 +238,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 				++pos;
 				++count;
 				printf("@@@@@@@@ : block start : {@ \n");
+				*flag = 10;
 				return count;
 			}
 		}
