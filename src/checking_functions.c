@@ -164,55 +164,55 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 
 	if (buffer[pos] == '#') {
 		printf("@@@@@@@@ : special symbol : # \n");
-		flag = &temp10;
+		*flag = temp10;
 		return 1;
 	}
 
 	if (buffer[pos] == '[') {
 		printf("@@@@@@@@ : array start : [ \n");
-		flag = &temp2;
+		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == ']') {
 		printf("@@@@@@@@ : array end : ] \n");
-		flag = &temp2;
+		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == '!') {
 		printf("@@@@@@@@ : special symbol : ! \n");
-		flag = &temp2;
+		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == '(') {
 		printf("@@@@@@@@ : parenthesis start : ( \n");
-		flag = &temp2;
+		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == ')') {
 		printf("@@@@@@@@ : parenthesis end : ) \n");
-		flag = &temp2;
+		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == '&') {
 		printf("@@@@@@@@ : reference symbol : & \n");
-		flag = &temp10;
+		*flag = temp10;
 		return 1;
 	}
 
 	if (buffer[pos] == ',') {
 		printf("@@@@@@@@ : comma : , \n");
-		flag = &temp10;
+		*flag = temp10;
 		return 1;
 	}
 
 	if (buffer[pos] == '^'){
 		printf("@@@@@@@@ : pointer symbol : ^ \n");
-		flag = &temp2;
+		*flag = temp2;
 		return 1;
 	}
 
@@ -224,7 +224,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 				++pos;
 				++count;
 				printf("@@@@@@@@ : comment start : /@ \n");
-				flag = &temp10;
+				*flag = temp10;
 				return count;
 			}
 		}
@@ -238,7 +238,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 				++pos;
 				++count;
 				printf("@@@@@@@@ : block start : {@ \n");
-				flag = &temp10;
+				*flag = temp10;
 				return count;
 			}
 		}
@@ -251,19 +251,19 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 				++pos;
 				++count;
 				printf("@@@@@@@@ : operator : ++ \n");
-				flag = &temp1;
+				*flag = temp1;
 				return count;
 			}
 			else if (buffer[pos] == '='){
 				++pos;
 				++count;
 				printf("@@@@@@@@ : operator : += \n");
-				flag = &temp1;
+				*flag = temp1;
 				return count;
 			}
 			else {
 				printf("@@@@@@@@ : operator : + \n");
-				flag = &temp1;
+				*flag = temp1;
 				return count;
 			}
 		}
@@ -280,12 +280,12 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 						++pos;
 						++count;
 						printf("@@@@@@@@ : operator : --- \n");
-						flag = &temp1;
+						*flag = temp1;
 						return count;
 					}
 					else {
 						printf("@@@@@@@@ : operator : -- \n");
-						flag = &temp1;
+						*flag = temp1;
 						return count;
 					}
 				}
@@ -294,19 +294,19 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 				++pos;
 				++count;
 				printf("@@@@@@@@ : operator : -= \n");
-				flag = &temp1;
+				*flag = temp1;
 				return count;
 			}
 			else if (buffer[pos] == '>'){
 				++pos;
 				++count;
 				printf("@@@@@@@@ : operator : -> \n");
-				flag = &temp1;
+				*flag = temp1;
 				return count;
 			}
 			else {
 				printf("@@@@@@@@ : operator : - \n");
-				flag = &temp1;
+				*flag = temp1;
 				return count;
 			}
 		}
@@ -318,12 +318,12 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 			++pos;
 			++count;
 			printf("@@@@@@@@ : operator : *= \n");
-			flag = &temp1;
+			*flag = temp1;
 			return count;
 		}
 		else {
 			printf("@@@@@@@@ : operator : * \n");
-			flag = &temp1;
+			*flag = temp1;
 			return count;
 		}
 	}
@@ -334,12 +334,12 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 			++pos;
 			++count;
 			printf("@@@@@@@@ : operator : <= \n");
-			flag = &temp1;
+			*flag = temp1;
 			return count;
 		}
 		else {
 			printf("@@@@@@@@ : operator : < \n");
-			flag = &temp1;
+			*flag = temp1;
 			return count;
 		}
 	}
@@ -350,12 +350,12 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 			++pos;
 			++count;
 			printf("@@@@@@@@ : operator : >= \n");
-			flag = &temp1;
+			*flag = temp1;
 			return count;
 		}
 		else {
 			printf("@@@@@@@@ : operator : > \n");
-			flag = &temp1;
+			*flag = temp1;
 			return count;
 		}
 	}
@@ -366,12 +366,12 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 			++pos;
 			++count;
 			printf("@@@@@@@@ : operator : .. \n");
-			flag = &temp1;
+			*flag = temp1;;
 			return count;
 		}
 		else {
 			printf("@@@@@@@@ : operator : . \n");
-			flag = &temp1;
+			*flag = temp1;
 			return count;
 		}
 	}

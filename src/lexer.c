@@ -8,7 +8,7 @@ int lex(){
 	FILE *fp;
 	int index=0;
 	int temp_pos = 0;
-	int *flag;
+	int flag = 0;
 	size_t pos;
 
 	memset(buffer, 0, sizeof(buffer));
@@ -25,7 +25,7 @@ int lex(){
 		printf("@@@@@@@@ : buffer : %s\n", reading_buffer);
 
 		for (pos = 0; pos < strlen(reading_buffer); ++pos){
-			printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
+			//printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
 
 			if ((new_pos = isAtOperator(reading_buffer, pos, strlen(reading_buffer))) != -1){
 				pos += new_pos;
@@ -47,11 +47,6 @@ int lex(){
 			if (reading_buffer[pos] == ';')
 			{
 				printf("@@@@@@@@ : end of command : ; \n");
-				continue;
-			}
-
-			if ((new_string_pos = isStringLiteral(reading_buffer, pos, strlen(reading_buffer))) != -1){
-				pos += new_string_pos;
 				continue;
 			}
 
@@ -79,11 +74,11 @@ int lex(){
 				}
 			}
 
-			if ((special_pos = isSpecialSymbol(reading_buffer, pos, strlen(reading_buffer), flag)) != -1){
+			if ((special_pos = isSpecialSymbol(reading_buffer, pos, strlen(reading_buffer), &flag)) != -1){
 				pos += special_pos;
 				int temp1 = 1;
 				int temp2 = 2;
-				if (flag == &temp1) {
+				if (flag == 1) {
 					buffer[index] = '\0';
 					index = 0;
 					if(buffer[0] == '\0') {
@@ -96,7 +91,7 @@ int lex(){
 
 	   				continue;
 				}
-				else if (flag == &temp2) {
+				else if (flag == 2) {
 					--pos;
 					buffer[index] = '\0';
 					index = 0;
@@ -121,6 +116,11 @@ int lex(){
 					printf("@@@@@@@@ : end of command : ; \n");
 					continue;
 				}
+				continue;
+			}
+
+			if ((new_string_pos = isStringLiteral(reading_buffer, pos, strlen(reading_buffer))) != -1){
+				pos += new_string_pos;
 				continue;
 			}
 
