@@ -200,13 +200,13 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 
 	if (buffer[pos] == '&') {
 		printf("@@@@@@@@ : reference symbol : & \n");
-		*flag = temp10;
+		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == ',') {
 		printf("@@@@@@@@ : comma : , \n");
-		*flag = temp10;
+		*flag = temp2;
 		return 1;
 	}
 
