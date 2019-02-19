@@ -81,8 +81,9 @@ int lex(){
 
 			if ((special_pos = isSpecialSymbol(reading_buffer, pos, strlen(reading_buffer), flag)) != -1){
 				pos += special_pos;
-				printf("having new pos\n");
-				if (*flag == 1) {
+				int temp1 = 1;
+				int temp2 = 2;
+				if (flag == &temp1) {
 					buffer[index] = '\0';
 					index = 0;
 					if(buffer[0] == '\0') {
@@ -95,7 +96,7 @@ int lex(){
 
 	   				continue;
 				}
-				else if (*flag == 2) {
+				else if (flag == &temp2) {
 					--pos;
 					buffer[index] = '\0';
 					index = 0;
@@ -109,7 +110,6 @@ int lex(){
 					continue;
 				}
 				else {
-					printf("going to continue\n");
 					continue;
 				}
 			}
