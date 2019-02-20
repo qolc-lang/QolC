@@ -224,7 +224,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 				++pos;
 				++count;
 				printf("@@@@@@@@ : comment start : /@ \n");
-				*flag = temp10;
+				*flag = temp2;
 				return count;
 			}
 		}
