@@ -1,7 +1,7 @@
 #include "../inc/headers.h"
 #include "../inc/checking_functions.h"
  
-int lex(){
+int lex(char fileName[]){
 	char buffer[150];
 	char reading_buffer[150];
 	int new_pos = 0, new_string_pos = 0, special_pos=0, num_pos = 0, char_pos = 0;
@@ -14,7 +14,7 @@ int lex(){
 	memset(buffer, 0, sizeof(buffer));
 	memset(reading_buffer, 0, sizeof(reading_buffer));
 	
-	fp = fopen("input/input_program.txt","r");
+	fp = fopen(fileName,"r");
 	
 	if(fp == NULL) {
 		printf("error while opening the file\n");
@@ -32,21 +32,21 @@ int lex(){
 				buffer[index] = '\0';
 				index = 0;
 				if(isKeyword(buffer) == 1)
-   					printf("@@@@@@@@ : keyword : %s\n", buffer);
+   					printf("[keyword, %s]\n", buffer);
    				else if(isNumber(reading_buffer, pos, strlen(reading_buffer)) != -1)
-   					printf("@@@@@@@@ : number : %s\n", buffer);
+   					printf("[number, %s]\n", buffer);
    				else{
    					if (buffer[0] == '\0') {
    						continue;
    					}
-   					printf("@@@@@@@@ : identifier : %s\n", buffer);
+   					printf("[identifier, %s]\n", buffer);
    				}
    				continue;
 			}
 
 			if (reading_buffer[pos] == ';')
 			{
-				printf("@@@@@@@@ : end of command : ; \n");
+				printf("[end of command, ;]\n");
 				continue;
 			}
 
@@ -68,7 +68,7 @@ int lex(){
 					pos += num_pos;
 					if (reading_buffer[pos] == ';')
 					{
-						printf("@@@@@@@@ : end of command : ; \n");
+						printf("[end of command, ;]\n");
 						continue;
 					}
 				}
@@ -85,9 +85,9 @@ int lex(){
 						continue;
 					}
 					if(isKeyword(buffer) == 1)
-	   					printf("@@@@@@@@ : keyword : %s\n", buffer);
+	   					printf("[keyword, %s]\n", buffer);
 	   				else
-	   					printf("@@@@@@@@ : identifier : %s\n", buffer);
+	   					printf("[identifier, %s]\n", buffer);
 
 	   				continue;
 				}
@@ -99,9 +99,9 @@ int lex(){
 						continue;
 					}
 					if(isKeyword(buffer) == 1)
-	   					printf("@@@@@@@@ : keyword : %s\n", buffer);
+	   					printf("[keyword, %s]\n", buffer);
 	   				else
-	   					printf("@@@@@@@@ : identifier : %s\n", buffer);
+	   					printf("[identifier, %s]\n", buffer);
 					continue;
 				}
 				else {
@@ -113,7 +113,7 @@ int lex(){
 				pos += char_pos;
 				if (reading_buffer[pos] == ';')
 				{
-					printf("@@@@@@@@ : end of command : ; \n");
+					printf("[end of command, ;]\n");
 					continue;
 				}
 				continue;
@@ -137,9 +137,9 @@ int lex(){
 				index = 0;
 
 				if(isKeyword(buffer) == 1)
-   					printf("@@@@@@@@ : keyword : %s\n", buffer);
+   					printf("[keyword, %s]\n", buffer);
    				else
-   					printf("@@@@@@@@ : identifier : %s\n", buffer);
+   					printf("[identifier, %s]\n", buffer);
 			}
 			else {
 				if (reading_buffer[pos] == ';')
@@ -158,11 +158,11 @@ int lex(){
 			index = 0;
 
 			if(isKeyword(buffer) == 1)
-					printf("@@@@@@@@ : keyword : %s\n", buffer);
+					printf("[keyword, %s]\n", buffer);
 			else if(isNumber(reading_buffer, pos, strlen(reading_buffer)) != -1)
-				printf("@@@@@@@@ : number : %s\n", buffer);
+				printf("[number, %s]\n", buffer);
 			else
-				printf("@@@@@@@@ : identifier : %s\n", buffer);
+				printf("[identifier, %s]\n", buffer);
    		}
  	}
  	else {
