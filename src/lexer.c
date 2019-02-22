@@ -22,7 +22,7 @@ int lex(char fileName[]){
 	}
 
 	while (fgets(reading_buffer,sizeof(reading_buffer), fp) != NULL) {
-		printf("@@@@@@@@ : buffer : %s\n", reading_buffer);
+		printf("~~~~ %s\n", reading_buffer);
 
 		for (pos = 0; pos < strlen(reading_buffer); ++pos){
 			//printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
@@ -32,21 +32,21 @@ int lex(char fileName[]){
 				buffer[index] = '\0';
 				index = 0;
 				if(isKeyword(buffer) == 1)
-   					printf("[keyword, %s]\n", buffer);
+   					printf("?keyword, %s?\n", buffer);
    				else if(isNumber(reading_buffer, pos, strlen(reading_buffer)) != -1)
-   					printf("[number, %s]\n", buffer);
+   					printf("?number, %s?\n", buffer);
    				else{
    					if (buffer[0] == '\0') {
    						continue;
    					}
-   					printf("[identifier, %s]\n", buffer);
+   					printf("?identifier, %s?\n", buffer);
    				}
    				continue;
 			}
 
 			if (reading_buffer[pos] == ';')
 			{
-				printf("[end of command, ;]\n");
+				printf("?end of command, ;?\n");
 				continue;
 			}
 
@@ -68,7 +68,7 @@ int lex(char fileName[]){
 					pos += num_pos;
 					if (reading_buffer[pos] == ';')
 					{
-						printf("[end of command, ;]\n");
+						printf("?end of command, ;?\n");
 						continue;
 					}
 				}
@@ -85,9 +85,9 @@ int lex(char fileName[]){
 						continue;
 					}
 					if(isKeyword(buffer) == 1)
-	   					printf("[keyword, %s]\n", buffer);
+	   					printf("?keyword, %s?\n", buffer);
 	   				else
-	   					printf("[identifier, %s]\n", buffer);
+	   					printf("?identifier, %s?\n", buffer);
 
 	   				continue;
 				}
@@ -99,9 +99,9 @@ int lex(char fileName[]){
 						continue;
 					}
 					if(isKeyword(buffer) == 1)
-	   					printf("[keyword, %s]\n", buffer);
+	   					printf("?keyword, %s?\n", buffer);
 	   				else
-	   					printf("[identifier, %s]\n", buffer);
+	   					printf("?identifier, %s?\n", buffer);
 					continue;
 				}
 				else {
@@ -113,7 +113,7 @@ int lex(char fileName[]){
 				pos += char_pos;
 				if (reading_buffer[pos] == ';')
 				{
-					printf("[end of command, ;]\n");
+					printf("?end of command, ;?\n");
 					continue;
 				}
 				continue;
@@ -137,9 +137,9 @@ int lex(char fileName[]){
 				index = 0;
 
 				if(isKeyword(buffer) == 1)
-   					printf("[keyword, %s]\n", buffer);
+   					printf("?keyword, %s?\n", buffer);
    				else
-   					printf("[identifier, %s]\n", buffer);
+   					printf("?identifier, %s?\n", buffer);
 			}
 			else {
 				if (reading_buffer[pos] == ';')
@@ -158,11 +158,11 @@ int lex(char fileName[]){
 			index = 0;
 
 			if(isKeyword(buffer) == 1)
-					printf("[keyword, %s]\n", buffer);
+					printf("?keyword, %s?\n", buffer);
 			else if(isNumber(reading_buffer, pos, strlen(reading_buffer)) != -1)
-				printf("[number, %s]\n", buffer);
+				printf("?number, %s?\n", buffer);
 			else
-				printf("[identifier, %s]\n", buffer);
+				printf("?identifier, %s?\n", buffer);
    		}
  	}
  	else {

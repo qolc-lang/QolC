@@ -57,10 +57,10 @@ int isNumber(char buffer[], int pos, int len){
 			}
 		}while (isdigit(buffer[pos]) || buffer[pos] == '.' || buffer[pos] == 'x');
 		if (buf[1] == 'x') {
-			printf("[hexadecimal number, %s]\n", buf);
+			printf("?hexadecimal number, %s?\n", buf);
 		}
 		else {
-			printf("[number, %s]\n", buf);
+			printf("?number, %s?\n", buf);
 		}
 		return count;
 	}
@@ -74,7 +74,7 @@ int isOperator(char buffer) {
 
 	for (op_pos = 0; op_pos < 3; ++op_pos){
 		if (buffer == *operators[op_pos]){
-			printf("[operator, %c]\n", buffer);
+			printf("?operator, %c?\n", buffer);
 			return 1;
 		}
 	}
@@ -92,36 +92,36 @@ int isAtOperator(char buffer[], int pos, int len) {
 				++count;
 				if (buffer[pos] == '='){
 					++count;
-					printf("[operator, @==]\n");
+					printf("?operator, @==?\n");
 					return count;
 				}
 				else{
-					printf("[operator, @=]\n");
+					printf("?operator, @=?\n");
 					return count;
 				}
 			}
 			else if (buffer[pos] == '@'){
 				++count;
-				printf("[operator, @@]\n");
+				printf("?operator, @@?\n");
 				return count;
 			}
 			else if (buffer[pos] == '.'){
 				++count;
-				printf("[operator, @.]\n");
+				printf("?operator, @.?\n");
 				return count;
 			}
 			else if (buffer[pos] == '/'){
 				++count;
-				printf("[comment end, @/]\n");
+				printf("?comment end, @/?\n");
 				return count;
 			}
 			else if (buffer[pos] == '}'){
 				++count;
-				printf("[block end, @}]\n");
+				printf("?block end, @}?\n");
 				return count;
 			}
 			else {
-				printf("[operator, @]\n");
+				printf("?operator, @?\n");
 				return count;
 			}
 		}
@@ -145,7 +145,7 @@ int isStringLiteral(char buffer[], int pos, int len) {
 			}
 			++pos;
 		}while (buffer[pos] != '"');
-		printf("[string literal, \"%s\"]\n", buf);
+		printf("?string literal, \"%s\"?\n", buf);
 		++count;
 		return count;
 	}
@@ -163,55 +163,55 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 	memset(buf, 0, sizeof(buf));
 
 	if (buffer[pos] == '#') {
-		printf("[special symbol, #]\n");
+		printf("?special symbol, #?\n");
 		*flag = temp10;
 		return 1;
 	}
 
 	if (buffer[pos] == '[') {
-		printf("[array start, []\n");
+		printf("?array start, [?\n");
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == ']') {
-		printf("[array end, ]]\n");
+		printf("?array end, ]?\n");
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == '!') {
-		printf("[special symbol, !]\n");
+		printf("?special symbol, !?\n");
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == '(') {
-		printf("[parenthesis start, (]\n");
+		printf("?parenthesis start, (?\n");
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == ')') {
-		printf("[parenthesis end, )]\n");
+		printf("?parenthesis end, )?\n");
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == '&') {
-		printf("[reference symbol, &]\n");
+		printf("?reference symbol, &?\n");
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == ',') {
-		printf("[comma, ,]\n");
+		printf("?comma, ,?\n");
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == '^'){
-		printf("[pointer symbol, ^]\n");
+		printf("?pointer symbol, ^?\n");
 		*flag = temp2;
 		return 1;
 	}
@@ -223,7 +223,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 			if (buffer[pos] == '@'){
 				++pos;
 				++count;
-				printf("[comment start, /@]\n");
+				printf("?comment start, /@?\n");
 				*flag = temp2;
 				return count;
 			}
@@ -237,7 +237,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 			if (buffer[pos] == '@'){
 				++pos;
 				++count;
-				printf("[block start, {@]\n");
+				printf("?block start, {@?\n");
 				*flag = temp10;
 				return count;
 			}
@@ -250,19 +250,19 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 			if (buffer[pos] == '+'){
 				++pos;
 				++count;
-				printf("[operator, ++]\n");
+				printf("?operator, ++?\n");
 				*flag = temp1;
 				return count;
 			}
 			else if (buffer[pos] == '='){
 				++pos;
 				++count;
-				printf("[operator, +=]\n");
+				printf("?operator, +=?\n");
 				*flag = temp1;
 				return count;
 			}
 			else {
-				printf("[operator, +]\n");
+				printf("?operator, +?\n");
 				*flag = temp1;
 				return count;
 			}
@@ -279,12 +279,12 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 					if (buffer[pos] == '-'){
 						++pos;
 						++count;
-						printf("[operator, ---]\n");
+						printf("?operator, ---?\n");
 						*flag = temp1;
 						return count;
 					}
 					else {
-						printf("[operator, --]\n");
+						printf("?operator, --?\n");
 						*flag = temp1;
 						return count;
 					}
@@ -293,19 +293,19 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 			else if (buffer[pos] == '='){
 				++pos;
 				++count;
-				printf("[operator, -=]\n");
+				printf("?operator, -=?\n");
 				*flag = temp1;
 				return count;
 			}
 			else if (buffer[pos] == '>'){
 				++pos;
 				++count;
-				printf("[operator, ->]\n");
+				printf("?operator, ->?\n");
 				*flag = temp1;
 				return count;
 			}
 			else {
-				printf("[operator, -]\n");
+				printf("?operator, -?\n");
 				*flag = temp1;
 				return count;
 			}
@@ -317,12 +317,12 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 		if (buffer[pos] == '='){
 			++pos;
 			++count;
-			printf("[operator, *=]\n");
+			printf("?operator, *=?\n");
 			*flag = temp1;
 			return count;
 		}
 		else {
-			printf("[operator, *]\n");
+			printf("?operator, *?\n");
 			*flag = temp1;
 			return count;
 		}
@@ -333,12 +333,12 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 		if (buffer[pos] == '='){
 			++pos;
 			++count;
-			printf("[operator, <=]\n");
+			printf("?operator, <=?\n");
 			*flag = temp1;
 			return count;
 		}
 		else {
-			printf("[operator, <]\n");
+			printf("?operator, <?\n");
 			*flag = temp1;
 			return count;
 		}
@@ -349,12 +349,12 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 		if (buffer[pos] == '='){
 			++pos;
 			++count;
-			printf("[operator, >=]\n");
+			printf("?operator, >=?\n");
 			*flag = temp1;
 			return count;
 		}
 		else {
-			printf("[operator, >]\n");
+			printf("?operator, >?\n");
 			*flag = temp1;
 			return count;
 		}
@@ -365,12 +365,12 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 		if (buffer[pos] == '.'){
 			++pos;
 			++count;
-			printf("[operator, ..]\n");
+			printf("?operator, ..?\n");
 			*flag = temp1;;
 			return count;
 		}
 		else {
-			printf("[operator, .]\n");
+			printf("?operator, .?\n");
 			*flag = temp1;
 			return count;
 		}
@@ -398,7 +398,7 @@ int isChar(char buffer[], int pos, int len) {
 			}
 			++pos;
 		}while (buffer[pos] != ';');
-		printf("[character, %s]\n", buf);
+		printf("?character, %s?\n", buf);
 		++count;
 		return count;
 	}

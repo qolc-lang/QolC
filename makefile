@@ -15,21 +15,24 @@ BuildCommand= $(Includes)  $(COptions)
 
 AppObjects = \
 $(ObjDir)/lexer.o \
+$(ObjDir)/lexer_node.o \
 $(ObjDir)/checking_functions.o \
 $(ObjDir)/main.o \
 #--------------------------
 
-
 $(OutDir)/mainout.out : $(AppObjects)
 	$(CC) $(linkOptions) $(AppObjects) -o $(OutDir)/mainout
 
-$(ObjDir)/lexer.o: $(SrcDir)/lexer.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h
+$(ObjDir)/lexer.o: $(SrcDir)/lexer.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h $(PrjRoot)/inc/lexer_node.h
 	$(CC) $(BuildCommand) $(SrcDir)/lexer.c -o $(ObjDir)/lexer.o
 
-$(ObjDir)/checking_functions.o: $(SrcDir)/checking_functions.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h
+$(ObjDir)/lexer_node.o: $(SrcDir)/lexer_node.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h $(PrjRoot)/inc/lexer_node.h
+	$(CC) $(BuildCommand) $(SrcDir)/lexer_node.c -o $(ObjDir)/lexer_node.o
+
+$(ObjDir)/checking_functions.o: $(SrcDir)/checking_functions.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h $(PrjRoot)/inc/lexer_node.h
 	$(CC) $(BuildCommand) $(SrcDir)/checking_functions.c -o $(ObjDir)/checking_functions.o
 
-$(ObjDir)/main.o: $(SrcDir)/main.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h
+$(ObjDir)/main.o: $(SrcDir)/main.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h $(PrjRoot)/inc/lexer_node.h
 	$(CC) $(BuildCommand) $(SrcDir)/main.c -o $(ObjDir)/main.o
 
 
