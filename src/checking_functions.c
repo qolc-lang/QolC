@@ -1,4 +1,3 @@
-#include "../inc/lexer_node.h"
 #include "../inc/checking_functions.h"
 
 //Check for keyword 
@@ -76,13 +75,20 @@ int isNumber(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buf
 }
 
 //Check for operator
-int isOperator(char buffer) {
+int isOperator(char buffer, lexer_node* myNode, char* temp_buffer) {
 	char operators[10][3] = {"/", "%", "="};
 	size_t op_pos;
+	char operator_buff[10];
+	memset(operator_buff, 0, sizeof(operator_buff));
 
 	for (op_pos = 0; op_pos < 3; ++op_pos){
 		if (buffer == *operators[op_pos]){
-			printf("?operator, %c?\n", buffer);
+			//printf("?operator, %c?\n", buffer);
+			operator_buff[0] = buffer;
+			strcpy(temp_buffer, "?operator, ");
+			strcat(temp_buffer, operator_buff);
+			push_lexerList(myNode, temp_buffer);
+			memset(temp_buffer, 0, sizeof(temp_buffer));
 			return 1;
 		}
 	}

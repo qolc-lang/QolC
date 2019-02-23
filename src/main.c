@@ -1,4 +1,3 @@
-#include "../inc/lexer_node.h"
 #include "../inc/checking_functions.h"
 
 int main(int argc, char const *argv[])

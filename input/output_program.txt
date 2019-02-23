@@ -1,0 +1,345 @@
+counter : 1, 
+counter : 2, ?keyword, import
+counter : 3, ?end of command, ;?
+counter : 4, ?keyword, load
+counter : 5, ?end of command, ;?
+counter : 6, ?identifier, MyComment
+counter : 7, ?identifier, myvar
+counter : 8, ?end of command, ;?
+counter : 9, ?end of command, ;?
+counter : 10, ?identifier, d
+counter : 11, ?identifier, x
+counter : 12, ?end of command, ;?
+counter : 13, ?end of command, ;?
+counter : 14, ?identifier, y
+counter : 15, ?identifier, g
+counter : 16, ?end of command, ;?
+counter : 17, ?identifier, g
+counter : 18, ?end of command, ;?
+counter : 19, ?identifier, d
+counter : 20, ?identifier, d
+counter : 21, ?end of command, ;?
+counter : 22, ?identifier, g
+counter : 23, ?identifier, Block
+counter : 24, ?identifier, Comment
+counter : 25, ?identifier, anotherVar
+counter : 26, ?hexadecimal number, 5
+counter : 27, ?end of command, ;?
+counter : 28, ?identifier, Nested
+counter : 29, ?identifier, Block
+counter : 30, ?identifier, Comment
+counter : 31, ?identifier, hello
+counter : 32, ?keyword, string
+counter : 33, ?operator, =
+counter : 34, ?end of command, ;?
+counter : 35, ?identifier, Multi
+counter : 36, ?identifier, Line
+counter : 37, ?identifier, Block
+counter : 38, ?identifier, Comment
+counter : 39, ?identifier, an_int
+counter : 40, ?end of command, ;?
+counter : 41, ?keyword, int
+counter : 42, ?identifier, x
+counter : 43, ?hexadecimal number, 3
+counter : 44, ?hexadecimal number, 5
+counter : 45, ?end of command, ;?
+counter : 46, ?identifier, y
+counter : 47, ?keyword, float
+counter : 48, ?operator, =
+counter : 49, ?hexadecimal number, 5.0
+counter : 50, ?end of command, ;?
+counter : 51, ?identifier, m
+counter : 52, ?keyword, float
+counter : 53, ?operator, =
+counter : 54, ?end of command, ;?
+counter : 55, ?keyword, null
+counter : 56, ?identifier, myFunc
+counter : 57, ?identifier, x
+counter : 58, ?keyword, float
+counter : 59, ?identifier, y
+counter : 60, ?keyword, float
+counter : 61, ?identifier, z
+counter : 62, ?keyword, float
+counter : 63, ?keyword, float
+counter : 64, ?keyword, return
+counter : 65, ?identifier, x
+counter : 66, ?identifier, y
+counter : 67, ?end of command, ;?
+counter : 68, ?identifier, z
+counter : 69, ?identifier, x
+counter : 70, ?identifier, myFunc
+counter : 71, ?hexadecimal number, 2.0
+counter : 72, ?hexadecimal number, 3.0
+counter : 73, ?hexadecimal number, 5.0
+counter : 74, ?hexadecimal number, 6.0
+counter : 75, ?identifier, x
+counter : 76, ?identifier, is
+counter : 77, ?identifier, type
+counter : 78, ?identifier, is
+counter : 79, ?identifier, going
+counter : 80, ?keyword, to
+counter : 81, ?identifier, be
+counter : 82, ?keyword, float
+counter : 83, ?identifier, f
+counter : 84, ?keyword, float
+counter : 85, ?operator, =
+counter : 86, ?identifier, x
+counter : 87, ?hexadecimal number, 12
+counter : 88, ?end of command, ;?
+counter : 89, ?hexadecimal number, 3
+counter : 90, ?identifier, vector3
+counter : 91, ?keyword, struct
+counter : 92, ?identifier, a
+counter : 93, ?end of command, ;?
+counter : 94, ?keyword, int
+counter : 95, ?identifier, b
+counter : 96, ?end of command, ;?
+counter : 97, ?keyword, float
+counter : 98, ?identifier, c
+counter : 99, ?end of command, ;?
+counter : 100, ?keyword, float
+counter : 101, ?hexadecimal number, 5
+counter : 102, ?identifier, myint5
+counter : 103, ?end of command, ;?
+counter : 104, ?keyword, int
+counter : 105, ?hexadecimal number, 74
+counter : 106, ?identifier, m74td
+counter : 107, ?end of command, ;?
+counter : 108, ?keyword, float
+counter : 109, ?hexadecimal number, 8
+counter : 110, ?hexadecimal number, 9
+counter : 111, ?hexadecimal number, 2
+counter : 112, ?identifier, e8i9o2
+counter : 113, ?operator, =
+counter : 114, ?keyword, int
+counter : 115, ?hexadecimal number, 78
+counter : 116, ?end of command, ;?
+counter : 117, ?hexadecimal number, 3
+counter : 118, ?hexadecimal number, 33
+counter : 119, ?identifier, theNum3tyr33
+counter : 120, ?hexadecimal number, 53
+counter : 121, ?end of command, ;?
+counter : 122, ?hexadecimal number, 57
+counter : 123, ?hexadecimal number, 32
+counter : 124, ?hexadecimal number, 3
+counter : 125, ?hexadecimal number, 5
+counter : 126, ?identifier, _hi57_32doo3y5
+counter : 127, ?keyword, float
+counter : 128, ?operator, =
+counter : 129, ?hexadecimal number, 65
+counter : 130, ?end of command, ;?
+counter : 131, ?hexadecimal number, 4537
+counter : 132, ?hexadecimal number, 212
+counter : 133, ?hexadecimal number, 33
+counter : 134, ?hexadecimal number, 1
+counter : 135, ?identifier, hello4537_npno212op33t1
+counter : 136, ?end of command, ;?
+counter : 137, ?keyword, float
+counter : 138, ?identifier, d
+counter : 139, ?end of command, ;?
+counter : 140, ?end of command, ;?
+counter : 141, ?identifier, node
+counter : 142, ?keyword, struct
+counter : 143, ?identifier, node_a
+counter : 144, ?identifier, node
+counter : 145, ?operator, =
+counter : 146, ?end of command, ;?
+counter : 147, ?keyword, null
+counter : 148, ?identifier, memory
+counter : 149, ?identifier, ownership
+counter : 150, ?keyword, if
+counter : 151, ?identifier, we
+counter : 152, ?keyword, delete
+counter : 153, ?identifier, this
+counter : 154, ?identifier, node
+counter : 155, ?keyword, struct
+counter : 156, ?identifier, it
+counter : 157, ?identifier, will
+counter : 158, ?keyword, delete
+counter : 159, ?identifier, all
+counter : 160, ?identifier, of
+counter : 161, ?identifier, its
+counter : 162, ?identifier, child
+counter : 163, ?identifier, nodes
+counter : 164, ?identifier, node_b
+counter : 165, ?identifier, node
+counter : 166, ?operator, =
+counter : 167, ?end of command, ;?
+counter : 168, ?keyword, null
+counter : 169, ?identifier, myValue
+counter : 170, ?keyword, int
+counter : 171, ?operator, =
+counter : 172, ?end of command, ;?
+counter : 173, ?identifier, Intentional
+counter : 174, ?identifier, uninitialization
+counter : 175, ?keyword, for
+counter : 176, ?identifier, possible
+counter : 177, ?identifier, performance
+counter : 178, ?identifier, reasons
+counter : 179, ?end of command, ;?
+counter : 180, ?identifier, my_node
+counter : 181, ?keyword, new
+counter : 182, ?end of command, ;?
+counter : 183, ?identifier, node
+counter : 184, ?identifier, initialize
+counter : 185, ?identifier, the
+counter : 186, ?identifier, memory
+counter : 187, ?identifier, and
+counter : 188, ?identifier, returns
+counter : 189, ?identifier, it
+counter : 190, ?identifier, casted
+counter : 191, ?identifier, my_node
+counter : 192, ?identifier, node_a
+counter : 193, ?operator, =
+counter : 194, ?keyword, new
+counter : 195, ?end of command, ;?
+counter : 196, ?identifier, node
+counter : 197, ?identifier, my_node
+counter : 198, ?identifier, node_b
+counter : 199, ?operator, =
+counter : 200, ?keyword, new
+counter : 201, ?end of command, ;?
+counter : 202, ?identifier, node
+counter : 203, ?keyword, delete
+counter : 204, ?end of command, ;?
+counter : 205, ?identifier, my_node
+counter : 206, ?identifier, super_node
+counter : 207, ?keyword, struct
+counter : 208, ?identifier, anode
+counter : 209, ?end of command, ;?
+counter : 210, ?identifier, node
+counter : 211, ?identifier, bnode
+counter : 212, ?end of command, ;?
+counter : 213, ?identifier, node
+counter : 214, ?end of command, ;?
+counter : 215, ?identifier, new_super_node
+counter : 216, ?identifier, super_node
+counter : 217, ?operator, =
+counter : 218, ?keyword, new
+counter : 219, ?end of command, ;?
+counter : 220, ?identifier, super_node
+counter : 221, ?identifier, hiNode
+counter : 222, ?identifier, node
+counter : 223, ?operator, =
+counter : 224, ?identifier, new_super_node
+counter : 225, ?end of command, ;?
+counter : 226, ?identifier, anode
+counter : 227, ?identifier, hexNum
+counter : 228, ?hexadecimal number, 0xfedcba9876543210
+counter : 229, ?end of command, ;?
+counter : 230, ?identifier, a
+counter : 231, ?hexadecimal number, 50
+counter : 232, ?end of command, ;?
+counter : 233, ?keyword, int
+counter : 234, ?identifier, b
+counter : 235, ?end of command, ;?
+counter : 236, ?keyword, float
+counter : 237, ?identifier, value
+counter : 238, ?keyword, enum
+counter : 239, ?identifier, x
+counter : 240, ?hexadecimal number, 0
+counter : 241, ?identifier, y
+counter : 242, ?identifier, z
+counter : 243, ?identifier, y
+counter : 244, ?identifier, v
+counter : 245, ?identifier, f
+counter : 246, ?identifier, g
+counter : 247, ?hexadecimal number, 10
+counter : 248, ?end of command, ;?
+counter : 249, ?identifier, f
+counter : 250, ?hexadecimal number, 2
+counter : 251, ?end of command, ;?
+counter : 252, ?identifier, flag
+counter : 253, ?keyword, bool
+counter : 254, ?operator, =
+counter : 255, ?end of command, ;?
+counter : 256, ?keyword, true
+counter : 257, ?hexadecimal number, 2
+counter : 258, ?identifier, flag2
+counter : 259, ?keyword, bool
+counter : 260, ?operator, =
+counter : 261, ?end of command, ;?
+counter : 262, ?keyword, false
+counter : 263, ?keyword, defer
+counter : 264, ?keyword, print
+counter : 265, ?end of command, ;?
+counter : 266, ?keyword, while
+counter : 267, ?identifier, x
+counter : 268, ?identifier, y
+counter : 269, ?keyword, print
+counter : 270, ?identifier, x
+counter : 271, ?end of command, ;?
+counter : 272, ?identifier, x
+counter : 273, ?end of command, ;?
+counter : 274, ?identifier, y
+counter : 275, ?identifier, y
+counter : 276, ?end of command, ;?
+counter : 277, ?identifier, x
+counter : 278, ?end of command, ;?
+counter : 279, ?keyword, break
+counter : 280, ?keyword, if
+counter : 281, ?identifier, x
+counter : 282, ?identifier, y
+counter : 283, ?keyword, print
+counter : 284, ?identifier, x
+counter : 285, ?end of command, ;?
+counter : 286, ?end of command, ;?
+counter : 287, ?identifier, y
+counter : 288, ?identifier, x
+counter : 289, ?end of command, ;?
+counter : 290, ?end of command, ;?
+counter : 291, ?keyword, continue
+counter : 292, ?keyword, else
+counter : 293, ?keyword, if
+counter : 294, ?identifier, x
+counter : 295, ?hexadecimal number, 10
+counter : 296, ?keyword, print
+counter : 297, ?end of command, ;?
+counter : 298, ?keyword, else
+counter : 299, ?keyword, print
+counter : 300, ?identifier, y
+counter : 301, ?end of command, ;?
+counter : 302, ?keyword, if
+counter : 303, ?identifier, y
+counter : 304, ?identifier, z
+counter : 305, ?keyword, then
+counter : 306, ?end of command, ;?
+counter : 307, ?keyword, return
+counter : 308, ?keyword, if
+counter : 309, ?identifier, z
+counter : 310, ?identifier, z
+counter : 311, ?keyword, then
+counter : 312, ?end of command, ;?
+counter : 313, ?keyword, return
+counter : 314, ?identifier, myArray
+counter : 315, ?end of command, ;?
+counter : 316, ?keyword, int
+counter : 317, ?identifier, each
+counter : 318, ?identifier, i
+counter : 319, ?hexadecimal number, 1
+counter : 320, ?keyword, to
+counter : 321, ?identifier, n
+counter : 322, ?hexadecimal number, 1
+counter : 323, ?keyword, print
+counter : 324, ?identifier, i
+counter : 325, ?end of command, ;?
+counter : 326, ?keyword, array_add
+counter : 327, ?identifier, myArray
+counter : 328, ?keyword, cast
+counter : 329, ?identifier, i
+counter : 330, ?identifier, void
+counter : 331, ?end of command, ;?
+counter : 332, ?keyword, sleep
+counter : 333, ?hexadecimal number, 2
+counter : 334, ?end of command, ;?
+counter : 335, ?identifier, it
+counter : 336, ?end of command, ;?
+counter : 337, ?keyword, int
+counter : 338, ?keyword, for
+counter : 339, ?identifier, myArray
+counter : 340, ?keyword, print
+counter : 341, ?identifier, it
+counter : 342, ?end of command, ;?
+counter : 343, ?keyword, main
+counter : 344, ?identifier, function_call
+counter : 345, ?end of command, ;?
