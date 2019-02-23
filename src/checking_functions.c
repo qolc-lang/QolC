@@ -1,4 +1,4 @@
-#include "../inc/headers.h"
+#include "../inc/lexer_node.h"
 #include "../inc/checking_functions.h"
 
 //Check for keyword 
@@ -20,7 +20,7 @@ int isKeyword(char buffer[]){
 }
 
 //Check for number
-int isNumber(char buffer[], int pos, int len){
+int isNumber(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer){
 	int count = 0;
 	char buf[len];
 	int j = 0;
@@ -57,10 +57,18 @@ int isNumber(char buffer[], int pos, int len){
 			}
 		}while (isdigit(buffer[pos]) || buffer[pos] == '.' || buffer[pos] == 'x');
 		if (buf[1] == 'x') {
-			printf("?hexadecimal number, %s?\n", buf);
+			//printf("?hexadecimal number, %s?\n", buf);
+			strcpy(temp_buffer, "?hexadecimal number, ");
+			strcat(temp_buffer, buf);
+			push_lexerList(myNode, temp_buffer);
+			memset(temp_buffer, 0, sizeof(temp_buffer));
 		}
 		else {
-			printf("?number, %s?\n", buf);
+			//printf("?number, %s?\n", buf);
+			strcpy(temp_buffer, "?hexadecimal number, ");
+			strcat(temp_buffer, buf);
+			push_lexerList(myNode, temp_buffer);
+			memset(temp_buffer, 0, sizeof(temp_buffer));
 		}
 		return count;
 	}
