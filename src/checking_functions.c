@@ -64,7 +64,7 @@ int isNumber(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buf
 		}
 		else {
 			//printf("?number, %s?\n", buf);
-			strcpy(temp_buffer, "?hexadecimal number, ");
+			strcpy(temp_buffer, "?number, ");
 			strcat(temp_buffer, buf);
 			push_lexerList(myNode, temp_buffer);
 			memset(temp_buffer, 0, sizeof(temp_buffer));
@@ -96,7 +96,7 @@ int isOperator(char buffer, lexer_node* myNode, char* temp_buffer) {
 }
 
 //Check for @ operations
-int isAtOperator(char buffer[], int pos, int len) {
+int isAtOperator(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer) {
 	int count = 0;
 	if (buffer[pos] == '@'){
 		++pos;
@@ -106,36 +106,57 @@ int isAtOperator(char buffer[], int pos, int len) {
 				++count;
 				if (buffer[pos] == '='){
 					++count;
-					printf("?operator, @==?\n");
+					//printf("?operator, @==?\n");
+					strcpy(temp_buffer, "?operator, @==?");
+					push_lexerList(myNode, temp_buffer);
+					memset(temp_buffer, 0, sizeof(temp_buffer));
 					return count;
 				}
 				else{
-					printf("?operator, @=?\n");
+					//printf("?operator, @=?\n");
+					strcpy(temp_buffer, "?operator, @=?");
+					push_lexerList(myNode, temp_buffer);
+					memset(temp_buffer, 0, sizeof(temp_buffer));
 					return count;
 				}
 			}
 			else if (buffer[pos] == '@'){
 				++count;
-				printf("?operator, @@?\n");
+				//printf("?operator, @@?\n");
+				strcpy(temp_buffer, "?operator, @@?");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
 				return count;
 			}
 			else if (buffer[pos] == '.'){
 				++count;
-				printf("?operator, @.?\n");
+				//printf("?operator, @.?\n");
+				strcpy(temp_buffer, "?operator, @.?");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
 				return count;
 			}
 			else if (buffer[pos] == '/'){
 				++count;
-				printf("?comment end, @/?\n");
+				//printf("?comment end, @/?\n");
+				strcpy(temp_buffer, "?operator, @/?");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
 				return count;
 			}
 			else if (buffer[pos] == '}'){
 				++count;
-				printf("?block end, @}?\n");
+				//printf("?block end, @}?\n");
+				strcpy(temp_buffer, "?operator, @}?");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
 				return count;
 			}
 			else {
-				printf("?operator, @?\n");
+				//printf("?operator, @?\n");
+				strcpy(temp_buffer, "?operator, @?");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
 				return count;
 			}
 		}
@@ -144,7 +165,7 @@ int isAtOperator(char buffer[], int pos, int len) {
 }
 
 //Check for string literal
-int isStringLiteral(char buffer[], int pos, int len) {
+int isStringLiteral(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer) {
 	int count = 0;
 	char buf[len];
 	int j = 0;
@@ -159,7 +180,11 @@ int isStringLiteral(char buffer[], int pos, int len) {
 			}
 			++pos;
 		}while (buffer[pos] != '"');
-		printf("?string literal, \"%s\"?\n", buf);
+		//printf("?string literal, \"%s\"?\n", buf);
+		strcpy(temp_buffer, "?string literal, ");
+		strcat(temp_buffer, buf);
+		push_lexerList(myNode, temp_buffer);
+		memset(temp_buffer, 0, sizeof(temp_buffer));
 		++count;
 		return count;
 	}
@@ -167,7 +192,7 @@ int isStringLiteral(char buffer[], int pos, int len) {
 }
 
 //Check for special symbol
-int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
+int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNode, char* temp_buffer) {
 	int count = 0;
 	char buf[len];
 	int j = 0;
@@ -177,55 +202,82 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 	memset(buf, 0, sizeof(buf));
 
 	if (buffer[pos] == '#') {
-		printf("?special symbol, #?\n");
+		//printf("?special symbol, #?\n");
+		strcpy(temp_buffer, "?special symbol, #?");
+		push_lexerList(myNode, temp_buffer);
+		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp10;
 		return 1;
 	}
 
 	if (buffer[pos] == '[') {
-		printf("?array start, [?\n");
+		//printf("?array start, [?\n");
+		strcpy(temp_buffer, "?array start, [?");
+		push_lexerList(myNode, temp_buffer);
+		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == ']') {
-		printf("?array end, ]?\n");
+		//printf("?array end, ]?\n");
+		strcpy(temp_buffer, "?array end, ]?");
+		push_lexerList(myNode, temp_buffer);
+		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == '!') {
-		printf("?special symbol, !?\n");
+		//printf("?special symbol, !?\n");
+		strcpy(temp_buffer, "?special symbol, !?");
+		push_lexerList(myNode, temp_buffer);
+		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == '(') {
-		printf("?parenthesis start, (?\n");
+		//printf("?parenthesis start, (?\n");
+		strcpy(temp_buffer, "?parenthesis start, (?");
+		push_lexerList(myNode, temp_buffer);
+		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == ')') {
-		printf("?parenthesis end, )?\n");
+		//printf("?parenthesis end, )?\n");
+		strcpy(temp_buffer, "?parenthesis end, )?");
+		push_lexerList(myNode, temp_buffer);
+		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == '&') {
-		printf("?reference symbol, &?\n");
+		//printf("?reference symbol, &?\n");
+		strcpy(temp_buffer, "?reference symbol, &?");
+		push_lexerList(myNode, temp_buffer);
+		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == ',') {
-		printf("?comma, ,?\n");
+		//printf("?comma, ,?\n");
+		strcpy(temp_buffer, "?comma, ,?");
+		push_lexerList(myNode, temp_buffer);
+		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
 		return 1;
 	}
 
 	if (buffer[pos] == '^'){
-		printf("?pointer symbol, ^?\n");
+		//printf("?pointer symbol, ^?\n");
+		strcpy(temp_buffer, "?pointer symbol, ^?");
+		push_lexerList(myNode, temp_buffer);
+		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
 		return 1;
 	}
@@ -237,7 +289,10 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 			if (buffer[pos] == '@'){
 				++pos;
 				++count;
-				printf("?comment start, /@?\n");
+				//printf("?comment start, /@?\n");
+				strcpy(temp_buffer, "?comment start, /@?");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
 				*flag = temp2;
 				return count;
 			}
@@ -251,7 +306,10 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 			if (buffer[pos] == '@'){
 				++pos;
 				++count;
-				printf("?block start, {@?\n");
+				//printf("?block start, {@?\n");
+				strcpy(temp_buffer, "?block start, {@?");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
 				*flag = temp10;
 				return count;
 			}
@@ -264,19 +322,28 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 			if (buffer[pos] == '+'){
 				++pos;
 				++count;
-				printf("?operator, ++?\n");
+				//printf("?operator, ++?\n");
+				strcpy(temp_buffer, "?operator, ++?");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
 				*flag = temp1;
 				return count;
 			}
 			else if (buffer[pos] == '='){
 				++pos;
 				++count;
-				printf("?operator, +=?\n");
+				//printf("?operator, +=?\n");
+				strcpy(temp_buffer, "?operator, +=?");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
 				*flag = temp1;
 				return count;
 			}
 			else {
-				printf("?operator, +?\n");
+				//printf("?operator, +?\n");
+				strcpy(temp_buffer, "?operator, +?");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
 				*flag = temp1;
 				return count;
 			}
@@ -293,12 +360,18 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 					if (buffer[pos] == '-'){
 						++pos;
 						++count;
-						printf("?operator, ---?\n");
+						//printf("?operator, ---?\n");
+						strcpy(temp_buffer, "?operator, ---?");
+						push_lexerList(myNode, temp_buffer);
+						memset(temp_buffer, 0, sizeof(temp_buffer));
 						*flag = temp1;
 						return count;
 					}
 					else {
-						printf("?operator, --?\n");
+						//printf("?operator, --?\n");
+						strcpy(temp_buffer, "?operator, --?");
+						push_lexerList(myNode, temp_buffer);
+						memset(temp_buffer, 0, sizeof(temp_buffer));
 						*flag = temp1;
 						return count;
 					}
@@ -307,19 +380,28 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 			else if (buffer[pos] == '='){
 				++pos;
 				++count;
-				printf("?operator, -=?\n");
+				//printf("?operator, -=?\n");
+				strcpy(temp_buffer, "?operator, -=?");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
 				*flag = temp1;
 				return count;
 			}
 			else if (buffer[pos] == '>'){
 				++pos;
 				++count;
-				printf("?operator, ->?\n");
+				//printf("?operator, ->?\n");
+				strcpy(temp_buffer, "?operator, ->?");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
 				*flag = temp1;
 				return count;
 			}
 			else {
-				printf("?operator, -?\n");
+				//printf("?operator, -?\n");
+				strcpy(temp_buffer, "?operator, -?");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
 				*flag = temp1;
 				return count;
 			}
@@ -331,12 +413,18 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 		if (buffer[pos] == '='){
 			++pos;
 			++count;
-			printf("?operator, *=?\n");
+			//printf("?operator, *=?\n");
+			strcpy(temp_buffer, "?operator, *=?");
+			push_lexerList(myNode, temp_buffer);
+			memset(temp_buffer, 0, sizeof(temp_buffer));
 			*flag = temp1;
 			return count;
 		}
 		else {
-			printf("?operator, *?\n");
+			//printf("?operator, *?\n");
+			strcpy(temp_buffer, "?operator, *?");
+			push_lexerList(myNode, temp_buffer);
+			memset(temp_buffer, 0, sizeof(temp_buffer));
 			*flag = temp1;
 			return count;
 		}
@@ -347,12 +435,18 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 		if (buffer[pos] == '='){
 			++pos;
 			++count;
-			printf("?operator, <=?\n");
+			//printf("?operator, <=?\n");
+			strcpy(temp_buffer, "?operator, <=?");
+			push_lexerList(myNode, temp_buffer);
+			memset(temp_buffer, 0, sizeof(temp_buffer));
 			*flag = temp1;
 			return count;
 		}
 		else {
-			printf("?operator, <?\n");
+			//printf("?operator, <?\n");
+			strcpy(temp_buffer, "?operator, <?");
+			push_lexerList(myNode, temp_buffer);
+			memset(temp_buffer, 0, sizeof(temp_buffer));
 			*flag = temp1;
 			return count;
 		}
@@ -363,12 +457,18 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 		if (buffer[pos] == '='){
 			++pos;
 			++count;
-			printf("?operator, >=?\n");
+			//printf("?operator, >=?\n");
+			strcpy(temp_buffer, "?operator, >=?");
+			push_lexerList(myNode, temp_buffer);
+			memset(temp_buffer, 0, sizeof(temp_buffer));
 			*flag = temp1;
 			return count;
 		}
 		else {
-			printf("?operator, >?\n");
+			//printf("?operator, >?\n");
+			strcpy(temp_buffer, "?operator, >?");
+			push_lexerList(myNode, temp_buffer);
+			memset(temp_buffer, 0, sizeof(temp_buffer));
 			*flag = temp1;
 			return count;
 		}
@@ -379,12 +479,18 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 		if (buffer[pos] == '.'){
 			++pos;
 			++count;
-			printf("?operator, ..?\n");
+			//printf("?operator, ..?\n");
+			strcpy(temp_buffer, "?operator, ..?");
+			push_lexerList(myNode, temp_buffer);
+			memset(temp_buffer, 0, sizeof(temp_buffer));
 			*flag = temp1;;
 			return count;
 		}
 		else {
-			printf("?operator, .?\n");
+			//printf("?operator, .?\n");
+			strcpy(temp_buffer, "?operator, .?");
+			push_lexerList(myNode, temp_buffer);
+			memset(temp_buffer, 0, sizeof(temp_buffer));
 			*flag = temp1;
 			return count;
 		}
@@ -394,7 +500,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag) {
 }
 
 //Check for character
-int isChar(char buffer[], int pos, int len) {
+int isChar(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer) {
 	int count = 0;
 	char buf[len];
 	int j = 0;
@@ -412,7 +518,11 @@ int isChar(char buffer[], int pos, int len) {
 			}
 			++pos;
 		}while (buffer[pos] != ';');
-		printf("?character, %s?\n", buf);
+		//printf("?character, %s?\n", buf);
+		strcpy(temp_buffer, "?character, ");
+		strcat(temp_buffer, buf);
+		push_lexerList(myNode, temp_buffer);
+		memset(temp_buffer, 0, sizeof(temp_buffer));
 		++count;
 		return count;
 	}

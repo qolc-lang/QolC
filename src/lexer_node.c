@@ -13,23 +13,23 @@ void print_lexerList(lexer_node* node, char* fileName) {
 	FILE *f = fopen(fileName, "w");
 	if (f == NULL)
 	{
-	    printf("Error opening file!\n");
+	    printf("Error opening output file file!\n");
 	    exit(1);
 	}
 
 	printf("\n");
-	printf("Press 1 if you want to print on the console\nor any number if you want to print on the file.\n");
+	printf("Press 1 if you want to print the results on the console\nor any number if you want to print on the file.\n");
 	scanf("%d", &option);
 
 	while (current != NULL) {
 		++counter;
 		if (option == 1)
-			printf("counter %d - %s : \n", counter, current->token);
+			printf("counter-%d : %s\n", counter, current->token);
 		else {
 			sprintf(num_str, "%d", counter);
-			strcpy(text, "counter : ");
+			strcpy(text, "counter-");
 			strcat(text, num_str);
-			strcat(text, ", ");
+			strcat(text, " : ");
 			strcat(text, current->token);
 			fprintf(f, "%s\n", text);
 		}	

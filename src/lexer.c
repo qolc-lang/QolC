@@ -26,12 +26,12 @@ int lex(char fileName[]){
 	}
 
 	while (fgets(reading_buffer,sizeof(reading_buffer), fp) != NULL) {
-		printf("~~~~ %s\n", reading_buffer);
+		//printf("~~~~ %s\n", reading_buffer);
 
 		for (pos = 0; pos < strlen(reading_buffer); ++pos){
 			//printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
 
-			if ((new_pos = isAtOperator(reading_buffer, pos, strlen(reading_buffer))) != -1){
+			if ((new_pos = isAtOperator(reading_buffer, pos, strlen(reading_buffer), myNode, temp_buffer)) != -1){
 				pos += new_pos;
 				buffer[index] = '\0';
 				index = 0;
@@ -98,7 +98,7 @@ int lex(char fileName[]){
 				}
 			}
 
-			if ((special_pos = isSpecialSymbol(reading_buffer, pos, strlen(reading_buffer), &flag)) != -1){
+			if ((special_pos = isSpecialSymbol(reading_buffer, pos, strlen(reading_buffer), &flag, myNode, temp_buffer)) != -1){
 				pos += special_pos;
 				int temp1 = 1;
 				int temp2 = 2;
@@ -153,7 +153,7 @@ int lex(char fileName[]){
 				}
 			}
 
-			if ((char_pos = isChar(reading_buffer, pos, strlen(reading_buffer))) != -1){
+			if ((char_pos = isChar(reading_buffer, pos, strlen(reading_buffer), myNode, temp_buffer)) != -1){
 				pos += char_pos;
 				if (reading_buffer[pos] == ';')
 				{
@@ -166,7 +166,7 @@ int lex(char fileName[]){
 				continue;
 			}
 
-			if ((new_string_pos = isStringLiteral(reading_buffer, pos, strlen(reading_buffer))) != -1){
+			if ((new_string_pos = isStringLiteral(reading_buffer, pos, strlen(reading_buffer), myNode, temp_buffer)) != -1){
 				pos += new_string_pos;
 				continue;
 			}
@@ -204,10 +204,10 @@ int lex(char fileName[]){
 				}
 			}
 		}
-		printf("\n");
+		//printf("\n");
 	}
 	if (feof(fp)) {
-   		printf("End of file\n");
+   		//printf("End of file\n");
 
    		//catching end of file buffer
    		if (index != 0) {

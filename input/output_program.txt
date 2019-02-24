@@ -1,345 +1,537 @@
-counter : 1, 
-counter : 2, ?keyword, import
-counter : 3, ?end of command, ;?
-counter : 4, ?keyword, load
-counter : 5, ?end of command, ;?
-counter : 6, ?identifier, MyComment
-counter : 7, ?identifier, myvar
-counter : 8, ?end of command, ;?
-counter : 9, ?end of command, ;?
-counter : 10, ?identifier, d
-counter : 11, ?identifier, x
-counter : 12, ?end of command, ;?
-counter : 13, ?end of command, ;?
-counter : 14, ?identifier, y
-counter : 15, ?identifier, g
-counter : 16, ?end of command, ;?
-counter : 17, ?identifier, g
-counter : 18, ?end of command, ;?
-counter : 19, ?identifier, d
-counter : 20, ?identifier, d
-counter : 21, ?end of command, ;?
-counter : 22, ?identifier, g
-counter : 23, ?identifier, Block
-counter : 24, ?identifier, Comment
-counter : 25, ?identifier, anotherVar
-counter : 26, ?hexadecimal number, 5
-counter : 27, ?end of command, ;?
-counter : 28, ?identifier, Nested
-counter : 29, ?identifier, Block
-counter : 30, ?identifier, Comment
-counter : 31, ?identifier, hello
-counter : 32, ?keyword, string
-counter : 33, ?operator, =
-counter : 34, ?end of command, ;?
-counter : 35, ?identifier, Multi
-counter : 36, ?identifier, Line
-counter : 37, ?identifier, Block
-counter : 38, ?identifier, Comment
-counter : 39, ?identifier, an_int
-counter : 40, ?end of command, ;?
-counter : 41, ?keyword, int
-counter : 42, ?identifier, x
-counter : 43, ?hexadecimal number, 3
-counter : 44, ?hexadecimal number, 5
-counter : 45, ?end of command, ;?
-counter : 46, ?identifier, y
-counter : 47, ?keyword, float
-counter : 48, ?operator, =
-counter : 49, ?hexadecimal number, 5.0
-counter : 50, ?end of command, ;?
-counter : 51, ?identifier, m
-counter : 52, ?keyword, float
-counter : 53, ?operator, =
-counter : 54, ?end of command, ;?
-counter : 55, ?keyword, null
-counter : 56, ?identifier, myFunc
-counter : 57, ?identifier, x
-counter : 58, ?keyword, float
-counter : 59, ?identifier, y
-counter : 60, ?keyword, float
-counter : 61, ?identifier, z
-counter : 62, ?keyword, float
-counter : 63, ?keyword, float
-counter : 64, ?keyword, return
-counter : 65, ?identifier, x
-counter : 66, ?identifier, y
-counter : 67, ?end of command, ;?
-counter : 68, ?identifier, z
-counter : 69, ?identifier, x
-counter : 70, ?identifier, myFunc
-counter : 71, ?hexadecimal number, 2.0
-counter : 72, ?hexadecimal number, 3.0
-counter : 73, ?hexadecimal number, 5.0
-counter : 74, ?hexadecimal number, 6.0
-counter : 75, ?identifier, x
-counter : 76, ?identifier, is
-counter : 77, ?identifier, type
-counter : 78, ?identifier, is
-counter : 79, ?identifier, going
-counter : 80, ?keyword, to
-counter : 81, ?identifier, be
-counter : 82, ?keyword, float
-counter : 83, ?identifier, f
-counter : 84, ?keyword, float
-counter : 85, ?operator, =
-counter : 86, ?identifier, x
-counter : 87, ?hexadecimal number, 12
-counter : 88, ?end of command, ;?
-counter : 89, ?hexadecimal number, 3
-counter : 90, ?identifier, vector3
-counter : 91, ?keyword, struct
-counter : 92, ?identifier, a
-counter : 93, ?end of command, ;?
-counter : 94, ?keyword, int
-counter : 95, ?identifier, b
-counter : 96, ?end of command, ;?
-counter : 97, ?keyword, float
-counter : 98, ?identifier, c
-counter : 99, ?end of command, ;?
-counter : 100, ?keyword, float
-counter : 101, ?hexadecimal number, 5
-counter : 102, ?identifier, myint5
-counter : 103, ?end of command, ;?
-counter : 104, ?keyword, int
-counter : 105, ?hexadecimal number, 74
-counter : 106, ?identifier, m74td
-counter : 107, ?end of command, ;?
-counter : 108, ?keyword, float
-counter : 109, ?hexadecimal number, 8
-counter : 110, ?hexadecimal number, 9
-counter : 111, ?hexadecimal number, 2
-counter : 112, ?identifier, e8i9o2
-counter : 113, ?operator, =
-counter : 114, ?keyword, int
-counter : 115, ?hexadecimal number, 78
-counter : 116, ?end of command, ;?
-counter : 117, ?hexadecimal number, 3
-counter : 118, ?hexadecimal number, 33
-counter : 119, ?identifier, theNum3tyr33
-counter : 120, ?hexadecimal number, 53
-counter : 121, ?end of command, ;?
-counter : 122, ?hexadecimal number, 57
-counter : 123, ?hexadecimal number, 32
-counter : 124, ?hexadecimal number, 3
-counter : 125, ?hexadecimal number, 5
-counter : 126, ?identifier, _hi57_32doo3y5
-counter : 127, ?keyword, float
-counter : 128, ?operator, =
-counter : 129, ?hexadecimal number, 65
-counter : 130, ?end of command, ;?
-counter : 131, ?hexadecimal number, 4537
-counter : 132, ?hexadecimal number, 212
-counter : 133, ?hexadecimal number, 33
-counter : 134, ?hexadecimal number, 1
-counter : 135, ?identifier, hello4537_npno212op33t1
-counter : 136, ?end of command, ;?
-counter : 137, ?keyword, float
-counter : 138, ?identifier, d
-counter : 139, ?end of command, ;?
-counter : 140, ?end of command, ;?
-counter : 141, ?identifier, node
-counter : 142, ?keyword, struct
-counter : 143, ?identifier, node_a
-counter : 144, ?identifier, node
-counter : 145, ?operator, =
-counter : 146, ?end of command, ;?
-counter : 147, ?keyword, null
-counter : 148, ?identifier, memory
-counter : 149, ?identifier, ownership
-counter : 150, ?keyword, if
-counter : 151, ?identifier, we
-counter : 152, ?keyword, delete
-counter : 153, ?identifier, this
-counter : 154, ?identifier, node
-counter : 155, ?keyword, struct
-counter : 156, ?identifier, it
-counter : 157, ?identifier, will
-counter : 158, ?keyword, delete
-counter : 159, ?identifier, all
-counter : 160, ?identifier, of
-counter : 161, ?identifier, its
-counter : 162, ?identifier, child
-counter : 163, ?identifier, nodes
-counter : 164, ?identifier, node_b
-counter : 165, ?identifier, node
-counter : 166, ?operator, =
-counter : 167, ?end of command, ;?
-counter : 168, ?keyword, null
-counter : 169, ?identifier, myValue
-counter : 170, ?keyword, int
-counter : 171, ?operator, =
-counter : 172, ?end of command, ;?
-counter : 173, ?identifier, Intentional
-counter : 174, ?identifier, uninitialization
-counter : 175, ?keyword, for
-counter : 176, ?identifier, possible
-counter : 177, ?identifier, performance
-counter : 178, ?identifier, reasons
-counter : 179, ?end of command, ;?
-counter : 180, ?identifier, my_node
-counter : 181, ?keyword, new
-counter : 182, ?end of command, ;?
-counter : 183, ?identifier, node
-counter : 184, ?identifier, initialize
-counter : 185, ?identifier, the
-counter : 186, ?identifier, memory
-counter : 187, ?identifier, and
-counter : 188, ?identifier, returns
-counter : 189, ?identifier, it
-counter : 190, ?identifier, casted
-counter : 191, ?identifier, my_node
-counter : 192, ?identifier, node_a
-counter : 193, ?operator, =
-counter : 194, ?keyword, new
-counter : 195, ?end of command, ;?
-counter : 196, ?identifier, node
-counter : 197, ?identifier, my_node
-counter : 198, ?identifier, node_b
-counter : 199, ?operator, =
-counter : 200, ?keyword, new
-counter : 201, ?end of command, ;?
-counter : 202, ?identifier, node
-counter : 203, ?keyword, delete
-counter : 204, ?end of command, ;?
-counter : 205, ?identifier, my_node
-counter : 206, ?identifier, super_node
-counter : 207, ?keyword, struct
-counter : 208, ?identifier, anode
-counter : 209, ?end of command, ;?
-counter : 210, ?identifier, node
-counter : 211, ?identifier, bnode
-counter : 212, ?end of command, ;?
-counter : 213, ?identifier, node
-counter : 214, ?end of command, ;?
-counter : 215, ?identifier, new_super_node
-counter : 216, ?identifier, super_node
-counter : 217, ?operator, =
-counter : 218, ?keyword, new
-counter : 219, ?end of command, ;?
-counter : 220, ?identifier, super_node
-counter : 221, ?identifier, hiNode
-counter : 222, ?identifier, node
-counter : 223, ?operator, =
-counter : 224, ?identifier, new_super_node
-counter : 225, ?end of command, ;?
-counter : 226, ?identifier, anode
-counter : 227, ?identifier, hexNum
-counter : 228, ?hexadecimal number, 0xfedcba9876543210
-counter : 229, ?end of command, ;?
-counter : 230, ?identifier, a
-counter : 231, ?hexadecimal number, 50
-counter : 232, ?end of command, ;?
-counter : 233, ?keyword, int
-counter : 234, ?identifier, b
-counter : 235, ?end of command, ;?
-counter : 236, ?keyword, float
-counter : 237, ?identifier, value
-counter : 238, ?keyword, enum
-counter : 239, ?identifier, x
-counter : 240, ?hexadecimal number, 0
-counter : 241, ?identifier, y
-counter : 242, ?identifier, z
-counter : 243, ?identifier, y
-counter : 244, ?identifier, v
-counter : 245, ?identifier, f
-counter : 246, ?identifier, g
-counter : 247, ?hexadecimal number, 10
-counter : 248, ?end of command, ;?
-counter : 249, ?identifier, f
-counter : 250, ?hexadecimal number, 2
-counter : 251, ?end of command, ;?
-counter : 252, ?identifier, flag
-counter : 253, ?keyword, bool
-counter : 254, ?operator, =
-counter : 255, ?end of command, ;?
-counter : 256, ?keyword, true
-counter : 257, ?hexadecimal number, 2
-counter : 258, ?identifier, flag2
-counter : 259, ?keyword, bool
-counter : 260, ?operator, =
-counter : 261, ?end of command, ;?
-counter : 262, ?keyword, false
-counter : 263, ?keyword, defer
-counter : 264, ?keyword, print
-counter : 265, ?end of command, ;?
-counter : 266, ?keyword, while
-counter : 267, ?identifier, x
-counter : 268, ?identifier, y
-counter : 269, ?keyword, print
-counter : 270, ?identifier, x
-counter : 271, ?end of command, ;?
-counter : 272, ?identifier, x
-counter : 273, ?end of command, ;?
-counter : 274, ?identifier, y
-counter : 275, ?identifier, y
-counter : 276, ?end of command, ;?
-counter : 277, ?identifier, x
-counter : 278, ?end of command, ;?
-counter : 279, ?keyword, break
-counter : 280, ?keyword, if
-counter : 281, ?identifier, x
-counter : 282, ?identifier, y
-counter : 283, ?keyword, print
-counter : 284, ?identifier, x
-counter : 285, ?end of command, ;?
-counter : 286, ?end of command, ;?
-counter : 287, ?identifier, y
-counter : 288, ?identifier, x
-counter : 289, ?end of command, ;?
-counter : 290, ?end of command, ;?
-counter : 291, ?keyword, continue
-counter : 292, ?keyword, else
-counter : 293, ?keyword, if
-counter : 294, ?identifier, x
-counter : 295, ?hexadecimal number, 10
-counter : 296, ?keyword, print
-counter : 297, ?end of command, ;?
-counter : 298, ?keyword, else
-counter : 299, ?keyword, print
-counter : 300, ?identifier, y
-counter : 301, ?end of command, ;?
-counter : 302, ?keyword, if
-counter : 303, ?identifier, y
-counter : 304, ?identifier, z
-counter : 305, ?keyword, then
-counter : 306, ?end of command, ;?
-counter : 307, ?keyword, return
-counter : 308, ?keyword, if
-counter : 309, ?identifier, z
-counter : 310, ?identifier, z
-counter : 311, ?keyword, then
-counter : 312, ?end of command, ;?
-counter : 313, ?keyword, return
-counter : 314, ?identifier, myArray
-counter : 315, ?end of command, ;?
-counter : 316, ?keyword, int
-counter : 317, ?identifier, each
-counter : 318, ?identifier, i
-counter : 319, ?hexadecimal number, 1
-counter : 320, ?keyword, to
-counter : 321, ?identifier, n
-counter : 322, ?hexadecimal number, 1
-counter : 323, ?keyword, print
-counter : 324, ?identifier, i
-counter : 325, ?end of command, ;?
-counter : 326, ?keyword, array_add
-counter : 327, ?identifier, myArray
-counter : 328, ?keyword, cast
-counter : 329, ?identifier, i
-counter : 330, ?identifier, void
-counter : 331, ?end of command, ;?
-counter : 332, ?keyword, sleep
-counter : 333, ?hexadecimal number, 2
-counter : 334, ?end of command, ;?
-counter : 335, ?identifier, it
-counter : 336, ?end of command, ;?
-counter : 337, ?keyword, int
-counter : 338, ?keyword, for
-counter : 339, ?identifier, myArray
-counter : 340, ?keyword, print
-counter : 341, ?identifier, it
-counter : 342, ?end of command, ;?
-counter : 343, ?keyword, main
-counter : 344, ?identifier, function_call
-counter : 345, ?end of command, ;?
+counter-1 : 
+counter-2 : ?operator, @?
+counter-3 : ?keyword, import
+counter-4 : ?string literal, mylib
+counter-5 : ?end of command, ;?
+counter-6 : ?operator, @?
+counter-7 : ?keyword, load
+counter-8 : ?string literal, myFile
+counter-9 : ?end of command, ;?
+counter-10 : ?comment start, /@?
+counter-11 : ?identifier, MyComment
+counter-12 : ?identifier, myvar
+counter-13 : ?operator, @=?
+counter-14 : ?string literal, a string
+counter-15 : ?end of command, ;?
+counter-16 : ?operator, --?
+counter-17 : ?end of command, ;?
+counter-18 : ?identifier, d
+counter-19 : ?operator, --?
+counter-20 : ?identifier, x
+counter-21 : ?end of command, ;?
+counter-22 : ?operator, ++?
+counter-23 : ?end of command, ;?
+counter-24 : ?identifier, y
+counter-25 : ?operator, ++?
+counter-26 : ?identifier, g
+counter-27 : ?end of command, ;?
+counter-28 : ?identifier, g
+counter-29 : ?operator, +=?
+counter-30 : ?end of command, ;?
+counter-31 : ?identifier, d
+counter-32 : ?identifier, d
+counter-33 : ?operator, -=?
+counter-34 : ?end of command, ;?
+counter-35 : ?identifier, g
+counter-36 : ?comment start, /@?
+counter-37 : ?identifier, Block
+counter-38 : ?identifier, Comment
+counter-39 : ?identifier, anotherVar
+counter-40 : ?operator, @=?
+counter-41 : ?number, 5
+counter-42 : ?end of command, ;?
+counter-43 : ?operator, @/?
+counter-44 : ?comment start, /@?
+counter-45 : ?identifier, Nested
+counter-46 : ?comment start, /@?
+counter-47 : ?identifier, Block
+counter-48 : ?comment start, /@?
+counter-49 : ?identifier, Comment
+counter-50 : ?operator, @/?
+counter-51 : ?operator, @/?
+counter-52 : ?operator, @/?
+counter-53 : ?operator, @?
+counter-54 : ?identifier, hello
+counter-55 : ?keyword, string
+counter-56 : ?operator, =
+counter-57 : ?string literal, Hello World!
+counter-58 : ?end of command, ;?
+counter-59 : ?comment start, /@?
+counter-60 : ?identifier, Multi
+counter-61 : ?identifier, Line
+counter-62 : ?comment start, /@?
+counter-63 : ?identifier, Block
+counter-64 : ?operator, @/?
+counter-65 : ?identifier, Comment
+counter-66 : ?operator, @/?
+counter-67 : ?operator, @?
+counter-68 : ?identifier, an_int
+counter-69 : ?end of command, ;?
+counter-70 : ?keyword, int
+counter-71 : ?identifier, x
+counter-72 : ?operator, @=?
+counter-73 : ?number, 3
+counter-74 : ?operator, +?
+counter-75 : ?number, 5
+counter-76 : ?end of command, ;?
+counter-77 : ?operator, @?
+counter-78 : ?identifier, y
+counter-79 : ?keyword, float
+counter-80 : ?operator, =
+counter-81 : ?number, 5.0
+counter-82 : ?end of command, ;?
+counter-83 : ?operator, @?
+counter-84 : ?identifier, m
+counter-85 : ?pointer symbol, ^?
+counter-86 : ?keyword, float
+counter-87 : ?operator, =
+counter-88 : ?end of command, ;?
+counter-89 : ?keyword, null
+counter-90 : ?identifier, myFunc
+counter-91 : ?operator, @@?
+counter-92 : ?parenthesis start, (?
+counter-93 : ?operator, @?
+counter-94 : ?identifier, x
+counter-95 : ?comma, ,?
+counter-96 : ?keyword, float
+counter-97 : ?operator, @?
+counter-98 : ?identifier, y
+counter-99 : ?comma, ,?
+counter-100 : ?keyword, float
+counter-101 : ?operator, @?
+counter-102 : ?identifier, z
+counter-103 : ?parenthesis end, )?
+counter-104 : ?keyword, float
+counter-105 : ?operator, ->?
+counter-106 : ?keyword, float
+counter-107 : ?block start, {@?
+counter-108 : ?keyword, return
+counter-109 : ?operator, *?
+counter-110 : ?identifier, x
+counter-111 : ?operator, *?
+counter-112 : ?identifier, y
+counter-113 : ?end of command, ;?
+counter-114 : ?identifier, z
+counter-115 : ?operator, @}?
+counter-116 : ?identifier, x
+counter-117 : ?operator, @=?
+counter-118 : ?parenthesis start, (?
+counter-119 : ?identifier, myFunc
+counter-120 : ?number, 2.0
+counter-121 : ?comma, ,?
+counter-122 : ?number, 3.0
+counter-123 : ?comma, ,?
+counter-124 : ?number, 5.0
+counter-125 : ?parenthesis end, )?
+counter-126 : ?operator, +?
+counter-127 : ?number, 6.0
+counter-128 : ?comment start, /@?
+counter-129 : ?identifier, x
+counter-130 : ?identifier, is
+counter-131 : ?identifier, type
+counter-132 : ?identifier, is
+counter-133 : ?identifier, going
+counter-134 : ?keyword, to
+counter-135 : ?identifier, be
+counter-136 : ?keyword, float
+counter-137 : ?identifier, f
+counter-138 : ?operator, @?
+counter-139 : ?keyword, float
+counter-140 : ?operator, =
+counter-141 : ?identifier, x
+counter-142 : ?operator, +?
+counter-143 : ?number, 12
+counter-144 : ?end of command, ;?
+counter-145 : ?number, 3
+counter-146 : ?identifier, vector3
+counter-147 : ?operator, @@?
+counter-148 : ?keyword, struct
+counter-149 : ?block start, {@?
+counter-150 : ?operator, @?
+counter-151 : ?identifier, a
+counter-152 : ?end of command, ;?
+counter-153 : ?keyword, int
+counter-154 : ?operator, @?
+counter-155 : ?identifier, b
+counter-156 : ?end of command, ;?
+counter-157 : ?keyword, float
+counter-158 : ?operator, @?
+counter-159 : ?identifier, c
+counter-160 : ?end of command, ;?
+counter-161 : ?keyword, float
+counter-162 : ?number, 5
+counter-163 : ?operator, @?
+counter-164 : ?identifier, myint5
+counter-165 : ?end of command, ;?
+counter-166 : ?keyword, int
+counter-167 : ?number, 74
+counter-168 : ?operator, @?
+counter-169 : ?identifier, m74td
+counter-170 : ?end of command, ;?
+counter-171 : ?keyword, float
+counter-172 : ?number, 8
+counter-173 : ?number, 9
+counter-174 : ?number, 2
+counter-175 : ?operator, @?
+counter-176 : ?identifier, e8i9o2
+counter-177 : ?operator, =
+counter-178 : ?keyword, int
+counter-179 : ?number, 78
+counter-180 : ?end of command, ;?
+counter-181 : ?number, 3
+counter-182 : ?number, 33
+counter-183 : ?identifier, theNum3tyr33
+counter-184 : ?operator, @=?
+counter-185 : ?number, 53
+counter-186 : ?end of command, ;?
+counter-187 : ?number, 57
+counter-188 : ?number, 32
+counter-189 : ?number, 3
+counter-190 : ?number, 5
+counter-191 : ?operator, @?
+counter-192 : ?identifier, _hi57_32doo3y5
+counter-193 : ?keyword, float
+counter-194 : ?operator, =
+counter-195 : ?number, 65
+counter-196 : ?end of command, ;?
+counter-197 : ?number, 4537
+counter-198 : ?number, 212
+counter-199 : ?number, 33
+counter-200 : ?number, 1
+counter-201 : ?operator, @?
+counter-202 : ?identifier, hello4537_npno212op33t1
+counter-203 : ?end of command, ;?
+counter-204 : ?keyword, float
+counter-205 : ?identifier, d
+counter-206 : ?operator, @=?
+counter-207 : ?character, 'd
+counter-208 : ?end of command, ;?
+counter-209 : ?operator, @}?
+counter-210 : ?end of command, ;?
+counter-211 : ?identifier, node
+counter-212 : ?operator, @@?
+counter-213 : ?keyword, struct
+counter-214 : ?block start, {@?
+counter-215 : ?operator, @?
+counter-216 : ?identifier, node_a
+counter-217 : ?identifier, node
+counter-218 : ?pointer symbol, ^?
+counter-219 : ?special symbol, !?
+counter-220 : ?operator, =
+counter-221 : ?end of command, ;?
+counter-222 : ?keyword, null
+counter-223 : ?comment start, /@?
+counter-224 : ?special symbol, !?
+counter-225 : ?identifier, memory
+counter-226 : ?comma, ,?
+counter-227 : ?identifier, ownership
+counter-228 : ?keyword, if
+counter-229 : ?identifier, we
+counter-230 : ?keyword, delete
+counter-231 : ?identifier, this
+counter-232 : ?identifier, node
+counter-233 : ?comma, ,?
+counter-234 : ?keyword, struct
+counter-235 : ?identifier, it
+counter-236 : ?identifier, will
+counter-237 : ?keyword, delete
+counter-238 : ?identifier, all
+counter-239 : ?identifier, of
+counter-240 : ?identifier, its
+counter-241 : ?identifier, child
+counter-242 : ?identifier, nodes
+counter-243 : ?operator, @?
+counter-244 : ?identifier, node_b
+counter-245 : ?identifier, node
+counter-246 : ?pointer symbol, ^?
+counter-247 : ?special symbol, !?
+counter-248 : ?operator, =
+counter-249 : ?end of command, ;?
+counter-250 : ?keyword, null
+counter-251 : ?operator, @?
+counter-252 : ?identifier, myValue
+counter-253 : ?keyword, int
+counter-254 : ?operator, =
+counter-255 : ?operator, ---?
+counter-256 : ?end of command, ;?
+counter-257 : ?comment start, /@?
+counter-258 : ?operator, ---?
+counter-259 : ?identifier, Intentional
+counter-260 : ?identifier, uninitialization
+counter-261 : ?keyword, for
+counter-262 : ?identifier, possible
+counter-263 : ?identifier, performance
+counter-264 : ?identifier, reasons
+counter-265 : ?operator, @}?
+counter-266 : ?end of command, ;?
+counter-267 : ?identifier, my_node
+counter-268 : ?operator, @=?
+counter-269 : ?keyword, new
+counter-270 : ?end of command, ;?
+counter-271 : ?comment start, /@?
+counter-272 : ?identifier, node
+counter-273 : ?identifier, initialize
+counter-274 : ?identifier, the
+counter-275 : ?identifier, memory
+counter-276 : ?identifier, and
+counter-277 : ?identifier, returns
+counter-278 : ?identifier, it
+counter-279 : ?identifier, casted
+counter-280 : ?operator, @.?
+counter-281 : ?identifier, my_node
+counter-282 : ?identifier, node_a
+counter-283 : ?operator, =
+counter-284 : ?keyword, new
+counter-285 : ?end of command, ;?
+counter-286 : ?identifier, node
+counter-287 : ?operator, @.?
+counter-288 : ?identifier, my_node
+counter-289 : ?identifier, node_b
+counter-290 : ?operator, =
+counter-291 : ?keyword, new
+counter-292 : ?end of command, ;?
+counter-293 : ?identifier, node
+counter-294 : ?keyword, delete
+counter-295 : ?end of command, ;?
+counter-296 : ?identifier, my_node
+counter-297 : ?identifier, super_node
+counter-298 : ?operator, @@?
+counter-299 : ?keyword, struct
+counter-300 : ?block start, {@?
+counter-301 : ?operator, @?
+counter-302 : ?identifier, anode
+counter-303 : ?end of command, ;?
+counter-304 : ?identifier, node
+counter-305 : ?operator, @?
+counter-306 : ?identifier, bnode
+counter-307 : ?end of command, ;?
+counter-308 : ?identifier, node
+counter-309 : ?operator, @}?
+counter-310 : ?end of command, ;?
+counter-311 : ?operator, @?
+counter-312 : ?identifier, new_super_node
+counter-313 : ?identifier, super_node
+counter-314 : ?pointer symbol, ^?
+counter-315 : ?special symbol, !?
+counter-316 : ?operator, =
+counter-317 : ?keyword, new
+counter-318 : ?end of command, ;?
+counter-319 : ?identifier, super_node
+counter-320 : ?operator, @?
+counter-321 : ?identifier, hiNode
+counter-322 : ?identifier, node
+counter-323 : ?operator, =
+counter-324 : ?reference symbol, &?
+counter-325 : ?operator, @.?
+counter-326 : ?identifier, new_super_node
+counter-327 : ?end of command, ;?
+counter-328 : ?identifier, anode
+counter-329 : ?identifier, hexNum
+counter-330 : ?operator, @=?
+counter-331 : ?hexadecimal number, 0xfedcba9876543210
+counter-332 : ?end of command, ;?
+counter-333 : ?operator, @?
+counter-334 : ?identifier, a
+counter-335 : ?array start, [?
+counter-336 : ?number, 50
+counter-337 : ?array end, ]?
+counter-338 : ?end of command, ;?
+counter-339 : ?keyword, int
+counter-340 : ?operator, @?
+counter-341 : ?identifier, b
+counter-342 : ?array start, [?
+counter-343 : ?operator, ---?
+counter-344 : ?array end, ]?
+counter-345 : ?end of command, ;?
+counter-346 : ?keyword, float
+counter-347 : ?identifier, value
+counter-348 : ?operator, @@?
+counter-349 : ?keyword, enum
+counter-350 : ?block start, {@?
+counter-351 : ?identifier, x
+counter-352 : ?operator, @=?
+counter-353 : ?number, 0
+counter-354 : ?comma, ,?
+counter-355 : ?comma, ,?
+counter-356 : ?identifier, y
+counter-357 : ?identifier, z
+counter-358 : ?operator, @=?
+counter-359 : ?comma, ,?
+counter-360 : ?identifier, y
+counter-361 : ?identifier, v
+counter-362 : ?operator, @=?
+counter-363 : ?comma, ,?
+counter-364 : ?identifier, f
+counter-365 : ?identifier, g
+counter-366 : ?operator, @=?
+counter-367 : ?number, 10
+counter-368 : ?comma, ,?
+counter-369 : ?operator, @}?
+counter-370 : ?end of command, ;?
+counter-371 : ?identifier, f
+counter-372 : ?operator, @=?
+counter-373 : ?number, 2
+counter-374 : ?end of command, ;?
+counter-375 : ?operator, @?
+counter-376 : ?identifier, flag
+counter-377 : ?keyword, bool
+counter-378 : ?operator, =
+counter-379 : ?end of command, ;?
+counter-380 : ?keyword, true
+counter-381 : ?number, 2
+counter-382 : ?operator, @?
+counter-383 : ?identifier, flag2
+counter-384 : ?keyword, bool
+counter-385 : ?operator, =
+counter-386 : ?end of command, ;?
+counter-387 : ?keyword, false
+counter-388 : ?keyword, defer
+counter-389 : ?parenthesis start, (?
+counter-390 : ?keyword, print
+counter-391 : ?string literal, hello there
+counter-392 : ?parenthesis end, )?
+counter-393 : ?end of command, ;?
+counter-394 : ?keyword, while
+counter-395 : ?identifier, x
+counter-396 : ?operator, <=?
+counter-397 : ?identifier, y
+counter-398 : ?block start, {@?
+counter-399 : ?parenthesis start, (?
+counter-400 : ?keyword, print
+counter-401 : ?parenthesis end, )?
+counter-402 : ?identifier, x
+counter-403 : ?end of command, ;?
+counter-404 : ?identifier, x
+counter-405 : ?operator, +=?
+counter-406 : ?end of command, ;?
+counter-407 : ?identifier, y
+counter-408 : ?identifier, y
+counter-409 : ?operator, -=?
+counter-410 : ?end of command, ;?
+counter-411 : ?identifier, x
+counter-412 : ?end of command, ;?
+counter-413 : ?keyword, break
+counter-414 : ?operator, @}?
+counter-415 : ?keyword, if
+counter-416 : ?identifier, x
+counter-417 : ?operator, >=?
+counter-418 : ?identifier, y
+counter-419 : ?block start, {@?
+counter-420 : ?parenthesis start, (?
+counter-421 : ?keyword, print
+counter-422 : ?string literal, Hello x
+counter-423 : ?comma, ,?
+counter-424 : ?parenthesis end, )?
+counter-425 : ?identifier, x
+counter-426 : ?end of command, ;?
+counter-427 : ?operator, --?
+counter-428 : ?end of command, ;?
+counter-429 : ?identifier, y
+counter-430 : ?operator, ++?
+counter-431 : ?identifier, x
+counter-432 : ?end of command, ;?
+counter-433 : ?end of command, ;?
+counter-434 : ?keyword, continue
+counter-435 : ?operator, @}?
+counter-436 : ?keyword, else
+counter-437 : ?keyword, if
+counter-438 : ?identifier, x
+counter-439 : ?operator, >=?
+counter-440 : ?number, 10
+counter-441 : ?block start, {@?
+counter-442 : ?parenthesis start, (?
+counter-443 : ?keyword, print
+counter-444 : ?string literal, nanana
+counter-445 : ?parenthesis end, )?
+counter-446 : ?end of command, ;?
+counter-447 : ?operator, @}?
+counter-448 : ?keyword, else
+counter-449 : ?block start, {@?
+counter-450 : ?parenthesis start, (?
+counter-451 : ?keyword, print
+counter-452 : ?string literal, Hello y
+counter-453 : ?comma, ,?
+counter-454 : ?parenthesis end, )?
+counter-455 : ?identifier, y
+counter-456 : ?end of command, ;?
+counter-457 : ?operator, @}?
+counter-458 : ?keyword, if
+counter-459 : ?parenthesis start, (?
+counter-460 : ?identifier, y
+counter-461 : ?operator, <?
+counter-462 : ?parenthesis end, )?
+counter-463 : ?identifier, z
+counter-464 : ?keyword, then
+counter-465 : ?end of command, ;?
+counter-466 : ?keyword, return
+counter-467 : ?keyword, if
+counter-468 : ?parenthesis start, (?
+counter-469 : ?identifier, z
+counter-470 : ?operator, >?
+counter-471 : ?parenthesis end, )?
+counter-472 : ?identifier, z
+counter-473 : ?keyword, then
+counter-474 : ?end of command, ;?
+counter-475 : ?keyword, return
+counter-476 : ?operator, @?
+counter-477 : ?identifier, myArray
+counter-478 : ?array start, [?
+counter-479 : ?operator, ---?
+counter-480 : ?array end, ]?
+counter-481 : ?end of command, ;?
+counter-482 : ?keyword, int
+counter-483 : ?identifier, each
+counter-484 : ?operator, @?
+counter-485 : ?identifier, i
+counter-486 : ?number, 1
+counter-487 : ?keyword, to
+counter-488 : ?operator, -?
+counter-489 : ?identifier, n
+counter-490 : ?number, 1
+counter-491 : ?block start, {@?
+counter-492 : ?parenthesis start, (?
+counter-493 : ?keyword, print
+counter-494 : ?parenthesis end, )?
+counter-495 : ?identifier, i
+counter-496 : ?end of command, ;?
+counter-497 : ?parenthesis start, (?
+counter-498 : ?keyword, array_add
+counter-499 : ?reference symbol, &?
+counter-500 : ?comma, ,?
+counter-501 : ?identifier, myArray
+counter-502 : ?parenthesis start, (?
+counter-503 : ?keyword, cast
+counter-504 : ?comma, ,?
+counter-505 : ?identifier, i
+counter-506 : ?pointer symbol, ^?
+counter-507 : ?identifier, void
+counter-508 : ?parenthesis end, )?
+counter-509 : ?parenthesis end, )?
+counter-510 : ?end of command, ;?
+counter-511 : ?parenthesis start, (?
+counter-512 : ?keyword, sleep
+counter-513 : ?number, 2
+counter-514 : ?parenthesis end, )?
+counter-515 : ?end of command, ;?
+counter-516 : ?operator, @}?
+counter-517 : ?operator, @?
+counter-518 : ?identifier, it
+counter-519 : ?end of command, ;?
+counter-520 : ?keyword, int
+counter-521 : ?keyword, for
+counter-522 : ?identifier, myArray
+counter-523 : ?parenthesis start, (?
+counter-524 : ?keyword, print
+counter-525 : ?parenthesis end, )?
+counter-526 : ?identifier, it
+counter-527 : ?end of command, ;?
+counter-528 : ?keyword, main
+counter-529 : ?operator, @@?
+counter-530 : ?parenthesis start, (?
+counter-531 : ?parenthesis end, )?
+counter-532 : ?block start, {@?
+counter-533 : ?parenthesis start, (?
+counter-534 : ?identifier, function_call
+counter-535 : ?parenthesis end, )?
+counter-536 : ?end of command, ;?
+counter-537 : ?operator, @}?
