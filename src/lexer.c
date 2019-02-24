@@ -1,10 +1,9 @@
 #include "../inc/checking_functions.h"
  
-int lex(char fileName[]){
+lexer_node lex(char fileName[]){
 	char buffer[150];
 	char temp_buffer[200];
 	char reading_buffer[150];
-	char outputFile[50];
 	int new_pos = 0, new_string_pos = 0, special_pos=0, num_pos = 0, char_pos = 0;
 	FILE *fp;
 	int index=0;
@@ -240,10 +239,8 @@ int lex(char fileName[]){
  	else {
 		printf("Some other error interrupted the read.\n");
 	}
-	
-	strcpy(outputFile, "input/output_program.txt");
-	print_lexerList(myNode, outputFile);
+
 	free(myNode);
 	fclose(fp);
-	return 0;
+	return *myNode;
 }

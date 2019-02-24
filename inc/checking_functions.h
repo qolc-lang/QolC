@@ -10,6 +10,6 @@ int isAtOperator(char buffer[], int pos, int len, lexer_node* myNode, char* temp
 int isStringLiteral(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer);
 int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNode, char* temp_buffer);
 int isChar(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer);
-int lex(char fileName[]);
+lexer_node lex(char fileName[]);
 
 #endif
