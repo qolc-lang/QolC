@@ -6,7 +6,6 @@ int main(int argc, char const *argv[])
 
 	char fileName[50];
 	char outputFile[50];
-	
 	memset(fileName, 0, sizeof(fileName));
 	memset(outputFile, 0, sizeof(outputFile));
 

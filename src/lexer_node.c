@@ -40,11 +40,8 @@ void print_lexerList(lexer_node* node, char* fileName) {
 }
 
 void push_lexerList(lexer_node* node, char token[]) {
-	//printf("in push list\n");
-
     lexer_node * current = node;
     while (current->next != NULL) {
-    	//printf("in current next\n");
         current = current->next;
     }
     current->next = malloc(sizeof(lexer_node));

@@ -35,15 +35,13 @@ lexer_node lex(char fileName[]){
 				buffer[index] = '\0';
 				index = 0;
 				if(isKeyword(buffer) == 1) {
-   					//printf("?keyword, %s?\n", buffer);
-	   				strcpy(temp_buffer, "?keyword, ");
+	   				strcpy(temp_buffer, "keyword, ");
 	   				strcat(temp_buffer, buffer);
 	   				push_lexerList(myNode, temp_buffer);
 	   				memset(temp_buffer, 0, sizeof(temp_buffer));
 	   			}
    				else if(isNumber(reading_buffer, pos, strlen(reading_buffer), myNode, temp_buffer) != -1) {
-   					//printf("?number, %s?\n", buffer);
-					strcpy(temp_buffer, "?number, ");
+					strcpy(temp_buffer, "number, ");
 					strcat(temp_buffer, buffer);
 					push_lexerList(myNode, temp_buffer);
 					memset(temp_buffer, 0, sizeof(temp_buffer));
@@ -52,8 +50,7 @@ lexer_node lex(char fileName[]){
    					if (buffer[0] == '\0') {
    						continue;
    					}
-   					//printf("?identifier, %s?\n", buffer);
-   					strcpy(temp_buffer, "?identifier, ");
+   					strcpy(temp_buffer, "identifier, ");
    					strcat(temp_buffer, buffer);
    					push_lexerList(myNode, temp_buffer);
    					memset(temp_buffer, 0, sizeof(temp_buffer));
@@ -63,8 +60,7 @@ lexer_node lex(char fileName[]){
 
 			if (reading_buffer[pos] == ';')
 			{
-				//printf("?end of command, ;?\n");
-				strcpy(temp_buffer, "?end of command, ;?");
+				strcpy(temp_buffer, "end of command, ;");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 				continue;
@@ -88,8 +84,7 @@ lexer_node lex(char fileName[]){
 					pos += num_pos;
 					if (reading_buffer[pos] == ';')
 					{
-						//printf("?end of command, ;?\n");
-						strcpy(temp_buffer, "?end of command, ;?");
+						strcpy(temp_buffer, "end of command, ;");
 						push_lexerList(myNode, temp_buffer);
 						memset(temp_buffer, 0, sizeof(temp_buffer));
 						continue;
@@ -108,15 +103,13 @@ lexer_node lex(char fileName[]){
 						continue;
 					}
 					if(isKeyword(buffer) == 1) {
-	   					//printf("?keyword, %s?\n", buffer);
-		   				strcpy(temp_buffer, "?keyword, ");
+		   				strcpy(temp_buffer, "keyword, ");
 		   				strcat(temp_buffer, buffer);
 		   				push_lexerList(myNode, temp_buffer);
 		   				memset(temp_buffer, 0, sizeof(temp_buffer));
 		   			}
 	   				else {
-	   					//printf("?identifier, %s?\n", buffer);
-	   					strcpy(temp_buffer, "?identifier, ");
+	   					strcpy(temp_buffer, "identifier, ");
 	   					strcat(temp_buffer, buffer);
 	   					push_lexerList(myNode, temp_buffer);
 	   					memset(temp_buffer, 0, sizeof(temp_buffer));
@@ -132,15 +125,13 @@ lexer_node lex(char fileName[]){
 						continue;
 					}
 					if(isKeyword(buffer) == 1) {
-	   					//printf("?keyword, %s?\n", buffer);
-		   				strcpy(temp_buffer, "?keyword, ");
+		   				strcpy(temp_buffer, "keyword, ");
 		   				strcat(temp_buffer, buffer);
 		   				push_lexerList(myNode, temp_buffer);
 		   				memset(temp_buffer, 0, sizeof(temp_buffer));
 		   			}
 	   				else {
-	   					//printf("?identifier, %s?\n", buffer);
-		   				strcpy(temp_buffer, "?identifier, ");
+		   				strcpy(temp_buffer, "identifier, ");
 		   				strcat(temp_buffer, buffer);
 		   				push_lexerList(myNode, temp_buffer);
 		   				memset(temp_buffer, 0, sizeof(temp_buffer));
@@ -156,8 +147,7 @@ lexer_node lex(char fileName[]){
 				pos += char_pos;
 				if (reading_buffer[pos] == ';')
 				{
-					//printf("?end of command, ;?\n");
-					strcpy(temp_buffer, "?end of command, ;?");
+					strcpy(temp_buffer, "end of command, ;");
 					push_lexerList(myNode, temp_buffer);
 					memset(temp_buffer, 0, sizeof(temp_buffer));
 					continue;
@@ -183,15 +173,13 @@ lexer_node lex(char fileName[]){
 				index = 0;
 
 				if(isKeyword(buffer) == 1) {
-   					//printf("?keyword, %s?\n", buffer);
-	   				strcpy(temp_buffer, "?keyword, ");
+	   				strcpy(temp_buffer, "keyword, ");
 	   				strcat(temp_buffer, buffer);
 	   				push_lexerList(myNode, temp_buffer);
 	   				memset(temp_buffer, 0, sizeof(temp_buffer));
 	   			}
    				else {
-   					//printf("?identifier, %s?\n", buffer);
-   					strcpy(temp_buffer, "?identifier, ");
+   					strcpy(temp_buffer, "identifier, ");
    					strcat(temp_buffer, buffer);
    					push_lexerList(myNode, temp_buffer);
    					memset(temp_buffer, 0, sizeof(temp_buffer));
@@ -203,7 +191,6 @@ lexer_node lex(char fileName[]){
 				}
 			}
 		}
-		//printf("\n");
 	}
 	if (feof(fp)) {
    		//printf("End of file\n");
@@ -214,22 +201,19 @@ lexer_node lex(char fileName[]){
 			index = 0;
 
 			if(isKeyword(buffer) == 1) {
-				//printf("?keyword, %s?\n", buffer);
-				strcpy(temp_buffer, "?keyword, ");
+				strcpy(temp_buffer, "keyword, ");
 				strcat(temp_buffer, buffer);
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 			}
 			else if(isNumber(reading_buffer, pos, strlen(reading_buffer),  myNode, temp_buffer) != -1) {
-				//printf("?number, %s?\n", buffer);
-				strcpy(temp_buffer, "?number, ");
+				strcpy(temp_buffer, "number, ");
 				strcat(temp_buffer, buffer);
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 			}
 			else {
-				//printf("?identifier, %s?\n", buffer);
-				strcpy(temp_buffer, "?identifier, ");
+				strcpy(temp_buffer, "identifier, ");
 				strcat(temp_buffer, buffer);
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
