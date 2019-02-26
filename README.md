@@ -56,23 +56,22 @@
 		c@anotherStruct ^;
 	@};
 	```
-
-	Also, pointers : 
-
+	
+	We can declare pointers like : 
 	```
-
-	theStruct@myStruct^ = null;
+	
+	theStruct@myStruct^ = null;' 
 	```
 
 	QolC also supports memory ownership which we can be declared 
 	using the symbol '!'. 
-
 	```
 	
 	doggos @@ struct {@ 
 		dog1@doggos ^! = null;
 		doggy@doggos ^! = ---;
 	@}	
+	
 	```
 
 	
