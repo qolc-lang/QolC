@@ -15,6 +15,6 @@ int main(int argc, char const *argv[])
 	*myNode = lex(fileName);
 	print_lexerList(myNode, outputFile);
 
-	printf("Returning from main\n");
+	printf("Exiting program\n");
 	return 0;
 }

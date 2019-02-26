@@ -2,14 +2,14 @@
 
 //Check for keyword 
 int isKeyword(char buffer[]){
-	char keywords[28][10] = {"string","else","enum","float","for",
+	char keywords[29][10] = {"string","else","enum","float","for",
 							"if","int","return", "struct", "while",
 							"new", "delete", "defer", "print", "break",
 							"continue", "then", "import", "load", "null",
 							"main", "to", "cast", "sleep", "bool",
-							"array_add", "true", "false"};
+							"array_add", "true", "false", "assert"};
 	int i, flag = 0;
-	for(i = 0; i < 28; ++i){
+	for(i = 0; i < 29; ++i){
 		if(strcmp(keywords[i], buffer) == 0){
 			flag = 1;
 			break;
@@ -44,8 +44,7 @@ int isNumber(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buf
 						buf[j] = buffer[pos];
 						++pos;
 						++j;
-						while (isalnum(buffer[pos]))
-						{
+						while (isalnum(buffer[pos])) {
 							++count;
 							buf[j] = buffer[pos];
 							++pos;
@@ -60,8 +59,7 @@ int isNumber(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buf
 			strcat(temp_buffer, buf);
 			push_lexerList(myNode, temp_buffer);
 			memset(temp_buffer, 0, sizeof(temp_buffer));
-		}
-		else {
+		} else {
 			strcpy(temp_buffer, "number, ");
 			strcat(temp_buffer, buf);
 			push_lexerList(myNode, temp_buffer);
@@ -448,7 +446,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 			memset(temp_buffer, 0, sizeof(temp_buffer));
 			*flag = temp1;;
 			return count;
-		}
+		} 
 		else {
 			strcpy(temp_buffer, "operator, .");
 			push_lexerList(myNode, temp_buffer);

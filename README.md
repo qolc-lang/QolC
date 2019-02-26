@@ -57,6 +57,26 @@
 	@};
 	```
 
+	Also, pointers : 
+
+	```
+
+	theStruct@myStruct^ = null;
+	```
+
+	QolC also supports memory ownership which we can be declared 
+	using the symbol '!'. 
+
+	```
+	
+	doggos @@ struct {@ 
+		dog1@doggos ^! = null;
+		doggy@doggos ^! = ---;
+	@}	
+	```
+
+	
+
 ## Setup
 
 ## Requirements to build and run

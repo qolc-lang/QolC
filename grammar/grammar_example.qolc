@@ -130,7 +130,6 @@ if (y < z) then return;
 myArray@[---]int;
 
 each i@ 1 to n-1 {@
-	
 	print(i);
 	array_add(&myArray, cast(i, void^));
 	sleep(2);	
@@ -142,9 +141,8 @@ for myArray print(it);
 -----------------------
 
 main @@ () {@
-	
 	function_call();
-
+	@assert (b == false);
 @}
 
 -----------------------

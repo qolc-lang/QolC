@@ -71,8 +71,7 @@ lexer_node lex(char fileName[]){
 				if (isalnum(reading_buffer[temp_pos]) || reading_buffer[temp_pos] == '_') {
 					int temp;
 					++pos;
-					for (temp = 0; temp < num_pos; ++temp)
-					{
+					for (temp = 0; temp < num_pos; ++temp) {
 						buffer[index++] = reading_buffer[pos];
 						++pos;
 					}
@@ -82,8 +81,7 @@ lexer_node lex(char fileName[]){
 				else {
 					++pos;
 					pos += num_pos;
-					if (reading_buffer[pos] == ';')
-					{
+					if (reading_buffer[pos] == ';') {
 						strcpy(temp_buffer, "end of command, ;");
 						push_lexerList(myNode, temp_buffer);
 						memset(temp_buffer, 0, sizeof(temp_buffer));
