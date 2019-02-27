@@ -130,6 +130,12 @@ each i@ 1 to n-1 {@
 it@int;
 for myArray print(it);
 
+marines @@ union 
+{@
+	decimal@float;
+	surname@[20]char;
+@};
+
 
 main @@ () {@
 	function_call();
