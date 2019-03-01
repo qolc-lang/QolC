@@ -73,7 +73,7 @@
 	doggos @@ struct {@ 
 		dog1@doggos ^! = null;
 		doggy@doggos ^! = ---;
-	@}	
+	@}
 	```
 
 ## Setup
