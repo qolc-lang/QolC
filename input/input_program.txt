@@ -139,4 +139,10 @@ marines @@ union
 
 main @@ () {@
 	function_call();
+	a@int;
+	a /= (5 / 3); 
+	if (a ~= 0) {@
+		if (~fale) 
+			print("heyy!!");
+	@}
 @}

@@ -23,11 +23,12 @@
 * Sample Grammar
 	
 	Just some declarations and initializations
-	```
+	
+	```cpp
 	x@int;
 	myInt@ int = 0;
 	counter @= 0;
-
+	
 	y@string;
 	myString@string = "Vasileios";
 	myString @= "Hello World!";
@@ -41,15 +42,17 @@
 	something like "counter" that has no type. But, giving it a specific value will determine <br >
 	its type dynamically. 
 
-	Next, we can define a function : 
-	```
+	A function : 
+	
+	```cpp
 	sum @@ (x1@float, x2@float) -> float {@
 		return x1+x2;
 	@}
 	```
 
 	A simple struct : 
-	```
+	
+	```cpp
 	myStruct @@ struct {@
 		a@int = 4;
 		b@string = "Yo!";
@@ -57,24 +60,21 @@
 	@};
 	```
 	
-	We can declare pointers like : 
-	```
+	Pointers : 
 	
+	```cpp
 	theStruct@myStruct^ = null;' 
 	```
 
 	QolC also supports memory ownership which we can be declared 
 	using the symbol '!'. 
-	```
 	
+	```cpp
 	doggos @@ struct {@ 
 		dog1@doggos ^! = null;
 		doggy@doggos ^! = ---;
 	@}	
-	
 	```
-
-	
 
 ## Setup
 

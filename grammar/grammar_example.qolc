@@ -7,7 +7,7 @@ myvar @= "just a string";		/@ type inferred to string and initialized with that 
 -----------------------
 
 /@ Block Comment
-	anotherVar @= 5;			
+	anotherVar @= 5;		
 @/
 
 -----------------------
@@ -28,7 +28,8 @@ m@float^ = null;				/@ ^ : pointer
 
 -----------------------
 
-myFunc @@ (x@float, y@float, z@float) -> float {@
+myFunc @@ (x@float, y@float, z@float) -> float 
+{@
 	return x*y*z;
 @}
 
@@ -130,9 +131,15 @@ if (y < z) then return;
 myArray@[---]int;
 
 each i@ 1 to n-1 {@
+	a@int;
 	print(i);
 	array_add(&myArray, cast(i, void^));
 	sleep(2);	
+	a /= (5 / 3); 
+	if (a ~= 0) {@
+		if (~fale) 
+			print("heyy!!");
+	@}
 @}
 
 it@int;
