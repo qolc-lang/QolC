@@ -1,155 +1,122 @@
-@import "hello"
-@load "helloagain"
+import "hello"
+load "helloagain"
 
 /@ Comment
-myvar @= "just a string";		/@ type inferred to string and initialized with that value
+myvar@"just a string"	/@ type inferred to string and initialized with that value
 
------------------------
+anotherVar @ 5		
 
-/@ Block Comment
-	anotherVar @= 5;		
-@/
+hello@string|"Hello World!"|
 
------------------------
+an_int@int
+x @ 3
+y@float|5.0|
+m@float^|null|				/@ ^ : pointer
 
-/@ Nested /@ Block /@ Comment @/ @/ @/
-hello@string = "Hello World!";
+myFunc |x@float, y@float, z@float| \ float 
+|@
+	return x*y*z
+@|
 
------------------------
+x @myFunc|2.0, 3.0, 5.0| + 6.0      /@ x's type is going to be float
+f @float |x + 12|
 
-/@ Multi-
-	Line- /@
-	 Block- @/
-	 Comment   @/
-an_int@int;
-x @= 3;
-y@float = 5.0;
-m@float^ = null;				/@ ^ : pointer
+vector3 struct 
+|@
+	a@int
+	b@float
+	c@float
+	d@'d
+@|
 
------------------------
-
-myFunc @@ (x@float, y@float, z@float) -> float 
-{@
-	return x*y*z;
-@}
-
-x @= myFunc(2.0, 3.0, 5.0) + 6.0      /@ x's type is going to be float
-f @float = x + 12;
-
------------------------
-
-vector3 @@ struct {@
-	a@int;
-	b@float;
-	c@float;
-	d @= 'd;
-@};
-
------------------------
-
-node @@ struct {@
-	node_a@node ^! = null; 		/@ ! : memory ownership, if we delete this node struct, it will delete all of its child nodes 
-	node_b@node ^! = null;		
-	myValue@int = ---;			/@ --- : Intentional uninitialization for possible performance reasons 
-@};
+node struct 
+|@
+	node_a@node ^! |null| 		/@ ! : memory ownership, if we delete this node struct, it will delete all of its child nodes 
+	node_b@node ^! |null|		
+	myValue@int|---|			/@ --- : Intentional uninitialization for possible performance reasons 
+@|
 
 
-my_node @= new node;			/@ initialize the memory and returns it casted
-my_node@.node_a = new node;
-my_node@.node_b = new node;
+my_node @ new node		/@ initialize the memory and returns it casted
+my_node.node_a @new node
+my_node.node_b @new node
 
-delete my_node;
+delete my_node
 
------------------------
+super_node struct 
+|@
+	anode@node
+	bnode@node
+@|
 
-super_node @@ struct {@
-	anode@node;
-	bnode@node;
-@};
+new_super_node@super_node^!|new super_node|
 
-new_super_node@super_node ^! = new super_node;
-
-hiNode@node = &new_super_node@.anode;
-
------------------------
+hiNode@node|&new_super_node.anode|
 
 /@ Hex number
+hexNum @ 0xfedcba9876543210	/@ type inferred - int 64bit
 
-hexNum @= 0xfedcba9876543210;	/@ type inferred - int 64bit
+a@[50]int
+b@[---]float
 
------------------------
-
-a@[50]int;
-b@[---]float;
-
------------------------
-
-value @@ enum {@
-	x @= 0,
+value enum 
+|@
+	x @ 0,
 	y,
-	z @= y,
-	v @= f,						/@ Don't know what this is, might find its value later
-	g @= 10,
-@};
+	z @ y,
+	v @ f,						/@ Don't know what this is, might find its value later
+	g @ 10,
+@|
 
-f @= 2;
+f @ 2
 
------------------------
+flag@bool|true|
 
-flag@bool = true;
+defer print|"hello there"|		/@ will compile that at the end of the scope
 
------------------------
+while x < y 
+|@
+	print|x|
+	x += y
+	y -= x
+	break
+@|
 
-defer print("hello there")		/@ will compile that at the end of the scope
+if x < y 
+|@
+	print|"Hello x", x|
+	--y
+	x++
+	continue
+@|
+else 
+|@
+	print|"Hello y", y|
+@|
 
------------------------
+if |y < z| then return
 
-while x < y {@
-	print(x);
-	x += y;
-	y -= x;
-	break;	
-@}
+myArray@[---]int
 
------------------------
+each i@ 1 to n-1 
+|@
+	a@int
+	print|i|
+	array_add|&myArray, cast|i, void^||
+	sleep|2|
+	a /= |5 / 3|
+	if |a ~= 0| 
+	|@
+		if |~false| 
+			print|"heyy!!"|
+	@|
+@|
 
-if x < y {@
-	print("Hello x", x);
-	--y;
-	x++;
-	continue;
-@}
-else {@
-	print("Hello y", y)
-@}
+it@int
+for myArray print|it|
 
-if (y < z) then return;
-
-
------------------------
-
-myArray@[---]int;
-
-each i@ 1 to n-1 {@
-	a@int;
-	print(i);
-	array_add(&myArray, cast(i, void^));
-	sleep(2);	
-	a /= (5 / 3); 
-	if (a ~= 0) {@
-		if (~fale) 
-			print("heyy!!");
-	@}
-@}
-
-it@int;
-for myArray print(it);
-
------------------------
-
-main @@ () {@
-	function_call();
-	@assert (b == false);
-@}
-
------------------------
+main @@ || 
+|@
+	function_call||
+	@assert |b == false|
+@|
