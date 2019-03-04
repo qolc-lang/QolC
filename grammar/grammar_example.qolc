@@ -118,5 +118,5 @@ for myArray print|it|
 main @@ || 
 |@
 	function_call||
-	@assert |b == false|
+	assert |b == false|
 @|

@@ -134,9 +134,9 @@ int isAtOperator(char buffer[], int pos, int len, lexer_node* myNode, char* temp
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 				return count;
 			}
-			else if (buffer[pos] == '}'){
+			else if (buffer[pos] == '|'){
 				++count;
-				strcpy(temp_buffer, "block end, @}");
+				strcpy(temp_buffer, "block end, @|");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 				return count;
@@ -196,6 +196,14 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 		return 1;
 	}
 
+	if (buffer[pos] == '\\') {
+		strcpy(temp_buffer, "return symbol, \\");
+		push_lexerList(myNode, temp_buffer);
+		memset(temp_buffer, 0, sizeof(temp_buffer));
+		*flag = temp10;
+		return 1;
+	}
+
 	if (buffer[pos] == '[') {
 		strcpy(temp_buffer, "array start, [");
 		push_lexerList(myNode, temp_buffer);
@@ -214,22 +222,6 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 
 	if (buffer[pos] == '!') {
 		strcpy(temp_buffer, "special symbol, !");
-		push_lexerList(myNode, temp_buffer);
-		memset(temp_buffer, 0, sizeof(temp_buffer));
-		*flag = temp2;
-		return 1;
-	}
-
-	if (buffer[pos] == '(') {
-		strcpy(temp_buffer, "parenthesis start, (");
-		push_lexerList(myNode, temp_buffer);
-		memset(temp_buffer, 0, sizeof(temp_buffer));
-		*flag = temp2;
-		return 1;
-	}
-
-	if (buffer[pos] == ')') {
-		strcpy(temp_buffer, "parenthesis end, )");
 		push_lexerList(myNode, temp_buffer);
 		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
@@ -294,18 +286,25 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 		}
 	}
 
-	if (buffer[pos] == '{'){
+	if (buffer[pos] == '|'){
 		++pos;
 		++count;
 		if (pos < len) {
 			if (buffer[pos] == '@'){
 				++pos;
 				++count;
-				strcpy(temp_buffer, "block start, {@");
+				strcpy(temp_buffer, "block start, |@");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 				*flag = temp10;
 				return count;
+			}
+			else {
+				strcpy(temp_buffer, "parenthesis, |");
+				push_lexerList(myNode, temp_buffer);
+				memset(temp_buffer, 0, sizeof(temp_buffer));
+				*flag = temp2;
+				return 1;
 			}
 		}
 	}
@@ -515,7 +514,7 @@ int isChar(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffe
 				++j;
 			}
 			++pos;
-		}while (buffer[pos] != ';');
+		}while (buffer[pos] != '\n');
 		strcpy(temp_buffer, "character, ");
 		strcat(temp_buffer, buf);
 		push_lexerList(myNode, temp_buffer);

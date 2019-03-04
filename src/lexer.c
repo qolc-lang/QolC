@@ -58,9 +58,9 @@ lexer_node lex(char fileName[]){
    				continue;
 			}
 
-			if (reading_buffer[pos] == ';')
+			if (reading_buffer[pos] == '\n')
 			{
-				strcpy(temp_buffer, "end of command, ;");
+				strcpy(temp_buffer, "end of command");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 				continue;
@@ -81,8 +81,8 @@ lexer_node lex(char fileName[]){
 				else {
 					++pos;
 					pos += num_pos;
-					if (reading_buffer[pos] == ';') {
-						strcpy(temp_buffer, "end of command, ;");
+					if (reading_buffer[pos] == '\n') {
+						strcpy(temp_buffer, "end of command");
 						push_lexerList(myNode, temp_buffer);
 						memset(temp_buffer, 0, sizeof(temp_buffer));
 						continue;
@@ -143,9 +143,9 @@ lexer_node lex(char fileName[]){
 
 			if ((char_pos = isChar(reading_buffer, pos, strlen(reading_buffer), myNode, temp_buffer)) != -1){
 				pos += char_pos;
-				if (reading_buffer[pos] == ';')
+				if (reading_buffer[pos] == '\n')
 				{
-					strcpy(temp_buffer, "end of command, ;");
+					strcpy(temp_buffer, "end of command");
 					push_lexerList(myNode, temp_buffer);
 					memset(temp_buffer, 0, sizeof(temp_buffer));
 					continue;
