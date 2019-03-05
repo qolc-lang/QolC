@@ -63,6 +63,26 @@ lexer_node lex(char fileName[]){
 				strcpy(temp_buffer, "end of command");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
+
+				buffer[index] = '\0';
+				index = 0;
+
+				if(isKeyword(buffer) == 1) {
+	   				strcpy(temp_buffer, "keyword, ");
+	   				strcat(temp_buffer, buffer);
+	   				push_lexerList(myNode, temp_buffer);
+	   				memset(temp_buffer, 0, sizeof(temp_buffer));
+	   			}
+   				else {
+   					if (buffer[0] == '\0') {
+   						continue;
+   					}
+   					strcpy(temp_buffer, "identifier, ");
+   					strcat(temp_buffer, buffer);
+   					push_lexerList(myNode, temp_buffer);
+   					memset(temp_buffer, 0, sizeof(temp_buffer));
+   				}
+
 				continue;
 			}
 
@@ -85,6 +105,26 @@ lexer_node lex(char fileName[]){
 						strcpy(temp_buffer, "end of command");
 						push_lexerList(myNode, temp_buffer);
 						memset(temp_buffer, 0, sizeof(temp_buffer));
+
+						buffer[index] = '\0';
+						index = 0;
+
+						if(isKeyword(buffer) == 1) {
+			   				strcpy(temp_buffer, "keyword, ");
+			   				strcat(temp_buffer, buffer);
+			   				push_lexerList(myNode, temp_buffer);
+			   				memset(temp_buffer, 0, sizeof(temp_buffer));
+			   			}
+		   				else {
+		   					if (buffer[0] == '\0') {
+		   						continue;
+		   					}
+		   					strcpy(temp_buffer, "identifier, ");
+		   					strcat(temp_buffer, buffer);
+		   					push_lexerList(myNode, temp_buffer);
+		   					memset(temp_buffer, 0, sizeof(temp_buffer));
+		   				}
+
 						continue;
 					}
 				}
@@ -148,6 +188,26 @@ lexer_node lex(char fileName[]){
 					strcpy(temp_buffer, "end of command");
 					push_lexerList(myNode, temp_buffer);
 					memset(temp_buffer, 0, sizeof(temp_buffer));
+
+					buffer[index] = '\0';
+					index = 0;
+
+					if(isKeyword(buffer) == 1) {
+		   				strcpy(temp_buffer, "keyword, ");
+		   				strcat(temp_buffer, buffer);
+		   				push_lexerList(myNode, temp_buffer);
+		   				memset(temp_buffer, 0, sizeof(temp_buffer));
+		   			}
+	   				else {
+	   					if (buffer[0] == '\0') {
+	   						continue;
+	   					}
+	   					strcpy(temp_buffer, "identifier, ");
+	   					strcat(temp_buffer, buffer);
+	   					push_lexerList(myNode, temp_buffer);
+	   					memset(temp_buffer, 0, sizeof(temp_buffer));
+	   				}
+
 					continue;
 				}
 				continue;
