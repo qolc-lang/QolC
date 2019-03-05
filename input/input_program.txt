@@ -138,10 +138,14 @@ main ||
 |@
 	function_call||
 	a@int
+	b, c, ft @ string
 	a /= |5 / 3|
 	if |a ~= 0| 
 	|@
 		if |~false| 
 			print|"heyy!!"|
 	@|
+	input@string
+	scan|&input|
+	print|input|
 @|
