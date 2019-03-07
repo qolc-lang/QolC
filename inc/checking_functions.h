@@ -1,7 +1,7 @@
 #ifndef _CHECK_FUNC_H_
 #define _CHECK_FUNC_H_
 
-#include "lexer_node.h"
+#include "parser.h"
 
 int isKeyword(char buffer[]);
 int isNumber(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer);

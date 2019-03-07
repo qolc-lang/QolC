@@ -13,7 +13,10 @@ int main(int argc, char const *argv[])
 	strcpy(outputFile, "out/output_program.txt");
 
 	*myNode = lex(fileName);
-	print_lexerList(myNode, outputFile);
+	
+	parse(myNode);
+
+	//print_lexerList(myNode, outputFile);
 
 	printf("Exiting program\n");
 	return 0;
