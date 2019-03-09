@@ -14,9 +14,9 @@ int main(int argc, char const *argv[])
 
 	*myNode = lex(fileName);
 	
-	parse(myNode);
+	make_parse_stateList(myNode);
 
-	//print_lexerList(myNode, outputFile);
+	print_lexerList(myNode, outputFile);
 
 	printf("Exiting program\n");
 	return 0;

@@ -3,6 +3,6 @@
 
 #include "lexer_node.h"
 
-void parse(lexer_node* node);
+void parseNumber(lexer_node* node);
 
 #endif

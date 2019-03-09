@@ -1,4 +1,4 @@
-#include "lexer_node.h"
+#include "../inc/lexer_node.h"
 
 void print_lexerList(lexer_node* node, char* fileName) {
 	lexer_node * current = node;

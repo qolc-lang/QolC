@@ -16,6 +16,7 @@ BuildCommand= $(Includes)  $(COptions)
 AppObjects = \
 $(ObjDir)/lexer.o \
 $(ObjDir)/parser.o \
+$(ObjDir)/parse_state.o \
 $(ObjDir)/lexer_node.o \
 $(ObjDir)/checking_functions.o \
 $(ObjDir)/main.o \
@@ -32,6 +33,9 @@ $(ObjDir)/lexer_node.o: $(SrcDir)/lexer_node.c $(PrjRoot)/inc/headers.h $(PrjRoo
 
 $(ObjDir)/parser.o: $(SrcDir)/parser.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h $(PrjRoot)/inc/lexer_node.h $(PrjRoot)/inc/parser.h
 	$(CC) $(BuildCommand) $(SrcDir)/parser.c -o $(ObjDir)/parser.o
+
+$(ObjDir)/parse_state.o: $(SrcDir)/parse_state.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h $(PrjRoot)/inc/lexer_node.h $(PrjRoot)/inc/parse_state.h
+	$(CC) $(BuildCommand) $(SrcDir)/parse_state.c -o $(ObjDir)/parse_state.o
 
 $(ObjDir)/checking_functions.o: $(SrcDir)/checking_functions.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h $(PrjRoot)/inc/lexer_node.h
 	$(CC) $(BuildCommand) $(SrcDir)/checking_functions.c -o $(ObjDir)/checking_functions.o
