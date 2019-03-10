@@ -169,7 +169,7 @@ int isStringLiteral(char buffer[], int pos, int len, lexer_node* myNode, char* t
 			}
 			++pos;
 		}while (buffer[pos] != '"');
-		strcpy(temp_buffer, "string literal, ");
+		strcpy(temp_buffer, "string, ");
 		strcat(temp_buffer, buf);
 		push_lexerList(myNode, temp_buffer);
 		memset(temp_buffer, 0, sizeof(temp_buffer));
