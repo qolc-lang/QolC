@@ -23,38 +23,44 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 
 	for (j = 0; j < 100; ++j)
 	{
-		my_parse_state[i].type[j] = '\0';
-		my_parse_state[i].value[j] = '\0';
+		theSplit[i] = '\0';
 	}
 
 	printf("in parse_state\n");
 
 	lexer_node* current = tokens;
+	//the first is the head
+	current = current->next;
 
 	while (current != NULL) {
-		my_parse_state->pos = counter;
-		printf("@my_parse_state->pos : %d\n", my_parse_state->pos);
+		printf("beforee\n");
+		my_parse_state[counter].pos = counter;
+		printf("www\n");
+		printf("@my_parse_state->pos : %d\n", my_parse_state[counter].pos);
 		printf("	-- the tok to be fixed : %s\n", current->token);
 		theSplit = strtok (current->token,",");
 		//copying type
 		if (theSplit != NULL) {
 			printf("brfor strcpy\n"); 
 			printf("theSplit %s\n", theSplit);
-			printf("DMSMS %s\n", my_parse_state->type);
 			strcpy(my_parse_state[counter].type, theSplit);
-			printf("	-- my_parse_state->type : %s\n", my_parse_state->type);
+			printf("	-- my_parse_state->type : %s\n", my_parse_state[counter].type);
 		}
 		theSplit = strtok (NULL,",");
 		//copying value
 		if (theSplit != NULL) { 
-			strcpy(my_parse_state->value, theSplit);
-			printf("	-- my_parse_state->value : %s\n", my_parse_state->value);
+			strcpy(my_parse_state[counter].value, theSplit);
+			printf("	-- my_parse_state->value : %s\n", my_parse_state[counter].value);
 		}
 		theSplit = strtok (NULL,",");
+		printf("does this\n");
 		//copying pos
 		current = current->next;
+		printf("does this 2 \n");
 		my_parse_state = my_parse_state->next;
+		printf("does this 3 \n");
 		++counter;
+		printf("does this 4 \n");
 	}
 
 	return NULL;
