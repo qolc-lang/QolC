@@ -1,3 +1,6 @@
+#ifndef _PARSE_STATE_H_
+#define _PARSE_STATE_H_
+
 #include "lexer_node.h"
 
 typedef struct parse_state
@@ -9,3 +12,5 @@ typedef struct parse_state
 }parse_state;
 
 parse_state* make_parse_stateList(lexer_node* tokens);
+
+#endif

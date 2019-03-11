@@ -25,6 +25,17 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 		strcpy(my_parse_state->next->type, theSplit);
 		printf("	---my_parse_state->next->type %s\n", my_parse_state->next->type);
 
+		if (strcmp(my_parse_state->next->type, "comma") == 0) {
+			strcpy(my_parse_state->next->value, "','");
+			printf("	---my_parse_state->next->value %s\n", my_parse_state->next->value);
+			theSplit = strtok (NULL,",");
+			theSplit = strtok (NULL,",");
+			current = current->next;
+			my_parse_state->next->next = NULL;
+			++counter;
+			continue;
+		}
+
 		theSplit = strtok (NULL,",");
 
 		if (theSplit != NULL) {
@@ -42,5 +53,5 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 		++counter;
 	}
 
-	return NULL;
+	return my_parse_state;
 }

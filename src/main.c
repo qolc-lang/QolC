@@ -1,4 +1,5 @@
 #include "../inc/checking_functions.h"
+#include "../inc/parser.h"
 
 int main(int argc, char const *argv[])
 {
@@ -15,6 +16,8 @@ int main(int argc, char const *argv[])
 	*myNode = lex(fileName);
 	print_lexerList(myNode, outputFile);
 	make_parse_stateList(myNode);
+
+	parseProgram(make_parse_stateList(myNode));
 	
 	printf("Exiting program\n");
 	return 0;

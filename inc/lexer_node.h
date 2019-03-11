@@ -1,3 +1,6 @@
+#ifndef _LEXER_NODE_H_
+#define _LEXER_NODE_H_
+
 #include "headers.h"
 
 typedef struct lexer_node
@@ -9,3 +12,5 @@ typedef struct lexer_node
 void print_lexerList(lexer_node* node, char* fileName);
 void push_lexerList(lexer_node* node, char token[]);
 int pop_lexerList();
+
+#endif
