@@ -3,8 +3,8 @@
 typedef struct parse_state
 {
 	int pos;
-	char* type;
-	char* value;
+	char type[100];
+	char value[100];
 	struct parse_state* next;
 }parse_state;
 
