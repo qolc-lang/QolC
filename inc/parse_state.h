@@ -12,5 +12,7 @@ typedef struct parse_state
 }parse_state;
 
 parse_state* make_parse_stateList(lexer_node* tokens);
+void print_parseStateList(parse_state* node);
+int removeLast(parse_state* head);
 
 #endif
