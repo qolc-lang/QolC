@@ -6,33 +6,31 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 	int counter = 0;
 	int flagTwice = 0;
 	char *theSplit;
+	int thePos;
+	char theType[100];
+	char theValue[100];
+
+	memset(theType, 0, sizeof(theType));
+	memset(theValue, 0, sizeof(theValue));
+
 	lexer_node* current = tokens;
 	
 	//the first is the head
 	current = current->next;
 
 	while (current != NULL)  {
-
-		//printf("@@ the token : %s\n", current->token);
-		
-		while (my_parse_state->next != NULL) {
-			my_parse_state = my_parse_state->next;
-		}
-		my_parse_state->next = malloc(sizeof(parse_state));
-		my_parse_state->next->pos = counter;
-		//printf("	---my_parse_state->next->pos : %d\n", my_parse_state->next->pos);
-
+		thePos = counter;
 		theSplit = strtok (current->token,",");
-		strcpy(my_parse_state->next->type, theSplit);
-		//printf("	---my_parse_state->next->type %s\n", my_parse_state->next->type);
+		strcpy(theType, theSplit);
 
-		if (strcmp(my_parse_state->next->type, "comma") == 0) {
-			strcpy(my_parse_state->next->value, "','");
-			//printf("	---my_parse_state->next->value %s\n", my_parse_state->next->value);
+		if (strcmp(theType, "comma") == 0) {
+			strcpy(theValue, "','");
 			theSplit = strtok (NULL,",");
 			theSplit = strtok (NULL,",");
 			current = current->next;
-			my_parse_state->next->next = NULL;
+			push_parseList(my_parse_state, thePos, theType, theValue);
+			memset(theType, 0, sizeof(theType));
+			memset(theValue, 0, sizeof(theValue));
 			++counter;
 			continue;
 		}
@@ -40,13 +38,11 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 		theSplit = strtok (NULL,",");
 
 		if (theSplit != NULL) {
-			strcpy(my_parse_state->next->value, theSplit);
-			//printf("	---my_parse_state->next->value %s\n", my_parse_state->next->value);
+			strcpy(theValue, theSplit);
 		}
 		else {
-			if (strcmp(my_parse_state->next->type, "end of command") == 0) {
-				strcpy(my_parse_state->next->value, "'\\n'");
-				//printf("	---my_parse_state->next->value %s\n", my_parse_state->next->value);
+			if (strcmp(theType, "end of command") == 0) {
+				strcpy(theValue, "'\\n'");
 			}
 			else {
 				flagTwice = 1;
@@ -54,14 +50,16 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 		}
 
 		if (flagTwice) {
-			removeLast(my_parse_state);
+			//removeLast(my_parse_state);
 			break;
 		}
 
 		theSplit = strtok (NULL,",");
 		
 		current = current->next;
-		my_parse_state->next->next = NULL;
+		push_parseList(my_parse_state, thePos, theType, theValue);
+		memset(theType, 0, sizeof(theType));
+		memset(theValue, 0, sizeof(theValue));
 		++counter;
 	}
 
@@ -103,4 +101,20 @@ void print_parseStateList(parse_state* node) {
 		printf("counter-value%d : %s\n", counter, current->value);
 		current = current->next;
 	}
+}
+
+
+void push_parseList(parse_state* node, int pos, char type[], char value[]) {
+
+	printf("in push_parseList with pos : %d \n", pos);
+
+    parse_state * current = node;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+    current->next = malloc(sizeof(parse_state));
+    current->next->pos = pos;
+    strcpy(current->next->type, type);
+    strcpy(current->next->value, value);
+    current->next->next = NULL;
 }
