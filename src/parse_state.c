@@ -2,7 +2,7 @@
 
 parse_state* make_parse_stateList(lexer_node* tokens) {
 	parse_state* my_parse_state = malloc(sizeof(parse_state) * 200);
-	my_parse_state->next = malloc(sizeof(parse_state));
+	my_parse_state = malloc(sizeof(parse_state) * 200);
 	int counter = 0;
 	int flagTwice = 0;
 	char *theSplit;
@@ -50,7 +50,6 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 		}
 
 		if (flagTwice) {
-			//removeLast(my_parse_state);
 			break;
 		}
 
@@ -68,8 +67,6 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 
 
 int removeLast(parse_state * head) {
-
-	printf("in remove\n");
     int retval = 0;
 
     if (head->next == NULL) {
@@ -93,21 +90,19 @@ int removeLast(parse_state * head) {
 void print_parseStateList(parse_state* node) {
 	parse_state * current = node;
 	int counter = 0;
-
+	
+	//first in the list is the head
 	while (current != NULL) {
 		++counter;
-		printf("counter-pos%d : %d\n", counter, current->pos);
-		printf("counter-type%d : %s\n", counter, current->type);
-		printf("counter-value%d : %s\n", counter, current->value);
+		printf("counter-pos %d : %d\n", counter, current->pos);
+		printf("counter-type %d : %s\n", counter, current->type);
+		printf("counter-value %d : %s\n", counter, current->value);
 		current = current->next;
 	}
 }
 
 
 void push_parseList(parse_state* node, int pos, char type[], char value[]) {
-
-	printf("in push_parseList with pos : %d \n", pos);
-
     parse_state * current = node;
     while (current->next != NULL) {
         current = current->next;
