@@ -1,6 +1,7 @@
 import "mylib" 
 load "myFile"
 
-print|"Hello", 2|
+hello@string|"Hello World!"|
+print|hello, 2|
 x @ 2 + 4
 y @ 4 - 2

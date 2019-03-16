@@ -1,8 +1,7 @@
 #include "../inc/parse_state.h"
 
 parse_state* make_parse_stateList(lexer_node* tokens) {
-	parse_state* my_parse_state = malloc(sizeof(parse_state) * 200);
-	my_parse_state = malloc(sizeof(parse_state) * 200);
+	parse_state* my_parse_state = malloc(sizeof(parse_state));
 	int counter = 0;
 	int flagTwice = 0;
 	char *theSplit;
