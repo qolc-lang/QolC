@@ -20,7 +20,7 @@
 
 ## Documentation
 
-* Sample Grammar
+* Syntax
 	
 	Just some declarations and initializations
 	
