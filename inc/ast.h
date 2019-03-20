@@ -53,6 +53,7 @@ typedef enum {
 	EXPR_DIV,
 	EXPR_NAME,
 	EXPR_INTEGER_LITERAL,
+	EXPR_CHAR_LITERAL,
 	EXPR_STRING_LITERAL,
 } expr_t;
 
@@ -62,6 +63,7 @@ struct expr {
 	struct expr *right;
 	const char *name;
 	int integer_value;
+	char character_value;
 	const char * string_literal;
 };
 
@@ -98,5 +100,9 @@ struct decl* decl_create(char *name, struct type *type, struct expr *value, stru
 struct stmt* stmt_create(stmt_t kind, struct decl *decl, struct expr *iexpr, struct expr *expr, struct expr *nexpr, struct stmt *body, struct stmt *ebody, struct stmt *next);
 struct expr* expr_create(expr_t kind, struct expr *left, struct expr *right, const char *name, int integer_value, const char * string_literal); 
 struct type* type_create(type_t kind, struct type *subtype, struct param_list *params);
+
+
+struct expr* expr_create_integer(int i);
+struct expr* expr_create_char(char c);
 
 #endif

@@ -41,3 +41,17 @@ struct type* type_create(type_t kind, struct type *subtype, struct param_list *p
 	t->params = params;
 	return t;
 }
+
+struct expr* expr_create_integer(int i) {
+	struct expr* e = malloc(sizeof(*e));
+	e->kind = EXPR_INTEGER_LITERAL;
+	e->integer_value = i;
+	return e;
+}
+
+struct expr* expr_create_char(char c) {
+	struct expr* e = malloc(sizeof(*e));
+	e->kind = EXPR_CHAR_LITERAL;
+	e->character_value = c;
+	return e;
+}
