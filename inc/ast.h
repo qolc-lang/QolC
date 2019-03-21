@@ -73,6 +73,7 @@ typedef enum {
 	STMT_IF_ELSE,
 	STMT_FOR,
 	STMT_PRINT,
+	STMT_IMPORT,
 	STMT_RETURN,
 	STMT_BLOCK
 } stmt_t;
