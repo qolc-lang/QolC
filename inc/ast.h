@@ -97,6 +97,15 @@ struct decl {
 	struct decl* next;
 };
 
+
+struct command
+{
+	struct decl* decl;
+	struct stmt* stmt;
+	struct expr* expr;
+	struct command* next;
+};
+
 struct decl* decl_create(char *name, struct type *type, struct expr *value, struct stmt *code);
 struct stmt* stmt_create(stmt_t kind, struct decl *decl, struct expr *iexpr, struct expr *expr, struct expr *nexpr, struct stmt *body, struct stmt *ebody, struct stmt *next);
 struct expr* expr_create(expr_t kind, struct expr *left, struct expr *right, const char *name, int integer_value, const char * string_literal); 

@@ -1,4 +1,4 @@
-#include "ast.h"
+#include "../inc/ast.h"
 
 struct decl* decl_create(char *name, struct type *type, struct expr *value, struct stmt *code) {
 	struct decl* d = malloc(sizeof(*d));
@@ -11,6 +11,7 @@ struct decl* decl_create(char *name, struct type *type, struct expr *value, stru
 }
 
 struct stmt* stmt_create(stmt_t kind, struct decl *decl, struct expr *iexpr, struct expr *expr, struct expr *nexpr, struct stmt *body, struct stmt *ebody, struct stmt *next) {
+	printf("inside stmt_create\n");
 	struct stmt* s = malloc(sizeof(*s));
 	s->kind = kind;
 	s->decl = decl;
@@ -20,6 +21,7 @@ struct stmt* stmt_create(stmt_t kind, struct decl *decl, struct expr *iexpr, str
 	s->body = body;
 	s->else_body = ebody;
 	s->next = NULL;
+	printf("exiting stmt_create\n");
 	return s;
 }
 

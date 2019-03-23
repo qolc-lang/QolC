@@ -2,6 +2,7 @@
 #define _PARSER_H_
 
 #include "parse_state.h"
+#include "ast.h"
 
 void parseProgram(parse_state* node);
 void parseToken(char* token);
