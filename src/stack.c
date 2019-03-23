@@ -5,9 +5,14 @@ void init(int* top)
     *top = 0;
 }
  
-void push(char** st, int* top, char* element)
+void push(char* st, int* top, char* element)
 {
-    strcpy(st[(*top)++], element);
+    printf("in push\n");
+    printf("the top : %d\n", *top);
+    printf("the element : %s\n", element);
+    strcpy(st, element);
+    ++*top;
+    printf("exitin pus\n");
 }
 
 char* pop(char** st, int* top)

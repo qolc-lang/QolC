@@ -3,7 +3,7 @@
 
 #include "ast.h"
  
-void push(char** st, int* top, char* element);
+void push(char* st, int* top, char* element);
 char* pop(char** st, int* top);
 int full(int* top, const int size);
 int empty(int* top);
