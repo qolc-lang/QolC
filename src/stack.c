@@ -7,17 +7,13 @@ void init(int* top)
  
 void push(char* st, int* top, char* element)
 {
-    printf("in push\n");
-    printf("the top : %d\n", *top);
-    printf("the element : %s\n", element);
     strcpy(st, element);
     ++*top;
-    printf("exitin pus\n");
 }
 
-char* pop(char** st, int* top)
+void pop(int* top)
 {
-    return st[--(*top)];
+    --*top;
 }
 
 int full(int *top, const int size)
@@ -28,15 +24,4 @@ int full(int *top, const int size)
 int empty(int *top)
 {
     return *top == 0 ? 1 : 0;
-}
- 
-void display(char** st,int* top)
-{
-    printf("Stack: ");
-    int i;
-    for(i = 0; i < *top; i++)
-    {
-        printf("%s ",st[i]);
-    }
-    printf("\n");
 }

@@ -4,8 +4,15 @@
 void parseProgram(parse_state* node) {
 	printf("in parse program\n");
 
+	const int SIZE = 2;
+	char sample[100];
+	
+
+	memset(sample, 0, sizeof(sample));
+	
+
 	parse_state * current = node;
-	char theStack[200][50];
+	char theStack[200][SIZE];
 	int top;
 
 	init(&top);
@@ -18,7 +25,11 @@ void parseProgram(parse_state* node) {
 		if (strcmp(current->value, "import") == 0) {
 			printf("import statement to be built\n");
 			push(theStack[top], &top, current->value);
-			printf("the top  of stack %d\n", top);
+			
+			
+			// pop(&top);
+			// printf("full now? : %d\n", full(&top, SIZE));
+			// printf("or maybe empty? : %d\n", empty(&top));
 			// stmt* import_stmt = stmt_create(STMT_IMPORT, )
 		}
 		else {
