@@ -1,13 +1,12 @@
 #include "../inc/parser.h"
 #include "../inc/stack.h"
+#include "../inc/ast.h"
 
 void parseProgram(parse_state* node) {
 	printf("in parse program\n");
 
 	const int SIZE = 2;
 	char sample[100];
-	
-
 	memset(sample, 0, sizeof(sample));
 	
 
@@ -25,14 +24,14 @@ void parseProgram(parse_state* node) {
 		if (strcmp(current->value, "import") == 0) {
 			printf("import statement to be built\n");
 			push(theStack[top], &top, current->value);
-			
-			
 			// pop(&top);
+			//stmt* import_stmt = stmt_create(STMT_IMPORT, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 			// printf("full now? : %d\n", full(&top, SIZE));
 			// printf("or maybe empty? : %d\n", empty(&top));
 			// stmt* import_stmt = stmt_create(STMT_IMPORT, )
 		}
 		else {
+			if ()
 			//printf("counter-value %d : %s\n", counter, current->value);
 		}
 		current = current->next;
