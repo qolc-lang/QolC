@@ -7,7 +7,8 @@ void push_commandList(command* commandNode, decl* aDecl, stmt* aStmt, expr* anEx
     	current = current->next;
     }
     current->next = malloc(sizeof(command));
-    // strcpy(current->next->type, type);
-    // strcpy(current->next->value, value);
-    // current->next->next = NULL;
+    current->next->aDecl = aDecl;
+    current->next->aStmt = aStmt;
+    current->next->anExpr = anExpr;
+    current->next->next = NULL;
 }

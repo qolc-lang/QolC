@@ -9,6 +9,7 @@ void push(char* st, int* top, char* element)
 {
     strcpy(st, element);
     ++*top;
+    printf("push completed with element : %s \n", element);
 }
 
 void pop(int* top)
