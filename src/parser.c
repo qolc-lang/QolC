@@ -6,7 +6,7 @@
 void parseProgram(parse_state* node) {
 	printf("in parse program\n");
 	
-	command* commandNode = malloc(sizeof(command));
+	command* commandNode = malloc(sizeof(command) *2);
 	parse_state * current = node;
 	const int SIZE = 50;
 	int top;
@@ -22,11 +22,8 @@ void parseProgram(parse_state* node) {
 		if (strcmp(current->value, "import") == 0) {
 			printf("import statement to be built\n");
 			push(theStack[top], &top, current->value);
-			// pop(&top);
-			//stmt* import_stmt = stmt_create(STMT_IMPORT, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 			// printf("full now? : %d\n", full(&top, SIZE));
 			// printf("or maybe empty? : %d\n", empty(&top));
-			// stmt* import_stmt = stmt_create(STMT_IMPORT, )
 		}
 		else {
 		}
@@ -39,16 +36,18 @@ void parseProgram(parse_state* node) {
 			pop(&top);
 			if (strcmp(theStack[top], "import") == 0) {
 				printf("import statement is in the stack atm\n");
-				//strcpy(temp, theStack[top]);
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
 				expr* stringExpr = expr_create_string(current->value);
 				stmt* import_stmt = stmt_create(STMT_IMPORT, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, import_stmt, NULL); 
 			}
 		}
 		
 		current = current->next;
 	}
+
+	print_commandList(commandNode);
 
 	return;
 }
