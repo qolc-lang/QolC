@@ -6,18 +6,6 @@
 	and debugging fun! \
 @@ 
 
-# FAQ
-
-@@ \
-	1."Are you a madman? Why all the fuss?" :
-		I just want to learn, have fun and make my life easier. Woudl be a dream if I make someone else's life easier also! \
-	2."Do you just copy-paste Jai?" : 
-		Truth is that Jonathan Blow is one of my favourite creators out there, and his dedication really inspires me. But 
-		I definitely don't copy his own work, more like collecting data and adding my own taste. \
-	3."Why not wait for Jai to come out?" : 
-		@Answer 1, Sentence 1. \
-@@
-
 ## Documentation
 
 * Syntax
