@@ -25,7 +25,13 @@ void parseProgram(parse_state* node) {
 			// printf("full now? : %d\n", full(&top, SIZE));
 			// printf("or maybe empty? : %d\n", empty(&top));
 		}
+		//Check for load in value and push it to the stack
+		else if (strcmp(current->value, "load") == 0) {
+			printf("load statement to be built\n");
+			push(theStack[top], &top, current->value);
+		}
 		else {
+
 		}
 
 		printf("counter-value: %s\n", current->value);
@@ -41,6 +47,17 @@ void parseProgram(parse_state* node) {
 				expr* stringExpr = expr_create_string(current->value);
 				stmt* import_stmt = stmt_create(STMT_IMPORT, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, import_stmt, NULL); 
+			}
+			else if (strcmp(theStack[top], "load") == 0) {
+				printf("load statement is in the stack atm\n");
+				theStack[0][top] = '\0';
+				printf("the value to work as expr : %s\n", current->value);
+				expr* stringExpr = expr_create_string(current->value);
+				stmt* load_stmt = stmt_create(STMT_LOAD, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, load_stmt, NULL); 
+			}
+			else {
+
 			}
 		}
 		
