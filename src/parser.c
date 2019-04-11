@@ -30,7 +30,11 @@ void parseProgram(parse_state* node) {
 			printf("load statement to be built\n");
 			push(theStack[top], &top, current->value);
 		}
-		else {
+		else if (strcmp(current->value, "@") == 0) {
+			printf("operator @ going in\n");
+			push(theStack[top], &top, current->value);
+		}
+		else { 
 
 		}
 
@@ -58,6 +62,19 @@ void parseProgram(parse_state* node) {
 			}
 			else {
 
+			}
+		}
+
+		//Check for string type
+		if (strcmp(current->type, "identifier") == 0) {
+			//peeking the stack so decreasing value of top
+			pop(&top);
+			if (strcmp(theStack[top], "@") == 0) {
+				printf("@ operator is in the stack atm\n");
+				printf("going to insert value : %s\n", current->value);
+				//increasing top value
+				++top;
+				push(theStack[top], &top, current->value);
 			}
 		}
 		

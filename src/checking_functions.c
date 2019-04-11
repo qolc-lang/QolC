@@ -102,13 +102,13 @@ int isAtOperator(char buffer[], int pos, int len, lexer_node* myNode, char* temp
 				++count;
 				if (buffer[pos] == '='){
 					++count;
-					strcpy(temp_buffer, "operator, @==");
+					strcpy(temp_buffer, "operator,@==");
 					push_lexerList(myNode, temp_buffer);
 					memset(temp_buffer, 0, sizeof(temp_buffer));
 					return count;
 				}
 				else{
-					strcpy(temp_buffer, "operator, @=");
+					strcpy(temp_buffer, "operator,@=");
 					push_lexerList(myNode, temp_buffer);
 					memset(temp_buffer, 0, sizeof(temp_buffer));
 					return count;
@@ -116,34 +116,34 @@ int isAtOperator(char buffer[], int pos, int len, lexer_node* myNode, char* temp
 			}
 			else if (buffer[pos] == '@'){
 				++count;
-				strcpy(temp_buffer, "operator, @@");
+				strcpy(temp_buffer, "operator,@@");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 				return count;
 			}
 			else if (buffer[pos] == '.'){
 				++count;
-				strcpy(temp_buffer, "operator, @.");
+				strcpy(temp_buffer, "operator,@.");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 				return count;
 			}
 			else if (buffer[pos] == '/'){
 				++count;
-				strcpy(temp_buffer, "comment end, @/");
+				strcpy(temp_buffer, "comment end,@/");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 				return count;
 			}
 			else if (buffer[pos] == '|'){
 				++count;
-				strcpy(temp_buffer, "block end, @|");
+				strcpy(temp_buffer, "block end,@|");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 				return count;
 			}
 			else {
-				strcpy(temp_buffer, "operator, @");
+				strcpy(temp_buffer, "operator,@");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 				return count;
