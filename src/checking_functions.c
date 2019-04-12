@@ -294,14 +294,14 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 			if (buffer[pos] == '@'){
 				++pos;
 				++count;
-				strcpy(temp_buffer, "block start, |@");
+				strcpy(temp_buffer, "block start,|@");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 				*flag = temp10;
 				return count;
 			}
 			else {
-				strcpy(temp_buffer, "parenthesis, |");
+				strcpy(temp_buffer, "parenthesis,|");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
 				*flag = temp2;

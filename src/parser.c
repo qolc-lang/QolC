@@ -30,8 +30,16 @@ void parseProgram(parse_state* node) {
 			printf("load statement to be built\n");
 			push(theStack[top], &top, current->value);
 		}
+		else if (strcmp(current->value, "string") == 0) {
+			printf("string keyword going in\n");
+			push(theStack[top], &top, current->value);
+		}
 		else if (strcmp(current->value, "@") == 0) {
 			printf("operator @ going in\n");
+			push(theStack[top], &top, current->value);
+		}
+		else if (strcmp(current->value, "|") == 0) {
+			printf("parenthesis going in\n");
 			push(theStack[top], &top, current->value);
 		}
 		else { 
