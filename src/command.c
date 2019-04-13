@@ -16,6 +16,7 @@ void print_commandList(command* commandNode) {
 	command * current = commandNode;
 	int counter = 0;
 	int value;
+	int temp_type;
 	
 	//first in the list is the head
 	while (current != NULL) {
@@ -27,21 +28,31 @@ void print_commandList(command* commandNode) {
 		else if (current->aStmt != NULL) {
 			value = (int)current->aStmt->kind;
 			//import statement
-			if (value == 5) {
+			if (value == 0) {
+				printf("STMT_DECL\n");
+				printf("name: %s\n", current->aStmt->decl->name);
+				temp_type =  (int)current->aStmt->decl->type->kind;
+				//type of string
+				if (temp_type == 4) {
+					printf("	TYPE_STRING\n");
+					printf("		value: %s\n", current->aStmt->decl->value->string_literal);
+				}
+			}
+			else if (value == 5) {
 				printf("STMT_IMPORT\n");
-				printf("expr: %s\n", current->aStmt->expr->string_literal);
+				printf("	expr: %s\n", current->aStmt->expr->string_literal);
 			}
 			else if (value == 6) {
 				printf("STMT_LOAD\n");
-				printf("expr: %s\n", current->aStmt->expr->string_literal);
+				printf("	expr: %s\n", current->aStmt->expr->string_literal);
 			}
 			else {
 
 			}
 		}
 		else if (current->anExpr != NULL) {
-			printf("we have an expr\n");
-			printf("the expr kind : %d\n", current->anExpr->kind);
+			//printf("we have an expr\n");
+			//printf("the expr kind : %d\n", current->anExpr->kind);
 		}
 		else {
 

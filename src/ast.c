@@ -1,12 +1,14 @@
 #include "../inc/ast.h"
 
 decl* decl_create(char *name, type *type, expr *value, stmt *code) {
+	printf("inside decl_create\n");
 	decl* d = malloc(sizeof(*d));
 	d->name = name;
 	d->type = type;
 	d->value = value;
 	d->code = code;	
 	d->next = NULL;
+	printf("inside decl_create\n");
 	return d;
 }
 
@@ -38,10 +40,12 @@ expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char 
 }
 
 type* type_create(type_t kind, type *subtype, param_list *params) {
+	printf("inside type_create %d\n", kind);
 	type* t = malloc(sizeof(*t));
 	t->kind = kind;
 	t->subtype = subtype;
 	t->params = params;
+	printf("exiting type_create\n");
 	return t;
 }
 

@@ -10,6 +10,9 @@ void parseProgram(parse_state* node) {
 	parse_state * current = node;
 	const int SIZE = 50;
 	int top;
+	int atAppeared = 0;
+	int parOK = 0;
+	int numOfPar = 0;
 	char theStack[200][SIZE];
 	char temp[100];
 	init(&top);
@@ -38,10 +41,10 @@ void parseProgram(parse_state* node) {
 			printf("operator @ going in\n");
 			push(theStack[top], &top, current->value);
 		}
-		else if (strcmp(current->value, "|") == 0) {
-			printf("parenthesis going in\n");
-			push(theStack[top], &top, current->value);
-		}
+		// else if (strcmp(current->value, "|") == 0) {
+		// 	printf("parenthesis going in\n");
+		// 	push(theStack[top], &top, current->value);
+		// }
 		else { 
 
 		}
@@ -68,8 +71,21 @@ void parseProgram(parse_state* node) {
 				stmt* load_stmt = stmt_create(STMT_LOAD, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, load_stmt, NULL); 
 			}
-			else {
-
+			else if (strcmp(theStack[top], "string") == 0) {
+				printf("string type is in the stack atm\n");
+				type* string_type = type_create(TYPE_STRING, NULL, NULL);
+				theStack[0][top] = '\0';
+				pop(&top);
+				printf("the value to work as expr : %s\n", current->value);
+				expr* stringExpr = expr_create_string(current->value);
+				strcpy(temp, theStack[top]);
+				printf("now in stack : %s\n", temp);
+				theStack[0][top] = '\0';
+				pop(&top);
+				theStack[0][top] = '\0';
+				decl* string_declaration = decl_create(temp, string_type, stringExpr, NULL);
+				stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 			}
 		}
 
