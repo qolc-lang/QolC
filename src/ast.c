@@ -50,9 +50,11 @@ type* type_create(type_t kind, type *subtype, param_list *params) {
 }
 
 expr* expr_create_integer(int i) {
+	printf("inside expr_create_integer\n");
 	expr* e = malloc(sizeof(*e));
 	e->kind = EXPR_INTEGER_LITERAL;
 	e->integer_value = i;
+	printf("exiting expr_create_integer\n");
 	return e;
 }
 

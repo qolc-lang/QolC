@@ -8,7 +8,7 @@ void parseProgram(parse_state* node) {
 	
 	command* commandNode = malloc(sizeof(command) *2);
 	parse_state * current = node;
-	const int SIZE = 50;
+	const int SIZE = 100;
 	int top;
 	int atAppeared = 0;
 	int parOK = 0;
@@ -31,6 +31,11 @@ void parseProgram(parse_state* node) {
 		//Check for load in value and push it to the stack
 		else if (strcmp(current->value, "load") == 0) {
 			printf("load statement to be built\n");
+			push(theStack[top], &top, current->value);
+		}
+		//Check for print in value and push it to the stack
+		else if (strcmp(current->value, "print") == 0) {
+			printf("print statement to be built\n");
 			push(theStack[top], &top, current->value);
 		}
 		else if (strcmp(current->value, "string") == 0) {
@@ -83,15 +88,32 @@ void parseProgram(parse_state* node) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
+				printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
 				decl* string_declaration = decl_create(temp, string_type, stringExpr, NULL);
 				stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 			}
 		}
 
-		//Check for string type
+		//Check for number type
+		if (strcmp(current->type, "number") == 0) {
+			//peeking the stack so decreasing value of top
+			if (strcmp(theStack[top], "print") == 0) {
+				printf("print statement is in the stack atm\n");
+				pop(&top);
+				theStack[0][top] = '\0';
+				printf("the value to work as expr : %s\n", current->value);
+				expr* numberExpr = expr_create_string(current->value);
+				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, print_stmt, NULL); 
+			}
+
+		}
+
+		//Check for identifier type
 		if (strcmp(current->type, "identifier") == 0) {
 			//peeking the stack so decreasing value of top
+			printf("in ininfbrhbrhj\n");
 			pop(&top);
 			if (strcmp(theStack[top], "@") == 0) {
 				printf("@ operator is in the stack atm\n");
@@ -100,12 +122,24 @@ void parseProgram(parse_state* node) {
 				++top;
 				push(theStack[top], &top, current->value);
 			}
+			else if (strcmp(theStack[top], "print") == 0) {
+				printf("print is in the stack atm\n");
+				pop(&top);
+				theStack[0][top] = '\0';
+				printf("the value to work as expr : %s\n", current->value);
+				expr* identifierExpr = expr_create_string(current->value);
+				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, print_stmt, NULL); 
+			}
+			else {
+
+			}
 		}
 		
 		current = current->next;
 	}
 
-	print_commandList(commandNode);
+	//print_commandList(commandNode);
 
 	return;
 }

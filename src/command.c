@@ -38,6 +38,10 @@ void print_commandList(command* commandNode) {
 					printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 				}
 			}
+			else if (value == 4) {
+				printf("STMT_PRINT\n");
+				printf("	expr: %s\n", current->aStmt->expr->string_literal);
+			}
 			else if (value == 5) {
 				printf("STMT_IMPORT\n");
 				printf("	expr: %s\n", current->aStmt->expr->string_literal);
