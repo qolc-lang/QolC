@@ -46,6 +46,14 @@ void parseProgram(parse_state* node) {
 			printf("operator @ going in\n");
 			push(theStack[top], &top, current->value);
 		}
+		else if (strcmp(current->value, "+") == 0) {
+			printf("operator + going in\n");
+			push(theStack[top], &top, current->value);
+		}
+		else if (strcmp(current->value, "-") == 0) {
+			printf("operator - going in\n");
+			push(theStack[top], &top, current->value);
+		}
 		// else if (strcmp(current->value, "|") == 0) {
 		// 	printf("parenthesis going in\n");
 		// 	push(theStack[top], &top, current->value);
@@ -93,6 +101,9 @@ void parseProgram(parse_state* node) {
 				stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 			}
+			else {
+				++top;
+			}
 		}
 
 		//Check for number type
@@ -107,8 +118,46 @@ void parseProgram(parse_state* node) {
 				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
 			}
+			else if (strcmp(theStack[top], "+") == 0) {
+				printf("operator + is in the stack atm\n");
+				theStack[0][top] = '\0';
+				pop(&top);
+				printf("now in the stack : %s\n", theStack[top]);
+				printf("the value to work as expr : %s\n", current->value);
+				int theResult = atoi(theStack[top]) + atoi(current->value);
+				printf("@@@@ THE RESULT : %d\n", theResult);
+				theStack[0][top] = '\0';
+				pop(&top);
+				printf("now in the stack : %s\n", theStack[top]);
+				//expr* numberExpr = expr_create_string(current->value);
+				//stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL);
+				//push_commandList(commandNode, NULL, print_stmt, NULL); 
+			}
+			else if (strcmp(theStack[top], "-") == 0) {
+				printf("operator - is in the stack atm\n");
+				theStack[0][top] = '\0';
+				pop(&top);
+				printf("now in the stack : %s\n", theStack[top]);
+				printf("the value to work as expr : %s\n", current->value);
+				int theResult = atoi(theStack[top]) - atoi(current->value);
+				printf("@@@@ THE RESULT : %d\n", theResult);
+				pop(&top);
+				theStack[0][top] = '\0';
+				printf("now in the stack : %s\n", theStack[top]);
+				//expr* numberExpr = expr_create_string(current->value);
+				//stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL);
+				//push_commandList(commandNode, NULL, print_stmt, NULL); 
+			}
 			else {
 				++top;
+			}
+
+			if (empty(&top) == 0) {
+				printf("stack not empty : %d\n", top);
+				printf("going to insert value : %s\n", current->value);
+				//increasing top value
+				++top;
+				push(theStack[top], &top, current->value);
 			}
 
 		}
@@ -116,9 +165,7 @@ void parseProgram(parse_state* node) {
 		//Check for identifier type
 		if (strcmp(current->type, "identifier") == 0) {
 			//peeking the stack so decreasing value of top
-			printf("in ininfbrhbrhj\n");
 			pop(&top);
-			printf("in ininfbrhbrhj 222\n");
 			if (strcmp(theStack[top], "@") == 0) {
 				printf("@ operator is in the stack atm\n");
 				printf("going to insert value : %s\n", current->value);
@@ -135,6 +182,7 @@ void parseProgram(parse_state* node) {
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
 			}
 			else {
+				++top;
 			}
 		}
 		

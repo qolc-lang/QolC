@@ -2,8 +2,8 @@ import "mylib"
 load "myFile"
 
 hello@string|"Hello World!"|
-x @ 2 + 4
-y @ 4 - 2
+x@ 2 + 4
+y@ 4 - 2
 print|hello|
 print|10|
 print|x|
