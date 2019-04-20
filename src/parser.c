@@ -98,14 +98,17 @@ void parseProgram(parse_state* node) {
 		//Check for number type
 		if (strcmp(current->type, "number") == 0) {
 			//peeking the stack so decreasing value of top
+			pop(&top);
 			if (strcmp(theStack[top], "print") == 0) {
 				printf("print statement is in the stack atm\n");
-				pop(&top);
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
 				expr* numberExpr = expr_create_string(current->value);
 				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
+			}
+			else {
+				++top;
 			}
 
 		}
@@ -115,6 +118,7 @@ void parseProgram(parse_state* node) {
 			//peeking the stack so decreasing value of top
 			printf("in ininfbrhbrhj\n");
 			pop(&top);
+			printf("in ininfbrhbrhj 222\n");
 			if (strcmp(theStack[top], "@") == 0) {
 				printf("@ operator is in the stack atm\n");
 				printf("going to insert value : %s\n", current->value);
@@ -124,7 +128,6 @@ void parseProgram(parse_state* node) {
 			}
 			else if (strcmp(theStack[top], "print") == 0) {
 				printf("print is in the stack atm\n");
-				pop(&top);
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
 				expr* identifierExpr = expr_create_string(current->value);
@@ -132,14 +135,13 @@ void parseProgram(parse_state* node) {
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
 			}
 			else {
-
 			}
 		}
 		
 		current = current->next;
 	}
 
-	//print_commandList(commandNode);
+	print_commandList(commandNode);
 
 	return;
 }
