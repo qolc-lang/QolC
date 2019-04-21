@@ -8,7 +8,7 @@ decl* decl_create(char *name, type *type, expr *value, stmt *code) {
 	d->value = value;
 	d->code = code;	
 	d->next = NULL;
-	printf("inside decl_create\n");
+	printf("exiting decl_create\n");
 	return d;
 }
 
@@ -66,9 +66,11 @@ expr* expr_create_char(char c) {
 }
 
 expr* expr_create_string(char* string_literal) {
+	printf("inside expr_create_string\n");
 	expr* e = malloc(sizeof(expr));
 	e->kind = EXPR_STRING_LITERAL;
 	e->string_literal = malloc(sizeof(char) * 100);
 	strcpy(e->string_literal, string_literal);
+	printf("exiting expr_create_string\n");
 	return e;
 }

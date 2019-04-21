@@ -14,9 +14,10 @@ void parseProgram(parse_state* node) {
 	int parOK = 0;
 	int numOfPar = 0;
 	char theStack[200][SIZE];
-	char temp[100];
+	char temp[100], temp2[100];
 	init(&top);
 	memset(temp, 0, sizeof(temp));
+	memset(temp2, 0, sizeof(temp2));
 
 	while (current != NULL) {
 		printf("counter-type: %s\n", current->type);
@@ -102,6 +103,7 @@ void parseProgram(parse_state* node) {
 				push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 			}
 			else {
+				printf("NOTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTt\n");
 				++top;
 			}
 		}
@@ -109,8 +111,10 @@ void parseProgram(parse_state* node) {
 		//Check for number type
 		if (strcmp(current->type, "number") == 0) {
 			//peeking the stack so decreasing value of top
+			int doneFlag = 0;
 			pop(&top);
 			if (strcmp(theStack[top], "print") == 0) {
+				doneFlag = 1;
 				printf("print statement is in the stack atm\n");
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
@@ -119,46 +123,70 @@ void parseProgram(parse_state* node) {
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "+") == 0) {
+				doneFlag = 1;
 				printf("operator + is in the stack atm\n");
 				theStack[0][top] = '\0';
 				pop(&top);
 				printf("now in the stack : %s\n", theStack[top]);
 				printf("the value to work as expr : %s\n", current->value);
 				int theResult = atoi(theStack[top]) + atoi(current->value);
-				printf("@@@@ THE RESULT : %d\n", theResult);
+				sprintf(temp, "%d", theResult);
+				printf("@@@@ THE RESULT : %s\n", temp);
+				expr* numberExpr = expr_create_string(temp);
 				theStack[0][top] = '\0';
 				pop(&top);
 				printf("now in the stack : %s\n", theStack[top]);
-				//expr* numberExpr = expr_create_string(current->value);
-				//stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL);
-				//push_commandList(commandNode, NULL, print_stmt, NULL); 
+				strcpy(temp2, theStack[top]);
+				printf("doess hhththt\n");
+				theStack[0][top] = '\0';
+				pop(&top);
+				theStack[0][top] = '\0';
+				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
+				decl* identifier_declaration = decl_create(temp2, NULL, numberExpr, NULL);
+				stmt* decl_stmt = stmt_create(STMT_DECL, identifier_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, decl_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "-") == 0) {
+				doneFlag = 1;
 				printf("operator - is in the stack atm\n");
 				theStack[0][top] = '\0';
 				pop(&top);
 				printf("now in the stack : %s\n", theStack[top]);
 				printf("the value to work as expr : %s\n", current->value);
 				int theResult = atoi(theStack[top]) - atoi(current->value);
-				printf("@@@@ THE RESULT : %d\n", theResult);
+				sprintf(temp, "%d", theResult);
+				printf("@@@@ THE RESULT : %s\n", temp);
+				expr* numberExpr = expr_create_string(temp);
+				theStack[0][top] = '\0';
+				pop(&top);
+				printf("now in the stack : %s\n", theStack[top]);
+				strcpy(temp2, theStack[top]);
+				printf("doess hhththt\n");
+				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				printf("now in the stack : %s\n", theStack[top]);
-				//expr* numberExpr = expr_create_string(current->value);
-				//stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL);
-				//push_commandList(commandNode, NULL, print_stmt, NULL); 
+				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
+				decl* identifier_declaration = decl_create(temp2, NULL, numberExpr, NULL);
+				stmt* decl_stmt = stmt_create(STMT_DECL, identifier_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, decl_stmt, NULL); 
 			}
 			else {
-				++top;
+				if ((empty(&top) == 0) && (doneFlag == 0)) {
+					printf("stack not empty : %d\n", top);
+					printf("going to insert value : %s\n", current->value);
+					//increasing top value
+					++top;
+					push(theStack[top], &top, current->value);
+				}
 			}
 
-			if (empty(&top) == 0) {
-				printf("stack not empty : %d\n", top);
-				printf("going to insert value : %s\n", current->value);
-				//increasing top value
-				++top;
-				push(theStack[top], &top, current->value);
-			}
+			// if ((empty(&top) == 0) && (doneFlag == 0)) {
+			// 	printf("stack not empty : %d\n", top);
+			// 	printf("going to insert value : %s\n", current->value);
+			// 	//increasing top value
+			// 	++top;
+			// 	push(theStack[top], &top, current->value);
+			// }
 
 		}
 
@@ -183,6 +211,14 @@ void parseProgram(parse_state* node) {
 			}
 			else {
 				++top;
+				printf("NOTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTt\n");
+			}
+		}
+
+		//Check for end of command type
+		if (strcmp(current->type, "end of command") == 0) {
+			if (top != 0) {
+				printf("--------------------------------------------- \n");
 			}
 		}
 		

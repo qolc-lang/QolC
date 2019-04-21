@@ -31,12 +31,18 @@ void print_commandList(command* commandNode) {
 			if (value == 0) {
 				printf("STMT_DECL\n");
 				printf("name: %s\n", current->aStmt->decl->name);
-				temp_type =  (int)current->aStmt->decl->type->kind;
-				//type of string
-				if (temp_type == 4) {
-					printf("	TYPE_STRING\n");
+				if (current->aStmt->decl->type == NULL) {
 					printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 				}
+				else {
+					temp_type =  (int)current->aStmt->decl->type->kind;
+					//type of string
+					if (temp_type == 4) {
+						printf("	TYPE_STRING\n");
+						printf("		value: %s\n", current->aStmt->decl->value->string_literal);
+					}
+				}
+
 			}
 			else if (value == 4) {
 				printf("STMT_PRINT\n");
