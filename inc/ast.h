@@ -68,7 +68,7 @@ typedef struct stmt {
 }stmt;
 
 typedef struct decl {
-	char* name;
+	char name[100];
 	type* type;
 	expr* value;		//if declaration is an expression
 	stmt* code;			//if declaration is a function

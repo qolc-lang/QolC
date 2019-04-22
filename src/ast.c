@@ -3,7 +3,8 @@
 decl* decl_create(char *name, type *type, expr *value, stmt *code) {
 	printf("inside decl_create\n");
 	decl* d = malloc(sizeof(*d));
-	d->name = name;
+	memset(d->name, 0, sizeof(d->name));
+	strcpy(d->name, name);
 	d->type = type;
 	d->value = value;
 	d->code = code;	
