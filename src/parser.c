@@ -67,6 +67,7 @@ void parseProgram(parse_state* node) {
 
 		//Check for string type
 		if (strcmp(current->type, "string") == 0) {
+			int doneFlag = 0;
 			//peeking the stack so decreasing value of top
 			pop(&top);
 			if (strcmp(theStack[top], "import") == 0) {
@@ -84,6 +85,15 @@ void parseProgram(parse_state* node) {
 				expr* stringExpr = expr_create_string(current->value);
 				stmt* load_stmt = stmt_create(STMT_LOAD, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, load_stmt, NULL); 
+			}
+			else if (strcmp(theStack[top], "print") == 0) {
+				doneFlag = 1;
+				printf("print statement is in the stack atm\n");
+				theStack[0][top] = '\0';
+				printf("the value to work as expr : %s\n", current->value);
+				expr* stringExpr = expr_create_string(current->value);
+				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, print_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "string") == 0) {
 				printf("string type is in the stack atm\n");
@@ -103,8 +113,13 @@ void parseProgram(parse_state* node) {
 				push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 			}
 			else {
-				printf("NOTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTt\n");
-				++top;
+				if ((empty(&top) == 0) && (doneFlag == 0)) {
+					printf("stack not empty : %d\n", top);
+					printf("going to insert value : %s\n", current->value);
+					//increasing top value
+					++top;
+					push(theStack[top], &top, current->value);
+				}
 			}
 		}
 
@@ -219,6 +234,17 @@ void parseProgram(parse_state* node) {
 		if (strcmp(current->type, "end of command") == 0) {
 			if (top != 0) {
 				printf("--------------------------------------------- \n");
+				theStack[0][top] = '\0';
+				pop(&top);
+				printf("now in the stack : %s\n", theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				printf("now in the stack : %s\n", theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				printf("now in the stack : %s\n", theStack[top]);
+				theStack[0][top] = '\0';
+				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
 			}
 		}
 		

@@ -4,6 +4,9 @@ load "myFile"
 hello@string|"Hello World!"|
 x@ 2 + 4
 y@ 4 - 2
+z@9
+myvar@ "a string"
 print|hello|
 print|10|
 print|x|
+print|"end"|

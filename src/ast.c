@@ -75,3 +75,13 @@ expr* expr_create_string(char* string_literal) {
 	printf("exiting expr_create_string\n");
 	return e;
 }
+
+expr* expr_create_string_id(char* string_id) {
+	printf("inside expr_create_string_id\n");
+	expr* e = malloc(sizeof(expr));
+	e->kind = EXPR_STRING_ID;
+	e->string_id = malloc(sizeof(char) * 100);
+	strcpy(e->string_id, string_id);
+	printf("exiting expr_create_string_id\n");
+	return e;
+}
