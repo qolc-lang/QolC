@@ -237,14 +237,18 @@ void parseProgram(parse_state* node) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				printf("now in the stack : %s\n", theStack[top]);
+				strcpy(temp, theStack[top]);
 				theStack[0][top] = '\0';
 				pop(&top);
 				printf("now in the stack : %s\n", theStack[top]);
+				strcpy(temp2, theStack[top]);
 				theStack[0][top] = '\0';
 				pop(&top);
-				printf("now in the stack : %s\n", theStack[top]);
 				theStack[0][top] = '\0';
-				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
+				expr* stringExpr = expr_create_string(temp);
+				decl* string_declaration = decl_create(temp2, NULL, stringExpr, NULL);
+				stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 			}
 		}
 		
