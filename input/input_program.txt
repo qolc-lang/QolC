@@ -1,11 +1,15 @@
 import "mylib" 
 load "myFile"
 
+/@ sample comment
+
 hello@string|"Hello World!"|
-x@ 2 + 4
+s@string
+x@int|0|
 y@ 4 - 2
-z@9
-myvar@ "a string"
+z@0
+t@int
+myvar@"a string"
 print|hello|
 print|10|
 print|x|

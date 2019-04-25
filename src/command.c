@@ -36,10 +36,17 @@ void print_commandList(command* commandNode) {
 				}
 				else {
 					temp_type =  (int)current->aStmt->decl->type->kind;
+					//type of int
+					if (temp_type == 3) {
+						printf("	TYPE_INTEGER\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
+					}
 					//type of string
-					if (temp_type == 4) {
+					else if (temp_type == 4) {
 						printf("	TYPE_STRING\n");
-						printf("		value: %s\n", current->aStmt->decl->value->string_literal);
+						if (current->aStmt->decl->value != NULL)
+							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
 				}
 
