@@ -6,6 +6,9 @@ load "myFile"
 hello@string|"Hello World!"|
 s@string
 x@int|0|
+o@float|0.5|
+p@float
+f@0.5
 y@ 4 - 2
 z@0
 t@int

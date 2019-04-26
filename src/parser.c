@@ -43,6 +43,14 @@ void parseProgram(parse_state* node) {
 			printf("string keyword going in\n");
 			push(theStack[top], &top, current->value);
 		}
+		else if (strcmp(current->value, "int") == 0) {
+			printf("int keyword going in\n");
+			push(theStack[top], &top, current->value);
+		}
+		else if (strcmp(current->value, "float") == 0) {
+			printf("float keyword going in\n");
+			push(theStack[top], &top, current->value);
+		}
 		else if (strcmp(current->value, "@") == 0) {
 			printf("operator @ going in\n");
 			push(theStack[top], &top, current->value);
@@ -71,6 +79,7 @@ void parseProgram(parse_state* node) {
 			//peeking the stack so decreasing value of top
 			pop(&top);
 			if (strcmp(theStack[top], "import") == 0) {
+				doneFlag = 1;
 				printf("import statement is in the stack atm\n");
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
@@ -79,6 +88,7 @@ void parseProgram(parse_state* node) {
 				push_commandList(commandNode, NULL, import_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "load") == 0) {
+				doneFlag = 1;
 				printf("load statement is in the stack atm\n");
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
@@ -96,6 +106,7 @@ void parseProgram(parse_state* node) {
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "string") == 0) {
+				doneFlag = 1;
 				printf("string type is in the stack atm\n");
 				type* string_type = type_create(TYPE_STRING, NULL, NULL);
 				theStack[0][top] = '\0';
@@ -136,6 +147,42 @@ void parseProgram(parse_state* node) {
 				expr* numberExpr = expr_create_string(current->value);
 				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
+			}
+			else if (strcmp(theStack[top], "int") == 0) {
+				doneFlag = 1;
+				printf("int type is in the stack atm\n");
+				type* int_type = type_create(TYPE_INTEGER, NULL, NULL);
+				theStack[0][top] = '\0';
+				pop(&top);
+				printf("the value to work as expr : %s\n", current->value);
+				expr* intExpr = expr_create_string(current->value);
+				strcpy(temp, theStack[top]);
+				printf("now in stack : %s\n", temp);
+				theStack[0][top] = '\0';
+				pop(&top);
+				theStack[0][top] = '\0';
+				printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+				decl* int_declaration = decl_create(temp, int_type, intExpr, NULL);
+				stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, int_decl_stmt, NULL); 
+			}
+			else if (strcmp(theStack[top], "float") == 0) {
+				doneFlag = 1;
+				printf("float type is in the stack atm\n");
+				type* float_type = type_create(TYPE_FLOAT, NULL, NULL);
+				theStack[0][top] = '\0';
+				pop(&top);
+				printf("the value to work as expr : %s\n", current->value);
+				expr* floatExpr = expr_create_string(current->value);
+				strcpy(temp, theStack[top]);
+				printf("now in stack : %s\n", temp);
+				theStack[0][top] = '\0';
+				pop(&top);
+				theStack[0][top] = '\0';
+				printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+				decl* float_declaration = decl_create(temp, float_type, floatExpr, NULL);
+				stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, float_decl_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "+") == 0) {
 				doneFlag = 1;
@@ -232,9 +279,9 @@ void parseProgram(parse_state* node) {
 
 
 		//Check for keyword type
-		if (strcmp(current->type, "keyword") == 0) { 
-			printf("najnjanajnajnajn\n");
-		}
+		// if (strcmp(current->type, "keyword") == 0) { 
+		// 	printf("najnjanajnajnajn\n");
+		// }
 
 		//Check for end of command type
 		if (strcmp(current->type, "end of command") == 0) {
@@ -261,6 +308,14 @@ void parseProgram(parse_state* node) {
 						decl* string_declaration = decl_create(temp, string_type, NULL, NULL);
 						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
 						push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
+					}
+					else if (strcmp(current->value, "float") == 0) {
+						type* float_type = type_create(TYPE_FLOAT, NULL, NULL);
+						decl* float_declaration = decl_create(temp, float_type, NULL, NULL);
+						stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+						push_commandList(commandNode, NULL, float_decl_stmt, NULL); 
+					}
+					else { 
 					}
 				}
 				else { 

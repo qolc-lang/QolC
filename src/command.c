@@ -48,6 +48,12 @@ void print_commandList(command* commandNode) {
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
+					//type of float
+					else if (temp_type == 5) {
+						printf("	TYPE_FLOAT\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
+					}
 				}
 
 			}
