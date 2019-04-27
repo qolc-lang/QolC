@@ -55,6 +55,7 @@ typedef enum {
 	STMT_PRINT,
 	STMT_IMPORT,
 	STMT_LOAD,
+	STMT_ASSERT,
 	STMT_RETURN,
 	STMT_BLOCK
 } stmt_t;

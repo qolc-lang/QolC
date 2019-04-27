@@ -60,9 +60,11 @@ expr* expr_create_integer(int i) {
 }
 
 expr* expr_create_char(char c) {
+	printf("inside expr_create_char\n");
 	expr* e = malloc(sizeof(*e));
 	e->kind = EXPR_CHAR_LITERAL;
 	e->character_value = c;
+	printf("exiting expr_create_char\n");
 	return e;
 }
 

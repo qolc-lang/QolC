@@ -516,7 +516,7 @@ int isChar(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffe
 			}
 			++pos;
 		}while (buffer[pos] != '\n');
-		strcpy(temp_buffer, "character, ");
+		strcpy(temp_buffer, "character,");
 		strcat(temp_buffer, buf);
 		push_lexerList(myNode, temp_buffer);
 		memset(temp_buffer, 0, sizeof(temp_buffer));

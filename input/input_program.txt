@@ -5,10 +5,13 @@ load "myFile"
 
 hello@string|"Hello World!"|
 s@string
+c@char
 x@int|0|
 o@float|0.5|
+e@char|'g|
 p@float
 f@0.5
+d@'d
 y@ 4 - 2
 z@0
 t@int

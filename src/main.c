@@ -16,13 +16,13 @@ int main(int argc, char const *argv[])
 	strcpy(outputFile, "out/output_program.txt");
 
 	*myNode = lex(fileName);
-	//print_lexerList(myNode, outputFile);
+	print_lexerList(myNode, outputFile);
 
-	myState = make_parse_stateList(myNode);
+	//myState = make_parse_stateList(myNode);
 	// sampleState = myState;
 	// print_parseStateList(myState);
 
-	parseProgram(myState);
+	//parseProgram(myState);
 	
 	printf("Exiting program\n");
 	return 0;
