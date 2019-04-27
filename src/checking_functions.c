@@ -515,6 +515,10 @@ int isChar(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffe
 				++j;
 			}
 			++pos;
+			if (buffer[pos] == '|') {
+				--count;
+				break;
+			}
 		}while (buffer[pos] != '\n');
 		strcpy(temp_buffer, "character,");
 		strcat(temp_buffer, buf);
