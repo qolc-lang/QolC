@@ -13,6 +13,7 @@ void parseProgram(parse_state* node) {
 	int atAppeared = 0;
 	int parOK = 0;
 	int numOfPar = 0;
+	int partOfComment = 0;
 	char theStack[200][SIZE];
 	char temp[100], temp2[100];
 	init(&top);
@@ -26,6 +27,8 @@ void parseProgram(parse_state* node) {
 		if (strcmp(current->value, "import") == 0) {
 			printf("import statement to be built\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 			// printf("full now? : %d\n", full(&top, SIZE));
 			// printf("or maybe empty? : %d\n", empty(&top));
 		}
@@ -33,59 +36,93 @@ void parseProgram(parse_state* node) {
 		else if (strcmp(current->value, "load") == 0) {
 			printf("load statement to be built\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		//Check for print in value and push it to the stack
 		else if (strcmp(current->value, "print") == 0) {
 			printf("print statement to be built\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		else if (strcmp(current->value, "string") == 0) {
 			printf("string keyword going in\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		else if (strcmp(current->value, "int") == 0) {
 			printf("int keyword going in\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		else if (strcmp(current->value, "float") == 0) {
 			printf("float keyword going in\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		else if (strcmp(current->value, "char") == 0) {
 			printf("char keyword going in\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		else if (strcmp(current->value, "@") == 0) {
 			printf("operator @ going in\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		else if (strcmp(current->value, "assert") == 0) {
 			printf("statement assert going in\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		else if (strcmp(current->value, "+") == 0) {
 			printf("operator + going in\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		else if (strcmp(current->value, "-") == 0) {
 			printf("operator - going in\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		else if (strcmp(current->value, ">") == 0) {
 			printf("operator > going in\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		else if (strcmp(current->value, "<") == 0) {
 			printf("operator < going in\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		else if (strcmp(current->value, ">=") == 0) {
 			printf("operator >= going in\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		else if (strcmp(current->value, "<=") == 0) {
 			printf("operator <= going in\n");
 			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
+		}
+		else if (strcmp(current->value, "/@") == 0) {
+			printf("comment going in\n");
+			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
 		}
 		// else if (strcmp(current->value, "|") == 0) {
 		// 	printf("parenthesis going in\n");
@@ -278,6 +315,14 @@ void parseProgram(parse_state* node) {
 
 		//Check for identifier type
 		if (strcmp(current->type, "identifier") == 0) {
+
+			if (partOfComment == 1) {
+				printf("last part of comment\n");
+				current = current->next;
+				partOfComment = 0;
+				continue;
+			}
+
 			//peeking the stack so decreasing value of top
 			pop(&top);
 			int doneFlag = 0;
@@ -295,6 +340,12 @@ void parseProgram(parse_state* node) {
 				expr* identifierExpr = expr_create_string(current->value);
 				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
+			}
+			else if (strcmp(theStack[top], "/@") == 0) {
+				printf("part of comment %s\n", current->value);
+				current = current->next;
+				++top;
+				continue;
 			}
 			else {
 				if ((empty(&top) == 0) && (doneFlag == 0)) {
@@ -361,8 +412,20 @@ void parseProgram(parse_state* node) {
 		if (strcmp(current->type, "end of command") == 0) {
 			if (top != 0) {
 				printf("--------------------------------------------- \n");
-				theStack[0][top] = '\0';
+
 				pop(&top);
+				if (strcmp(theStack[top], "/@") == 0) {
+					printf("end of comment\n");
+					theStack[0][top] = '\0';
+					printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+					current = current->next;
+					//next value is a part of comment so need to be flagged
+					partOfComment = 1;
+					continue;
+				}
+
+				theStack[0][top] = '\0';
+				//pop(&top);
 				printf("now in the stack : %s\n", theStack[top]);
 				strcpy(temp, theStack[top]);
 				theStack[0][top] = '\0';

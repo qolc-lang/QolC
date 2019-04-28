@@ -1,7 +1,7 @@
 import "mylib" 
 load "myFile"
 
-/@ sample comment
+/@ sample comment jdenjfne fjrnjfnr frnjfr
 
 hello@string|"Hello World!"|
 s@string
