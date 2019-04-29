@@ -79,8 +79,18 @@ void print_commandList(command* commandNode) {
 			}
 		}
 		else if (current->anExpr != NULL) {
-			//printf("we have an expr\n");
-			//printf("the expr kind : %d\n", current->anExpr->kind);
+			int val = (int)current->anExpr->kind;
+			if (val == 8) {
+				printf("EXPR_INCREMENT\n");
+				printf("	identifier : %s\n", current->anExpr->string_literal);
+			}
+			else if (val == 9) {
+				printf("EXPR_DECREMENT\n");
+				printf("	identifier : %s\n", current->anExpr->string_literal);
+			}
+			else {
+
+			}
 		}
 		else {
 

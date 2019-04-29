@@ -29,6 +29,7 @@ stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nex
 }
 
 expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal) {
+	printf("inside expr_create %d\n", kind);
 	expr* e = malloc(sizeof(*e));
 	e->kind = kind;
 	e->left = left;
@@ -37,6 +38,7 @@ expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char 
 	e->character_value = character_value;
 	e->string_literal = malloc(sizeof(char) * 100);
 	strcpy(e->string_literal, string_literal);
+	printf("exiting expr_create\n");
 	return e;
 }
 

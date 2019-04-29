@@ -14,6 +14,7 @@ void parseProgram(parse_state* node) {
 	int parOK = 0;
 	int numOfPar = 0;
 	int partOfComment = 0;
+	int notTheEndFlag = 0;		//flag that helps when is not really the end of command
 	char theStack[200][SIZE];
 	char temp[100], temp2[100];
 	init(&top);
@@ -90,6 +91,32 @@ void parseProgram(parse_state* node) {
 		}
 		else if (strcmp(current->value, "-") == 0) {
 			printf("operator - going in\n");
+			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
+		}
+		else if (strcmp(current->value, "++") == 0) {
+			printf("operator ++ going in\n");
+			push(theStack[top], &top, current->value);
+			current = current->next;
+			notTheEndFlag = 1;
+			continue;
+		}
+		else if (strcmp(current->value, "--") == 0) {
+			printf("operator -- going in\n");
+			push(theStack[top], &top, current->value);
+			current = current->next;
+			notTheEndFlag = 1;
+			continue;
+		}
+		else if (strcmp(current->value, "+=") == 0) {
+			printf("operator += going in\n");
+			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
+		}
+		else if (strcmp(current->value, "-=") == 0) {
+			printf("operator -= going in\n");
 			push(theStack[top], &top, current->value);
 			current = current->next;
 			continue;
@@ -327,6 +354,7 @@ void parseProgram(parse_state* node) {
 			pop(&top);
 			int doneFlag = 0;
 			if (strcmp(theStack[top], "@") == 0) {
+				doneFlag = 1;
 				printf("@ operator is in the stack atm\n");
 				printf("going to insert value : %s\n", current->value);
 				//increasing top value
@@ -334,6 +362,7 @@ void parseProgram(parse_state* node) {
 				push(theStack[top], &top, current->value);
 			}
 			else if (strcmp(theStack[top], "print") == 0) {
+				doneFlag = 1;
 				printf("print is in the stack atm\n");
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
@@ -342,10 +371,29 @@ void parseProgram(parse_state* node) {
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "/@") == 0) {
+				doneFlag = 1;
 				printf("part of comment %s\n", current->value);
 				current = current->next;
 				++top;
 				continue;
+			}
+			else if (strcmp(theStack[top], "++") == 0) {
+				doneFlag = 1;
+				printf("++ is in the stack atm\n");
+				theStack[0][top] = '\0';
+				printf("the value to work as expr : %s\n", current->value);
+				expr* incrementExpr = expr_create(EXPR_INCREMENT, NULL, NULL, 0, '\0', current->value);
+				push_commandList(commandNode, NULL, NULL, incrementExpr);
+				notTheEndFlag = 0; 
+			}
+			else if (strcmp(theStack[top], "--") == 0) {
+				doneFlag = 1;
+				printf("-- is in the stack atm\n");
+				theStack[0][top] = '\0';
+				printf("the value to work as expr : %s\n", current->value);
+				expr* decrementExpr = expr_create(EXPR_DECREMENT, NULL, NULL, 0, '\0', current->value);
+				push_commandList(commandNode, NULL, NULL, decrementExpr);
+				notTheEndFlag = 0;
 			}
 			else {
 				if ((empty(&top) == 0) && (doneFlag == 0)) {
@@ -412,6 +460,12 @@ void parseProgram(parse_state* node) {
 		if (strcmp(current->type, "end of command") == 0) {
 			if (top != 0) {
 				printf("--------------------------------------------- \n");
+
+				if (notTheEndFlag == 1)
+				{
+					current = current->next;
+					continue;
+				}
 
 				pop(&top);
 				if (strcmp(theStack[top], "/@") == 0) {

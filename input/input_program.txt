@@ -20,3 +20,8 @@ print|hello|
 print|10|
 print|x|
 print|"end"|
+
+--d
+++y
+x--
+g++
