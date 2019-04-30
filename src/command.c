@@ -80,7 +80,12 @@ void print_commandList(command* commandNode) {
 		}
 		else if (current->anExpr != NULL) {
 			int val = (int)current->anExpr->kind;
-			if (val == 8) {
+			if (val == 4) {
+				printf("EXPR_ADD_ASSIGNMENT\n");
+				printf("	left : %s\n", current->anExpr->left->string_literal);
+				printf("	right : %s\n", current->anExpr->right->string_literal);
+			}
+			else if (val == 8) {
 				printf("EXPR_INCREMENT\n");
 				printf("	identifier : %s\n", current->anExpr->string_literal);
 			}

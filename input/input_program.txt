@@ -25,3 +25,5 @@ print|"end"|
 ++y
 x--
 g++
+g += d
+y += 6

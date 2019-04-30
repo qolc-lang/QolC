@@ -113,12 +113,14 @@ void parseProgram(parse_state* node) {
 			printf("operator += going in\n");
 			push(theStack[top], &top, current->value);
 			current = current->next;
+			notTheEndFlag = 1;
 			continue;
 		}
 		else if (strcmp(current->value, "-=") == 0) {
 			printf("operator -= going in\n");
 			push(theStack[top], &top, current->value);
 			current = current->next;
+			notTheEndFlag = 1;
 			continue;
 		}
 		else if (strcmp(current->value, ">") == 0) {
@@ -320,6 +322,24 @@ void parseProgram(parse_state* node) {
 				stmt* decl_stmt = stmt_create(STMT_DECL, identifier_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, decl_stmt, NULL); 
 			}
+			else if (strcmp(theStack[top], "+=") == 0) {
+				doneFlag = 1;
+				printf("operator += is in the stack atm\n");
+				theStack[0][top] = '\0';
+				pop(&top);
+				printf("now in the stack : %s\n", theStack[top]);
+				printf("the value to work as expr : %s\n", current->value);
+				strcpy(temp, current->value);
+				strcpy(temp2, theStack[top]);
+				expr* leftExpr = expr_create_string(temp2);
+				expr* rightExpr = expr_create_string(temp);
+				printf("doess hhththt\n");
+				theStack[0][top] = '\0';
+				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
+				expr* addAssignmentExpr = expr_create(EXPR_ADD_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
+				push_commandList(commandNode, NULL, NULL, addAssignmentExpr);
+				notTheEndFlag = 0;
+			}
 			else {
 				if ((empty(&top) == 0) && (doneFlag == 0)) {
 					printf("stack not empty : %d\n", top);
@@ -393,6 +413,24 @@ void parseProgram(parse_state* node) {
 				printf("the value to work as expr : %s\n", current->value);
 				expr* decrementExpr = expr_create(EXPR_DECREMENT, NULL, NULL, 0, '\0', current->value);
 				push_commandList(commandNode, NULL, NULL, decrementExpr);
+				notTheEndFlag = 0;
+			}
+			else if (strcmp(theStack[top], "+=") == 0) {
+				doneFlag = 1;
+				printf("operator += is in the stack atm\n");
+				theStack[0][top] = '\0';
+				pop(&top);
+				printf("now in the stack : %s\n", theStack[top]);
+				printf("the value to work as expr : %s\n", current->value);
+				strcpy(temp, current->value);
+				strcpy(temp2, theStack[top]);
+				expr* leftExpr = expr_create_string(temp2);
+				expr* rightExpr = expr_create_string(temp);
+				printf("doess hhththt\n");
+				theStack[0][top] = '\0';
+				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
+				expr* addAssignmentExpr = expr_create(EXPR_ADD_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
+				push_commandList(commandNode, NULL, NULL, addAssignmentExpr);
 				notTheEndFlag = 0;
 			}
 			else {

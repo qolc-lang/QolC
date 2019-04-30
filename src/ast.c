@@ -37,7 +37,8 @@ expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char 
 	e->integer_value = integer_value;
 	e->character_value = character_value;
 	e->string_literal = malloc(sizeof(char) * 100);
-	strcpy(e->string_literal, string_literal);
+	if (string_literal != NULL)
+		strcpy(e->string_literal, string_literal);
 	printf("exiting expr_create\n");
 	return e;
 }
