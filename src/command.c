@@ -85,6 +85,21 @@ void print_commandList(command* commandNode) {
 				printf("	left : %s\n", current->anExpr->left->string_literal);
 				printf("	right : %s\n", current->anExpr->right->string_literal);
 			}
+			else if (val == 5) {
+				printf("EXPR_SUB_ASSIGNMENT\n");
+				printf("	left : %s\n", current->anExpr->left->string_literal);
+				printf("	right : %s\n", current->anExpr->right->string_literal);
+			}
+			else if (val == 6) {
+				printf("EXPR_MUL_ASSIGNMENT\n");
+				printf("	left : %s\n", current->anExpr->left->string_literal);
+				printf("	right : %s\n", current->anExpr->right->string_literal);
+			}
+			else if (val == 7) {
+				printf("EXPR_DIV_ASSIGNMENT\n");
+				printf("	left : %s\n", current->anExpr->left->string_literal);
+				printf("	right : %s\n", current->anExpr->right->string_literal);
+			}
 			else if (val == 8) {
 				printf("EXPR_INCREMENT\n");
 				printf("	identifier : %s\n", current->anExpr->string_literal);
