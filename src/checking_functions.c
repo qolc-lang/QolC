@@ -190,7 +190,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 	memset(buf, 0, sizeof(buf));
 
 	if (buffer[pos] == '#') {
-		strcpy(temp_buffer, "special symbol, #");
+		strcpy(temp_buffer, "special symbol,#");
 		push_lexerList(myNode, temp_buffer);
 		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp10;
@@ -198,7 +198,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 	}
 
 	if (buffer[pos] == '\\') {
-		strcpy(temp_buffer, "return symbol, \\");
+		strcpy(temp_buffer, "return symbol,\\");
 		push_lexerList(myNode, temp_buffer);
 		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp10;
@@ -206,7 +206,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 	}
 
 	if (buffer[pos] == '[') {
-		strcpy(temp_buffer, "array start, [");
+		strcpy(temp_buffer, "array start,[");
 		push_lexerList(myNode, temp_buffer);
 		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
@@ -214,7 +214,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 	}
 
 	if (buffer[pos] == ']') {
-		strcpy(temp_buffer, "array end, ]");
+		strcpy(temp_buffer, "array end,]");
 		push_lexerList(myNode, temp_buffer);
 		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
@@ -222,7 +222,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 	}
 
 	if (buffer[pos] == '!') {
-		strcpy(temp_buffer, "special symbol, !");
+		strcpy(temp_buffer, "special symbol,!");
 		push_lexerList(myNode, temp_buffer);
 		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
@@ -230,7 +230,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 	}
 
 	if (buffer[pos] == '&') {
-		strcpy(temp_buffer, "reference symbol, &");
+		strcpy(temp_buffer, "reference symbol,&");
 		push_lexerList(myNode, temp_buffer);
 		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
@@ -238,7 +238,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 	}
 
 	if (buffer[pos] == ',') {
-		strcpy(temp_buffer, "comma, ,");
+		strcpy(temp_buffer, "comma,,");
 		push_lexerList(myNode, temp_buffer);
 		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;
@@ -246,7 +246,7 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 	}
 
 	if (buffer[pos] == '^'){
-		strcpy(temp_buffer, "pointer symbol, ^");
+		strcpy(temp_buffer, "pointer symbol,^");
 		push_lexerList(myNode, temp_buffer);
 		memset(temp_buffer, 0, sizeof(temp_buffer));
 		*flag = temp2;

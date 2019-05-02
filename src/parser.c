@@ -167,6 +167,12 @@ void parseProgram(parse_state* node) {
 			current = current->next;
 			continue;
 		}
+		else if (strcmp(current->value, "^") == 0) {
+			printf("operator ^ going in\n");
+			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
+		}
 		// else if (strcmp(current->value, "|") == 0) {
 		// 	printf("parenthesis going in\n");
 		// 	push(theStack[top], &top, current->value);
@@ -612,9 +618,33 @@ void parseProgram(parse_state* node) {
 
 
 		//Check for keyword type
-		// if (strcmp(current->type, "keyword") == 0) { 
-		// 	printf("najnjanajnajnajn\n");
-		// }
+		if (strcmp(current->type, "keyword") == 0) { 
+			int doneFlag = 0;
+			if (strcmp(current->value, "null") == 0) {
+				pop(&top);
+				if (strcmp(theStack[top], "float") == 0) {
+					doneFlag = 1;
+					printf("float (pointer) type is in the stack atm\n");
+					type* floatPointer_type = type_create(TYPE_FLOAT_POINTER, NULL, NULL);
+					theStack[0][top] = '\0';
+					pop(&top);
+					printf("now in stack should be pointer symbol : %s\n", theStack[top]);
+					theStack[0][top] = '\0';
+					pop(&top);
+					printf("the value to work as expr : %s\n", current->value);
+					expr* floatExpr = expr_create_string(current->value);
+					strcpy(temp, theStack[top]);
+					printf("now in stack : %s\n", temp);
+					theStack[0][top] = '\0';
+					pop(&top);
+					theStack[0][top] = '\0';
+					printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+					decl* float_declaration = decl_create(temp, floatPointer_type, floatExpr, NULL);
+					stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+					push_commandList(commandNode, NULL, float_decl_stmt, NULL); 
+				}
+			}
+		}
 
 		//Check for end of command type
 		if (strcmp(current->type, "end of command") == 0) {

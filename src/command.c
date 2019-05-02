@@ -36,12 +36,13 @@ void print_commandList(command* commandNode) {
 				}
 				else {
 					temp_type =  (int)current->aStmt->decl->type->kind;
-					//type of int
+					//type of char
 					if (temp_type == 2) {
 						printf("	TYPE_CHARACTER\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
+					//type of int
 					else if (temp_type == 3) {
 						printf("	TYPE_INTEGER\n");
 						if (current->aStmt->decl->value != NULL)
@@ -56,6 +57,12 @@ void print_commandList(command* commandNode) {
 					//type of float
 					else if (temp_type == 5) {
 						printf("	TYPE_FLOAT\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					//type of float pointer
+					else if (temp_type == 6) {
+						printf("	TYPE_FLOAT_POINTER\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
