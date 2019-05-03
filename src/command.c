@@ -66,6 +66,12 @@ void print_commandList(command* commandNode) {
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
+					//type of int pointer
+					else if (temp_type == 7) {
+						printf("	TYPE_INT_POINTER\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
+					}
 				}
 
 			}

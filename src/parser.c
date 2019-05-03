@@ -643,6 +643,27 @@ void parseProgram(parse_state* node) {
 					stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
 					push_commandList(commandNode, NULL, float_decl_stmt, NULL); 
 				}
+				else if (strcmp(theStack[top], "int") == 0) {
+					doneFlag = 1;
+					printf("int (pointer) type is in the stack atm\n");
+					type* intPointer_type = type_create(TYPE_INT_POINTER, NULL, NULL);
+					theStack[0][top] = '\0';
+					pop(&top);
+					printf("now in stack should be pointer symbol : %s\n", theStack[top]);
+					theStack[0][top] = '\0';
+					pop(&top);
+					printf("the value to work as expr : %s\n", current->value);
+					expr* intExpr = expr_create_string(current->value);
+					strcpy(temp, theStack[top]);
+					printf("now in stack : %s\n", temp);
+					theStack[0][top] = '\0';
+					pop(&top);
+					theStack[0][top] = '\0';
+					printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+					decl* int_declaration = decl_create(temp, intPointer_type, intExpr, NULL);
+					stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+					push_commandList(commandNode, NULL, int_decl_stmt, NULL); 
+				}
 			}
 		}
 
