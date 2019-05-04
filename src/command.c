@@ -72,6 +72,18 @@ void print_commandList(command* commandNode) {
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
+					//type of char pointer
+					else if (temp_type == 8) {
+						printf("	TYPE_CHAR_POINTER\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					//type of string pointer
+					else if (temp_type == 9) {
+						printf("	TYPE_STRING_POINTER\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
+					}
 				}
 
 			}
