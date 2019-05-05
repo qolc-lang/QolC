@@ -479,14 +479,14 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 		if (buffer[pos] == '.'){
 			++pos;
 			++count;
-			strcpy(temp_buffer, "operator, ..");
+			strcpy(temp_buffer, "operator,..");
 			push_lexerList(myNode, temp_buffer);
 			memset(temp_buffer, 0, sizeof(temp_buffer));
 			*flag = temp1;;
 			return count;
 		} 
 		else {
-			strcpy(temp_buffer, "operator, .");
+			strcpy(temp_buffer, "operator,.");
 			push_lexerList(myNode, temp_buffer);
 			memset(temp_buffer, 0, sizeof(temp_buffer));
 			*flag = temp1;

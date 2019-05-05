@@ -99,6 +99,10 @@ void print_commandList(command* commandNode) {
 				printf("STMT_LOAD\n");
 				printf("	expr: %s\n", current->aStmt->expr->string_literal);
 			}
+			else if (value == 7) {
+				printf("STMT_DELETE\n");
+				printf("	expr: %s\n", current->aStmt->expr->string_literal);
+			}
 			else {
 
 			}

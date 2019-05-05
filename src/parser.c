@@ -47,6 +47,12 @@ void parseProgram(parse_state* node) {
 			current = current->next;
 			continue;
 		}
+		else if (strcmp(current->value, "delete") == 0) {
+			printf("print statement to be built\n");
+			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
+		}
 		else if (strcmp(current->value, "string") == 0) {
 			printf("string keyword going in\n");
 			push(theStack[top], &top, current->value);
@@ -423,15 +429,6 @@ void parseProgram(parse_state* node) {
 					push(theStack[top], &top, current->value);
 				}
 			}
-
-			// if ((empty(&top) == 0) && (doneFlag == 0)) {
-			// 	printf("stack not empty : %d\n", top);
-			// 	printf("going to insert value : %s\n", current->value);
-			// 	//increasing top value
-			// 	++top;
-			// 	push(theStack[top], &top, current->value);
-			// }
-
 		}
 
 		//Check for identifier type
@@ -463,6 +460,15 @@ void parseProgram(parse_state* node) {
 				expr* identifierExpr = expr_create_string(current->value);
 				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
+			}
+			else if (strcmp(theStack[top], "delete") == 0) {
+				doneFlag = 1;
+				printf("delete is in the stack atm\n");
+				theStack[0][top] = '\0';
+				printf("the value to work as expr : %s\n", current->value);
+				expr* identifierExpr = expr_create_string(current->value);
+				stmt* delete_stmt = stmt_create(STMT_DELETE, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, delete_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "/@") == 0) {
 				doneFlag = 1;

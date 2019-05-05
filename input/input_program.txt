@@ -38,3 +38,5 @@ m@float^|null|
 j@int^|null|
 b@string^|null|
 v@char^|null|
+
+delete my_node
