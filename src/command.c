@@ -36,8 +36,14 @@ void print_commandList(command* commandNode) {
 				}
 				else {
 					temp_type =  (int)current->aStmt->decl->type->kind;
+					//type of bool
+					if (temp_type == 1) {
+						printf("	TYPE_BOOLEAN\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
+					}
 					//type of char
-					if (temp_type == 2) {
+					else if (temp_type == 2) {
 						printf("	TYPE_CHARACTER\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);

@@ -5,6 +5,7 @@ load "myFile"
 
 hello@string|"Hello World!"|
 s@string
+flag@bool
 c@char
 x@int|0|
 o@float|0.5|

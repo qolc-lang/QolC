@@ -77,6 +77,12 @@ void parseProgram(parse_state* node) {
 			current = current->next;
 			continue;
 		}
+		else if (strcmp(current->value, "bool") == 0) {
+			printf("bool keyword going in\n");
+			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
+		}
 		else if (strcmp(current->value, "@") == 0) {
 			printf("operator @ going in\n");
 			push(theStack[top], &top, current->value);
@@ -771,7 +777,14 @@ void parseProgram(parse_state* node) {
 						stmt* char_decl_stmt = stmt_create(STMT_DECL, char_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
 						push_commandList(commandNode, NULL, char_decl_stmt, NULL); 
 					}
+					else if (strcmp(current->value, "bool") == 0) {
+						type* bool_type = type_create(TYPE_BOOLEAN, NULL, NULL);
+						decl* bool_declaration = decl_create(temp, bool_type, NULL, NULL);
+						stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+						push_commandList(commandNode, NULL, bool_decl_stmt, NULL); 
+					}
 					else { 
+						printf("current->noononon %s\n", current->value);
 					}
 				}
 				else { 
