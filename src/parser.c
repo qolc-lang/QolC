@@ -427,7 +427,8 @@ void parseProgram(parse_state* node) {
 				notTheEndFlag = 0;
 			}
 			else {
-				if ((empty(&top) == 0) && (doneFlag == 0)) {
+				printf("the top : %d\n", top);
+				if ((top != -1) && (doneFlag == 0)) {
 					printf("stack not empty : %d\n", top);
 					printf("going to insert value : %s\n", current->value);
 					//increasing top value
@@ -444,6 +445,16 @@ void parseProgram(parse_state* node) {
 				printf("last part of comment\n");
 				current = current->next;
 				partOfComment = 0;
+				continue;
+			}
+
+			if (strcmp(theStack[top], "@") == 0) {
+				printf("@ operator is in the stack atm\n");
+				printf("going to insert value : %s\n", current->value);
+				//increasing top value
+				++top;
+				push(theStack[top], &top, current->value);
+				current = current->next;
 				continue;
 			}
 
@@ -574,7 +585,8 @@ void parseProgram(parse_state* node) {
 				notTheEndFlag = 0;
 			}
 			else {
-				if ((empty(&top) == 0) && (doneFlag == 0)) {
+				printf("the top %d\n", top);
+				if ((top != -1) && (doneFlag == 0)) {
 					printf("stack not empty : %d\n", top);
 					printf("going to insert value : %s\n", current->value);
 					//increasing top value
@@ -719,6 +731,28 @@ void parseProgram(parse_state* node) {
 					push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 				}
 			}
+			else if (strcmp(current->value, "true") == 0) {
+				pop(&top);
+				if (strcmp(theStack[top], "bool") == 0) {
+					doneFlag = 1;
+					printf("bool type is in the stack atm\n");
+					type* bool_type = type_create(TYPE_BOOLEAN, NULL, NULL);
+					theStack[0][top] = '\0';
+					pop(&top);
+					printf("the value to work as expr : %s\n", current->value);
+					expr* boolExpr = expr_create_string(current->value);
+					strcpy(temp, theStack[top]);
+					printf("now in stack : %s\n", temp);
+					theStack[0][top] = '\0';
+					pop(&top);
+					theStack[0][top] = '\0';
+					printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+					decl* bool_declaration = decl_create(temp, bool_type, boolExpr, NULL);
+					stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+					push_commandList(commandNode, NULL, bool_decl_stmt, NULL); 
+				}
+			}
+				
 		}
 
 		//Check for end of command type

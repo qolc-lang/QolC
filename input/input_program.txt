@@ -9,6 +9,7 @@ flag@bool
 c@char
 x@int|0|
 o@float|0.5|
+flag1@bool|true|
 e@char|'g|
 p@float
 f@0.5
