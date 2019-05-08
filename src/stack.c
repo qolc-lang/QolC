@@ -14,7 +14,8 @@ void push(char* st, int* top, char* element)
 
 void pop(int* top)
 {
-    --*top;
+    if (*top > 0)
+        --*top;
 }
 
 int full(int *top, const int size)

@@ -367,6 +367,7 @@ void parseProgram(parse_state* node) {
 				expr* rightExpr = expr_create_string(temp);
 				printf("doess hhththt\n");
 				theStack[0][top] = '\0';
+				pop(&top);
 				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
 				expr* addAssignmentExpr = expr_create(EXPR_ADD_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
 				push_commandList(commandNode, NULL, NULL, addAssignmentExpr);
@@ -385,6 +386,7 @@ void parseProgram(parse_state* node) {
 				expr* rightExpr = expr_create_string(temp);
 				printf("doess hhththt\n");
 				theStack[0][top] = '\0';
+				pop(&top);
 				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
 				expr* subAssignmentExpr = expr_create(EXPR_SUB_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
 				push_commandList(commandNode, NULL, NULL, subAssignmentExpr);
@@ -403,6 +405,7 @@ void parseProgram(parse_state* node) {
 				expr* rightExpr = expr_create_string(temp);
 				printf("doess hhththt\n");
 				theStack[0][top] = '\0';
+				pop(&top);
 				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
 				expr* mulAssignmentExpr = expr_create(EXPR_MUL_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
 				push_commandList(commandNode, NULL, NULL, mulAssignmentExpr);
@@ -421,6 +424,7 @@ void parseProgram(parse_state* node) {
 				expr* rightExpr = expr_create_string(temp);
 				printf("doess hhththt\n");
 				theStack[0][top] = '\0';
+				pop(&top);
 				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
 				expr* divAssignmentExpr = expr_create(EXPR_DIV_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
 				push_commandList(commandNode, NULL, NULL, divAssignmentExpr);
@@ -428,7 +432,7 @@ void parseProgram(parse_state* node) {
 			}
 			else {
 				printf("the top : %d\n", top);
-				if ((top != -1) && (doneFlag == 0)) {
+				if ((empty(&top) == 0) && (doneFlag == 0)) {
 					printf("stack not empty : %d\n", top);
 					printf("going to insert value : %s\n", current->value);
 					//increasing top value
@@ -524,6 +528,7 @@ void parseProgram(parse_state* node) {
 				expr* leftExpr = expr_create_string(temp2);
 				expr* rightExpr = expr_create_string(temp);
 				printf("doess hhththt\n");
+				pop(&top);
 				theStack[0][top] = '\0';
 				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
 				expr* addAssignmentExpr = expr_create(EXPR_ADD_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
@@ -542,6 +547,7 @@ void parseProgram(parse_state* node) {
 				expr* leftExpr = expr_create_string(temp2);
 				expr* rightExpr = expr_create_string(temp);
 				printf("doess hhththt\n");
+				pop(&top);
 				theStack[0][top] = '\0';
 				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
 				expr* subAssignmentExpr = expr_create(EXPR_SUB_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
@@ -560,6 +566,7 @@ void parseProgram(parse_state* node) {
 				expr* leftExpr = expr_create_string(temp2);
 				expr* rightExpr = expr_create_string(temp);
 				printf("doess hhththt\n");
+				pop(&top);
 				theStack[0][top] = '\0';
 				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
 				expr* mulAssignmentExpr = expr_create(EXPR_MUL_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
@@ -578,6 +585,7 @@ void parseProgram(parse_state* node) {
 				expr* leftExpr = expr_create_string(temp2);
 				expr* rightExpr = expr_create_string(temp);
 				printf("doess hhththt\n");
+				pop(&top);
 				theStack[0][top] = '\0';
 				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
 				expr* divAssignmentExpr = expr_create(EXPR_DIV_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
@@ -586,12 +594,19 @@ void parseProgram(parse_state* node) {
 			}
 			else {
 				printf("the top %d\n", top);
-				if ((top != -1) && (doneFlag == 0)) {
+				if ((empty(&top) == 0) && (doneFlag == 0)) {
 					printf("stack not empty : %d\n", top);
 					printf("going to insert value : %s\n", current->value);
 					//increasing top value
 					++top;
 					push(theStack[top], &top, current->value);
+				}
+				else {
+					printf("stack empty : %d\n", top);
+					printf("going to insert value : %s\n", current->value);
+					//increasing top value
+					++top;
+					push(theStack[top], &top, current->value);	
 				}
 			}
 		}
