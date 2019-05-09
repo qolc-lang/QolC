@@ -746,7 +746,7 @@ void parseProgram(parse_state* node) {
 					push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 				}
 			}
-			else if (strcmp(current->value, "true") == 0) {
+			else if ((strcmp(current->value, "true") == 0) || (strcmp(current->value, "false") == 0)) {
 				pop(&top);
 				if (strcmp(theStack[top], "bool") == 0) {
 					doneFlag = 1;
@@ -765,6 +765,9 @@ void parseProgram(parse_state* node) {
 					decl* bool_declaration = decl_create(temp, bool_type, boolExpr, NULL);
 					stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
 					push_commandList(commandNode, NULL, bool_decl_stmt, NULL); 
+				}
+				else {
+					printf("nananananannanan!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 				}
 			}
 				
@@ -831,6 +834,15 @@ void parseProgram(parse_state* node) {
 						decl* bool_declaration = decl_create(temp, bool_type, NULL, NULL);
 						stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
 						push_commandList(commandNode, NULL, bool_decl_stmt, NULL); 
+					}
+					else if ((strcmp(current->value, "false") == 0) || (strcmp(current->value, "true") == 0)) {
+						printf("ndhebdbebd!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+						pop(&top);
+						theStack[0][top] = '\0';
+						expr* stringExpr = expr_create_string(current->value);
+						decl* string_declaration = decl_create(temp, NULL, stringExpr, NULL);
+						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+						push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 					}
 					else { 
 						printf("current->noononon %s\n", current->value);
