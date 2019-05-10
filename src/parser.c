@@ -658,6 +658,15 @@ void parseProgram(parse_state* node) {
 
 		//Check for keyword type
 		if (strcmp(current->type, "keyword") == 0) { 
+
+
+			if (strcmp(current->value, "break") == 0) {
+				stmt* break_decl_stmt = stmt_create(STMT_BREAK, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, break_decl_stmt, NULL); 
+				current = current->next;
+				continue;
+			}
+
 			int doneFlag = 0;
 			if (strcmp(current->value, "null") == 0) {
 				pop(&top);

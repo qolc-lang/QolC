@@ -69,6 +69,8 @@ typedef enum {
 	STMT_DEFER,
 	STMT_ASSERT,
 	STMT_RETURN,
+	STMT_BREAK,
+	STMT_CONTINUE,
 	STMT_BLOCK
 } stmt_t;
 
