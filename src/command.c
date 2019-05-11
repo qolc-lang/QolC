@@ -113,6 +113,10 @@ void print_commandList(command* commandNode) {
 				printf("STMT_BREAK\n");
 				//printf("	expr: %s\n", current->aStmt->expr->string_literal);
 			}
+			else if (value == 12) {
+				printf("STMT_CONTINUE\n");
+				//printf("	expr: %s\n", current->aStmt->expr->string_literal);
+			}
 			else {
 
 			}

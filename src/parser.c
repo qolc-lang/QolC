@@ -666,6 +666,12 @@ void parseProgram(parse_state* node) {
 				current = current->next;
 				continue;
 			}
+			else if (strcmp(current->value, "continue") == 0) {
+				stmt* cont_decl_stmt = stmt_create(STMT_CONTINUE, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, cont_decl_stmt, NULL); 
+				current = current->next;
+				continue;
+			}
 
 			int doneFlag = 0;
 			if (strcmp(current->value, "null") == 0) {
