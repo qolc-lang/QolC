@@ -672,6 +672,15 @@ void parseProgram(parse_state* node) {
 				current = current->next;
 				continue;
 			}
+			else if (strcmp(current->value, "return") == 0) {
+				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
+				current = current->next;
+				continue;
+			}
+			else {
+
+			}
 
 			int doneFlag = 0;
 			if (strcmp(current->value, "null") == 0) {
