@@ -1,6 +1,7 @@
 #include "command.h"
 
 void push_commandList(command* commandNode, decl* aDecl, stmt* aStmt, expr* anExpr) {
+	printf("in push_commandList\n");
     command* current = commandNode;
     while (current->next != NULL) {
     	current = current->next;
@@ -10,6 +11,7 @@ void push_commandList(command* commandNode, decl* aDecl, stmt* aStmt, expr* anEx
     current->next->aStmt = aStmt;
     current->next->anExpr = anExpr;
     current->next->next = NULL;
+    printf("ending push_commandList\n");
 }
 
 void print_commandList(command* commandNode) {
@@ -111,7 +113,13 @@ void print_commandList(command* commandNode) {
 			}
 			else if (value == 10) {
 				printf("STMT_RETURN\n");
-				//printf("	expr: %s\n", current->aStmt->expr->string_literal);
+				if (current->aStmt->expr == NULL) {
+					current = current->next;
+					continue;
+				}
+				else {
+					printf("	expr: %s\n", current->aStmt->expr->string_literal);
+				}
 			}
 			else if (value == 11) {
 				printf("STMT_BREAK\n");

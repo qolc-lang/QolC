@@ -676,6 +676,15 @@ void parseProgram(parse_state* node) {
 				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
 				current = current->next;
+				if (strcmp(current->type, "identifier") == 0) {
+					printf("the value to work as expr : %s\n", current->value);
+					expr* identifierExpr = expr_create_string(current->value);
+					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL);
+					push_commandList(commandNode, NULL, ret_stmt, NULL); 
+					printf("dodnednedendejn\n");
+					current = current->next;
+					printf("frnjfnrjnfjrnfjrn\n");
+				}
 				continue;
 			}
 			else {
