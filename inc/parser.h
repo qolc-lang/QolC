@@ -10,4 +10,6 @@ parse_state* parseNumber(char* token);
 parse_state* parseString(char* token);
 void parseExpression(char* token);
 
+void parsing(parse_state* current, command* commandNode);
+
 #endif

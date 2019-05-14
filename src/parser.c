@@ -8,6 +8,14 @@ void parseProgram(parse_state* node) {
 	
 	command* commandNode = malloc(sizeof(command) *2);
 	parse_state * current = node;
+	parsing(current, commandNode);
+	print_commandList(commandNode);
+	return;
+}
+
+
+void parsing(parse_state* current, command* commandNode) 
+{
 	const int SIZE = 100;
 	int top;
 	int atAppeared = 0;
@@ -16,6 +24,7 @@ void parseProgram(parse_state* node) {
 	int partOfComment = 0;
 	int notTheEndFlag = 0;		//flag that helps when is not really the end of command
 	char theStack[200][SIZE];
+	char tempStack[200][SIZE];
 	char temp[100], temp2[100];
 	init(&top);
 	memset(temp, 0, sizeof(temp));
@@ -681,11 +690,12 @@ void parseProgram(parse_state* node) {
 					expr* identifierExpr = expr_create_string(current->value);
 					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL);
 					push_commandList(commandNode, NULL, ret_stmt, NULL); 
-					printf("dodnednedendejn\n");
 					current = current->next;
-					printf("frnjfnrjnfjrnfjrn\n");
 				}
 				continue;
+			}
+			else if (strcmp(current->value, "assert") == 0) {
+				printf("in assert loop\n");
 			}
 			else {
 
@@ -896,8 +906,6 @@ void parseProgram(parse_state* node) {
 		
 		current = current->next;
 	}
-
-	print_commandList(commandNode);
 
 	return;
 }

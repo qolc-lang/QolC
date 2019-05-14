@@ -48,3 +48,5 @@ break
 continue
 return
 return x
+
+assert
