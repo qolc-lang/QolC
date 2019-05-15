@@ -101,6 +101,7 @@ void parsing(parse_state* current, command* commandNode)
 		else if (strcmp(current->value, "assert") == 0) {
 			printf("statement assert going in\n");
 			push(theStack[top], &top, current->value);
+			checkTheStack(current, theStack[0], top);
 			current = current->next;
 			continue;
 		}
@@ -908,4 +909,17 @@ void parsing(parse_state* current, command* commandNode)
 	}
 
 	return;
+}
+
+
+void checkTheStack(parse_state* current, char* theStackTop, int top) {
+
+	printf("checking the stack\n");
+
+	printf("the stack top %s\n", theStackTop);
+
+	if (strcmp(theStackTop, "assert") == 0) {
+		printf("going in assert loop\n");
+	}
+
 }
