@@ -24,7 +24,6 @@ void parsing(parse_state* current, command* commandNode)
 	int partOfComment = 0;
 	int notTheEndFlag = 0;		//flag that helps when is not really the end of command
 	char theStack[200][SIZE];
-	char tempStack[200][SIZE];
 	char temp[100], temp2[100];
 	init(&top);
 	memset(temp, 0, sizeof(temp));
@@ -913,13 +912,63 @@ void parsing(parse_state* current, command* commandNode)
 
 
 void checkTheStack(parse_state* current, char* theStackTop, int top) {
-
-	printf("checking the stack\n");
-
 	printf("the stack top %s\n", theStackTop);
+
+	char tempStack[200][100];
+	int tempTop = 0;
+	int doneFlag = 0;
 
 	if (strcmp(theStackTop, "assert") == 0) {
 		printf("going in assert loop\n");
+
+		while (current != NULL) {
+			printf("in assert loop with value : %s\n", current->value);
+
+			//Check for number type
+			if (strcmp(current->type, "number") == 0) {
+				//peeking the stack so decreasing value of top
+
+				if (tempTop == 0) {
+					printf("going to insert value : %s\n", current->value);
+					++tempTop;
+					push(tempStack[tempTop], &tempTop, current->value);
+					current = current->next;
+				}
+
+				pop(&tempTop);
+				if (strcmp(tempStack[tempTop], "int") == 0) {
+				}
+				else {
+					printf("the top : %d\n", tempTop);
+					if ((empty(&tempTop) == 0) && (doneFlag == 0)) {
+						printf("stack not empty : %d\n", tempTop);
+
+						if (strcmp(tempStack[tempTop], ">") == 0) 
+						{
+							printf("going to build comparing expression\n");
+						}
+						
+
+
+						printf("going to insert value : %s\n", current->value);
+						//increasing top value
+						++tempTop;
+						push(tempStack[tempTop], &tempTop, current->value);
+					}
+				}
+			}
+			else if (strcmp(current->type, "operator") == 0) {
+				printf("operator %s going in\n", current->value);
+				//increasing top value
+				++tempTop;
+				push(tempStack[tempTop], &tempTop, current->value);
+			} 
+
+
+			current = current->next;
+		}
 	}
+
+	printf("don't forget to return the current pointer\n");
 
 }

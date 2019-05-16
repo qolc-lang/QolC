@@ -47,8 +47,5 @@ delete my_node
 break
 continue
 return
-return
 
-assert 
-
-
+assert |5 > 2|
