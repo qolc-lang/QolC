@@ -100,7 +100,7 @@ void parsing(parse_state* current, command* commandNode)
 		else if (strcmp(current->value, "assert") == 0) {
 			printf("statement assert going in\n");
 			push(theStack[top], &top, current->value);
-			checkTheStack(current, theStack[0], top);
+			checkTheStack(current, theStack[0], top, commandNode);
 			current = current->next;
 			continue;
 		}
@@ -911,7 +911,7 @@ void parsing(parse_state* current, command* commandNode)
 }
 
 
-void checkTheStack(parse_state* current, char* theStackTop, int top) {
+void checkTheStack(parse_state* current, char* theStackTop, int top, command* commandNode) {
 	printf("the stack top %s\n", theStackTop);
 
 	char tempStack[200][100];
@@ -933,6 +933,7 @@ void checkTheStack(parse_state* current, char* theStackTop, int top) {
 					++tempTop;
 					push(tempStack[tempTop], &tempTop, current->value);
 					current = current->next;
+					continue;
 				}
 
 				pop(&tempTop);
@@ -944,8 +945,22 @@ void checkTheStack(parse_state* current, char* theStackTop, int top) {
 						printf("stack not empty : %d\n", tempTop);
 
 						if (strcmp(tempStack[tempTop], ">") == 0) 
-						{
+						{ 
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							pop(&tempTop);
+							printf("now in the stack : %s\n", tempStack[tempTop]);
 							printf("going to build comparing expression\n");
+							printf("the value to work as expr : %s\n", current->value);
+							expr* leftExpr = expr_create_string(tempStack[tempTop]);
+							expr* rightExpr = expr_create_string(current->value);
+							expr* bigger_cmp_Expr = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							// tempStack[0][tempTop] = '\0';
+							// pop(&tempTop);
+							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
+							push_commandList(commandNode, NULL, NULL, bigger_cmp_Expr);
 						}
 						
 
@@ -956,6 +971,7 @@ void checkTheStack(parse_state* current, char* theStackTop, int top) {
 						push(tempStack[tempTop], &tempTop, current->value);
 					}
 				}
+
 			}
 			else if (strcmp(current->type, "operator") == 0) {
 				printf("operator %s going in\n", current->value);

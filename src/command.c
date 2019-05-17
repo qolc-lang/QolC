@@ -163,6 +163,11 @@ void print_commandList(command* commandNode) {
 				printf("EXPR_DECREMENT\n");
 				printf("	identifier : %s\n", current->anExpr->string_literal);
 			}
+			else if (val == 13) {
+				printf("EXPR_BIGGER_CMP\n");
+				printf("	left : %s\n", current->anExpr->left->string_literal);
+				printf("	right : %s\n", current->anExpr->right->string_literal);
+			}
 			else {
 
 			}
