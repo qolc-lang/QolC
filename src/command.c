@@ -168,6 +168,26 @@ void print_commandList(command* commandNode) {
 				printf("	left : %s\n", current->anExpr->left->string_literal);
 				printf("	right : %s\n", current->anExpr->right->string_literal);
 			}
+			else if (val == 14) {
+				printf("EXPR_BIGGEROREQ_CMP\n");
+				printf("	left : %s\n", current->anExpr->left->string_literal);
+				printf("	right : %s\n", current->anExpr->right->string_literal);
+			}
+			else if (val == 15) {
+				printf("EXPR_SMALLER_CMP\n");
+				printf("	left : %s\n", current->anExpr->left->string_literal);
+				printf("	right : %s\n", current->anExpr->right->string_literal);
+			}
+			else if (val == 16) {
+				printf("EXPR_SMALLEROREQ_CMP\n");
+				printf("	left : %s\n", current->anExpr->left->string_literal);
+				printf("	right : %s\n", current->anExpr->right->string_literal);
+			}
+			else if (val == 17) {
+				printf("EXPR_EQUAL_CMP\n");
+				printf("	left : %s\n", current->anExpr->left->string_literal);
+				printf("	right : %s\n", current->anExpr->right->string_literal);
+			}
 			else {
 
 			}

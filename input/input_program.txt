@@ -48,4 +48,4 @@ break
 continue
 return
 
-assert |5 > 2|
+assert |5 @== 2|

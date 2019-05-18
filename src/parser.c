@@ -954,15 +954,76 @@ void checkTheStack(parse_state* current, char* theStackTop, int top, command* co
 							printf("the value to work as expr : %s\n", current->value);
 							expr* leftExpr = expr_create_string(tempStack[tempTop]);
 							expr* rightExpr = expr_create_string(current->value);
-							expr* bigger_cmp_Expr = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+							expr* cmp_expr = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
-							// tempStack[0][tempTop] = '\0';
-							// pop(&tempTop);
 							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
-							push_commandList(commandNode, NULL, NULL, bigger_cmp_Expr);
+							push_commandList(commandNode, NULL, NULL, cmp_expr);
 						}
-						
+						else if (strcmp(tempStack[tempTop], ">=") == 0) 
+						{ 
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							pop(&tempTop);
+							printf("now in the stack : %s\n", tempStack[tempTop]);
+							printf("going to build comparing expression\n");
+							printf("the value to work as expr : %s\n", current->value);
+							expr* leftExpr = expr_create_string(tempStack[tempTop]);
+							expr* rightExpr = expr_create_string(current->value);
+							expr* cmp_expr = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
+							push_commandList(commandNode, NULL, NULL, cmp_expr);
+						}
+						else if (strcmp(tempStack[tempTop], "<") == 0) 
+						{ 
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							pop(&tempTop);
+							printf("now in the stack : %s\n", tempStack[tempTop]);
+							printf("going to build comparing expression\n");
+							printf("the value to work as expr : %s\n", current->value);
+							expr* leftExpr = expr_create_string(tempStack[tempTop]);
+							expr* rightExpr = expr_create_string(current->value);
+							expr* cmp_expr = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
+							push_commandList(commandNode, NULL, NULL, cmp_expr);
+						}
+						else if (strcmp(tempStack[tempTop], "<=") == 0) 
+						{ 
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							pop(&tempTop);
+							printf("now in the stack : %s\n", tempStack[tempTop]);
+							printf("going to build comparing expression\n");
+							printf("the value to work as expr : %s\n", current->value);
+							expr* leftExpr = expr_create_string(tempStack[tempTop]);
+							expr* rightExpr = expr_create_string(current->value);
+							expr* cmp_expr = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
+							push_commandList(commandNode, NULL, NULL, cmp_expr);
+						}
+						else if (strcmp(tempStack[tempTop], "@==") == 0) 
+						{ 
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							pop(&tempTop);
+							printf("now in the stack : %s\n", tempStack[tempTop]);
+							printf("going to build comparing expression\n");
+							printf("the value to work as expr : %s\n", current->value);
+							expr* leftExpr = expr_create_string(tempStack[tempTop]);
+							expr* rightExpr = expr_create_string(current->value);
+							expr* cmp_expr = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
+							push_commandList(commandNode, NULL, NULL, cmp_expr);
+						}
 
 
 						printf("going to insert value : %s\n", current->value);
