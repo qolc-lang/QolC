@@ -2,7 +2,7 @@ import "mylib"
 load "myFile"
 
 /@ sample comment
-myvar @ "a string"
+myvar@"a string"
 
 assert |5 > 2|
 

@@ -111,6 +111,39 @@ void print_commandList(command* commandNode) {
 				printf("STMT_DELETE\n");
 				printf("	expr: %s\n", current->aStmt->expr->string_literal);
 			}
+			else if (value == 9) {
+				printf("STMT_ASSERT\n");
+				int assert_val = (int)current->aStmt->expr->kind;
+
+				if (assert_val == 13) {
+					printf("	EXPR_BIGGER_CMP\n");
+					printf("		left : %s\n", current->aStmt->expr->left->string_literal);
+					printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+				}
+				else if (assert_val == 14) {
+					printf("	EXPR_BIGGEROREQ_CMP\n");
+					printf("		left : %s\n", current->aStmt->expr->left->string_literal);
+					printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+				}
+				else if (assert_val == 15) {
+					printf("	EXPR_SMALLER_CMP\n");
+					printf("		left : %s\n", current->aStmt->expr->left->string_literal);
+					printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+				}
+				else if (assert_val == 16) {
+					printf("	EXPR_SMALLEROREQ_CMP\n");
+					printf("		left : %s\n", current->aStmt->expr->left->string_literal);
+					printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+				}
+				else if (assert_val == 17) {
+					printf("	EXPR_EQUAL_CMP\n");
+					printf("		left : %s\n", current->aStmt->expr->left->string_literal);
+					printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+				}
+				else {
+
+				}
+			}
 			else if (value == 10) {
 				printf("STMT_RETURN\n");
 				if (current->aStmt->expr == NULL) {
