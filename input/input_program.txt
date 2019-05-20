@@ -48,4 +48,6 @@ break
 continue
 return
 
+return x*y*z
+
 assert |5 @== 2|
