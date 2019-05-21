@@ -12,6 +12,6 @@ parse_state* parseString(char* token);
 void parseExpression(char* token);
 
 void parsing(parse_state* current, command* commandNode);
-void checkTheStack(parse_state* current, char* theStackTop, int top, command* commandNode);
+parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, command* commandNode);
 
 #endif

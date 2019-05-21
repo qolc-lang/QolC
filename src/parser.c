@@ -100,15 +100,17 @@ void parsing(parse_state* current, command* commandNode)
 		else if (strcmp(current->value, "assert") == 0) {
 			printf("statement assert going in\n");
 			push(theStack[top], &top, current->value);
-			checkTheStack(current, theStack[0], top, commandNode);
-			current = current->next;
+			current = checkTheStack(current, theStack[0], top, commandNode);
+			if (current != NULL)
+				current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "return") == 0) {
 			printf("statement return going in\n");
 			push(theStack[top], &top, current->value);
-			checkTheStack(current, theStack[0], top, commandNode);
-			current = current->next;
+			current = checkTheStack(current, theStack[0], top, commandNode);
+			if (current != NULL)
+				current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "+") == 0) {
@@ -933,12 +935,16 @@ void parsing(parse_state* current, command* commandNode)
 }
 
 
-void checkTheStack(parse_state* current, char* theStackTop, int top, command* commandNode) {
+parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, command* commandNode) {
 	printf("the stack top %s\n", theStackTop);
 
 	char tempStack[200][100];
 	int tempTop = 0;
 	int doneFlag = 0;
+	char temp[100], temp2[100];
+
+	memset(temp, 0, sizeof(temp));
+	memset(temp2, 0, sizeof(temp2));
 
 	if (strcmp(theStackTop, "assert") == 0) {
 		printf("going in assert loop\n");
@@ -1077,16 +1083,18 @@ void checkTheStack(parse_state* current, char* theStackTop, int top, command* co
 	else if (strcmp(theStackTop, "return") == 0) {
 		printf("going in return loop\n");
 
-		while (strcmp(current->type, "end of command") != 0) {
+		while (1) {
 			printf("in return loop with value : %s\n", current->value);
 
 			current = current->next;
-			if (strcmp(current->type, "end of command") != 0) {
+			if (strcmp(current->type, "end of command") == 0) {
 				//found return statement
 				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
-				break;
+				return current;
 			}
+
+
 
 			if (tempTop == 0) {
 				printf("going to insert : %s\n", current->value);
@@ -1095,25 +1103,58 @@ void checkTheStack(parse_state* current, char* theStackTop, int top, command* co
 				current = current->next;
 				continue;
 			}
-
-
-			pop(&tempTop);
-			//Check for number type
-			if (strcmp(tempStack[tempTop], "*") == 0) {
-			}
-			else if (strcmp(tempStack[tempTop], "+") == 0) {
-			}
 			else {
+				pop(&tempTop);
 
+				printf("the stack now : %s\n", tempStack[tempTop]);
+				//Check for number type
+				if (strcmp(tempStack[tempTop], "*") == 0) {
+
+					printf("in operator * \n");
+					printf("current now : %s\n", current->value);
+					if (strcmp(current->type, "identifier") == 0) 
+					{
+						printf("in id 1\n");
+						strcpy(temp, current->value);	
+						current = current->next;
+
+						if (strcmp(current->type, "identifier") == 0) 
+						{
+							printf("in id 1\n");
+							expr* leftExpr = expr_create_string(temp);
+							expr* rightExpr = expr_create_string(current->value);
+							expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+						}
+					}
+					else {
+
+					}
+				}
+				else if (strcmp(tempStack[tempTop], "+") == 0) {
+				}
+				else {
+
+				}
 			}
+
+
 
 			current = current->next;
 
-			if (current == NULL)
+			if (strcmp(current->type, "end of command") == 0){
+				printf("going for eoc break --- in return stmt\n");
 				break;
+			}
+
+			if (current == NULL) {
+				printf("going for null break --- in return stmt\n");
+				break;
+			}
 		}
 	}
 
 	printf("don't forget to return the current pointer\n");
+
+	return current;
 
 }
