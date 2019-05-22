@@ -28,7 +28,7 @@ lexer_node lex(char fileName[]){
 		//printf("~~~~ %s\n", reading_buffer);
 
 		for (pos = 0; pos < strlen(reading_buffer); ++pos){
-			//printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
+			printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
 
 			if ((new_pos = isAtOperator(reading_buffer, pos, strlen(reading_buffer), myNode, temp_buffer)) != -1){
 				pos += new_pos;

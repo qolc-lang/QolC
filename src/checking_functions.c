@@ -255,7 +255,6 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 
 	if (buffer[pos] == '/'){
 		++pos;
-		++count;
 		if (pos < len) {
 			if (buffer[pos] == '@'){
 				++pos;
@@ -272,16 +271,14 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 				strcpy(temp_buffer, "operator,/=");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
-				*flag = temp2;
+				*flag = temp1;
 				return count;
 			}
 			else {
-				++pos;
-				++count;
 				strcpy(temp_buffer, "operator,/");
 				push_lexerList(myNode, temp_buffer);
 				memset(temp_buffer, 0, sizeof(temp_buffer));
-				*flag = temp2;
+				*flag = temp1;
 				return count;
 			}
 		}
