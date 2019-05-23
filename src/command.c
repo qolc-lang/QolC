@@ -151,7 +151,15 @@ void print_commandList(command* commandNode) {
 					continue;
 				}
 				else {
-					printf("	expr: %s\n", current->aStmt->expr->string_literal);
+					int ret_val = (int)current->aStmt->expr->kind;
+					if (ret_val == 0) {
+						printf("	EXPR_ADD\n");
+						printf("		left : %s\n", current->aStmt->expr->left->string_literal);
+						printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+					}
+					else {
+
+					}
 				}
 			}
 			else if (value == 11) {

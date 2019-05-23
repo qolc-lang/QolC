@@ -1099,37 +1099,47 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				return current;
 			}
 
-			// if (tempTop == 0) {
-			// 	printf("going to insert : %s\n", current->value);
-			// 	++tempTop;
-			// 	push(tempStack[tempTop], &tempTop, current->value);
-			// 	current = current->next;
-			// 	continue;
-			// }
-			// else {
-			// 	pop(&tempTop);
-
-			// 	printf("the stack now : %s\n", tempStack[tempTop]);
-			// 	//Check for number type
-			// 	if (strcmp(tempStack[tempTop], "*") == 0) {
-
-			// 		printf("in operator * \n");
-			// 		printf("current now : %s\n", current->value);
-			// 		if (strcmp(current->type, "identifier") == 0) 
-			// 		{
-			// 			printf("in id 1\n");
-			// 			strcpy(temp, current->value);	
-			// 		}
-			// 		else {
-
-			// 		}
-			// 	}
-			// 	else if (strcmp(tempStack[tempTop], "+") == 0) {
-			// 	}
-			// 	else {
-
-			// 	}
-			// }
+			if (strcmp(current->type, "operator") == 0) {
+				++tempTop;
+				push(tempStack[tempTop], &tempTop, current->value);
+				current = current->next;
+				continue;
+			}
+			else if (strcmp(current->type, "identifier") == 0) {
+				pop(&tempTop);
+				if (strcmp(tempStack[tempTop], "+") == 0) {
+					tempStack[0][tempTop] = '\0';
+					printf("going for add expression\n");
+					strcpy(temp, current->value);
+					current = current->next;
+					if (strcmp(current->type, "operator") == 0) {
+						printf("operator again\n");
+						++tempTop;
+						push(tempStack[tempTop], &tempTop, current->value);
+						current = current->next;
+					}
+					else if (strcmp(current->type, "identifier") == 0) {
+						printf("second parameter\n");
+						expr* leftExpr = expr_create_string(temp);
+						expr* rightExpr = expr_create_string(current->value);
+						expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL);
+						push_commandList(commandNode, NULL, ret_stmt, NULL);
+					}
+					else if (strcmp(current->type, "end of command") == 0) {
+						current = current->next;
+						if (strcmp(current->type, "identifier") == 0) {
+							printf("second parameter\n");
+							expr* leftExpr = expr_create_string(temp);
+							expr* rightExpr = expr_create_string(current->value);
+							expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+							stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL);
+							push_commandList(commandNode, NULL, ret_stmt, NULL);
+						}
+					}
+				}
+			
+			}
 
 			current = current->next;
 
