@@ -1138,6 +1138,99 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 						}
 					}
 				}
+				else if (strcmp(tempStack[tempTop], "-") == 0) {
+					tempStack[0][tempTop] = '\0';
+					printf("going for sub expression\n");
+					strcpy(temp, current->value);
+					current = current->next;
+					if (strcmp(current->type, "operator") == 0) {
+						printf("operator again\n");
+						++tempTop;
+						push(tempStack[tempTop], &tempTop, current->value);
+						current = current->next;
+					}
+					else if (strcmp(current->type, "identifier") == 0) {
+						printf("second parameter\n");
+						expr* leftExpr = expr_create_string(temp);
+						expr* rightExpr = expr_create_string(current->value);
+						expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, subExpr, NULL, NULL, NULL, NULL);
+						push_commandList(commandNode, NULL, ret_stmt, NULL);
+					}
+					else if (strcmp(current->type, "end of command") == 0) {
+						current = current->next;
+						if (strcmp(current->type, "identifier") == 0) {
+							printf("second parameter\n");
+							expr* leftExpr = expr_create_string(temp);
+							expr* rightExpr = expr_create_string(current->value);
+							expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+							stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, subExpr, NULL, NULL, NULL, NULL);
+							push_commandList(commandNode, NULL, ret_stmt, NULL);
+						}
+					}
+				}
+				else if (strcmp(tempStack[tempTop], "*") == 0) {
+					tempStack[0][tempTop] = '\0';
+					printf("going for mul expression\n");
+					strcpy(temp, current->value);
+					current = current->next;
+					if (strcmp(current->type, "operator") == 0) {
+						printf("operator again\n");
+						++tempTop;
+						push(tempStack[tempTop], &tempTop, current->value);
+						current = current->next;
+					}
+					else if (strcmp(current->type, "identifier") == 0) {
+						printf("second parameter\n");
+						expr* leftExpr = expr_create_string(temp);
+						expr* rightExpr = expr_create_string(current->value);
+						expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, mulExpr, NULL, NULL, NULL, NULL);
+						push_commandList(commandNode, NULL, ret_stmt, NULL);
+					}
+					else if (strcmp(current->type, "end of command") == 0) {
+						current = current->next;
+						if (strcmp(current->type, "identifier") == 0) {
+							printf("second parameter\n");
+							expr* leftExpr = expr_create_string(temp);
+							expr* rightExpr = expr_create_string(current->value);
+							expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+							stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, mulExpr, NULL, NULL, NULL, NULL);
+							push_commandList(commandNode, NULL, ret_stmt, NULL);
+						}
+					}
+				}
+				else if (strcmp(tempStack[tempTop], "/") == 0) {
+					tempStack[0][tempTop] = '\0';
+					printf("going for div expression\n");
+					strcpy(temp, current->value);
+					current = current->next;
+					if (strcmp(current->type, "operator") == 0) {
+						printf("operator again\n");
+						++tempTop;
+						push(tempStack[tempTop], &tempTop, current->value);
+						current = current->next;
+					}
+					else if (strcmp(current->type, "identifier") == 0) {
+						printf("second parameter\n");
+						expr* leftExpr = expr_create_string(temp);
+						expr* rightExpr = expr_create_string(current->value);
+						expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, divExpr, NULL, NULL, NULL, NULL);
+						push_commandList(commandNode, NULL, ret_stmt, NULL);
+					}
+					else if (strcmp(current->type, "end of command") == 0) {
+						current = current->next;
+						if (strcmp(current->type, "identifier") == 0) {
+							printf("second parameter\n");
+							expr* leftExpr = expr_create_string(temp);
+							expr* rightExpr = expr_create_string(current->value);
+							expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+							stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, divExpr, NULL, NULL, NULL, NULL);
+							push_commandList(commandNode, NULL, ret_stmt, NULL);
+						}
+					}
+				}
 			
 			}
 

@@ -157,6 +157,21 @@ void print_commandList(command* commandNode) {
 						printf("		left : %s\n", current->aStmt->expr->left->string_literal);
 						printf("		right : %s\n", current->aStmt->expr->right->string_literal);
 					}
+					else if (ret_val == 1) {
+						printf("	EXPR_SUB\n");
+						printf("		left : %s\n", current->aStmt->expr->left->string_literal);
+						printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+					}
+					else if (ret_val == 2) {
+						printf("	EXPR_MUL\n");
+						printf("		left : %s\n", current->aStmt->expr->left->string_literal);
+						printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+					}
+					else if (ret_val == 3) {
+						printf("	EXPR_DIV\n");
+						printf("		left : %s\n", current->aStmt->expr->left->string_literal);
+						printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+					}
 					else {
 
 					}
