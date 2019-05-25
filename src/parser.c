@@ -101,8 +101,8 @@ void parsing(parse_state* current, command* commandNode)
 			printf("statement assert going in\n");
 			push(theStack[top], &top, current->value);
 			current = checkTheStack(current, theStack[0], top, commandNode);
-			if (current != NULL)
-				current = current->next;
+			// if (current != NULL)
+			// 	current = current->next;
 			pop(&top);
 			theStack[0][top] = '\0';
 			continue;
@@ -111,8 +111,8 @@ void parsing(parse_state* current, command* commandNode)
 			printf("statement return going in\n");
 			push(theStack[top], &top, current->value);
 			current = checkTheStack(current, theStack[0], top, commandNode);
-			if (current != NULL)
-				current = current->next;
+			// if (current != NULL)
+			// 	current = current->next;
 			pop(&top);
 			theStack[0][top] = '\0';
 			continue;
@@ -1087,6 +1087,8 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 	else if (strcmp(theStackTop, "return") == 0) {
 		printf("going in return loop\n");
 
+		expr_list* expressionListNode = malloc(sizeof(expr_list));
+
 		current = current->next;
 
 		while (1) {
@@ -1112,31 +1114,68 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					printf("going for add expression\n");
 					strcpy(temp, current->value);
 					current = current->next;
-					if (strcmp(current->type, "operator") == 0) {
-						printf("operator again\n");
-						++tempTop;
-						push(tempStack[tempTop], &tempTop, current->value);
-						current = current->next;
-					}
-					else if (strcmp(current->type, "identifier") == 0) {
-						printf("second parameter\n");
-						expr* leftExpr = expr_create_string(temp);
-						expr* rightExpr = expr_create_string(current->value);
-						expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL);
-						push_commandList(commandNode, NULL, ret_stmt, NULL);
-					}
-					else if (strcmp(current->type, "end of command") == 0) {
-						current = current->next;
-						if (strcmp(current->type, "identifier") == 0) {
-							printf("second parameter\n");
+					printf("now the current 1 : %s\n", current->value);
+					while ((strcmp(current->type, "operator") == 0) || (strcmp(current->type, "identifier") == 0)) {
+						if (strcmp(current->type, "operator") == 0) {
+							printf("operator again\n");
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							++tempTop;
+							push(tempStack[tempTop], &tempTop, current->value);
+							current = current->next;
 							expr* leftExpr = expr_create_string(temp);
 							expr* rightExpr = expr_create_string(current->value);
 							expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
-							stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL);
-							push_commandList(commandNode, NULL, ret_stmt, NULL);
+
+							//add to expression list
+							push_expressionList(expressionListNode, addExpr);
+
+							strcpy(temp, current->value);
+							current = current->next;
+							continue;
+						}
+						else if (strcmp(current->type, "identifier") == 0) {
+							printf("second parameter\n");
+							// if (tempTop != 0) {
+
+							// }
+
+							// stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL);
+							// push_commandList(commandNode, NULL, ret_stmt, NULL);
+						}
+
+					}
+
+					if (strcmp(current->type, "end of command") == 0) {
+						current = current->next;
+						if (current != NULL) {
+							printf("now the current 3 : %s\n", current->value);
+							if (strcmp(current->type, "identifier") == 0) {
+								printf("second parameter after eoc %s\n", current->value);
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								
+								pop(&tempTop);
+								printf("now in the stack : %s\n", tempStack[tempTop]);
+
+								if (strcmp(tempStack[tempTop], "+") == 0) {
+									expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL);
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else if (strcmp(tempStack[tempTop], "-") == 0) {
+									expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, subExpr, NULL, NULL, NULL, NULL);
+									//add to expression list
+									push_expressionList(expressionListNode, subExpr);
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+
+
+							}
 						}
 					}
+
 				}
 				else if (strcmp(tempStack[tempTop], "-") == 0) {
 					tempStack[0][tempTop] = '\0';
@@ -1159,13 +1198,15 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					}
 					else if (strcmp(current->type, "end of command") == 0) {
 						current = current->next;
-						if (strcmp(current->type, "identifier") == 0) {
-							printf("second parameter\n");
-							expr* leftExpr = expr_create_string(temp);
-							expr* rightExpr = expr_create_string(current->value);
-							expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
-							stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, subExpr, NULL, NULL, NULL, NULL);
-							push_commandList(commandNode, NULL, ret_stmt, NULL);
+						if (current != NULL) {
+							if (strcmp(current->type, "identifier") == 0) {
+								printf("second parameter\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+								stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, subExpr, NULL, NULL, NULL, NULL);
+								push_commandList(commandNode, NULL, ret_stmt, NULL);
+							}
 						}
 					}
 				}
@@ -1190,13 +1231,15 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					}
 					else if (strcmp(current->type, "end of command") == 0) {
 						current = current->next;
-						if (strcmp(current->type, "identifier") == 0) {
-							printf("second parameter\n");
-							expr* leftExpr = expr_create_string(temp);
-							expr* rightExpr = expr_create_string(current->value);
-							expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
-							stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, mulExpr, NULL, NULL, NULL, NULL);
-							push_commandList(commandNode, NULL, ret_stmt, NULL);
+						if (current != NULL) {
+							if (strcmp(current->type, "identifier") == 0) {
+								printf("second parameter\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+								stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, mulExpr, NULL, NULL, NULL, NULL);
+								push_commandList(commandNode, NULL, ret_stmt, NULL);
+							}
 						}
 					}
 				}
@@ -1221,13 +1264,15 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					}
 					else if (strcmp(current->type, "end of command") == 0) {
 						current = current->next;
-						if (strcmp(current->type, "identifier") == 0) {
-							printf("second parameter\n");
-							expr* leftExpr = expr_create_string(temp);
-							expr* rightExpr = expr_create_string(current->value);
-							expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
-							stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, divExpr, NULL, NULL, NULL, NULL);
-							push_commandList(commandNode, NULL, ret_stmt, NULL);
+						if (current != NULL) {
+							if (strcmp(current->type, "identifier") == 0) {
+								printf("second parameter\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+								stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, divExpr, NULL, NULL, NULL, NULL);
+								push_commandList(commandNode, NULL, ret_stmt, NULL);
+							}
 						}
 					}
 				}
@@ -1239,7 +1284,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 			if (strcmp(current->type, "end of command") == 0){
 				current = current->next; 
 				if (current != NULL) {
-					printf("in return loop with value : %s\n", current->value);	
+					printf("in return eoc loop with value : %s\n", current->value);	
 				}
 
 				printf("going for eoc break --- in return stmt\n");

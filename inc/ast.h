@@ -62,6 +62,12 @@ typedef struct expr {
 	char character_value;
 }expr;
 
+typedef struct expr_list
+{
+	expr* theExpr;
+	struct expr_list* next;
+}expr_list;
+
 typedef enum {
 	STMT_DECL,
 	STMT_EXPR,
@@ -85,6 +91,7 @@ typedef struct stmt {
 	expr *init_expr;
 	expr *expr;
 	expr *next_expr;
+	expr_list* expressionList;
 	struct stmt *body;
 	struct stmt *else_body;
 	struct stmt *next;
@@ -107,5 +114,7 @@ expr* expr_create_integer(int i);
 expr* expr_create_char(char c);
 expr* expr_create_string(char* string_literal);
 expr* expr_create_string_id(char* string_id);
+
+void push_expressionList(expr_list* node, expr* theExpr);
 
 #endif

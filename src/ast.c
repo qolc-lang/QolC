@@ -90,3 +90,15 @@ expr* expr_create_string_id(char* string_id) {
 	printf("exiting expr_create_string_id\n");
 	return e;
 }
+
+void push_expressionList(expr_list* node, expr* theExpr) {
+	printf("in push_expressionList\n");
+    expr_list* current = node;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+    current->next = malloc(sizeof(expr_list));
+    current->next->theExpr = theExpr;
+    current->next->next = NULL;
+    printf("exiting push_expressionList\n");
+}
