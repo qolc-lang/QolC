@@ -13,7 +13,7 @@ decl* decl_create(char *name, type *type, expr *value, stmt *code) {
 	return d;
 }
 
-stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nexpr, stmt *body, stmt *ebody, stmt *next) {
+stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next) {
 	printf("inside stmt_create\n");
 	stmt* s = malloc(sizeof(*s));
 	s->kind = kind;
@@ -23,6 +23,7 @@ stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nex
 	s->next_expr = nexpr;
 	s->body = body;
 	s->else_body = ebody;
+	s->expressionList = expressionList;
 	s->next = NULL;
 	printf("exiting stmt_create\n");
 	return s;

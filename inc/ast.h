@@ -91,9 +91,9 @@ typedef struct stmt {
 	expr *init_expr;
 	expr *expr;
 	expr *next_expr;
-	expr_list* expressionList;
 	struct stmt *body;
 	struct stmt *else_body;
+	expr_list* expressionList;
 	struct stmt *next;
 }stmt;
 
@@ -106,7 +106,7 @@ typedef struct decl {
 }decl;
 
 decl* decl_create(char *name, type *type, expr *value, stmt *code);
-stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, stmt *next);
+stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next);
 expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal); 
 type* type_create(type_t kind, type *subtype, param_list *params);
 

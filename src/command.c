@@ -147,8 +147,31 @@ void print_commandList(command* commandNode) {
 			else if (value == 10) {
 				printf("STMT_RETURN\n");
 				if (current->aStmt->expr == NULL) {
-					current = current->next;
-					continue;
+					if (current->aStmt->expressionList == NULL) {
+						current = current->next;
+						continue;
+					}
+					else {
+						//print all expressions in the list
+						expr_list* currentList = current->aStmt->expressionList;
+
+						while (currentList != NULL) {
+							if (currentList->theExpr != NULL) {
+								int ret_val = (int)currentList->theExpr->kind;
+								if (ret_val == 0) {
+									printf("	EXPR_ADD\n");
+									printf("		left : %s\n", currentList->theExpr->left->string_literal);
+									printf("		right : %s\n",	currentList->theExpr->right->string_literal);
+								}
+								else if (ret_val == 1) {
+									printf("	EXPR_SUB\n");
+									printf("		left : %s\n", currentList->theExpr->left->string_literal);
+									printf("		right : %s\n", currentList->theExpr->right->string_literal);
+								}
+							}
+							currentList = currentList->next;
+						}
+					}
 				}
 				else {
 					int ret_val = (int)current->aStmt->expr->kind;

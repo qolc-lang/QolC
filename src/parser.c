@@ -228,7 +228,7 @@ void parsing(parse_state* current, command* commandNode)
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
 				expr* stringExpr = expr_create_string(current->value);
-				stmt* import_stmt = stmt_create(STMT_IMPORT, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL);
+				stmt* import_stmt = stmt_create(STMT_IMPORT, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, import_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "load") == 0) {
@@ -237,7 +237,7 @@ void parsing(parse_state* current, command* commandNode)
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
 				expr* stringExpr = expr_create_string(current->value);
-				stmt* load_stmt = stmt_create(STMT_LOAD, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL);
+				stmt* load_stmt = stmt_create(STMT_LOAD, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, load_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "print") == 0) {
@@ -246,7 +246,7 @@ void parsing(parse_state* current, command* commandNode)
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
 				expr* stringExpr = expr_create_string(current->value);
-				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL);
+				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "string") == 0) {
@@ -264,7 +264,7 @@ void parsing(parse_state* current, command* commandNode)
 				theStack[0][top] = '\0';
 				printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
 				decl* string_declaration = decl_create(temp, string_type, stringExpr, NULL);
-				stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+				stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 			}
 			else {
@@ -289,7 +289,7 @@ void parsing(parse_state* current, command* commandNode)
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
 				expr* numberExpr = expr_create_string(current->value);
-				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL);
+				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "int") == 0) {
@@ -307,7 +307,7 @@ void parsing(parse_state* current, command* commandNode)
 				theStack[0][top] = '\0';
 				printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
 				decl* int_declaration = decl_create(temp, int_type, intExpr, NULL);
-				stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+				stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, int_decl_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "float") == 0) {
@@ -325,7 +325,7 @@ void parsing(parse_state* current, command* commandNode)
 				theStack[0][top] = '\0';
 				printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
 				decl* float_declaration = decl_create(temp, float_type, floatExpr, NULL);
-				stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+				stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, float_decl_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "+") == 0) {
@@ -349,7 +349,7 @@ void parsing(parse_state* current, command* commandNode)
 				theStack[0][top] = '\0';
 				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
 				decl* identifier_declaration = decl_create(temp2, NULL, numberExpr, NULL);
-				stmt* decl_stmt = stmt_create(STMT_DECL, identifier_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+				stmt* decl_stmt = stmt_create(STMT_DECL, identifier_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, decl_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "-") == 0) {
@@ -373,7 +373,7 @@ void parsing(parse_state* current, command* commandNode)
 				theStack[0][top] = '\0';
 				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
 				decl* identifier_declaration = decl_create(temp2, NULL, numberExpr, NULL);
-				stmt* decl_stmt = stmt_create(STMT_DECL, identifier_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+				stmt* decl_stmt = stmt_create(STMT_DECL, identifier_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, decl_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "+=") == 0) {
@@ -501,7 +501,7 @@ void parsing(parse_state* current, command* commandNode)
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
 				expr* identifierExpr = expr_create_string(current->value);
-				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL);
+				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "delete") == 0) {
@@ -510,7 +510,7 @@ void parsing(parse_state* current, command* commandNode)
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
 				expr* identifierExpr = expr_create_string(current->value);
-				stmt* delete_stmt = stmt_create(STMT_DELETE, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL);
+				stmt* delete_stmt = stmt_create(STMT_DELETE, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, delete_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "/@") == 0) {
@@ -661,7 +661,7 @@ void parsing(parse_state* current, command* commandNode)
 				theStack[0][top] = '\0';
 				printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
 				decl* char_declaration = decl_create(temp, char_type, charExpr, NULL);
-				stmt* char_decl_stmt = stmt_create(STMT_DECL, char_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+				stmt* char_decl_stmt = stmt_create(STMT_DECL, char_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, char_decl_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "print") == 0) {
@@ -683,13 +683,13 @@ void parsing(parse_state* current, command* commandNode)
 
 
 			if (strcmp(current->value, "break") == 0) {
-				stmt* break_decl_stmt = stmt_create(STMT_BREAK, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+				stmt* break_decl_stmt = stmt_create(STMT_BREAK, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, break_decl_stmt, NULL); 
 				current = current->next;
 				continue;
 			}
 			else if (strcmp(current->value, "continue") == 0) {
-				stmt* cont_decl_stmt = stmt_create(STMT_CONTINUE, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+				stmt* cont_decl_stmt = stmt_create(STMT_CONTINUE, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, cont_decl_stmt, NULL); 
 				current = current->next;
 				continue;
@@ -735,7 +735,7 @@ void parsing(parse_state* current, command* commandNode)
 					theStack[0][top] = '\0';
 					printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
 					decl* float_declaration = decl_create(temp, floatPointer_type, floatExpr, NULL);
-					stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+					stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 					push_commandList(commandNode, NULL, float_decl_stmt, NULL); 
 				}
 				else if (strcmp(theStack[top], "int") == 0) {
@@ -756,7 +756,7 @@ void parsing(parse_state* current, command* commandNode)
 					theStack[0][top] = '\0';
 					printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
 					decl* int_declaration = decl_create(temp, intPointer_type, intExpr, NULL);
-					stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+					stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 					push_commandList(commandNode, NULL, int_decl_stmt, NULL); 
 				}
 				else if (strcmp(theStack[top], "char") == 0) {
@@ -777,7 +777,7 @@ void parsing(parse_state* current, command* commandNode)
 					theStack[0][top] = '\0';
 					printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
 					decl* char_declaration = decl_create(temp, charPointer_type, charExpr, NULL);
-					stmt* char_decl_stmt = stmt_create(STMT_DECL, char_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+					stmt* char_decl_stmt = stmt_create(STMT_DECL, char_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 					push_commandList(commandNode, NULL, char_decl_stmt, NULL); 
 				}
 				else if (strcmp(theStack[top], "string") == 0) {
@@ -798,7 +798,7 @@ void parsing(parse_state* current, command* commandNode)
 					theStack[0][top] = '\0';
 					printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
 					decl* string_declaration = decl_create(temp, stringPointer_type, stringExpr, NULL);
-					stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+					stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 					push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 				}
 			}
@@ -819,7 +819,7 @@ void parsing(parse_state* current, command* commandNode)
 					theStack[0][top] = '\0';
 					printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
 					decl* bool_declaration = decl_create(temp, bool_type, boolExpr, NULL);
-					stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+					stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 					push_commandList(commandNode, NULL, bool_decl_stmt, NULL); 
 				}
 				else {
@@ -858,7 +858,7 @@ void parsing(parse_state* current, command* commandNode)
 					theStack[0][top] = '\0';
 					printf("the value to work as expr : %s\n", current->value);
 					expr* identifierExpr = expr_create_string(current->value);
-					stmt* delete_stmt = stmt_create(STMT_DELETE, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL);
+					stmt* delete_stmt = stmt_create(STMT_DELETE, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL, NULL);
 					push_commandList(commandNode, NULL, delete_stmt, NULL);
 					current = current->next;
 					continue;
@@ -879,31 +879,31 @@ void parsing(parse_state* current, command* commandNode)
 					if (strcmp(current->value, "int") == 0) {
 						type* int_type = type_create(TYPE_INTEGER, NULL, NULL);
 						decl* int_declaration = decl_create(temp, int_type, NULL, NULL);
-						stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+						stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 						push_commandList(commandNode, NULL, int_decl_stmt, NULL); 
 					}
 					else if (strcmp(current->value, "string") == 0) {
 						type* string_type = type_create(TYPE_STRING, NULL, NULL);
 						decl* string_declaration = decl_create(temp, string_type, NULL, NULL);
-						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 						push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 					}
 					else if (strcmp(current->value, "float") == 0) {
 						type* float_type = type_create(TYPE_FLOAT, NULL, NULL);
 						decl* float_declaration = decl_create(temp, float_type, NULL, NULL);
-						stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+						stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 						push_commandList(commandNode, NULL, float_decl_stmt, NULL); 
 					}
 					else if (strcmp(current->value, "char") == 0) {
 						type* char_type = type_create(TYPE_CHARACTER, NULL, NULL);
 						decl* char_declaration = decl_create(temp, char_type, NULL, NULL);
-						stmt* char_decl_stmt = stmt_create(STMT_DECL, char_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+						stmt* char_decl_stmt = stmt_create(STMT_DECL, char_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 						push_commandList(commandNode, NULL, char_decl_stmt, NULL); 
 					}
 					else if (strcmp(current->value, "bool") == 0) {
 						type* bool_type = type_create(TYPE_BOOLEAN, NULL, NULL);
 						decl* bool_declaration = decl_create(temp, bool_type, NULL, NULL);
-						stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+						stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 						push_commandList(commandNode, NULL, bool_decl_stmt, NULL); 
 					}
 					else if ((strcmp(current->value, "false") == 0) || (strcmp(current->value, "true") == 0)) {
@@ -912,7 +912,7 @@ void parsing(parse_state* current, command* commandNode)
 						theStack[0][top] = '\0';
 						expr* stringExpr = expr_create_string(current->value);
 						decl* string_declaration = decl_create(temp, NULL, stringExpr, NULL);
-						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 						push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 					}
 					else { 
@@ -926,7 +926,7 @@ void parsing(parse_state* current, command* commandNode)
 					theStack[0][top] = '\0';
 					expr* stringExpr = expr_create_string(temp);
 					decl* string_declaration = decl_create(temp2, NULL, stringExpr, NULL);
-					stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL);
+					stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 					push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 				}
 			}
@@ -990,7 +990,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL);
+							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
 						else if (strcmp(tempStack[tempTop], ">=") == 0) 
@@ -1007,7 +1007,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL);
+							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
 						else if (strcmp(tempStack[tempTop], "<") == 0) 
@@ -1024,7 +1024,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL);
+							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
 						else if (strcmp(tempStack[tempTop], "<=") == 0) 
@@ -1041,7 +1041,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL);
+							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
 						else if (strcmp(tempStack[tempTop], "@==") == 0) 
@@ -1058,7 +1058,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL);
+							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
 
@@ -1096,7 +1096,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 			if (strcmp(current->type, "end of command") == 0) {
 				//found return statement
-				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
 				return current;
 			}
@@ -1160,14 +1160,14 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 								if (strcmp(tempStack[tempTop], "+") == 0) {
 									expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
-									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL, NULL);
 									push_commandList(commandNode, NULL, ret_stmt, NULL);
 								}
 								else if (strcmp(tempStack[tempTop], "-") == 0) {
 									expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
-									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, subExpr, NULL, NULL, NULL, NULL);
-									//add to expression list
 									push_expressionList(expressionListNode, subExpr);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									//add to expression list
 									push_commandList(commandNode, NULL, ret_stmt, NULL);
 								}
 
@@ -1193,7 +1193,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 						expr* leftExpr = expr_create_string(temp);
 						expr* rightExpr = expr_create_string(current->value);
 						expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, subExpr, NULL, NULL, NULL, NULL);
+						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, subExpr, NULL, NULL, NULL, NULL, NULL);
 						push_commandList(commandNode, NULL, ret_stmt, NULL);
 					}
 					else if (strcmp(current->type, "end of command") == 0) {
@@ -1204,7 +1204,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
-								stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, subExpr, NULL, NULL, NULL, NULL);
+								stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, subExpr, NULL, NULL, NULL, NULL, NULL);
 								push_commandList(commandNode, NULL, ret_stmt, NULL);
 							}
 						}
@@ -1226,7 +1226,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 						expr* leftExpr = expr_create_string(temp);
 						expr* rightExpr = expr_create_string(current->value);
 						expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, mulExpr, NULL, NULL, NULL, NULL);
+						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, mulExpr, NULL, NULL, NULL, NULL, NULL);
 						push_commandList(commandNode, NULL, ret_stmt, NULL);
 					}
 					else if (strcmp(current->type, "end of command") == 0) {
@@ -1237,7 +1237,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
-								stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, mulExpr, NULL, NULL, NULL, NULL);
+								stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, mulExpr, NULL, NULL, NULL, NULL, NULL);
 								push_commandList(commandNode, NULL, ret_stmt, NULL);
 							}
 						}
@@ -1259,7 +1259,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 						expr* leftExpr = expr_create_string(temp);
 						expr* rightExpr = expr_create_string(current->value);
 						expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, divExpr, NULL, NULL, NULL, NULL);
+						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, divExpr, NULL, NULL, NULL, NULL, NULL);
 						push_commandList(commandNode, NULL, ret_stmt, NULL);
 					}
 					else if (strcmp(current->type, "end of command") == 0) {
@@ -1270,7 +1270,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
-								stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, divExpr, NULL, NULL, NULL, NULL);
+								stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, divExpr, NULL, NULL, NULL, NULL, NULL);
 								push_commandList(commandNode, NULL, ret_stmt, NULL);
 							}
 						}
