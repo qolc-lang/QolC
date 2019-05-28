@@ -1143,6 +1143,23 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
 								push_expressionList(expressionListNode, subExpr);
 							}
+							else if (strcmp(tempOp, "*") == 0) {
+								printf("going to add, mul expression to the list\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, mulExpr);
+							}
+							else if (strcmp(tempOp, "/") == 0) {
+								printf("going to add, div expression to the list\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, divExpr);
+							}
+							else {
+
+							}
 ;
 							strcpy(temp, current->value);
 							strcpy(tempOp, tempOp2);
@@ -1152,12 +1169,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 						}
 						else if (strcmp(current->type, "identifier") == 0) {
 							printf("second parameter\n");
-							// if (tempTop != 0) {
-
-							// }
-
-							// stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL);
-							// push_commandList(commandNode, NULL, ret_stmt, NULL);
 						}
 
 					}
@@ -1193,6 +1204,16 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 									//add to expression list
 									push_commandList(commandNode, NULL, ret_stmt, NULL);
 								}
+								else if (strcmp(tempStack[tempTop], "/") == 0) {
+									expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+									push_expressionList(expressionListNode, divExpr);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									//add to expression list
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else {
+
+								}
 
 
 							}
@@ -1205,30 +1226,103 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					printf("going for sub expression\n");
 					strcpy(temp, current->value);
 					current = current->next;
-					if (strcmp(current->type, "operator") == 0) {
-						printf("operator again\n");
-						++tempTop;
-						push(tempStack[tempTop], &tempTop, current->value);
-						current = current->next;
-					}
-					else if (strcmp(current->type, "identifier") == 0) {
-						printf("second parameter\n");
-						expr* leftExpr = expr_create_string(temp);
-						expr* rightExpr = expr_create_string(current->value);
-						expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, subExpr, NULL, NULL, NULL, NULL, NULL);
-						push_commandList(commandNode, NULL, ret_stmt, NULL);
-					}
-					else if (strcmp(current->type, "end of command") == 0) {
-						current = current->next;
-						if (current != NULL) {
-							if (strcmp(current->type, "identifier") == 0) {
-								printf("second parameter\n");
+					printf("now the current 1 : %s\n", current->value);
+					while ((strcmp(current->type, "operator") == 0) || (strcmp(current->type, "identifier") == 0)) {
+						if (strcmp(current->type, "operator") == 0) {
+							printf("operator again\n");
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							++tempTop;
+							push(tempStack[tempTop], &tempTop, current->value);
+							strcpy(tempOp2, current->value);
+							current = current->next;
+							printf("now the current 1.2 : %s\n", current->value);
+
+							if (strcmp(tempOp, "+") == 0) {
+								printf("going to add, add expression to the list\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, addExpr);
+							}
+							else if (strcmp(tempOp, "-") == 0) {
+								printf("going to add, sub expression to the list\n");
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
-								stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, subExpr, NULL, NULL, NULL, NULL, NULL);
-								push_commandList(commandNode, NULL, ret_stmt, NULL);
+								push_expressionList(expressionListNode, subExpr);
+							}
+							else if (strcmp(tempOp, "*") == 0) {
+								printf("going to add, mul expression to the list\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, mulExpr);
+							}
+							else if (strcmp(tempOp, "/") == 0) {
+								printf("going to add, div expression to the list\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, divExpr);
+							}
+							else {
+
+							}
+;
+							strcpy(temp, current->value);
+							strcpy(tempOp, tempOp2);
+							current = current->next;
+							printf("now the current 1.3 : %s\n", current->value);
+							continue;
+						}
+						else if (strcmp(current->type, "identifier") == 0) {
+							printf("second parameter\n");
+						}
+
+					}
+
+					if (strcmp(current->type, "end of command") == 0) {
+						current = current->next;
+						if (current != NULL) {
+							printf("now the current 3 : %s\n", current->value);
+							if (strcmp(current->type, "identifier") == 0) {
+								printf("second parameter after eoc %s\n", current->value);
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								
+								pop(&tempTop);
+								printf("now in the stack : %s\n", tempStack[tempTop]);
+
+								if (strcmp(tempStack[tempTop], "+") == 0) {
+									expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL, NULL);
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else if (strcmp(tempStack[tempTop], "-") == 0) {
+									expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+									push_expressionList(expressionListNode, subExpr);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									//add to expression list
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else if (strcmp(tempStack[tempTop], "*") == 0) {
+									expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+									push_expressionList(expressionListNode, mulExpr);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									//add to expression list
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else if (strcmp(tempStack[tempTop], "/") == 0) {
+									expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+									push_expressionList(expressionListNode, divExpr);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									//add to expression list
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else {
+
+								}
 							}
 						}
 					}
@@ -1238,30 +1332,103 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					printf("going for mul expression\n");
 					strcpy(temp, current->value);
 					current = current->next;
-					if (strcmp(current->type, "operator") == 0) {
-						printf("operator again\n");
-						++tempTop;
-						push(tempStack[tempTop], &tempTop, current->value);
-						current = current->next;
-					}
-					else if (strcmp(current->type, "identifier") == 0) {
-						printf("second parameter\n");
-						expr* leftExpr = expr_create_string(temp);
-						expr* rightExpr = expr_create_string(current->value);
-						expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, mulExpr, NULL, NULL, NULL, NULL, NULL);
-						push_commandList(commandNode, NULL, ret_stmt, NULL);
-					}
-					else if (strcmp(current->type, "end of command") == 0) {
-						current = current->next;
-						if (current != NULL) {
-							if (strcmp(current->type, "identifier") == 0) {
-								printf("second parameter\n");
+					printf("now the current 1 : %s\n", current->value);
+					while ((strcmp(current->type, "operator") == 0) || (strcmp(current->type, "identifier") == 0)) {
+						if (strcmp(current->type, "operator") == 0) {
+							printf("operator again\n");
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							++tempTop;
+							push(tempStack[tempTop], &tempTop, current->value);
+							strcpy(tempOp2, current->value);
+							current = current->next;
+							printf("now the current 1.2 : %s\n", current->value);
+
+							if (strcmp(tempOp, "+") == 0) {
+								printf("going to add, add expression to the list\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, addExpr);
+							}
+							else if (strcmp(tempOp, "-") == 0) {
+								printf("going to add, sub expression to the list\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, subExpr);
+							}
+							else if (strcmp(tempOp, "*") == 0) {
+								printf("going to add, mul expression to the list\n");
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
-								stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, mulExpr, NULL, NULL, NULL, NULL, NULL);
-								push_commandList(commandNode, NULL, ret_stmt, NULL);
+								push_expressionList(expressionListNode, mulExpr);
+							}
+							else if (strcmp(tempOp, "/") == 0) {
+								printf("going to add, div expression to the list\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, divExpr);
+							}
+							else {
+
+							}
+;
+							strcpy(temp, current->value);
+							strcpy(tempOp, tempOp2);
+							current = current->next;
+							printf("now the current 1.3 : %s\n", current->value);
+							continue;
+						}
+						else if (strcmp(current->type, "identifier") == 0) {
+							printf("second parameter\n");
+						}
+
+					}
+
+					if (strcmp(current->type, "end of command") == 0) {
+						current = current->next;
+						if (current != NULL) {
+							printf("now the current 3 : %s\n", current->value);
+							if (strcmp(current->type, "identifier") == 0) {
+								printf("second parameter after eoc %s\n", current->value);
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								
+								pop(&tempTop);
+								printf("now in the stack : %s\n", tempStack[tempTop]);
+
+								if (strcmp(tempStack[tempTop], "+") == 0) {
+									expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL, NULL);
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else if (strcmp(tempStack[tempTop], "-") == 0) {
+									expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+									push_expressionList(expressionListNode, subExpr);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									//add to expression list
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else if (strcmp(tempStack[tempTop], "*") == 0) {
+									expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+									push_expressionList(expressionListNode, mulExpr);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									//add to expression list
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else if (strcmp(tempStack[tempTop], "/") == 0) {
+									expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+									push_expressionList(expressionListNode, divExpr);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									//add to expression list
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else {
+
+								}
 							}
 						}
 					}
@@ -1271,35 +1438,107 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					printf("going for div expression\n");
 					strcpy(temp, current->value);
 					current = current->next;
-					if (strcmp(current->type, "operator") == 0) {
-						printf("operator again\n");
-						++tempTop;
-						push(tempStack[tempTop], &tempTop, current->value);
-						current = current->next;
-					}
-					else if (strcmp(current->type, "identifier") == 0) {
-						printf("second parameter\n");
-						expr* leftExpr = expr_create_string(temp);
-						expr* rightExpr = expr_create_string(current->value);
-						expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, divExpr, NULL, NULL, NULL, NULL, NULL);
-						push_commandList(commandNode, NULL, ret_stmt, NULL);
-					}
-					else if (strcmp(current->type, "end of command") == 0) {
-						current = current->next;
-						if (current != NULL) {
-							if (strcmp(current->type, "identifier") == 0) {
-								printf("second parameter\n");
+					printf("now the current 1 : %s\n", current->value);
+					while ((strcmp(current->type, "operator") == 0) || (strcmp(current->type, "identifier") == 0)) {
+						if (strcmp(current->type, "operator") == 0) {
+							printf("operator again\n");
+							tempStack[0][tempTop] = '\0';
+							pop(&tempTop);
+							++tempTop;
+							push(tempStack[tempTop], &tempTop, current->value);
+							strcpy(tempOp2, current->value);
+							current = current->next;
+							printf("now the current 1.2 : %s\n", current->value);
+
+							if (strcmp(tempOp, "+") == 0) {
+								printf("going to add, add expression to the list\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, addExpr);
+							}
+							else if (strcmp(tempOp, "-") == 0) {
+								printf("going to add, sub expression to the list\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, subExpr);
+							}
+							else if (strcmp(tempOp, "*") == 0) {
+								printf("going to add, mul expression to the list\n");
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, mulExpr);
+							}
+							else if (strcmp(tempOp, "/") == 0) {
+								printf("going to add, div expression to the list\n");
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
-								stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, divExpr, NULL, NULL, NULL, NULL, NULL);
-								push_commandList(commandNode, NULL, ret_stmt, NULL);
+								push_expressionList(expressionListNode, divExpr);
+							}
+							else {
+
+							}
+;
+							strcpy(temp, current->value);
+							strcpy(tempOp, tempOp2);
+							current = current->next;
+							printf("now the current 1.3 : %s\n", current->value);
+							continue;
+						}
+						else if (strcmp(current->type, "identifier") == 0) {
+							printf("second parameter\n");
+						}
+
+					}
+
+					if (strcmp(current->type, "end of command") == 0) {
+						current = current->next;
+						if (current != NULL) {
+							printf("now the current 3 : %s\n", current->value);
+							if (strcmp(current->type, "identifier") == 0) {
+								printf("second parameter after eoc %s\n", current->value);
+								expr* leftExpr = expr_create_string(temp);
+								expr* rightExpr = expr_create_string(current->value);
+								
+								pop(&tempTop);
+								printf("now in the stack : %s\n", tempStack[tempTop]);
+
+								if (strcmp(tempStack[tempTop], "+") == 0) {
+									expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL, NULL);
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else if (strcmp(tempStack[tempTop], "-") == 0) {
+									expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+									push_expressionList(expressionListNode, subExpr);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									//add to expression list
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else if (strcmp(tempStack[tempTop], "*") == 0) {
+									expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+									push_expressionList(expressionListNode, mulExpr);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									//add to expression list
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else if (strcmp(tempStack[tempTop], "/") == 0) {
+									expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+									push_expressionList(expressionListNode, divExpr);
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									//add to expression list
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+								}
+								else {
+
+								}
 							}
 						}
 					}
 				}
-			
 			}
 
 			current = current->next;

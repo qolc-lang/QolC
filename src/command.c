@@ -173,6 +173,11 @@ void print_commandList(command* commandNode) {
 									printf("		left : %s\n", currentList->theExpr->left->string_literal);
 									printf("		right : %s\n", currentList->theExpr->right->string_literal);
 								}
+								else if (ret_val == 3) {
+									printf("	EXPR_DIV\n");
+									printf("		left : %s\n", currentList->theExpr->left->string_literal);
+									printf("		right : %s\n", currentList->theExpr->right->string_literal);
+								}
 							}
 							currentList = currentList->next;
 						}
