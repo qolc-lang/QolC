@@ -1,8 +1,6 @@
 import "mylib" 
 load "myFile"
-
 /@ sample comment jdenjfne fjrnjfnr frnjfr
-
 hello@string|"Hello World!"|
 s@string
 flag@bool
@@ -23,7 +21,6 @@ print|hello|
 print|10|
 print|x|
 print|"end"|
-
 --d
 ++y
 x--
@@ -36,18 +33,13 @@ t *= w
 g *= 3
 s /= k
 z /= 76
-
 m@float^|null|
 j@int^|null|
 b@string^|null|
 v@char^|null|
-
 delete my_node
-
 break
 continue
 return
-
-return x/y+z/i*p
-
+x += 2
 assert |5 @== 2|

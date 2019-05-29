@@ -4,8 +4,6 @@
 #include "../inc/command.h"
 
 void parseProgram(parse_state* node) {
-	printf("in parse program\n");
-	
 	command* commandNode = malloc(sizeof(command) *2);
 	parse_state * current = node;
 	parsing(current, commandNode);
@@ -13,9 +11,7 @@ void parseProgram(parse_state* node) {
 	return;
 }
 
-
-void parsing(parse_state* current, command* commandNode) 
-{
+void parsing(parse_state* current, command* commandNode) {
 	const int SIZE = 100;
 	int top;
 	int atAppeared = 0;
@@ -38,8 +34,6 @@ void parsing(parse_state* current, command* commandNode)
 			push(theStack[top], &top, current->value);
 			current = current->next;
 			continue;
-			// printf("full now? : %d\n", full(&top, SIZE));
-			// printf("or maybe empty? : %d\n", empty(&top));
 		}
 		//Check for load in value and push it to the stack
 		else if (strcmp(current->value, "load") == 0) {
@@ -92,6 +86,16 @@ void parsing(parse_state* current, command* commandNode)
 			continue;
 		}
 		else if (strcmp(current->value, "@") == 0) {
+
+			//checking if the @ is part of comment
+			pop(&top);
+			if (strcmp(theStack[top], "/@") == 0) 
+			{
+				printf("part of comment %s\n", current->value);
+				current = current->next;
+				++top;
+				continue;
+			}
 			printf("operator @ going in\n");
 			push(theStack[top], &top, current->value);
 			current = current->next;
@@ -101,8 +105,6 @@ void parsing(parse_state* current, command* commandNode)
 			printf("statement assert going in\n");
 			push(theStack[top], &top, current->value);
 			current = checkTheStack(current, theStack[0], top, commandNode);
-			// if (current != NULL)
-			// 	current = current->next;
 			pop(&top);
 			theStack[0][top] = '\0';
 			continue;
@@ -111,8 +113,6 @@ void parsing(parse_state* current, command* commandNode)
 			printf("statement return going in\n");
 			push(theStack[top], &top, current->value);
 			current = checkTheStack(current, theStack[0], top, commandNode);
-			// if (current != NULL)
-			// 	current = current->next;
 			pop(&top);
 			theStack[0][top] = '\0';
 			continue;
@@ -207,20 +207,14 @@ void parsing(parse_state* current, command* commandNode)
 			current = current->next;
 			continue;
 		}
-		// else if (strcmp(current->value, "|") == 0) {
-		// 	printf("parenthesis going in\n");
-		// 	push(theStack[top], &top, current->value);
-		// }
 		else { 
 
 		}
 
 		printf("counter-value: %s\n", current->value);
 
-		//Check for string type
 		if (strcmp(current->type, "string") == 0) {
 			int doneFlag = 0;
-			//peeking the stack so decreasing value of top
 			pop(&top);
 			if (strcmp(theStack[top], "import") == 0) {
 				doneFlag = 1;
@@ -271,16 +265,13 @@ void parsing(parse_state* current, command* commandNode)
 				if ((empty(&top) == 0) && (doneFlag == 0)) {
 					printf("stack not empty : %d\n", top);
 					printf("going to insert value : %s\n", current->value);
-					//increasing top value
 					++top;
 					push(theStack[top], &top, current->value);
 				}
 			}
 		}
 
-		//Check for number type
 		if (strcmp(current->type, "number") == 0) {
-			//peeking the stack so decreasing value of top
 			int doneFlag = 0;
 			pop(&top);
 			if (strcmp(theStack[top], "print") == 0) {
@@ -457,7 +448,6 @@ void parsing(parse_state* current, command* commandNode)
 				if ((empty(&top) == 0) && (doneFlag == 0)) {
 					printf("stack not empty : %d\n", top);
 					printf("going to insert value : %s\n", current->value);
-					//increasing top value
 					++top;
 					push(theStack[top], &top, current->value);
 				}
@@ -477,21 +467,18 @@ void parsing(parse_state* current, command* commandNode)
 			if (strcmp(theStack[top], "@") == 0) {
 				printf("@ operator is in the stack atm\n");
 				printf("going to insert value : %s\n", current->value);
-				//increasing top value
 				++top;
 				push(theStack[top], &top, current->value);
 				current = current->next;
 				continue;
 			}
 
-			//peeking the stack so decreasing value of top
 			pop(&top);
 			int doneFlag = 0;
 			if (strcmp(theStack[top], "@") == 0) {
 				doneFlag = 1;
 				printf("@ operator is in the stack atm\n");
 				printf("going to insert value : %s\n", current->value);
-				//increasing top value
 				++top;
 				push(theStack[top], &top, current->value);
 			}
@@ -619,14 +606,12 @@ void parsing(parse_state* current, command* commandNode)
 				if ((empty(&top) == 0) && (doneFlag == 0)) {
 					printf("stack not empty : %d\n", top);
 					printf("going to insert value : %s\n", current->value);
-					//increasing top value
 					++top;
 					push(theStack[top], &top, current->value);
 				}
 				else {
 					printf("stack empty : %d\n", top);
 					printf("going to insert value : %s\n", current->value);
-					//increasing top value
 					++top;
 					push(theStack[top], &top, current->value);	
 				}
@@ -636,13 +621,11 @@ void parsing(parse_state* current, command* commandNode)
 
 		//Check for character type
 		if (strcmp(current->type, "character") == 0) {
-			//peeking the stack so decreasing value of top
 			pop(&top);
 			int doneFlag = 0;
 			if (strcmp(theStack[top], "@") == 0) {
 				printf("@ operator is in the stack atm\n");
 				printf("going to insert value : %s\n", current->value);
-				//increasing top value
 				++top;
 				push(theStack[top], &top, current->value);
 			}
@@ -670,7 +653,6 @@ void parsing(parse_state* current, command* commandNode)
 				if ((empty(&top) == 0) && (doneFlag == 0)) {
 					printf("stack not empty : %d\n", top);
 					printf("going to insert value : %s\n", current->value);
-					//increasing top value
 					++top;
 					push(theStack[top], &top, current->value);
 				}
@@ -679,9 +661,7 @@ void parsing(parse_state* current, command* commandNode)
 
 
 		//Check for keyword type
-		if (strcmp(current->type, "keyword") == 0) { 
-
-
+		if (strcmp(current->type, "keyword") == 0) {
 			if (strcmp(current->value, "break") == 0) {
 				stmt* break_decl_stmt = stmt_create(STMT_BREAK, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, break_decl_stmt, NULL); 
@@ -693,25 +673,6 @@ void parsing(parse_state* current, command* commandNode)
 				push_commandList(commandNode, NULL, cont_decl_stmt, NULL); 
 				current = current->next;
 				continue;
-			}
-			else if (strcmp(current->value, "return") == 0) {
-				// stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-				// push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
-				// current = current->next;
-				// if (strcmp(current->type, "identifier") == 0) {
-				// 	printf("the value to work as expr : %s\n", current->value);
-				// 	expr* identifierExpr = expr_create_string(current->value);
-				// 	stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL);
-				// 	push_commandList(commandNode, NULL, ret_stmt, NULL); 
-				// 	current = current->next;
-				// }
-				// continue;
-			}
-			else if (strcmp(current->value, "assert") == 0) {
-				printf("in assert loop\n");
-			}
-			else {
-
 			}
 
 			int doneFlag = 0;
@@ -864,10 +825,7 @@ void parsing(parse_state* current, command* commandNode)
 					continue;
 				}
 
-
-
 				theStack[0][top] = '\0';
-				//pop(&top);
 				printf("now in the stack : %s\n", theStack[top]);
 				strcpy(temp, theStack[top]);
 				theStack[0][top] = '\0';
@@ -960,8 +918,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 			//Check for number type
 			if (strcmp(current->type, "number") == 0) {
-				//peeking the stack so decreasing value of top
-
 				if (tempTop == 0) {
 					printf("going to insert value : %s\n", current->value);
 					++tempTop;
@@ -1065,7 +1021,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 						}
 
 						printf("going to insert value : %s\n", current->value);
-						//increasing top value
 						++tempTop;
 						push(tempStack[tempTop], &tempTop, current->value);
 					}
@@ -1074,7 +1029,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 			}
 			else if (strcmp(current->type, "operator") == 0) {
 				printf("operator %s going in\n", current->value);
-				//increasing top value
 				++tempTop;
 				push(tempStack[tempTop], &tempTop, current->value);
 			} 
@@ -1097,7 +1051,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 			printf("in return loop with value : %s\n", current->value);
 
 			if (strcmp(current->type, "end of command") == 0) {
-				//found return statement
 				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
 				return current;
