@@ -40,6 +40,4 @@ v@char^|null|
 delete my_node
 break
 continue
-return
-x += 2
-assert |5 @== 2|
+return x +p

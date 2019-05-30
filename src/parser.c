@@ -1056,6 +1056,14 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				return current;
 			}
 
+			if (tempTop == 0) {
+				++tempTop;
+				push(tempStack[tempTop], &tempTop, current->value);
+				strcpy(tempOp, current->value);
+				current = current->next;
+				continue;
+			}
+
 			if (strcmp(current->type, "operator") == 0) {
 				++tempTop;
 				push(tempStack[tempTop], &tempTop, current->value);
@@ -1121,7 +1129,39 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							continue;
 						}
 						else if (strcmp(current->type, "identifier") == 0) {
-							printf("second parameter\n");
+							printf("second parameter %s\n", current->value);
+							printf("the temp : %s\n", temp);
+							printf("now in the stack : %s\n", tempStack[tempTop]);
+
+							expr* leftExpr = expr_create_string(temp);
+							expr* rightExpr = expr_create_string(current->value);
+
+							if (strcmp(tempStack[tempTop], "+") == 0) {
+								expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, addExpr);
+								current = current->next;
+								if (current == NULL) {
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL, NULL);
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+									return current;
+								}
+								
+							}
+							// else if (strcmp(tempStack[tempTop], "-") == 0) {
+							// 	expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+							// 	push_expressionList(expressionListNode, subExpr);
+							// }
+							// else if (strcmp(tempStack[tempTop], "*") == 0) {
+							// 	expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+							// 	push_expressionList(expressionListNode, mulExpr);
+							// }
+							// else if (strcmp(tempStack[tempTop], "/") == 0) {
+							// 	expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+							// 	push_expressionList(expressionListNode, divExpr);
+							// }
+							// else {
+
+							// }
 						}
 
 					}
@@ -1230,7 +1270,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							continue;
 						}
 						else if (strcmp(current->type, "identifier") == 0) {
-							printf("second parameter\n");
+							printf("second parameter %s\n", current->value);
 						}
 
 					}
@@ -1336,7 +1376,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							continue;
 						}
 						else if (strcmp(current->type, "identifier") == 0) {
-							printf("second parameter\n");
+							printf("second parameter %s\n", current->value);
 						}
 
 					}
@@ -1442,7 +1482,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							continue;
 						}
 						else if (strcmp(current->type, "identifier") == 0) {
-							printf("second parameter\n");
+							printf("second parameter %s\n", current->value);
 						}
 
 					}
