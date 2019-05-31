@@ -1044,6 +1044,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 		printf("going in return loop\n");
 
 		expr_list* expressionListNode = malloc(sizeof(expr_list));
+		int operatorInsideStack = 0; 
 
 		current = current->next;
 
@@ -1059,23 +1060,78 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 			if (tempTop == 0) {
 				++tempTop;
 				push(tempStack[tempTop], &tempTop, current->value);
-				strcpy(tempOp, current->value);
+				strcpy(temp, current->value);
 				current = current->next;
 				continue;
 			}
 
 			if (strcmp(current->type, "operator") == 0) {
-				++tempTop;
-				push(tempStack[tempTop], &tempTop, current->value);
-				strcpy(tempOp, current->value);
-				current = current->next;
-				continue;
+
+				if (operatorInsideStack == 1) {
+					printf("an operator already in the stack\n");
+					//going to save this operator and continue
+					strcpy(tempOp2, current->value);
+					current = current->next;
+					continue;
+				}
+				else { 
+					operatorInsideStack = 1;
+					++tempTop;
+					push(tempStack[tempTop], &tempTop, current->value);
+					strcpy(tempOp, current->value);
+					current = current->next;
+					continue;
+				}
 			}
 			else if (strcmp(current->type, "identifier") == 0) {
 				pop(&tempTop);
+				printf("now in the stack : %s\n", tempStack[tempTop]);
 				if (strcmp(tempStack[tempTop], "+") == 0) {
 					tempStack[0][tempTop] = '\0';
 					printf("going for add expression\n");
+
+					//in case there is a space between operators and identifiers
+					if (tempTop > 1) {
+						printf("already an identifier in stack \n");
+						pop(&tempTop);
+						pop(&tempTop);
+						printf("now in the stack : %s\n", temp);
+
+						expr* leftExpr = expr_create_string(tempStack[tempTop]);
+						expr* rightExpr = expr_create_string(current->value);
+						expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+						push_expressionList(expressionListNode, addExpr);
+						printf("pushin addExpr in expressionListNode!!!!!!!!!!!\n");
+
+						//pushin to stack the previous id
+						++tempTop;
+						push(tempStack[tempTop], &tempTop, current->value);
+						strcpy(temp, current->value);
+
+						current = current->next;
+						if (current == NULL) {
+							printf("current is NULL\n");
+							stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+							push_commandList(commandNode, NULL, ret_stmt, NULL);
+							return current;
+						}
+						else {
+
+							if (tempOp2 != NULL) {
+								printf("additional saved operator : %s\n", tempOp2);
+								++tempTop;
+								push(tempStack[tempTop], &tempTop, tempOp2);
+								continue;
+							}
+
+							++tempTop;
+							push(tempStack[tempTop], &tempTop, current->value);
+							strcpy(temp, current->value);
+							printf("current NOT NULL\n");
+							continue;
+						}
+					}
+
 					strcpy(temp, current->value);
 					current = current->next;
 					printf("now the current 1 : %s\n", current->value);
@@ -1129,7 +1185,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							continue;
 						}
 						else if (strcmp(current->type, "identifier") == 0) {
-							printf("second parameter %s\n", current->value);
+							printf("second parameter add %s\n", current->value);
 							printf("the temp : %s\n", temp);
 							printf("now in the stack : %s\n", tempStack[tempTop]);
 
@@ -1141,27 +1197,35 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								push_expressionList(expressionListNode, addExpr);
 								current = current->next;
 								if (current == NULL) {
-									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL, NULL);
+									printf("current is NULL\n");
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
 									push_commandList(commandNode, NULL, ret_stmt, NULL);
 									return current;
 								}
 								
 							}
-							// else if (strcmp(tempStack[tempTop], "-") == 0) {
-							// 	expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
-							// 	push_expressionList(expressionListNode, subExpr);
-							// }
-							// else if (strcmp(tempStack[tempTop], "*") == 0) {
-							// 	expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
-							// 	push_expressionList(expressionListNode, mulExpr);
-							// }
-							// else if (strcmp(tempStack[tempTop], "/") == 0) {
-							// 	expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
-							// 	push_expressionList(expressionListNode, divExpr);
-							// }
-							// else {
+							else if (strcmp(tempStack[tempTop], "-") == 0) {
+								expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, subExpr);
+								current = current->next;
+								if (current == NULL) {
+									printf("current is NULL\n");
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+									return current;
+								}
+							}
+							else if (strcmp(tempStack[tempTop], "*") == 0) {
+								expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, mulExpr);
+							}
+							else if (strcmp(tempStack[tempTop], "/") == 0) {
+								expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, divExpr);
+							}
+							else {
 
-							// }
+							}
 						}
 
 					}
@@ -1217,6 +1281,43 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				else if (strcmp(tempStack[tempTop], "-") == 0) {
 					tempStack[0][tempTop] = '\0';
 					printf("going for sub expression\n");
+
+					//in case there is a space between operators and identifiers
+					if (tempTop > 1) {
+						printf("already an identifier in stack \n");
+						pop(&tempTop);
+						pop(&tempTop);
+						printf("now in the stack : %s\n", temp);
+
+						expr* leftExpr = expr_create_string(tempStack[tempTop]);
+						expr* rightExpr = expr_create_string(current->value);
+						expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+						push_expressionList(expressionListNode, subExpr);
+						printf("pushin addExpr in expressionListNode!!!!!!!!!!!\n");
+
+						current = current->next;
+						if (current == NULL) {
+							printf("current is NULL\n");
+							stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+							push_commandList(commandNode, NULL, ret_stmt, NULL);
+							return current;
+						}
+						else {
+
+							if (tempOp2 != NULL) {
+								printf("additional saved operator : %s\n", tempOp2);
+								++tempTop;
+								push(tempStack[tempTop], &tempTop, tempOp2);
+								continue;
+							}
+
+							++tempTop;
+							push(tempStack[tempTop], &tempTop, current->value);
+							strcpy(temp, current->value);
+							printf("current NOT NULL\n");
+							continue;
+						}
+					}
 					strcpy(temp, current->value);
 					current = current->next;
 					printf("now the current 1 : %s\n", current->value);
@@ -1270,7 +1371,48 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							continue;
 						}
 						else if (strcmp(current->type, "identifier") == 0) {
-							printf("second parameter %s\n", current->value);
+							printf("second parameter sub %s\n", current->value);
+
+							printf("the temp : %s\n", temp);
+							printf("now in the stack : %s\n", tempStack[tempTop]);
+							expr* leftExpr = expr_create_string(temp);
+							expr* rightExpr = expr_create_string(current->value);
+
+							if (strcmp(tempStack[tempTop], "+") == 0) {
+								expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, addExpr);
+								current = current->next;
+								if (current == NULL) {
+									printf("current is NULL\n");
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+									return current;
+								}
+								
+							}
+							else if (strcmp(tempStack[tempTop], "-") == 0) {
+								expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, subExpr);
+								current = current->next;
+								if (current == NULL) {
+									printf("current is NULL\n");
+									stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+									push_commandList(commandNode, NULL, ret_stmt, NULL);
+									return current;
+								}
+							}
+							else if (strcmp(tempStack[tempTop], "*") == 0) {
+								expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, mulExpr);
+							}
+							else if (strcmp(tempStack[tempTop], "/") == 0) {
+								expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+								push_expressionList(expressionListNode, divExpr);
+							}
+							else {
+
+							}
+
 						}
 
 					}
@@ -1376,7 +1518,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							continue;
 						}
 						else if (strcmp(current->type, "identifier") == 0) {
-							printf("second parameter %s\n", current->value);
+							printf("second parameter myul %s\n", current->value);
 						}
 
 					}
@@ -1482,7 +1624,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							continue;
 						}
 						else if (strcmp(current->type, "identifier") == 0) {
-							printf("second parameter %s\n", current->value);
+							printf("second parameter div %s\n", current->value);
 						}
 
 					}
