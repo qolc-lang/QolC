@@ -1045,6 +1045,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 		expr_list* expressionListNode = malloc(sizeof(expr_list));
 		int operatorInsideStack = 0; 
+		int operatorUsed = 0;
 
 		current = current->next;
 
@@ -1058,6 +1059,10 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 			}
 
 			if (tempTop == 0) {
+
+				if (strcmp(current->type, "operator") == 0) {
+					strcpy(tempOp, current->value);
+				}
 				++tempTop;
 				push(tempStack[tempTop], &tempTop, current->value);
 				strcpy(temp, current->value);
@@ -1075,6 +1080,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					continue;
 				}
 				else { 
+					printf("not an operator in\n");
 					operatorInsideStack = 1;
 					++tempTop;
 					push(tempStack[tempTop], &tempTop, current->value);
@@ -1137,14 +1143,18 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					printf("now the current 1 : %s\n", current->value);
 					while ((strcmp(current->type, "operator") == 0) || (strcmp(current->type, "identifier") == 0)) {
 						if (strcmp(current->type, "operator") == 0) {
-							printf("operator again\n");
+							printf("operator again add\n");
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							++tempTop;
 							push(tempStack[tempTop], &tempTop, current->value);
 							strcpy(tempOp2, current->value);
+							if (operatorUsed == 1) {
+								strcpy(tempOp, current->value);
+							}
 							current = current->next;
 							printf("now the current 1.2 : %s\n", current->value);
+							printf("now the tempOp : %s\n", tempOp);
 
 							if (strcmp(tempOp, "+") == 0) {
 								printf("going to add, add expression to the list\n");
@@ -1181,6 +1191,14 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							strcpy(temp, current->value);
 							strcpy(tempOp, tempOp2);
 							current = current->next;
+
+							if (current == NULL) {
+								printf("current is NULL operator again add\n");
+								stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+								push_commandList(commandNode, NULL, ret_stmt, NULL);
+								return current;
+							}
+
 							printf("now the current 1.3 : %s\n", current->value);
 							continue;
 						}
@@ -1195,6 +1213,10 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 							if (strcmp(tempStack[tempTop], "+") == 0) {
 								expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+								operatorUsed = 1;
+								printf("the operator used add\n");
+								//copying right id expr to become new left id expr
+								strcpy(temp, current->value);
 								push_expressionList(expressionListNode, addExpr);
 								current = current->next;
 								if (current == NULL) {
@@ -1207,6 +1229,8 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							}
 							else if (strcmp(tempStack[tempTop], "-") == 0) {
 								expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+								operatorUsed = 1;
+								printf("the operator used add\n");
 								push_expressionList(expressionListNode, subExpr);
 								current = current->next;
 								if (current == NULL) {
@@ -1218,6 +1242,8 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							}
 							else if (strcmp(tempStack[tempTop], "*") == 0) {
 								expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+								operatorUsed = 1;
+								printf("the operator used add\n");
 								push_expressionList(expressionListNode, mulExpr);
 								current = current->next;
 								if (current == NULL) {
@@ -1229,6 +1255,8 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							}
 							else if (strcmp(tempStack[tempTop], "/") == 0) {
 								expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+								operatorUsed = 1;
+								printf("the operator used add\n");
 								push_expressionList(expressionListNode, divExpr);
 								current = current->next;
 								if (current == NULL) {
@@ -1241,6 +1269,8 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							else {
 								if (strcmp(tempOp2, "+") == 0) {
 									expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+									operatorUsed = 1;
+									printf("the operator used add\n");
 									push_expressionList(expressionListNode, addExpr);
 									current = current->next;
 									if (current == NULL) {
@@ -1253,6 +1283,8 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								}
 								else if (strcmp(tempOp2, "-") == 0) {
 									expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+									operatorUsed = 1;
+									printf("the operator used add\n");
 									push_expressionList(expressionListNode, subExpr);
 									current = current->next;
 									if (current == NULL) {
@@ -1264,6 +1296,8 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								}
 								else if (strcmp(tempOp2, "*") == 0) {
 									expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+									operatorUsed = 1;
+									printf("the operator used add\n");
 									push_expressionList(expressionListNode, mulExpr);
 									current = current->next;
 									if (current == NULL) {
@@ -1275,6 +1309,8 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								}
 								else if (strcmp(tempOp2, "/") == 0) {
 									expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+									operatorUsed = 1;
+									printf("the operator used add\n");
 									push_expressionList(expressionListNode, divExpr);
 									current = current->next;
 									if (current == NULL) {
@@ -1385,7 +1421,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					printf("now the current 1 : %s\n", current->value);
 					while ((strcmp(current->type, "operator") == 0) || (strcmp(current->type, "identifier") == 0)) {
 						if (strcmp(current->type, "operator") == 0) {
-							printf("operator again\n");
+							printf("operator again sub\n");
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							++tempTop;
@@ -1569,7 +1605,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					printf("now the current 1 : %s\n", current->value);
 					while ((strcmp(current->type, "operator") == 0) || (strcmp(current->type, "identifier") == 0)) {
 						if (strcmp(current->type, "operator") == 0) {
-							printf("operator again\n");
+							printf("operator again mul\n");
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							++tempTop;
@@ -1675,7 +1711,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					printf("now the current 1 : %s\n", current->value);
 					while ((strcmp(current->type, "operator") == 0) || (strcmp(current->type, "identifier") == 0)) {
 						if (strcmp(current->type, "operator") == 0) {
-							printf("operator again\n");
+							printf("operator again div\n");
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							++tempTop;

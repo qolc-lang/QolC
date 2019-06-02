@@ -40,4 +40,4 @@ v@char^|null|
 delete my_node
 break
 continue
-return x+p*z
+return x+p -z
