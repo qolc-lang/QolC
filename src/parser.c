@@ -1093,7 +1093,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				pop(&tempTop);
 				printf("now in the stack : %s\n", tempStack[tempTop]);
 				if (strcmp(tempStack[tempTop], "+") == 0) {
-					tempStack[0][tempTop] = '\0';
+					//tempStack[0][tempTop] = '\0';
 					printf("going for add expression\n");
 
 					//in case there is a space between operators and identifiers
@@ -1101,13 +1101,14 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 						printf("already an identifier in stack \n");
 						pop(&tempTop);
 						pop(&tempTop);
-						printf("now in the stack : %s\n", temp);
+						printf("now in the stack in add already id: %s\n", tempStack[tempTop]);
 
 						expr* leftExpr = expr_create_string(tempStack[tempTop]);
 						expr* rightExpr = expr_create_string(current->value);
 						expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
 						push_expressionList(expressionListNode, addExpr);
 						printf("pushin addExpr in expressionListNode!!!!!!!!!!!\n");
+						operatorInsideStack = 0;
 
 						//pushin to stack the previous id
 						++tempTop;
@@ -1123,7 +1124,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 						}
 						else {
 
-							if (tempOp2 != NULL) {
+							if ((tempOp2 != NULL) && (tempOp2[0] != '\0')) {
 								printf("additional saved operator : %s\n", tempOp2);
 								++tempTop;
 								push(tempStack[tempTop], &tempTop, tempOp2);
@@ -1134,6 +1135,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							push(tempStack[tempTop], &tempTop, current->value);
 							strcpy(temp, current->value);
 							printf("current NOT NULL\n");
+							current = current->next;
 							continue;
 						}
 					}
@@ -1377,7 +1379,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 				}
 				else if (strcmp(tempStack[tempTop], "-") == 0) {
-					tempStack[0][tempTop] = '\0';
+					//tempStack[0][tempTop] = '\0';
 					printf("going for sub expression\n");
 
 					//in case there is a space between operators and identifiers
@@ -1385,7 +1387,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 						printf("already an identifier in stack \n");
 						pop(&tempTop);
 						pop(&tempTop);
-						printf("now in the stack : %s\n", temp);
+						printf("now in the stack in sub already id: %s\n", tempStack[tempTop]);
 
 						expr* leftExpr = expr_create_string(tempStack[tempTop]);
 						expr* rightExpr = expr_create_string(current->value);
