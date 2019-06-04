@@ -1139,7 +1139,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							continue;
 						}
 					}
-
 					strcpy(temp, current->value);
 					current = current->next;
 					printf("now the current 1 : %s\n", current->value);
@@ -1189,7 +1188,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							else {
 
 							}
-;
 							strcpy(temp, current->value);
 							strcpy(tempOp, tempOp2);
 							current = current->next;
@@ -1394,6 +1392,12 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 						expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
 						push_expressionList(expressionListNode, subExpr);
 						printf("pushin addExpr in expressionListNode!!!!!!!!!!!\n");
+						operatorInsideStack = 0;
+
+						//pushin to stack the previous id
+						++tempTop;
+						push(tempStack[tempTop], &tempTop, current->value);
+						strcpy(temp, current->value);
 
 						current = current->next;
 						if (current == NULL) {
@@ -1415,6 +1419,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							push(tempStack[tempTop], &tempTop, current->value);
 							strcpy(temp, current->value);
 							printf("current NOT NULL\n");
+							current = current->next;
 							continue;
 						}
 					}
@@ -1578,6 +1583,12 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 						expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
 						push_expressionList(expressionListNode, mulExpr);
 						printf("pushin mulExpr in expressionListNode!!!!!!!!!!!\n");
+						operatorInsideStack = 0;
+
+						//pushin to stack the previous id
+						++tempTop;
+						push(tempStack[tempTop], &tempTop, current->value);
+						strcpy(temp, current->value);
 
 						current = current->next;
 						if (current == NULL) {
@@ -1599,6 +1610,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							push(tempStack[tempTop], &tempTop, current->value);
 							strcpy(temp, current->value);
 							printf("current NOT NULL\n");
+							current = current->next;
 							continue;
 						}
 					}
@@ -1708,6 +1720,50 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				else if (strcmp(tempStack[tempTop], "/") == 0) {
 					tempStack[0][tempTop] = '\0';
 					printf("going for div expression\n");
+
+					//in case there is a space between operators and identifiers
+					if (tempTop > 1) {
+						printf("already an identifier in stack \n");
+						pop(&tempTop);
+						pop(&tempTop);
+						printf("now in the stack : %s\n", temp);
+
+						expr* leftExpr = expr_create_string(tempStack[tempTop]);
+						expr* rightExpr = expr_create_string(current->value);
+						expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+						push_expressionList(expressionListNode, divExpr);
+						printf("pushin divExpr in expressionListNode!!!!!!!!!!!\n");
+						operatorInsideStack = 0;
+
+						//pushin to stack the previous id
+						++tempTop;
+						push(tempStack[tempTop], &tempTop, current->value);
+						strcpy(temp, current->value);
+
+						current = current->next;
+						if (current == NULL) {
+							printf("current is NULL\n");
+							stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+							push_commandList(commandNode, NULL, ret_stmt, NULL);
+							return current;
+						}
+						else {
+
+							if (tempOp2 != NULL) {
+								printf("additional saved operator : %s\n", tempOp2);
+								++tempTop;
+								push(tempStack[tempTop], &tempTop, tempOp2);
+								continue;
+							}
+
+							++tempTop;
+							push(tempStack[tempTop], &tempTop, current->value);
+							strcpy(temp, current->value);
+							printf("current NOT NULL\n");
+							current = current->next;
+							continue;
+						}
+					}
 					strcpy(temp, current->value);
 					current = current->next;
 					printf("now the current 1 : %s\n", current->value);
