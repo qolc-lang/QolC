@@ -64,7 +64,6 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 	return my_parse_state;
 }
 
-
 int removeLast(parse_state * head) {
     int retval = 0;
 
@@ -85,7 +84,6 @@ int removeLast(parse_state * head) {
     return retval;
 }
 
-
 void print_parseStateList(parse_state* node) {
 	parse_state * current = node;
 	int counter = 0;
@@ -99,7 +97,6 @@ void print_parseStateList(parse_state* node) {
 		current = current->next;
 	}
 }
-
 
 void push_parseList(parse_state* node, int pos, char type[], char value[]) {
     parse_state * current = node;

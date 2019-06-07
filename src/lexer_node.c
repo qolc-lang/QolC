@@ -1,5 +1,17 @@
 #include "../inc/lexer_node.h"
 
+void pushAndreset(char buffer[], char* typeToPush) 
+{
+	if (strcmp(typeToPush, "keyword") == 0)
+	{
+		printf("typeToPush to push is : %s\n", typeToPush);
+		//strcpy(temp_buffer, "keyword,");
+		// strcat(temp_buffer, buffer);
+		// push_lexerList(myNode, temp_buffer);
+		// memset(temp_buffer, 0, sizeof(temp_buffer));
+	}
+}
+
 void print_lexerList(lexer_node* node, char* fileName) {
 	lexer_node * current = node;
 	int counter = 0;
