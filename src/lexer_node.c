@@ -1,15 +1,32 @@
 #include "../inc/lexer_node.h"
 
-void pushAndreset(char buffer[], char* typeToPush) 
+void pushForLex(char buffer[], char* typeToPush, lexer_node* myNode) 
 {
+	char temp_buffer[200];
+	memset(temp_buffer, 0, sizeof(temp_buffer));
+
+	printf("typeToPush to push is : %s\n", typeToPush);
+
+	//keyword found
 	if (strcmp(typeToPush, "keyword") == 0)
 	{
-		printf("typeToPush to push is : %s\n", typeToPush);
-		//strcpy(temp_buffer, "keyword,");
-		// strcat(temp_buffer, buffer);
-		// push_lexerList(myNode, temp_buffer);
-		// memset(temp_buffer, 0, sizeof(temp_buffer));
+		strcpy(temp_buffer, "keyword,");
 	}
+	else if (strcmp(typeToPush, "number") == 0)
+	{
+		strcpy(temp_buffer, "number,");
+	}
+	else if (strcmp(typeToPush, "identifier") == 0)
+	{
+		strcpy(temp_buffer, "identifier,");
+	}
+	else;
+
+	if (buffer != NULL)
+		strcat(temp_buffer, buffer);
+	else
+		strcpy(temp_buffer, "end of command");
+	push_lexerList(myNode, temp_buffer);
 }
 
 void print_lexerList(lexer_node* node, char* fileName) {
