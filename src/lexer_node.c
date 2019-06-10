@@ -20,6 +20,18 @@ void pushForLex(char buffer[], char* typeToPush, lexer_node* myNode)
 	{
 		strcpy(temp_buffer, "identifier,");
 	}
+	else if (strcmp(typeToPush, "hexadecimal number") == 0)
+	{
+		strcpy(temp_buffer, "hexadecimal number,");
+	}
+	else if (strcmp(typeToPush, "string") == 0)
+	{
+		strcpy(temp_buffer, "string,");
+	}
+	else if (strcmp(typeToPush, "character") == 0)
+	{
+		strcpy(temp_buffer, "character,");
+	}
 	else;
 
 	if (buffer != NULL)

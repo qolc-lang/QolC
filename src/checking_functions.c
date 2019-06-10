@@ -56,15 +56,9 @@ int isNumber(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buf
 			}
 		}while (isdigit(buffer[pos]) || buffer[pos] == '.' || buffer[pos] == 'x');
 		if (buf[1] == 'x') {
-			strcpy(temp_buffer, "hexadecimal number,");
-			strcat(temp_buffer, buf);
-			push_lexerList(myNode, temp_buffer);
-			memset(temp_buffer, 0, sizeof(temp_buffer));
+			pushForLex(buf, "hexadecimal number", myNode);
 		} else {
-			strcpy(temp_buffer, "number,");
-			strcat(temp_buffer, buf);
-			push_lexerList(myNode, temp_buffer);
-			memset(temp_buffer, 0, sizeof(temp_buffer));
+			pushForLex(buf, "number", myNode);
 		}
 		return count;
 	}
@@ -169,10 +163,7 @@ int isStringLiteral(char buffer[], int pos, int len, lexer_node* myNode, char* t
 			}
 			++pos;
 		}while (buffer[pos] != '"');
-		strcpy(temp_buffer, "string,");
-		strcat(temp_buffer, buf);
-		push_lexerList(myNode, temp_buffer);
-		memset(temp_buffer, 0, sizeof(temp_buffer));
+		pushForLex(buf, "string", myNode);
 		++count;
 		return count;
 	}
@@ -517,10 +508,7 @@ int isChar(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffe
 				break;
 			}
 		}while (buffer[pos] != '\n');
-		strcpy(temp_buffer, "character,");
-		strcat(temp_buffer, buf);
-		push_lexerList(myNode, temp_buffer);
-		memset(temp_buffer, 0, sizeof(temp_buffer));
+		pushForLex(buf, "character", myNode);
 		++count;
 		return count;
 	}
