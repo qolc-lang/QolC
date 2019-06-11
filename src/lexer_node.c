@@ -7,7 +7,6 @@ void pushForLex(char buffer[], char* typeToPush, lexer_node* myNode)
 
 	printf("typeToPush to push is : %s\n", typeToPush);
 
-	//keyword found
 	if (strcmp(typeToPush, "keyword") == 0)
 	{
 		strcpy(temp_buffer, "keyword,");
@@ -31,6 +30,10 @@ void pushForLex(char buffer[], char* typeToPush, lexer_node* myNode)
 	else if (strcmp(typeToPush, "character") == 0)
 	{
 		strcpy(temp_buffer, "character,");
+	}
+	else if (strcmp(typeToPush, "operator") == 0)
+	{
+		strcpy(temp_buffer, "operator,");
 	}
 	else;
 

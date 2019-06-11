@@ -50,7 +50,7 @@ void parsing(parse_state* current, command* commandNode) {
 			continue;
 		}
 		else if (strcmp(current->value, "delete") == 0) {
-			printf("print statement to be built\n");
+			printf("delete statement to be built\n");
 			push(theStack[top], &top, current->value);
 			current = current->next;
 			continue;
@@ -111,6 +111,14 @@ void parsing(parse_state* current, command* commandNode) {
 		}
 		else if (strcmp(current->value, "return") == 0) {
 			printf("statement return going in\n");
+			push(theStack[top], &top, current->value);
+			current = checkTheStack(current, theStack[0], top, commandNode);
+			pop(&top);
+			theStack[0][top] = '\0';
+			continue;
+		}
+		else if (strcmp(current->value, "defer") == 0) {
+			printf("defer statement to be built\n");
 			push(theStack[top], &top, current->value);
 			current = checkTheStack(current, theStack[0], top, commandNode);
 			pop(&top);
@@ -1051,6 +1059,10 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 		while (1) {
 			printf("in return loop with value : %s\n", current->value);
+
+			if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (strcmp(current->type, "identifier") != 0) ) {
+				return current;
+			}
 
 			if (strcmp(current->type, "end of command") == 0) {
 				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -2270,6 +2282,27 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				printf("going for null break --- in return stmt\n");
 				break;
 			}
+		}
+	}
+	else if (strcmp(theStackTop, "defer") == 0) 
+	{
+		printf("going in defer loop\n");
+
+		current = current->next;
+
+		if (strcmp(current->type, "end of command") == 0){
+			current = current->next; 
+			if (current != NULL) {
+				printf("in defer eoc loop with value : %s\n", current->value);	
+			}
+
+			printf("going for eoc break --- in defer stmt\n");
+			//break;
+		}
+
+		if (current == NULL) {
+			printf("going for null break --- in defer stmt\n");
+			//break;
 		}
 	}
 

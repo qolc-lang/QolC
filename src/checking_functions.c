@@ -75,10 +75,7 @@ int isOperator(char buffer, lexer_node* myNode, char* temp_buffer) {
 	for (op_pos = 0; op_pos < 2; ++op_pos){
 		if (buffer == *operators[op_pos]){
 			operator_buff[0] = buffer;
-			strcpy(temp_buffer, "operator,");
-			strcat(temp_buffer, operator_buff);
-			push_lexerList(myNode, temp_buffer);
-			memset(temp_buffer, 0, sizeof(temp_buffer));
+			pushForLex(operator_buff, "operator", myNode);
 			return 1;
 		}
 	}
