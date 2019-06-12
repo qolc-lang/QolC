@@ -19,6 +19,7 @@ void parsing(parse_state* current, command* commandNode) {
 	int numOfPar = 0;
 	int partOfComment = 0;
 	int notTheEndFlag = 0;		//flag that helps when is not really the end of command
+	int hasDefer = 0;
 	char theStack[200][SIZE];
 	char temp[100], temp2[100];
 	init(&top);
@@ -117,12 +118,10 @@ void parsing(parse_state* current, command* commandNode) {
 			theStack[0][top] = '\0';
 			continue;
 		}
-		else if (strcmp(current->value, "defer") == 0) {
+		else if (strcmp(current->value, "defer") == 0) {	//not pushing to stack just setting a variable
 			printf("defer statement to be built\n");
-			push(theStack[top], &top, current->value);
-			current = checkTheStack(current, theStack[0], top, commandNode);
-			pop(&top);
-			theStack[0][top] = '\0';
+			hasDefer = 1;
+			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "+") == 0) {
@@ -244,12 +243,24 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "print") == 0) {
 				doneFlag = 1;
-				printf("print statement is in the stack atm\n");
+				printf("print statement is in the stack atm 1\n");
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
 				expr* stringExpr = expr_create_string(current->value);
-				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, print_stmt, NULL); 
+				if (hasDefer == 1)
+				{
+					printf("This statement is with defer at the front\n");
+					hasDefer = 0;
+					stmt* defer_stmt = stmt_create(STMT_DEFER, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+					push_commandList(commandNode, NULL, defer_stmt, NULL); 
+					stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
+					push_commandList(commandNode, NULL, print_stmt, NULL); 
+				}
+				else 
+				{
+					stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
+					push_commandList(commandNode, NULL, print_stmt, NULL); 
+				}
 			}
 			else if (strcmp(theStack[top], "string") == 0) {
 				doneFlag = 1;
@@ -284,7 +295,7 @@ void parsing(parse_state* current, command* commandNode) {
 			pop(&top);
 			if (strcmp(theStack[top], "print") == 0) {
 				doneFlag = 1;
-				printf("print statement is in the stack atm\n");
+				printf("print statement is in the stack atm 2\n");
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
 				expr* numberExpr = expr_create_string(current->value);
@@ -492,7 +503,7 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "print") == 0) {
 				doneFlag = 1;
-				printf("print is in the stack atm\n");
+				printf("print is in the stack atm 3\n");
 				theStack[0][top] = '\0';
 				printf("the value to work as expr : %s\n", current->value);
 				expr* identifierExpr = expr_create_string(current->value);
@@ -2282,27 +2293,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				printf("going for null break --- in return stmt\n");
 				break;
 			}
-		}
-	}
-	else if (strcmp(theStackTop, "defer") == 0) 
-	{
-		printf("going in defer loop\n");
-
-		current = current->next;
-
-		if (strcmp(current->type, "end of command") == 0){
-			current = current->next; 
-			if (current != NULL) {
-				printf("in defer eoc loop with value : %s\n", current->value);	
-			}
-
-			printf("going for eoc break --- in defer stmt\n");
-			//break;
-		}
-
-		if (current == NULL) {
-			printf("going for null break --- in defer stmt\n");
-			//break;
 		}
 	}
 

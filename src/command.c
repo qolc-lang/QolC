@@ -111,6 +111,10 @@ void print_commandList(command* commandNode) {
 				printf("STMT_DELETE\n");
 				printf("	expr: %s\n", current->aStmt->expr->string_literal);
 			}
+			else if (value == 8) {
+				printf("STMT_DEFER\n");
+				// printf("	expr: %s\n", current->aStmt->expr->string_literal);
+			}
 			else if (value == 9) {
 				printf("STMT_ASSERT\n");
 				int assert_val = (int)current->aStmt->expr->kind;
