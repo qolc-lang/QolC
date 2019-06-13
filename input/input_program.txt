@@ -43,3 +43,4 @@ continue
 return x/p*z+d*u-i+p*y/l-i
 continue
 defer print|"hello there"|
+return p < i+l
