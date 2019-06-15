@@ -182,6 +182,11 @@ void print_commandList(command* commandNode) {
 									printf("		left : %s\n", currentList->theExpr->left->string_literal);
 									printf("		right : %s\n", currentList->theExpr->right->string_literal);
 								}
+								else if (ret_val == 13) {
+									printf("	EXPR_BIGGER_CMP\n");
+									printf("		left : %s\n", currentList->theExpr->left->string_literal);
+									printf("		right : %s\n", currentList->theExpr->right->string_literal);
+								}
 								else if (ret_val == 15) {
 									printf("	EXPR_SMALLER_CMP\n");
 									printf("		left : %s\n", currentList->theExpr->left->string_literal);
