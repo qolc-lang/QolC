@@ -1071,12 +1071,27 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 		while (1) {
 			printf("in return loop with value : %s\n", current->value);
 
-			if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (strcmp(current->type, "identifier") != 0) ) {
+			if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (strcmp(current->type, "identifier") != 0) && (strcmp(current->type, "number") != 0) && (strcmp(current->type, "string") != 0) ) {
+				printf("Not the type we need : %s\n", current->type);
 				return current;
 			}
 
 			if (strcmp(current->type, "end of command") == 0) {
 				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
+				return current;
+			}
+
+			if (strcmp(current->type, "number") == 0) {
+				expr* numberExpr = expr_create_string(current->value);
+				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
+				return current;
+			}
+
+			if (strcmp(current->type, "string") == 0) {
+				expr* stringExpr = expr_create_string(current->value);
+				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
 				return current;
 			}
