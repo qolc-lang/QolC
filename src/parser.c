@@ -1071,7 +1071,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 		while (1) {
 			printf("in return loop with value : %s\n", current->value);
 
-			if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (strcmp(current->type, "identifier") != 0) && (strcmp(current->type, "number") != 0) && (strcmp(current->type, "string") != 0) ) {
+			if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (strcmp(current->type, "identifier") != 0) && (strcmp(current->type, "number") != 0) && (strcmp(current->type, "string") != 0) && (strcmp(current->type, "character") != 0) ) {
 				printf("Not the type we need : %s\n", current->type);
 				return current;
 			}
@@ -1090,6 +1090,13 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 			}
 
 			if (strcmp(current->type, "string") == 0) {
+				expr* stringExpr = expr_create_string(current->value);
+				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
+				return current;
+			}
+
+			if (strcmp(current->type, "character") == 0) {
 				expr* stringExpr = expr_create_string(current->value);
 				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
@@ -1385,7 +1392,9 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								
-								pop(&tempTop);
+								printf("the tempTop : %d\n", tempTop);
+								if (tempTop > 1)
+									pop(&tempTop);
 								printf("now in the stack : %s\n", tempStack[tempTop]);
 
 								if (strcmp(tempStack[tempTop], "+") == 0) {
@@ -1675,7 +1684,9 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								
-								pop(&tempTop);
+								printf("the tempTop : %d\n", tempTop);
+								if (tempTop > 1)
+									pop(&tempTop);
 								printf("now in the stack : %s\n", tempStack[tempTop]);
 
 								if (strcmp(tempStack[tempTop], "+") == 0) {
@@ -1965,7 +1976,9 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								
-								pop(&tempTop);
+								printf("the tempTop : %d\n", tempTop);
+								if (tempTop > 1)
+									pop(&tempTop);
 								printf("now in the stack : %s\n", tempStack[tempTop]);
 
 								if (strcmp(tempStack[tempTop], "+") == 0) {
@@ -2254,7 +2267,9 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								
-								pop(&tempTop);
+								printf("the tempTop : %d\n", tempTop);
+								if (tempTop > 1)
+									pop(&tempTop);
 								printf("now in the stack : %s\n", tempStack[tempTop]);
 
 								if (strcmp(tempStack[tempTop], "+") == 0) {
@@ -2580,7 +2595,9 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								
-								pop(&tempTop);
+								printf("the tempTop : %d\n", tempTop);
+								if (tempTop > 1)
+									pop(&tempTop);
 								printf("now in the stack : %s\n", tempStack[tempTop]);
 
 								if (strcmp(tempStack[tempTop], "+") == 0) {
@@ -2950,7 +2967,9 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								
-								pop(&tempTop);
+								printf("the tempTop : %d\n", tempTop);
+								if (tempTop > 1)
+									pop(&tempTop);
 								printf("now in the stack : %s\n", tempStack[tempTop]);
 
 								if (strcmp(tempStack[tempTop], "+") == 0) {
@@ -3364,7 +3383,9 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								
-								pop(&tempTop);
+								printf("the tempTop : %d\n", tempTop);
+								if (tempTop > 1)
+									pop(&tempTop);
 								printf("now in the stack : %s\n", tempStack[tempTop]);
 
 								if (strcmp(tempStack[tempTop], "+") == 0) {
@@ -3822,7 +3843,9 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								
-								pop(&tempTop);
+								printf("the tempTop : %d\n", tempTop);
+								if (tempTop > 1)
+									pop(&tempTop);
 								printf("now in the stack : %s\n", tempStack[tempTop]);
 
 								if (strcmp(tempStack[tempTop], "+") == 0) {
@@ -4324,7 +4347,9 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 								expr* leftExpr = expr_create_string(temp);
 								expr* rightExpr = expr_create_string(current->value);
 								
-								pop(&tempTop);
+								printf("the tempTop : %d\n", tempTop);
+								if (tempTop > 1)
+									pop(&tempTop);
 								printf("now in the stack : %s\n", tempStack[tempTop]);
 
 								if (strcmp(tempStack[tempTop], "+") == 0) {
@@ -4397,7 +4422,19 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				}
 			}
 
+			printf("before hereeee\n");
+
+			if (current == NULL) {
+				printf("going for null break 1 --- in return stmt\n");
+				break;
+			}
+
 			current = current->next;
+
+			if (current == NULL) {
+				printf("going for null break 2 --- in return stmt\n");
+				break;
+			}
 
 			if (strcmp(current->type, "end of command") == 0){
 				current = current->next; 
@@ -4406,11 +4443,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				}
 
 				printf("going for eoc break --- in return stmt\n");
-				break;
-			}
-
-			if (current == NULL) {
-				printf("going for null break --- in return stmt\n");
 				break;
 			}
 		}
