@@ -1,7 +1,4 @@
-#include "../inc/parser.h"
-#include "../inc/stack.h"
-#include "../inc/ast.h"
-#include "../inc/command.h"
+#include "../inc/parserFunctions.h"
 
 void parseProgram(parse_state* node) {
 	command* commandNode = malloc(sizeof(command) *2);
