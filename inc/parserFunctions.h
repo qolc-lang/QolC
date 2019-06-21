@@ -6,6 +6,6 @@
 #include "../inc/ast.h"
 #include "../inc/command.h"
 
-void checkForReturnOperator(parse_state* current, char* theStackTop, int top, command* commandNode);
+void checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode);
 
 #endif

@@ -1059,10 +1059,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 	else if (strcmp(theStackTop, "return") == 0) {
 		printf("going in return loop\n");
 
-		expr_list* expressionListNode = malloc(sizeof(expr_list));
-		int operatorInsideStack = 0; 
-		int operatorUsed = 0;
-
 		current = current->next;
 
 		while (1) {
