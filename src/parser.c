@@ -919,12 +919,19 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 	char tempStack[200][100];
 	int tempTop = 0;
 	int doneFlag = 0;
+	
+	//comment out these lines cause we'll have a struct holding them inside
 	char temp[100], temp2[100], tempOp[3], tempOp2[3];
 
 	memset(temp, 0, sizeof(temp));
 	memset(temp2, 0, sizeof(temp2));
 	memset(tempOp, 0, sizeof(tempOp));
 	memset(tempOp2, 0, sizeof(tempOp2));
+
+	//like this struct
+	tempVariables* tempVariablesNode = malloc(sizeof(tempVariables));
+
+
 
 	if (strcmp(theStackTop, "assert") == 0) {
 		printf("going in assert loop\n");
@@ -1058,6 +1065,10 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 	}
 	else if (strcmp(theStackTop, "return") == 0) {
 		printf("going in return loop\n");
+
+		expr_list* expressionListNode = malloc(sizeof(expr_list));
+		int operatorInsideStack = 0; 
+		int operatorUsed = 0;
 
 		current = current->next;
 

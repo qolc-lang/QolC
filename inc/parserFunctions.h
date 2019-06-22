@@ -6,6 +6,13 @@
 #include "../inc/ast.h"
 #include "../inc/command.h"
 
-void checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode);
+typedef struct tempVariables
+{
+	char temp[100];
+	char tempOp[3];
+	char tempOp2[3];
+}tempVariables;
+
+void checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode);
 
 #endif
