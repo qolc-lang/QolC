@@ -173,7 +173,7 @@ void checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, 
 			continue;
 		}
 		else if (strcmp(current->type, "identifier") == 0) {
-			printf("second parameter add %s\n", current->value);
+			printf("second parameter %s\n", current->value);
 			printf("the tempNode->temp : %s\n", tempNode->temp);
 			printf("now in the stack : %s\n", tempStack[tempTop]);
 			printf("operator : %s\n", tempNode->tempOp2);
@@ -182,281 +182,93 @@ void checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, 
 			expr* rightExpr = expr_create_string(current->value);
 
 			if (strcmp(tempStack[tempTop], "+") == 0) {
-				expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
-				operatorUsed = 1;
 				printf("the operator used add\n");
-				//copying right id expr to become new left id expr
-				strcpy(tempNode->temp, current->value);
-				push_expressionList(expressionListNode, addExpr);
-				current = current->next;
-				if (current == NULL) {
-					printf("current is NULL\n");
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
-					return current;
-				}
-				
+				expr* theExprSecond = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
 			}
 			else if (strcmp(tempStack[tempTop], "-") == 0) {
-				expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
-				operatorUsed = 1;
+				expr* theExprSecond = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
 				printf("the operator used sub\n");
-				//copying right id expr to become new left id expr
-				strcpy(tempNode->temp, current->value);
-				push_expressionList(expressionListNode, subExpr);
-				current = current->next;
-				if (current == NULL) {
-					printf("current is NULL\n");
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
-					return current;
-				}
 			}
 			else if (strcmp(tempStack[tempTop], "*") == 0) {
-				expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
-				operatorUsed = 1;
+				expr* theExprSecond = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
 				printf("the operator used mul\n");
-				//copying right id expr to become new left id expr
-				strcpy(tempNode->temp, current->value);
-				push_expressionList(expressionListNode, mulExpr);
-				current = current->next;
-				if (current == NULL) {
-					printf("current is NULL\n");
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
-					return current;
-				}
 			}
 			else if (strcmp(tempStack[tempTop], "/") == 0) {
-				expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
-				operatorUsed = 1;
+				expr* theExprSecond = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
 				printf("the operator used div\n");
-				//copying right id expr to become new left id expr
-				strcpy(tempNode->temp, current->value);
-				push_expressionList(expressionListNode, divExpr);
-				current = current->next;
-				if (current == NULL) {
-					printf("current is NULL\n");
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
-					return current;
-				}
 			}
 			else if (strcmp(tempStack[tempTop], "<") == 0) {
-				expr* smallerExpr = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-				operatorUsed = 1;
+				expr* theExprSecond = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 				printf("the operator used smallerExpr\n");
-				//copying right id expr to become new left id expr
-				strcpy(tempNode->temp, current->value);
-				push_expressionList(expressionListNode, smallerExpr);
-				current = current->next;
-				if (current == NULL) {
-					printf("current is NULL\n");
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
-					return current;
-				}
 			}
 			else if (strcmp(tempStack[tempTop], "<=") == 0) {
-				expr* smallerExpr = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-				operatorUsed = 1;
+				expr* theExprSecond = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 				printf("the operator used smallerExpr\n");
-				//copying right id expr to become new left id expr
-				strcpy(tempNode->temp, current->value);
-				push_expressionList(expressionListNode, smallerExpr);
-				current = current->next;
-				if (current == NULL) {
-					printf("current is NULL\n");
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
-					return current;
-				}
 			}
 			else if (strcmp(tempStack[tempTop], ">") == 0) {
-				expr* biggerExpr = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-				operatorUsed = 1;
+				expr* theExprSecond = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 				printf("the operator used biggerExpr\n");
-				//copying right id expr to become new left id expr
-				strcpy(tempNode->temp, current->value);
-				push_expressionList(expressionListNode, biggerExpr);
-				current = current->next;
-				if (current == NULL) {
-					printf("current is NULL\n");
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
-					return current;
-				}
 			}
 			else if (strcmp(tempStack[tempTop], ">=") == 0) {
-				expr* biggerExpr = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-				operatorUsed = 1;
+				expr* theExprSecond = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 				printf("the operator used EXPR_BIGGEROREQ_CMP\n");
-				//copying right id expr to become new left id expr
-				strcpy(tempNode->temp, current->value);
-				push_expressionList(expressionListNode, biggerExpr);
-				current = current->next;
-				if (current == NULL) {
-					printf("current is NULL\n");
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
-					return current;
-				}
 			}
 			else if (strcmp(tempStack[tempTop], "@==") == 0) {
-				expr* equalExpr = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-				operatorUsed = 1;
+				expr* theExprSecond = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 				printf("the operator used EXPR_EQUAL_CMP\n");
-				//copying right id expr to become new left id expr
-				strcpy(tempNode->temp, current->value);
-				push_expressionList(expressionListNode, equalExpr);
-				current = current->next;
-				if (current == NULL) {
-					printf("current is NULL\n");
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
-					return current;
-				}
 			}
 			else {
 				if (strcmp(tempNode->tempOp2, "+") == 0) {
-					expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
-					operatorUsed = 1;
-					printf("the operator used add\n");
-					//copying right id expr to become new left id expr
-					strcpy(tempNode->temp, current->value);
-					push_expressionList(expressionListNode, addExpr);
-					current = current->next;
-					if (current == NULL) {
-						printf("current is NULL\n");
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-						push_commandList(commandNode, NULL, ret_stmt, NULL);
-						return current;
-					}
-					
+					printf("the operator used add 2\n");
+					expr* theExprSecond = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
 				}
 				else if (strcmp(tempNode->tempOp2, "-") == 0) {
-					expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
-					operatorUsed = 1;
-					printf("the operator used sub\n");
-					//copying right id expr to become new left id expr
-					strcpy(tempNode->temp, current->value);
-					push_expressionList(expressionListNode, subExpr);
-					current = current->next;
-					if (current == NULL) {
-						printf("current is NULL\n");
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-						push_commandList(commandNode, NULL, ret_stmt, NULL);
-						return current;
-					}
+					expr* theExprSecond = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+					printf("the operator used sub 2\n");
 				}
 				else if (strcmp(tempNode->tempOp2, "*") == 0) {
-					expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
-					operatorUsed = 1;
-					printf("the operator used mul\n");
-					//copying right id expr to become new left id expr
-					strcpy(tempNode->temp, current->value);
-					push_expressionList(expressionListNode, mulExpr);
-					current = current->next;
-					if (current == NULL) {
-						printf("current is NULL\n");
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-						push_commandList(commandNode, NULL, ret_stmt, NULL);
-						return current;
-					}
+					expr* theExprSecond = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+					printf("the operator used mul 2\n");
 				}
 				else if (strcmp(tempNode->tempOp2, "/") == 0) {
-					expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
-					operatorUsed = 1;
-					printf("the operator used div\n");
-					//copying right id expr to become new left id expr
-					strcpy(tempNode->temp, current->value);
-					push_expressionList(expressionListNode, divExpr);
-					current = current->next;
-					if (current == NULL) {
-						printf("current is NULL\n");
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-						push_commandList(commandNode, NULL, ret_stmt, NULL);
-						return current;
-					}
+					expr* theExprSecond = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+					printf("the operator used div 2\n");
 				}
 				else if (strcmp(tempNode->tempOp2, "<") == 0) {
-					expr* smallerExpr = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-					operatorUsed = 1;
-					printf("the operator used smallerExpr\n");
-					//copying right id expr to become new left id expr
-					strcpy(tempNode->temp, current->value);
-					push_expressionList(expressionListNode, smallerExpr);
-					current = current->next;
-					if (current == NULL) {
-						printf("current is NULL\n");
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-						push_commandList(commandNode, NULL, ret_stmt, NULL);
-						return current;
-					}
+					expr* theExprSecond = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+					printf("the operator used smallerExpr 2\n");
 				}
 				else if (strcmp(tempNode->tempOp2, "<=") == 0) {
-					expr* smallerExpr = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-					operatorUsed = 1;
-					printf("the operator used smallerExpr\n");
-					//copying right id expr to become new left id expr
-					strcpy(tempNode->temp, current->value);
-					push_expressionList(expressionListNode, smallerExpr);
-					current = current->next;
-					if (current == NULL) {
-						printf("current is NULL\n");
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-						push_commandList(commandNode, NULL, ret_stmt, NULL);
-						return current;
-					}
+					expr* theExprSecond = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+					printf("the operator used smallerExpr 2\n");
 				}
 				else if (strcmp(tempNode->tempOp2, ">") == 0) {
-					expr* biggerExpr = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-					operatorUsed = 1;
-					printf("the operator used biggerExpr\n");
-					//copying right id expr to become new left id expr
-					strcpy(tempNode->temp, current->value);
-					push_expressionList(expressionListNode, biggerExpr);
-					current = current->next;
-					if (current == NULL) {
-						printf("current is NULL\n");
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-						push_commandList(commandNode, NULL, ret_stmt, NULL);
-						return current;
-					}
+					expr* theExprSecond = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+					printf("the operator used biggerExpr 2\n");
 				}
 				else if (strcmp(tempNode->tempOp2, ">=") == 0) {
-					expr* biggerExpr = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-					operatorUsed = 1;
-					printf("the operator used EXPR_BIGGEROREQ_CMP\n");
-					//copying right id expr to become new left id expr
-					strcpy(tempNode->temp, current->value);
-					push_expressionList(expressionListNode, biggerExpr);
-					current = current->next;
-					if (current == NULL) {
-						printf("current is NULL\n");
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-						push_commandList(commandNode, NULL, ret_stmt, NULL);
-						return current;
-					}
+					expr* theExprSecond = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+					printf("the operator used EXPR_BIGGEROREQ_CMP 2\n");
 				}
 				else if (strcmp(tempNode->tempOp2, "@==") == 0) {
-					expr* equalExpr = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-					operatorUsed = 1;
-					printf("the operator used EXPR_EQUAL_CMP\n");
-					//copying right id expr to become new left id expr
-					strcpy(tempNode->temp, current->value);
-					push_expressionList(expressionListNode, equalExpr);
-					current = current->next;
-					if (current == NULL) {
-						printf("current is NULL\n");
-						stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-						push_commandList(commandNode, NULL, ret_stmt, NULL);
-						return current;
-					}
+					expr* theExprSecond = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+					printf("the operator used EXPR_EQUAL_CMP 2\n");
 				}
 				else {
-
+					printf("Invalid operator, for return expression. Needs checking\n");
 				}
+			}
+
+			operatorUsed = 1;
+			//copying right id expr to become new left id expr
+			strcpy(tempNode->temp, current->value);
+			push_expressionList(expressionListNode, theExprSecond);
+			current = current->next;
+			if (current == NULL) {
+				printf("current is NULL\n");
+				stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+				push_commandList(commandNode, NULL, ret_stmt, NULL);
+				return current;
 			}
 		}
 	}
