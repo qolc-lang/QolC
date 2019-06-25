@@ -3,7 +3,6 @@
 
 void checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode)
 {
-	int whatOperator = 0; 
 	int operatorInsideStack = 0; 
 	int operatorUsed = 0;
 	expr_list* expressionListNode = malloc(sizeof(expr_list));
@@ -22,47 +21,38 @@ void checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, 
 		expr* rightExpr = expr_create_string(current->value);
 		if (strcmp(tempStack[tempTop], "+") == 0) {
 			printf("is add\n");
-			whatOperator = 1; 
 			expr* theExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack[tempTop], "-") == 0) {
 			printf("is sub\n");
-			whatOperator = 2; 
 			expr* theExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack[tempTop], "*") == 0) {
 			printf("is mul\n");
-			whatOperator = 3; 
 			expr* theExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack[tempTop], "/") == 0) {
 			printf("is div\n");
-			whatOperator = 4; 
 			expr* theExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack[tempTop], "<") == 0) {
 			printf("is smaller\n");
-			whatOperator = 5; 
 			expr* theExpr = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack[tempTop], "<=") == 0) {
 			printf("is smallerOrEq\n");
-			whatOperator = 6; 
 			expr* theExpr = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack[tempTop], ">") == 0) {
 			printf("is bigger\n");
-			whatOperator = 7; 
 			expr* theExpr = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack[tempTop], ">=") == 0) {
 			printf("is biggerOrEq\n");
-			whatOperator = 8; 
 			expr* theExpr = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack[tempTop], "@==") == 0) {
 			printf("is equal\n");
-			whatOperator = 9; 
 			expr* theExpr = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else;
@@ -118,45 +108,43 @@ void checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, 
 			expr* leftExpr = expr_create_string(tempNode->temp);
 			expr* rightExpr = expr_create_string(current->value);
 
-			if (whatOperator == 1) {
+			if (strcmp(tempNode->tempOp, "+") == 0) {
 				printf("going to add, add expression to the list\n");
 				expr* theExprIn = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
 			}
-			else if (whatOperator == 2) {
+			else if (strcmp(tempNode->tempOp, "-") == 0) {
 				printf("going to add, sub expression to the list\n");
 				expr* theExprIn = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
 			}
-			else if (whatOperator == 3) {
+			else if (strcmp(tempNode->tempOp, "*") == 0) {
 				printf("going to add, mul expression to the list\n");
 				expr* theExprIn = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
 			}
-			else if (whatOperator == 4) {
+			else if (strcmp(tempNode->tempOp, "/") == 0) {
 				printf("going to add, div expression to the list\n");
 				expr* theExprIn = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
 			}
-			else if (whatOperator == 5) {
-				printf("going to add, smaller_cmp expression to the list\n");
+			else if (strcmp(tempNode->tempOp, "<") == 0) {
+				printf("going to add, EXPR_SMALLER_CMP expression to the list\n");
 				expr* theExprIn = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 			}
-			else if (whatOperator == 6) {
+			else if (strcmp(tempNode->tempOp, "<=") == 0) {
 				printf("going to add, EXPR_SMALLEROREQ_CMP expression to the list\n");
 				expr* theExprIn = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 			}
-			else if (whatOperator == 7) {
+			else if (strcmp(tempNode->tempOp, ">") == 0) {
 				printf("going to add, EXPR_BIGGER_CMP expression to the list\n");
 				expr* theExprIn = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 			}
-			else if (whatOperator == 8) {
+			else if (strcmp(tempNode->tempOp, ">=") == 0) {
 				printf("going to add, EXPR_BIGGEROREQ_CMP expression to the list\n");
 				expr* theExprIn = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 			}
-			else if (whatOperator == 9) {
+			else if (strcmp(tempNode->tempOp, "@==") == 0) {
 				printf("going to add, EXPR_EQUAL_CMP expression to the list\n");
 				expr* theExprIn = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-			}
-			else {
+			else;
 
-			}
 			push_expressionList(expressionListNode, theExprIn);
 
 			strcpy(tempNode->temp, current->value);
@@ -287,69 +275,48 @@ void checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, 
 				printf("now in the stack : %s\n", tempStack[tempTop]);
 
 				if (strcmp(tempStack[tempTop], "+") == 0) {
-					expr* addExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, addExpr, NULL, NULL, NULL, NULL, NULL);
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
+					printf("going for add in the end - finalExpr\n");
+					expr* finalExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
 				}
 				else if (strcmp(tempStack[tempTop], "-") == 0) {
+					printf("going for sub in the end - finalExpr\n");
 					expr* subExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
-					push_expressionList(expressionListNode, subExpr);
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					//add to expression list
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
 				}
 				else if (strcmp(tempStack[tempTop], "*") == 0) {
+					printf("going for mul in the end - finalExpr\n");
 					expr* mulExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
-					push_expressionList(expressionListNode, mulExpr);
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					//add to expression list
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
 				}
 				else if (strcmp(tempStack[tempTop], "/") == 0) {
+					printf("going for div in the end - finalExpr\n");
 					expr* divExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
-					push_expressionList(expressionListNode, divExpr);
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					//add to expression list
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
 				}
 				else if (strcmp(tempStack[tempTop], "<") == 0) {
+					printf("going for EXPR_SMALLER_CMP in the end - finalExpr\n");
 					expr* smalelrExpr = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-					push_expressionList(expressionListNode, smalelrExpr);
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					//add to expression list
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
 				}
 				else if (strcmp(tempStack[tempTop], "<=") == 0) {
+					printf("going for EXPR_SMALLEROREQ_CMP in the end - finalExpr\n");
 					expr* smalelrExpr = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-					push_expressionList(expressionListNode, smalelrExpr);
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					//add to expression list
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
 				}
 				else if (strcmp(tempStack[tempTop], ">") == 0) {
+					printf("going for EXPR_BIGGER_CMP in the end - finalExpr\n");
 					expr* biggerExpr = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-					push_expressionList(expressionListNode, biggerExpr);
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					//add to expression list
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
 				}
 				else if (strcmp(tempStack[tempTop], ">=") == 0) {
+					printf("going for EXPR_BIGGEROREQ_CMP in the end - finalExpr\n");
 					expr* biggerExpr = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-					push_expressionList(expressionListNode, biggerExpr);
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					//add to expression list
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
 				}
 				else if (strcmp(tempStack[tempTop], "@==") == 0) {
+					printf("going for EXPR_EQUAL_CMP in the end - finalExpr\n");
 					expr* equalExpr = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-					push_expressionList(expressionListNode, equalExpr);
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-					//add to expression list
-					push_commandList(commandNode, NULL, ret_stmt, NULL);
 				}
 				else {
 
 				}
+
+				push_expressionList(expressionListNode, finalExpr);
+				stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, finalExpr, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, ret_stmt, NULL);
 			}
 		}
 	}
