@@ -93,7 +93,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 	printf("now the current 1 : %s\n", current->value);
 	while ((strcmp(current->type, "operator") == 0) || (strcmp(current->type, "identifier") == 0)) {
 		if (strcmp(current->type, "operator") == 0) {
-			printf("operator again add\n");
+			printf("operator again in while\n");
 			tempStack[tempTop] = '\0';
 			pop(&tempTop);
 			++tempTop;
@@ -104,6 +104,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 			}
 			current = current->next;
 			printf("now the current 1.2 : %s\n", current->value);
+			printf("now the temp : %s\n", tempNode->temp);
 			printf("now the tempNode->tempOp : %s\n", tempNode->tempOp);
 
 			expr* leftExpr = expr_create_string(tempNode->temp);

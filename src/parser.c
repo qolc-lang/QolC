@@ -1110,11 +1110,11 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 			if (tempTop == 0) {
 
 				if (strcmp(current->type, "operator") == 0) {
-					strcpy(tempOp, current->value);
+					strcpy(tempVariablesNode->tempOp, current->value);
 				}
 				++tempTop;
 				push(tempStack[tempTop], &tempTop, current->value);
-				strcpy(temp, current->value);
+				strcpy(tempVariablesNode->temp, current->value);
 				current = current->next;
 				continue;
 			}
@@ -1124,7 +1124,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				if (operatorInsideStack == 1) {
 					printf("an operator already in the stack\n");
 					//going to save this operator and continue
-					strcpy(tempOp2, current->value);
+					strcpy(tempVariablesNode->tempOp2, current->value);
 					current = current->next;
 					continue;
 				}
@@ -1133,7 +1133,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					operatorInsideStack = 1;
 					++tempTop;
 					push(tempStack[tempTop], &tempTop, current->value);
-					strcpy(tempOp, current->value);
+					strcpy(tempVariablesNode->tempOp, current->value);
 					current = current->next;
 					continue;
 				}
@@ -1141,6 +1141,10 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 			else if (strcmp(current->type, "identifier") == 0) {
 				pop(&tempTop);
 				printf("now in the stack : %s\n", tempStack[tempTop]);
+
+				parse_state* tempCurrent = current;
+				tempCurrent = checkForReturnOperator(current, tempStack[tempTop], tempTop, commandNode, tempVariablesNode);
+
 				// if (strcmp(tempStack[tempTop], "+") == 0) {
 				// 	//tempStack[0][tempTop] = '\0';
 				// 	printf("going for add expression\n");
