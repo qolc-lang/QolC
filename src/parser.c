@@ -919,6 +919,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 	char tempStack[200][100];
 	int tempTop = 0;
 	int doneFlag = 0;
+	parse_state* tempCurrent;
 	
 	//comment out these lines cause we'll have a struct holding them inside
 	char temp[100], temp2[100], tempOp[3], tempOp2[3];
@@ -1142,7 +1143,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				pop(&tempTop);
 				printf("now in the stack : %s\n", tempStack[tempTop]);
 
-				parse_state* tempCurrent = current;
+				tempCurrent = current;
 				tempCurrent = checkForReturnOperator(current, tempStack[tempTop], tempTop, commandNode, tempVariablesNode);
 
 				// if (strcmp(tempStack[tempTop], "+") == 0) {
@@ -4432,22 +4433,22 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 			printf("before hereeee\n");
 
-			if (current == NULL) {
+			if (tempCurrent == NULL) {
 				printf("going for null break 1 --- in return stmt\n");
 				break;
 			}
 
-			current = current->next;
+			tempCurrent = tempCurrent->next;
 
-			if (current == NULL) {
+			if (tempCurrent == NULL) {
 				printf("going for null break 2 --- in return stmt\n");
 				break;
 			}
 
-			if (strcmp(current->type, "end of command") == 0){
-				current = current->next; 
-				if (current != NULL) {
-					printf("in return eoc loop with value : %s\n", current->value);	
+			if (strcmp(tempCurrent->type, "end of command") == 0){
+				tempCurrent = tempCurrent->next; 
+				if (tempCurrent != NULL) {
+					printf("in return eoc loop with value : %s\n", tempCurrent->value);	
 				}
 
 				printf("going for eoc break --- in return stmt\n");
@@ -4458,6 +4459,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 	printf("don't forget to return the current pointer\n");
 
-	return current;
+	return tempCurrent;
 
 }

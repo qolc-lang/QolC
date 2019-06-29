@@ -327,5 +327,28 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 		}
 	}
 
-	printf("exiting checkForReturnOperator\n");
+	printf("before hereeee checkForReturnOperator\n");
+
+	if (current == NULL) {
+		printf("going for null break 1 checkForReturnOperator --- in return stmt\n");
+		return NULL;
+	}
+
+	current = current->next;
+
+	if (current == NULL) {
+		printf("going for null break 2 checkForReturnOperator --- in return stmt\n");
+		return NULL;
+	}
+
+	if (strcmp(current->type, "end of command") == 0){
+		current = current->next; 
+		if (current != NULL) {
+			printf("in return eoc loop with value : %s\n", current->value);	
+			return current;
+		}
+
+		printf("going for eoc break --- in return stmt\n");
+		return NULL;
+	}
 }
