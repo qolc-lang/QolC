@@ -33,16 +33,20 @@ void parsing(parse_state* current, command* commandNode) {
 			current = current->next;
 			continue;
 		}
-		//Check for load in value and push it to the stack
 		else if (strcmp(current->value, "load") == 0) {
 			printf("load statement to be built\n");
 			push(theStack[top], &top, current->value);
 			current = current->next;
 			continue;
 		}
-		//Check for print in value and push it to the stack
 		else if (strcmp(current->value, "print") == 0) {
 			printf("print statement to be built\n");
+			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
+		}
+		else if (strcmp(current->value, "sleep") == 0) {
+			printf("sleep statement to be built\n");
 			push(theStack[top], &top, current->value);
 			current = current->next;
 			continue;
@@ -298,6 +302,15 @@ void parsing(parse_state* current, command* commandNode) {
 				expr* numberExpr = expr_create_string(current->value);
 				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
+			}
+			else if (strcmp(theStack[top], "sleep") == 0) {
+				doneFlag = 1;
+				printf("sleep statement is in the stack atm 2\n");
+				theStack[0][top] = '\0';
+				printf("the value to work as expr : %s\n", current->value);
+				expr* numberExpr = expr_create_string(current->value);
+				stmt* sleep_stmt = stmt_create(STMT_SLEEP, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, sleep_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "int") == 0) {
 				doneFlag = 1;

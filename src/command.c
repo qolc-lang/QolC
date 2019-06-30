@@ -251,6 +251,10 @@ void print_commandList(command* commandNode) {
 				printf("STMT_CONTINUE\n");
 				//printf("	expr: %s\n", current->aStmt->expr->string_literal);
 			}
+			else if (value == 15) {
+				printf("STMT_SLEEP\n");
+				printf("	expr: %s\n", current->aStmt->expr->string_literal);
+			}
 			else {
 
 			}
