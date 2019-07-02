@@ -90,7 +90,7 @@ defer print|"hello there"|
 
 while |x <= y| 
 |@
-	prnt|x|
+	print|x|
 	x += y
 	y -= x
 	break

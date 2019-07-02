@@ -5,7 +5,7 @@ decl* decl_create(char *name, type *type, expr *value, stmt *code) {
 	decl* d = malloc(sizeof(*d));
 	memset(d->name, 0, sizeof(d->name));
 	strcpy(d->name, name);
-	d->type = type;
+	d->theType = type;
 	d->value = value;
 	d->code = code;	
 	d->next = NULL;
@@ -19,7 +19,7 @@ stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nex
 	s->kind = kind;
 	s->decl = decl;
 	s->init_expr = iexpr;
-	s->expr = theExpr;
+	s->theExpr = theExpr;
 	s->next_expr = nexpr;
 	s->body = body;
 	s->else_body = ebody;

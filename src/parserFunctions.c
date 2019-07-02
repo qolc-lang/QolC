@@ -1,11 +1,10 @@
 #include "../inc/parserFunctions.h"
 
 
-parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode)
+parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, expr_list* expressionListNode, tempVariables* tempNode)
 {
 	int operatorInsideStack = 0; 
 	int operatorUsed = 0;
-	expr_list* expressionListNode = malloc(sizeof(expr_list));
 
 	//check for the operator
 	printf("in checkForReturnOperator\n");
@@ -321,7 +320,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 				}
 
 				push_expressionList(expressionListNode, finalExpr);
-				stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, finalExpr, NULL, NULL, NULL, NULL, NULL);
+				stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
 				push_commandList(commandNode, NULL, ret_stmt, NULL);
 			}
 		}

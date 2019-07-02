@@ -26,7 +26,7 @@ typedef struct type {
 
 typedef struct param_list {
 	char *name;
-	type *type;
+	type *theType;
 	struct param_list *next;
 }param_list;
 
@@ -91,7 +91,7 @@ typedef struct stmt {
 	stmt_t kind;
 	struct decl *decl;
 	expr *init_expr;
-	expr *expr;
+	expr *theExpr;
 	expr *next_expr;
 	struct stmt *body;
 	struct stmt *else_body;
@@ -101,22 +101,20 @@ typedef struct stmt {
 
 typedef struct decl {
 	char name[100];
-	type* type;
+	type* theType;
 	expr* value;		//if declaration is an expression
 	stmt* code;			//if declaration is a function
 	struct decl* next;
 }decl;
 
-decl* decl_create(char *name, type *type, expr *value, stmt *code);
-stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next);
-expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal); 
+decl* decl_create(char *name, type *theType, expr *value, stmt *code);
+stmt* stmt_create(stmt_t kind, decl *theDecl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next);
 type* type_create(type_t kind, type *subtype, param_list *params);
-
+expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal); 
 expr* expr_create_integer(int i);
 expr* expr_create_char(char c);
 expr* expr_create_string(char* string_literal);
 expr* expr_create_string_id(char* string_id);
-
 void push_expressionList(expr_list* node, expr* theExpr);
 
 #endif

@@ -14,7 +14,7 @@ void push_commandList(command* commandNode, decl* aDecl, stmt* aStmt, expr* anEx
     printf("ending push_commandList\n");
 }
 
-void print_commandList(command* commandNode) {
+void print_commandList(command* commandNode, expr_list* expressionListNode) {
 	command * current = commandNode;
 	int counter = 0;
 	int value;
@@ -33,11 +33,11 @@ void print_commandList(command* commandNode) {
 			if (value == 0) {
 				printf("STMT_DECL\n");
 				printf("name: %s\n", current->aStmt->decl->name);
-				if (current->aStmt->decl->type == NULL) {
+				if (current->aStmt->decl->theType == NULL) {
 					printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 				}
 				else {
-					temp_type =  (int)current->aStmt->decl->type->kind;
+					temp_type =  (int)current->aStmt->decl->theType->kind;
 					//type of bool
 					if (temp_type == 1) {
 						printf("	TYPE_BOOLEAN\n");
@@ -97,19 +97,19 @@ void print_commandList(command* commandNode) {
 			}
 			else if (value == 4) {
 				printf("STMT_PRINT\n");
-				printf("	expr: %s\n", current->aStmt->expr->string_literal);
+				printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
 			}
 			else if (value == 5) {
 				printf("STMT_IMPORT\n");
-				printf("	expr: %s\n", current->aStmt->expr->string_literal);
+				printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
 			}
 			else if (value == 6) {
 				printf("STMT_LOAD\n");
-				printf("	expr: %s\n", current->aStmt->expr->string_literal);
+				printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
 			}
 			else if (value == 7) {
 				printf("STMT_DELETE\n");
-				printf("	expr: %s\n", current->aStmt->expr->string_literal);
+				printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
 			}
 			else if (value == 8) {
 				printf("STMT_DEFER\n");
@@ -117,32 +117,32 @@ void print_commandList(command* commandNode) {
 			}
 			else if (value == 9) {
 				printf("STMT_ASSERT\n");
-				int assert_val = (int)current->aStmt->expr->kind;
+				int assert_val = (int)current->aStmt->theExpr->kind;
 
 				if (assert_val == 13) {
 					printf("	EXPR_BIGGER_CMP\n");
-					printf("		left : %s\n", current->aStmt->expr->left->string_literal);
-					printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+					printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
+					printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
 				}
 				else if (assert_val == 14) {
 					printf("	EXPR_BIGGEROREQ_CMP\n");
-					printf("		left : %s\n", current->aStmt->expr->left->string_literal);
-					printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+					printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
+					printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
 				}
 				else if (assert_val == 15) {
 					printf("	EXPR_SMALLER_CMP\n");
-					printf("		left : %s\n", current->aStmt->expr->left->string_literal);
-					printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+					printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
+					printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
 				}
 				else if (assert_val == 16) {
 					printf("	EXPR_SMALLEROREQ_CMP\n");
-					printf("		left : %s\n", current->aStmt->expr->left->string_literal);
-					printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+					printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
+					printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
 				}
 				else if (assert_val == 17) {
 					printf("	EXPR_EQUAL_CMP\n");
-					printf("		left : %s\n", current->aStmt->expr->left->string_literal);
-					printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+					printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
+					printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
 				}
 				else {
 
@@ -150,7 +150,7 @@ void print_commandList(command* commandNode) {
 			}
 			else if (value == 10) {
 				printf("STMT_RETURN\n");
-				if (current->aStmt->expr == NULL) {
+				if (current->aStmt->theExpr == NULL) {
 					if (current->aStmt->expressionList == NULL) {
 						current = current->next;
 						continue;
@@ -213,30 +213,31 @@ void print_commandList(command* commandNode) {
 					}
 				}
 				else {
-					int ret_val = (int)current->aStmt->expr->kind;
+					printf("just a single expression to print\n");
+					int ret_val = (int)current->aStmt->theExpr->kind;
 					if (ret_val == 0) {
 						printf("	EXPR_ADD\n");
-						printf("		left : %s\n", current->aStmt->expr->left->string_literal);
-						printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+						printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
+						printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
 					}
 					else if (ret_val == 1) {
 						printf("	EXPR_SUB\n");
-						printf("		left : %s\n", current->aStmt->expr->left->string_literal);
-						printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+						printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
+						printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
 					}
 					else if (ret_val == 2) {
 						printf("	EXPR_MUL\n");
-						printf("		left : %s\n", current->aStmt->expr->left->string_literal);
-						printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+						printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
+						printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
 					}
 					else if (ret_val == 3) {
 						printf("	EXPR_DIV\n");
-						printf("		left : %s\n", current->aStmt->expr->left->string_literal);
-						printf("		right : %s\n", current->aStmt->expr->right->string_literal);
+						printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
+						printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
 					}
 					else if (ret_val == 12) {
 						printf("	EXPR_STRING_LITERAL\n");
-						printf("		%s\n", current->aStmt->expr->string_literal);
+						printf("		%s\n", current->aStmt->theExpr->string_literal);
 					}
 					else {
 
@@ -253,7 +254,7 @@ void print_commandList(command* commandNode) {
 			}
 			else if (value == 15) {
 				printf("STMT_SLEEP\n");
-				printf("	expr: %s\n", current->aStmt->expr->string_literal);
+				printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
 			}
 			else {
 

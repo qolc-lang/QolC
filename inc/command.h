@@ -12,6 +12,6 @@ typedef struct command
 }command;
 
 void push_commandList(command* commandNode, decl* aDecl, stmt* aStmt, expr* anExpr);
-void print_commandList(command* commandNode);
+void print_commandList(command* commandNode, expr_list* expressionListNode);
 
 #endif

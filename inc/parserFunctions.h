@@ -13,6 +13,6 @@ typedef struct tempVariables
 	char tempOp2[3];
 }tempVariables;
 
-parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode);
+parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, expr_list* expressionListNode, tempVariables* tempNode);
 
 #endif
