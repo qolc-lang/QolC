@@ -1079,6 +1079,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 		printf("going in return loop\n");
 		int operatorInsideStack = 0; 
 		int operatorUsed = 0;
+		int identifierCopiedInTemp = 0;
 
 		current = current->next;
 
@@ -1122,6 +1123,10 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				if (strcmp(current->type, "operator") == 0) {
 					strcpy(tempVariablesNode->tempOp, current->value);
 				}
+				else {
+					strcpy(tempVariablesNode->value, current->value);
+					identifierCopiedInTemp = 1;
+				}
 				++tempTop;
 				push(tempStack[tempTop], &tempTop, current->value);
 				strcpy(tempVariablesNode->temp, current->value);
@@ -1149,6 +1154,9 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				}
 			}
 			else if (strcmp(current->type, "identifier") == 0) {
+				printf("before going in with value : %s\n", current->value);
+				if (identifierCopiedInTemp == 0)
+					strcpy(tempVariablesNode->value, current->value);
 				pop(&tempTop);
 				printf("now in the stack : %s\n", tempStack[tempTop]);
 

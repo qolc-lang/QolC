@@ -19,6 +19,58 @@ void print_commandList(command* commandNode, expr_list* expressionListNode) {
 	int counter = 0;
 	int value;
 	int temp_type;
+
+	while (expressionListNode != NULL) {
+		if (expressionListNode->theExpr != NULL) {
+			int ret_val = (int)expressionListNode->theExpr->kind;
+			if (ret_val == 0) {
+				printf("	EXPR_ADD\n");
+				printf("		left : %s\n", expressionListNode->theExpr->left->string_literal);
+				printf("		right : %s\n",	expressionListNode->theExpr->right->string_literal);
+			}
+			else if (ret_val == 1) {
+				printf("	EXPR_SUB\n");
+				printf("		left : %s\n", expressionListNode->theExpr->left->string_literal);
+				printf("		right : %s\n", expressionListNode->theExpr->right->string_literal);
+			}
+			else if (ret_val == 2) {
+				printf("	EXPR_MUL\n");
+				printf("		left : %s\n", expressionListNode->theExpr->left->string_literal);
+				printf("		right : %s\n", expressionListNode->theExpr->right->string_literal);
+			}
+			else if (ret_val == 3) {
+				printf("	EXPR_DIV\n");
+				printf("		left : %s\n", expressionListNode->theExpr->left->string_literal);
+				printf("		right : %s\n", expressionListNode->theExpr->right->string_literal);
+			}
+			else if (ret_val == 13) {
+				printf("	EXPR_BIGGER_CMP\n");
+				printf("		left : %s\n", expressionListNode->theExpr->left->string_literal);
+				printf("		right : %s\n", expressionListNode->theExpr->right->string_literal);
+			}
+			else if (ret_val == 14) {
+				printf("	EXPR_BIGGEROREQ_CMP\n");
+				printf("		left : %s\n", expressionListNode->theExpr->left->string_literal);
+				printf("		right : %s\n", expressionListNode->theExpr->right->string_literal);
+			}
+			else if (ret_val == 15) {
+				printf("	EXPR_SMALLER_CMP\n");
+				printf("		left : %s\n", expressionListNode->theExpr->left->string_literal);
+				printf("		right : %s\n", expressionListNode->theExpr->right->string_literal);
+			}
+			else if (ret_val == 16) {
+				printf("	EXPR_SMALLEROREQ_CMP\n");
+				printf("		left : %s\n", expressionListNode->theExpr->left->string_literal);
+				printf("		right : %s\n", expressionListNode->theExpr->right->string_literal);
+			}
+			else if (ret_val == 17) {
+				printf("	EXPR_EQUAL_CMP\n");
+				printf("		left : %s\n", expressionListNode->theExpr->left->string_literal);
+				printf("		right : %s\n", expressionListNode->theExpr->right->string_literal);
+			}
+		}
+		expressionListNode = expressionListNode->next;
+	}
 	
 	//first in the list is the head
 	while (current != NULL) {

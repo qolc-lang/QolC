@@ -12,11 +12,14 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 	//in case there is a space between operators and identifiers
 	if (tempTop > 1) {
 		printf("already an identifier in stack \n");
+		//might not need these pops
 		pop(&tempTop);
 		pop(&tempTop);
+		printf("the first expr : %s\n", tempNode->value);
 		printf("now in the stack already id: %s\n", tempStack);
+		printf("current->value: %s\n", current->value);
 
-		expr* leftExpr = expr_create_string(tempStack);
+		expr* leftExpr = expr_create_string(tempNode->value);
 		expr* rightExpr = expr_create_string(current->value);
 		expr* theExpr;
 		if (strcmp(tempStack, "+") == 0) {
@@ -63,7 +66,8 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 		//pushin to stack the previous id
 		++tempTop;
 		push(tempStack, &tempTop, current->value);
-		strcpy(tempNode->temp, current->value);
+		printf("going to copy the value : %s\n", current->value);
+		strcpy(tempNode->value, current->value);
 
 		current = current->next;
 		if (current == NULL) {
@@ -77,17 +81,21 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 				printf("additional saved operator : %s\n", tempNode->tempOp2);
 				++tempTop;
 				push(tempStack, &tempTop, tempNode->tempOp2);
-				return NULL;	//just simply return
+				// return NULL;	//just simply return
 			}
-			++tempTop;
-			push(tempStack, &tempTop, current->value);
-			strcpy(tempNode->temp, current->value);
-			printf("current NOT NULL\n");
-			current = current->next;
-			return NULL;		//just simply return
+			else {
+				++tempTop;
+				push(tempStack, &tempTop, current->value);
+				strcpy(tempNode->temp, current->value);
+				printf("current NOT NULL\n");
+				current = current->next;
+				// return NULL;		//just simply return
+			}
+
 		}
 	}
-	strcpy(tempNode->temp, current->value);
+	// printf("going to copy the value : %s\n", current->value);
+	// strcpy(tempNode->temp, current->value);
 	current = current->next;
 	printf("now the current 1 : %s\n", current->value);
 	while ((strcmp(current->type, "operator") == 0) || (strcmp(current->type, "identifier") == 0)) {
@@ -103,10 +111,10 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 			}
 			current = current->next;
 			printf("now the current 1.2 : %s\n", current->value);
-			printf("now the temp : %s\n", tempNode->temp);
+			printf("now the value : %s\n", tempNode->value);
 			printf("now the tempNode->tempOp : %s\n", tempNode->tempOp);
 
-			expr* leftExpr = expr_create_string(tempNode->temp);
+			expr* leftExpr = expr_create_string(tempNode->value);
 			expr* rightExpr = expr_create_string(current->value);
 			expr* theExprIn;
 
@@ -150,6 +158,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 
 			push_expressionList(expressionListNode, theExprIn);
 
+			printf("going to copy the value : %s\n", current->value);
 			strcpy(tempNode->temp, current->value);
 			strcpy(tempNode->tempOp, tempNode->tempOp2);
 			current = current->next;
@@ -165,11 +174,11 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 		}
 		else if (strcmp(current->type, "identifier") == 0) {
 			printf("second parameter %s\n", current->value);
-			printf("the tempNode->temp : %s\n", tempNode->temp);
+			printf("the tempNode->value : %s\n", tempNode->value);
 			printf("now in the stack : %s\n", tempStack);
 			printf("operator : %s\n", tempNode->tempOp2);
 
-			expr* leftExpr = expr_create_string(tempNode->temp);
+			expr* leftExpr = expr_create_string(tempNode->value);
 			expr* rightExpr = expr_create_string(current->value);
 			expr* theExprSecond;
 
@@ -270,6 +279,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 			printf("now the current 3 : %s\n", current->value);
 			if (strcmp(current->type, "identifier") == 0) {
 				printf("second parameter after eoc %s\n", current->value);
+				printf("now in the temp : %s\n", tempNode->temp);
 				expr* leftExpr = expr_create_string(tempNode->temp);
 				expr* rightExpr = expr_create_string(current->value);
 				expr* finalExpr;

@@ -11,6 +11,7 @@ typedef struct tempVariables
 	char temp[100];
 	char tempOp[3];
 	char tempOp2[3];
+	char value[100];
 }tempVariables;
 
 parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, expr_list* expressionListNode, tempVariables* tempNode);
