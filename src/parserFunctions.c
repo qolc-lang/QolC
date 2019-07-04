@@ -111,66 +111,71 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 			}
 			current = current->next;
 			printf("now the current 1.2 : %s\n", current->value);
-			printf("now the value : %s\n", tempNode->value);
-			printf("now the tempNode->tempOp : %s\n", tempNode->tempOp);
 
-			expr* leftExpr = expr_create_string(tempNode->value);
-			expr* rightExpr = expr_create_string(current->value);
-			expr* theExprIn;
+			if (strcmp(current->type, "end of command") != 0)
+			{
+				printf("now the value : %s\n", tempNode->value);
+				printf("now the tempNode->tempOp : %s\n", tempNode->tempOp);
 
-			if (strcmp(tempNode->tempOp, "+") == 0) {
-				printf("going to add, add expression to the list\n");
-				theExprIn = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
-			}
-			else if (strcmp(tempNode->tempOp, "-") == 0) {
-				printf("going to add, sub expression to the list\n");
-				theExprIn = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
-			}
-			else if (strcmp(tempNode->tempOp, "*") == 0) {
-				printf("going to add, mul expression to the list\n");
-				theExprIn = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
-			}
-			else if (strcmp(tempNode->tempOp, "/") == 0) {
-				printf("going to add, div expression to the list\n");
-				theExprIn = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
-			}
-			else if (strcmp(tempNode->tempOp, "<") == 0) {
-				printf("going to add, EXPR_SMALLER_CMP expression to the list\n");
-				theExprIn = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-			}
-			else if (strcmp(tempNode->tempOp, "<=") == 0) {
-				printf("going to add, EXPR_SMALLEROREQ_CMP expression to the list\n");
-				theExprIn = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-			}
-			else if (strcmp(tempNode->tempOp, ">") == 0) {
-				printf("going to add, EXPR_BIGGER_CMP expression to the list\n");
-				theExprIn = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-			}
-			else if (strcmp(tempNode->tempOp, ">=") == 0) {
-				printf("going to add, EXPR_BIGGEROREQ_CMP expression to the list\n");
-				theExprIn = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-			}
-			else if (strcmp(tempNode->tempOp, "@==") == 0) {
-				printf("going to add, EXPR_EQUAL_CMP expression to the list\n");
-				theExprIn = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-			}
-			else; 
+				expr* leftExpr = expr_create_string(tempNode->value);
+				expr* rightExpr = expr_create_string(current->value);
+				expr* theExprIn;
 
-			push_expressionList(expressionListNode, theExprIn);
+				if (strcmp(tempNode->tempOp, "+") == 0) {
+					printf("going to add, add expression to the list\n");
+					theExprIn = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
+				}
+				else if (strcmp(tempNode->tempOp, "-") == 0) {
+					printf("going to add, sub expression to the list\n");
+					theExprIn = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
+				}
+				else if (strcmp(tempNode->tempOp, "*") == 0) {
+					printf("going to add, mul expression to the list\n");
+					theExprIn = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
+				}
+				else if (strcmp(tempNode->tempOp, "/") == 0) {
+					printf("going to add, div expression to the list\n");
+					theExprIn = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
+				}
+				else if (strcmp(tempNode->tempOp, "<") == 0) {
+					printf("going to add, EXPR_SMALLER_CMP expression to the list\n");
+					theExprIn = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+				}
+				else if (strcmp(tempNode->tempOp, "<=") == 0) {
+					printf("going to add, EXPR_SMALLEROREQ_CMP expression to the list\n");
+					theExprIn = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+				}
+				else if (strcmp(tempNode->tempOp, ">") == 0) {
+					printf("going to add, EXPR_BIGGER_CMP expression to the list\n");
+					theExprIn = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+				}
+				else if (strcmp(tempNode->tempOp, ">=") == 0) {
+					printf("going to add, EXPR_BIGGEROREQ_CMP expression to the list\n");
+					theExprIn = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+				}
+				else if (strcmp(tempNode->tempOp, "@==") == 0) {
+					printf("going to add, EXPR_EQUAL_CMP expression to the list\n");
+					theExprIn = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+				}
+				else; 
 
-			printf("going to copy the value : %s\n", current->value);
-			strcpy(tempNode->temp, current->value);
-			strcpy(tempNode->tempOp, tempNode->tempOp2);
-			current = current->next;
-			if (current == NULL) {
-				printf("current is NULL operator again add\n");
-				stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-				push_commandList(commandNode, NULL, ret_stmt, NULL);
-				return current;
+				push_expressionList(expressionListNode, theExprIn);
+
+				printf("going to copy the value : %s\n", current->value);
+				strcpy(tempNode->value, current->value);
+				strcpy(tempNode->tempOp, tempNode->tempOp2);
+				current = current->next;
+				if (current == NULL) {
+					printf("current is NULL operator again add\n");
+					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+					push_commandList(commandNode, NULL, ret_stmt, NULL);
+					return current;
+				}
+
+				printf("now the current 1.3 : %s\n", current->value);
+				continue;
 			}
 
-			printf("now the current 1.3 : %s\n", current->value);
-			continue;
 		}
 		else if (strcmp(current->type, "identifier") == 0) {
 			printf("second parameter %s\n", current->value);
@@ -262,7 +267,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 
 			operatorUsed = 1;
 			//copying right id expr to become new left id expr
-			strcpy(tempNode->temp, current->value);
+			strcpy(tempNode->value, current->value);
 			push_expressionList(expressionListNode, theExprSecond);
 			current = current->next;
 			if (current == NULL) {
@@ -279,8 +284,8 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 			printf("now the current 3 : %s\n", current->value);
 			if (strcmp(current->type, "identifier") == 0) {
 				printf("second parameter after eoc %s\n", current->value);
-				printf("now in the temp : %s\n", tempNode->temp);
-				expr* leftExpr = expr_create_string(tempNode->temp);
+				printf("now in the tempNode->value : %s\n", tempNode->value);
+				expr* leftExpr = expr_create_string(tempNode->value);
 				expr* rightExpr = expr_create_string(current->value);
 				expr* finalExpr;
 				
