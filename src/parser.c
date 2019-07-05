@@ -4,12 +4,12 @@ void parseProgram(parse_state* node) {
 	command* commandNode = malloc(sizeof(command) *2);
 	expr_list* expressionListNode = malloc(sizeof(expr_list));
 	parse_state * current = node;
-	parsing(current, commandNode, expressionListNode);
-	print_commandList(commandNode, expressionListNode);
+	parsing(current, commandNode);
+	print_commandList(commandNode);
 	return;
 }
 
-void parsing(parse_state* current, command* commandNode, expr_list* expressionListNode) {
+void parsing(parse_state* current, command* commandNode) {
 	const int SIZE = 100;
 	int top;
 	int partOfComment = 0;
@@ -104,7 +104,7 @@ void parsing(parse_state* current, command* commandNode, expr_list* expressionLi
 		else if (strcmp(current->value, "assert") == 0) {
 			printf("statement assert going in\n");
 			push(theStack[top], &top, current->value);
-			current = checkTheStack(current, theStack[0], top, commandNode, expressionListNode);
+			current = checkTheStack(current, theStack[0], top, commandNode);
 			pop(&top);
 			theStack[0][top] = '\0';
 			continue;
@@ -112,7 +112,7 @@ void parsing(parse_state* current, command* commandNode, expr_list* expressionLi
 		else if (strcmp(current->value, "return") == 0) {
 			printf("statement return going in\n");
 			push(theStack[top], &top, current->value);
-			current = checkTheStack(current, theStack[0], top, commandNode, expressionListNode);
+			current = checkTheStack(current, theStack[0], top, commandNode);
 			pop(&top);
 			theStack[0][top] = '\0';
 			continue;
@@ -924,7 +924,7 @@ void parsing(parse_state* current, command* commandNode, expr_list* expressionLi
 }
 
 
-parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, command* commandNode, expr_list* expressionListNode) {
+parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, command* commandNode) {
 	printf("the stack top %s\n", theStackTop);
 
 	char tempStack[200][100];
@@ -1161,7 +1161,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				printf("now in the stack : %s\n", tempStack[tempTop]);
 
 				tempCurrent = current;
-				tempCurrent = checkForReturnOperator(current, tempStack[tempTop], tempTop, commandNode, expressionListNode, tempVariablesNode);
+				tempCurrent = checkForReturnOperator(current, tempStack[tempTop], tempTop, commandNode, tempVariablesNode);
 			}
 
 			printf("before hereeee\n");
@@ -1171,7 +1171,11 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				break;
 			}
 
+			printf("the tempCurrent now : %s\n", tempCurrent->value);
+
 			tempCurrent = tempCurrent->next;
+
+			printf("the tempCurrent now 2 : %s\n", tempCurrent->value);
 
 			if (tempCurrent == NULL) {
 				printf("going for null break 2 --- in return stmt\n");
@@ -1186,6 +1190,9 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 				printf("going for eoc break --- in return stmt\n");
 				break;
+			}
+			else {
+				return tempCurrent;
 			}
 		}
 	}
