@@ -1173,6 +1173,24 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 			printf("the tempCurrent now : %s\n", tempCurrent->value);
 
+			if (tempCurrent == NULL) {
+				printf("going for null break 2 --- in return stmt\n");
+				break;
+			}
+
+			if (strcmp(tempCurrent->type, "end of command") == 0){
+				tempCurrent = tempCurrent->next; 
+				if (tempCurrent != NULL) {
+					printf("in return eoc loop with value : %s\n", tempCurrent->value);	
+				}
+
+				printf("going for eoc break --- in return stmt\n");
+				break;
+			}
+			else {
+				return tempCurrent;
+			}
+
 			tempCurrent = tempCurrent->next;
 
 			printf("the tempCurrent now 2 : %s\n", tempCurrent->value);
