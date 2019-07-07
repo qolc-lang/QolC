@@ -1092,30 +1092,22 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 			}
 
 			if (strcmp(current->type, "end of command") == 0) {
-				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
-				return current;
-			}
+				parse_state* new_current;
+				new_current = current;
+				current = current->next;
+				if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (strcmp(current->type, "identifier") != 0) && (strcmp(current->type, "number") != 0) && (strcmp(current->type, "string") != 0) && (strcmp(current->type, "character") != 0) ) {
+					stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+					push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
+					return current;
+				}
+				else {
+					printf("now the starting eoc current : %s\n", current->value);
+					expr* stringExpr = expr_create_string(current->value);
+					stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
+					push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
+					return current;
+				}
 
-			if (strcmp(current->type, "number") == 0) {
-				expr* numberExpr = expr_create_string(current->value);
-				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
-				return current;
-			}
-
-			if (strcmp(current->type, "string") == 0) {
-				expr* stringExpr = expr_create_string(current->value);
-				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
-				return current;
-			}
-
-			if (strcmp(current->type, "character") == 0) {
-				expr* stringExpr = expr_create_string(current->value);
-				stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
-				return current;
 			}
 
 			if (tempTop == 0) {
@@ -1131,6 +1123,16 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				push(tempStack[tempTop], &tempTop, current->value);
 				strcpy(tempVariablesNode->temp, current->value);
 				current = current->next;
+				if ((current == NULL) || (strcmp(current->type, "end of command") == 0))
+				{
+					expr* stringExpr = expr_create_string(tempVariablesNode->temp);
+					stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
+					push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
+					return current;
+				}
+				else {
+					printf("now the current in tempTop 0 : %s\n", current->value);
+				}
 				continue;
 			}
 
@@ -1153,7 +1155,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					continue;
 				}
 			}
-			else if (strcmp(current->type, "identifier") == 0) {
+			else if ((strcmp(current->type, "identifier") == 0) || (strcmp(current->type, "identifier") == 0)) {
 				printf("before going in with value : %s\n", current->value);
 				if (identifierCopiedInTemp == 0)
 					strcpy(tempVariablesNode->value, current->value);
