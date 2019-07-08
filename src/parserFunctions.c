@@ -99,7 +99,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 	// strcpy(tempNode->temp, current->value);
 	current = current->next;
 	printf("now the current 1 : %s\n", current->value);
-	while ((strcmp(current->type, "operator") == 0) || (strcmp(current->type, "identifier") == 0)) {
+	while ((strcmp(current->type, "operator") == 0) || (strcmp(current->type, "identifier") == 0) || (strcmp(current->type, "number") == 0)) {
 		if (strcmp(current->type, "operator") == 0) {
 			printf("operator again in while\n");
 			tempStack[tempTop] = '\0';
@@ -347,6 +347,20 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 	if (current == NULL) {
 		printf("going for null break 1 checkForReturnOperator --- in return stmt\n");
 		return NULL;
+	}
+
+	if (strcmp(current->type, "end of command") == 0){
+		current = current->next; 
+		if (current != NULL) {
+			printf("in return eoc loop with value : %s\n", current->value);	
+		}
+
+		printf("going for eoc break --- in return stmt\n");
+	}
+	else {
+		stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+		push_commandList(commandNode, NULL, ret_stmt, NULL);
+		return current;
 	}
 
 	current = current->next;

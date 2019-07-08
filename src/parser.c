@@ -1155,7 +1155,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					continue;
 				}
 			}
-			else if ((strcmp(current->type, "identifier") == 0) || (strcmp(current->type, "identifier") == 0)) {
+			else if ((strcmp(current->type, "identifier") == 0) || (strcmp(current->type, "number") == 0)) {
 				printf("before going in with value : %s\n", current->value);
 				if (identifierCopiedInTemp == 0)
 					strcpy(tempVariablesNode->value, current->value);
