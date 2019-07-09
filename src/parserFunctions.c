@@ -6,6 +6,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 	int operatorInsideStack = 0; 
 	int operatorUsed = 0;
 	expr_list* expressionListNode = malloc(sizeof(expr_list));
+	parse_state* checkCurrent;
 
 	//check for the operator
 	printf("in checkForReturnOperator\n");
@@ -281,6 +282,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 	}
 	if (strcmp(current->type, "end of command") == 0) {
 		current = current->next;
+		checkCurrent = current;
 		if (current != NULL) {
 			printf("now the current 3 : %s\n", current->value);
 			if (strcmp(current->type, "identifier") == 0) {
@@ -358,9 +360,12 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 		printf("going for eoc break --- in return stmt\n");
 	}
 	else {
-		stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
-		push_commandList(commandNode, NULL, ret_stmt, NULL);
-		return current;
+		printf("the current now in else : %s\n", current->value);
+		if (!strcmp(checkCurrent->value, current->value) == 0) {
+			stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+			push_commandList(commandNode, NULL, ret_stmt, NULL);
+			return current;
+		}
 	}
 
 	current = current->next;
