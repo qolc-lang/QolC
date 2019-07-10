@@ -264,6 +264,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 				}
 				else {
 					printf("Invalid operator, for return expression. Needs checking\n");
+					return current;
 				}
 			}
 

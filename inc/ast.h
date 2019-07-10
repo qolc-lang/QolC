@@ -15,7 +15,8 @@ typedef enum {
 	TYPE_CHAR_POINTER,
 	TYPE_STRING_POINTER,
 	TYPE_ARRAY,
-	TYPE_FUNCTION
+	TYPE_FUNCTION,
+	TYPE_HEXNUM
 } type_t;
 
 typedef struct type {

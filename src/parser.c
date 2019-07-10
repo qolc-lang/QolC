@@ -289,6 +289,20 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 		}
 
+		if (strcmp(current->type, "hexadecimal number") == 0) {
+			pop(&top);
+			strcpy(temp, theStack[top]);
+			printf("now in stack : %s\n", temp);
+			theStack[0][top] = '\0';
+			printf("the value to work as expr : %s\n", current->value);
+			type* hex_type = type_create(TYPE_HEXNUM, NULL, NULL);
+			expr* hexExpr = expr_create_string(current->value);
+			printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+			decl* hex_declaration = decl_create(temp, hex_type, hexExpr, NULL);
+			stmt* hex_decl_stmt = stmt_create(STMT_DECL, hex_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+			push_commandList(commandNode, NULL, hex_decl_stmt, NULL); 
+		}
+
 		if (strcmp(current->type, "number") == 0) {
 			int doneFlag = 0;
 			pop(&top);
