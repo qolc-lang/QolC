@@ -293,6 +293,7 @@ void parsing(parse_state* current, command* commandNode) {
 			pop(&top);
 			strcpy(temp, theStack[top]);
 			printf("now in stack : %s\n", temp);
+			pop(&top);
 			theStack[0][top] = '\0';
 			printf("the value to work as expr : %s\n", current->value);
 			type* hex_type = type_create(TYPE_HEXNUM, NULL, NULL);
