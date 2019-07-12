@@ -85,7 +85,8 @@ typedef enum {
 	STMT_CONTINUE,
 	STMT_BLOCK,
 	STMT_NEW,
-	STMT_SLEEP
+	STMT_SLEEP,
+	STMT_MAIN
 } stmt_t;
 
 typedef struct stmt {

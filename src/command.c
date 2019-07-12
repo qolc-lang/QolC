@@ -261,6 +261,9 @@ void print_commandList(command* commandNode) {
 				printf("STMT_SLEEP\n");
 				printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
 			}
+			else if (value == 16) {
+				printf("STMT_MAIN\n");
+			}
 			else {
 
 			}

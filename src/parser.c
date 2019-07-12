@@ -31,6 +31,13 @@ void parsing(parse_state* current, command* commandNode) {
 			current = current->next;
 			continue;
 		}
+		else if (strcmp(current->value, "main") == 0) {
+			printf("main statement to be built\n");
+			stmt* main_stmt = stmt_create(STMT_MAIN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+			push_commandList(commandNode, NULL, main_stmt, NULL); 
+			current = current->next;
+			continue;
+		}
 		else if (strcmp(current->value, "load") == 0) {
 			printf("load statement to be built\n");
 			push(theStack[top], &top, current->value);

@@ -46,3 +46,8 @@ defer print|"hello there"|
 return 2 > 1
 hexNum@0xfedcba9876543210
 sleep|2|
+
+main ||
+|@
+
+|@
