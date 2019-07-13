@@ -97,6 +97,9 @@ void print_commandList(command* commandNode) {
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
+					else if (temp_type == 13) {
+						printf("	TYPE_STRUCT\n");
+					}
 				}
 
 			}

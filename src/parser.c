@@ -226,6 +226,19 @@ void parsing(parse_state* current, command* commandNode) {
 
 		printf("counter-value: %s\n", current->value);
 
+		if (strcmp(current->value, "struct") == 0) {
+			printf("struct statement to be built\n");
+			printf("the temp now :  %s\n", temp);
+			type* struct_type = type_create(TYPE_STRUCT, NULL, NULL);
+			///expr* structExpr = expr_create_string(temp);
+			printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+			decl* struct_declaration = decl_create(temp, struct_type, NULL, NULL);
+			stmt* struct_decl_stmt = stmt_create(STMT_DECL, struct_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+			push_commandList(commandNode, NULL, struct_decl_stmt, NULL); 
+			current = current->next;
+			continue;
+		}
+
 		if (strcmp(current->type, "string") == 0) {
 			int doneFlag = 0;
 			pop(&top);
@@ -880,6 +893,11 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				printf("now in the stack : %s\n", theStack[top]);
+
+				if (strlen(theStack[top]) == 0) {
+					continue;
+				}
+
 				if (strcmp(theStack[top], "@") == 0) {
 					printf("going for just a declaration\n");
 					current = current->next;

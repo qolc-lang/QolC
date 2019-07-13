@@ -50,4 +50,8 @@ sleep|2|
 main ||
 |@
 
+vector3 struct
+|@
+@|
+
 |@
