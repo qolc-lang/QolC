@@ -54,4 +54,8 @@ vector3 struct
 |@
 @|
 
+value enum
+|@
+@|
+
 |@

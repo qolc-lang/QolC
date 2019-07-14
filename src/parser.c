@@ -239,6 +239,19 @@ void parsing(parse_state* current, command* commandNode) {
 			continue;
 		}
 
+		if (strcmp(current->value, "enum") == 0) {
+			printf("enum statement to be built\n");
+			printf("the temp now :  %s\n", temp);
+			type* enum_type = type_create(TYPE_ENUM, NULL, NULL);
+			///expr* structExpr = expr_create_string(temp);
+			printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+			decl* enum_declaration = decl_create(temp, enum_type, NULL, NULL);
+			stmt* enum_decl_stmt = stmt_create(STMT_DECL, enum_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+			push_commandList(commandNode, NULL, enum_decl_stmt, NULL); 
+			current = current->next;
+			continue;
+		}
+
 		if (strcmp(current->type, "string") == 0) {
 			int doneFlag = 0;
 			pop(&top);

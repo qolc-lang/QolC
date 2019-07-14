@@ -100,6 +100,9 @@ void print_commandList(command* commandNode) {
 					else if (temp_type == 13) {
 						printf("	TYPE_STRUCT\n");
 					}
+					else if (temp_type == 14) {
+						printf("	TYPE_ENUM\n");
+					}
 				}
 
 			}
