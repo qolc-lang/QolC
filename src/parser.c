@@ -252,6 +252,23 @@ void parsing(parse_state* current, command* commandNode) {
 			continue;
 		}
 
+		if (strcmp(current->value, "union") == 0) {
+			printf("union statement to be built\n");
+			pop(&top);
+			strcpy(temp, theStack[top]);
+			printf("now in stack : %s\n", temp);
+			pop(&top);
+			theStack[0][top] = '\0';
+			type* union_type = type_create(TYPE_UNION, NULL, NULL);
+			///expr* structExpr = expr_create_string(temp);
+			printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+			decl* union_declaration = decl_create(temp, union_type, NULL, NULL);
+			stmt* union_decl_stmt = stmt_create(STMT_DECL, union_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+			push_commandList(commandNode, NULL, union_decl_stmt, NULL); 
+			current = current->next;
+			continue;
+		}
+
 		if (strcmp(current->type, "string") == 0) {
 			int doneFlag = 0;
 			pop(&top);

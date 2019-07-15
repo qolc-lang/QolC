@@ -103,6 +103,9 @@ void print_commandList(command* commandNode) {
 					else if (temp_type == 14) {
 						printf("	TYPE_ENUM\n");
 					}
+					else if (temp_type == 15) {
+						printf("	TYPE_UNION\n");
+					}
 				}
 
 			}

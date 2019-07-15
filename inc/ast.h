@@ -18,7 +18,8 @@ typedef enum {
 	TYPE_FUNCTION,
 	TYPE_HEXNUM,
 	TYPE_STRUCT,
-	TYPE_ENUM
+	TYPE_ENUM,
+	TYPE_UNION
 } type_t;
 
 typedef struct type {
