@@ -62,6 +62,12 @@ void parsing(parse_state* current, command* commandNode) {
 			current = current->next;
 			continue;
 		}
+		else if (strcmp(current->value, "scan") == 0) {
+			printf("scan statement to be built\n");
+			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
+		}
 		else if (strcmp(current->value, "string") == 0) {
 			printf("string keyword going in\n");
 			push(theStack[top], &top, current->value);
@@ -582,6 +588,15 @@ void parsing(parse_state* current, command* commandNode) {
 				expr* identifierExpr = expr_create_string(current->value);
 				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, print_stmt, NULL); 
+			}
+			else if (strcmp(theStack[top], "scan") == 0) {
+				doneFlag = 1;
+				printf("scan is in the stack atm 3\n");
+				theStack[0][top] = '\0';
+				printf("the value to work as expr : %s\n", current->value);
+				expr* identifierExpr = expr_create_string(current->value);
+				stmt* scan_stmt = stmt_create(STMT_SCAN, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, scan_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "delete") == 0) {
 				doneFlag = 1;
