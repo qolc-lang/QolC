@@ -63,5 +63,6 @@ marines union
 @|
 
 scan|input|
+cast|i,void|
 
 |@

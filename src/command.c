@@ -277,6 +277,11 @@ void print_commandList(command* commandNode) {
 				printf("STMT_SCAN\n");
 				printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
 			}
+			else if (value == 18) {
+				printf("STMT_CAST\n");
+				printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
+				printf("	type to convert to : %s\n", current->aStmt->next_expr->string_literal);
+			}
 			else {
 
 			}

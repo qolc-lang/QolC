@@ -90,7 +90,8 @@ typedef enum {
 	STMT_NEW,
 	STMT_SLEEP,
 	STMT_MAIN,
-	STMT_SCAN
+	STMT_SCAN,
+	STMT_CAST
 } stmt_t;
 
 typedef struct stmt {
