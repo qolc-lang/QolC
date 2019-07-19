@@ -65,4 +65,8 @@ marines union
 scan|input|
 cast|i,void|
 
+if |x >= y| 
+|@
+@|
+
 |@
