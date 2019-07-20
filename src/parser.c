@@ -144,6 +144,14 @@ void parsing(parse_state* current, command* commandNode) {
 			theStack[0][top] = '\0';
 			continue;
 		}
+		else if (strcmp(current->value, "while") == 0) {
+			printf("statement if going in\n");
+			push(theStack[top], &top, current->value);
+			current = checkTheStack(current, theStack[0], top, commandNode);
+			pop(&top);
+			theStack[0][top] = '\0';
+			continue;
+		}
 		else if (strcmp(current->value, "defer") == 0) {	//not pushing to stack just setting a variable
 			printf("defer statement to be built\n");
 			hasDefer = 1;
@@ -1333,7 +1341,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 		}
 	}
 	else if (strcmp(theStackTop, "if") == 0) {
-		printf("going in return loop\n");
+		printf("going in if loop\n");
 		// int operatorInsideStack = 0; 
 		// int operatorUsed = 0;
 		// int identifierCopiedInTemp = 0;
@@ -1357,6 +1365,38 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				}
 
 				printf("going for eoc break --- in if stmt\n");
+				break;
+			}
+			// else {
+			// 	return current;
+			// }
+		}
+	}
+	else if (strcmp(theStackTop, "while") == 0) {
+		printf("going in while loop\n");
+		// int operatorInsideStack = 0; 
+		// int operatorUsed = 0;
+		// int identifierCopiedInTemp = 0;
+
+		current = current->next;
+
+		while (1) {
+			printf("in while loop with value : %s\n", current->value);
+			
+			current = current->next;
+
+			if (current == NULL) {
+				printf("going for null break 2 --- in while stmt\n");
+				break;
+			}
+
+			if (strcmp(current->type, "end of command") == 0){
+				current = current->next; 
+				if (current != NULL) {
+					printf("in while eoc loop with value : %s\n", current->value);	
+				}
+
+				printf("going for eoc break --- in while stmt\n");
 				break;
 			}
 			// else {
