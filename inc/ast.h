@@ -91,7 +91,8 @@ typedef enum {
 	STMT_SLEEP,
 	STMT_MAIN,
 	STMT_SCAN,
-	STMT_CAST
+	STMT_CAST,
+	STMT_WHILE
 } stmt_t;
 
 typedef struct stmt {

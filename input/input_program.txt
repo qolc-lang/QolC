@@ -73,4 +73,6 @@ while |x <= y|
 |@
 @|
 
+for myArray print|it|
+
 |@

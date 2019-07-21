@@ -109,6 +109,14 @@ void print_commandList(command* commandNode) {
 				}
 
 			}
+			else if (value == 2) {
+				printf("STMT_IF_ELSE\n");
+				//printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
+			}
+			else if (value == 3) {
+				printf("STMT_FOR\n");
+				//printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
+			}
 			else if (value == 4) {
 				printf("STMT_PRINT\n");
 				printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
@@ -281,6 +289,10 @@ void print_commandList(command* commandNode) {
 				printf("STMT_CAST\n");
 				printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
 				printf("	type to convert to : %s\n", current->aStmt->next_expr->string_literal);
+			}
+			else if (value == 19) {
+				printf("STMT_WHILE\n");
+				//printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
 			}
 			else {
 
