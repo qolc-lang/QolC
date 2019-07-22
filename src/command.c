@@ -294,6 +294,11 @@ void print_commandList(command* commandNode) {
 				printf("STMT_WHILE\n");
 				//printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
 			}
+			else if (value == 20) {
+				printf("STMT_ARRAYDADD\n");
+				printf("	the array : %s\n", current->aStmt->theExpr->string_literal);
+				printf("	element to be added : %s\n", current->aStmt->next_expr->string_literal);
+			}
 			else {
 
 			}

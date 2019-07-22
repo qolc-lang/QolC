@@ -75,4 +75,6 @@ while |x <= y|
 
 for myArray print|it|
 
+array_add|myArray, i|
+
 |@

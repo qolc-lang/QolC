@@ -68,6 +68,12 @@ void parsing(parse_state* current, command* commandNode) {
 			current = current->next;
 			continue;
 		}
+		else if (strcmp(current->value, "array_add") == 0) {
+			printf("cast statement to be built\n");
+			push(theStack[top], &top, current->value);
+			current = current->next;
+			continue;
+		}
 		else if (strcmp(current->value, "scan") == 0) {
 			printf("scan statement to be built\n");
 			push(theStack[top], &top, current->value);
@@ -644,6 +650,23 @@ void parsing(parse_state* current, command* commandNode) {
 				expr* typeExpr = expr_create_string(temp2);
 				stmt* cast_stmt = stmt_create(STMT_CAST, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL);
 				push_commandList(commandNode, NULL, cast_stmt, NULL); 
+			}
+			else if (strcmp(theStack[top], "array_add") == 0) {
+				doneFlag = 1;
+				printf("array_add is in the stack atm 3\n");
+				theStack[0][top] = '\0';
+				strcpy(temp, current->value);
+				printf("the array to work with : %s\n", temp);
+				current = current->next;
+				if (strcmp(current->type, "parenthesis") == 0) {
+					current = current->next;
+					strcpy(temp2, current->value);
+					printf("the element to add to array : %s\n", temp2);
+				}
+				expr* identifierExpr = expr_create_string(temp);
+				expr* typeExpr = expr_create_string(temp2);
+				stmt* arrayAdd_stmt = stmt_create(STMT_ARRAYADD, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, arrayAdd_stmt, NULL); 
 			}
 			else if (strcmp(theStack[top], "delete") == 0) {
 				doneFlag = 1;
