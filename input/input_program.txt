@@ -77,4 +77,8 @@ for myArray print|it|
 
 array_add|myArray, i|
 
+each i@ 1 to n-1 
+|@
+@|
+
 |@

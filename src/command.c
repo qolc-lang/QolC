@@ -299,6 +299,11 @@ void print_commandList(command* commandNode) {
 				printf("	the array : %s\n", current->aStmt->theExpr->string_literal);
 				printf("	element to be added : %s\n", current->aStmt->next_expr->string_literal);
 			}
+			else if (value == 21) {
+				printf("STMT_EACH\n");
+				// printf("	the array : %s\n", current->aStmt->theExpr->string_literal);
+				// printf("	element to be added : %s\n", current->aStmt->next_expr->string_literal);
+			}
 			else {
 
 			}
