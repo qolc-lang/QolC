@@ -279,13 +279,18 @@ void parsing(parse_state* current, command* commandNode) {
 		if (strcmp(current->value, "struct") == 0) {
 			printf("struct statement to be built\n");
 			printf("the temp now :  %s\n", temp);
-			type* struct_type = type_create(TYPE_STRUCT, NULL, NULL);
-			///expr* structExpr = expr_create_string(temp);
-			printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
-			decl* struct_declaration = decl_create(temp, struct_type, NULL, NULL);
-			stmt* struct_decl_stmt = stmt_create(STMT_DECL, struct_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-			push_commandList(commandNode, NULL, struct_decl_stmt, NULL); 
-			current = current->next;
+			// type* struct_type = type_create(TYPE_STRUCT, NULL, NULL);
+			// ///expr* structExpr = expr_create_string(temp);
+			// printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+			// decl* struct_declaration = decl_create(temp, struct_type, NULL, NULL);
+			// stmt* struct_decl_stmt = stmt_create(STMT_DECL, struct_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+			// push_commandList(commandNode, NULL, struct_decl_stmt, NULL); 
+			// current = current->next;
+			// continue;
+			push(theStack[top], &top, current->value);
+			current = checkTheStack(current, theStack[0], top, commandNode);
+			pop(&top);
+			theStack[0][top] = '\0';
 			continue;
 		}
 
@@ -1500,6 +1505,38 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				}
 
 				printf("going each eoc break --- in each stmt\n");
+				break;
+			}
+			// else {
+			// 	return current;
+			// }
+		}
+	}
+	else if (strcmp(theStackTop, "struct") == 0) {
+		printf("going in struct loop\n");
+		// int operatorInsideStack = 0; 
+		// int operatorUsed = 0;
+		// int identifierCopiedInTemp = 0;
+
+		current = current->next;
+
+		while (1) {
+			printf("in struct loop with value : %s\n", current->value);
+			
+			current = current->next;
+
+			if (current == NULL) {
+				printf("going struct null break 2 --- in struct stmt\n");
+				break;
+			}
+
+			if (strcmp(current->type, "end of command") == 0){
+				current = current->next; 
+				if (current != NULL) {
+					printf("in struct eoc loop with value : %s\n", current->value);	
+				}
+
+				printf("going struct eoc break --- in struct stmt\n");
 				break;
 			}
 			// else {
