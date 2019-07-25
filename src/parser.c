@@ -297,13 +297,17 @@ void parsing(parse_state* current, command* commandNode) {
 		if (strcmp(current->value, "enum") == 0) {
 			printf("enum statement to be built\n");
 			printf("the temp now :  %s\n", temp);
-			type* enum_type = type_create(TYPE_ENUM, NULL, NULL);
-			///expr* structExpr = expr_create_string(temp);
-			printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
-			decl* enum_declaration = decl_create(temp, enum_type, NULL, NULL);
-			stmt* enum_decl_stmt = stmt_create(STMT_DECL, enum_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-			push_commandList(commandNode, NULL, enum_decl_stmt, NULL); 
-			current = current->next;
+			// type* enum_type = type_create(TYPE_ENUM, NULL, NULL);
+			// ///expr* structExpr = expr_create_string(temp);
+			// printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+			// decl* enum_declaration = decl_create(temp, enum_type, NULL, NULL);
+			// stmt* enum_decl_stmt = stmt_create(STMT_DECL, enum_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+			// push_commandList(commandNode, NULL, enum_decl_stmt, NULL); 
+			// current = current->next;
+			push(theStack[top], &top, current->value);
+			current = checkTheStack(current, theStack[0], top, commandNode);
+			pop(&top);
+			theStack[0][top] = '\0';
 			continue;
 		}
 
@@ -1537,6 +1541,38 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				}
 
 				printf("going struct eoc break --- in struct stmt\n");
+				break;
+			}
+			// else {
+			// 	return current;
+			// }
+		}
+	}
+	else if (strcmp(theStackTop, "enum") == 0) {
+		printf("going in enum loop\n");
+		// int operatorInsideStack = 0; 
+		// int operatorUsed = 0;
+		// int identifierCopiedInTemp = 0;
+
+		current = current->next;
+
+		while (1) {
+			printf("in enum loop with value : %s\n", current->value);
+			
+			current = current->next;
+
+			if (current == NULL) {
+				printf("going enum null break 2 --- in enum stmt\n");
+				break;
+			}
+
+			if (strcmp(current->type, "end of command") == 0){
+				current = current->next; 
+				if (current != NULL) {
+					printf("in enum eoc loop with value : %s\n", current->value);	
+				}
+
+				printf("going enum eoc break --- in enum stmt\n");
 				break;
 			}
 			// else {
