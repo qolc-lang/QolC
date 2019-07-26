@@ -316,15 +316,19 @@ void parsing(parse_state* current, command* commandNode) {
 			pop(&top);
 			strcpy(temp, theStack[top]);
 			printf("now in stack : %s\n", temp);
+			// pop(&top);
+			// theStack[0][top] = '\0';
+			// type* union_type = type_create(TYPE_UNION, NULL, NULL);
+			// ///expr* structExpr = expr_create_string(temp);
+			// printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+			// decl* union_declaration = decl_create(temp, union_type, NULL, NULL);
+			// stmt* union_decl_stmt = stmt_create(STMT_DECL, union_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+			// push_commandList(commandNode, NULL, union_decl_stmt, NULL); 
+			// current = current->next;
+			push(theStack[top], &top, current->value);
+			current = checkTheStack(current, theStack[0], top, commandNode);
 			pop(&top);
 			theStack[0][top] = '\0';
-			type* union_type = type_create(TYPE_UNION, NULL, NULL);
-			///expr* structExpr = expr_create_string(temp);
-			printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
-			decl* union_declaration = decl_create(temp, union_type, NULL, NULL);
-			stmt* union_decl_stmt = stmt_create(STMT_DECL, union_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-			push_commandList(commandNode, NULL, union_decl_stmt, NULL); 
-			current = current->next;
 			continue;
 		}
 
@@ -1573,6 +1577,38 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				}
 
 				printf("going enum eoc break --- in enum stmt\n");
+				break;
+			}
+			// else {
+			// 	return current;
+			// }
+		}
+	}
+	else if (strcmp(theStackTop, "union") == 0) {
+		printf("going in union loop\n");
+		// int operatorInsideStack = 0; 
+		// int operatorUsed = 0;
+		// int identifierCopiedInTemp = 0;
+
+		current = current->next;
+
+		while (1) {
+			printf("in union loop with value : %s\n", current->value);
+			
+			current = current->next;
+
+			if (current == NULL) {
+				printf("going union null break 2 --- in union stmt\n");
+				break;
+			}
+
+			if (strcmp(current->type, "end of command") == 0){
+				current = current->next; 
+				if (current != NULL) {
+					printf("in union eoc loop with value : %s\n", current->value);	
+				}
+
+				printf("going union eoc break --- in union stmt\n");
 				break;
 			}
 			// else {
