@@ -52,33 +52,18 @@ main ||
 
 vector3 struct
 |@
+	a@int
+	b@float
+	c@float
+	myint5@int
+	m74td@float
+	e8i9o2@int|78|
+	theNum3tyr33@53
+	_hi57_32doo3y5@float|65|
+	hello4537_npno212op33t1@float
+	d@'d
 @|
 
-value enum
-|@
-@|
-
-marines union 
-|@
-@|
-
-scan|input|
-cast|i,void|
-
-if |x >= y| 
-|@
-@|
-
-while |x <= y| 
-|@
-@|
-
-for myArray print|it|
-
-array_add|myArray, i|
-
-each i@ 1 to n-1 
-|@
-@|
+sleep|4|
 
 |@

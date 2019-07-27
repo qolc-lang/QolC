@@ -1521,6 +1521,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 		}
 	}
 	else if (strcmp(theStackTop, "struct") == 0) {
+		int firstEnd = 0;
 		printf("going in struct loop\n");
 		// int operatorInsideStack = 0; 
 		// int operatorUsed = 0;
@@ -1538,13 +1539,14 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				break;
 			}
 
-			if (strcmp(current->type, "end of command") == 0){
+			if (strcmp(current->type, "block end") == 0){
+				printf("the current now :  %s\n", current->value);
 				current = current->next; 
 				if (current != NULL) {
 					printf("in struct eoc loop with value : %s\n", current->value);	
 				}
 
-				printf("going struct eoc break --- in struct stmt\n");
+				printf("going struct eoc break --- in struct stmt with : %s\n", current->value);
 				break;
 			}
 			// else {
@@ -1619,6 +1621,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 	printf("don't forget to return the current pointer\n");
 
-	return tempCurrent;
+	return current;
 
 }
