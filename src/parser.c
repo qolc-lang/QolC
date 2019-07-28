@@ -610,7 +610,8 @@ void parsing(parse_state* current, command* commandNode) {
 		}
 
 		//Check for identifier type
-		if (strcmp(current->type, "identifier") == 0) {
+		if (isIdentifier(current->type) == 1) {
+			int doneFlag = 0;
 
 			if (partOfComment == 1) {
 				printf("last part of comment\n");
@@ -619,6 +620,7 @@ void parsing(parse_state* current, command* commandNode) {
 				continue;
 			}
 
+			//check for additional @ operator which we don't want in here
 			if (strcmp(theStack[top], "@") == 0) {
 				printf("@ operator is in the stack atm\n");
 				printf("going to insert value : %s\n", current->value);
@@ -629,7 +631,7 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 
 			pop(&top);
-			int doneFlag = 0;
+
 			if (strcmp(theStack[top], "@") == 0) {
 				doneFlag = 1;
 				printf("@ operator is in the stack atm\n");
@@ -1262,7 +1264,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 		while (1) {
 			printf("in return loop with value : %s\n", current->value);
 
-			if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (strcmp(current->type, "identifier") != 0) && (strcmp(current->type, "number") != 0) && (strcmp(current->type, "string") != 0) && (strcmp(current->type, "character") != 0) ) {
+			if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (isIdentifier(current->type) != 1) && (strcmp(current->type, "number") != 0) && (strcmp(current->type, "string") != 0) && (strcmp(current->type, "character") != 0) ) {
 				printf("Not the type we need : %s\n", current->type);
 				return current;
 			}
@@ -1271,7 +1273,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				parse_state* new_current;
 				new_current = current;
 				current = current->next;
-				if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (strcmp(current->type, "identifier") != 0) && (strcmp(current->type, "number") != 0) && (strcmp(current->type, "string") != 0) && (strcmp(current->type, "character") != 0) ) {
+				if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (isIdentifier(current->type) != 1) && (strcmp(current->type, "number") != 0) && (strcmp(current->type, "string") != 0) && (strcmp(current->type, "character") != 0) ) {
 					stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 					push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
 					return current;
@@ -1331,7 +1333,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 					continue;
 				}
 			}
-			else if ((strcmp(current->type, "identifier") == 0) || (strcmp(current->type, "number") == 0)) {
+			else if ((isIdentifier(current->type) == 1) || (strcmp(current->type, "number") == 0)) {
 				printf("before going in with value : %s\n", current->value);
 				if (identifierCopiedInTemp == 0)
 					strcpy(tempVariablesNode->value, current->value);
