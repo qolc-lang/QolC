@@ -392,6 +392,11 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 }
 
 //Check for identifier type
-int isIdentifier(char* currentType) {
+int isIdentifierType(char* currentType) {
 	if (strcmp(currentType, "identifier") == 0) return 1; return 0;
+}
+
+//Check for number type
+int isNumberType(char* currentType) {
+	if (strcmp(currentType, "number") == 0) return 1; return 0;
 }

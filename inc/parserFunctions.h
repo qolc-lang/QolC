@@ -15,6 +15,7 @@ typedef struct tempVariables
 }tempVariables;
 
 parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode);
-int isIdentifier(char* currentType);
+int isIdentifierType(char* currentType);
+int isNumberType(char* currentType);
 
 #endif
