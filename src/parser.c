@@ -279,14 +279,6 @@ void parsing(parse_state* current, command* commandNode) {
 		if (strcmp(current->value, "struct") == 0) {
 			printf("struct statement to be built\n");
 			printf("the temp now :  %s\n", temp);
-			// type* struct_type = type_create(TYPE_STRUCT, NULL, NULL);
-			// ///expr* structExpr = expr_create_string(temp);
-			// printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
-			// decl* struct_declaration = decl_create(temp, struct_type, NULL, NULL);
-			// stmt* struct_decl_stmt = stmt_create(STMT_DECL, struct_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-			// push_commandList(commandNode, NULL, struct_decl_stmt, NULL); 
-			// current = current->next;
-			// continue;
 			push(theStack[top], &top, current->value);
 			current = checkTheStack(current, theStack[0], top, commandNode);
 			pop(&top);
@@ -297,13 +289,6 @@ void parsing(parse_state* current, command* commandNode) {
 		if (strcmp(current->value, "enum") == 0) {
 			printf("enum statement to be built\n");
 			printf("the temp now :  %s\n", temp);
-			// type* enum_type = type_create(TYPE_ENUM, NULL, NULL);
-			// ///expr* structExpr = expr_create_string(temp);
-			// printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
-			// decl* enum_declaration = decl_create(temp, enum_type, NULL, NULL);
-			// stmt* enum_decl_stmt = stmt_create(STMT_DECL, enum_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-			// push_commandList(commandNode, NULL, enum_decl_stmt, NULL); 
-			// current = current->next;
 			push(theStack[top], &top, current->value);
 			current = checkTheStack(current, theStack[0], top, commandNode);
 			pop(&top);
@@ -316,15 +301,6 @@ void parsing(parse_state* current, command* commandNode) {
 			pop(&top);
 			strcpy(temp, theStack[top]);
 			printf("now in stack : %s\n", temp);
-			// pop(&top);
-			// theStack[0][top] = '\0';
-			// type* union_type = type_create(TYPE_UNION, NULL, NULL);
-			// ///expr* structExpr = expr_create_string(temp);
-			// printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
-			// decl* union_declaration = decl_create(temp, union_type, NULL, NULL);
-			// stmt* union_decl_stmt = stmt_create(STMT_DECL, union_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-			// push_commandList(commandNode, NULL, union_decl_stmt, NULL); 
-			// current = current->next;
 			push(theStack[top], &top, current->value);
 			current = checkTheStack(current, theStack[0], top, commandNode);
 			pop(&top);
@@ -337,12 +313,8 @@ void parsing(parse_state* current, command* commandNode) {
 			pop(&top);
 			if (strcmp(theStack[top], "import") == 0) {
 				doneFlag = 1;
-				printf("import statement is in the stack atm\n");
 				theStack[0][top] = '\0';
-				printf("the value to work as expr : %s\n", current->value);
-				expr* stringExpr = expr_create_string(current->value);
-				stmt* import_stmt = stmt_create(STMT_IMPORT, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, import_stmt, NULL); 
+				BuildImportStatement(current->value, commandNode);
 			}
 			else if (strcmp(theStack[top], "load") == 0) {
 				doneFlag = 1;
