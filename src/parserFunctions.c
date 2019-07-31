@@ -402,10 +402,17 @@ int isNumberType(char* currentType) {
 }
 
 //Build import statement
-void BuildImportStatement(char* currentValue, command* commandNode) 
-{
+void BuildImportStatement(char* currentValue, command* commandNode) {
 	printf("Going to build import statement with string : %s\n", currentValue);
 	expr* theExpr = expr_create_string(currentValue);
 	stmt* theStmt = stmt_create(STMT_IMPORT, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+	push_commandList(commandNode, NULL, theStmt, NULL); 
+}
+
+//Build load statement
+void BuildLoadStatement(char* currentValue, command* commandNode) {
+	printf("Going to build load statement with string : %s\n", currentValue);
+	expr* theExpr = expr_create_string(currentValue);
+	stmt* theStmt = stmt_create(STMT_LOAD, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }

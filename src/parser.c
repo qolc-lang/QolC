@@ -318,12 +318,8 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "load") == 0) {
 				doneFlag = 1;
-				printf("load statement is in the stack atm\n");
 				theStack[0][top] = '\0';
-				printf("the value to work as expr : %s\n", current->value);
-				expr* stringExpr = expr_create_string(current->value);
-				stmt* load_stmt = stmt_create(STMT_LOAD, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, load_stmt, NULL); 
+				BuildLoadStatement(current->value, commandNode);
 			}
 			else if (strcmp(theStack[top], "print") == 0) {
 				doneFlag = 1;
