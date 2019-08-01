@@ -416,3 +416,11 @@ void BuildLoadStatement(char* currentValue, command* commandNode) {
 	stmt* theStmt = stmt_create(STMT_LOAD, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
+
+//Build print statement
+void BuildPrintStatement(char* currentValue, command* commandNode) {
+	printf("Going to build print statement with string : %s\n", currentValue);
+	expr* theExpr = expr_create_string(currentValue);
+	stmt* theStmt = stmt_create(STMT_PRINT, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+	push_commandList(commandNode, NULL, theStmt, NULL); 
+}

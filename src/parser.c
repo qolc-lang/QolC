@@ -175,7 +175,7 @@ void parsing(parse_state* current, command* commandNode) {
 			continue;
 		}
 		else if (strcmp(current->value, "defer") == 0) {	//not pushing to stack just setting a variable
-			printf("defer statement to be built\n");
+			printf("The next command is a deferred one.\n");
 			hasDefer = 1;
 			current = current->next;
 			continue;
@@ -323,24 +323,16 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "print") == 0) {
 				doneFlag = 1;
-				printf("print statement is in the stack atm 1\n");
 				theStack[0][top] = '\0';
-				printf("the value to work as expr : %s\n", current->value);
-				expr* stringExpr = expr_create_string(current->value);
 				if (hasDefer == 1)
 				{
-					printf("This statement is with defer at the front\n");
 					hasDefer = 0;
 					stmt* defer_stmt = stmt_create(STMT_DEFER, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 					push_commandList(commandNode, NULL, defer_stmt, NULL); 
-					stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
-					push_commandList(commandNode, NULL, print_stmt, NULL); 
+					BuildPrintStatement(current->value, commandNode);
 				}
 				else 
-				{
-					stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL);
-					push_commandList(commandNode, NULL, print_stmt, NULL); 
-				}
+					BuildPrintStatement(current->value, commandNode);
 			}
 			else if (strcmp(theStack[top], "string") == 0) {
 				doneFlag = 1;
