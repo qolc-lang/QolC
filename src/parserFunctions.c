@@ -424,3 +424,11 @@ void BuildPrintStatement(char* currentValue, command* commandNode) {
 	stmt* theStmt = stmt_create(STMT_PRINT, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
+
+//Build sleep statement
+void BuildSleepStatement(char* currentValue, command* commandNode) {
+	printf("Going to build sleep statement with string : %s\n", currentValue);
+	expr* theExpr = expr_create_string(currentValue);
+	stmt* theStmt = stmt_create(STMT_SLEEP, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+	push_commandList(commandNode, NULL, theStmt, NULL); 
+}

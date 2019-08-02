@@ -20,5 +20,6 @@ int isNumberType(char* currentType);
 void BuildImportStatement(char* currentValue, command* commandNode);
 void BuildLoadStatement(char* currentValue, command* commandNode);
 void BuildPrintStatement(char* currentValue, command* commandNode);
+void BuildSleepStatement(char* currentValue, command* commandNode);
 
 #endif

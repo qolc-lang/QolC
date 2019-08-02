@@ -391,12 +391,8 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "sleep") == 0) {
 				doneFlag = 1;
-				printf("sleep statement is in the stack atm 2\n");
 				theStack[0][top] = '\0';
-				printf("the value to work as expr : %s\n", current->value);
-				expr* numberExpr = expr_create_string(current->value);
-				stmt* sleep_stmt = stmt_create(STMT_SLEEP, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, sleep_stmt, NULL); 
+				BuildSleepStatement(current->value, commandNode);
 			}
 			else if (strcmp(theStack[top], "int") == 0) {
 				doneFlag = 1;
