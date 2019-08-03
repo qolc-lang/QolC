@@ -597,21 +597,13 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "print") == 0) {
 				doneFlag = 1;
-				printf("print is in the stack atm 3\n");
 				theStack[0][top] = '\0';
-				printf("the value to work as expr : %s\n", current->value);
-				expr* identifierExpr = expr_create_string(current->value);
-				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, print_stmt, NULL); 
+				BuildPrintStatement(current->value, commandNode);
 			}
 			else if (strcmp(theStack[top], "scan") == 0) {
 				doneFlag = 1;
-				printf("scan is in the stack atm 3\n");
 				theStack[0][top] = '\0';
-				printf("the value to work as expr : %s\n", current->value);
-				expr* identifierExpr = expr_create_string(current->value);
-				stmt* scan_stmt = stmt_create(STMT_SCAN, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, scan_stmt, NULL); 
+				BuildScanStatement(current->value, commandNode);
 			}
 			else if (strcmp(theStack[top], "cast") == 0) {
 				doneFlag = 1;
