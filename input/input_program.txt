@@ -67,5 +67,6 @@ vector3 struct
 sleep|4|
 
 scan|input|
+cast|i, void|
 
 |@

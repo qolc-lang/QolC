@@ -440,3 +440,21 @@ void BuildScanStatement(char* currentValue, command* commandNode) {
 	stmt* theStmt = stmt_create(STMT_SCAN, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
+
+//Build cast statement
+void BuildCastStatement(parse_state * current, command* commandNode) {
+	printf("Going to build cast statement with string : %s\n", current->value);
+
+	char temp[100], temp2[100];
+
+	strcpy(temp, current->value);
+	current = current->next;
+	if (strcmp(current->type, "parenthesis") == 0) {
+		current = current->next;
+		strcpy(temp2, current->value);
+	}
+	expr* identifierExpr = expr_create_string(temp);
+	expr* typeExpr = expr_create_string(temp2);
+	stmt* theStmt = stmt_create(STMT_CAST, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL);
+	push_commandList(commandNode, NULL, theStmt, NULL); 
+}

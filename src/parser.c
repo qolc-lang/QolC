@@ -607,20 +607,8 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "cast") == 0) {
 				doneFlag = 1;
-				printf("cast is in the stack atm 3\n");
 				theStack[0][top] = '\0';
-				strcpy(temp, current->value);
-				printf("the value to work as expr : %s\n", temp);
-				current = current->next;
-				if (strcmp(current->type, "parenthesis") == 0) {
-					current = current->next;
-					strcpy(temp2, current->value);
-					printf("the type to convert to : %s\n", temp2);
-				}
-				expr* identifierExpr = expr_create_string(temp);
-				expr* typeExpr = expr_create_string(temp2);
-				stmt* cast_stmt = stmt_create(STMT_CAST, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, cast_stmt, NULL); 
+				BuildCastStatement(current, commandNode);
 			}
 			else if (strcmp(theStack[top], "array_add") == 0) {
 				doneFlag = 1;
