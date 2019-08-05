@@ -22,6 +22,7 @@ void BuildLoadStatement(char* currentValue, command* commandNode);
 void BuildPrintStatement(char* currentValue, command* commandNode);
 void BuildSleepStatement(char* currentValue, command* commandNode);
 void BuildScanStatement(char* currentValue, command* commandNode);
+void BuildDeleteStatement(char* currentValue, command* commandNode);
 void BuildCastStatement(parse_state * current, command* commandNode);
 
 #endif

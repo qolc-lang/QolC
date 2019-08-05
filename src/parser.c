@@ -629,12 +629,8 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "delete") == 0) {
 				doneFlag = 1;
-				printf("delete is in the stack atm\n");
 				theStack[0][top] = '\0';
-				printf("the value to work as expr : %s\n", current->value);
-				expr* identifierExpr = expr_create_string(current->value);
-				stmt* delete_stmt = stmt_create(STMT_DELETE, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, delete_stmt, NULL); 
+				BuildDeleteStatement(current->value, commandNode);
 			}
 			else if (strcmp(theStack[top], "/@") == 0) {
 				doneFlag = 1;

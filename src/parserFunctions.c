@@ -441,6 +441,14 @@ void BuildScanStatement(char* currentValue, command* commandNode) {
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
 
+//Build delete statement
+void BuildDeleteStatement(char* currentValue, command* commandNode) {
+	printf("Going to build delete statement with string : %s\n", currentValue);
+	expr* theExpr = expr_create_string(currentValue);
+	stmt* theStmt = stmt_create(STMT_DELETE, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+	push_commandList(commandNode, NULL, theStmt, NULL); 
+}
+
 //Build cast statement
 void BuildCastStatement(parse_state * current, command* commandNode) {
 	printf("Going to build cast statement with string : %s\n", current->value);
