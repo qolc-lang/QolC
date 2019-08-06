@@ -68,5 +68,6 @@ sleep|4|
 
 scan|input|
 cast|i, void|
+array_add|myArray, k|
 
 |@
