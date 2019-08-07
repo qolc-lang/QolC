@@ -274,6 +274,11 @@ void print_commandList(command* commandNode) {
 				printf("STMT_CONTINUE\n");
 				//printf("	expr: %s\n", current->aStmt->expr->string_literal);
 			}
+			else if (value == 14) {
+				printf("STMT_NEW\n");
+				printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
+				printf("	type: %s\n", current->aStmt->next_expr->string_literal);
+			}
 			else if (value == 15) {
 				printf("STMT_SLEEP\n");
 				printf("	expr: %s\n", current->aStmt->theExpr->string_literal);

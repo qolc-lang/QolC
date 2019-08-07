@@ -794,6 +794,24 @@ void parsing(parse_state* current, command* commandNode) {
 				current = current->next;
 				continue;
 			}
+			else if (strcmp(current->value, "new") == 0) {
+				pop(&top);
+				printf("now in the stack in new : %s\n", theStack[top]);
+				strcpy(temp, theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				theStack[0][top] = '\0';
+				printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
+				//passing eoc
+				current = current->next;
+				current = current->next;
+				printf("the current2  : %s\n", current->value);
+				expr* expr1 = expr_create_string(temp);
+				expr* expr2 = expr_create_string(current->value);
+				stmt* new_stmt = stmt_create(STMT_NEW, NULL, NULL, expr1, expr2, NULL, NULL, NULL, NULL);
+				push_commandList(commandNode, NULL, new_stmt, NULL); 
+				continue;
+			}
 
 			int doneFlag = 0;
 			if (strcmp(current->value, "null") == 0) {

@@ -70,4 +70,6 @@ scan|input|
 cast|i, void|
 array_add|myArray, k|
 
+my_node@new node
+
 |@
