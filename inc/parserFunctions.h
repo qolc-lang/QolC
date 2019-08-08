@@ -25,5 +25,6 @@ void BuildScanStatement(char* currentValue, command* commandNode);
 void BuildDeleteStatement(char* currentValue, command* commandNode);
 void BuildCastStatement(parse_state * current, command* commandNode);
 void BuildArrayAddStatement(parse_state * current, command* commandNode);
+void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
 
 #endif

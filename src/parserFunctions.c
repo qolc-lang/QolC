@@ -484,3 +484,13 @@ void BuildArrayAddStatement(parse_state * current, command* commandNode) {
 	stmt* theStmt = stmt_create(STMT_ARRAYADD, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
+
+//Build new statement
+void BuildNewStatement(parse_state * current, command* commandNode, char* temp) {
+	current = current->next;
+	current = current->next;
+	expr* expr1 = expr_create_string(temp);
+	expr* expr2 = expr_create_string(current->value);
+	stmt* new_stmt = stmt_create(STMT_NEW, NULL, NULL, expr1, expr2, NULL, NULL, NULL, NULL);
+	push_commandList(commandNode, NULL, new_stmt, NULL); 
+}
