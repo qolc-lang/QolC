@@ -487,6 +487,7 @@ void BuildArrayAddStatement(parse_state * current, command* commandNode) {
 
 //Build new statement
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp) {
+	printf("Going to build statement new \n");
 	current = current->next;
 	current = current->next;
 	expr* expr1 = expr_create_string(temp);
@@ -497,7 +498,18 @@ void BuildNewStatement(parse_state * current, command* commandNode, char* temp) 
 
 //Build hexadecimal number
 void BuildHexNumDeclaraion(char* currentValue, command* commandNode, char* temp) {
+	printf("Going to build hexadecimal number declaration statement\n");
 	type* theType = type_create(TYPE_HEXNUM, NULL, NULL);
+	expr* theExpr = expr_create_string(currentValue);
+	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
+	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	push_commandList(commandNode, NULL, theStmt, NULL); 
+}
+
+//Build int 
+void BuildIntDeclaraion(char* currentValue, command* commandNode, char* temp) {
+	printf("Going to build int declaration statement\n");
+	type* theType = type_create(TYPE_INTEGER, NULL, NULL);
 	expr* theExpr = expr_create_string(currentValue);
 	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
 	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);

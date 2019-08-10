@@ -27,5 +27,6 @@ void BuildCastStatement(parse_state * current, command* commandNode);
 void BuildArrayAddStatement(parse_state * current, command* commandNode);
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
 void BuildHexNumDeclaraion(char* currentValue, command* commandNode, char* temp);
+void BuildIntDeclaraion(char* currentValue, command* commandNode, char* temp);
 
 #endif

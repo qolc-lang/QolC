@@ -375,12 +375,8 @@ void parsing(parse_state* current, command* commandNode) {
 			pop(&top);
 			if (strcmp(theStack[top], "print") == 0) {
 				doneFlag = 1;
-				printf("print statement is in the stack atm 2\n");
 				theStack[0][top] = '\0';
-				printf("the value to work as expr : %s\n", current->value);
-				expr* numberExpr = expr_create_string(current->value);
-				stmt* print_stmt = stmt_create(STMT_PRINT, NULL, NULL, numberExpr, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, print_stmt, NULL); 
+				BuildPrintStatement(current->value, commandNode);
 			}
 			else if (strcmp(theStack[top], "sleep") == 0) {
 				doneFlag = 1;
@@ -389,21 +385,13 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "int") == 0) {
 				doneFlag = 1;
-				printf("int type is in the stack atm\n");
-				type* int_type = type_create(TYPE_INTEGER, NULL, NULL);
 				theStack[0][top] = '\0';
 				pop(&top);
-				printf("the value to work as expr : %s\n", current->value);
-				expr* intExpr = expr_create_string(current->value);
 				strcpy(temp, theStack[top]);
-				printf("now in stack : %s\n", temp);
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
-				decl* int_declaration = decl_create(temp, int_type, intExpr, NULL);
-				stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, int_decl_stmt, NULL); 
+				BuildIntDeclaraion(current->value, commandNode, temp);
 			}
 			else if (strcmp(theStack[top], "float") == 0) {
 				doneFlag = 1;
