@@ -515,3 +515,13 @@ void BuildIntDeclaraion(char* currentValue, command* commandNode, char* temp) {
 	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
+
+//Build float 
+void BuildFloatDeclaraion(char* currentValue, command* commandNode, char* temp) {
+	printf("Going to build float declaration statement\n");
+	type* theType = type_create(TYPE_FLOAT, NULL, NULL);
+	expr* theExpr = expr_create_string(currentValue);
+	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
+	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	push_commandList(commandNode, NULL, theStmt, NULL); 
+}

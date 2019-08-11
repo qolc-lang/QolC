@@ -395,21 +395,13 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "float") == 0) {
 				doneFlag = 1;
-				printf("float type is in the stack atm\n");
-				type* float_type = type_create(TYPE_FLOAT, NULL, NULL);
 				theStack[0][top] = '\0';
 				pop(&top);
-				printf("the value to work as expr : %s\n", current->value);
-				expr* floatExpr = expr_create_string(current->value);
 				strcpy(temp, theStack[top]);
-				printf("now in stack : %s\n", temp);
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
-				decl* float_declaration = decl_create(temp, float_type, floatExpr, NULL);
-				stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, float_decl_stmt, NULL); 
+				BuildFloatDeclaraion(current->value, commandNode, temp);
 			}
 			else if (strcmp(theStack[top], "+") == 0) {
 				doneFlag = 1;
