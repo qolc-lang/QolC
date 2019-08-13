@@ -838,24 +838,15 @@ void parsing(parse_state* current, command* commandNode) {
 				}
 				else if (strcmp(theStack[top], "string") == 0) {
 					doneFlag = 1;
-					printf("string (pointer) type is in the stack atm\n");
-					type* stringPointer_type = type_create(TYPE_STRING_POINTER, NULL, NULL);
 					theStack[0][top] = '\0';
 					pop(&top);
-					printf("now in stack should be pointer symbol : %s\n", theStack[top]);
 					theStack[0][top] = '\0';
-					pop(&top);
-					printf("the value to work as expr : %s\n", current->value);
-					expr* stringExpr = expr_create_string(current->value);
+					pop(&top);	
 					strcpy(temp, theStack[top]);
-					printf("now in stack : %s\n", temp);
 					theStack[0][top] = '\0';
 					pop(&top);
 					theStack[0][top] = '\0';
-					printf("now stack must be empty with top : %s, %d\n", theStack[0][top], top);
-					decl* string_declaration = decl_create(temp, stringPointer_type, stringExpr, NULL);
-					stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-					push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
+					BuildStringPointerDeclaraion(current->value, commandNode, temp);
 				}
 			}
 			else if ((strcmp(current->value, "true") == 0) || (strcmp(current->value, "false") == 0)) {
