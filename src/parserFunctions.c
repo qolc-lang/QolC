@@ -545,3 +545,13 @@ void BuildStringPointerDeclaraion(char* currentValue, command* commandNode, char
 	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
+
+//Build bool pointer 
+void BuildBoolDeclaraion(char* currentValue, command* commandNode, char* temp) {
+	printf("Going to build bool declaration statement\n");
+	type* theType = type_create(TYPE_BOOLEAN, NULL, NULL);
+	expr* theExpr = expr_create_string(currentValue);
+	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
+	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	push_commandList(commandNode, NULL, theStmt, NULL); 
+}
