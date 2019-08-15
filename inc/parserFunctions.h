@@ -26,11 +26,12 @@ void BuildDeleteStatement(char* currentValue, command* commandNode);
 void BuildCastStatement(parse_state * current, command* commandNode);
 void BuildArrayAddStatement(parse_state * current, command* commandNode);
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
-void BuildHexNumDeclaraion(char* currentValue, command* commandNode, char* temp);
-void BuildIntDeclaraion(char* currentValue, command* commandNode, char* temp);
-void BuildFloatDeclaraion(char* currentValue, command* commandNode, char* temp);
-void BuildCharDeclaraion(char* currentValue, command* commandNode, char* temp);
-void BuildStringPointerDeclaraion(char* currentValue, command* commandNode, char* temp);
-void BuildBoolDeclaraion(char* currentValue, command* commandNode, char* temp);
+void BuildHexNumDeclaration(char* currentValue, command* commandNode, char* temp);
+void BuildIntDeclaration(char* currentValue, command* commandNode, char* temp);
+void BuildFloatDeclaration(char* currentValue, command* commandNode, char* temp);
+void BuildCharDeclaration(char* currentValue, command* commandNode, char* temp);
+void BuildStringDeclaration(char* currentValue, command* commandNode, char* temp);
+void BuildStringPointerDeclaration(char* currentValue, command* commandNode, char* temp);
+void BuildBoolDeclaration(char* currentValue, command* commandNode, char* temp);
 
 #endif

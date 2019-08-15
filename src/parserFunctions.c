@@ -497,7 +497,7 @@ void BuildNewStatement(parse_state * current, command* commandNode, char* temp) 
 }
 
 //Build hexadecimal number
-void BuildHexNumDeclaraion(char* currentValue, command* commandNode, char* temp) {
+void BuildHexNumDeclaration(char* currentValue, command* commandNode, char* temp) {
 	printf("Going to build hexadecimal number declaration statement\n");
 	type* theType = type_create(TYPE_HEXNUM, NULL, NULL);
 	expr* theExpr = expr_create_string(currentValue);
@@ -507,7 +507,7 @@ void BuildHexNumDeclaraion(char* currentValue, command* commandNode, char* temp)
 }
 
 //Build int 
-void BuildIntDeclaraion(char* currentValue, command* commandNode, char* temp) {
+void BuildIntDeclaration(char* currentValue, command* commandNode, char* temp) {
 	printf("Going to build int declaration statement\n");
 	type* theType = type_create(TYPE_INTEGER, NULL, NULL);
 	expr* theExpr = expr_create_string(currentValue);
@@ -517,7 +517,7 @@ void BuildIntDeclaraion(char* currentValue, command* commandNode, char* temp) {
 }
 
 //Build float 
-void BuildFloatDeclaraion(char* currentValue, command* commandNode, char* temp) {
+void BuildFloatDeclaration(char* currentValue, command* commandNode, char* temp) {
 	printf("Going to build float declaration statement\n");
 	type* theType = type_create(TYPE_FLOAT, NULL, NULL);
 	expr* theExpr = expr_create_string(currentValue);
@@ -527,7 +527,7 @@ void BuildFloatDeclaraion(char* currentValue, command* commandNode, char* temp) 
 }
 
 //Build char 
-void BuildCharDeclaraion(char* currentValue, command* commandNode, char* temp) {
+void BuildCharDeclaration(char* currentValue, command* commandNode, char* temp) {
 	printf("Going to build character declaration statement\n");
 	type* theType = type_create(TYPE_CHARACTER, NULL, NULL);
 	expr* theExpr = expr_create_string(currentValue);
@@ -536,8 +536,18 @@ void BuildCharDeclaraion(char* currentValue, command* commandNode, char* temp) {
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
 
+//Build string 
+void BuildStringDeclaration(char* currentValue, command* commandNode, char* temp) {
+	printf("Going to build string declaration statement\n");
+	type* theType = type_create(TYPE_STRING, NULL, NULL);
+	expr* theExpr = expr_create_string(currentValue);
+	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
+	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	push_commandList(commandNode, NULL, theStmt, NULL); 
+}
+
 //Build string pointer 
-void BuildStringPointerDeclaraion(char* currentValue, command* commandNode, char* temp) {
+void BuildStringPointerDeclaration(char* currentValue, command* commandNode, char* temp) {
 	printf("Going to build string pointer declaration statement\n");
 	type* theType = type_create(TYPE_STRING_POINTER, NULL, NULL);
 	expr* theExpr = expr_create_string(currentValue);
@@ -547,7 +557,7 @@ void BuildStringPointerDeclaraion(char* currentValue, command* commandNode, char
 }
 
 //Build bool pointer 
-void BuildBoolDeclaraion(char* currentValue, command* commandNode, char* temp) {
+void BuildBoolDeclaration(char* currentValue, command* commandNode, char* temp) {
 	printf("Going to build bool declaration statement\n");
 	type* theType = type_create(TYPE_BOOLEAN, NULL, NULL);
 	expr* theExpr = expr_create_string(currentValue);
