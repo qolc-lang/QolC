@@ -397,27 +397,17 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "+") == 0) {
 				doneFlag = 1;
-				printf("operator + is in the stack atm\n");
 				theStack[0][top] = '\0';
 				pop(&top);
-				printf("now in the stack : %s\n", theStack[top]);
-				printf("the value to work as expr : %s\n", current->value);
 				int theResult = atoi(theStack[top]) + atoi(current->value);
 				sprintf(temp, "%d", theResult);
-				printf("@@@@ THE RESULT : %s\n", temp);
-				expr* numberExpr = expr_create_string(temp);
 				theStack[0][top] = '\0';
 				pop(&top);
-				printf("now in the stack : %s\n", theStack[top]);
 				strcpy(temp2, theStack[top]);
-				printf("doess hhththt\n");
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
-				decl* identifier_declaration = decl_create(temp2, NULL, numberExpr, NULL);
-				stmt* decl_stmt = stmt_create(STMT_DECL, identifier_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-				push_commandList(commandNode, NULL, decl_stmt, NULL); 
+				BuilAddDeclaration(temp, temp2, commandNode);
 			}
 			else if (strcmp(theStack[top], "-") == 0) {
 				doneFlag = 1;
@@ -678,7 +668,6 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				expr* leftExpr = expr_create_string(temp2);
 				expr* rightExpr = expr_create_string(temp);
-				printf("doess hhththt\n");
 				pop(&top);
 				theStack[0][top] = '\0';
 				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);

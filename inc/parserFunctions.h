@@ -36,5 +36,6 @@ void BuildFloatPointerDeclaration(char* currentValue, command* commandNode, char
 void BuildIntPointerDeclaration(char* currentValue, command* commandNode, char* temp);
 void BuildCharPointerDeclaration(char* currentValue, command* commandNode, char* temp);
 void BuildBoolDeclaration(char* currentValue, command* commandNode, char* temp);
+void BuilAddDeclaration(char* temp, char* temp2, command* commandNode);
 
 #endif
