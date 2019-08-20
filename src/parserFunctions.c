@@ -604,3 +604,12 @@ void BuilAddDeclaration(char* temp, char* temp2, command* commandNode) {
 	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
+
+//Build sub declaration
+void BuilSubDeclaration(char* temp, char* temp2, command* commandNode) {
+	printf("Going to build sub declaration statement\n");
+	expr* theExpr = expr_create_string(temp);
+	decl* theDeclaration = decl_create(temp2, NULL, theExpr, NULL);
+	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	push_commandList(commandNode, NULL, theStmt, NULL); 
+}

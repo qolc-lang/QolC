@@ -13,7 +13,7 @@ p@float
 f@0.5
 v@false
 d@'d
-y@ 4 + 2
+y@ 4 - 2
 z@0
 t@int
 myvar@"a string"
