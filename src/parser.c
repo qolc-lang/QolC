@@ -425,21 +425,13 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "+=") == 0) {
 				doneFlag = 1;
-				printf("operator += is in the stack atm\n");
 				theStack[0][top] = '\0';
 				pop(&top);
-				printf("now in the stack : %s\n", theStack[top]);
-				printf("the value to work as expr : %s\n", current->value);
 				strcpy(temp, current->value);
 				strcpy(temp2, theStack[top]);
-				expr* leftExpr = expr_create_string(temp2);
-				expr* rightExpr = expr_create_string(temp);
-				printf("doess hhththt\n");
 				theStack[0][top] = '\0';
 				pop(&top);
-				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
-				expr* addAssignmentExpr = expr_create(EXPR_ADD_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
-				push_commandList(commandNode, NULL, NULL, addAssignmentExpr);
+				BuilAddAssignmentExpression(temp, temp2, commandNode);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "-=") == 0) {

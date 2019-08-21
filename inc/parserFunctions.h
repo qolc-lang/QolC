@@ -38,5 +38,6 @@ void BuildCharPointerDeclaration(char* currentValue, command* commandNode, char*
 void BuildBoolDeclaration(char* currentValue, command* commandNode, char* temp);
 void BuilAddDeclaration(char* temp, char* temp2, command* commandNode);
 void BuilSubDeclaration(char* temp, char* temp2, command* commandNode);
+void BuilAddAssignmentExpression(char* temp, char* temp2, command* commandNode);
 
 #endif

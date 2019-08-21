@@ -613,3 +613,12 @@ void BuilSubDeclaration(char* temp, char* temp2, command* commandNode) {
 	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
+
+//Build add assignment expression
+void BuilAddAssignmentExpression(char* temp, char* temp2, command* commandNode) {
+	printf("Going to build add assignment expression statement\n");
+	expr* leftExpr = expr_create_string(temp2);
+	expr* rightExpr = expr_create_string(temp);
+	expr* theExpr = expr_create(EXPR_ADD_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
+	push_commandList(commandNode, NULL, NULL, theExpr);
+}
