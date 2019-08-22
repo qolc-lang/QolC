@@ -597,7 +597,7 @@ void BuildBoolDeclaration(char* currentValue, command* commandNode, char* temp) 
 }
 
 //Build add declaration
-void BuilAddDeclaration(char* temp, char* temp2, command* commandNode) {
+void BuildAddDeclaration(char* temp, char* temp2, command* commandNode) {
 	printf("Going to build add declaration statement\n");
 	expr* theExpr = expr_create_string(temp);
 	decl* theDeclaration = decl_create(temp2, NULL, theExpr, NULL);
@@ -606,7 +606,7 @@ void BuilAddDeclaration(char* temp, char* temp2, command* commandNode) {
 }
 
 //Build sub declaration
-void BuilSubDeclaration(char* temp, char* temp2, command* commandNode) {
+void BuildSubDeclaration(char* temp, char* temp2, command* commandNode) {
 	printf("Going to build sub declaration statement\n");
 	expr* theExpr = expr_create_string(temp);
 	decl* theDeclaration = decl_create(temp2, NULL, theExpr, NULL);
@@ -615,10 +615,19 @@ void BuilSubDeclaration(char* temp, char* temp2, command* commandNode) {
 }
 
 //Build add assignment expression
-void BuilAddAssignmentExpression(char* temp, char* temp2, command* commandNode) {
+void BuildAddAssignmentExpression(char* temp, char* temp2, command* commandNode) {
 	printf("Going to build add assignment expression statement\n");
 	expr* leftExpr = expr_create_string(temp2);
 	expr* rightExpr = expr_create_string(temp);
 	expr* theExpr = expr_create(EXPR_ADD_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
+	push_commandList(commandNode, NULL, NULL, theExpr);
+}
+
+//Build sub assignment expression
+void BuildSubAssignmentExpression(char* temp, char* temp2, command* commandNode) {
+	printf("Going to build sub assignment expression statement\n");
+	expr* leftExpr = expr_create_string(temp2);
+	expr* rightExpr = expr_create_string(temp);
+	expr* theExpr = expr_create(EXPR_SUB_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
 	push_commandList(commandNode, NULL, NULL, theExpr);
 }

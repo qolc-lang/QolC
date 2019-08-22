@@ -36,8 +36,9 @@ void BuildFloatPointerDeclaration(char* currentValue, command* commandNode, char
 void BuildIntPointerDeclaration(char* currentValue, command* commandNode, char* temp);
 void BuildCharPointerDeclaration(char* currentValue, command* commandNode, char* temp);
 void BuildBoolDeclaration(char* currentValue, command* commandNode, char* temp);
-void BuilAddDeclaration(char* temp, char* temp2, command* commandNode);
-void BuilSubDeclaration(char* temp, char* temp2, command* commandNode);
-void BuilAddAssignmentExpression(char* temp, char* temp2, command* commandNode);
+void BuildAddDeclaration(char* temp, char* temp2, command* commandNode);
+void BuildSubDeclaration(char* temp, char* temp2, command* commandNode);
+void BuildAddAssignmentExpression(char* temp, char* temp2, command* commandNode);
+void BuildSubAssignmentExpression(char* temp, char* temp2, command* commandNode);
 
 #endif
