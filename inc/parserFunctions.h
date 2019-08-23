@@ -40,5 +40,6 @@ void BuildAddDeclaration(char* temp, char* temp2, command* commandNode);
 void BuildSubDeclaration(char* temp, char* temp2, command* commandNode);
 void BuildAddAssignmentExpression(char* temp, char* temp2, command* commandNode);
 void BuildSubAssignmentExpression(char* temp, char* temp2, command* commandNode);
+void BuildMulAssignmentExpression(char* temp, char* temp2, command* commandNode);
 
 #endif

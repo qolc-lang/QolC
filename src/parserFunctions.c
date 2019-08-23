@@ -631,3 +631,12 @@ void BuildSubAssignmentExpression(char* temp, char* temp2, command* commandNode)
 	expr* theExpr = expr_create(EXPR_SUB_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
 	push_commandList(commandNode, NULL, NULL, theExpr);
 }
+
+//Build mul assignment expression
+void BuildMulAssignmentExpression(char* temp, char* temp2, command* commandNode) {
+	printf("Going to build mul assignment expression statement\n");
+	expr* leftExpr = expr_create_string(temp2);
+	expr* rightExpr = expr_create_string(temp);
+	expr* theExpr = expr_create(EXPR_MUL_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
+	push_commandList(commandNode, NULL, NULL, theExpr);
+}
