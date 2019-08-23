@@ -640,3 +640,12 @@ void BuildMulAssignmentExpression(char* temp, char* temp2, command* commandNode)
 	expr* theExpr = expr_create(EXPR_MUL_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
 	push_commandList(commandNode, NULL, NULL, theExpr);
 }
+
+//Build div assignment expression
+void BuildDivAssignmentExpression(char* temp, char* temp2, command* commandNode) {
+	printf("Going to build div assignment expression statement\n");
+	expr* leftExpr = expr_create_string(temp2);
+	expr* rightExpr = expr_create_string(temp);
+	expr* theExpr = expr_create(EXPR_DIV_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
+	push_commandList(commandNode, NULL, NULL, theExpr);
+}
