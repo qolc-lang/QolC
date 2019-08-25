@@ -542,95 +542,60 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "++") == 0) {
 				doneFlag = 1;
-				printf("++ is in the stack atm\n");
 				theStack[0][top] = '\0';
-				printf("the value to work as expr : %s\n", current->value);
 				expr* incrementExpr = expr_create(EXPR_INCREMENT, NULL, NULL, 0, '\0', current->value);
 				push_commandList(commandNode, NULL, NULL, incrementExpr);
 				notTheEndFlag = 0; 
 			}
 			else if (strcmp(theStack[top], "--") == 0) {
 				doneFlag = 1;
-				printf("-- is in the stack atm\n");
 				theStack[0][top] = '\0';
-				printf("the value to work as expr : %s\n", current->value);
 				expr* decrementExpr = expr_create(EXPR_DECREMENT, NULL, NULL, 0, '\0', current->value);
 				push_commandList(commandNode, NULL, NULL, decrementExpr);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "+=") == 0) {
 				doneFlag = 1;
-				printf("operator += is in the stack atm\n");
 				theStack[0][top] = '\0';
 				pop(&top);
-				printf("now in the stack : %s\n", theStack[top]);
-				printf("the value to work as expr : %s\n", current->value);
 				strcpy(temp, current->value);
 				strcpy(temp2, theStack[top]);
-				expr* leftExpr = expr_create_string(temp2);
-				expr* rightExpr = expr_create_string(temp);
-				printf("doess hhththt\n");
 				pop(&top);
 				theStack[0][top] = '\0';
-				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
-				expr* addAssignmentExpr = expr_create(EXPR_ADD_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
-				push_commandList(commandNode, NULL, NULL, addAssignmentExpr);
+				BuildAddAssignmentExpression(temp, temp2, commandNode);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "-=") == 0) {
 				doneFlag = 1;
-				printf("operator -= is in the stack atm\n");
 				theStack[0][top] = '\0';
 				pop(&top);
-				printf("now in the stack : %s\n", theStack[top]);
-				printf("the value to work as expr : %s\n", current->value);
 				strcpy(temp, current->value);
 				strcpy(temp2, theStack[top]);
-				expr* leftExpr = expr_create_string(temp2);
-				expr* rightExpr = expr_create_string(temp);
-				printf("doess hhththt\n");
 				pop(&top);
 				theStack[0][top] = '\0';
-				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
-				expr* subAssignmentExpr = expr_create(EXPR_SUB_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
-				push_commandList(commandNode, NULL, NULL, subAssignmentExpr);
+				BuildSubAssignmentExpression(temp, temp2, commandNode);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "*=") == 0) {
 				doneFlag = 1;
-				printf("operator *= is in the stack atm\n");
 				theStack[0][top] = '\0';
 				pop(&top);
-				printf("now in the stack : %s\n", theStack[top]);
-				printf("the value to work as expr : %s\n", current->value);
 				strcpy(temp, current->value);
 				strcpy(temp2, theStack[top]);
-				expr* leftExpr = expr_create_string(temp2);
-				expr* rightExpr = expr_create_string(temp);
-				printf("doess hhththt\n");
 				pop(&top);
 				theStack[0][top] = '\0';
-				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
-				expr* mulAssignmentExpr = expr_create(EXPR_MUL_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
-				push_commandList(commandNode, NULL, NULL, mulAssignmentExpr);
+				BuildMulAssignmentExpression(temp, temp2, commandNode);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "/=") == 0) {
 				doneFlag = 1;
-				printf("operator /= is in the stack atm\n");
 				theStack[0][top] = '\0';
 				pop(&top);
-				printf("now in the stack : %s\n", theStack[top]);
-				printf("the value to work as expr : %s\n", current->value);
 				strcpy(temp, current->value);
 				strcpy(temp2, theStack[top]);
-				expr* leftExpr = expr_create_string(temp2);
-				expr* rightExpr = expr_create_string(temp);
 				pop(&top);
 				theStack[0][top] = '\0';
-				printf("now stack must be empty with top : %s, %d\n", theStack[top], top);
-				expr* divAssignmentExpr = expr_create(EXPR_DIV_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
-				push_commandList(commandNode, NULL, NULL, divAssignmentExpr);
+				BuildDivAssignmentExpression(temp, temp2, commandNode);
 				notTheEndFlag = 0;
 			}
 			else {
@@ -860,7 +825,6 @@ void parsing(parse_state* current, command* commandNode) {
 						push_commandList(commandNode, NULL, bool_decl_stmt, NULL); 
 					}
 					else if ((strcmp(current->value, "false") == 0) || (strcmp(current->value, "true") == 0)) {
-						printf("ndhebdbebd!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 						pop(&top);
 						theStack[0][top] = '\0';
 						expr* stringExpr = expr_create_string(current->value);

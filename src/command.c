@@ -1,7 +1,6 @@
 #include "command.h"
 
 void push_commandList(command* commandNode, decl* aDecl, stmt* aStmt, expr* anExpr) {
-	printf("in push_commandList\n");
     command* current = commandNode;
     while (current->next != NULL) {
     	current = current->next;
@@ -11,7 +10,6 @@ void push_commandList(command* commandNode, decl* aDecl, stmt* aStmt, expr* anEx
     current->next->aStmt = aStmt;
     current->next->anExpr = anExpr;
     current->next->next = NULL;
-    printf("ending push_commandList\n");
 }
 
 void print_commandList(command* commandNode) {
