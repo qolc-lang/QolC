@@ -314,12 +314,12 @@ void parsing(parse_state* current, command* commandNode) {
 			if (strcmp(theStack[top], "import") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
-				BuildImportStatement(current->value, commandNode);
+				BuildSingleExprStatement(current->value, commandNode, 1);
 			}
 			else if (strcmp(theStack[top], "load") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
-				BuildLoadStatement(current->value, commandNode);
+				BuildSingleExprStatement(current->value, commandNode, 2);
 			}
 			else if (strcmp(theStack[top], "print") == 0) {
 				doneFlag = 1;
@@ -329,10 +329,10 @@ void parsing(parse_state* current, command* commandNode) {
 					hasDefer = 0;
 					stmt* defer_stmt = stmt_create(STMT_DEFER, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 					push_commandList(commandNode, NULL, defer_stmt, NULL); 
-					BuildPrintStatement(current->value, commandNode);
+					BuildSingleExprStatement(current->value, commandNode, 3);
 				}
 				else 
-					BuildPrintStatement(current->value, commandNode);
+					BuildSingleExprStatement(current->value, commandNode, 3);
 			}
 			else if (strcmp(theStack[top], "string") == 0) {
 				doneFlag = 1;
@@ -368,12 +368,12 @@ void parsing(parse_state* current, command* commandNode) {
 			if (strcmp(theStack[top], "print") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
-				BuildPrintStatement(current->value, commandNode);
+				BuildSingleExprStatement(current->value, commandNode, 3);
 			}
 			else if (strcmp(theStack[top], "sleep") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
-				BuildSleepStatement(current->value, commandNode);
+				BuildSingleExprStatement(current->value, commandNode, 4);
 			}
 			else if (strcmp(theStack[top], "int") == 0) {
 				doneFlag = 1;
@@ -511,12 +511,12 @@ void parsing(parse_state* current, command* commandNode) {
 			else if (strcmp(theStack[top], "print") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
-				BuildPrintStatement(current->value, commandNode);
+				BuildSingleExprStatement(current->value, commandNode, 3);
 			}
 			else if (strcmp(theStack[top], "scan") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
-				BuildScanStatement(current->value, commandNode);
+				BuildSingleExprStatement(current->value, commandNode, 5);
 			}
 			else if (strcmp(theStack[top], "cast") == 0) {
 				doneFlag = 1;
@@ -531,7 +531,7 @@ void parsing(parse_state* current, command* commandNode) {
 			else if (strcmp(theStack[top], "delete") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
-				BuildDeleteStatement(current->value, commandNode);
+				BuildSingleExprStatement(current->value, commandNode, 6);
 			}
 			else if (strcmp(theStack[top], "/@") == 0) {
 				doneFlag = 1;

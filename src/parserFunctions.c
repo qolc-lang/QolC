@@ -401,51 +401,41 @@ int isNumberType(char* currentType) {
 	if (strcmp(currentType, "number") == 0) return 1; return 0;
 }
 
-//Build import statement
-void BuildImportStatement(char* currentValue, command* commandNode) {
-	printf("Going to build import statement with string : %s\n", currentValue);
+//Build single expressiong statement taking in consideration its third parameter
+void BuildSingleExprStatement(char* currentValue, command* commandNode, int statement) {
+	
 	expr* theExpr = expr_create_string(currentValue);
-	stmt* theStmt = stmt_create(STMT_IMPORT, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
+	stmt* theStmt;
 
-//Build load statement
-void BuildLoadStatement(char* currentValue, command* commandNode) {
-	printf("Going to build load statement with string : %s\n", currentValue);
-	expr* theExpr = expr_create_string(currentValue);
-	stmt* theStmt = stmt_create(STMT_LOAD, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
+	switch (statement) {
+		case 1 :
+			printf("Going to build import statement with string : %s\n", currentValue);
+			theStmt = stmt_create(STMT_IMPORT, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+			break;
+		case 2 :
+			printf("Going to build load statement with string : %s\n", currentValue);
+			theStmt = stmt_create(STMT_LOAD, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+			break;
+		case 3 :
+			printf("Going to build print statement with string : %s\n", currentValue);
+			theStmt = stmt_create(STMT_PRINT, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+			break;
+		case 4 :
+			printf("Going to build sleep statement with string : %s\n", currentValue);
+			theStmt = stmt_create(STMT_SLEEP, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+			break;
+		case 5 :
+			printf("Going to build scan statement with string : %s\n", currentValue);
+			theStmt = stmt_create(STMT_SCAN, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+			break;
+		case 6 :
+			printf("Going to build delete statement with string : %s\n", currentValue);
+			theStmt = stmt_create(STMT_DELETE, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+			break;
+		default : 
+			break; 
+	}
 
-//Build print statement
-void BuildPrintStatement(char* currentValue, command* commandNode) {
-	printf("Going to build print statement with string : %s\n", currentValue);
-	expr* theExpr = expr_create_string(currentValue);
-	stmt* theStmt = stmt_create(STMT_PRINT, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build sleep statement
-void BuildSleepStatement(char* currentValue, command* commandNode) {
-	printf("Going to build sleep statement with string : %s\n", currentValue);
-	expr* theExpr = expr_create_string(currentValue);
-	stmt* theStmt = stmt_create(STMT_SLEEP, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build scan statement
-void BuildScanStatement(char* currentValue, command* commandNode) {
-	printf("Going to build scan statement with string : %s\n", currentValue);
-	expr* theExpr = expr_create_string(currentValue);
-	stmt* theStmt = stmt_create(STMT_SCAN, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build delete statement
-void BuildDeleteStatement(char* currentValue, command* commandNode) {
-	printf("Going to build delete statement with string : %s\n", currentValue);
-	expr* theExpr = expr_create_string(currentValue);
-	stmt* theStmt = stmt_create(STMT_DELETE, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
 

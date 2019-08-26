@@ -17,12 +17,7 @@ typedef struct tempVariables
 parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode);
 int isIdentifierType(char* currentType);
 int isNumberType(char* currentType);
-void BuildImportStatement(char* currentValue, command* commandNode);
-void BuildLoadStatement(char* currentValue, command* commandNode);
-void BuildPrintStatement(char* currentValue, command* commandNode);
-void BuildSleepStatement(char* currentValue, command* commandNode);
-void BuildScanStatement(char* currentValue, command* commandNode);
-void BuildDeleteStatement(char* currentValue, command* commandNode);
+void BuildSingleExprStatement(char* currentValue, command* commandNode, int statement);
 void BuildCastStatement(parse_state * current, command* commandNode);
 void BuildArrayAddStatement(parse_state * current, command* commandNode);
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
