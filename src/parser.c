@@ -521,12 +521,12 @@ void parsing(parse_state* current, command* commandNode) {
 			else if (strcmp(theStack[top], "cast") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
-				BuildCastStatement(current, commandNode);
+				BuildDoubleExprStatement(current, commandNode, 1);
 			}
 			else if (strcmp(theStack[top], "array_add") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
-				BuildArrayAddStatement(current, commandNode);
+				BuildDoubleExprStatement(current, commandNode, 2);
 			}
 			else if (strcmp(theStack[top], "delete") == 0) {
 				doneFlag = 1;

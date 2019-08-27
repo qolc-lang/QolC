@@ -439,11 +439,11 @@ void BuildSingleExprStatement(char* currentValue, command* commandNode, int stat
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
 
-//Build cast statement
-void BuildCastStatement(parse_state * current, command* commandNode) {
-	printf("Going to build cast statement with string : %s\n", current->value);
+//Build double expressiong statement taking in consideration its third parameter
+void BuildDoubleExprStatement(parse_state* current, command* commandNode, int statement) {
 
 	char temp[100], temp2[100];
+	stmt* theStmt;
 
 	strcpy(temp, current->value);
 	current = current->next;
@@ -453,25 +453,20 @@ void BuildCastStatement(parse_state * current, command* commandNode) {
 	}
 	expr* identifierExpr = expr_create_string(temp);
 	expr* typeExpr = expr_create_string(temp2);
-	stmt* theStmt = stmt_create(STMT_CAST, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
 
-//Build array_add statement
-void BuildArrayAddStatement(parse_state * current, command* commandNode) {
-	printf("Going to build array_add statement with string : %s\n", current->value);
-
-	char temp[100], temp2[100];
-
-	strcpy(temp, current->value);
-	current = current->next;
-	if (strcmp(current->type, "parenthesis") == 0) {
-		current = current->next;
-		strcpy(temp2, current->value);
+	switch (statement) {
+		case 1 :
+			printf("Going to build cast statement with string : %s\n", current->value);
+			theStmt = stmt_create(STMT_CAST, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL);
+			break;
+		case 2 :
+			printf("Going to build array_add statement with string : %s\n", current->value);
+			theStmt = stmt_create(STMT_ARRAYADD, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL);
+			break;
+		default : 
+			break; 
 	}
-	expr* identifierExpr = expr_create_string(temp);
-	expr* typeExpr = expr_create_string(temp2);
-	stmt* theStmt = stmt_create(STMT_ARRAYADD, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL);
+
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
 

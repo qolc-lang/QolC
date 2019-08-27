@@ -18,8 +18,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 int isIdentifierType(char* currentType);
 int isNumberType(char* currentType);
 void BuildSingleExprStatement(char* currentValue, command* commandNode, int statement);
-void BuildCastStatement(parse_state * current, command* commandNode);
-void BuildArrayAddStatement(parse_state * current, command* commandNode);
+void BuildDoubleExprStatement(parse_state* current, command* commandNode, int statement);
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
 void BuildHexNumDeclaration(char* currentValue, command* commandNode, char* temp);
 void BuildIntDeclaration(char* currentValue, command* commandNode, char* temp);
