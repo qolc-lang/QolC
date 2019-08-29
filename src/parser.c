@@ -342,7 +342,7 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildStringDeclaration(current->value, commandNode, temp);
+				BuildDeclarationExprStatement(current->value, commandNode, temp, 5);
 			}
 			else {
 				if ((empty(&top) == 0) && (doneFlag == 0)) {
@@ -359,7 +359,7 @@ void parsing(parse_state* current, command* commandNode) {
 			strcpy(temp, theStack[top]);
 			pop(&top);
 			theStack[0][top] = '\0';
-			BuildHexNumDeclaration(current->value, commandNode, temp);
+			BuildDeclarationExprStatement(current->value, commandNode, temp, 1);
 		}
 
 		if (isNumberType(current->type) == 1) {
@@ -383,7 +383,7 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildIntDeclaration(current->value, commandNode, temp);
+				BuildDeclarationExprStatement(current->value, commandNode, temp, 2);
 			}
 			else if (strcmp(theStack[top], "float") == 0) {
 				doneFlag = 1;
@@ -393,7 +393,7 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildFloatDeclaration(current->value, commandNode, temp);
+				BuildDeclarationExprStatement(current->value, commandNode, temp, 3);
 			}
 			else if (strcmp(theStack[top], "+") == 0) {
 				doneFlag = 1;
@@ -634,7 +634,7 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildCharDeclaration(current->value, commandNode, temp);
+				BuildDeclarationExprStatement(current->value, commandNode, temp, 4);
 			}
 			else if (strcmp(theStack[top], "print") == 0) {
 			}
@@ -687,7 +687,7 @@ void parsing(parse_state* current, command* commandNode) {
 					theStack[0][top] = '\0';
 					pop(&top);
 					theStack[0][top] = '\0';
-					BuildFloatPointerDeclaration(current->value, commandNode, temp);
+					BuildDeclarationExprStatement(current->value, commandNode, temp, 7);
 				}
 				else if (strcmp(theStack[top], "int") == 0) {
 					doneFlag = 1;
@@ -699,7 +699,7 @@ void parsing(parse_state* current, command* commandNode) {
 					theStack[0][top] = '\0';
 					pop(&top);
 					theStack[0][top] = '\0';
-					BuildIntPointerDeclaration(current->value, commandNode, temp);
+					BuildDeclarationExprStatement(current->value, commandNode, temp, 8);
 				}
 				else if (strcmp(theStack[top], "char") == 0) {
 					doneFlag = 1;
@@ -711,7 +711,7 @@ void parsing(parse_state* current, command* commandNode) {
 					theStack[0][top] = '\0';
 					pop(&top);
 					theStack[0][top] = '\0';
-					BuildCharPointerDeclaration(current->value, commandNode, temp);
+					BuildDeclarationExprStatement(current->value, commandNode, temp, 9);
 				}
 				else if (strcmp(theStack[top], "string") == 0) {
 					doneFlag = 1;
@@ -723,7 +723,7 @@ void parsing(parse_state* current, command* commandNode) {
 					theStack[0][top] = '\0';
 					pop(&top);
 					theStack[0][top] = '\0';
-					BuildStringPointerDeclaration(current->value, commandNode, temp);
+					BuildDeclarationExprStatement(current->value, commandNode, temp, 6);
 				}
 			}
 			else if ((strcmp(current->value, "true") == 0) || (strcmp(current->value, "false") == 0)) {
@@ -736,11 +736,9 @@ void parsing(parse_state* current, command* commandNode) {
 					theStack[0][top] = '\0';
 					pop(&top);
 					theStack[0][top] = '\0';
-					BuildBoolDeclaration(current->value, commandNode, temp); 
+					BuildDeclarationExprStatement(current->value, commandNode, temp, 10); 
 				}
-				else {
-					printf("nananananannanan!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-				}
+				else;
 			}
 				
 		}

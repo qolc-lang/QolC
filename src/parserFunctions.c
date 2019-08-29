@@ -470,6 +470,63 @@ void BuildDoubleExprStatement(parse_state* current, command* commandNode, int st
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
 
+//Build declaration-expression statement
+void BuildDeclarationExprStatement(char* currentValue, command* commandNode, char* temp, int switchType) {
+
+	type* theType;
+
+	switch (switchType) {
+		case 1 :
+			printf("Going to build hexadecimal number declaration statement\n");
+			theType = type_create(TYPE_HEXNUM, NULL, NULL);
+			break;
+		case 2 :
+			printf("Going to build int declaration statement\n");
+			theType = type_create(TYPE_INTEGER, NULL, NULL);
+			break;
+		case 3 :
+			printf("Going to build float declaration statement\n");
+			theType = type_create(TYPE_FLOAT, NULL, NULL);
+			break;
+		case 4 :
+			printf("Going to build character declaration statement\n");
+			theType = type_create(TYPE_CHARACTER, NULL, NULL);
+			break;
+		case 5 :
+			printf("Going to build string declaration statement\n");
+			theType = type_create(TYPE_STRING, NULL, NULL);
+			break;
+		case 6 :
+			printf("Going to build string pointer declaration statement\n");
+			theType = type_create(TYPE_STRING_POINTER, NULL, NULL);
+			break;
+		case 7 :
+			printf("Going to build float pointer declaration statement\n");
+			theType = type_create(TYPE_FLOAT_POINTER, NULL, NULL);
+			break;
+		case 8 :
+			printf("Going to build int pointer declaration statement\n");
+			theType = type_create(TYPE_INT_POINTER, NULL, NULL);
+			break;
+		case 9 :
+			printf("Going to build char pointer declaration statement\n");
+			theType = type_create(TYPE_CHAR_POINTER, NULL, NULL);
+			break;
+		case 10 :
+			printf("Going to build bool declaration statement\n");
+			theType = type_create(TYPE_BOOLEAN, NULL, NULL);
+			break;
+		default : 
+			break; 
+	}
+
+	expr* theExpr = expr_create_string(currentValue);
+	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
+	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	push_commandList(commandNode, NULL, theStmt, NULL); 
+
+}
+
 //Build new statement
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp) {
 	printf("Going to build statement new \n");
@@ -478,106 +535,6 @@ void BuildNewStatement(parse_state * current, command* commandNode, char* temp) 
 	expr* expr1 = expr_create_string(temp);
 	expr* expr2 = expr_create_string(current->value);
 	stmt* theStmt = stmt_create(STMT_NEW, NULL, NULL, expr1, expr2, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build hexadecimal number
-void BuildHexNumDeclaration(char* currentValue, command* commandNode, char* temp) {
-	printf("Going to build hexadecimal number declaration statement\n");
-	type* theType = type_create(TYPE_HEXNUM, NULL, NULL);
-	expr* theExpr = expr_create_string(currentValue);
-	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build int 
-void BuildIntDeclaration(char* currentValue, command* commandNode, char* temp) {
-	printf("Going to build int declaration statement\n");
-	type* theType = type_create(TYPE_INTEGER, NULL, NULL);
-	expr* theExpr = expr_create_string(currentValue);
-	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build float 
-void BuildFloatDeclaration(char* currentValue, command* commandNode, char* temp) {
-	printf("Going to build float declaration statement\n");
-	type* theType = type_create(TYPE_FLOAT, NULL, NULL);
-	expr* theExpr = expr_create_string(currentValue);
-	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build char 
-void BuildCharDeclaration(char* currentValue, command* commandNode, char* temp) {
-	printf("Going to build character declaration statement\n");
-	type* theType = type_create(TYPE_CHARACTER, NULL, NULL);
-	expr* theExpr = expr_create_string(currentValue);
-	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build string 
-void BuildStringDeclaration(char* currentValue, command* commandNode, char* temp) {
-	printf("Going to build string declaration statement\n");
-	type* theType = type_create(TYPE_STRING, NULL, NULL);
-	expr* theExpr = expr_create_string(currentValue);
-	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build string pointer 
-void BuildStringPointerDeclaration(char* currentValue, command* commandNode, char* temp) {
-	printf("Going to build string pointer declaration statement\n");
-	type* theType = type_create(TYPE_STRING_POINTER, NULL, NULL);
-	expr* theExpr = expr_create_string(currentValue);
-	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build float pointer 
-void BuildFloatPointerDeclaration(char* currentValue, command* commandNode, char* temp) {
-	printf("Going to build float pointer declaration statement\n");
-	type* theType = type_create(TYPE_FLOAT_POINTER, NULL, NULL);
-	expr* theExpr = expr_create_string(currentValue);
-	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build int pointer 
-void BuildIntPointerDeclaration(char* currentValue, command* commandNode, char* temp) {
-	printf("Going to build int pointer declaration statement\n");
-	type* theType = type_create(TYPE_INT_POINTER, NULL, NULL);
-	expr* theExpr = expr_create_string(currentValue);
-	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build char pointer 
-void BuildCharPointerDeclaration(char* currentValue, command* commandNode, char* temp) {
-	printf("Going to build char pointer declaration statement\n");
-	type* theType = type_create(TYPE_CHAR_POINTER, NULL, NULL);
-	expr* theExpr = expr_create_string(currentValue);
-	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build bool pointer 
-void BuildBoolDeclaration(char* currentValue, command* commandNode, char* temp) {
-	printf("Going to build bool declaration statement\n");
-	type* theType = type_create(TYPE_BOOLEAN, NULL, NULL);
-	expr* theExpr = expr_create_string(currentValue);
-	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
 
