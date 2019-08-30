@@ -21,11 +21,8 @@ void BuildSingleExprStatement(char* currentValue, command* commandNode, int stat
 void BuildDoubleExprStatement(parse_state* current, command* commandNode, int statement);
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
 void BuildDeclarationExprStatement(char* currentValue, command* commandNode, char* temp, int type);
+void BuildAssignmentExprStatement(char* temp, char* temp2, command* commandNode, int operation);
 void BuildAddDeclaration(char* temp, char* temp2, command* commandNode);
 void BuildSubDeclaration(char* temp, char* temp2, command* commandNode);
-void BuildAddAssignmentExpression(char* temp, char* temp2, command* commandNode);
-void BuildSubAssignmentExpression(char* temp, char* temp2, command* commandNode);
-void BuildMulAssignmentExpression(char* temp, char* temp2, command* commandNode);
-void BuildDivAssignmentExpression(char* temp, char* temp2, command* commandNode);
 
 #endif

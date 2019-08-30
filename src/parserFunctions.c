@@ -527,6 +527,36 @@ void BuildDeclarationExprStatement(char* currentValue, command* commandNode, cha
 
 }
 
+void BuildAssignmentExprStatement(char* temp, char* temp2, command* commandNode, int operation) {
+	
+	expr* leftExpr = expr_create_string(temp2);
+	expr* rightExpr = expr_create_string(temp);
+	expr* theExpr;
+
+	switch (operation) {
+		case 1 :
+			printf("Going to build add assignment expression statement\n");
+			theExpr = expr_create(EXPR_ADD_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
+			break;
+		case 2 :
+			printf("Going to build sub assignment expression statement\n");
+			theExpr = expr_create(EXPR_SUB_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
+			break;
+		case 3 :
+			printf("Going to build mul assignment expression statement\n");
+			theExpr = expr_create(EXPR_MUL_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
+			break;
+		case 4 :
+			printf("Going to build div assignment expression statement\n");
+			theExpr = expr_create(EXPR_DIV_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
+			break;
+		default : 
+			break; 
+	}
+
+	push_commandList(commandNode, NULL, NULL, theExpr);
+}	
+
 //Build new statement
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp) {
 	printf("Going to build statement new \n");
@@ -554,40 +584,4 @@ void BuildSubDeclaration(char* temp, char* temp2, command* commandNode) {
 	decl* theDeclaration = decl_create(temp2, NULL, theExpr, NULL);
 	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build add assignment expression
-void BuildAddAssignmentExpression(char* temp, char* temp2, command* commandNode) {
-	printf("Going to build add assignment expression statement\n");
-	expr* leftExpr = expr_create_string(temp2);
-	expr* rightExpr = expr_create_string(temp);
-	expr* theExpr = expr_create(EXPR_ADD_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
-	push_commandList(commandNode, NULL, NULL, theExpr);
-}
-
-//Build sub assignment expression
-void BuildSubAssignmentExpression(char* temp, char* temp2, command* commandNode) {
-	printf("Going to build sub assignment expression statement\n");
-	expr* leftExpr = expr_create_string(temp2);
-	expr* rightExpr = expr_create_string(temp);
-	expr* theExpr = expr_create(EXPR_SUB_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
-	push_commandList(commandNode, NULL, NULL, theExpr);
-}
-
-//Build mul assignment expression
-void BuildMulAssignmentExpression(char* temp, char* temp2, command* commandNode) {
-	printf("Going to build mul assignment expression statement\n");
-	expr* leftExpr = expr_create_string(temp2);
-	expr* rightExpr = expr_create_string(temp);
-	expr* theExpr = expr_create(EXPR_MUL_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
-	push_commandList(commandNode, NULL, NULL, theExpr);
-}
-
-//Build div assignment expression
-void BuildDivAssignmentExpression(char* temp, char* temp2, command* commandNode) {
-	printf("Going to build div assignment expression statement\n");
-	expr* leftExpr = expr_create_string(temp2);
-	expr* rightExpr = expr_create_string(temp);
-	expr* theExpr = expr_create(EXPR_DIV_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
-	push_commandList(commandNode, NULL, NULL, theExpr);
 }

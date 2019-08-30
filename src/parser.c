@@ -431,7 +431,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				theStack[0][top] = '\0';
 				pop(&top);
-				BuildAddAssignmentExpression(temp, temp2, commandNode);
+				BuildAssignmentExprStatement(temp, temp2, commandNode, 1);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "-=") == 0) {
@@ -442,7 +442,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				theStack[0][top] = '\0';
 				pop(&top);
-				BuildSubAssignmentExpression(temp, temp2, commandNode);
+				BuildAssignmentExprStatement(temp, temp2, commandNode, 2);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "*=") == 0) {
@@ -453,7 +453,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				theStack[0][top] = '\0';
 				pop(&top);
-				BuildMulAssignmentExpression(temp, temp2, commandNode);
+				BuildAssignmentExprStatement(temp, temp2, commandNode, 3);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "/=") == 0) {
@@ -464,7 +464,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				theStack[0][top] = '\0';
 				pop(&top);
-				BuildDivAssignmentExpression(temp, temp2, commandNode);
+				BuildAssignmentExprStatement(temp, temp2, commandNode, 4);
 				notTheEndFlag = 0;
 			}
 			else {
@@ -562,7 +562,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildAddAssignmentExpression(temp, temp2, commandNode);
+				BuildAssignmentExprStatement(temp, temp2, commandNode, 1);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "-=") == 0) {
@@ -573,7 +573,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildSubAssignmentExpression(temp, temp2, commandNode);
+				BuildAssignmentExprStatement(temp, temp2, commandNode, 2);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "*=") == 0) {
@@ -584,7 +584,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildMulAssignmentExpression(temp, temp2, commandNode);
+				BuildAssignmentExprStatement(temp, temp2, commandNode, 3);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "/=") == 0) {
@@ -595,7 +595,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildDivAssignmentExpression(temp, temp2, commandNode);
+				BuildAssignmentExprStatement(temp, temp2, commandNode, 4);
 				notTheEndFlag = 0;
 			}
 			else {
