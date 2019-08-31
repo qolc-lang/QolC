@@ -555,7 +555,15 @@ void BuildAssignmentExprStatement(char* temp, char* temp2, command* commandNode,
 	}
 
 	push_commandList(commandNode, NULL, NULL, theExpr);
-}	
+}
+
+void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode) {
+	printf("Going to build add declaration statement\n");
+	expr* theExpr = expr_create_string(temp);
+	decl* theDeclaration = decl_create(temp2, NULL, theExpr, NULL);
+	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	push_commandList(commandNode, NULL, theStmt, NULL);
+}
 
 //Build new statement
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp) {
@@ -565,23 +573,5 @@ void BuildNewStatement(parse_state * current, command* commandNode, char* temp) 
 	expr* expr1 = expr_create_string(temp);
 	expr* expr2 = expr_create_string(current->value);
 	stmt* theStmt = stmt_create(STMT_NEW, NULL, NULL, expr1, expr2, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build add declaration
-void BuildAddDeclaration(char* temp, char* temp2, command* commandNode) {
-	printf("Going to build add declaration statement\n");
-	expr* theExpr = expr_create_string(temp);
-	decl* theDeclaration = decl_create(temp2, NULL, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-	push_commandList(commandNode, NULL, theStmt, NULL); 
-}
-
-//Build sub declaration
-void BuildSubDeclaration(char* temp, char* temp2, command* commandNode) {
-	printf("Going to build sub declaration statement\n");
-	expr* theExpr = expr_create_string(temp);
-	decl* theDeclaration = decl_create(temp2, NULL, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }

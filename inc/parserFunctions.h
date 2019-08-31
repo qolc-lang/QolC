@@ -22,7 +22,6 @@ void BuildDoubleExprStatement(parse_state* current, command* commandNode, int st
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
 void BuildDeclarationExprStatement(char* currentValue, command* commandNode, char* temp, int type);
 void BuildAssignmentExprStatement(char* temp, char* temp2, command* commandNode, int operation);
-void BuildAddDeclaration(char* temp, char* temp2, command* commandNode);
-void BuildSubDeclaration(char* temp, char* temp2, command* commandNode);
+void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
 
 #endif

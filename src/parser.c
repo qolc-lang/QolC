@@ -407,7 +407,7 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildAddDeclaration(temp, temp2, commandNode);
+				BuildDeclarationStatement(temp, temp2, commandNode);
 			}
 			else if (strcmp(theStack[top], "-") == 0) {
 				doneFlag = 1;
@@ -421,7 +421,7 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildSubDeclaration(temp, temp2, commandNode);
+				BuildDeclarationStatement(temp, temp2, commandNode);
 			}
 			else if (strcmp(theStack[top], "+=") == 0) {
 				doneFlag = 1;
