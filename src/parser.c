@@ -10,12 +10,11 @@ void parseProgram(parse_state* node) {
 }
 
 void parsing(parse_state* current, command* commandNode) {
-	const int SIZE = 100;
 	int top;
 	int partOfComment = 0;
 	int notTheEndFlag = 0;		//flag that helps when is not really the end of command
 	int hasDefer = 0;
-	char theStack[200][SIZE];
+	char theStack[200][100];
 	char temp[100], temp2[100];
 	init(&top);
 	memset(temp, 0, sizeof(temp));
@@ -387,12 +386,7 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "float") == 0) {
 				doneFlag = 1;
-				theStack[0][top] = '\0';
-				pop(&top);
-				strcpy(temp, theStack[top]);
-				theStack[0][top] = '\0';
-				pop(&top);
-				theStack[0][top] = '\0';
+				StackFlagOperations(theStack[0][top], temp, top);
 				BuildDeclarationExprStatement(current->value, commandNode, temp, 3);
 			}
 			else if (strcmp(theStack[top], "+") == 0) {

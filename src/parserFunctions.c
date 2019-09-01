@@ -8,9 +8,6 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 	expr_list* expressionListNode = malloc(sizeof(expr_list));
 	parse_state* checkCurrent;
 
-	//check for the operator
-	printf("in checkForReturnOperator\n");
-
 	//in case there is a space between operators and identifiers
 	if (tempTop > 1) {
 		printf("already an identifier in stack \n");
@@ -25,44 +22,34 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 		expr* rightExpr = expr_create_string(current->value);
 		expr* theExpr;
 		if (strcmp(tempStack, "+") == 0) {
-			printf("is add\n");
 			theExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack, "-") == 0) {
-			printf("is sub\n");
 			theExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack, "*") == 0) {
-			printf("is mul\n");
 			theExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack, "/") == 0) {
-			printf("is div\n");
 			theExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack, "<") == 0) {
-			printf("is smaller\n");
 			theExpr = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack, "<=") == 0) {
-			printf("is smallerOrEq\n");
 			theExpr = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack, ">") == 0) {
-			printf("is bigger\n");
 			theExpr = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack, ">=") == 0) {
-			printf("is biggerOrEq\n");
 			theExpr = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else if (strcmp(tempStack, "@==") == 0) {
-			printf("is equal\n");
 			theExpr = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 		}
 		else;
 		push_expressionList(expressionListNode, theExpr);
-		printf("pushin theExpr in expressionListNode!!!!!!!!!!!\n");
 		operatorInsideStack = 0;
 
 		//pushin to stack the previous id
@@ -563,6 +550,21 @@ void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode) {
 	decl* theDeclaration = decl_create(temp2, NULL, theExpr, NULL);
 	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL);
+}
+
+
+char* StackFlagOperations(char theStack, char* theStackTop, int top) {
+	
+	char temp[100];
+	memset(temp, 0, sizeof(temp));
+
+	theStack = '\0';
+	pop(&top);
+	strcpy(temp, theStackTop);
+	theStack = '\0';
+	pop(&top);
+	theStack = '\0';
+	return temp;
 }
 
 //Build new statement
