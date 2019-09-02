@@ -1,5 +1,8 @@
 #include "../inc/ast.h"
 
+/*
+	Creating and returning a declaration
+*/
 decl* decl_create(char *name, type *type, expr *value, stmt *code) {
 	decl* d = malloc(sizeof(*d));
 	memset(d->name, 0, sizeof(d->name));
@@ -11,6 +14,9 @@ decl* decl_create(char *name, type *type, expr *value, stmt *code) {
 	return d;
 }
 
+/*
+	Creating and returning a statement
+*/
 stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next) {
 	stmt* s = malloc(sizeof(*s));
 	s->kind = kind;
@@ -25,6 +31,9 @@ stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nex
 	return s;
 }
 
+/*
+	Creating and returning an expression
+*/
 expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal) {
 	expr* e = malloc(sizeof(*e));
 	e->kind = kind;
@@ -38,6 +47,9 @@ expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char 
 	return e;
 }
 
+/*
+	Creating and returning a type
+*/
 type* type_create(type_t kind, type *subtype, param_list *params) {
 	type* t = malloc(sizeof(*t));
 	t->kind = kind;
@@ -46,6 +58,9 @@ type* type_create(type_t kind, type *subtype, param_list *params) {
 	return t;
 }
 
+/*
+	Creating and returning an integer expression
+*/
 expr* expr_create_integer(int i) {
 	expr* e = malloc(sizeof(*e));
 	e->kind = EXPR_INTEGER_LITERAL;
@@ -53,6 +68,9 @@ expr* expr_create_integer(int i) {
 	return e;
 }
 
+/*
+	Creating and returning a character expression
+*/
 expr* expr_create_char(char c) {
 	expr* e = malloc(sizeof(*e));
 	e->kind = EXPR_CHAR_LITERAL;
@@ -60,6 +78,9 @@ expr* expr_create_char(char c) {
 	return e;
 }
 
+/*
+	Creating and returning a string expression
+*/
 expr* expr_create_string(char* string_literal) {
 	expr* e = malloc(sizeof(expr));
 	e->kind = EXPR_STRING_LITERAL;
@@ -68,14 +89,9 @@ expr* expr_create_string(char* string_literal) {
 	return e;
 }
 
-expr* expr_create_string_id(char* string_id) {
-	expr* e = malloc(sizeof(expr));
-	e->kind = EXPR_STRING_ID;
-	e->string_id = malloc(sizeof(char) * 100);
-	strcpy(e->string_id, string_id);
-	return e;
-}
-
+/*
+	Creating a new list of expressions and pushing theExpr into that
+*/
 void push_expressionList(expr_list* node, expr* theExpr) {
     expr_list* current = node;
     while (current->next != NULL) {

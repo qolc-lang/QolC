@@ -53,7 +53,6 @@ typedef enum {
 	EXPR_SMALLER_CMP,
 	EXPR_SMALLEROREQ_CMP,
 	EXPR_EQUAL_CMP,
-	EXPR_STRING_ID
 } expr_t;
 
 typedef struct expr {
@@ -124,7 +123,6 @@ expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char 
 expr* expr_create_integer(int i);
 expr* expr_create_char(char c);
 expr* expr_create_string(char* string_literal);
-expr* expr_create_string_id(char* string_id);
 void push_expressionList(expr_list* node, expr* theExpr);
 
 #endif

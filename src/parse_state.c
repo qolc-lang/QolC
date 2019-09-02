@@ -1,5 +1,8 @@
 #include "../inc/parse_state.h"
 
+/*
+	Creating a parsable list from the lexer tokens
+*/
 parse_state* make_parse_stateList(lexer_node* tokens) {
 	parse_state* my_parse_state = malloc(sizeof(parse_state));
 	int counter = 0;
@@ -14,7 +17,7 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 
 	lexer_node* current = tokens;
 	
-	//the first is the head
+	//The first is the head
 	current = current->next;
 
 	while (current != NULL)  {
@@ -64,6 +67,9 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 	return my_parse_state;
 }
 
+/*
+	Removing the last element of the parsable list
+*/
 int removeLast(parse_state * head) {
     int retval = 0;
 
@@ -84,20 +90,26 @@ int removeLast(parse_state * head) {
     return retval;
 }
 
+/*
+	Printing the elements of the parsable list
+*/
 void print_parseStateList(parse_state* node) {
 	parse_state * current = node;
 	int counter = 0;
 	
-	//first in the list is the head
+	//First in the list is the head
 	while (current != NULL) {
 		++counter;
-		printf("counter-pos %d : %d\n", counter, current->pos);
-		printf("counter-type %d : %s\n", counter, current->type);
-		printf("counter-value %d : %s\n", counter, current->value);
+		printf("Counter-Position %d : %d\n", counter, current->pos);
+		printf("Counter-Type %d : %s\n", counter, current->type);
+		printf("Counter-Value %d : %s\n", counter, current->value);
 		current = current->next;
 	}
 }
 
+/*
+	Pushing a value in the parsable list
+*/
 void push_parseList(parse_state* node, int pos, char type[], char value[]) {
     parse_state * current = node;
     while (current->next != NULL) {

@@ -1,6 +1,8 @@
 #include "../inc/checking_functions.h"
 
-//Check for keyword 
+/*
+	Check for keyword 
+*/
 int isKeyword(char buffer[]){
 	char keywords[32][10] = {"string","else","enum","float","for",
 							"if","int","return", "struct", "while",
@@ -19,7 +21,9 @@ int isKeyword(char buffer[]){
 	return flag;
 }
 
-//Check for number
+/*
+	Check for number
+*/
 int isNumber(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer){
 	int count = 0;
 	char buf[len];
@@ -65,7 +69,9 @@ int isNumber(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buf
 	return -1;
 }
 
-//Check for operator
+/*
+	Check for operator
+*/
 int isOperator(char buffer, lexer_node* myNode, char* temp_buffer) {
 	char operators[10][2] = {"%", "="};
 	size_t op_pos;
@@ -82,7 +88,9 @@ int isOperator(char buffer, lexer_node* myNode, char* temp_buffer) {
 	return 0;
 }
 
-//Check for @ operations
+/*
+	Check for @ operations
+*/
 int isAtOperator(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer) {
 	int count = 0;
 	if (buffer[pos] == '@'){
@@ -144,7 +152,9 @@ int isAtOperator(char buffer[], int pos, int len, lexer_node* myNode, char* temp
 	return -1;
 }
 
-//Check for string literal
+/*
+	Check for string literal
+*/
 int isStringLiteral(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer) {
 	int count = 0;
 	char buf[len];
@@ -167,7 +177,9 @@ int isStringLiteral(char buffer[], int pos, int len, lexer_node* myNode, char* t
 	return -1;
 }
 
-//Check for special symbol
+/*
+	Check for special symbol
+*/
 int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNode, char* temp_buffer) {
 	int count = 0;
 	char buf[len];
@@ -482,7 +494,9 @@ int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNo
 	return -1;
 }
 
-//Check for character
+/*
+	Check for character
+*/
 int isChar(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer) {
 	int count = 0;
 	char buf[len];

@@ -1,5 +1,9 @@
 #include "../inc/parserFunctions.h"
 
+/*
+	Creating the appropriate lists and nodes;then calls the parsing 
+	function to manage them
+*/
 void parseProgram(parse_state* node) {
 	command* commandNode = malloc(sizeof(command) *2);
 	expr_list* expressionListNode = malloc(sizeof(expr_list));
@@ -9,6 +13,9 @@ void parseProgram(parse_state* node) {
 	return;
 }
 
+/*
+	Parsing the parsable list node and manages the found commands
+*/
 void parsing(parse_state* current, command* commandNode) {
 	int top;
 	int partOfComment = 0;
@@ -386,7 +393,12 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "float") == 0) {
 				doneFlag = 1;
-				StackFlagOperations(theStack[0][top], temp, top);
+				theStack[0][top] = '\0';
+				pop(&top);
+				strcpy(temp, theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				theStack[0][top] = '\0';
 				BuildDeclarationExprStatement(current->value, commandNode, temp, 3);
 			}
 			else if (strcmp(theStack[top], "+") == 0) {
@@ -847,7 +859,9 @@ void parsing(parse_state* current, command* commandNode) {
 	return;
 }
 
-
+/*
+	Checking the stack top for certain commands which need more checking
+*/
 parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, command* commandNode) {
 	printf("the stack top %s\n", theStackTop);
 

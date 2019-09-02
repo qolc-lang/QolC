@@ -1,6 +1,10 @@
 #include "../inc/checking_functions.h"
 #include "../inc/parser.h"
 
+/*
+	Creating a lexer and a parse node and then passing the appropriate output 
+	in parseProgram function to be parsed
+*/
 int main(int argc, char const *argv[])
 {
 	lexer_node * myNode = malloc(sizeof(lexer_node));

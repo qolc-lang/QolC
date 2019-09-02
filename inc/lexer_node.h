@@ -12,6 +12,5 @@ typedef struct lexer_node
 void pushForLex(char buffer[], char* typeToPush, lexer_node* myNode);
 void print_lexerList(lexer_node* node, char* fileName);
 void push_lexerList(lexer_node* node, char token[]);
-int pop_lexerList();
 
 #endif

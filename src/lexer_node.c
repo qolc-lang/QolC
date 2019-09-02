@@ -1,5 +1,8 @@
 #include "../inc/lexer_node.h"
 
+/*
+	Pushing the appropriate type in the lexer list node
+*/
 void pushForLex(char buffer[], char* typeToPush, lexer_node* myNode) 
 {
 	char temp_buffer[200];
@@ -44,6 +47,9 @@ void pushForLex(char buffer[], char* typeToPush, lexer_node* myNode)
 	push_lexerList(myNode, temp_buffer);
 }
 
+/*
+	Printing the lexer list
+*/
 void print_lexerList(lexer_node* node, char* fileName) {
 	lexer_node * current = node;
 	int counter = 0;
@@ -83,6 +89,9 @@ void print_lexerList(lexer_node* node, char* fileName) {
 	fclose(f);
 }
 
+/*
+	Pushing the token in the lexer list
+*/
 void push_lexerList(lexer_node* node, char token[]) {
     lexer_node * current = node;
     while (current->next != NULL) {
@@ -91,8 +100,4 @@ void push_lexerList(lexer_node* node, char token[]) {
     current->next = malloc(sizeof(lexer_node));
     strcpy(current->next->token, token);
     current->next->next = NULL;
-}
-
-int pop_lexerList() {
-	printf("in pop list\n");
 }

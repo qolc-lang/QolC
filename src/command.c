@@ -1,5 +1,8 @@
 #include "command.h"
 
+/*
+	Pushing the appropriate arguments in the list of commands
+*/
 void push_commandList(command* commandNode, decl* aDecl, stmt* aStmt, expr* anExpr) {
     command* current = commandNode;
     while (current->next != NULL) {
@@ -12,13 +15,16 @@ void push_commandList(command* commandNode, decl* aDecl, stmt* aStmt, expr* anEx
     current->next->next = NULL;
 }
 
+/*
+	Printing the different commands in the command list
+*/
 void print_commandList(command* commandNode) {
 	command * current = commandNode;
 	int counter = 0;
 	int value;
 	int temp_type;
 	
-	//first in the list is the head
+	//First in the list is the head
 	while (current != NULL) {
 		++counter;
 
@@ -27,7 +33,7 @@ void print_commandList(command* commandNode) {
 		}
 		else if (current->aStmt != NULL) {
 			value = (int)current->aStmt->kind;
-			//import statement
+
 			if (value == 0) {
 				printf("STMT_DECL\n");
 				printf("name: %s\n", current->aStmt->decl->name);
@@ -36,55 +42,47 @@ void print_commandList(command* commandNode) {
 				}
 				else {
 					temp_type =  (int)current->aStmt->decl->theType->kind;
-					//type of bool
+
 					if (temp_type == 1) {
 						printf("	TYPE_BOOLEAN\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
-					//type of char
 					else if (temp_type == 2) {
 						printf("	TYPE_CHARACTER\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
-					//type of int
 					else if (temp_type == 3) {
 						printf("	TYPE_INTEGER\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
-					//type of string
 					else if (temp_type == 4) {
 						printf("	TYPE_STRING\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
-					//type of float
 					else if (temp_type == 5) {
 						printf("	TYPE_FLOAT\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
-					//type of float pointer
 					else if (temp_type == 6) {
 						printf("	TYPE_FLOAT_POINTER\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
-					//type of int pointer
 					else if (temp_type == 7) {
 						printf("	TYPE_INT_POINTER\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
-					//type of char pointer
 					else if (temp_type == 8) {
 						printf("	TYPE_CHAR_POINTER\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
-					//type of string pointer
 					else if (temp_type == 9) {
 						printf("	TYPE_STRING_POINTER\n");
 						if (current->aStmt->decl->value != NULL)
@@ -105,15 +103,12 @@ void print_commandList(command* commandNode) {
 						printf("	TYPE_UNION\n");
 					}
 				}
-
 			}
 			else if (value == 2) {
 				printf("STMT_IF_ELSE\n");
-				//printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
 			}
 			else if (value == 3) {
 				printf("STMT_FOR\n");
-				//printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
 			}
 			else if (value == 4) {
 				printf("STMT_PRINT\n");
@@ -133,7 +128,6 @@ void print_commandList(command* commandNode) {
 			}
 			else if (value == 8) {
 				printf("STMT_DEFER\n");
-				// printf("	expr: %s\n", current->aStmt->expr->string_literal);
 			}
 			else if (value == 9) {
 				printf("STMT_ASSERT\n");
@@ -176,7 +170,7 @@ void print_commandList(command* commandNode) {
 						continue;
 					}
 					else {
-						//print all expressions in the list
+						//Print all expressions in the list
 						expr_list* currentList = current->aStmt->expressionList;
 
 						while (currentList != NULL) {
@@ -233,7 +227,7 @@ void print_commandList(command* commandNode) {
 					}
 				}
 				else {
-					printf("just a single expression to print\n");
+					printf("Just a single expression to print\n");
 					int ret_val = (int)current->aStmt->theExpr->kind;
 					if (ret_val == 0) {
 						printf("	EXPR_ADD\n");
@@ -266,11 +260,9 @@ void print_commandList(command* commandNode) {
 			}
 			else if (value == 11) {
 				printf("STMT_BREAK\n");
-				//printf("	expr: %s\n", current->aStmt->expr->string_literal);
 			}
 			else if (value == 12) {
 				printf("STMT_CONTINUE\n");
-				//printf("	expr: %s\n", current->aStmt->expr->string_literal);
 			}
 			else if (value == 14) {
 				printf("STMT_NEW\n");
@@ -295,7 +287,6 @@ void print_commandList(command* commandNode) {
 			}
 			else if (value == 19) {
 				printf("STMT_WHILE\n");
-				//printf("	expr: %s\n", current->aStmt->theExpr->string_literal);
 			}
 			else if (value == 20) {
 				printf("STMT_ARRAYDADD\n");
@@ -304,8 +295,6 @@ void print_commandList(command* commandNode) {
 			}
 			else if (value == 21) {
 				printf("STMT_EACH\n");
-				// printf("	the array : %s\n", current->aStmt->theExpr->string_literal);
-				// printf("	element to be added : %s\n", current->aStmt->next_expr->string_literal);
 			}
 			else {
 

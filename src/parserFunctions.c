@@ -1,6 +1,8 @@
 #include "../inc/parserFunctions.h"
 
-
+/*
+	Checking if return statement includes operators and manages all cases
+*/
 parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode)
 {
 	int operatorInsideStack = 0; 
@@ -378,19 +380,24 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 	return current;
 }
 
-//Check for identifier type
+/*
+	Check for identifier type
+*/
 int isIdentifierType(char* currentType) {
 	if (strcmp(currentType, "identifier") == 0) return 1; return 0;
 }
 
-//Check for number type
+/*
+	Check for number type
+*/
 int isNumberType(char* currentType) {
 	if (strcmp(currentType, "number") == 0) return 1; return 0;
 }
 
-//Build single expressiong statement taking in consideration its third parameter
+/*
+	Build single expression statement
+*/
 void BuildSingleExprStatement(char* currentValue, command* commandNode, int statement) {
-	
 	expr* theExpr = expr_create_string(currentValue);
 	stmt* theStmt;
 
@@ -422,13 +429,13 @@ void BuildSingleExprStatement(char* currentValue, command* commandNode, int stat
 		default : 
 			break; 
 	}
-
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
 
-//Build double expressiong statement taking in consideration its third parameter
+/*
+	Build double expression statement
+*/
 void BuildDoubleExprStatement(parse_state* current, command* commandNode, int statement) {
-
 	char temp[100], temp2[100];
 	stmt* theStmt;
 
@@ -453,11 +460,12 @@ void BuildDoubleExprStatement(parse_state* current, command* commandNode, int st
 		default : 
 			break; 
 	}
-
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
 
-//Build declaration-expression statement
+/*
+	Build declaration expression statement
+*/
 void BuildDeclarationExprStatement(char* currentValue, command* commandNode, char* temp, int switchType) {
 
 	type* theType;
@@ -511,9 +519,11 @@ void BuildDeclarationExprStatement(char* currentValue, command* commandNode, cha
 	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
 	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
-
 }
 
+/*
+	Build assignment expression statement
+*/
 void BuildAssignmentExprStatement(char* temp, char* temp2, command* commandNode, int operation) {
 	
 	expr* leftExpr = expr_create_string(temp2);
@@ -544,6 +554,9 @@ void BuildAssignmentExprStatement(char* temp, char* temp2, command* commandNode,
 	push_commandList(commandNode, NULL, NULL, theExpr);
 }
 
+/*
+	Build declaration statement
+*/
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode) {
 	printf("Going to build add declaration statement\n");
 	expr* theExpr = expr_create_string(temp);
@@ -552,22 +565,9 @@ void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode) {
 	push_commandList(commandNode, NULL, theStmt, NULL);
 }
 
-
-char* StackFlagOperations(char theStack, char* theStackTop, int top) {
-	
-	char temp[100];
-	memset(temp, 0, sizeof(temp));
-
-	theStack = '\0';
-	pop(&top);
-	strcpy(temp, theStackTop);
-	theStack = '\0';
-	pop(&top);
-	theStack = '\0';
-	return temp;
-}
-
-//Build new statement
+/*
+	Build new statement
+*/
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp) {
 	printf("Going to build statement new \n");
 	current = current->next;
