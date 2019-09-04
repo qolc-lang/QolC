@@ -1,9 +1,7 @@
 # The QolC Programming Language
 
 @@ \
-	The QolC programming language is being developed for the purposes of a game creation environment which will\
-	provide a limitless amount of choices to its users, run games faster and most importantly make coding\
-	and debugging fun! \
+	The QolC programming language
 @@ 
 
 ## Documentation
