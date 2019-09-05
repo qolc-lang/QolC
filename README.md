@@ -1,9 +1,7 @@
 # The QolC Programming Language
 
-@@ \
-	The QolC programming language is being developed for the purposes of a game creation environment which will\
-	provide a limitless amount of choices to its users, run games faster and most importantly make coding\
-	and debugging fun! \
+@@ 
+	The QolC programming language
 @@ 
 
 ## Documentation
@@ -25,11 +23,7 @@
 	myFloat@float|0.5 * |0.2 + z + w||	
 	gpa@|grade * credits|/credits
 	```
-
-	As you can notice in QolC, we have strong and dynamic data types. So we can declare\
-	something like "counter" that has no type. But, giving it a specific value will determine <br >
-	its type dynamically. 
-
+	
 	A function : 
 	
 	```cpp
@@ -55,9 +49,6 @@
 	```cpp
 	theStruct@myStruct^|null| 
 	```
-
-	QolC also supports memory ownership which we can be declared 
-	using the symbol '!'. 
 	
 	```cpp
 	doggos struct 
