@@ -23,4 +23,5 @@ void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
 void BuildDeclarationExprStatement(char* currentValue, command* commandNode, char* temp, int type);
 void BuildAssignmentExprStatement(char* temp, char* temp2, command* commandNode, int operation);
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
+parse_state* parseComplexCommand(parse_state* current, command* commandNode, char* typeOfCommand);
 #endif

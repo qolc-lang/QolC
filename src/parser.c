@@ -860,7 +860,7 @@ void parsing(parse_state* current, command* commandNode) {
 }
 
 /*
-	Checking the stack top for certain commands which need more checking
+	Checking the stack top for complex commands
 */
 parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, command* commandNode) {
 	printf("the stack top %s\n", theStackTop);
@@ -870,26 +870,18 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 	int doneFlag = 0;
 	parse_state* tempCurrent;
 	
-	//comment out these lines cause we'll have a struct holding them inside
-	char temp[100], temp2[100], tempOp[3], tempOp2[3];
-
-	memset(temp, 0, sizeof(temp));
-	memset(temp2, 0, sizeof(temp2));
-	memset(tempOp, 0, sizeof(tempOp));
-	memset(tempOp2, 0, sizeof(tempOp2));
-
-	//like this struct
+	//Struct that holds any necessary temp variables
 	tempVariables* tempVariablesNode = malloc(sizeof(tempVariables));
-
-
-
+	
+	/*
+		Checking for assert statement
+	*/
 	if (strcmp(theStackTop, "assert") == 0) {
 		printf("going in assert loop\n");
 
 		while (strcmp(current->type, "end of command") != 0) {
 			printf("in assert loop with value : %s\n", current->value);
 
-			//Check for number type
 			if (isNumberType(current->type) == 1) {
 				if (tempTop == 0) {
 					printf("going to insert value : %s\n", current->value);
@@ -1014,7 +1006,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 		}
 	}
 	else if (strcmp(theStackTop, "return") == 0) {
-		printf("going in return loop\n");
+		printf("Going in return loop\n");
 		int operatorInsideStack = 0; 
 		int operatorUsed = 0;
 		int identifierCopiedInTemp = 0;
@@ -1022,7 +1014,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 		current = current->next;
 
 		while (1) {
-			printf("in return loop with value : %s\n", current->value);
 
 			if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (isIdentifierType(current->type) != 1) && (isNumberType(current->type) != 1) && (strcmp(current->type, "string") != 0) && (strcmp(current->type, "character") != 0) ) {
 				printf("Not the type we need : %s\n", current->type);
@@ -1078,7 +1069,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 				if (operatorInsideStack == 1) {
 					printf("an operator already in the stack\n");
-					//going to save this operator and continue
+					//Going to save this operator and continue
 					strcpy(tempVariablesNode->tempOp2, current->value);
 					current = current->next;
 					continue;
@@ -1156,9 +1147,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 	}
 	else if (strcmp(theStackTop, "if") == 0) {
 		printf("going in if loop\n");
-		// int operatorInsideStack = 0; 
-		// int operatorUsed = 0;
-		// int identifierCopiedInTemp = 0;
 
 		current = current->next;
 
@@ -1181,16 +1169,10 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				printf("going for eoc break --- in if stmt\n");
 				break;
 			}
-			// else {
-			// 	return current;
-			// }
 		}
 	}
 	else if (strcmp(theStackTop, "while") == 0) {
 		printf("going in while loop\n");
-		// int operatorInsideStack = 0; 
-		// int operatorUsed = 0;
-		// int identifierCopiedInTemp = 0;
 
 		current = current->next;
 
@@ -1213,16 +1195,10 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				printf("going for eoc break --- in while stmt\n");
 				break;
 			}
-			// else {
-			// 	return current;
-			// }
 		}
 	}
 	else if (strcmp(theStackTop, "for") == 0) {
 		printf("going in for loop\n");
-		// int operatorInsideStack = 0; 
-		// int operatorUsed = 0;
-		// int identifierCopiedInTemp = 0;
 
 		current = current->next;
 
@@ -1245,16 +1221,10 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				printf("going for eoc break --- in for stmt\n");
 				break;
 			}
-			// else {
-			// 	return current;
-			// }
 		}
 	}
 	else if (strcmp(theStackTop, "each") == 0) {
 		printf("going in each loop\n");
-		// int operatorInsideStack = 0; 
-		// int operatorUsed = 0;
-		// int identifierCopiedInTemp = 0;
 
 		current = current->next;
 
@@ -1277,50 +1247,38 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				printf("going each eoc break --- in each stmt\n");
 				break;
 			}
-			// else {
-			// 	return current;
-			// }
 		}
 	}
+	/*
+		Parsing struct members 
+	*/
 	else if (strcmp(theStackTop, "struct") == 0) {
-		int firstEnd = 0;
-		printf("going in struct loop\n");
-		// int operatorInsideStack = 0; 
-		// int operatorUsed = 0;
-		// int identifierCopiedInTemp = 0;
-
+		printf("------>		@@@@@@@@@@ Going in struct loop\n");
+		
+		command* structCommandNode = malloc(sizeof(command));
+		//After "struct" current
 		current = current->next;
 
-		while (1) {
-			printf("in struct loop with value : %s\n", current->value);
-			
-			current = current->next;
+		//parse struct members
 
-			if (current == NULL) {
-				printf("going struct null break 2 --- in struct stmt\n");
-				break;
+		if (current == NULL) {
+			printf("going struct null break 2 --- in struct stmt\n");
+			return NULL;
+		}
+
+		if (strcmp(current->type, "block end") == 0){
+			printf("the current now :  %s\n", current->value);
+			current = current->next; 
+			if (current != NULL) {
+				printf("in struct eoc loop with value : %s\n", current->value);	
 			}
 
-			if (strcmp(current->type, "block end") == 0){
-				printf("the current now :  %s\n", current->value);
-				current = current->next; 
-				if (current != NULL) {
-					printf("in struct eoc loop with value : %s\n", current->value);	
-				}
-
-				printf("going struct eoc break --- in struct stmt with : %s\n", current->value);
-				break;
-			}
-			// else {
-			// 	return current;
-			// }
+			printf("going struct eoc break --- in struct stmt with : %s\n", current->value);
+			return current;
 		}
 	}
 	else if (strcmp(theStackTop, "enum") == 0) {
 		printf("going in enum loop\n");
-		// int operatorInsideStack = 0; 
-		// int operatorUsed = 0;
-		// int identifierCopiedInTemp = 0;
 
 		current = current->next;
 
@@ -1343,16 +1301,10 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				printf("going enum eoc break --- in enum stmt\n");
 				break;
 			}
-			// else {
-			// 	return current;
-			// }
 		}
 	}
 	else if (strcmp(theStackTop, "union") == 0) {
 		printf("going in union loop\n");
-		// int operatorInsideStack = 0; 
-		// int operatorUsed = 0;
-		// int identifierCopiedInTemp = 0;
 
 		current = current->next;
 
@@ -1375,9 +1327,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				printf("going union eoc break --- in union stmt\n");
 				break;
 			}
-			// else {
-			// 	return current;
-			// }
 		}
 	}
 
