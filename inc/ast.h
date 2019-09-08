@@ -93,7 +93,8 @@ typedef enum {
 	STMT_CAST,
 	STMT_WHILE,
 	STMT_ARRAYADD,
-	STMT_EACH
+	STMT_EACH,
+	STMT_STRUCTMEMBER
 } stmt_t;
 
 typedef struct stmt {

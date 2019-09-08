@@ -23,9 +23,14 @@ void parsing(parse_state* current, command* commandNode) {
 	int hasDefer = 0;
 	char theStack[200][100];
 	char temp[100], temp2[100];
+	char sTypeOfMember[30];
+	
 	init(&top);
 	memset(temp, 0, sizeof(temp));
 	memset(temp2, 0, sizeof(temp2));
+	memset(sTypeOfMember, 0, sizeof(sTypeOfMember));
+
+	memberFlags* mFlags = malloc(sizeof(mFlags));
 
 	while (current != NULL) {
 		printf("counter-type: %s\n", current->type);
@@ -286,9 +291,8 @@ void parsing(parse_state* current, command* commandNode) {
 			printf("struct statement to be built\n");
 			printf("the temp now :  %s\n", temp);
 			push(theStack[top], &top, current->value);
-			current = checkTheStack(current, theStack[0], top, commandNode);
-			pop(&top);
-			theStack[0][top] = '\0';
+			current = current->next;
+			mFlags->nIsStructMember = 1;
 			continue;
 		}
 
@@ -348,7 +352,9 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildDeclarationExprStatement(current->value, commandNode, temp, 5);
+				strcpy(sTypeOfMember, CheckIfMemberOfStatement(mFlags));
+				if (strlen(sTypeOfMember) > 0)
+					BuildDeclarationExprStatement(current->value, commandNode, temp, 5, sTypeOfMember);
 			}
 			else {
 				if ((empty(&top) == 0) && (doneFlag == 0)) {
@@ -365,7 +371,7 @@ void parsing(parse_state* current, command* commandNode) {
 			strcpy(temp, theStack[top]);
 			pop(&top);
 			theStack[0][top] = '\0';
-			BuildDeclarationExprStatement(current->value, commandNode, temp, 1);
+			BuildDeclarationExprStatement(current->value, commandNode, temp, 1, sTypeOfMember);
 		}
 
 		if (isNumberType(current->type) == 1) {
@@ -389,7 +395,7 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildDeclarationExprStatement(current->value, commandNode, temp, 2);
+				BuildDeclarationExprStatement(current->value, commandNode, temp, 2, sTypeOfMember);
 			}
 			else if (strcmp(theStack[top], "float") == 0) {
 				doneFlag = 1;
@@ -399,7 +405,7 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildDeclarationExprStatement(current->value, commandNode, temp, 3);
+				BuildDeclarationExprStatement(current->value, commandNode, temp, 3, sTypeOfMember);
 			}
 			else if (strcmp(theStack[top], "+") == 0) {
 				doneFlag = 1;
@@ -640,7 +646,7 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildDeclarationExprStatement(current->value, commandNode, temp, 4);
+				BuildDeclarationExprStatement(current->value, commandNode, temp, 4, sTypeOfMember);
 			}
 			else if (strcmp(theStack[top], "print") == 0) {
 			}
@@ -693,7 +699,7 @@ void parsing(parse_state* current, command* commandNode) {
 					theStack[0][top] = '\0';
 					pop(&top);
 					theStack[0][top] = '\0';
-					BuildDeclarationExprStatement(current->value, commandNode, temp, 7);
+					BuildDeclarationExprStatement(current->value, commandNode, temp, 7, sTypeOfMember);
 				}
 				else if (strcmp(theStack[top], "int") == 0) {
 					doneFlag = 1;
@@ -705,7 +711,7 @@ void parsing(parse_state* current, command* commandNode) {
 					theStack[0][top] = '\0';
 					pop(&top);
 					theStack[0][top] = '\0';
-					BuildDeclarationExprStatement(current->value, commandNode, temp, 8);
+					BuildDeclarationExprStatement(current->value, commandNode, temp, 8, sTypeOfMember);
 				}
 				else if (strcmp(theStack[top], "char") == 0) {
 					doneFlag = 1;
@@ -717,7 +723,7 @@ void parsing(parse_state* current, command* commandNode) {
 					theStack[0][top] = '\0';
 					pop(&top);
 					theStack[0][top] = '\0';
-					BuildDeclarationExprStatement(current->value, commandNode, temp, 9);
+					BuildDeclarationExprStatement(current->value, commandNode, temp, 9, sTypeOfMember);
 				}
 				else if (strcmp(theStack[top], "string") == 0) {
 					doneFlag = 1;
@@ -729,7 +735,7 @@ void parsing(parse_state* current, command* commandNode) {
 					theStack[0][top] = '\0';
 					pop(&top);
 					theStack[0][top] = '\0';
-					BuildDeclarationExprStatement(current->value, commandNode, temp, 6);
+					BuildDeclarationExprStatement(current->value, commandNode, temp, 6, sTypeOfMember);
 				}
 			}
 			else if ((strcmp(current->value, "true") == 0) || (strcmp(current->value, "false") == 0)) {
@@ -742,7 +748,7 @@ void parsing(parse_state* current, command* commandNode) {
 					theStack[0][top] = '\0';
 					pop(&top);
 					theStack[0][top] = '\0';
-					BuildDeclarationExprStatement(current->value, commandNode, temp, 10); 
+					BuildDeclarationExprStatement(current->value, commandNode, temp, 10, sTypeOfMember);
 				}
 				else;
 			}
@@ -1247,34 +1253,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				printf("going each eoc break --- in each stmt\n");
 				break;
 			}
-		}
-	}
-	/*
-		Parsing struct members 
-	*/
-	else if (strcmp(theStackTop, "struct") == 0) {
-		printf("------>		@@@@@@@@@@ Going in struct loop\n");
-		
-		command* structCommandNode = malloc(sizeof(command));
-		//After "struct" current
-		current = current->next;
-
-		//parse struct members
-
-		if (current == NULL) {
-			printf("going struct null break 2 --- in struct stmt\n");
-			return NULL;
-		}
-
-		if (strcmp(current->type, "block end") == 0){
-			printf("the current now :  %s\n", current->value);
-			current = current->next; 
-			if (current != NULL) {
-				printf("in struct eoc loop with value : %s\n", current->value);	
-			}
-
-			printf("going struct eoc break --- in struct stmt with : %s\n", current->value);
-			return current;
 		}
 	}
 	else if (strcmp(theStackTop, "enum") == 0) {
