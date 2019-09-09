@@ -63,7 +63,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 		current = current->next;
 		if (current == NULL) {
 			printf("current is NULL\n");
-			stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+			stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL, NULL);
 			push_commandList(commandNode, NULL, ret_stmt, NULL);
 			return current;
 		}
@@ -158,7 +158,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 				current = current->next;
 				if (current == NULL) {
 					printf("current is NULL operator again add\n");
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL, NULL);
 					push_commandList(commandNode, NULL, ret_stmt, NULL);
 					return current;
 				}
@@ -253,7 +253,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 				}
 				else {
 					printf("Invalid operator, for return expression. Needs checking\n");
-					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+					stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL, NULL);
 					push_commandList(commandNode, NULL, ret_stmt, NULL);
 					return current;
 				}
@@ -266,7 +266,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 			current = current->next;
 			if (current == NULL) {
 				printf("current is NULL\n");
-				stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+				stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL, NULL);
 				push_commandList(commandNode, NULL, ret_stmt, NULL);
 				return current;
 			}
@@ -330,7 +330,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 				}
 
 				push_expressionList(expressionListNode, finalExpr);
-				stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+				stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL, NULL);
 				push_commandList(commandNode, NULL, ret_stmt, NULL);
 			}
 		}
@@ -354,7 +354,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 	else {
 		printf("the current now in else : %s\n", current->value);
 		if (!strcmp(checkCurrent->value, current->value) == 0) {
-			stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL);
+			stmt* ret_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, expressionListNode, NULL, NULL);
 			push_commandList(commandNode, NULL, ret_stmt, NULL);
 			return current;
 		}
@@ -404,27 +404,27 @@ void BuildSingleExprStatement(char* currentValue, command* commandNode, int stat
 	switch (statement) {
 		case 1 :
 			printf("------>		@@@@@@@@@@ Going to build import statement with string : %s\n", currentValue);
-			theStmt = stmt_create(STMT_IMPORT, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+			theStmt = stmt_create(STMT_IMPORT, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL, NULL);
 			break;
 		case 2 :
 			printf("------>		@@@@@@@@@@ Going to build load statement with string : %s\n", currentValue);
-			theStmt = stmt_create(STMT_LOAD, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+			theStmt = stmt_create(STMT_LOAD, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL, NULL);
 			break;
 		case 3 :
 			printf("------>		@@@@@@@@@@ Going to build print statement with string : %s\n", currentValue);
-			theStmt = stmt_create(STMT_PRINT, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+			theStmt = stmt_create(STMT_PRINT, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL, NULL);
 			break;
 		case 4 :
 			printf("------>		@@@@@@@@@@ Going to build sleep statement with string : %s\n", currentValue);
-			theStmt = stmt_create(STMT_SLEEP, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+			theStmt = stmt_create(STMT_SLEEP, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL, NULL);
 			break;
 		case 5 :
 			printf("------>		@@@@@@@@@@ Going to build scan statement with string : %s\n", currentValue);
-			theStmt = stmt_create(STMT_SCAN, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+			theStmt = stmt_create(STMT_SCAN, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL, NULL);
 			break;
 		case 6 :
 			printf("------>		@@@@@@@@@@ Going to build delete statement with string : %s\n", currentValue);
-			theStmt = stmt_create(STMT_DELETE, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL);
+			theStmt = stmt_create(STMT_DELETE, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL, NULL);
 			break;
 		default : 
 			break; 
@@ -451,11 +451,11 @@ void BuildDoubleExprStatement(parse_state* current, command* commandNode, int st
 	switch (statement) {
 		case 1 :
 			printf("------>		@@@@@@@@@@ Going to build cast statement with string : %s\n", current->value);
-			theStmt = stmt_create(STMT_CAST, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL);
+			theStmt = stmt_create(STMT_CAST, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL, NULL);
 			break;
 		case 2 :
 			printf("------>		@@@@@@@@@@ Going to build array_add statement with string : %s\n", current->value);
-			theStmt = stmt_create(STMT_ARRAYADD, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL);
+			theStmt = stmt_create(STMT_ARRAYADD, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL, NULL);
 			break;
 		default : 
 			break; 
@@ -469,6 +469,8 @@ void BuildDoubleExprStatement(parse_state* current, command* commandNode, int st
 void BuildDeclarationExprStatement(char* currentValue, command* commandNode, char* temp, int switchType, char* typeOfMember) {
 
 	type* theType;
+
+	printf("in undfhebfrhb");
 
 	switch (switchType) {
 		case 1 :
@@ -517,7 +519,7 @@ void BuildDeclarationExprStatement(char* currentValue, command* commandNode, cha
 
 	expr* theExpr = expr_create_string(currentValue);
 	decl* theDeclaration = decl_create(temp, theType, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, typeOfMember);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
 
@@ -561,7 +563,7 @@ void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode) {
 	printf("------>		@@@@@@@@@@ Going to build add declaration statement\n");
 	expr* theExpr = expr_create_string(temp);
 	decl* theDeclaration = decl_create(temp2, NULL, theExpr, NULL);
-	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL);
 }
 
@@ -574,19 +576,18 @@ void BuildNewStatement(parse_state * current, command* commandNode, char* temp) 
 	current = current->next;
 	expr* expr1 = expr_create_string(temp);
 	expr* expr2 = expr_create_string(current->value);
-	stmt* theStmt = stmt_create(STMT_NEW, NULL, NULL, expr1, expr2, NULL, NULL, NULL, NULL);
+	stmt* theStmt = stmt_create(STMT_NEW, NULL, NULL, expr1, expr2, NULL, NULL, NULL, NULL, NULL);
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
 
-char* CheckIfMemberOfStatement(memberFlags* mFlags) {
+char* CheckIfMemberOfStatement(union memberFlags mFlags) {
 
-	char* memberToReturn = malloc(sizeof(char)*30);
-	memset(memberToReturn, 0, sizeof(memberToReturn));
+	char* typeOfMember = malloc(sizeof(char) * 30);
+	typeOfMember = NULL;
 
-	if (mFlags->nIsStructMember == 1)
-		strcpy(memberToReturn, "struct");
-	else
-		strcpy(memberToReturn, " ");
+	printf("the struct member : %d\n", mFlags.nIsStructMember);
 
-	return memberToReturn;
+	if (mFlags.nIsStructMember == 1) strcpy(typeOfMember, "struct");
+
+	return typeOfMember;
 }

@@ -52,6 +52,7 @@ main ||
 
 vector3 struct
 |@
+	nanan@string
 	a@int
 	b@float
 	c@float

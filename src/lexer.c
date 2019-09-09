@@ -33,7 +33,6 @@ lexer_node lex(char fileName[]) {
 				keyword, number, or identifier. 
 			*/
 			if ((new_pos = isAtOperator(reading_buffer, pos, strlen(reading_buffer), myNode, temp_buffer)) != -1) {
-				//increasing buffer's position to valid position
 				pos += new_pos;
 				buffer[index] = '\0';
 				index = 0;

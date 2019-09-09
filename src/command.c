@@ -45,6 +45,8 @@ void print_commandList(command* commandNode) {
 
 					if (temp_type == 1) {
 						printf("	TYPE_BOOLEAN\n");
+						if (current->aStmt->memberOf != NULL)
+							printf("		member of : %s\n", current->aStmt->memberOf);
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
@@ -60,6 +62,8 @@ void print_commandList(command* commandNode) {
 					}
 					else if (temp_type == 4) {
 						printf("	TYPE_STRING\n");
+						if (current->aStmt->memberOf != NULL)
+							printf("		member of : %s\n", current->aStmt->memberOf);
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}

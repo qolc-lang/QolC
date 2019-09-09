@@ -14,11 +14,11 @@ typedef struct tempVariables
 	char value[100];
 }tempVariables;
 
-typedef struct memberFlags
+union memberFlags
 {
 	int nIsStructMember;
 	int nIsUnionMember;
-}memberFlags;
+};
 
 parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode);
 int isIdentifierType(char* currentType);
@@ -29,6 +29,6 @@ void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
 void BuildDeclarationExprStatement(char* currentValue, command* commandNode, char* temp, int type, char* typeOfMember);
 void BuildAssignmentExprStatement(char* temp, char* temp2, command* commandNode, int operation);
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
-char* CheckIfMemberOfStatement(memberFlags* mFlags);
+char* CheckIfMemberOfStatement(union memberFlags mFlags);
 
 #endif
