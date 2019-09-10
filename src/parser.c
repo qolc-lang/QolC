@@ -352,9 +352,6 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				printf("the struct member : %d\n", flags.nIsStructMember);
-				if (CheckIfMemberOfStatement(flags) != NULL)
-					strcpy(sTypeOfMember, CheckIfMemberOfStatement(flags));
 				BuildDeclarationExprStatement(current->value, commandNode, temp, 5, sTypeOfMember);
 			}
 			else {
@@ -518,6 +515,11 @@ void parsing(parse_state* current, command* commandNode) {
 				doneFlag = 1;
 				printf("@ operator is in the stack atm\n");
 				printf("going to insert value : %s\n", current->value);
+				printf("the struct member : %d\n", flags.nIsStructMember);
+				sTypeOfMember = CheckIfMemberOfStatement(flags);
+				if (sTypeOfMember != NULL) {
+					printf("the !!!!!!!!! member : %s\n", sTypeOfMember);
+				}
 				++top;
 				push(theStack[top], &top, current->value);
 			}
@@ -808,31 +810,31 @@ void parsing(parse_state* current, command* commandNode) {
 					if (strcmp(current->value, "int") == 0) {
 						type* int_type = type_create(TYPE_INTEGER, NULL, NULL);
 						decl* int_declaration = decl_create(temp, int_type, NULL, NULL);
-						stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+						stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, int_decl_stmt, NULL); 
 					}
 					else if (strcmp(current->value, "string") == 0) {
 						type* string_type = type_create(TYPE_STRING, NULL, NULL);
 						decl* string_declaration = decl_create(temp, string_type, NULL, NULL);
-						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 					}
 					else if (strcmp(current->value, "float") == 0) {
 						type* float_type = type_create(TYPE_FLOAT, NULL, NULL);
 						decl* float_declaration = decl_create(temp, float_type, NULL, NULL);
-						stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+						stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, float_decl_stmt, NULL); 
 					}
 					else if (strcmp(current->value, "char") == 0) {
 						type* char_type = type_create(TYPE_CHARACTER, NULL, NULL);
 						decl* char_declaration = decl_create(temp, char_type, NULL, NULL);
-						stmt* char_decl_stmt = stmt_create(STMT_DECL, char_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+						stmt* char_decl_stmt = stmt_create(STMT_DECL, char_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, char_decl_stmt, NULL); 
 					}
 					else if (strcmp(current->value, "bool") == 0) {
 						type* bool_type = type_create(TYPE_BOOLEAN, NULL, NULL);
 						decl* bool_declaration = decl_create(temp, bool_type, NULL, NULL);
-						stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+						stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, bool_decl_stmt, NULL); 
 					}
 					else if ((strcmp(current->value, "false") == 0) || (strcmp(current->value, "true") == 0)) {

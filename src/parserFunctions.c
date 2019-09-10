@@ -587,7 +587,7 @@ char* CheckIfMemberOfStatement(union memberFlags mFlags) {
 
 	printf("the struct member : %d\n", mFlags.nIsStructMember);
 
-	if (mFlags.nIsStructMember == 1) strcpy(typeOfMember, "struct");
+	if (mFlags.nIsStructMember == 1) return "struct";
 
 	return typeOfMember;
 }
