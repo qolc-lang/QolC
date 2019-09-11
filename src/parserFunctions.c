@@ -589,5 +589,11 @@ char* CheckIfMemberOfStatement(union memberFlags mFlags) {
 
 	if (mFlags.nIsStructMember == 1) return "struct";
 
-	return typeOfMember;
+	return "itsown";
+}
+
+union memberFlags ClearFlags(union memberFlags mFlags) {
+
+	if (mFlags.nIsStructMember == 1) mFlags.nIsStructMember = 0;
+	return mFlags;
 }

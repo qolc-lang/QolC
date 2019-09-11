@@ -30,5 +30,6 @@ void BuildDeclarationExprStatement(char* currentValue, command* commandNode, cha
 void BuildAssignmentExprStatement(char* temp, char* temp2, command* commandNode, int operation);
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
 char* CheckIfMemberOfStatement(union memberFlags mFlags);
+union memberFlags ClearFlags(union memberFlags mFlags);
 
 #endif

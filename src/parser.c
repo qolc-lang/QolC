@@ -318,6 +318,14 @@ void parsing(parse_state* current, command* commandNode) {
 			continue;
 		}
 
+		if (strcmp(current->type, "block end") == 0) {
+			printf("the struct member : %d\n", flags.nIsStructMember);
+			printf("THATS THE END OF THIS BLOCK\n");
+			union memberFlags tempFlags = ClearFlags(flags);
+			flags = tempFlags;
+			printf("AFTER member : %d\n", flags.nIsStructMember);
+		}
+
 		if (strcmp(current->type, "string") == 0) {
 			int doneFlag = 0;
 			pop(&top);
@@ -850,13 +858,20 @@ void parsing(parse_state* current, command* commandNode) {
 					}
 				}
 				else { 
+					printf("the struct member : %d\n", flags.nIsStructMember);
+					if (sTypeOfMember != NULL) {
+						printf("the !!!!!!!!! member : %s\n", sTypeOfMember);
+					}
+					else {
+						printf("type of member is null\n");
+					}
 					strcpy(temp2, theStack[top]);
 					theStack[0][top] = '\0';
 					pop(&top);
 					theStack[0][top] = '\0';
 					expr* stringExpr = expr_create_string(temp);
 					decl* string_declaration = decl_create(temp2, NULL, stringExpr, NULL);
-					stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+					stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 					push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 				}
 			}

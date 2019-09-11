@@ -45,71 +45,51 @@ void print_commandList(command* commandNode) {
 
 					if (temp_type == 1) {
 						printf("	TYPE_BOOLEAN\n");
-						if (current->aStmt->memberOf != NULL)
-							printf("		member of : %s\n", current->aStmt->memberOf);
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
 					else if (temp_type == 2) {
 						printf("	TYPE_CHARACTER\n");
-						if (current->aStmt->memberOf != NULL)
-							printf("		member of : %s\n", current->aStmt->memberOf);
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
 					else if (temp_type == 3) {
 						printf("	TYPE_INTEGER\n");
-						if (current->aStmt->memberOf != NULL)
-							printf("		member of : %s\n", current->aStmt->memberOf);
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
 					else if (temp_type == 4) {
 						printf("	TYPE_STRING\n");
-						if (current->aStmt->memberOf != NULL)
-							printf("		member of : %s\n", current->aStmt->memberOf);
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
 					else if (temp_type == 5) {
 						printf("	TYPE_FLOAT\n");
-						if (current->aStmt->memberOf != NULL)
-							printf("		member of : %s\n", current->aStmt->memberOf);
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
 					else if (temp_type == 6) {
 						printf("	TYPE_FLOAT_POINTER\n");
-						if (current->aStmt->memberOf != NULL)
-							printf("		member of : %s\n", current->aStmt->memberOf);
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
 					else if (temp_type == 7) {
 						printf("	TYPE_INT_POINTER\n");
-						if (current->aStmt->memberOf != NULL)
-							printf("		member of : %s\n", current->aStmt->memberOf);
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
 					else if (temp_type == 8) {
 						printf("	TYPE_CHAR_POINTER\n");
-						if (current->aStmt->memberOf != NULL)
-							printf("		member of : %s\n", current->aStmt->memberOf);
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
 					else if (temp_type == 9) {
 						printf("	TYPE_STRING_POINTER\n");
-						if (current->aStmt->memberOf != NULL)
-							printf("		member of : %s\n", current->aStmt->memberOf);
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
 					else if (temp_type == 12) {
 						printf("	TYPE_HEXNUM\n");
-						if (current->aStmt->memberOf != NULL)
-							printf("		member of : %s\n", current->aStmt->memberOf);
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
@@ -123,6 +103,7 @@ void print_commandList(command* commandNode) {
 						printf("	TYPE_UNION\n");
 					}
 				}
+				if (current->aStmt->memberOf != NULL) printf("		member of : %s\n", current->aStmt->memberOf);
 			}
 			else if (value == 2) {
 				printf("STMT_IF_ELSE\n");

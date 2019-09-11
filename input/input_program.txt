@@ -65,6 +65,8 @@ vector3 struct
 	d@'d
 @|
 
+s@string
+
 sleep|4|
 
 scan|input|
