@@ -65,6 +65,13 @@ vector3 struct
 	d@'d
 @|
 
+marines union
+|@
+	decimal@float
+	shield@int|100|
+	name@string|"Jake"|
+@|
+
 s@string
 
 sleep|4|

@@ -17,7 +17,7 @@ decl* decl_create(char *name, type *type, expr *value, stmt *code) {
 /*
 	Creating and returning a statement
 */
-stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next, char* memberOf) {
+stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next, int memberOf) {
 	stmt* s = malloc(sizeof(*s));
 	s->kind = kind;
 	s->decl = decl;
@@ -28,8 +28,7 @@ stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nex
 	s->else_body = ebody;
 	s->expressionList = expressionList;
 	s->next = NULL;
-	if (memberOf != NULL)
-		strcpy(s->memberOf, memberOf);
+	s->memberOf = memberOf;
 	return s;
 }
 

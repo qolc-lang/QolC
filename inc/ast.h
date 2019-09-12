@@ -106,7 +106,7 @@ typedef struct stmt {
 	struct stmt *else_body;
 	expr_list* expressionList;
 	struct stmt *next;
-	char memberOf[30];
+	int memberOf;
 }stmt;
 
 typedef struct decl {
@@ -118,7 +118,7 @@ typedef struct decl {
 }decl;
 
 decl* decl_create(char *name, type *theType, expr *value, stmt *code);
-stmt* stmt_create(stmt_t kind, decl *theDecl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next, char* memberOf);
+stmt* stmt_create(stmt_t kind, decl *theDecl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next, int memberOf);
 type* type_create(type_t kind, type *subtype, param_list *params);
 expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal); 
 expr* expr_create_integer(int i);

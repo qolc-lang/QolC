@@ -23,14 +23,13 @@ void parsing(parse_state* current, command* commandNode) {
 	int hasDefer = 0;
 	char theStack[200][100];
 	char temp[100], temp2[100];
-	char* sTypeOfMember;
+	int sTypeOfMember;
 	
 	init(&top);
 	memset(temp, 0, sizeof(temp));
 	memset(temp2, 0, sizeof(temp2));
 
 	union memberFlags flags;
-	sTypeOfMember = malloc(sizeof(char) * 30);
 
 	while (current != NULL) {
 		printf("counter-type: %s\n", current->type);
@@ -44,7 +43,7 @@ void parsing(parse_state* current, command* commandNode) {
 		}
 		else if (strcmp(current->value, "main") == 0) {
 			printf("main statement to be built\n");
-			stmt* main_stmt = stmt_create(STMT_MAIN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+			stmt* main_stmt = stmt_create(STMT_MAIN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 			push_commandList(commandNode, NULL, main_stmt, NULL); 
 			current = current->next;
 			continue;
@@ -308,22 +307,21 @@ void parsing(parse_state* current, command* commandNode) {
 
 		if (strcmp(current->value, "union") == 0) {
 			printf("union statement to be built\n");
-			pop(&top);
-			strcpy(temp, theStack[top]);
-			printf("now in stack : %s\n", temp);
+			printf("the temp now :  %s\n", temp);
 			push(theStack[top], &top, current->value);
-			current = checkTheStack(current, theStack[0], top, commandNode);
-			pop(&top);
-			theStack[0][top] = '\0';
+			current = current->next;
+			printf("tHE STRUCTs member : %d\n", flags.nIsStructMember);
+			flags.nIsUnionMember = 1;
 			continue;
 		}
 
 		if (strcmp(current->type, "block end") == 0) {
 			printf("the struct member : %d\n", flags.nIsStructMember);
 			printf("THATS THE END OF THIS BLOCK\n");
-			union memberFlags tempFlags = ClearFlags(flags);
-			flags = tempFlags;
+			ClearFlags(&flags);
 			printf("AFTER member : %d\n", flags.nIsStructMember);
+			printf("AFTER uni member : %d\n", flags.nIsUnionMember);
+			//sTypeOfMember = -1;
 		}
 
 		if (strcmp(current->type, "string") == 0) {
@@ -345,7 +343,7 @@ void parsing(parse_state* current, command* commandNode) {
 				if (hasDefer == 1)
 				{
 					hasDefer = 0;
-					stmt* defer_stmt = stmt_create(STMT_DEFER, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+					stmt* defer_stmt = stmt_create(STMT_DEFER, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 					push_commandList(commandNode, NULL, defer_stmt, NULL); 
 					BuildSingleExprStatement(current->value, commandNode, 3);
 				}
@@ -525,8 +523,8 @@ void parsing(parse_state* current, command* commandNode) {
 				printf("going to insert value : %s\n", current->value);
 				printf("the struct member : %d\n", flags.nIsStructMember);
 				sTypeOfMember = CheckIfMemberOfStatement(flags);
-				if (sTypeOfMember != NULL) {
-					printf("the !!!!!!!!! member : %s\n", sTypeOfMember);
+				if (sTypeOfMember != -1) {
+					printf("the !!!!!!!!! member : %d\n", sTypeOfMember);
 				}
 				++top;
 				push(theStack[top], &top, current->value);
@@ -631,6 +629,11 @@ void parsing(parse_state* current, command* commandNode) {
 				}
 				else {
 					printf("stack empty : %d\n", top);
+					printf("NOW MY MARIESSSSSSs \n");
+					sTypeOfMember = CheckIfMemberOfStatement(flags);
+					if (sTypeOfMember != -1) {
+						printf("the ID!!! member : %d\n", sTypeOfMember);
+					}
 					printf("going to insert value : %s\n", current->value);
 					++top;
 					push(theStack[top], &top, current->value);	
@@ -675,13 +678,13 @@ void parsing(parse_state* current, command* commandNode) {
 		//Check for keyword type
 		if (strcmp(current->type, "keyword") == 0) {
 			if (strcmp(current->value, "break") == 0) {
-				stmt* break_decl_stmt = stmt_create(STMT_BREAK, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+				stmt* break_decl_stmt = stmt_create(STMT_BREAK, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 				push_commandList(commandNode, NULL, break_decl_stmt, NULL); 
 				current = current->next;
 				continue;
 			}
 			else if (strcmp(current->value, "continue") == 0) {
-				stmt* cont_decl_stmt = stmt_create(STMT_CONTINUE, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+				stmt* cont_decl_stmt = stmt_create(STMT_CONTINUE, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 				push_commandList(commandNode, NULL, cont_decl_stmt, NULL); 
 				current = current->next;
 				continue;
@@ -771,6 +774,8 @@ void parsing(parse_state* current, command* commandNode) {
 			if (top != 0) {
 				printf("--------------------------------------------- \n");
 
+				printf("tHE STRUCTs member 3 : %d\n", flags.nIsStructMember);
+
 				if (notTheEndFlag == 1)
 				{
 					current = current->next;
@@ -795,7 +800,7 @@ void parsing(parse_state* current, command* commandNode) {
 					theStack[0][top] = '\0';
 					printf("the value to work as expr : %s\n", current->value);
 					expr* identifierExpr = expr_create_string(current->value);
-					stmt* delete_stmt = stmt_create(STMT_DELETE, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL, NULL, NULL);
+					stmt* delete_stmt = stmt_create(STMT_DELETE, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL, NULL, -1);
 					push_commandList(commandNode, NULL, delete_stmt, NULL);
 					current = current->next;
 					continue;
@@ -807,6 +812,7 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				printf("now in the stack : %s\n", theStack[top]);
+				printf("tHE STRUCTs member 1 : %d\n", flags.nIsStructMember);
 
 				if (strlen(theStack[top]) == 0) {
 					continue;
@@ -850,7 +856,7 @@ void parsing(parse_state* current, command* commandNode) {
 						theStack[0][top] = '\0';
 						expr* stringExpr = expr_create_string(current->value);
 						decl* string_declaration = decl_create(temp, NULL, stringExpr, NULL);
-						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 					}
 					else { 
@@ -858,9 +864,10 @@ void parsing(parse_state* current, command* commandNode) {
 					}
 				}
 				else { 
+					printf("tHE STRUCTs member 2 : %d\n", flags.nIsStructMember);
 					printf("the struct member : %d\n", flags.nIsStructMember);
-					if (sTypeOfMember != NULL) {
-						printf("the !!!!!!!!! member : %s\n", sTypeOfMember);
+					if (sTypeOfMember != -1) {
+						printf("the !!!!!!!!! member : %d\n", sTypeOfMember);
 					}
 					else {
 						printf("type of member is null\n");
@@ -937,7 +944,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, NULL);
+							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
 						else if (strcmp(tempStack[tempTop], ">=") == 0) 
@@ -954,7 +961,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, NULL);
+							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
 						else if (strcmp(tempStack[tempTop], "<") == 0) 
@@ -971,7 +978,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, NULL);
+							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
 						else if (strcmp(tempStack[tempTop], "<=") == 0) 
@@ -988,7 +995,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, NULL);
+							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
 						else if (strcmp(tempStack[tempTop], "@==") == 0) 
@@ -1005,7 +1012,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, NULL);
+							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
 
@@ -1049,14 +1056,14 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				new_current = current;
 				current = current->next;
 				if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (isIdentifierType(current->type) != 1) && (isNumberType(current->type) != 1) && (strcmp(current->type, "string") != 0) && (strcmp(current->type, "character") != 0) ) {
-					stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+					stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 					push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
 					return current;
 				}
 				else {
 					printf("now the starting eoc current : %s\n", current->value);
 					expr* stringExpr = expr_create_string(current->value);
-					stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL, NULL);
+					stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL, -1);
 					push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
 					return current;
 				}
@@ -1079,7 +1086,7 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				if ((current == NULL) || (strcmp(current->type, "end of command") == 0))
 				{
 					expr* stringExpr = expr_create_string(tempVariablesNode->temp);
-					stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL, NULL);
+					stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL, -1);
 					push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
 					return current;
 				}

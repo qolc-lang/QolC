@@ -103,7 +103,12 @@ void print_commandList(command* commandNode) {
 						printf("	TYPE_UNION\n");
 					}
 				}
-				if (current->aStmt->memberOf != NULL) printf("		member of : %s\n", current->aStmt->memberOf);
+				if (current->aStmt->memberOf != -1) {
+
+					if (current->aStmt->memberOf == 1) printf("		member of struct\n");
+					else if (current->aStmt->memberOf == 2) printf("		member of union\n");
+					else;
+				}
 			}
 			else if (value == 2) {
 				printf("STMT_IF_ELSE\n");

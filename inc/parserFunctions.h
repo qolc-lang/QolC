@@ -26,10 +26,10 @@ int isNumberType(char* currentType);
 void BuildSingleExprStatement(char* currentValue, command* commandNode, int statement);
 void BuildDoubleExprStatement(parse_state* current, command* commandNode, int statement);
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
-void BuildDeclarationExprStatement(char* currentValue, command* commandNode, char* temp, int type, char* typeOfMember);
+void BuildDeclarationExprStatement(char* currentValue, command* commandNode, char* temp, int type, int typeOfMember);
 void BuildAssignmentExprStatement(char* temp, char* temp2, command* commandNode, int operation);
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
-char* CheckIfMemberOfStatement(union memberFlags mFlags);
-union memberFlags ClearFlags(union memberFlags mFlags);
+int CheckIfMemberOfStatement(union memberFlags mFlags);
+void ClearFlags(union memberFlags* mFlags);
 
 #endif
