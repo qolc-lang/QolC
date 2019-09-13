@@ -29,7 +29,7 @@ void parsing(parse_state* current, command* commandNode) {
 	memset(temp, 0, sizeof(temp));
 	memset(temp2, 0, sizeof(temp2));
 
-	union memberFlags flags;
+	memberFlags flags;
 
 	while (current != NULL) {
 		printf("counter-type: %s\n", current->type);
@@ -310,8 +310,10 @@ void parsing(parse_state* current, command* commandNode) {
 			printf("the temp now :  %s\n", temp);
 			push(theStack[top], &top, current->value);
 			current = current->next;
+			ClearFlags(&flags);
 			printf("tHE STRUCTs member : %d\n", flags.nIsStructMember);
 			flags.nIsUnionMember = 1;
+			printf("tHE UNIONS member : %d\n", flags.nIsStructMember);
 			continue;
 		}
 
@@ -775,6 +777,7 @@ void parsing(parse_state* current, command* commandNode) {
 				printf("--------------------------------------------- \n");
 
 				printf("tHE STRUCTs member 3 : %d\n", flags.nIsStructMember);
+				printf("tHE UNIONSS member 3 : %d\n", flags.nIsStructMember);
 
 				if (notTheEndFlag == 1)
 				{

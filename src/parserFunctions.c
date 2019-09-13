@@ -580,7 +580,7 @@ void BuildNewStatement(parse_state * current, command* commandNode, char* temp) 
 	push_commandList(commandNode, NULL, theStmt, NULL); 
 }
 
-int CheckIfMemberOfStatement(union memberFlags mFlags) {
+int CheckIfMemberOfStatement(memberFlags mFlags) {
 
 	if (mFlags.nIsStructMember == 1) return 1;
 	else if (mFlags.nIsUnionMember == 1) return 2;
@@ -588,7 +588,7 @@ int CheckIfMemberOfStatement(union memberFlags mFlags) {
 	return -1;
 }
 
-void ClearFlags(union memberFlags* mFlags) {
+void ClearFlags(memberFlags* mFlags) {
 
 	if (mFlags->nIsStructMember == 1) mFlags->nIsStructMember = 0;
 	if (mFlags->nIsUnionMember == 1) mFlags->nIsUnionMember = 0;
