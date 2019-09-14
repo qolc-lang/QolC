@@ -18,6 +18,8 @@ typedef struct memberFlags
 {
 	int nIsStructMember;
 	int nIsUnionMember;
+	int nIsEnumMember;
+
 }memberFlags;
 
 parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode);

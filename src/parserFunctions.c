@@ -584,6 +584,7 @@ int CheckIfMemberOfStatement(memberFlags mFlags) {
 
 	if (mFlags.nIsStructMember == 1) return 1;
 	else if (mFlags.nIsUnionMember == 1) return 2;
+	else if (mFlags.nIsEnumMember == 1) return 3;
 
 	return -1;
 }
@@ -592,4 +593,5 @@ void ClearFlags(memberFlags* mFlags) {
 
 	if (mFlags->nIsStructMember == 1) mFlags->nIsStructMember = 0;
 	if (mFlags->nIsUnionMember == 1) mFlags->nIsUnionMember = 0;
+	if (mFlags->nIsEnumMember == 1) mFlags->nIsEnumMember = 0;
 }

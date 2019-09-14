@@ -299,9 +299,8 @@ void parsing(parse_state* current, command* commandNode) {
 			printf("enum statement to be built\n");
 			printf("the temp now :  %s\n", temp);
 			push(theStack[top], &top, current->value);
-			current = checkTheStack(current, theStack[0], top, commandNode);
-			pop(&top);
-			theStack[0][top] = '\0';
+			current = current->next;
+			flags.nIsEnumMember = 1;
 			continue;
 		}
 
@@ -310,20 +309,12 @@ void parsing(parse_state* current, command* commandNode) {
 			printf("the temp now :  %s\n", temp);
 			push(theStack[top], &top, current->value);
 			current = current->next;
-			ClearFlags(&flags);
-			printf("tHE STRUCTs member : %d\n", flags.nIsStructMember);
 			flags.nIsUnionMember = 1;
-			printf("tHE UNIONS member : %d\n", flags.nIsStructMember);
 			continue;
 		}
 
 		if (strcmp(current->type, "block end") == 0) {
-			printf("the struct member : %d\n", flags.nIsStructMember);
-			printf("THATS THE END OF THIS BLOCK\n");
 			ClearFlags(&flags);
-			printf("AFTER member : %d\n", flags.nIsStructMember);
-			printf("AFTER uni member : %d\n", flags.nIsUnionMember);
-			//sTypeOfMember = -1;
 		}
 
 		if (strcmp(current->type, "string") == 0) {

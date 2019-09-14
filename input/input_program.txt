@@ -72,6 +72,15 @@ marines union
 	name@string|"Jake"|
 @|
 
+value enum
+|@
+	x@0,
+	y@1,
+	z@y,
+	v@f,				
+	g@10,
+@|
+
 s@string
 
 sleep|4|

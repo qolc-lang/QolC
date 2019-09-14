@@ -107,6 +107,7 @@ void print_commandList(command* commandNode) {
 
 					if (current->aStmt->memberOf == 1) printf("		member of struct\n");
 					else if (current->aStmt->memberOf == 2) printf("		member of union\n");
+					else if (current->aStmt->memberOf == 3) printf("		member of enum\n");
 					else;
 				}
 			}
