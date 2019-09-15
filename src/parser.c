@@ -280,36 +280,43 @@ void parsing(parse_state* current, command* commandNode) {
 			current = current->next;
 			continue;
 		}
-		else { 
-
-		}
+		else;
 
 		printf("counter-value: %s\n", current->value);
 
 		if (strcmp(current->value, "struct") == 0) {
 			printf("struct statement to be built\n");
 			printf("the temp now :  %s\n", temp);
-			push(theStack[top], &top, current->value);
-			current = current->next;
 			flags.nIsStructMember = 1;
+			type* theType = type_create(TYPE_STRUCT, NULL, NULL);
+			decl* theDeclaration = decl_create(temp, theType, NULL, NULL);
+			stmt* struct_stmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+			push_commandList(commandNode, NULL, struct_stmt, NULL);
+			current = current->next;
 			continue;
 		}
 
 		if (strcmp(current->value, "enum") == 0) {
 			printf("enum statement to be built\n");
 			printf("the temp now :  %s\n", temp);
-			push(theStack[top], &top, current->value);
-			current = current->next;
 			flags.nIsEnumMember = 1;
+			type* theType = type_create(TYPE_ENUM, NULL, NULL);
+			decl* theDeclaration = decl_create(temp, theType, NULL, NULL);
+			stmt* enum_stmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+			push_commandList(commandNode, NULL, enum_stmt, NULL);
+			current = current->next;
 			continue;
 		}
 
 		if (strcmp(current->value, "union") == 0) {
 			printf("union statement to be built\n");
 			printf("the temp now :  %s\n", temp);
-			push(theStack[top], &top, current->value);
-			current = current->next;
 			flags.nIsUnionMember = 1;
+			type* theType = type_create(TYPE_UNION, NULL, NULL);
+			decl* theDeclaration = decl_create(temp, theType, NULL, NULL);
+			stmt* union_stmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+			push_commandList(commandNode, NULL, union_stmt, NULL);
+			current = current->next;
 			continue;
 		}
 
@@ -1270,58 +1277,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				}
 
 				printf("going each eoc break --- in each stmt\n");
-				break;
-			}
-		}
-	}
-	else if (strcmp(theStackTop, "enum") == 0) {
-		printf("going in enum loop\n");
-
-		current = current->next;
-
-		while (1) {
-			printf("in enum loop with value : %s\n", current->value);
-			
-			current = current->next;
-
-			if (current == NULL) {
-				printf("going enum null break 2 --- in enum stmt\n");
-				break;
-			}
-
-			if (strcmp(current->type, "end of command") == 0){
-				current = current->next; 
-				if (current != NULL) {
-					printf("in enum eoc loop with value : %s\n", current->value);	
-				}
-
-				printf("going enum eoc break --- in enum stmt\n");
-				break;
-			}
-		}
-	}
-	else if (strcmp(theStackTop, "union") == 0) {
-		printf("going in union loop\n");
-
-		current = current->next;
-
-		while (1) {
-			printf("in union loop with value : %s\n", current->value);
-			
-			current = current->next;
-
-			if (current == NULL) {
-				printf("going union null break 2 --- in union stmt\n");
-				break;
-			}
-
-			if (strcmp(current->type, "end of command") == 0){
-				current = current->next; 
-				if (current != NULL) {
-					printf("in union eoc loop with value : %s\n", current->value);	
-				}
-
-				printf("going union eoc break --- in union stmt\n");
 				break;
 			}
 		}
