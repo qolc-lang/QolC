@@ -15,7 +15,7 @@ void push(char* st, int* top, char* element)
 {
     strcpy(st, element);
     ++*top;
-    printf("Push completed with element : %s \n", element);
+    printf("Push in the stack completed, with element : %s\n", element);
 }
 
 /*

@@ -32,112 +32,127 @@ void parsing(parse_state* current, command* commandNode) {
 	memberFlags flags;
 
 	while (current != NULL) {
-		printf("counter-type: %s\n", current->type);
+		printf("Type in the loop : %s\n", current->type);
 
-		//Check for import in value and push it to the stack
 		if (strcmp(current->value, "import") == 0) {
-			printf("import statement to be built\n");
+			printf("Import statement to be built.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "main") == 0) {
-			printf("main statement to be built\n");
+			printf("Main statement to be built.\n");
 			stmt* main_stmt = stmt_create(STMT_MAIN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 			push_commandList(commandNode, NULL, main_stmt, NULL); 
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "load") == 0) {
-			printf("load statement to be built\n");
+			printf("Load statement to be built.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "print") == 0) {
-			printf("print statement to be built\n");
+			printf("Print statement to be built.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "sleep") == 0) {
-			printf("sleep statement to be built\n");
+			printf("Sleep statement to be built.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "delete") == 0) {
-			printf("delete statement to be built\n");
+			printf("Delete statement to be built.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "cast") == 0) {
-			printf("cast statement to be built\n");
+			printf("Cast statement to be built.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "array_add") == 0) {
-			printf("cast statement to be built\n");
+			printf("Array_add statement to be built.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "scan") == 0) {
-			printf("scan statement to be built\n");
+			printf("Scan statement to be built.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "string") == 0) {
-			printf("string keyword going in\n");
+			printf("String keyword going in.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "int") == 0) {
-			printf("int keyword going in\n");
+			printf("Int keyword going in.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "float") == 0) {
-			printf("float keyword going in\n");
+			printf("Float keyword going in.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "char") == 0) {
-			printf("char keyword going in\n");
+			printf("Char keyword going in.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "bool") == 0) {
-			printf("bool keyword going in\n");
+			printf("Bool keyword going in.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "@") == 0) {
 
-			//checking if the @ is part of comment
+			//Checking if the @ is part of comment
 			pop(&top);
 			if (strcmp(theStack[top], "/@") == 0) 
 			{
-				printf("part of comment %s\n", current->value);
+				printf("Part of comment %s.\n", current->value);
+				printf("**********************************************************\n");
 				current = current->next;
 				++top;
 				continue;
 			}
-			printf("operator @ going in\n");
+			printf("Operator @ going in.\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "assert") == 0) {
-			printf("statement assert going in\n");
+			printf("Assert statement to be built.\n");
 			push(theStack[top], &top, current->value);
 			current = checkTheStack(current, theStack[0], top, commandNode);
 			pop(&top);
@@ -145,7 +160,7 @@ void parsing(parse_state* current, command* commandNode) {
 			continue;
 		}
 		else if (strcmp(current->value, "return") == 0) {
-			printf("statement return going in\n");
+			printf("Return statement to be built.\n");
 			push(theStack[top], &top, current->value);
 			current = checkTheStack(current, theStack[0], top, commandNode);
 			pop(&top);
@@ -153,58 +168,58 @@ void parsing(parse_state* current, command* commandNode) {
 			continue;
 		}
 		else if (strcmp(current->value, "if") == 0) {
-			printf("statement if going in\n");
+			printf("If statement to be built.\n");
 			push(theStack[top], &top, current->value);
-			current = checkTheStack(current, theStack[0], top, commandNode);
-			pop(&top);
-			theStack[0][top] = '\0';
+			printf("**********************************************************\n");
+			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "while") == 0) {
-			printf("statement if going in\n");
+			printf("While statement to be built.\n");
 			push(theStack[top], &top, current->value);
-			current = checkTheStack(current, theStack[0], top, commandNode);
-			pop(&top);
-			theStack[0][top] = '\0';
+			printf("**********************************************************\n");
+			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "for") == 0) {
-			printf("statement for going in\n");
+			printf("For statement to be built.\n");
 			push(theStack[top], &top, current->value);
-			current = checkTheStack(current, theStack[0], top, commandNode);
-			pop(&top);
-			theStack[0][top] = '\0';
+			printf("**********************************************************\n");
+			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "each") == 0) {
-			printf("statement each going in\n");
+			printf("Each statement to be built.\n");
 			push(theStack[top], &top, current->value);
-			current = checkTheStack(current, theStack[0], top, commandNode);
-			pop(&top);
-			theStack[0][top] = '\0';
+			printf("**********************************************************\n");
+			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "defer") == 0) {	//not pushing to stack just setting a variable
-			printf("The next command is a deferred one.\n");
+			printf("Defer statement to be built.\n");
 			hasDefer = 1;
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "+") == 0) {
 			printf("operator + going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "-") == 0) {
 			printf("operator - going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "++") == 0) {
 			printf("operator ++ going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			notTheEndFlag = 1;
 			continue;
@@ -212,6 +227,7 @@ void parsing(parse_state* current, command* commandNode) {
 		else if (strcmp(current->value, "--") == 0) {
 			printf("operator -- going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			notTheEndFlag = 1;
 			continue;
@@ -219,6 +235,7 @@ void parsing(parse_state* current, command* commandNode) {
 		else if (strcmp(current->value, "+=") == 0) {
 			printf("operator += going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			notTheEndFlag = 1;
 			continue;
@@ -226,6 +243,7 @@ void parsing(parse_state* current, command* commandNode) {
 		else if (strcmp(current->value, "-=") == 0) {
 			printf("operator -= going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			notTheEndFlag = 1;
 			continue;
@@ -233,6 +251,7 @@ void parsing(parse_state* current, command* commandNode) {
 		else if (strcmp(current->value, "*=") == 0) {
 			printf("operator *= going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			notTheEndFlag = 1;
 			continue;
@@ -240,6 +259,7 @@ void parsing(parse_state* current, command* commandNode) {
 		else if (strcmp(current->value, "/=") == 0) {
 			printf("operator /= going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			notTheEndFlag = 1;
 			continue;
@@ -247,46 +267,52 @@ void parsing(parse_state* current, command* commandNode) {
 		else if (strcmp(current->value, ">") == 0) {
 			printf("operator > going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "<") == 0) {
 			printf("operator < going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, ">=") == 0) {
 			printf("operator >= going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "<=") == 0) {
 			printf("operator <= going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "/@") == 0) {
 			printf("comment going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "^") == 0) {
 			printf("operator ^ going in\n");
 			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
 			current = current->next;
 			continue;
 		}
 		else;
 
-		printf("counter-value: %s\n", current->value);
+		printf("Value in the loop : %s\n", current->value);
 
 		if (strcmp(current->value, "struct") == 0) {
-			printf("struct statement to be built\n");
-			printf("the temp now :  %s\n", temp);
+			printf("Struct statement to be built.\n");
+			printf("The struct variable : %s\n", temp);
 			flags.nIsStructMember = 1;
 			type* theType = type_create(TYPE_STRUCT, NULL, NULL);
 			decl* theDeclaration = decl_create(temp, theType, NULL, NULL);
@@ -297,8 +323,8 @@ void parsing(parse_state* current, command* commandNode) {
 		}
 
 		if (strcmp(current->value, "enum") == 0) {
-			printf("enum statement to be built\n");
-			printf("the temp now :  %s\n", temp);
+			printf("Enum statement to be built.\n");
+			printf("The enum variable : %s\n", temp);
 			flags.nIsEnumMember = 1;
 			type* theType = type_create(TYPE_ENUM, NULL, NULL);
 			decl* theDeclaration = decl_create(temp, theType, NULL, NULL);
@@ -772,10 +798,6 @@ void parsing(parse_state* current, command* commandNode) {
 		//Check for end of command type
 		if (strcmp(current->type, "end of command") == 0) {
 			if (top != 0) {
-				printf("--------------------------------------------- \n");
-
-				printf("tHE STRUCTs member 3 : %d\n", flags.nIsStructMember);
-				printf("tHE UNIONSS member 3 : %d\n", flags.nIsStructMember);
 
 				if (notTheEndFlag == 1)
 				{
@@ -813,7 +835,6 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				printf("now in the stack : %s\n", theStack[top]);
-				printf("tHE STRUCTs member 1 : %d\n", flags.nIsStructMember);
 
 				if (strlen(theStack[top]) == 0) {
 					continue;
@@ -826,31 +847,31 @@ void parsing(parse_state* current, command* commandNode) {
 						type* int_type = type_create(TYPE_INTEGER, NULL, NULL);
 						decl* int_declaration = decl_create(temp, int_type, NULL, NULL);
 						stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
-						push_commandList(commandNode, NULL, int_decl_stmt, NULL); 
+						push_commandList(commandNode, NULL, int_decl_stmt, NULL);
 					}
 					else if (strcmp(current->value, "string") == 0) {
 						type* string_type = type_create(TYPE_STRING, NULL, NULL);
 						decl* string_declaration = decl_create(temp, string_type, NULL, NULL);
 						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
-						push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
+						push_commandList(commandNode, NULL, string_decl_stmt, NULL);
 					}
 					else if (strcmp(current->value, "float") == 0) {
 						type* float_type = type_create(TYPE_FLOAT, NULL, NULL);
 						decl* float_declaration = decl_create(temp, float_type, NULL, NULL);
 						stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
-						push_commandList(commandNode, NULL, float_decl_stmt, NULL); 
+						push_commandList(commandNode, NULL, float_decl_stmt, NULL);
 					}
 					else if (strcmp(current->value, "char") == 0) {
 						type* char_type = type_create(TYPE_CHARACTER, NULL, NULL);
 						decl* char_declaration = decl_create(temp, char_type, NULL, NULL);
 						stmt* char_decl_stmt = stmt_create(STMT_DECL, char_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
-						push_commandList(commandNode, NULL, char_decl_stmt, NULL); 
+						push_commandList(commandNode, NULL, char_decl_stmt, NULL);
 					}
 					else if (strcmp(current->value, "bool") == 0) {
 						type* bool_type = type_create(TYPE_BOOLEAN, NULL, NULL);
 						decl* bool_declaration = decl_create(temp, bool_type, NULL, NULL);
 						stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
-						push_commandList(commandNode, NULL, bool_decl_stmt, NULL); 
+						push_commandList(commandNode, NULL, bool_decl_stmt, NULL);
 					}
 					else if ((strcmp(current->value, "false") == 0) || (strcmp(current->value, "true") == 0)) {
 						pop(&top);
@@ -858,21 +879,11 @@ void parsing(parse_state* current, command* commandNode) {
 						expr* stringExpr = expr_create_string(current->value);
 						decl* string_declaration = decl_create(temp, NULL, stringExpr, NULL);
 						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
-						push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
+						push_commandList(commandNode, NULL, string_decl_stmt, NULL);
 					}
-					else { 
-						printf("current->noononon %s\n", current->value);
-					}
+					else;
 				}
-				else { 
-					printf("tHE STRUCTs member 2 : %d\n", flags.nIsStructMember);
-					printf("the struct member : %d\n", flags.nIsStructMember);
-					if (sTypeOfMember != -1) {
-						printf("the !!!!!!!!! member : %d\n", sTypeOfMember);
-					}
-					else {
-						printf("type of member is null\n");
-					}
+				else {
 					strcpy(temp2, theStack[top]);
 					theStack[0][top] = '\0';
 					pop(&top);
@@ -1177,113 +1188,5 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 			}
 		}
 	}
-	else if (strcmp(theStackTop, "if") == 0) {
-		printf("going in if loop\n");
-
-		current = current->next;
-
-		while (1) {
-			printf("in if loop with value : %s\n", current->value);
-			
-			current = current->next;
-
-			if (current == NULL) {
-				printf("going for null break 2 --- in if stmt\n");
-				break;
-			}
-
-			if (strcmp(current->type, "end of command") == 0){
-				current = current->next; 
-				if (current != NULL) {
-					printf("in if eoc loop with value : %s\n", current->value);	
-				}
-
-				printf("going for eoc break --- in if stmt\n");
-				break;
-			}
-		}
-	}
-	else if (strcmp(theStackTop, "while") == 0) {
-		printf("going in while loop\n");
-
-		current = current->next;
-
-		while (1) {
-			printf("in while loop with value : %s\n", current->value);
-			
-			current = current->next;
-
-			if (current == NULL) {
-				printf("going for null break 2 --- in while stmt\n");
-				break;
-			}
-
-			if (strcmp(current->type, "end of command") == 0){
-				current = current->next; 
-				if (current != NULL) {
-					printf("in while eoc loop with value : %s\n", current->value);	
-				}
-
-				printf("going for eoc break --- in while stmt\n");
-				break;
-			}
-		}
-	}
-	else if (strcmp(theStackTop, "for") == 0) {
-		printf("going in for loop\n");
-
-		current = current->next;
-
-		while (1) {
-			printf("in for loop with value : %s\n", current->value);
-			
-			current = current->next;
-
-			if (current == NULL) {
-				printf("going for null break 2 --- in for stmt\n");
-				break;
-			}
-
-			if (strcmp(current->type, "end of command") == 0){
-				current = current->next; 
-				if (current != NULL) {
-					printf("in for eoc loop with value : %s\n", current->value);	
-				}
-
-				printf("going for eoc break --- in for stmt\n");
-				break;
-			}
-		}
-	}
-	else if (strcmp(theStackTop, "each") == 0) {
-		printf("going in each loop\n");
-
-		current = current->next;
-
-		while (1) {
-			printf("in each loop with value : %s\n", current->value);
-			
-			current = current->next;
-
-			if (current == NULL) {
-				printf("going each null break 2 --- in each stmt\n");
-				break;
-			}
-
-			if (strcmp(current->type, "end of command") == 0){
-				current = current->next; 
-				if (current != NULL) {
-					printf("in each eoc loop with value : %s\n", current->value);	
-				}
-
-				printf("going each eoc break --- in each stmt\n");
-				break;
-			}
-		}
-	}
-
-	printf("don't forget to return the current pointer\n");
-
 	return current;
-
 }

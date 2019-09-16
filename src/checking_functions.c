@@ -4,15 +4,15 @@
 	Check for keyword 
 */
 int isKeyword(char buffer[]){
-	char keywords[32][10] = {"string","else","enum","float","for",
+	char keywords[33][10] = {"string","else","enum","float","for",
 							"if","int","return", "struct", "while",
 							"new", "delete", "defer", "print", "break",
 							"continue", "then", "import", "load", "null",
 							"main", "to", "cast", "sleep", "bool",
 							"array_add", "true", "false", "assert", "union",
-							"scan", "char"};
+							"scan", "char", "void"};
 	int i, flag = 0;
-	for(i = 0; i < 32; ++i){
+	for(i = 0; i < 33; ++i){
 		if(strcmp(keywords[i], buffer) == 0){
 			flag = 1;
 			break;
