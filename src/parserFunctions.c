@@ -72,7 +72,6 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 				printf("additional saved operator : %s\n", tempNode->tempOp2);
 				++tempTop;
 				push(tempStack, &tempTop, tempNode->tempOp2);
-				// return NULL;	//just simply return
 			}
 			else {
 				++tempTop;
@@ -401,27 +400,27 @@ void BuildSingleExprStatement(char* currentValue, command* commandNode, int stat
 
 	switch (statement) {
 		case 1 :
-			printf("------>		Going to build import statement with string : %s\n", currentValue);
+			printf("Going to build import statement with string : %s\n", currentValue);
 			theStmt = stmt_create(STMT_IMPORT, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL, -1);
 			break;
 		case 2 :
-			printf("------>		Going to build load statement with string : %s\n", currentValue);
+			printf("Going to build load statement with string : %s\n", currentValue);
 			theStmt = stmt_create(STMT_LOAD, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL, -1);
 			break;
 		case 3 :
-			printf("------>		Going to build print statement with string : %s\n", currentValue);
+			printf("Going to build print statement with string : %s\n", currentValue);
 			theStmt = stmt_create(STMT_PRINT, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL, -1);
 			break;
 		case 4 :
-			printf("------>		Going to build sleep statement with string : %s\n", currentValue);
+			printf("Going to build sleep statement with string : %s\n", currentValue);
 			theStmt = stmt_create(STMT_SLEEP, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL, -1);
 			break;
 		case 5 :
-			printf("------>		Going to build scan statement with string : %s\n", currentValue);
+			printf("Going to build scan statement with string : %s\n", currentValue);
 			theStmt = stmt_create(STMT_SCAN, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL, -1);
 			break;
 		case 6 :
-			printf("------>		Going to build delete statement with string : %s\n", currentValue);
+			printf("Going to build delete statement with string : %s\n", currentValue);
 			theStmt = stmt_create(STMT_DELETE, NULL, NULL, theExpr, NULL, NULL, NULL, NULL, NULL, -1);
 			break;
 		default : 
@@ -446,11 +445,11 @@ void BuildDoubleExprStatement(parse_state* current, command* commandNode, int st
 
 	switch (statement) {
 		case 1 :
-			printf("------>		Going to build cast statement with string : %s\n", current->value);
+			printf("Going to build cast statement with string : %s\n", current->value);
 			theStmt = stmt_create(STMT_CAST, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL, -1);
 			break;
 		case 2 :
-			printf("------>		Going to build array_add statement with string : %s\n", current->value);
+			printf("Going to build array_add statement with string : %s\n", current->value);
 			theStmt = stmt_create(STMT_ARRAYADD, NULL, NULL, identifierExpr, typeExpr, NULL, NULL, NULL, NULL, -1);
 			break;
 		default : 
@@ -466,43 +465,43 @@ void BuildDeclarationExprStatement(char* currentValue, command* commandNode, cha
 
 	switch (switchType) {
 		case 1 :
-			printf("------>		Going to build hexadecimal number declaration statement.\n");
+			printf("Going to build hexadecimal number declaration statement.\n");
 			theType = type_create(TYPE_HEXNUM, NULL, NULL);
 			break;
 		case 2 :
-			printf("------>		Going to build int declaration statement.\n");
+			printf("Going to build int declaration statement.\n");
 			theType = type_create(TYPE_INTEGER, NULL, NULL);
 			break;
 		case 3 :
-			printf("------>		Going to build float declaration statement.\n");
+			printf("Going to build float declaration statement.\n");
 			theType = type_create(TYPE_FLOAT, NULL, NULL);
 			break;
 		case 4 :
-			printf("------>		Going to build character declaration statement.\n");
+			printf("Going to build character declaration statement.\n");
 			theType = type_create(TYPE_CHARACTER, NULL, NULL);
 			break;
 		case 5 :
-			printf("------>		Going to build string declaration statement.\n");
+			printf("Going to build string declaration statement.\n");
 			theType = type_create(TYPE_STRING, NULL, NULL);
 			break;
 		case 6 :
-			printf("------>		Going to build string pointer declaration statement.\n");
+			printf("Going to build string pointer declaration statement.\n");
 			theType = type_create(TYPE_STRING_POINTER, NULL, NULL);
 			break;
 		case 7 :
-			printf("------>		Going to build float pointer declaration statement.\n");
+			printf("Going to build float pointer declaration statement.\n");
 			theType = type_create(TYPE_FLOAT_POINTER, NULL, NULL);
 			break;
 		case 8 :
-			printf("------>		Going to build int pointer declaration statement.\n");
+			printf("Going to build int pointer declaration statement.\n");
 			theType = type_create(TYPE_INT_POINTER, NULL, NULL);
 			break;
 		case 9 :
-			printf("------>		Going to build char pointer declaration statement.\n");
+			printf("Going to build char pointer declaration statement.\n");
 			theType = type_create(TYPE_CHAR_POINTER, NULL, NULL);
 			break;
 		case 10 :
-			printf("------>		Going to build bool declaration statement.\n");
+			printf("Going to build bool declaration statement.\n");
 			theType = type_create(TYPE_BOOLEAN, NULL, NULL);
 			break;
 		default : 
@@ -524,19 +523,19 @@ void BuildAssignmentExprStatement(char* temp, char* temp2, command* commandNode,
 
 	switch (operation) {
 		case 1 :
-			printf("------>		Going to build add assignment expression statement.\n");
+			printf("Going to build add assignment expression statement.\n");
 			theExpr = expr_create(EXPR_ADD_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
 			break;
 		case 2 :
-			printf("------>		Going to build sub assignment expression statement.\n");
+			printf("Going to build sub assignment expression statement.\n");
 			theExpr = expr_create(EXPR_SUB_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
 			break;
 		case 3 :
-			printf("------>		Going to build mul assignment expression statement.\n");
+			printf("Going to build mul assignment expression statement.\n");
 			theExpr = expr_create(EXPR_MUL_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
 			break;
 		case 4 :
-			printf("------>		Going to build div assignment expression statement.\n");
+			printf("Going to build div assignment expression statement.\n");
 			theExpr = expr_create(EXPR_DIV_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', NULL);
 			break;
 		default : 
@@ -548,7 +547,7 @@ void BuildAssignmentExprStatement(char* temp, char* temp2, command* commandNode,
 
 
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode) {
-	printf("------>		Going to build add declaration statement.\n");
+	printf("Going to build add declaration statement.\n");
 	expr* theExpr = expr_create_string(temp);
 	decl* theDeclaration = decl_create(temp2, NULL, theExpr, NULL);
 	stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
@@ -557,7 +556,7 @@ void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode) {
 
 
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp) {
-	printf("------>		Going to build statement new.\n");
+	printf("Going to build statement new.\n");
 	current = current->next;
 	current = current->next;
 	expr* expr1 = expr_create_string(temp);
