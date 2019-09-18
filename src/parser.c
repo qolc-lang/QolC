@@ -827,27 +827,23 @@ void parsing(parse_state* current, command* commandNode) {
 					printf("Going to build delete statement.\n");
 					current = current->next;
 					theStack[0][top] = '\0';
-					printf("the value to work as expr : %s\n", current->value);
-					expr* identifierExpr = expr_create_string(current->value);
-					stmt* delete_stmt = stmt_create(STMT_DELETE, NULL, NULL, identifierExpr, NULL, NULL, NULL, NULL, NULL, -1);
-					push_commandList(commandNode, NULL, delete_stmt, NULL);
+					BuildSingleExprStatement(current->value, commandNode, 6);
+					printf("**********************************************************\n");
 					current = current->next;
 					continue;
 				}
 
 				theStack[0][top] = '\0';
-				printf("now in the stack : %s\n", theStack[top]);
 				strcpy(temp, theStack[top]);
 				theStack[0][top] = '\0';
 				pop(&top);
-				printf("now in the stack : %s\n", theStack[top]);
 
 				if (strlen(theStack[top]) == 0) {
 					continue;
 				}
 
 				if (strcmp(theStack[top], "@") == 0) {
-					printf("going for just a declaration\n");
+					printf("Going for just a declaration\n");
 					current = current->next;
 					if (strcmp(current->value, "int") == 0) {
 						type* int_type = type_create(TYPE_INTEGER, NULL, NULL);
@@ -913,7 +909,6 @@ void parsing(parse_state* current, command* commandNode) {
 	Checking the stack top for complex commands
 */
 parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, command* commandNode) {
-	printf("the stack top %s\n", theStackTop);
 
 	char tempStack[200][100];
 	int tempTop = 0;
@@ -927,14 +922,9 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 		Checking for assert statement
 	*/
 	if (strcmp(theStackTop, "assert") == 0) {
-		printf("going in assert loop\n");
-
 		while (strcmp(current->type, "end of command") != 0) {
-			printf("in assert loop with value : %s\n", current->value);
-
 			if (isNumberType(current->type) == 1) {
 				if (tempTop == 0) {
-					printf("going to insert value : %s\n", current->value);
 					++tempTop;
 					push(tempStack[tempTop], &tempTop, current->value);
 					current = current->next;
@@ -945,24 +935,18 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 				if (strcmp(tempStack[tempTop], "int") == 0) {
 				}
 				else {
-					printf("the top : %d\n", tempTop);
 					if ((empty(&tempTop) == 0) && (doneFlag == 0)) {
-						printf("stack not empty : %d\n", tempTop);
 
 						if (strcmp(tempStack[tempTop], ">") == 0) 
 						{ 
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							pop(&tempTop);
-							printf("now in the stack : %s\n", tempStack[tempTop]);
-							printf("going to build comparing expression\n");
-							printf("the value to work as expr : %s\n", current->value);
 							expr* leftExpr = expr_create_string(tempStack[tempTop]);
 							expr* rightExpr = expr_create_string(current->value);
 							expr* cmp_expr = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
-							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
 							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
@@ -971,15 +955,11 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							pop(&tempTop);
-							printf("now in the stack : %s\n", tempStack[tempTop]);
-							printf("going to build comparing expression\n");
-							printf("the value to work as expr : %s\n", current->value);
 							expr* leftExpr = expr_create_string(tempStack[tempTop]);
 							expr* rightExpr = expr_create_string(current->value);
 							expr* cmp_expr = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
-							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
 							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
@@ -988,15 +968,11 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							pop(&tempTop);
-							printf("now in the stack : %s\n", tempStack[tempTop]);
-							printf("going to build comparing expression\n");
-							printf("the value to work as expr : %s\n", current->value);
 							expr* leftExpr = expr_create_string(tempStack[tempTop]);
 							expr* rightExpr = expr_create_string(current->value);
 							expr* cmp_expr = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
-							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
 							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
@@ -1005,15 +981,11 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							pop(&tempTop);
-							printf("now in the stack : %s\n", tempStack[tempTop]);
-							printf("going to build comparing expression\n");
-							printf("the value to work as expr : %s\n", current->value);
 							expr* leftExpr = expr_create_string(tempStack[tempTop]);
 							expr* rightExpr = expr_create_string(current->value);
 							expr* cmp_expr = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
-							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
 							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
@@ -1022,20 +994,14 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
 							pop(&tempTop);
-							printf("now in the stack : %s\n", tempStack[tempTop]);
-							printf("going to build comparing expression\n");
-							printf("the value to work as expr : %s\n", current->value);
 							expr* leftExpr = expr_create_string(tempStack[tempTop]);
 							expr* rightExpr = expr_create_string(current->value);
 							expr* cmp_expr = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
 							tempStack[0][tempTop] = '\0';
 							pop(&tempTop);
-							printf("now stack must be empty with top : %s, %d\n", tempStack[0][tempTop], tempTop);
 							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
 							push_commandList(commandNode, NULL, assert_stmt, NULL);
 						}
-
-						printf("going to insert value : %s\n", current->value);
 						++tempTop;
 						push(tempStack[tempTop], &tempTop, current->value);
 					}
@@ -1043,7 +1009,6 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 
 			}
 			else if (strcmp(current->type, "operator") == 0) {
-				printf("operator %s going in\n", current->value);
 				++tempTop;
 				push(tempStack[tempTop], &tempTop, current->value);
 			} 
