@@ -133,6 +133,13 @@ void parsing(parse_state* current, command* commandNode) {
 			current = current->next;
 			continue;
 		}
+		else if (strcmp(current->value, "void") == 0) {
+			printf("Void keyword going in.\n");
+			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
+			current = current->next;
+			continue;
+		}
 		else if (strcmp(current->value, "@") == 0) {
 
 			//Checking if the @ is part of comment
@@ -783,6 +790,18 @@ void parsing(parse_state* current, command* commandNode) {
 					theStack[0][top] = '\0';
 					BuildDeclarationExprStatement(current->value, commandNode, temp, 6, sTypeOfMember);
 				}
+				else if (strcmp(theStack[top], "void") == 0) {
+					doneFlag = 1;
+					theStack[0][top] = '\0';
+					pop(&top);
+					theStack[0][top] = '\0';
+					pop(&top);
+					strcpy(temp, theStack[top]);
+					theStack[0][top] = '\0';
+					pop(&top);
+					theStack[0][top] = '\0';
+					BuildDeclarationExprStatement(current->value, commandNode, temp, 11, sTypeOfMember);
+				}
 			}
 			else if ((strcmp(current->value, "true") == 0) || (strcmp(current->value, "false") == 0)) {
 				pop(&top);
@@ -874,6 +893,12 @@ void parsing(parse_state* current, command* commandNode) {
 						decl* bool_declaration = decl_create(temp, bool_type, NULL, NULL);
 						stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, bool_decl_stmt, NULL);
+					}
+					else if (strcmp(current->value, "void") == 0) {
+						type* void_type = type_create(TYPE_VOID, NULL, NULL);
+						decl* void_declaration = decl_create(temp, void_type, NULL, NULL);
+						stmt* void_decl_stmt = stmt_create(STMT_DECL, void_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
+						push_commandList(commandNode, NULL, void_decl_stmt, NULL);
 					}
 					else if ((strcmp(current->value, "false") == 0) || (strcmp(current->value, "true") == 0)) {
 						pop(&top);

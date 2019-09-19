@@ -504,6 +504,10 @@ void BuildDeclarationExprStatement(char* currentValue, command* commandNode, cha
 			printf("Going to build bool declaration statement.\n");
 			theType = type_create(TYPE_BOOLEAN, NULL, NULL);
 			break;
+		case 11:
+			printf("Going to build void declaration statement.\n");
+			theType = type_create(TYPE_VOID, NULL, NULL);
+			break;
 		default : 
 			break; 
 	}

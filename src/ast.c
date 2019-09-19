@@ -60,26 +60,6 @@ type* type_create(type_t kind, type *subtype, param_list *params) {
 }
 
 /*
-	Creating and returning an integer expression
-*/
-expr* expr_create_integer(int i) {
-	expr* e = malloc(sizeof(*e));
-	e->kind = EXPR_INTEGER_LITERAL;
-	e->integer_value = i;
-	return e;
-}
-
-/*
-	Creating and returning a character expression
-*/
-expr* expr_create_char(char c) {
-	expr* e = malloc(sizeof(*e));
-	e->kind = EXPR_CHAR_LITERAL;
-	e->character_value = c;
-	return e;
-}
-
-/*
 	Creating and returning a string expression
 */
 expr* expr_create_string(char* string_literal) {

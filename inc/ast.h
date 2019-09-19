@@ -3,6 +3,9 @@
 
 #include "lexer_node.h"
 
+/*
+	Definition of the various types
+*/
 typedef enum {
 	TYPE_VOID,
 	TYPE_BOOLEAN,
@@ -19,7 +22,8 @@ typedef enum {
 	TYPE_HEXNUM,
 	TYPE_STRUCT,
 	TYPE_ENUM,
-	TYPE_UNION
+	TYPE_UNION,
+	TYPE_VOID_POINTER
 } type_t;
 
 typedef struct type {
@@ -28,12 +32,18 @@ typedef struct type {
 	struct param_list *params;
 }type;
 
+
+//Struct for extra possible parameters
 typedef struct param_list {
 	char *name;
 	type *theType;
 	struct param_list *next;
 }param_list;
 
+
+/*
+	Definition of the various expressions
+*/
 typedef enum {
 	EXPR_ADD,
 	EXPR_SUB,
@@ -45,8 +55,6 @@ typedef enum {
 	EXPR_DIV_ASSIGNMENT,
 	EXPR_INCREMENT,
 	EXPR_DECREMENT,
-	EXPR_INTEGER_LITERAL,
-	EXPR_CHAR_LITERAL,
 	EXPR_STRING_LITERAL,
 	EXPR_BIGGER_CMP,
 	EXPR_BIGGEROREQ_CMP,
@@ -71,6 +79,10 @@ typedef struct expr_list
 	struct expr_list* next;
 }expr_list;
 
+
+/*
+	Definition of the various statements
+*/
 typedef enum {
 	STMT_DECL,
 	STMT_EXPR,
@@ -109,6 +121,9 @@ typedef struct stmt {
 	int memberOf;
 }stmt;
 
+/*
+	Structure for declaration statements
+*/
 typedef struct decl {
 	char name[100];
 	type* theType;
@@ -117,12 +132,11 @@ typedef struct decl {
 	struct decl* next;
 }decl;
 
+
 decl* decl_create(char *name, type *theType, expr *value, stmt *code);
 stmt* stmt_create(stmt_t kind, decl *theDecl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next, int memberOf);
 type* type_create(type_t kind, type *subtype, param_list *params);
 expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal); 
-expr* expr_create_integer(int i);
-expr* expr_create_char(char c);
 expr* expr_create_string(char* string_literal);
 void push_expressionList(expr_list* node, expr* theExpr);
 

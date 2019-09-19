@@ -43,7 +43,12 @@ void print_commandList(command* commandNode) {
 				else {
 					temp_type =  (int)current->aStmt->decl->theType->kind;
 
-					if (temp_type == 1) {
+					if (temp_type == 0) {
+						printf("	TYPE_VOID\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else if (temp_type == 1) {
 						printf("	TYPE_BOOLEAN\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
@@ -101,6 +106,11 @@ void print_commandList(command* commandNode) {
 					}
 					else if (temp_type == 15) {
 						printf("	TYPE_UNION\n");
+					}
+					else if (temp_type == 16) {
+						printf("	TYPE_VOID_POINTER\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
 				}
 				if (current->aStmt->memberOf != -1) {

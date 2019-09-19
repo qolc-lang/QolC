@@ -4,6 +4,7 @@ load "myFile"
 hello@string|"Hello World!"|
 s@string
 flag@bool
+u@void
 c@char
 x@int|0|
 o@float|0.5|
@@ -35,6 +36,7 @@ s /= k
 z /= 76
 m@float^|null|
 j@int^|null|
+k@void^|null|
 b@string^|null|
 v@char^|null|
 delete my_node
@@ -86,7 +88,7 @@ s@string
 sleep|4|
 
 scan|input|
-cast|i, void|
+cast|i, bool|
 array_add|myArray, k|
 
 my_node@new node
