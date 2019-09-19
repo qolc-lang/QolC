@@ -506,6 +506,10 @@ void BuildDeclarationExprStatement(char* currentValue, command* commandNode, cha
 			break;
 		case 11:
 			printf("Going to build void declaration statement.\n");
+			theType = type_create(TYPE_VOID_POINTER, NULL, NULL);
+			break;
+		case 12:
+			printf("Going to build void declaration statement.\n");
 			theType = type_create(TYPE_VOID, NULL, NULL);
 			break;
 		default : 

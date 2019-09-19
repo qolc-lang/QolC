@@ -14,8 +14,6 @@ int isKeyword(char buffer[]){
 	int i, flag = 0;
 	for(i = 0; i < 33; ++i){
 		if(strcmp(keywords[i], buffer) == 0){
-			//to be deleted
-			printf("WE FOUND IT!!!!!! with value : %s\n", buffer);
 			flag = 1;
 			break;
 		}

@@ -24,6 +24,7 @@ void parsing(parse_state* current, command* commandNode) {
 	char theStack[200][100];
 	char temp[100], temp2[100];
 	int sTypeOfMember;
+	int iIsPointer = 0;
 	
 	init(&top);
 	memset(temp, 0, sizeof(temp));
@@ -309,6 +310,7 @@ void parsing(parse_state* current, command* commandNode) {
 		else if (strcmp(current->value, "^") == 0) {
 			printf("Operator ^ going in.\n");
 			push(theStack[top], &top, current->value);
+			iIsPointer = 1;
 			printf("**********************************************************\n");
 			current = current->next;
 			continue;
@@ -790,8 +792,9 @@ void parsing(parse_state* current, command* commandNode) {
 					theStack[0][top] = '\0';
 					BuildDeclarationExprStatement(current->value, commandNode, temp, 6, sTypeOfMember);
 				}
-				else if (strcmp(theStack[top], "void") == 0) {
+				else if ((strcmp(theStack[top], "void") == 0) && (iIsPointer == 1)) {
 					doneFlag = 1;
+					iIsPointer = 0;
 					theStack[0][top] = '\0';
 					pop(&top);
 					theStack[0][top] = '\0';
@@ -801,6 +804,16 @@ void parsing(parse_state* current, command* commandNode) {
 					pop(&top);
 					theStack[0][top] = '\0';
 					BuildDeclarationExprStatement(current->value, commandNode, temp, 11, sTypeOfMember);
+				}
+				else if ((strcmp(theStack[top], "void") == 0) && (iIsPointer == 0)) {
+					doneFlag = 1;
+					theStack[0][top] = '\0';
+					pop(&top);
+					strcpy(temp, theStack[top]);
+					theStack[0][top] = '\0';
+					pop(&top);
+					theStack[0][top] = '\0';
+					BuildDeclarationExprStatement(current->value, commandNode, temp, 12, sTypeOfMember);
 				}
 			}
 			else if ((strcmp(current->value, "true") == 0) || (strcmp(current->value, "false") == 0)) {

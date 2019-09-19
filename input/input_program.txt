@@ -9,6 +9,7 @@ c@char
 x@int|0|
 o@float|0.5|
 my_b1@bool|true|
+myVoid@void|null|
 e@char|'g|
 p@float
 f@0.5
