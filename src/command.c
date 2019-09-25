@@ -118,6 +118,7 @@ void print_commandList(command* commandNode) {
 					if (current->aStmt->memberOf == 1) printf("		member of struct\n");
 					else if (current->aStmt->memberOf == 2) printf("		member of union\n");
 					else if (current->aStmt->memberOf == 3) printf("		member of enum\n");
+					else if (current->aStmt->memberOf == 4) printf("		member of assert\n");
 					else;
 				}
 			}
@@ -148,36 +149,6 @@ void print_commandList(command* commandNode) {
 			}
 			else if (value == 9) {
 				printf("STMT_ASSERT\n");
-				int assert_val = (int)current->aStmt->theExpr->kind;
-
-				if (assert_val == 13) {
-					printf("	EXPR_BIGGER_CMP\n");
-					printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
-					printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
-				}
-				else if (assert_val == 14) {
-					printf("	EXPR_BIGGEROREQ_CMP\n");
-					printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
-					printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
-				}
-				else if (assert_val == 15) {
-					printf("	EXPR_SMALLER_CMP\n");
-					printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
-					printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
-				}
-				else if (assert_val == 16) {
-					printf("	EXPR_SMALLEROREQ_CMP\n");
-					printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
-					printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
-				}
-				else if (assert_val == 17) {
-					printf("	EXPR_EQUAL_CMP\n");
-					printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
-					printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
-				}
-				else {
-
-				}
 			}
 			else if (value == 10) {
 				printf("STMT_RETURN\n");
@@ -347,33 +318,41 @@ void print_commandList(command* commandNode) {
 				printf("EXPR_DECREMENT\n");
 				printf("	identifier : %s\n", current->anExpr->string_literal);
 			}
-			else if (val == 13) {
+			else if (val == 11) {
 				printf("EXPR_BIGGER_CMP\n");
 				printf("	left : %s\n", current->anExpr->left->string_literal);
 				printf("	right : %s\n", current->anExpr->right->string_literal);
 			}
-			else if (val == 14) {
+			else if (val == 12) {
 				printf("EXPR_BIGGEROREQ_CMP\n");
 				printf("	left : %s\n", current->anExpr->left->string_literal);
 				printf("	right : %s\n", current->anExpr->right->string_literal);
 			}
-			else if (val == 15) {
+			else if (val == 13) {
 				printf("EXPR_SMALLER_CMP\n");
 				printf("	left : %s\n", current->anExpr->left->string_literal);
 				printf("	right : %s\n", current->anExpr->right->string_literal);
 			}
-			else if (val == 16) {
+			else if (val == 14) {
 				printf("EXPR_SMALLEROREQ_CMP\n");
 				printf("	left : %s\n", current->anExpr->left->string_literal);
 				printf("	right : %s\n", current->anExpr->right->string_literal);
 			}
-			else if (val == 17) {
+			else if (val == 15) {
 				printf("EXPR_EQUAL_CMP\n");
 				printf("	left : %s\n", current->anExpr->left->string_literal);
 				printf("	right : %s\n", current->anExpr->right->string_literal);
 			}
 			else {
 
+			}
+			if (current->anExpr->memberOf != -1) {
+
+				if (current->anExpr->memberOf == 1) printf("		member of struct\n");
+				else if (current->anExpr->memberOf == 2) printf("		member of union\n");
+				else if (current->anExpr->memberOf == 3) printf("		member of enum\n");
+				else if (current->anExpr->memberOf == 4) printf("		member of assert\n");
+				else;
 			}
 		}
 		else {

@@ -159,14 +159,6 @@ void parsing(parse_state* current, command* commandNode) {
 			current = current->next;
 			continue;
 		}
-		else if (strcmp(current->value, "assert") == 0) {
-			printf("Assert statement to be built.\n");
-			push(theStack[top], &top, current->value);
-			current = checkTheStack(current, theStack[0], top, commandNode);
-			pop(&top);
-			theStack[0][top] = '\0';
-			continue;
-		}
 		else if (strcmp(current->value, "return") == 0) {
 			printf("Return statement to be built.\n");
 			push(theStack[top], &top, current->value);
@@ -358,6 +350,16 @@ void parsing(parse_state* current, command* commandNode) {
 			continue;
 		}
 
+		if (strcmp(current->value, "assert") == 0) {
+			printf("Assert statement to be built.\n");
+			flags.nIsAssertMember = 1;
+			stmt* theStmt = stmt_create(STMT_ASSERT, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+			push_commandList(commandNode, NULL, theStmt, NULL);
+			printf("**********************************************************\n");
+			current = current->next;
+			continue;
+		}
+
 		if (strcmp(current->type, "block end") == 0) {
 			printf("Going to clear the flags.\n");
 			ClearFlags(&flags);
@@ -420,6 +422,12 @@ void parsing(parse_state* current, command* commandNode) {
 		if (isNumberType(current->type) == 1) {
 			int doneFlag = 0;
 			pop(&top);
+
+			sTypeOfMember = CheckIfMemberOfStatement(flags);
+			if (sTypeOfMember != -1) {
+				printf("It is member of : %d\n", sTypeOfMember);
+			}
+
 			if (strcmp(theStack[top], "print") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
@@ -486,7 +494,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				theStack[0][top] = '\0';
 				pop(&top);
-				BuildAssignmentExprStatement(temp, temp2, commandNode, 1);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 1, sTypeOfMember);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "-=") == 0) {
@@ -497,7 +505,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				theStack[0][top] = '\0';
 				pop(&top);
-				BuildAssignmentExprStatement(temp, temp2, commandNode, 2);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 2, sTypeOfMember);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "*=") == 0) {
@@ -508,7 +516,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				theStack[0][top] = '\0';
 				pop(&top);
-				BuildAssignmentExprStatement(temp, temp2, commandNode, 3);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 3, sTypeOfMember);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "/=") == 0) {
@@ -519,7 +527,19 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				theStack[0][top] = '\0';
 				pop(&top);
-				BuildAssignmentExprStatement(temp, temp2, commandNode, 4);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 4, sTypeOfMember);
+				notTheEndFlag = 0;
+			}
+			else if (strcmp(theStack[top], ">") == 0)
+			{
+				doneFlag = 1;
+				theStack[0][top] = '\0';
+				pop(&top);
+				strcpy(temp, current->value);
+				strcpy(temp2, theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 5, sTypeOfMember);
 				notTheEndFlag = 0;
 			}
 			else {
@@ -528,6 +548,14 @@ void parsing(parse_state* current, command* commandNode) {
 					printf("Going to insert the value : %s\n", current->value);
 					++top;
 					push(theStack[top], &top, current->value);
+				}
+				else {
+					if (flags.nIsAssertMember == 1) {
+						printf("The stack at number type is empty\n", top);
+						printf("Going to insert the value : %s\n", current->value);
+						++top;
+						push(theStack[top], &top, current->value);
+					}
 				}
 			}
 		}
@@ -604,14 +632,14 @@ void parsing(parse_state* current, command* commandNode) {
 			else if (strcmp(theStack[top], "++") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
-				expr* incrementExpr = expr_create(EXPR_INCREMENT, NULL, NULL, 0, '\0', current->value);
+				expr* incrementExpr = expr_create(EXPR_INCREMENT, NULL, NULL, 0, '\0', current->value, sTypeOfMember);
 				push_commandList(commandNode, NULL, NULL, incrementExpr);
 				notTheEndFlag = 0; 
 			}
 			else if (strcmp(theStack[top], "--") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
-				expr* decrementExpr = expr_create(EXPR_DECREMENT, NULL, NULL, 0, '\0', current->value);
+				expr* decrementExpr = expr_create(EXPR_DECREMENT, NULL, NULL, 0, '\0', current->value, sTypeOfMember);
 				push_commandList(commandNode, NULL, NULL, decrementExpr);
 				notTheEndFlag = 0;
 			}
@@ -623,7 +651,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildAssignmentExprStatement(temp, temp2, commandNode, 1);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 1, sTypeOfMember);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "-=") == 0) {
@@ -634,7 +662,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildAssignmentExprStatement(temp, temp2, commandNode, 2);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 2, sTypeOfMember);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "*=") == 0) {
@@ -645,7 +673,7 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildAssignmentExprStatement(temp, temp2, commandNode, 3);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 3, sTypeOfMember);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "/=") == 0) {
@@ -656,7 +684,19 @@ void parsing(parse_state* current, command* commandNode) {
 				strcpy(temp2, theStack[top]);
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildAssignmentExprStatement(temp, temp2, commandNode, 4);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 4, sTypeOfMember);
+				notTheEndFlag = 0;
+			}
+			else if (strcmp(theStack[top], ">") == 0)
+			{
+				doneFlag = 1;
+				theStack[0][top] = '\0';
+				pop(&top);
+				strcpy(temp, current->value);
+				strcpy(temp2, theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 5, sTypeOfMember);
 				notTheEndFlag = 0;
 			}
 			else {
@@ -934,6 +974,12 @@ void parsing(parse_state* current, command* commandNode) {
 					push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 				}
 			}
+
+			if (flags.nIsAssertMember == 1)
+			{
+				printf("Going to clear assert flags at the end of command.\n");
+				flags.nIsAssertMember == 0;
+			}
 		}
 		
 		printf("**********************************************************\n");
@@ -959,106 +1005,107 @@ parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, com
 	/*
 		Checking for assert statement
 	*/
-	if (strcmp(theStackTop, "assert") == 0) {
-		while (strcmp(current->type, "end of command") != 0) {
-			if (isNumberType(current->type) == 1) {
-				if (tempTop == 0) {
-					++tempTop;
-					push(tempStack[tempTop], &tempTop, current->value);
-					current = current->next;
-					continue;
-				}
+	//if (strcmp(theStackTop, "assert") == 0) {
+	//	while (strcmp(current->type, "end of command") != 0) {
+	//		if (isNumberType(current->type) == 1) {
+	//			if (tempTop == 0) {
+	//				++tempTop;
+	//				push(tempStack[tempTop], &tempTop, current->value);
+	//				current = current->next;
+	//				continue;
+	//			}
 
-				pop(&tempTop);
-				if (strcmp(tempStack[tempTop], "int") == 0) {
-				}
-				else {
-					if ((empty(&tempTop) == 0) && (doneFlag == 0)) {
+	//			pop(&tempTop);
+	//			if (strcmp(tempStack[tempTop], "int") == 0) {
+	//			}
+	//			else {
+	//				if ((empty(&tempTop) == 0) && (doneFlag == 0)) {
 
-						if (strcmp(tempStack[tempTop], ">") == 0) 
-						{ 
-							tempStack[0][tempTop] = '\0';
-							pop(&tempTop);
-							pop(&tempTop);
-							expr* leftExpr = expr_create_string(tempStack[tempTop]);
-							expr* rightExpr = expr_create_string(current->value);
-							expr* cmp_expr = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-							tempStack[0][tempTop] = '\0';
-							pop(&tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
-							push_commandList(commandNode, NULL, assert_stmt, NULL);
-						}
-						else if (strcmp(tempStack[tempTop], ">=") == 0) 
-						{ 
-							tempStack[0][tempTop] = '\0';
-							pop(&tempTop);
-							pop(&tempTop);
-							expr* leftExpr = expr_create_string(tempStack[tempTop]);
-							expr* rightExpr = expr_create_string(current->value);
-							expr* cmp_expr = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-							tempStack[0][tempTop] = '\0';
-							pop(&tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
-							push_commandList(commandNode, NULL, assert_stmt, NULL);
-						}
-						else if (strcmp(tempStack[tempTop], "<") == 0) 
-						{ 
-							tempStack[0][tempTop] = '\0';
-							pop(&tempTop);
-							pop(&tempTop);
-							expr* leftExpr = expr_create_string(tempStack[tempTop]);
-							expr* rightExpr = expr_create_string(current->value);
-							expr* cmp_expr = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-							tempStack[0][tempTop] = '\0';
-							pop(&tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
-							push_commandList(commandNode, NULL, assert_stmt, NULL);
-						}
-						else if (strcmp(tempStack[tempTop], "<=") == 0) 
-						{ 
-							tempStack[0][tempTop] = '\0';
-							pop(&tempTop);
-							pop(&tempTop);
-							expr* leftExpr = expr_create_string(tempStack[tempTop]);
-							expr* rightExpr = expr_create_string(current->value);
-							expr* cmp_expr = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-							tempStack[0][tempTop] = '\0';
-							pop(&tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
-							push_commandList(commandNode, NULL, assert_stmt, NULL);
-						}
-						else if (strcmp(tempStack[tempTop], "@==") == 0) 
-						{ 
-							tempStack[0][tempTop] = '\0';
-							pop(&tempTop);
-							pop(&tempTop);
-							expr* leftExpr = expr_create_string(tempStack[tempTop]);
-							expr* rightExpr = expr_create_string(current->value);
-							expr* cmp_expr = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
-							tempStack[0][tempTop] = '\0';
-							pop(&tempTop);
-							stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
-							push_commandList(commandNode, NULL, assert_stmt, NULL);
-						}
-						++tempTop;
-						push(tempStack[tempTop], &tempTop, current->value);
-					}
-				}
+	//					if (strcmp(tempStack[tempTop], ">") == 0) 
+	//					{ 
+	//						tempStack[0][tempTop] = '\0';
+	//						pop(&tempTop);
+	//						pop(&tempTop);
+	//						expr* leftExpr = expr_create_string(tempStack[tempTop]);
+	//						expr* rightExpr = expr_create_string(current->value);
+	//						expr* cmp_expr = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+	//						tempStack[0][tempTop] = '\0';
+	//						pop(&tempTop);
+	//						stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
+	//						push_commandList(commandNode, NULL, assert_stmt, NULL);
+	//					}
+	//					else if (strcmp(tempStack[tempTop], ">=") == 0) 
+	//					{ 
+	//						tempStack[0][tempTop] = '\0';
+	//						pop(&tempTop);
+	//						pop(&tempTop);
+	//						expr* leftExpr = expr_create_string(tempStack[tempTop]);
+	//						expr* rightExpr = expr_create_string(current->value);
+	//						expr* cmp_expr = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+	//						tempStack[0][tempTop] = '\0';
+	//						pop(&tempTop);
+	//						stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
+	//						push_commandList(commandNode, NULL, assert_stmt, NULL);
+	//					}
+	//					else if (strcmp(tempStack[tempTop], "<") == 0) 
+	//					{ 
+	//						tempStack[0][tempTop] = '\0';
+	//						pop(&tempTop);
+	//						pop(&tempTop);
+	//						expr* leftExpr = expr_create_string(tempStack[tempTop]);
+	//						expr* rightExpr = expr_create_string(current->value);
+	//						expr* cmp_expr = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+	//						tempStack[0][tempTop] = '\0';
+	//						pop(&tempTop);
+	//						stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
+	//						push_commandList(commandNode, NULL, assert_stmt, NULL);
+	//					}
+	//					else if (strcmp(tempStack[tempTop], "<=") == 0) 
+	//					{ 
+	//						tempStack[0][tempTop] = '\0';
+	//						pop(&tempTop);
+	//						pop(&tempTop);
+	//						expr* leftExpr = expr_create_string(tempStack[tempTop]);
+	//						expr* rightExpr = expr_create_string(current->value);
+	//						expr* cmp_expr = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+	//						tempStack[0][tempTop] = '\0';
+	//						pop(&tempTop);
+	//						stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
+	//						push_commandList(commandNode, NULL, assert_stmt, NULL);
+	//					}
+	//					else if (strcmp(tempStack[tempTop], "@==") == 0) 
+	//					{ 
+	//						tempStack[0][tempTop] = '\0';
+	//						pop(&tempTop);
+	//						pop(&tempTop);
+	//						expr* leftExpr = expr_create_string(tempStack[tempTop]);
+	//						expr* rightExpr = expr_create_string(current->value);
+	//						expr* cmp_expr = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL);
+	//						tempStack[0][tempTop] = '\0';
+	//						pop(&tempTop);
+	//						stmt* assert_stmt = stmt_create(STMT_ASSERT, NULL, NULL, cmp_expr, NULL, NULL, NULL, NULL, NULL, -1);
+	//						push_commandList(commandNode, NULL, assert_stmt, NULL);
+	//					}
+	//					++tempTop;
+	//					push(tempStack[tempTop], &tempTop, current->value);
+	//				}
+	//			}
 
-			}
-			else if (strcmp(current->type, "operator") == 0) {
-				++tempTop;
-				push(tempStack[tempTop], &tempTop, current->value);
-			} 
+	//		}
+	//		else if (strcmp(current->type, "operator") == 0) {
+	//			++tempTop;
+	//			push(tempStack[tempTop], &tempTop, current->value);
+	//		} 
 
 
-			current = current->next;
+	//		current = current->next;
 
-			if (current == NULL)
-				break;
-		}
-	}
-	else if (strcmp(theStackTop, "return") == 0) {
+	//		if (current == NULL)
+	//			break;
+	//	}
+	//}
+	
+	if (strcmp(theStackTop, "return") == 0) {
 		printf("Going in return loop\n");
 		int operatorInsideStack = 0; 
 		int operatorUsed = 0;

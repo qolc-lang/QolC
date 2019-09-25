@@ -71,6 +71,7 @@ typedef struct expr {
 	char *string_id;
 	int integer_value;
 	char character_value;
+	int memberOf;
 }expr;
 
 typedef struct expr_list
@@ -136,7 +137,7 @@ typedef struct decl {
 decl* decl_create(char *name, type *theType, expr *value, stmt *code);
 stmt* stmt_create(stmt_t kind, decl *theDecl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next, int memberOf);
 type* type_create(type_t kind, type *subtype, param_list *params);
-expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal); 
+expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal, int memberOf); 
 expr* expr_create_string(char* string_literal);
 void push_expressionList(expr_list* node, expr* theExpr);
 

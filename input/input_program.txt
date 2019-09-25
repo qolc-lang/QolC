@@ -94,4 +94,6 @@ array_add|myArray, k|
 
 my_node@new node
 
-|@
+assert |5 > 2|
+
+@|

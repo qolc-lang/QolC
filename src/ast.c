@@ -35,7 +35,7 @@ stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nex
 /*
 	Creating and returning an expression
 */
-expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal) {
+expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal, int memberOf) {
 	expr* e = malloc(sizeof(*e));
 	e->kind = kind;
 	e->left = left;
@@ -45,6 +45,7 @@ expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char 
 	e->string_literal = malloc(sizeof(char) * 100);
 	if (string_literal != NULL)
 		strcpy(e->string_literal, string_literal);
+	e->memberOf = memberOf;
 	return e;
 }
 

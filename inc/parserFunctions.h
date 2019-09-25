@@ -20,6 +20,7 @@ typedef struct memberFlags
 	int nIsStructMember;
 	int nIsUnionMember;
 	int nIsEnumMember;
+	int nIsAssertMember;
 }memberFlags;
 
 parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode);
@@ -29,7 +30,7 @@ void BuildSingleExprStatement(char* currentValue, command* commandNode, int stat
 void BuildDoubleExprStatement(parse_state* current, command* commandNode, int statement);
 void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
 void BuildDeclarationExprStatement(char* currentValue, command* commandNode, char* temp, int type, int typeOfMember);
-void BuildAssignmentExprStatement(char* temp, char* temp2, command* commandNode, int operation);
+void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* commandNode, int operation, int typeOfMember);
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
 int CheckIfMemberOfStatement(memberFlags mFlags);
 void ClearFlags(memberFlags* mFlags);
