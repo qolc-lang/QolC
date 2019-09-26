@@ -292,6 +292,13 @@ void parsing(parse_state* current, command* commandNode) {
 			current = current->next;
 			continue;
 		}
+		else if (strcmp(current->value, "@==") == 0) {
+			printf("Operator @== going in.\n");
+			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
+			current = current->next;
+			continue;
+		}
 		else if (strcmp(current->value, "/@") == 0) {
 			printf("Comment symbol going in.\n");
 			push(theStack[top], &top, current->value);
@@ -542,6 +549,54 @@ void parsing(parse_state* current, command* commandNode) {
 				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 5, sTypeOfMember);
 				notTheEndFlag = 0;
 			}
+			else if (strcmp(theStack[top], ">=") == 0)
+			{
+				doneFlag = 1;
+				theStack[0][top] = '\0';
+				pop(&top);
+				strcpy(temp, current->value);
+				strcpy(temp2, theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 6, sTypeOfMember);
+				notTheEndFlag = 0;
+			}
+			else if (strcmp(theStack[top], "<") == 0)
+			{
+				doneFlag = 1;
+				theStack[0][top] = '\0';
+				pop(&top);
+				strcpy(temp, current->value);
+				strcpy(temp2, theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 7, sTypeOfMember);
+				notTheEndFlag = 0;
+			}
+			else if (strcmp(theStack[top], "<=") == 0)
+			{
+				doneFlag = 1;
+				theStack[0][top] = '\0';
+				pop(&top);
+				strcpy(temp, current->value);
+				strcpy(temp2, theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 8, sTypeOfMember);
+				notTheEndFlag = 0;
+			}
+			else if (strcmp(theStack[top], "@==") == 0)
+			{
+				doneFlag = 1;
+				theStack[0][top] = '\0';
+				pop(&top);
+				strcpy(temp, current->value);
+				strcpy(temp2, theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 9, sTypeOfMember);
+				notTheEndFlag = 0;
+			}
 			else {
 				if ((empty(&top) == 0) && (doneFlag == 0)) {
 					printf("The stack at number type is not empty\n", top);
@@ -697,6 +752,54 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 5, sTypeOfMember);
+				notTheEndFlag = 0;
+			}
+			else if (strcmp(theStack[top], ">=") == 0)
+			{
+				doneFlag = 1;
+				theStack[0][top] = '\0';
+				pop(&top);
+				strcpy(temp, current->value);
+				strcpy(temp2, theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 6, sTypeOfMember);
+				notTheEndFlag = 0;
+			}
+			else if (strcmp(theStack[top], "<") == 0)
+			{
+				doneFlag = 1;
+				theStack[0][top] = '\0';
+				pop(&top);
+				strcpy(temp, current->value);
+				strcpy(temp2, theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 7, sTypeOfMember);
+				notTheEndFlag = 0;
+			}
+			else if (strcmp(theStack[top], "<=") == 0)
+			{
+				doneFlag = 1;
+				theStack[0][top] = '\0';
+				pop(&top);
+				strcpy(temp, current->value);
+				strcpy(temp2, theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 8, sTypeOfMember);
+				notTheEndFlag = 0;
+			}
+			else if (strcmp(theStack[top], "@==") == 0)
+			{
+				doneFlag = 1;
+				theStack[0][top] = '\0';
+				pop(&top);
+				strcpy(temp, current->value);
+				strcpy(temp2, theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 9, sTypeOfMember);
 				notTheEndFlag = 0;
 			}
 			else {

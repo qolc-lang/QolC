@@ -550,6 +550,22 @@ void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* comman
 			printf("Going to build bigger expression statement.\n");
 			theExpr = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', NULL, typeOfMember);
 			break;
+		case 6:
+			printf("Going to build bigger or equal expression statement.\n");
+			theExpr = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL, typeOfMember);
+			break;
+		case 7:
+			printf("Going to build smaller expression statement.\n");
+			theExpr = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', NULL, typeOfMember);
+			break;
+		case 8:
+			printf("Going to build smaller or equal expression statement.\n");
+			theExpr = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', NULL, typeOfMember);
+			break;
+		case 9:
+			printf("Going to build equal expression statement.\n");
+			theExpr = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', NULL, typeOfMember);
+			break;
 		default : 
 			break; 
 	}
