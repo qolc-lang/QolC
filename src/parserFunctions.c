@@ -5,7 +5,6 @@
 */
 parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode)
 {
-	int operatorInsideStack = 0; 
 	int operatorUsed = 0;
 	expr_list* expressionListNode = malloc(sizeof(expr_list));
 	parse_state* checkCurrent;
@@ -51,7 +50,6 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 		}
 		else;
 		push_expressionList(expressionListNode, theExpr);
-		operatorInsideStack = 0;
 
 		/* pushin to stack the previous id */
 		++tempTop;

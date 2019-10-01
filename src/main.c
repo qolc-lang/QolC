@@ -9,7 +9,6 @@ int main(int argc, char const *argv[])
 {
 	lexer_node * myNode = malloc(sizeof(lexer_node));
 	parse_state* myState = malloc(sizeof(parse_state));
-	parse_state* sampleState = malloc(sizeof(parse_state));
 
 	char fileName[50];
 	char outputFile[50];

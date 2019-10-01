@@ -246,26 +246,26 @@ print_commandList:
 	movq	%rcx, 16(%rbp)
 	.loc 1 22 0
 	movq	16(%rbp), %rax
-	movq	%rax, -8(%rbp)
+	movq	%rax, -16(%rbp)
 	.loc 1 23 0
-	movl	$0, -12(%rbp)
+	movl	$0, -40(%rbp)
 	.loc 1 27 0
 	jmp	.L5
 .L90:
 	.loc 1 28 0
-	addl	$1, -12(%rbp)
+	addl	$1, -40(%rbp)
 	.loc 1 30 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	(%rax), %rax
 	testq	%rax, %rax
 	jne	.L6
 	.loc 1 33 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	testq	%rax, %rax
 	je	.L7
 	.loc 1 34 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movl	(%rax), %eax
 	movl	%eax, -32(%rbp)
@@ -276,21 +276,21 @@ print_commandList:
 	leaq	.LC0(%rip), %rcx
 	call	puts
 	.loc 1 38 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	%rax, %rdx
 	leaq	.LC1(%rip), %rcx
 	call	printf
 	.loc 1 39 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	104(%rax), %rax
 	testq	%rax, %rax
 	jne	.L9
 	.loc 1 40 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
@@ -301,27 +301,27 @@ print_commandList:
 	jmp	.L10
 .L9:
 	.loc 1 43 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	104(%rax), %rax
 	movl	(%rax), %eax
-	movl	%eax, -44(%rbp)
+	movl	%eax, -20(%rbp)
 	.loc 1 45 0
-	cmpl	$0, -44(%rbp)
+	cmpl	$0, -20(%rbp)
 	jne	.L11
 	.loc 1 46 0
 	leaq	.LC3(%rip), %rcx
 	call	puts
 	.loc 1 47 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
 	testq	%rax, %rax
 	je	.L10
 	.loc 1 48 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
@@ -332,20 +332,20 @@ print_commandList:
 	jmp	.L10
 .L11:
 	.loc 1 50 0
-	cmpl	$1, -44(%rbp)
+	cmpl	$1, -20(%rbp)
 	jne	.L13
 	.loc 1 51 0
 	leaq	.LC4(%rip), %rcx
 	call	puts
 	.loc 1 52 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
 	testq	%rax, %rax
 	je	.L10
 	.loc 1 53 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
@@ -356,20 +356,20 @@ print_commandList:
 	jmp	.L10
 .L13:
 	.loc 1 55 0
-	cmpl	$2, -44(%rbp)
+	cmpl	$2, -20(%rbp)
 	jne	.L15
 	.loc 1 56 0
 	leaq	.LC5(%rip), %rcx
 	call	puts
 	.loc 1 57 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
 	testq	%rax, %rax
 	je	.L10
 	.loc 1 58 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
@@ -380,20 +380,20 @@ print_commandList:
 	jmp	.L10
 .L15:
 	.loc 1 60 0
-	cmpl	$3, -44(%rbp)
+	cmpl	$3, -20(%rbp)
 	jne	.L17
 	.loc 1 61 0
 	leaq	.LC6(%rip), %rcx
 	call	puts
 	.loc 1 62 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
 	testq	%rax, %rax
 	je	.L10
 	.loc 1 63 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
@@ -404,20 +404,20 @@ print_commandList:
 	jmp	.L10
 .L17:
 	.loc 1 65 0
-	cmpl	$4, -44(%rbp)
+	cmpl	$4, -20(%rbp)
 	jne	.L19
 	.loc 1 66 0
 	leaq	.LC7(%rip), %rcx
 	call	puts
 	.loc 1 67 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
 	testq	%rax, %rax
 	je	.L10
 	.loc 1 68 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
@@ -428,20 +428,20 @@ print_commandList:
 	jmp	.L10
 .L19:
 	.loc 1 70 0
-	cmpl	$5, -44(%rbp)
+	cmpl	$5, -20(%rbp)
 	jne	.L21
 	.loc 1 71 0
 	leaq	.LC8(%rip), %rcx
 	call	puts
 	.loc 1 72 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
 	testq	%rax, %rax
 	je	.L10
 	.loc 1 73 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
@@ -452,20 +452,20 @@ print_commandList:
 	jmp	.L10
 .L21:
 	.loc 1 75 0
-	cmpl	$6, -44(%rbp)
+	cmpl	$6, -20(%rbp)
 	jne	.L23
 	.loc 1 76 0
 	leaq	.LC9(%rip), %rcx
 	call	puts
 	.loc 1 77 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
 	testq	%rax, %rax
 	je	.L10
 	.loc 1 78 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
@@ -476,20 +476,20 @@ print_commandList:
 	jmp	.L10
 .L23:
 	.loc 1 80 0
-	cmpl	$7, -44(%rbp)
+	cmpl	$7, -20(%rbp)
 	jne	.L25
 	.loc 1 81 0
 	leaq	.LC10(%rip), %rcx
 	call	puts
 	.loc 1 82 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
 	testq	%rax, %rax
 	je	.L10
 	.loc 1 83 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
@@ -500,20 +500,20 @@ print_commandList:
 	jmp	.L10
 .L25:
 	.loc 1 85 0
-	cmpl	$8, -44(%rbp)
+	cmpl	$8, -20(%rbp)
 	jne	.L27
 	.loc 1 86 0
 	leaq	.LC11(%rip), %rcx
 	call	puts
 	.loc 1 87 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
 	testq	%rax, %rax
 	je	.L10
 	.loc 1 88 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
@@ -524,20 +524,20 @@ print_commandList:
 	jmp	.L10
 .L27:
 	.loc 1 90 0
-	cmpl	$9, -44(%rbp)
+	cmpl	$9, -20(%rbp)
 	jne	.L29
 	.loc 1 91 0
 	leaq	.LC12(%rip), %rcx
 	call	puts
 	.loc 1 92 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
 	testq	%rax, %rax
 	je	.L10
 	.loc 1 93 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
@@ -548,20 +548,20 @@ print_commandList:
 	jmp	.L10
 .L29:
 	.loc 1 95 0
-	cmpl	$12, -44(%rbp)
+	cmpl	$12, -20(%rbp)
 	jne	.L31
 	.loc 1 96 0
 	leaq	.LC13(%rip), %rcx
 	call	puts
 	.loc 1 97 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
 	testq	%rax, %rax
 	je	.L10
 	.loc 1 98 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
@@ -572,7 +572,7 @@ print_commandList:
 	jmp	.L10
 .L31:
 	.loc 1 100 0
-	cmpl	$13, -44(%rbp)
+	cmpl	$13, -20(%rbp)
 	jne	.L33
 	.loc 1 101 0
 	leaq	.LC14(%rip), %rcx
@@ -580,7 +580,7 @@ print_commandList:
 	jmp	.L10
 .L33:
 	.loc 1 103 0
-	cmpl	$14, -44(%rbp)
+	cmpl	$14, -20(%rbp)
 	jne	.L34
 	.loc 1 104 0
 	leaq	.LC15(%rip), %rcx
@@ -588,7 +588,7 @@ print_commandList:
 	jmp	.L10
 .L34:
 	.loc 1 106 0
-	cmpl	$15, -44(%rbp)
+	cmpl	$15, -20(%rbp)
 	jne	.L35
 	.loc 1 107 0
 	leaq	.LC16(%rip), %rcx
@@ -596,20 +596,20 @@ print_commandList:
 	jmp	.L10
 .L35:
 	.loc 1 109 0
-	cmpl	$16, -44(%rbp)
+	cmpl	$16, -20(%rbp)
 	jne	.L10
 	.loc 1 110 0
 	leaq	.LC17(%rip), %rcx
 	call	puts
 	.loc 1 111 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
 	testq	%rax, %rax
 	je	.L10
 	.loc 1 112 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	8(%rax), %rax
 	movq	112(%rax), %rax
@@ -619,13 +619,13 @@ print_commandList:
 	call	printf
 .L10:
 	.loc 1 115 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movl	72(%rax), %eax
 	cmpl	$-1, %eax
 	je	.L6
 	.loc 1 117 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movl	72(%rax), %eax
 	cmpl	$1, %eax
@@ -636,7 +636,7 @@ print_commandList:
 	jmp	.L6
 .L36:
 	.loc 1 118 0 is_stmt 1
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movl	72(%rax), %eax
 	cmpl	$2, %eax
@@ -647,7 +647,7 @@ print_commandList:
 	jmp	.L6
 .L37:
 	.loc 1 119 0 is_stmt 1
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movl	72(%rax), %eax
 	cmpl	$3, %eax
@@ -658,7 +658,7 @@ print_commandList:
 	jmp	.L6
 .L38:
 	.loc 1 120 0 is_stmt 1
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movl	72(%rax), %eax
 	cmpl	$4, %eax
@@ -691,7 +691,7 @@ print_commandList:
 	leaq	.LC24(%rip), %rcx
 	call	puts
 	.loc 1 132 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	24(%rax), %rax
@@ -707,7 +707,7 @@ print_commandList:
 	leaq	.LC26(%rip), %rcx
 	call	puts
 	.loc 1 136 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	24(%rax), %rax
@@ -723,7 +723,7 @@ print_commandList:
 	leaq	.LC27(%rip), %rcx
 	call	puts
 	.loc 1 140 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	24(%rax), %rax
@@ -739,7 +739,7 @@ print_commandList:
 	leaq	.LC28(%rip), %rcx
 	call	puts
 	.loc 1 144 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	24(%rax), %rax
@@ -771,52 +771,52 @@ print_commandList:
 	leaq	.LC31(%rip), %rcx
 	call	puts
 	.loc 1 154 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	testq	%rax, %rax
 	jne	.L48
 	.loc 1 155 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	56(%rax), %rax
 	testq	%rax, %rax
 	jne	.L49
 	.loc 1 156 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	24(%rax), %rax
-	movq	%rax, -8(%rbp)
+	movq	%rax, -16(%rbp)
 	.loc 1 157 0
 	jmp	.L5
 .L49:
 .LBB2:
 	.loc 1 160 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	56(%rax), %rax
-	movq	%rax, -24(%rbp)
+	movq	%rax, -8(%rbp)
 	.loc 1 162 0
 	jmp	.L50
 .L60:
 	.loc 1 163 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	testq	%rax, %rax
 	je	.L51
 .LBB3:
 	.loc 1 164 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movl	(%rax), %eax
-	movl	%eax, -40(%rbp)
+	movl	%eax, -24(%rbp)
 	.loc 1 165 0
-	cmpl	$0, -40(%rbp)
+	cmpl	$0, -24(%rbp)
 	jne	.L52
 	.loc 1 166 0
 	leaq	.LC32(%rip), %rcx
 	call	puts
 	.loc 1 167 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -824,7 +824,7 @@ print_commandList:
 	leaq	.LC33(%rip), %rcx
 	call	printf
 	.loc 1 168 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -834,13 +834,13 @@ print_commandList:
 	jmp	.L51
 .L52:
 	.loc 1 170 0
-	cmpl	$1, -40(%rbp)
+	cmpl	$1, -24(%rbp)
 	jne	.L53
 	.loc 1 171 0
 	leaq	.LC35(%rip), %rcx
 	call	puts
 	.loc 1 172 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -848,7 +848,7 @@ print_commandList:
 	leaq	.LC33(%rip), %rcx
 	call	printf
 	.loc 1 173 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -858,13 +858,13 @@ print_commandList:
 	jmp	.L51
 .L53:
 	.loc 1 175 0
-	cmpl	$2, -40(%rbp)
+	cmpl	$2, -24(%rbp)
 	jne	.L54
 	.loc 1 176 0
 	leaq	.LC36(%rip), %rcx
 	call	puts
 	.loc 1 177 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -872,7 +872,7 @@ print_commandList:
 	leaq	.LC33(%rip), %rcx
 	call	printf
 	.loc 1 178 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -882,13 +882,13 @@ print_commandList:
 	jmp	.L51
 .L54:
 	.loc 1 180 0
-	cmpl	$3, -40(%rbp)
+	cmpl	$3, -24(%rbp)
 	jne	.L55
 	.loc 1 181 0
 	leaq	.LC37(%rip), %rcx
 	call	puts
 	.loc 1 182 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -896,7 +896,7 @@ print_commandList:
 	leaq	.LC33(%rip), %rcx
 	call	printf
 	.loc 1 183 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -906,13 +906,13 @@ print_commandList:
 	jmp	.L51
 .L55:
 	.loc 1 185 0
-	cmpl	$13, -40(%rbp)
+	cmpl	$13, -24(%rbp)
 	jne	.L56
 	.loc 1 186 0
 	leaq	.LC38(%rip), %rcx
 	call	puts
 	.loc 1 187 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -920,7 +920,7 @@ print_commandList:
 	leaq	.LC33(%rip), %rcx
 	call	printf
 	.loc 1 188 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -930,13 +930,13 @@ print_commandList:
 	jmp	.L51
 .L56:
 	.loc 1 190 0
-	cmpl	$14, -40(%rbp)
+	cmpl	$14, -24(%rbp)
 	jne	.L57
 	.loc 1 191 0
 	leaq	.LC39(%rip), %rcx
 	call	puts
 	.loc 1 192 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -944,7 +944,7 @@ print_commandList:
 	leaq	.LC33(%rip), %rcx
 	call	printf
 	.loc 1 193 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -954,13 +954,13 @@ print_commandList:
 	jmp	.L51
 .L57:
 	.loc 1 195 0
-	cmpl	$15, -40(%rbp)
+	cmpl	$15, -24(%rbp)
 	jne	.L58
 	.loc 1 196 0
 	leaq	.LC40(%rip), %rcx
 	call	puts
 	.loc 1 197 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -968,7 +968,7 @@ print_commandList:
 	leaq	.LC33(%rip), %rcx
 	call	printf
 	.loc 1 198 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -978,13 +978,13 @@ print_commandList:
 	jmp	.L51
 .L58:
 	.loc 1 200 0
-	cmpl	$16, -40(%rbp)
+	cmpl	$16, -24(%rbp)
 	jne	.L59
 	.loc 1 201 0
 	leaq	.LC41(%rip), %rcx
 	call	puts
 	.loc 1 202 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -992,7 +992,7 @@ print_commandList:
 	leaq	.LC33(%rip), %rcx
 	call	printf
 	.loc 1 203 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -1002,13 +1002,13 @@ print_commandList:
 	jmp	.L51
 .L59:
 	.loc 1 205 0
-	cmpl	$17, -40(%rbp)
+	cmpl	$17, -24(%rbp)
 	jne	.L51
 	.loc 1 206 0
 	leaq	.LC42(%rip), %rcx
 	call	puts
 	.loc 1 207 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -1016,7 +1016,7 @@ print_commandList:
 	leaq	.LC33(%rip), %rcx
 	call	printf
 	.loc 1 208 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -1026,12 +1026,12 @@ print_commandList:
 .L51:
 .LBE3:
 	.loc 1 211 0
-	movq	-24(%rbp), %rax
+	movq	-8(%rbp), %rax
 	movq	8(%rax), %rax
-	movq	%rax, -24(%rbp)
+	movq	%rax, -8(%rbp)
 .L50:
 	.loc 1 162 0
-	cmpq	$0, -24(%rbp)
+	cmpq	$0, -8(%rbp)
 	jne	.L60
 	jmp	.L6
 .L48:
@@ -1041,19 +1041,19 @@ print_commandList:
 	leaq	.LC43(%rip), %rcx
 	call	puts
 	.loc 1 217 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movl	(%rax), %eax
-	movl	%eax, -36(%rbp)
+	movl	%eax, -28(%rbp)
 	.loc 1 218 0
-	cmpl	$0, -36(%rbp)
+	cmpl	$0, -28(%rbp)
 	jne	.L62
 	.loc 1 219 0
 	leaq	.LC32(%rip), %rcx
 	call	puts
 	.loc 1 220 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	8(%rax), %rax
@@ -1062,7 +1062,7 @@ print_commandList:
 	leaq	.LC33(%rip), %rcx
 	call	printf
 	.loc 1 221 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	16(%rax), %rax
@@ -1073,13 +1073,13 @@ print_commandList:
 	jmp	.L6
 .L62:
 	.loc 1 223 0
-	cmpl	$1, -36(%rbp)
+	cmpl	$1, -28(%rbp)
 	jne	.L63
 	.loc 1 224 0
 	leaq	.LC35(%rip), %rcx
 	call	puts
 	.loc 1 225 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	8(%rax), %rax
@@ -1088,7 +1088,7 @@ print_commandList:
 	leaq	.LC33(%rip), %rcx
 	call	printf
 	.loc 1 226 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	16(%rax), %rax
@@ -1099,13 +1099,13 @@ print_commandList:
 	jmp	.L6
 .L63:
 	.loc 1 228 0
-	cmpl	$2, -36(%rbp)
+	cmpl	$2, -28(%rbp)
 	jne	.L64
 	.loc 1 229 0
 	leaq	.LC36(%rip), %rcx
 	call	puts
 	.loc 1 230 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	8(%rax), %rax
@@ -1114,7 +1114,7 @@ print_commandList:
 	leaq	.LC33(%rip), %rcx
 	call	printf
 	.loc 1 231 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	16(%rax), %rax
@@ -1125,13 +1125,13 @@ print_commandList:
 	jmp	.L6
 .L64:
 	.loc 1 233 0
-	cmpl	$3, -36(%rbp)
+	cmpl	$3, -28(%rbp)
 	jne	.L65
 	.loc 1 234 0
 	leaq	.LC37(%rip), %rcx
 	call	puts
 	.loc 1 235 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	8(%rax), %rax
@@ -1140,7 +1140,7 @@ print_commandList:
 	leaq	.LC33(%rip), %rcx
 	call	printf
 	.loc 1 236 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	16(%rax), %rax
@@ -1151,13 +1151,13 @@ print_commandList:
 	jmp	.L6
 .L65:
 	.loc 1 238 0
-	cmpl	$12, -36(%rbp)
+	cmpl	$12, -28(%rbp)
 	jne	.L6
 	.loc 1 239 0
 	leaq	.LC44(%rip), %rcx
 	call	puts
 	.loc 1 240 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	24(%rax), %rax
@@ -1190,7 +1190,7 @@ print_commandList:
 	leaq	.LC48(%rip), %rcx
 	call	puts
 	.loc 1 255 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	24(%rax), %rax
@@ -1198,7 +1198,7 @@ print_commandList:
 	leaq	.LC25(%rip), %rcx
 	call	printf
 	.loc 1 256 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	32(%rax), %rax
 	movq	24(%rax), %rax
@@ -1214,7 +1214,7 @@ print_commandList:
 	leaq	.LC50(%rip), %rcx
 	call	puts
 	.loc 1 260 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	24(%rax), %rax
@@ -1238,7 +1238,7 @@ print_commandList:
 	leaq	.LC52(%rip), %rcx
 	call	puts
 	.loc 1 267 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	24(%rax), %rax
@@ -1254,7 +1254,7 @@ print_commandList:
 	leaq	.LC53(%rip), %rcx
 	call	puts
 	.loc 1 271 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	24(%rax), %rax
@@ -1262,7 +1262,7 @@ print_commandList:
 	leaq	.LC25(%rip), %rcx
 	call	printf
 	.loc 1 272 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	32(%rax), %rax
 	movq	24(%rax), %rax
@@ -1286,7 +1286,7 @@ print_commandList:
 	leaq	.LC56(%rip), %rcx
 	call	puts
 	.loc 1 279 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
 	movq	24(%rax), %rax
@@ -1294,7 +1294,7 @@ print_commandList:
 	leaq	.LC57(%rip), %rcx
 	call	printf
 	.loc 1 280 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	8(%rax), %rax
 	movq	32(%rax), %rax
 	movq	24(%rax), %rax
@@ -1312,24 +1312,24 @@ print_commandList:
 	jmp	.L6
 .L7:
 	.loc 1 289 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	testq	%rax, %rax
 	je	.L6
 .LBB5:
 	.loc 1 290 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movl	(%rax), %eax
-	movl	%eax, -28(%rbp)
+	movl	%eax, -36(%rbp)
 	.loc 1 291 0
-	cmpl	$4, -28(%rbp)
+	cmpl	$4, -36(%rbp)
 	jne	.L75
 	.loc 1 292 0
 	leaq	.LC60(%rip), %rcx
 	call	puts
 	.loc 1 293 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -1337,7 +1337,7 @@ print_commandList:
 	leaq	.LC61(%rip), %rcx
 	call	printf
 	.loc 1 294 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -1347,13 +1347,13 @@ print_commandList:
 	jmp	.L76
 .L75:
 	.loc 1 296 0
-	cmpl	$5, -28(%rbp)
+	cmpl	$5, -36(%rbp)
 	jne	.L77
 	.loc 1 297 0
 	leaq	.LC63(%rip), %rcx
 	call	puts
 	.loc 1 298 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -1361,7 +1361,7 @@ print_commandList:
 	leaq	.LC61(%rip), %rcx
 	call	printf
 	.loc 1 299 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -1371,13 +1371,13 @@ print_commandList:
 	jmp	.L76
 .L77:
 	.loc 1 301 0
-	cmpl	$6, -28(%rbp)
+	cmpl	$6, -36(%rbp)
 	jne	.L78
 	.loc 1 302 0
 	leaq	.LC64(%rip), %rcx
 	call	puts
 	.loc 1 303 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -1385,7 +1385,7 @@ print_commandList:
 	leaq	.LC61(%rip), %rcx
 	call	printf
 	.loc 1 304 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -1395,13 +1395,13 @@ print_commandList:
 	jmp	.L76
 .L78:
 	.loc 1 306 0
-	cmpl	$7, -28(%rbp)
+	cmpl	$7, -36(%rbp)
 	jne	.L79
 	.loc 1 307 0
 	leaq	.LC65(%rip), %rcx
 	call	puts
 	.loc 1 308 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -1409,7 +1409,7 @@ print_commandList:
 	leaq	.LC61(%rip), %rcx
 	call	printf
 	.loc 1 309 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -1419,13 +1419,13 @@ print_commandList:
 	jmp	.L76
 .L79:
 	.loc 1 311 0
-	cmpl	$8, -28(%rbp)
+	cmpl	$8, -36(%rbp)
 	jne	.L80
 	.loc 1 312 0
 	leaq	.LC66(%rip), %rcx
 	call	puts
 	.loc 1 313 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
 	movq	%rax, %rdx
@@ -1434,13 +1434,13 @@ print_commandList:
 	jmp	.L76
 .L80:
 	.loc 1 315 0
-	cmpl	$9, -28(%rbp)
+	cmpl	$9, -36(%rbp)
 	jne	.L81
 	.loc 1 316 0
 	leaq	.LC68(%rip), %rcx
 	call	puts
 	.loc 1 317 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
 	movq	%rax, %rdx
@@ -1449,13 +1449,13 @@ print_commandList:
 	jmp	.L76
 .L81:
 	.loc 1 319 0
-	cmpl	$11, -28(%rbp)
+	cmpl	$11, -36(%rbp)
 	jne	.L82
 	.loc 1 320 0
 	leaq	.LC69(%rip), %rcx
 	call	puts
 	.loc 1 321 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -1463,7 +1463,7 @@ print_commandList:
 	leaq	.LC61(%rip), %rcx
 	call	printf
 	.loc 1 322 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -1473,13 +1473,13 @@ print_commandList:
 	jmp	.L76
 .L82:
 	.loc 1 324 0
-	cmpl	$12, -28(%rbp)
+	cmpl	$12, -36(%rbp)
 	jne	.L83
 	.loc 1 325 0
 	leaq	.LC70(%rip), %rcx
 	call	puts
 	.loc 1 326 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -1487,7 +1487,7 @@ print_commandList:
 	leaq	.LC61(%rip), %rcx
 	call	printf
 	.loc 1 327 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -1497,13 +1497,13 @@ print_commandList:
 	jmp	.L76
 .L83:
 	.loc 1 329 0
-	cmpl	$13, -28(%rbp)
+	cmpl	$13, -36(%rbp)
 	jne	.L84
 	.loc 1 330 0
 	leaq	.LC71(%rip), %rcx
 	call	puts
 	.loc 1 331 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -1511,7 +1511,7 @@ print_commandList:
 	leaq	.LC61(%rip), %rcx
 	call	printf
 	.loc 1 332 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -1521,13 +1521,13 @@ print_commandList:
 	jmp	.L76
 .L84:
 	.loc 1 334 0
-	cmpl	$14, -28(%rbp)
+	cmpl	$14, -36(%rbp)
 	jne	.L85
 	.loc 1 335 0
 	leaq	.LC72(%rip), %rcx
 	call	puts
 	.loc 1 336 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -1535,7 +1535,7 @@ print_commandList:
 	leaq	.LC61(%rip), %rcx
 	call	printf
 	.loc 1 337 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -1545,13 +1545,13 @@ print_commandList:
 	jmp	.L76
 .L85:
 	.loc 1 339 0
-	cmpl	$15, -28(%rbp)
+	cmpl	$15, -36(%rbp)
 	jne	.L76
 	.loc 1 340 0
 	leaq	.LC73(%rip), %rcx
 	call	puts
 	.loc 1 341 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	8(%rax), %rax
 	movq	24(%rax), %rax
@@ -1559,7 +1559,7 @@ print_commandList:
 	leaq	.LC61(%rip), %rcx
 	call	printf
 	.loc 1 342 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movq	16(%rax), %rax
 	movq	24(%rax), %rax
@@ -1568,13 +1568,13 @@ print_commandList:
 	call	printf
 .L76:
 	.loc 1 347 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movl	48(%rax), %eax
 	cmpl	$-1, %eax
 	je	.L6
 	.loc 1 349 0
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movl	48(%rax), %eax
 	cmpl	$1, %eax
@@ -1585,7 +1585,7 @@ print_commandList:
 	jmp	.L6
 .L87:
 	.loc 1 350 0 is_stmt 1
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movl	48(%rax), %eax
 	cmpl	$2, %eax
@@ -1596,7 +1596,7 @@ print_commandList:
 	jmp	.L6
 .L88:
 	.loc 1 351 0 is_stmt 1
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movl	48(%rax), %eax
 	cmpl	$3, %eax
@@ -1607,7 +1607,7 @@ print_commandList:
 	jmp	.L6
 .L89:
 	.loc 1 352 0 is_stmt 1
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	16(%rax), %rax
 	movl	48(%rax), %eax
 	cmpl	$4, %eax
@@ -1618,12 +1618,12 @@ print_commandList:
 .L6:
 .LBE5:
 	.loc 1 359 0 is_stmt 1
-	movq	-8(%rbp), %rax
+	movq	-16(%rbp), %rax
 	movq	24(%rax), %rax
-	movq	%rax, -8(%rbp)
+	movq	%rax, -16(%rbp)
 .L5:
 	.loc 1 27 0
-	cmpq	$0, -8(%rbp)
+	cmpq	$0, -16(%rbp)
 	jne	.L90
 	.loc 1 361 0
 	nop
@@ -1645,12 +1645,12 @@ print_commandList:
 	.file 8 "./inc/command.h"
 	.section	.debug_info,"dr"
 .Ldebug_info0:
-	.long	0x1490
+	.long	0x14b6
 	.word	0x4
 	.secrel32	.Ldebug_abbrev0
 	.byte	0x8
 	.uleb128 0x1
-	.ascii "GNU C89 7.4.0 -mtune=generic -march=x86-64 -g -ansi -fPIC -funsigned-char -fasynchronous-unwind-tables\0"
+	.ascii "GNU C89 7.4.0 -mtune=generic -march=x86-64 -g -ansi -funsigned-char -fasynchronous-unwind-tables -fexceptions -fstack-protector-strong -fpie\0"
 	.byte	0x1
 	.ascii "./src/command.c\0"
 	.ascii "/cygdrive/c/Users/User/Documents/QolC\0"
@@ -1693,13 +1693,13 @@ print_commandList:
 	.ascii "size_t\0"
 	.byte	0x2
 	.byte	0xd8
-	.long	0x124
+	.long	0x14a
 	.uleb128 0x2
 	.byte	0x1
 	.byte	0x8
 	.ascii "char\0"
 	.uleb128 0x4
-	.long	0x147
+	.long	0x16d
 	.uleb128 0x2
 	.byte	0x8
 	.byte	0x5
@@ -1708,141 +1708,141 @@ print_commandList:
 	.ascii "_LOCK_T\0"
 	.byte	0x3
 	.byte	0xc
-	.long	0x174
+	.long	0x19a
 	.uleb128 0x5
 	.byte	0x8
 	.uleb128 0x3
 	.ascii "_off64_t\0"
 	.byte	0x4
 	.byte	0x5e
-	.long	0x154
+	.long	0x17a
 	.uleb128 0x3
 	.ascii "_fpos_t\0"
 	.byte	0x4
 	.byte	0x72
-	.long	0x118
+	.long	0x13e
 	.uleb128 0x3
 	.ascii "_fpos64_t\0"
 	.byte	0x4
 	.byte	0x78
-	.long	0x176
+	.long	0x19c
 	.uleb128 0x3
 	.ascii "_ssize_t\0"
 	.byte	0x4
 	.byte	0x91
-	.long	0x118
+	.long	0x13e
 	.uleb128 0x6
 	.ascii "wint_t\0"
 	.byte	0x2
 	.word	0x165
-	.long	0x108
+	.long	0x12e
 	.uleb128 0x7
 	.byte	0x4
 	.byte	0x4
 	.byte	0xa6
-	.long	0x1e9
+	.long	0x20f
 	.uleb128 0x8
 	.ascii "__wch\0"
 	.byte	0x4
 	.byte	0xa8
-	.long	0x1b6
+	.long	0x1dc
 	.uleb128 0x8
 	.ascii "__wchb\0"
 	.byte	0x4
 	.byte	0xa9
-	.long	0x1e9
+	.long	0x20f
 	.byte	0
 	.uleb128 0x9
-	.long	0xcd
-	.long	0x1f9
+	.long	0xf3
+	.long	0x21f
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0x3
 	.byte	0
 	.uleb128 0xb
 	.byte	0x8
 	.byte	0x4
 	.byte	0xa3
-	.long	0x222
+	.long	0x248
 	.uleb128 0xc
 	.ascii "__count\0"
 	.byte	0x4
 	.byte	0xa5
-	.long	0x101
+	.long	0x127
 	.byte	0
 	.uleb128 0xc
 	.ascii "__value\0"
 	.byte	0x4
 	.byte	0xaa
-	.long	0x1c5
+	.long	0x1eb
 	.byte	0x4
 	.byte	0
 	.uleb128 0x3
 	.ascii "_mbstate_t\0"
 	.byte	0x4
 	.byte	0xab
-	.long	0x1f9
+	.long	0x21f
 	.uleb128 0x3
 	.ascii "_flock_t\0"
 	.byte	0x4
 	.byte	0xaf
-	.long	0x165
+	.long	0x18b
 	.uleb128 0x3
 	.ascii "__ULong\0"
 	.byte	0x5
 	.byte	0x19
-	.long	0x108
+	.long	0x12e
 	.uleb128 0xd
 	.ascii "_Bigint\0"
 	.byte	0x20
 	.byte	0x5
 	.byte	0x2f
-	.long	0x2b3
+	.long	0x2d9
 	.uleb128 0xc
 	.ascii "_next\0"
 	.byte	0x5
 	.byte	0x31
-	.long	0x2b3
+	.long	0x2d9
 	.byte	0
 	.uleb128 0xc
 	.ascii "_k\0"
 	.byte	0x5
 	.byte	0x32
-	.long	0x101
+	.long	0x127
 	.byte	0x8
 	.uleb128 0xc
 	.ascii "_maxwds\0"
 	.byte	0x5
 	.byte	0x32
-	.long	0x101
+	.long	0x127
 	.byte	0xc
 	.uleb128 0xc
 	.ascii "_sign\0"
 	.byte	0x5
 	.byte	0x32
-	.long	0x101
+	.long	0x127
 	.byte	0x10
 	.uleb128 0xc
 	.ascii "_wds\0"
 	.byte	0x5
 	.byte	0x32
-	.long	0x101
+	.long	0x127
 	.byte	0x14
 	.uleb128 0xc
 	.ascii "_x\0"
 	.byte	0x5
 	.byte	0x33
-	.long	0x2b9
+	.long	0x2df
 	.byte	0x18
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x253
+	.long	0x279
 	.uleb128 0x9
-	.long	0x244
-	.long	0x2c9
+	.long	0x26a
+	.long	0x2ef
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0
 	.byte	0
 	.uleb128 0xd
@@ -1850,60 +1850,60 @@ print_commandList:
 	.byte	0x24
 	.byte	0x5
 	.byte	0x37
-	.long	0x377
+	.long	0x39d
 	.uleb128 0xc
 	.ascii "__tm_sec\0"
 	.byte	0x5
 	.byte	0x39
-	.long	0x101
+	.long	0x127
 	.byte	0
 	.uleb128 0xc
 	.ascii "__tm_min\0"
 	.byte	0x5
 	.byte	0x3a
-	.long	0x101
+	.long	0x127
 	.byte	0x4
 	.uleb128 0xc
 	.ascii "__tm_hour\0"
 	.byte	0x5
 	.byte	0x3b
-	.long	0x101
+	.long	0x127
 	.byte	0x8
 	.uleb128 0xc
 	.ascii "__tm_mday\0"
 	.byte	0x5
 	.byte	0x3c
-	.long	0x101
+	.long	0x127
 	.byte	0xc
 	.uleb128 0xc
 	.ascii "__tm_mon\0"
 	.byte	0x5
 	.byte	0x3d
-	.long	0x101
+	.long	0x127
 	.byte	0x10
 	.uleb128 0xc
 	.ascii "__tm_year\0"
 	.byte	0x5
 	.byte	0x3e
-	.long	0x101
+	.long	0x127
 	.byte	0x14
 	.uleb128 0xc
 	.ascii "__tm_wday\0"
 	.byte	0x5
 	.byte	0x3f
-	.long	0x101
+	.long	0x127
 	.byte	0x18
 	.uleb128 0xc
 	.ascii "__tm_yday\0"
 	.byte	0x5
 	.byte	0x40
-	.long	0x101
+	.long	0x127
 	.byte	0x1c
 	.uleb128 0xc
 	.ascii "__tm_isdst\0"
 	.byte	0x5
 	.byte	0x41
-	.long	0x101
+	.long	0x127
 	.byte	0x20
 	.byte	0
 	.uleb128 0xf
@@ -1911,37 +1911,37 @@ print_commandList:
 	.word	0x208
 	.byte	0x5
 	.byte	0x4a
-	.long	0x3cd
+	.long	0x3f3
 	.uleb128 0xc
 	.ascii "_fnargs\0"
 	.byte	0x5
 	.byte	0x4b
-	.long	0x3cd
+	.long	0x3f3
 	.byte	0
 	.uleb128 0x10
 	.ascii "_dso_handle\0"
 	.byte	0x5
 	.byte	0x4c
-	.long	0x3cd
+	.long	0x3f3
 	.word	0x100
 	.uleb128 0x10
 	.ascii "_fntypes\0"
 	.byte	0x5
 	.byte	0x4e
-	.long	0x244
+	.long	0x26a
 	.word	0x200
 	.uleb128 0x10
 	.ascii "_is_cxa\0"
 	.byte	0x5
 	.byte	0x51
-	.long	0x244
+	.long	0x26a
 	.word	0x204
 	.byte	0
 	.uleb128 0x9
-	.long	0x174
-	.long	0x3dd
+	.long	0x19a
+	.long	0x403
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0x1f
 	.byte	0
 	.uleb128 0x11
@@ -1949,286 +1949,286 @@ print_commandList:
 	.word	0x318
 	.byte	0x5
 	.byte	0x5d
-	.long	0x424
+	.long	0x44a
 	.uleb128 0xc
 	.ascii "_next\0"
 	.byte	0x5
 	.byte	0x5e
-	.long	0x424
+	.long	0x44a
 	.byte	0
 	.uleb128 0xc
 	.ascii "_ind\0"
 	.byte	0x5
 	.byte	0x5f
-	.long	0x101
+	.long	0x127
 	.byte	0x8
 	.uleb128 0xc
 	.ascii "_fns\0"
 	.byte	0x5
 	.byte	0x61
-	.long	0x42a
+	.long	0x450
 	.byte	0x10
 	.uleb128 0x12
 	.secrel32	.LASF0
 	.byte	0x5
 	.byte	0x62
-	.long	0x377
+	.long	0x39d
 	.word	0x110
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x3dd
+	.long	0x403
 	.uleb128 0x9
-	.long	0x43a
-	.long	0x43a
+	.long	0x460
+	.long	0x460
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0x1f
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x440
+	.long	0x466
 	.uleb128 0x13
 	.uleb128 0xd
 	.ascii "__sbuf\0"
 	.byte	0x10
 	.byte	0x5
 	.byte	0x75
-	.long	0x46d
+	.long	0x493
 	.uleb128 0xc
 	.ascii "_base\0"
 	.byte	0x5
 	.byte	0x76
-	.long	0x46d
+	.long	0x493
 	.byte	0
 	.uleb128 0xc
 	.ascii "_size\0"
 	.byte	0x5
 	.byte	0x77
-	.long	0x101
+	.long	0x127
 	.byte	0x8
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xcd
+	.long	0xf3
 	.uleb128 0x14
-	.long	0x1a6
-	.long	0x491
+	.long	0x1cc
+	.long	0x4b7
 	.uleb128 0x15
-	.long	0x491
+	.long	0x4b7
 	.uleb128 0x15
-	.long	0x174
+	.long	0x19a
 	.uleb128 0x15
-	.long	0x63b
+	.long	0x661
 	.uleb128 0x15
-	.long	0x139
+	.long	0x15f
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x49c
+	.long	0x4c2
 	.uleb128 0x4
-	.long	0x491
+	.long	0x4b7
 	.uleb128 0x16
 	.ascii "_reent\0"
 	.word	0x760
 	.byte	0x5
 	.word	0x260
-	.long	0x63b
+	.long	0x661
 	.uleb128 0x17
 	.ascii "_errno\0"
 	.byte	0x5
 	.word	0x262
-	.long	0x101
+	.long	0x127
 	.byte	0
 	.uleb128 0x17
 	.ascii "_stdin\0"
 	.byte	0x5
 	.word	0x267
-	.long	0x8c6
+	.long	0x8ec
 	.byte	0x8
 	.uleb128 0x17
 	.ascii "_stdout\0"
 	.byte	0x5
 	.word	0x267
-	.long	0x8c6
+	.long	0x8ec
 	.byte	0x10
 	.uleb128 0x17
 	.ascii "_stderr\0"
 	.byte	0x5
 	.word	0x267
-	.long	0x8c6
+	.long	0x8ec
 	.byte	0x18
 	.uleb128 0x17
 	.ascii "_inc\0"
 	.byte	0x5
 	.word	0x269
-	.long	0x101
+	.long	0x127
 	.byte	0x20
 	.uleb128 0x17
 	.ascii "_emergency\0"
 	.byte	0x5
 	.word	0x26a
-	.long	0xb88
+	.long	0xbae
 	.byte	0x24
 	.uleb128 0x17
 	.ascii "_unspecified_locale_info\0"
 	.byte	0x5
 	.word	0x26d
-	.long	0x101
+	.long	0x127
 	.byte	0x40
 	.uleb128 0x17
 	.ascii "_locale\0"
 	.byte	0x5
 	.word	0x26e
-	.long	0xba4
+	.long	0xbca
 	.byte	0x48
 	.uleb128 0x17
 	.ascii "__sdidinit\0"
 	.byte	0x5
 	.word	0x270
-	.long	0x101
+	.long	0x127
 	.byte	0x50
 	.uleb128 0x17
 	.ascii "__cleanup\0"
 	.byte	0x5
 	.word	0x272
-	.long	0xbb5
+	.long	0xbdb
 	.byte	0x58
 	.uleb128 0x17
 	.ascii "_result\0"
 	.byte	0x5
 	.word	0x275
-	.long	0x2b3
+	.long	0x2d9
 	.byte	0x60
 	.uleb128 0x17
 	.ascii "_result_k\0"
 	.byte	0x5
 	.word	0x276
-	.long	0x101
+	.long	0x127
 	.byte	0x68
 	.uleb128 0x17
 	.ascii "_p5s\0"
 	.byte	0x5
 	.word	0x277
-	.long	0x2b3
+	.long	0x2d9
 	.byte	0x70
 	.uleb128 0x17
 	.ascii "_freelist\0"
 	.byte	0x5
 	.word	0x278
-	.long	0xbbb
+	.long	0xbe1
 	.byte	0x78
 	.uleb128 0x17
 	.ascii "_cvtlen\0"
 	.byte	0x5
 	.word	0x27b
-	.long	0x101
+	.long	0x127
 	.byte	0x80
 	.uleb128 0x17
 	.ascii "_cvtbuf\0"
 	.byte	0x5
 	.word	0x27c
-	.long	0x63b
+	.long	0x661
 	.byte	0x88
 	.uleb128 0x17
 	.ascii "_new\0"
 	.byte	0x5
 	.word	0x29f
-	.long	0xb5e
+	.long	0xb84
 	.byte	0x90
 	.uleb128 0x18
 	.ascii "_atexit\0"
 	.byte	0x5
 	.word	0x2a3
-	.long	0x424
+	.long	0x44a
 	.word	0x1f8
 	.uleb128 0x18
 	.ascii "_atexit0\0"
 	.byte	0x5
 	.word	0x2a4
-	.long	0x3dd
+	.long	0x403
 	.word	0x200
 	.uleb128 0x18
 	.ascii "_sig_func\0"
 	.byte	0x5
 	.word	0x2a8
-	.long	0xbcc
+	.long	0xbf2
 	.word	0x518
 	.uleb128 0x18
 	.ascii "__sglue\0"
 	.byte	0x5
 	.word	0x2ad
-	.long	0x882
+	.long	0x8a8
 	.word	0x520
 	.uleb128 0x18
 	.ascii "__sf\0"
 	.byte	0x5
 	.word	0x2af
-	.long	0xbd8
+	.long	0xbfe
 	.word	0x538
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x147
+	.long	0x16d
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x473
+	.long	0x499
 	.uleb128 0x14
-	.long	0x1a6
-	.long	0x665
+	.long	0x1cc
+	.long	0x68b
 	.uleb128 0x15
-	.long	0x491
+	.long	0x4b7
 	.uleb128 0x15
-	.long	0x174
+	.long	0x19a
 	.uleb128 0x15
-	.long	0x665
+	.long	0x68b
 	.uleb128 0x15
-	.long	0x139
+	.long	0x15f
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x14f
+	.long	0x175
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x647
+	.long	0x66d
 	.uleb128 0x14
-	.long	0x186
-	.long	0x68f
+	.long	0x1ac
+	.long	0x6b5
 	.uleb128 0x15
-	.long	0x491
+	.long	0x4b7
 	.uleb128 0x15
-	.long	0x174
+	.long	0x19a
 	.uleb128 0x15
-	.long	0x186
+	.long	0x1ac
 	.uleb128 0x15
-	.long	0x101
+	.long	0x127
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x671
+	.long	0x697
 	.uleb128 0x14
-	.long	0x101
-	.long	0x6a9
+	.long	0x127
+	.long	0x6cf
 	.uleb128 0x15
-	.long	0x491
+	.long	0x4b7
 	.uleb128 0x15
-	.long	0x174
+	.long	0x19a
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x695
+	.long	0x6bb
 	.uleb128 0x9
-	.long	0xcd
-	.long	0x6bf
+	.long	0xf3
+	.long	0x6e5
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0x2
 	.byte	0
 	.uleb128 0x9
-	.long	0xcd
-	.long	0x6cf
+	.long	0xf3
+	.long	0x6f5
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0
 	.byte	0
 	.uleb128 0xd
@@ -2236,366 +2236,366 @@ print_commandList:
 	.byte	0xb8
 	.byte	0x5
 	.byte	0xef
-	.long	0x84f
+	.long	0x875
 	.uleb128 0xc
 	.ascii "_p\0"
 	.byte	0x5
 	.byte	0xf0
-	.long	0x46d
+	.long	0x493
 	.byte	0
 	.uleb128 0xc
 	.ascii "_r\0"
 	.byte	0x5
 	.byte	0xf1
-	.long	0x101
+	.long	0x127
 	.byte	0x8
 	.uleb128 0xc
 	.ascii "_w\0"
 	.byte	0x5
 	.byte	0xf2
-	.long	0x101
+	.long	0x127
 	.byte	0xc
 	.uleb128 0xc
 	.ascii "_flags\0"
 	.byte	0x5
 	.byte	0xf3
-	.long	0xde
+	.long	0x104
 	.byte	0x10
 	.uleb128 0xc
 	.ascii "_file\0"
 	.byte	0x5
 	.byte	0xf4
-	.long	0xde
+	.long	0x104
 	.byte	0x12
 	.uleb128 0xc
 	.ascii "_bf\0"
 	.byte	0x5
 	.byte	0xf5
-	.long	0x441
+	.long	0x467
 	.byte	0x18
 	.uleb128 0xc
 	.ascii "_lbfsize\0"
 	.byte	0x5
 	.byte	0xf6
-	.long	0x101
+	.long	0x127
 	.byte	0x28
 	.uleb128 0xc
 	.ascii "_data\0"
 	.byte	0x5
 	.byte	0xf8
-	.long	0x491
+	.long	0x4b7
 	.byte	0x30
 	.uleb128 0xc
 	.ascii "_cookie\0"
 	.byte	0x5
 	.byte	0xfb
-	.long	0x174
+	.long	0x19a
 	.byte	0x38
 	.uleb128 0xc
 	.ascii "_read\0"
 	.byte	0x5
 	.byte	0xfd
-	.long	0x641
+	.long	0x667
 	.byte	0x40
 	.uleb128 0xc
 	.ascii "_write\0"
 	.byte	0x5
 	.byte	0xff
-	.long	0x66b
+	.long	0x691
 	.byte	0x48
 	.uleb128 0x17
 	.ascii "_seek\0"
 	.byte	0x5
 	.word	0x102
-	.long	0x68f
+	.long	0x6b5
 	.byte	0x50
 	.uleb128 0x17
 	.ascii "_close\0"
 	.byte	0x5
 	.word	0x103
-	.long	0x6a9
+	.long	0x6cf
 	.byte	0x58
 	.uleb128 0x17
 	.ascii "_ub\0"
 	.byte	0x5
 	.word	0x106
-	.long	0x441
+	.long	0x467
 	.byte	0x60
 	.uleb128 0x17
 	.ascii "_up\0"
 	.byte	0x5
 	.word	0x107
-	.long	0x46d
+	.long	0x493
 	.byte	0x70
 	.uleb128 0x17
 	.ascii "_ur\0"
 	.byte	0x5
 	.word	0x108
-	.long	0x101
+	.long	0x127
 	.byte	0x78
 	.uleb128 0x17
 	.ascii "_ubuf\0"
 	.byte	0x5
 	.word	0x10b
-	.long	0x6af
+	.long	0x6d5
 	.byte	0x7c
 	.uleb128 0x17
 	.ascii "_nbuf\0"
 	.byte	0x5
 	.word	0x10c
-	.long	0x6bf
+	.long	0x6e5
 	.byte	0x7f
 	.uleb128 0x17
 	.ascii "_lb\0"
 	.byte	0x5
 	.word	0x10f
-	.long	0x441
+	.long	0x467
 	.byte	0x80
 	.uleb128 0x17
 	.ascii "_blksize\0"
 	.byte	0x5
 	.word	0x112
-	.long	0x101
+	.long	0x127
 	.byte	0x90
 	.uleb128 0x17
 	.ascii "_flags2\0"
 	.byte	0x5
 	.word	0x113
-	.long	0x101
+	.long	0x127
 	.byte	0x94
 	.uleb128 0x17
 	.ascii "_offset\0"
 	.byte	0x5
 	.word	0x115
-	.long	0x176
+	.long	0x19c
 	.byte	0x98
 	.uleb128 0x17
 	.ascii "_seek64\0"
 	.byte	0x5
 	.word	0x116
-	.long	0x86d
+	.long	0x893
 	.byte	0xa0
 	.uleb128 0x17
 	.ascii "_lock\0"
 	.byte	0x5
 	.word	0x119
-	.long	0x234
+	.long	0x25a
 	.byte	0xa8
 	.uleb128 0x17
 	.ascii "_mbstate\0"
 	.byte	0x5
 	.word	0x11b
-	.long	0x222
+	.long	0x248
 	.byte	0xb0
 	.byte	0
 	.uleb128 0x14
-	.long	0x195
-	.long	0x86d
+	.long	0x1bb
+	.long	0x893
 	.uleb128 0x15
-	.long	0x491
+	.long	0x4b7
 	.uleb128 0x15
-	.long	0x174
+	.long	0x19a
 	.uleb128 0x15
-	.long	0x195
+	.long	0x1bb
 	.uleb128 0x15
-	.long	0x101
+	.long	0x127
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x84f
+	.long	0x875
 	.uleb128 0x6
 	.ascii "__FILE\0"
 	.byte	0x5
 	.word	0x11d
-	.long	0x6cf
+	.long	0x6f5
 	.uleb128 0x19
 	.ascii "_glue\0"
 	.byte	0x18
 	.byte	0x5
 	.word	0x123
-	.long	0x8c0
+	.long	0x8e6
 	.uleb128 0x17
 	.ascii "_next\0"
 	.byte	0x5
 	.word	0x125
-	.long	0x8c0
+	.long	0x8e6
 	.byte	0
 	.uleb128 0x17
 	.ascii "_niobs\0"
 	.byte	0x5
 	.word	0x126
-	.long	0x101
+	.long	0x127
 	.byte	0x8
 	.uleb128 0x17
 	.ascii "_iobs\0"
 	.byte	0x5
 	.word	0x127
-	.long	0x8c6
+	.long	0x8ec
 	.byte	0x10
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x882
+	.long	0x8a8
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x873
+	.long	0x899
 	.uleb128 0x19
 	.ascii "_rand48\0"
 	.byte	0xe
 	.byte	0x5
 	.word	0x13f
-	.long	0x90a
+	.long	0x930
 	.uleb128 0x17
 	.ascii "_seed\0"
 	.byte	0x5
 	.word	0x140
-	.long	0x90a
+	.long	0x930
 	.byte	0
 	.uleb128 0x17
 	.ascii "_mult\0"
 	.byte	0x5
 	.word	0x141
-	.long	0x90a
+	.long	0x930
 	.byte	0x6
 	.uleb128 0x17
 	.ascii "_add\0"
 	.byte	0x5
 	.word	0x142
-	.long	0xeb
+	.long	0x111
 	.byte	0xc
 	.byte	0
 	.uleb128 0x9
-	.long	0xeb
-	.long	0x91a
+	.long	0x111
+	.long	0x940
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0x2
 	.byte	0
 	.uleb128 0x1a
 	.byte	0xd8
 	.byte	0x5
 	.word	0x280
-	.long	0xac7
+	.long	0xaed
 	.uleb128 0x17
 	.ascii "_unused_rand\0"
 	.byte	0x5
 	.word	0x282
-	.long	0x108
+	.long	0x12e
 	.byte	0
 	.uleb128 0x17
 	.ascii "_strtok_last\0"
 	.byte	0x5
 	.word	0x283
-	.long	0x63b
+	.long	0x661
 	.byte	0x8
 	.uleb128 0x17
 	.ascii "_asctime_buf\0"
 	.byte	0x5
 	.word	0x284
-	.long	0xac7
+	.long	0xaed
 	.byte	0x10
 	.uleb128 0x17
 	.ascii "_localtime_buf\0"
 	.byte	0x5
 	.word	0x285
-	.long	0x2c9
+	.long	0x2ef
 	.byte	0x2c
 	.uleb128 0x17
 	.ascii "_gamma_signgam\0"
 	.byte	0x5
 	.word	0x286
-	.long	0x101
+	.long	0x127
 	.byte	0x50
 	.uleb128 0x17
 	.ascii "_rand_next\0"
 	.byte	0x5
 	.word	0x287
-	.long	0xad7
+	.long	0xafd
 	.byte	0x58
 	.uleb128 0x17
 	.ascii "_r48\0"
 	.byte	0x5
 	.word	0x288
-	.long	0x8cc
+	.long	0x8f2
 	.byte	0x60
 	.uleb128 0x17
 	.ascii "_mblen_state\0"
 	.byte	0x5
 	.word	0x289
-	.long	0x222
+	.long	0x248
 	.byte	0x70
 	.uleb128 0x17
 	.ascii "_mbtowc_state\0"
 	.byte	0x5
 	.word	0x28a
-	.long	0x222
+	.long	0x248
 	.byte	0x78
 	.uleb128 0x17
 	.ascii "_wctomb_state\0"
 	.byte	0x5
 	.word	0x28b
-	.long	0x222
+	.long	0x248
 	.byte	0x80
 	.uleb128 0x17
 	.ascii "_l64a_buf\0"
 	.byte	0x5
 	.word	0x28c
-	.long	0xaf1
+	.long	0xb17
 	.byte	0x88
 	.uleb128 0x17
 	.ascii "_signal_buf\0"
 	.byte	0x5
 	.word	0x28d
-	.long	0xb01
+	.long	0xb27
 	.byte	0x90
 	.uleb128 0x17
 	.ascii "_getdate_err\0"
 	.byte	0x5
 	.word	0x28e
-	.long	0x101
+	.long	0x127
 	.byte	0xa8
 	.uleb128 0x17
 	.ascii "_mbrlen_state\0"
 	.byte	0x5
 	.word	0x28f
-	.long	0x222
+	.long	0x248
 	.byte	0xac
 	.uleb128 0x17
 	.ascii "_mbrtowc_state\0"
 	.byte	0x5
 	.word	0x290
-	.long	0x222
+	.long	0x248
 	.byte	0xb4
 	.uleb128 0x17
 	.ascii "_mbsrtowcs_state\0"
 	.byte	0x5
 	.word	0x291
-	.long	0x222
+	.long	0x248
 	.byte	0xbc
 	.uleb128 0x17
 	.ascii "_wcrtomb_state\0"
 	.byte	0x5
 	.word	0x292
-	.long	0x222
+	.long	0x248
 	.byte	0xc4
 	.uleb128 0x17
 	.ascii "_wcsrtombs_state\0"
 	.byte	0x5
 	.word	0x293
-	.long	0x222
+	.long	0x248
 	.byte	0xcc
 	.uleb128 0x17
 	.ascii "_h_errno\0"
 	.byte	0x5
 	.word	0x294
-	.long	0x101
+	.long	0x127
 	.byte	0xd4
 	.byte	0
 	.uleb128 0x9
-	.long	0x147
-	.long	0xad7
+	.long	0x16d
+	.long	0xafd
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0x19
 	.byte	0
 	.uleb128 0x2
@@ -2603,137 +2603,137 @@ print_commandList:
 	.byte	0x7
 	.ascii "long long unsigned int\0"
 	.uleb128 0x9
-	.long	0x147
-	.long	0xb01
+	.long	0x16d
+	.long	0xb27
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0x7
 	.byte	0
 	.uleb128 0x9
-	.long	0x147
-	.long	0xb11
+	.long	0x16d
+	.long	0xb37
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0x17
 	.byte	0
 	.uleb128 0x1b
 	.word	0x168
 	.byte	0x5
 	.word	0x299
-	.long	0xb3e
+	.long	0xb64
 	.uleb128 0x17
 	.ascii "_nextf\0"
 	.byte	0x5
 	.word	0x29c
-	.long	0xb3e
+	.long	0xb64
 	.byte	0
 	.uleb128 0x17
 	.ascii "_nmalloc\0"
 	.byte	0x5
 	.word	0x29d
-	.long	0xb4e
+	.long	0xb74
 	.byte	0xf0
 	.byte	0
 	.uleb128 0x9
-	.long	0x46d
-	.long	0xb4e
+	.long	0x493
+	.long	0xb74
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0x1d
 	.byte	0
 	.uleb128 0x9
-	.long	0x108
-	.long	0xb5e
+	.long	0x12e
+	.long	0xb84
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0x1d
 	.byte	0
 	.uleb128 0x1c
 	.word	0x168
 	.byte	0x5
 	.word	0x27e
-	.long	0xb88
+	.long	0xbae
 	.uleb128 0x1d
 	.ascii "_reent\0"
 	.byte	0x5
 	.word	0x295
-	.long	0x91a
+	.long	0x940
 	.uleb128 0x1d
 	.ascii "_unused\0"
 	.byte	0x5
 	.word	0x29e
-	.long	0xb11
+	.long	0xb37
 	.byte	0
 	.uleb128 0x9
-	.long	0x147
-	.long	0xb98
+	.long	0x16d
+	.long	0xbbe
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0x18
 	.byte	0
 	.uleb128 0x1e
 	.ascii "__locale_t\0"
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xb98
+	.long	0xbbe
 	.uleb128 0x1f
-	.long	0xbb5
+	.long	0xbdb
 	.uleb128 0x15
-	.long	0x491
+	.long	0x4b7
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xbaa
+	.long	0xbd0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x2b3
+	.long	0x2d9
 	.uleb128 0x1f
-	.long	0xbcc
+	.long	0xbf2
 	.uleb128 0x15
-	.long	0x101
+	.long	0x127
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xbd2
+	.long	0xbf8
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xbc1
+	.long	0xbe7
 	.uleb128 0x9
-	.long	0x873
-	.long	0xbe8
+	.long	0x899
+	.long	0xc0e
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0x2
 	.byte	0
 	.uleb128 0x20
 	.ascii "_impure_ptr\0"
 	.byte	0x5
 	.word	0x32e
-	.long	0x491
+	.long	0x4b7
 	.uleb128 0x20
 	.ascii "_global_impure_ptr\0"
 	.byte	0x5
 	.word	0x32f
-	.long	0x497
+	.long	0x4bd
 	.uleb128 0x9
-	.long	0x14f
-	.long	0xc22
+	.long	0x175
+	.long	0xc48
 	.uleb128 0x21
 	.byte	0
 	.uleb128 0x4
-	.long	0xc17
+	.long	0xc3d
 	.uleb128 0x22
 	.ascii "_ctype_\0"
 	.byte	0x6
 	.byte	0xae
-	.long	0xc22
+	.long	0xc48
 	.uleb128 0x23
 	.byte	0x7
 	.byte	0x4
-	.long	0x108
+	.long	0x12e
 	.byte	0x7
 	.byte	0x9
-	.long	0xd52
+	.long	0xd78
 	.uleb128 0x24
 	.ascii "TYPE_VOID\0"
 	.byte	0
@@ -2790,78 +2790,78 @@ print_commandList:
 	.ascii "type_t\0"
 	.byte	0x7
 	.byte	0x1b
-	.long	0xc36
+	.long	0xc5c
 	.uleb128 0xd
 	.ascii "type\0"
 	.byte	0x18
 	.byte	0x7
 	.byte	0x1d
-	.long	0xd9a
+	.long	0xdc0
 	.uleb128 0xc
 	.ascii "kind\0"
 	.byte	0x7
 	.byte	0x1e
-	.long	0xd52
+	.long	0xd78
 	.byte	0
 	.uleb128 0xc
 	.ascii "subtype\0"
 	.byte	0x7
 	.byte	0x1f
-	.long	0xd9a
+	.long	0xdc0
 	.byte	0x8
 	.uleb128 0xc
 	.ascii "params\0"
 	.byte	0x7
 	.byte	0x20
-	.long	0xdde
+	.long	0xe04
 	.byte	0x10
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xd60
+	.long	0xd86
 	.uleb128 0xd
 	.ascii "param_list\0"
 	.byte	0x18
 	.byte	0x7
 	.byte	0x24
-	.long	0xdde
+	.long	0xe04
 	.uleb128 0xc
 	.ascii "name\0"
 	.byte	0x7
 	.byte	0x25
-	.long	0x63b
+	.long	0x661
 	.byte	0
 	.uleb128 0xc
 	.ascii "theType\0"
 	.byte	0x7
 	.byte	0x26
-	.long	0xdf0
+	.long	0xe16
 	.byte	0x8
 	.uleb128 0xc
 	.ascii "next\0"
 	.byte	0x7
 	.byte	0x27
-	.long	0xdde
+	.long	0xe04
 	.byte	0x10
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xda0
+	.long	0xdc6
 	.uleb128 0x3
 	.ascii "type\0"
 	.byte	0x7
 	.byte	0x21
-	.long	0xd60
+	.long	0xd86
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xde4
+	.long	0xe0a
 	.uleb128 0x23
 	.byte	0x7
 	.byte	0x4
-	.long	0x108
+	.long	0x12e
 	.byte	0x7
 	.byte	0x2e
-	.long	0xf23
+	.long	0xf49
 	.uleb128 0x24
 	.ascii "EXPR_ADD\0"
 	.byte	0
@@ -2915,107 +2915,107 @@ print_commandList:
 	.ascii "expr_t\0"
 	.byte	0x7
 	.byte	0x3f
-	.long	0xdf6
+	.long	0xe1c
 	.uleb128 0xd
 	.ascii "expr\0"
 	.byte	0x38
 	.byte	0x7
 	.byte	0x41
-	.long	0xfca
+	.long	0xff0
 	.uleb128 0xc
 	.ascii "kind\0"
 	.byte	0x7
 	.byte	0x42
-	.long	0xf23
+	.long	0xf49
 	.byte	0
 	.uleb128 0xc
 	.ascii "left\0"
 	.byte	0x7
 	.byte	0x43
-	.long	0xfca
+	.long	0xff0
 	.byte	0x8
 	.uleb128 0xc
 	.ascii "right\0"
 	.byte	0x7
 	.byte	0x44
-	.long	0xfca
+	.long	0xff0
 	.byte	0x10
 	.uleb128 0xc
 	.ascii "string_literal\0"
 	.byte	0x7
 	.byte	0x45
-	.long	0x63b
+	.long	0x661
 	.byte	0x18
 	.uleb128 0xc
 	.ascii "string_id\0"
 	.byte	0x7
 	.byte	0x46
-	.long	0x63b
+	.long	0x661
 	.byte	0x20
 	.uleb128 0xc
 	.ascii "integer_value\0"
 	.byte	0x7
 	.byte	0x47
-	.long	0x101
+	.long	0x127
 	.byte	0x28
 	.uleb128 0xc
 	.ascii "character_value\0"
 	.byte	0x7
 	.byte	0x48
-	.long	0x147
+	.long	0x16d
 	.byte	0x2c
 	.uleb128 0x25
 	.secrel32	.LASF1
 	.byte	0x7
 	.byte	0x49
-	.long	0x101
+	.long	0x127
 	.byte	0x30
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xf31
+	.long	0xf57
 	.uleb128 0x3
 	.ascii "expr\0"
 	.byte	0x7
 	.byte	0x4a
-	.long	0xf31
+	.long	0xf57
 	.uleb128 0x26
 	.secrel32	.LASF2
 	.byte	0x10
 	.byte	0x7
 	.byte	0x4c
-	.long	0x1006
+	.long	0x102c
 	.uleb128 0xc
 	.ascii "theExpr\0"
 	.byte	0x7
 	.byte	0x4e
-	.long	0x1006
+	.long	0x102c
 	.byte	0
 	.uleb128 0xc
 	.ascii "next\0"
 	.byte	0x7
 	.byte	0x4f
-	.long	0x100c
+	.long	0x1032
 	.byte	0x8
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xfd0
+	.long	0xff6
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xfdc
+	.long	0x1002
 	.uleb128 0x27
 	.secrel32	.LASF2
 	.byte	0x7
 	.byte	0x50
-	.long	0xfdc
+	.long	0x1002
 	.uleb128 0x23
 	.byte	0x7
 	.byte	0x4
-	.long	0x108
+	.long	0x12e
 	.byte	0x7
 	.byte	0x56
-	.long	0x114a
+	.long	0x1170
 	.uleb128 0x24
 	.ascii "STMT_DECL\0"
 	.byte	0
@@ -3087,72 +3087,72 @@ print_commandList:
 	.ascii "stmt_t\0"
 	.byte	0x7
 	.byte	0x6d
-	.long	0x101d
+	.long	0x1043
 	.uleb128 0xd
 	.ascii "stmt\0"
 	.byte	0x50
 	.byte	0x7
 	.byte	0x6f
-	.long	0x1203
+	.long	0x1229
 	.uleb128 0xc
 	.ascii "kind\0"
 	.byte	0x7
 	.byte	0x70
-	.long	0x114a
+	.long	0x1170
 	.byte	0
 	.uleb128 0xc
 	.ascii "decl\0"
 	.byte	0x7
 	.byte	0x71
-	.long	0x1256
+	.long	0x127c
 	.byte	0x8
 	.uleb128 0xc
 	.ascii "init_expr\0"
 	.byte	0x7
 	.byte	0x72
-	.long	0x1006
+	.long	0x102c
 	.byte	0x10
 	.uleb128 0xc
 	.ascii "theExpr\0"
 	.byte	0x7
 	.byte	0x73
-	.long	0x1006
+	.long	0x102c
 	.byte	0x18
 	.uleb128 0xc
 	.ascii "next_expr\0"
 	.byte	0x7
 	.byte	0x74
-	.long	0x1006
+	.long	0x102c
 	.byte	0x20
 	.uleb128 0xc
 	.ascii "body\0"
 	.byte	0x7
 	.byte	0x75
-	.long	0x125c
+	.long	0x1282
 	.byte	0x28
 	.uleb128 0xc
 	.ascii "else_body\0"
 	.byte	0x7
 	.byte	0x76
-	.long	0x125c
+	.long	0x1282
 	.byte	0x30
 	.uleb128 0xc
 	.ascii "expressionList\0"
 	.byte	0x7
 	.byte	0x77
-	.long	0x1262
+	.long	0x1288
 	.byte	0x38
 	.uleb128 0xc
 	.ascii "next\0"
 	.byte	0x7
 	.byte	0x78
-	.long	0x125c
+	.long	0x1282
 	.byte	0x40
 	.uleb128 0x25
 	.secrel32	.LASF1
 	.byte	0x7
 	.byte	0x79
-	.long	0x101
+	.long	0x127
 	.byte	0x48
 	.byte	0
 	.uleb128 0xd
@@ -3160,109 +3160,109 @@ print_commandList:
 	.byte	0x88
 	.byte	0x7
 	.byte	0x7f
-	.long	0x1256
+	.long	0x127c
 	.uleb128 0xc
 	.ascii "name\0"
 	.byte	0x7
 	.byte	0x80
-	.long	0x1274
+	.long	0x129a
 	.byte	0
 	.uleb128 0xc
 	.ascii "theType\0"
 	.byte	0x7
 	.byte	0x81
-	.long	0xdf0
+	.long	0xe16
 	.byte	0x68
 	.uleb128 0xc
 	.ascii "value\0"
 	.byte	0x7
 	.byte	0x82
-	.long	0x1006
+	.long	0x102c
 	.byte	0x70
 	.uleb128 0xc
 	.ascii "code\0"
 	.byte	0x7
 	.byte	0x83
-	.long	0x1284
+	.long	0x12aa
 	.byte	0x78
 	.uleb128 0xc
 	.ascii "next\0"
 	.byte	0x7
 	.byte	0x84
-	.long	0x1256
+	.long	0x127c
 	.byte	0x80
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x1203
+	.long	0x1229
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x1158
+	.long	0x117e
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x1012
+	.long	0x1038
 	.uleb128 0x3
 	.ascii "stmt\0"
 	.byte	0x7
 	.byte	0x7a
-	.long	0x1158
+	.long	0x117e
 	.uleb128 0x9
-	.long	0x147
-	.long	0x1284
+	.long	0x16d
+	.long	0x12aa
 	.uleb128 0xa
-	.long	0x124
+	.long	0x14a
 	.byte	0x63
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x1268
+	.long	0x128e
 	.uleb128 0x3
 	.ascii "decl\0"
 	.byte	0x7
 	.byte	0x85
-	.long	0x1203
+	.long	0x1229
 	.uleb128 0xd
 	.ascii "command\0"
 	.byte	0x20
 	.byte	0x8
 	.byte	0x6
-	.long	0x12df
+	.long	0x1305
 	.uleb128 0xc
 	.ascii "aDecl\0"
 	.byte	0x8
 	.byte	0x8
-	.long	0x12df
+	.long	0x1305
 	.byte	0
 	.uleb128 0xc
 	.ascii "aStmt\0"
 	.byte	0x8
 	.byte	0x9
-	.long	0x1284
+	.long	0x12aa
 	.byte	0x8
 	.uleb128 0xc
 	.ascii "anExpr\0"
 	.byte	0x8
 	.byte	0xa
-	.long	0x1006
+	.long	0x102c
 	.byte	0x10
 	.uleb128 0xc
 	.ascii "next\0"
 	.byte	0x8
 	.byte	0xb
-	.long	0x12e5
+	.long	0x130b
 	.byte	0x18
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x128a
+	.long	0x12b0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x1296
+	.long	0x12bc
 	.uleb128 0x3
 	.ascii "command\0"
 	.byte	0x8
 	.byte	0xc
-	.long	0x1296
+	.long	0x12bc
 	.uleb128 0x28
 	.ascii "print_commandList\0"
 	.byte	0x1
@@ -3271,12 +3271,12 @@ print_commandList:
 	.quad	.LFE10-.LFB10
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1415
+	.long	0x143b
 	.uleb128 0x29
 	.secrel32	.LASF3
 	.byte	0x1
 	.byte	0x15
-	.long	0x1415
+	.long	0x143b
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
@@ -3284,23 +3284,23 @@ print_commandList:
 	.ascii "current\0"
 	.byte	0x1
 	.byte	0x16
-	.long	0x1415
+	.long	0x143b
 	.uleb128 0x2
 	.byte	0x91
-	.sleb128 -24
+	.sleb128 -32
 	.uleb128 0x2a
 	.ascii "counter\0"
 	.byte	0x1
 	.byte	0x17
-	.long	0x101
+	.long	0x127
 	.uleb128 0x2
 	.byte	0x91
-	.sleb128 -28
+	.sleb128 -56
 	.uleb128 0x2a
 	.ascii "value\0"
 	.byte	0x1
 	.byte	0x18
-	.long	0x101
+	.long	0x127
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -48
@@ -3308,22 +3308,22 @@ print_commandList:
 	.ascii "temp_type\0"
 	.byte	0x1
 	.byte	0x19
-	.long	0x101
+	.long	0x127
 	.uleb128 0x2
 	.byte	0x91
-	.sleb128 -60
+	.sleb128 -36
 	.uleb128 0x2b
 	.quad	.LBB2
 	.quad	.LBE2-.LBB2
-	.long	0x13cb
+	.long	0x13f1
 	.uleb128 0x2a
 	.ascii "currentList\0"
 	.byte	0x1
 	.byte	0xa0
-	.long	0x1262
+	.long	0x1288
 	.uleb128 0x2
 	.byte	0x91
-	.sleb128 -40
+	.sleb128 -24
 	.uleb128 0x2c
 	.quad	.LBB3
 	.quad	.LBE3-.LBB3
@@ -3331,24 +3331,24 @@ print_commandList:
 	.ascii "ret_val\0"
 	.byte	0x1
 	.byte	0xa4
-	.long	0x101
+	.long	0x127
 	.uleb128 0x2
 	.byte	0x91
-	.sleb128 -56
+	.sleb128 -40
 	.byte	0
 	.byte	0
 	.uleb128 0x2b
 	.quad	.LBB4
 	.quad	.LBE4-.LBB4
-	.long	0x13f3
+	.long	0x1419
 	.uleb128 0x2a
 	.ascii "ret_val\0"
 	.byte	0x1
 	.byte	0xd9
-	.long	0x101
+	.long	0x127
 	.uleb128 0x2
 	.byte	0x91
-	.sleb128 -52
+	.sleb128 -44
 	.byte	0
 	.uleb128 0x2c
 	.quad	.LBB5
@@ -3357,15 +3357,15 @@ print_commandList:
 	.ascii "val\0"
 	.byte	0x1
 	.word	0x122
-	.long	0x101
+	.long	0x127
 	.uleb128 0x2
 	.byte	0x91
-	.sleb128 -44
+	.sleb128 -52
 	.byte	0
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x12eb
+	.long	0x1311
 	.uleb128 0x2e
 	.ascii "push_commandList\0"
 	.byte	0x1
@@ -3378,7 +3378,7 @@ print_commandList:
 	.secrel32	.LASF3
 	.byte	0x1
 	.byte	0x6
-	.long	0x1415
+	.long	0x143b
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
@@ -3386,7 +3386,7 @@ print_commandList:
 	.ascii "aDecl\0"
 	.byte	0x1
 	.byte	0x6
-	.long	0x12df
+	.long	0x1305
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
@@ -3394,7 +3394,7 @@ print_commandList:
 	.ascii "aStmt\0"
 	.byte	0x1
 	.byte	0x6
-	.long	0x1284
+	.long	0x12aa
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
@@ -3402,7 +3402,7 @@ print_commandList:
 	.ascii "anExpr\0"
 	.byte	0x1
 	.byte	0x6
-	.long	0x1006
+	.long	0x102c
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 24
@@ -3410,7 +3410,7 @@ print_commandList:
 	.ascii "current\0"
 	.byte	0x1
 	.byte	0x7
-	.long	0x1415
+	.long	0x143b
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -24
