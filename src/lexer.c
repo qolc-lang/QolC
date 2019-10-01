@@ -24,7 +24,9 @@ lexer_node lex(char fileName[]) {
 	}
 
 	while (fgets(reading_buffer,sizeof(reading_buffer), fp) != NULL) {
-		//printf("~~~~ %s\n", reading_buffer);
+		/*
+		printf("~~~~ %s\n", reading_buffer);
+		*/
 		for (pos = 0; pos < strlen(reading_buffer); ++pos) {
 			printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
 
@@ -190,7 +192,6 @@ lexer_node lex(char fileName[]) {
 		Catching end of file buffer
 	*/
 	if (feof(fp)) {
-   		//printf("End of file\n");
    		if (index != 0) {
 			buffer[index] = '\0';
 			index = 0;

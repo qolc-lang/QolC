@@ -17,7 +17,7 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 
 	lexer_node* current = tokens;
 	
-	//The first is the head
+	/* The first is the head */
 	current = current->next;
 
 	while (current != NULL)  {
@@ -97,7 +97,7 @@ void print_parseStateList(parse_state* node) {
 	parse_state * current = node;
 	int counter = 0;
 	
-	//First in the list is the head
+	/* First in the list is the head */
 	while (current != NULL) {
 		++counter;
 		printf("Counter-Position %d : %d\n", counter, current->pos);

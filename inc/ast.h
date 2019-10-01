@@ -33,7 +33,6 @@ typedef struct type {
 }type;
 
 
-//Struct for extra possible parameters
 typedef struct param_list {
 	char *name;
 	type *theType;
@@ -128,8 +127,8 @@ typedef struct stmt {
 typedef struct decl {
 	char name[100];
 	type* theType;
-	expr* value;		//if declaration is an expression
-	stmt* code;			//if declaration is a function
+	expr* value;
+	stmt* code;	
 	struct decl* next;
 }decl;
 

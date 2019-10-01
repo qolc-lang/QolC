@@ -24,7 +24,6 @@ void print_commandList(command* commandNode) {
 	int value;
 	int temp_type;
 	
-	//First in the list is the head
 	while (current != NULL) {
 		++counter;
 
@@ -158,7 +157,6 @@ void print_commandList(command* commandNode) {
 						continue;
 					}
 					else {
-						//Print all expressions in the list
 						expr_list* currentList = current->aStmt->expressionList;
 
 						while (currentList != NULL) {

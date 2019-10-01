@@ -8,7 +8,7 @@ IncludeDir = $(PrjRoot)/inc
 
 Includes = -I $(IncludeDir) -I $(PrjRoot)
 CC	= gcc
-COptions =  -g -c
+COptions =  -g -c -Wall -save-temps -l -Werror -fPIC -v -ansi -funsigned-char -D_FORTIFY_SOURCE=2 -D_GLIBCXX_ASSERTION -fasynchronous-unwind-tables
 linkOptions = -g
 BuildCommand= $(Includes)  $(COptions)
 

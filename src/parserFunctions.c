@@ -10,10 +10,9 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 	expr_list* expressionListNode = malloc(sizeof(expr_list));
 	parse_state* checkCurrent;
 
-	//in case there is a space between operators and identifiers
 	if (tempTop > 1) {
 		printf("already an identifier in stack \n");
-		//might not need these pops
+		/* might not need these pops */
 		pop(&tempTop);
 		pop(&tempTop);
 		printf("the first expr : %s\n", tempNode->value);
@@ -54,7 +53,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 		push_expressionList(expressionListNode, theExpr);
 		operatorInsideStack = 0;
 
-		//pushin to stack the previous id
+		/* pushin to stack the previous id */
 		++tempTop;
 		push(tempStack, &tempTop, current->value);
 		printf("going to copy the value : %s\n", current->value);
@@ -79,7 +78,6 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 				strcpy(tempNode->temp, current->value);
 				printf("current NOT NULL\n");
 				current = current->next;
-				// return NULL;		//just simply return
 			}
 
 		}
@@ -257,7 +255,7 @@ parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int t
 			}
 
 			operatorUsed = 1;
-			//copying right id expr to become new left id expr
+			/* copying right id expr to become new left id expr */
 			strcpy(tempNode->value, current->value);
 			push_expressionList(expressionListNode, theExprSecond);
 			current = current->next;
