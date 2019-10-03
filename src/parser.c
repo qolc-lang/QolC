@@ -305,6 +305,22 @@ void parsing(parse_state* current, command* commandNode) {
 			current = current->next;
 			continue;
 		}
+		else if (strcmp(current->value, "[") == 0) {
+			printf("Array start going in.\n");
+			push(theStack[top], &top, current->value);
+			printf("**********************************************************\n");
+			current = current->next;
+			continue;
+		}
+		else if (strcmp(current->value, "]") == 0) {
+			printf("Array end going in.\n");
+			/* Just for array type checking, set a variable at some point 
+						push(theStack[top], &top, current->value);
+			*/
+			printf("**********************************************************\n");
+			current = current->next;
+			continue;
+		}
 		else if (strcmp(current->value, "^") == 0) {
 			printf("Operator ^ going in.\n");
 			push(theStack[top], &top, current->value);
@@ -487,6 +503,21 @@ void parsing(parse_state* current, command* commandNode) {
 				theStack[0][top] = '\0';
 				pop(&top);
 				strcpy(temp2, theStack[top]);
+				theStack[0][top] = '\0';
+				pop(&top);
+				theStack[0][top] = '\0';
+				BuildDeclarationStatement(temp, temp2, commandNode);
+			}
+			else if (strcmp(theStack[top], "[") == 0) {
+				doneFlag = 1;
+				theStack[0][top] = '\0';
+				pop(&top);
+				strcpy(temp, theStack[top]);
+				printf("The temp here : %s\n", temp);
+				theStack[0][top] = '\0';
+				pop(&top);
+				strcpy(temp2, theStack[top]);
+				printf("The temp2 here : %s\n", temp2);
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
