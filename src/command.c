@@ -92,6 +92,11 @@ void print_commandList(command* commandNode) {
 						if (current->aStmt->decl->value != NULL)
 							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
 					}
+					else if (temp_type == 10) {
+						printf("	TYPE_VOID_POINTER\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
+					}
 					else if (temp_type == 12) {
 						printf("	TYPE_HEXNUM\n");
 						if (current->aStmt->decl->value != NULL)
@@ -106,11 +111,15 @@ void print_commandList(command* commandNode) {
 					else if (temp_type == 15) {
 						printf("	TYPE_UNION\n");
 					}
-					else if (temp_type == 16) {
-						printf("	TYPE_VOID_POINTER\n");
-						if (current->aStmt->decl->value != NULL)
-							printf("		value: %s\n", current->aStmt->decl->value->string_literal);
+					else if (temp_type == 15) {
+						printf("	TYPE_UNION\n");
 					}
+					else if (temp_type == 18) {
+						printf("	TYPE_INTEGER_ARRAY\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else;
 				}
 				if (current->aStmt->memberOf != -1) {
 

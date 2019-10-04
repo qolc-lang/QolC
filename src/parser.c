@@ -512,16 +512,25 @@ void parsing(parse_state* current, command* commandNode) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
 				pop(&top);
-				strcpy(temp, theStack[top]);
-				printf("The temp here : %s\n", temp);
-				theStack[0][top] = '\0';
-				pop(&top);
+				strcpy(temp, current->value);
 				strcpy(temp2, theStack[top]);
+				printf("The temp here : %s\n", temp);
 				printf("The temp2 here : %s\n", temp2);
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
-				BuildDeclarationStatement(temp, temp2, commandNode);
+				pop(&top);
+				theStack[0][top] = '\0';
+				current = current->next;
+				if (strcmp(current->type, "array end") == 0)
+				{
+					printf("Valid array.\n");
+					current = current->next;
+					current = current->next;
+					printf("The array type : %s\n", current->value);
+					/* Check for type instead of passing it directly */
+					BuildDeclarationExprStatement(temp, commandNode, temp2, 13, sTypeOfMember);
+				} else { printf("Not a valid array.\n"); }
 			}
 			else if (strcmp(theStack[top], "+=") == 0) {
 				doneFlag = 1;
