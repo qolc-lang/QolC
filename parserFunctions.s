@@ -2551,8 +2551,8 @@ BuildDeclarationExprStatement:
 	movq	%r8, 32(%rbp)
 	movl	%r9d, 40(%rbp)
 	.loc 1 462 0
-	cmpl	$13, 40(%rbp)
-	ja	.L107
+	cmpl	$15, 40(%rbp)
+	ja	.L109
 	movl	40(%rbp), %eax
 	leaq	0(,%rax,4), %rdx
 	leaq	.L93(%rip), %rax
@@ -2564,7 +2564,7 @@ BuildDeclarationExprStatement:
 	.section .rdata,"dr"
 	.align 4
 .L93:
-	.long	.L107-.L93
+	.long	.L109-.L93
 	.long	.L92-.L93
 	.long	.L94-.L93
 	.long	.L95-.L93
@@ -2578,6 +2578,8 @@ BuildDeclarationExprStatement:
 	.long	.L103-.L93
 	.long	.L104-.L93
 	.long	.L105-.L93
+	.long	.L106-.L93
+	.long	.L107-.L93
 	.text
 .L92:
 	.loc 1 464 0
@@ -2590,7 +2592,7 @@ BuildDeclarationExprStatement:
 	call	type_create
 	movq	%rax, -32(%rbp)
 	.loc 1 466 0
-	jmp	.L106
+	jmp	.L108
 .L94:
 	.loc 1 468 0
 	leaq	.LC87(%rip), %rcx
@@ -2602,7 +2604,7 @@ BuildDeclarationExprStatement:
 	call	type_create
 	movq	%rax, -32(%rbp)
 	.loc 1 470 0
-	jmp	.L106
+	jmp	.L108
 .L95:
 	.loc 1 472 0
 	leaq	.LC88(%rip), %rcx
@@ -2614,7 +2616,7 @@ BuildDeclarationExprStatement:
 	call	type_create
 	movq	%rax, -32(%rbp)
 	.loc 1 474 0
-	jmp	.L106
+	jmp	.L108
 .L96:
 	.loc 1 476 0
 	leaq	.LC89(%rip), %rcx
@@ -2626,7 +2628,7 @@ BuildDeclarationExprStatement:
 	call	type_create
 	movq	%rax, -32(%rbp)
 	.loc 1 478 0
-	jmp	.L106
+	jmp	.L108
 .L97:
 	.loc 1 480 0
 	leaq	.LC90(%rip), %rcx
@@ -2638,7 +2640,7 @@ BuildDeclarationExprStatement:
 	call	type_create
 	movq	%rax, -32(%rbp)
 	.loc 1 482 0
-	jmp	.L106
+	jmp	.L108
 .L98:
 	.loc 1 484 0
 	leaq	.LC91(%rip), %rcx
@@ -2650,7 +2652,7 @@ BuildDeclarationExprStatement:
 	call	type_create
 	movq	%rax, -32(%rbp)
 	.loc 1 486 0
-	jmp	.L106
+	jmp	.L108
 .L99:
 	.loc 1 488 0
 	leaq	.LC92(%rip), %rcx
@@ -2662,7 +2664,7 @@ BuildDeclarationExprStatement:
 	call	type_create
 	movq	%rax, -32(%rbp)
 	.loc 1 490 0
-	jmp	.L106
+	jmp	.L108
 .L100:
 	.loc 1 492 0
 	leaq	.LC93(%rip), %rcx
@@ -2674,7 +2676,7 @@ BuildDeclarationExprStatement:
 	call	type_create
 	movq	%rax, -32(%rbp)
 	.loc 1 494 0
-	jmp	.L106
+	jmp	.L108
 .L101:
 	.loc 1 496 0
 	leaq	.LC94(%rip), %rcx
@@ -2686,7 +2688,7 @@ BuildDeclarationExprStatement:
 	call	type_create
 	movq	%rax, -32(%rbp)
 	.loc 1 498 0
-	jmp	.L106
+	jmp	.L108
 .L102:
 	.loc 1 500 0
 	leaq	.LC95(%rip), %rcx
@@ -2698,7 +2700,7 @@ BuildDeclarationExprStatement:
 	call	type_create
 	movq	%rax, -32(%rbp)
 	.loc 1 502 0
-	jmp	.L106
+	jmp	.L108
 .L103:
 	.loc 1 504 0
 	leaq	.LC96(%rip), %rcx
@@ -2710,7 +2712,7 @@ BuildDeclarationExprStatement:
 	call	type_create
 	movq	%rax, -32(%rbp)
 	.loc 1 506 0
-	jmp	.L106
+	jmp	.L108
 .L104:
 	.loc 1 508 0
 	leaq	.LC96(%rip), %rcx
@@ -2722,7 +2724,7 @@ BuildDeclarationExprStatement:
 	call	type_create
 	movq	%rax, -32(%rbp)
 	.loc 1 510 0
-	jmp	.L106
+	jmp	.L108
 .L105:
 	.loc 1 512 0
 	leaq	.LC97(%rip), %rcx
@@ -2734,16 +2736,40 @@ BuildDeclarationExprStatement:
 	call	type_create
 	movq	%rax, -32(%rbp)
 	.loc 1 514 0
-	jmp	.L106
-.L107:
-	.loc 1 516 0
-	nop
+	jmp	.L108
 .L106:
-	.loc 1 519 0
+	.loc 1 516 0
+	leaq	.LC97(%rip), %rcx
+	call	puts
+	.loc 1 517 0
+	movl	$0, %r8d
+	movl	$0, %edx
+	movl	$19, %ecx
+	call	type_create
+	movq	%rax, -32(%rbp)
+	.loc 1 518 0
+	jmp	.L108
+.L107:
+	.loc 1 520 0
+	leaq	.LC97(%rip), %rcx
+	call	puts
+	.loc 1 521 0
+	movl	$0, %r8d
+	movl	$0, %edx
+	movl	$20, %ecx
+	call	type_create
+	movq	%rax, -32(%rbp)
+	.loc 1 522 0
+	jmp	.L108
+.L109:
+	.loc 1 524 0
+	nop
+.L108:
+	.loc 1 527 0
 	movq	16(%rbp), %rcx
 	call	expr_create_string
 	movq	%rax, -24(%rbp)
-	.loc 1 520 0
+	.loc 1 528 0
 	movq	-24(%rbp), %rcx
 	movq	-32(%rbp), %rdx
 	movq	32(%rbp), %rax
@@ -2752,7 +2778,7 @@ BuildDeclarationExprStatement:
 	movq	%rax, %rcx
 	call	decl_create
 	movq	%rax, -16(%rbp)
-	.loc 1 521 0
+	.loc 1 529 0
 	movq	-16(%rbp), %rax
 	movl	48(%rbp), %edx
 	movl	%edx, 72(%rsp)
@@ -2767,7 +2793,7 @@ BuildDeclarationExprStatement:
 	movl	$0, %ecx
 	call	stmt_create
 	movq	%rax, -8(%rbp)
-	.loc 1 522 0
+	.loc 1 530 0
 	movq	-8(%rbp), %rdx
 	movq	24(%rbp), %rax
 	movl	$0, %r9d
@@ -2775,7 +2801,7 @@ BuildDeclarationExprStatement:
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	push_commandList
-	.loc 1 523 0
+	.loc 1 531 0
 	nop
 	addq	$112, %rsp
 	popq	%rbp
@@ -2819,7 +2845,7 @@ BuildDeclarationExprStatement:
 	.seh_proc	BuildAssignAndCompareExprStatement
 BuildAssignAndCompareExprStatement:
 .LFB15:
-	.loc 1 526 0
+	.loc 1 534 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -2835,45 +2861,45 @@ BuildAssignAndCompareExprStatement:
 	movq	%rdx, 24(%rbp)
 	movq	%r8, 32(%rbp)
 	movl	%r9d, 40(%rbp)
-	.loc 1 528 0
+	.loc 1 536 0
 	movq	24(%rbp), %rax
 	movq	%rax, %rcx
 	call	expr_create_string
 	movq	%rax, -16(%rbp)
-	.loc 1 529 0
+	.loc 1 537 0
 	movq	16(%rbp), %rcx
 	call	expr_create_string
 	movq	%rax, -8(%rbp)
-	.loc 1 532 0
+	.loc 1 540 0
 	cmpl	$9, 40(%rbp)
-	ja	.L121
+	ja	.L123
 	movl	40(%rbp), %eax
 	leaq	0(,%rax,4), %rdx
-	leaq	.L111(%rip), %rax
+	leaq	.L113(%rip), %rax
 	movl	(%rdx,%rax), %eax
 	movslq	%eax, %rdx
-	leaq	.L111(%rip), %rax
+	leaq	.L113(%rip), %rax
 	addq	%rdx, %rax
 	jmp	*%rax
 	.section .rdata,"dr"
 	.align 4
-.L111:
-	.long	.L121-.L111
-	.long	.L110-.L111
-	.long	.L112-.L111
-	.long	.L113-.L111
-	.long	.L114-.L111
-	.long	.L115-.L111
-	.long	.L116-.L111
-	.long	.L117-.L111
-	.long	.L118-.L111
-	.long	.L119-.L111
+.L113:
+	.long	.L123-.L113
+	.long	.L112-.L113
+	.long	.L114-.L113
+	.long	.L115-.L113
+	.long	.L116-.L113
+	.long	.L117-.L113
+	.long	.L118-.L113
+	.long	.L119-.L113
+	.long	.L120-.L113
+	.long	.L121-.L113
 	.text
-.L110:
-	.loc 1 534 0
+.L112:
+	.loc 1 542 0
 	leaq	.LC98(%rip), %rcx
 	call	puts
-	.loc 1 535 0
+	.loc 1 543 0
 	movq	-8(%rbp), %rcx
 	movq	-16(%rbp), %rax
 	movl	48(%rbp), %edx
@@ -2886,13 +2912,13 @@ BuildAssignAndCompareExprStatement:
 	movl	$4, %ecx
 	call	expr_create
 	movq	%rax, -24(%rbp)
-	.loc 1 536 0
-	jmp	.L120
-.L112:
-	.loc 1 538 0
+	.loc 1 544 0
+	jmp	.L122
+.L114:
+	.loc 1 546 0
 	leaq	.LC99(%rip), %rcx
 	call	puts
-	.loc 1 539 0
+	.loc 1 547 0
 	movq	-8(%rbp), %rcx
 	movq	-16(%rbp), %rax
 	movl	48(%rbp), %edx
@@ -2905,13 +2931,13 @@ BuildAssignAndCompareExprStatement:
 	movl	$5, %ecx
 	call	expr_create
 	movq	%rax, -24(%rbp)
-	.loc 1 540 0
-	jmp	.L120
-.L113:
-	.loc 1 542 0
+	.loc 1 548 0
+	jmp	.L122
+.L115:
+	.loc 1 550 0
 	leaq	.LC100(%rip), %rcx
 	call	puts
-	.loc 1 543 0
+	.loc 1 551 0
 	movq	-8(%rbp), %rcx
 	movq	-16(%rbp), %rax
 	movl	48(%rbp), %edx
@@ -2924,13 +2950,13 @@ BuildAssignAndCompareExprStatement:
 	movl	$6, %ecx
 	call	expr_create
 	movq	%rax, -24(%rbp)
-	.loc 1 544 0
-	jmp	.L120
-.L114:
-	.loc 1 546 0
+	.loc 1 552 0
+	jmp	.L122
+.L116:
+	.loc 1 554 0
 	leaq	.LC101(%rip), %rcx
 	call	puts
-	.loc 1 547 0
+	.loc 1 555 0
 	movq	-8(%rbp), %rcx
 	movq	-16(%rbp), %rax
 	movl	48(%rbp), %edx
@@ -2943,13 +2969,13 @@ BuildAssignAndCompareExprStatement:
 	movl	$7, %ecx
 	call	expr_create
 	movq	%rax, -24(%rbp)
-	.loc 1 548 0
-	jmp	.L120
-.L115:
-	.loc 1 550 0
+	.loc 1 556 0
+	jmp	.L122
+.L117:
+	.loc 1 558 0
 	leaq	.LC102(%rip), %rcx
 	call	puts
-	.loc 1 551 0
+	.loc 1 559 0
 	movq	-8(%rbp), %rcx
 	movq	-16(%rbp), %rax
 	movl	48(%rbp), %edx
@@ -2962,13 +2988,13 @@ BuildAssignAndCompareExprStatement:
 	movl	$11, %ecx
 	call	expr_create
 	movq	%rax, -24(%rbp)
-	.loc 1 552 0
-	jmp	.L120
-.L116:
-	.loc 1 554 0
+	.loc 1 560 0
+	jmp	.L122
+.L118:
+	.loc 1 562 0
 	leaq	.LC103(%rip), %rcx
 	call	puts
-	.loc 1 555 0
+	.loc 1 563 0
 	movq	-8(%rbp), %rcx
 	movq	-16(%rbp), %rax
 	movl	48(%rbp), %edx
@@ -2981,13 +3007,13 @@ BuildAssignAndCompareExprStatement:
 	movl	$12, %ecx
 	call	expr_create
 	movq	%rax, -24(%rbp)
-	.loc 1 556 0
-	jmp	.L120
-.L117:
-	.loc 1 558 0
+	.loc 1 564 0
+	jmp	.L122
+.L119:
+	.loc 1 566 0
 	leaq	.LC104(%rip), %rcx
 	call	puts
-	.loc 1 559 0
+	.loc 1 567 0
 	movq	-8(%rbp), %rcx
 	movq	-16(%rbp), %rax
 	movl	48(%rbp), %edx
@@ -3000,13 +3026,13 @@ BuildAssignAndCompareExprStatement:
 	movl	$13, %ecx
 	call	expr_create
 	movq	%rax, -24(%rbp)
-	.loc 1 560 0
-	jmp	.L120
-.L118:
-	.loc 1 562 0
+	.loc 1 568 0
+	jmp	.L122
+.L120:
+	.loc 1 570 0
 	leaq	.LC105(%rip), %rcx
 	call	puts
-	.loc 1 563 0
+	.loc 1 571 0
 	movq	-8(%rbp), %rcx
 	movq	-16(%rbp), %rax
 	movl	48(%rbp), %edx
@@ -3019,13 +3045,13 @@ BuildAssignAndCompareExprStatement:
 	movl	$14, %ecx
 	call	expr_create
 	movq	%rax, -24(%rbp)
-	.loc 1 564 0
-	jmp	.L120
-.L119:
-	.loc 1 566 0
+	.loc 1 572 0
+	jmp	.L122
+.L121:
+	.loc 1 574 0
 	leaq	.LC106(%rip), %rcx
 	call	puts
-	.loc 1 567 0
+	.loc 1 575 0
 	movq	-8(%rbp), %rcx
 	movq	-16(%rbp), %rax
 	movl	48(%rbp), %edx
@@ -3038,13 +3064,13 @@ BuildAssignAndCompareExprStatement:
 	movl	$15, %ecx
 	call	expr_create
 	movq	%rax, -24(%rbp)
-	.loc 1 568 0
-	jmp	.L120
-.L121:
-	.loc 1 570 0
+	.loc 1 576 0
+	jmp	.L122
+.L123:
+	.loc 1 578 0
 	nop
-.L120:
-	.loc 1 573 0
+.L122:
+	.loc 1 581 0
 	movq	-24(%rbp), %rdx
 	movq	32(%rbp), %rax
 	movq	%rdx, %r9
@@ -3052,7 +3078,7 @@ BuildAssignAndCompareExprStatement:
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	push_commandList
-	.loc 1 574 0
+	.loc 1 582 0
 	nop
 	addq	$96, %rsp
 	popq	%rbp
@@ -3072,7 +3098,7 @@ BuildAssignAndCompareExprStatement:
 	.seh_proc	BuildDeclarationStatement
 BuildDeclarationStatement:
 .LFB16:
-	.loc 1 577 0
+	.loc 1 585 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -3087,14 +3113,14 @@ BuildDeclarationStatement:
 	movq	%rcx, 16(%rbp)
 	movq	%rdx, 24(%rbp)
 	movq	%r8, 32(%rbp)
-	.loc 1 578 0
+	.loc 1 586 0
 	leaq	.LC107(%rip), %rcx
 	call	puts
-	.loc 1 579 0
+	.loc 1 587 0
 	movq	16(%rbp), %rcx
 	call	expr_create_string
 	movq	%rax, -24(%rbp)
-	.loc 1 580 0
+	.loc 1 588 0
 	movq	-24(%rbp), %rdx
 	movq	24(%rbp), %rax
 	movl	$0, %r9d
@@ -3103,7 +3129,7 @@ BuildDeclarationStatement:
 	movq	%rax, %rcx
 	call	decl_create
 	movq	%rax, -16(%rbp)
-	.loc 1 581 0
+	.loc 1 589 0
 	movq	-16(%rbp), %rax
 	movl	$-1, 72(%rsp)
 	movq	$0, 64(%rsp)
@@ -3117,7 +3143,7 @@ BuildDeclarationStatement:
 	movl	$0, %ecx
 	call	stmt_create
 	movq	%rax, -8(%rbp)
-	.loc 1 582 0
+	.loc 1 590 0
 	movq	-8(%rbp), %rdx
 	movq	32(%rbp), %rax
 	movl	$0, %r9d
@@ -3125,7 +3151,7 @@ BuildDeclarationStatement:
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	push_commandList
-	.loc 1 583 0
+	.loc 1 591 0
 	nop
 	addq	$112, %rsp
 	popq	%rbp
@@ -3144,7 +3170,7 @@ BuildDeclarationStatement:
 	.seh_proc	BuildNewStatement
 BuildNewStatement:
 .LFB17:
-	.loc 1 586 0
+	.loc 1 594 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -3159,29 +3185,29 @@ BuildNewStatement:
 	movq	%rcx, 16(%rbp)
 	movq	%rdx, 24(%rbp)
 	movq	%r8, 32(%rbp)
-	.loc 1 587 0
+	.loc 1 595 0
 	leaq	.LC108(%rip), %rcx
 	call	puts
-	.loc 1 588 0
+	.loc 1 596 0
 	movq	16(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, 16(%rbp)
-	.loc 1 589 0
+	.loc 1 597 0
 	movq	16(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, 16(%rbp)
-	.loc 1 590 0
+	.loc 1 598 0
 	movq	32(%rbp), %rax
 	movq	%rax, %rcx
 	call	expr_create_string
 	movq	%rax, -24(%rbp)
-	.loc 1 591 0
+	.loc 1 599 0
 	movq	16(%rbp), %rax
 	addq	$104, %rax
 	movq	%rax, %rcx
 	call	expr_create_string
 	movq	%rax, -16(%rbp)
-	.loc 1 592 0
+	.loc 1 600 0
 	movq	-24(%rbp), %rdx
 	movl	$-1, 72(%rsp)
 	movq	$0, 64(%rsp)
@@ -3196,7 +3222,7 @@ BuildNewStatement:
 	movl	$14, %ecx
 	call	stmt_create
 	movq	%rax, -8(%rbp)
-	.loc 1 593 0
+	.loc 1 601 0
 	movq	-8(%rbp), %rdx
 	movq	24(%rbp), %rax
 	movl	$0, %r9d
@@ -3204,7 +3230,7 @@ BuildNewStatement:
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	push_commandList
-	.loc 1 594 0
+	.loc 1 602 0
 	nop
 	addq	$112, %rsp
 	popq	%rbp
@@ -3219,7 +3245,7 @@ BuildNewStatement:
 	.seh_proc	CheckIfMemberOfStatement
 CheckIfMemberOfStatement:
 .LFB18:
-	.loc 1 596 0
+	.loc 1 604 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -3241,42 +3267,42 @@ CheckIfMemberOfStatement:
 	movq	8(%rbx), %rdx
 	movq	%rax, -128(%rbp)
 	movq	%rdx, -120(%rbp)
-	.loc 1 598 0
+	.loc 1 606 0
 	movl	-128(%rbp), %eax
 	cmpl	$1, %eax
-	jne	.L125
-	.loc 1 598 0 is_stmt 0 discriminator 1
+	jne	.L127
+	.loc 1 606 0 is_stmt 0 discriminator 1
 	movl	$1, %eax
-	jmp	.L126
-.L125:
-	.loc 1 599 0 is_stmt 1
+	jmp	.L128
+.L127:
+	.loc 1 607 0 is_stmt 1
 	movl	-124(%rbp), %eax
 	cmpl	$1, %eax
-	jne	.L127
-	.loc 1 599 0 is_stmt 0 discriminator 1
+	jne	.L129
+	.loc 1 607 0 is_stmt 0 discriminator 1
 	movl	$2, %eax
-	jmp	.L126
-.L127:
-	.loc 1 600 0 is_stmt 1
+	jmp	.L128
+.L129:
+	.loc 1 608 0 is_stmt 1
 	movl	-120(%rbp), %eax
 	cmpl	$1, %eax
-	jne	.L128
-	.loc 1 600 0 is_stmt 0 discriminator 1
+	jne	.L130
+	.loc 1 608 0 is_stmt 0 discriminator 1
 	movl	$3, %eax
-	jmp	.L126
-.L128:
-	.loc 1 601 0 is_stmt 1
+	jmp	.L128
+.L130:
+	.loc 1 609 0 is_stmt 1
 	movl	-116(%rbp), %eax
 	cmpl	$1, %eax
-	jne	.L129
-	.loc 1 601 0 is_stmt 0 discriminator 1
+	jne	.L131
+	.loc 1 609 0 is_stmt 0 discriminator 1
 	movl	$4, %eax
-	jmp	.L126
-.L129:
-	.loc 1 603 0 is_stmt 1
+	jmp	.L128
+.L131:
+	.loc 1 611 0 is_stmt 1
 	movl	$-1, %eax
-.L126:
-	.loc 1 604 0
+.L128:
+	.loc 1 612 0
 	addq	$24, %rsp
 	popq	%rbx
 	.cfi_restore 3
@@ -3292,7 +3318,7 @@ CheckIfMemberOfStatement:
 	.seh_proc	ClearFlags
 ClearFlags:
 .LFB19:
-	.loc 1 606 0
+	.loc 1 614 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -3303,43 +3329,43 @@ ClearFlags:
 	.cfi_def_cfa_register 6
 	.seh_endprologue
 	movq	%rcx, 16(%rbp)
-	.loc 1 608 0
+	.loc 1 616 0
 	movq	16(%rbp), %rax
 	movl	(%rax), %eax
 	cmpl	$1, %eax
-	jne	.L131
-	.loc 1 608 0 is_stmt 0 discriminator 1
+	jne	.L133
+	.loc 1 616 0 is_stmt 0 discriminator 1
 	movq	16(%rbp), %rax
 	movl	$0, (%rax)
-.L131:
-	.loc 1 609 0 is_stmt 1
+.L133:
+	.loc 1 617 0 is_stmt 1
 	movq	16(%rbp), %rax
 	movl	4(%rax), %eax
 	cmpl	$1, %eax
-	jne	.L132
-	.loc 1 609 0 is_stmt 0 discriminator 1
+	jne	.L134
+	.loc 1 617 0 is_stmt 0 discriminator 1
 	movq	16(%rbp), %rax
 	movl	$0, 4(%rax)
-.L132:
-	.loc 1 610 0 is_stmt 1
+.L134:
+	.loc 1 618 0 is_stmt 1
 	movq	16(%rbp), %rax
 	movl	8(%rax), %eax
 	cmpl	$1, %eax
-	jne	.L133
-	.loc 1 610 0 is_stmt 0 discriminator 1
+	jne	.L135
+	.loc 1 618 0 is_stmt 0 discriminator 1
 	movq	16(%rbp), %rax
 	movl	$0, 8(%rax)
-.L133:
-	.loc 1 611 0 is_stmt 1
+.L135:
+	.loc 1 619 0 is_stmt 1
 	movq	16(%rbp), %rax
 	movl	12(%rax), %eax
 	cmpl	$1, %eax
-	jne	.L135
-	.loc 1 611 0 is_stmt 0 discriminator 1
+	jne	.L137
+	.loc 1 619 0 is_stmt 0 discriminator 1
 	movq	16(%rbp), %rax
 	movl	$0, 12(%rax)
-.L135:
-	.loc 1 612 0 is_stmt 1
+.L137:
+	.loc 1 620 0 is_stmt 1
 	nop
 	popq	%rbp
 	.cfi_restore 6
@@ -5144,7 +5170,7 @@ ClearFlags:
 	.uleb128 0x28
 	.ascii "ClearFlags\0"
 	.byte	0x1
-	.word	0x25e
+	.word	0x266
 	.quad	.LFB19
 	.quad	.LFE19-.LFB19
 	.uleb128 0x1
@@ -5153,7 +5179,7 @@ ClearFlags:
 	.uleb128 0x29
 	.ascii "mFlags\0"
 	.byte	0x1
-	.word	0x25e
+	.word	0x266
 	.long	0x15d6
 	.uleb128 0x2
 	.byte	0x91
@@ -5165,7 +5191,7 @@ ClearFlags:
 	.uleb128 0x2a
 	.ascii "CheckIfMemberOfStatement\0"
 	.byte	0x1
-	.word	0x254
+	.word	0x25c
 	.long	0x12f
 	.quad	.LFB18
 	.quad	.LFE18-.LFB18
@@ -5175,7 +5201,7 @@ ClearFlags:
 	.uleb128 0x29
 	.ascii "mFlags\0"
 	.byte	0x1
-	.word	0x254
+	.word	0x25c
 	.long	0x1593
 	.uleb128 0x2
 	.byte	0x91
@@ -5184,7 +5210,7 @@ ClearFlags:
 	.uleb128 0x2b
 	.ascii "BuildNewStatement\0"
 	.byte	0x1
-	.word	0x24a
+	.word	0x252
 	.quad	.LFB17
 	.quad	.LFE17-.LFB17
 	.uleb128 0x1
@@ -5193,7 +5219,7 @@ ClearFlags:
 	.uleb128 0x2c
 	.secrel32	.LASF10
 	.byte	0x1
-	.word	0x24a
+	.word	0x252
 	.long	0x16b1
 	.uleb128 0x2
 	.byte	0x91
@@ -5201,7 +5227,7 @@ ClearFlags:
 	.uleb128 0x2c
 	.secrel32	.LASF11
 	.byte	0x1
-	.word	0x24a
+	.word	0x252
 	.long	0x16b7
 	.uleb128 0x2
 	.byte	0x91
@@ -5209,7 +5235,7 @@ ClearFlags:
 	.uleb128 0x2c
 	.secrel32	.LASF8
 	.byte	0x1
-	.word	0x24a
+	.word	0x252
 	.long	0x669
 	.uleb128 0x2
 	.byte	0x91
@@ -5217,7 +5243,7 @@ ClearFlags:
 	.uleb128 0x2d
 	.ascii "expr1\0"
 	.byte	0x1
-	.word	0x24e
+	.word	0x256
 	.long	0x11ef
 	.uleb128 0x2
 	.byte	0x91
@@ -5225,7 +5251,7 @@ ClearFlags:
 	.uleb128 0x2d
 	.ascii "expr2\0"
 	.byte	0x1
-	.word	0x24f
+	.word	0x257
 	.long	0x11ef
 	.uleb128 0x2
 	.byte	0x91
@@ -5233,7 +5259,7 @@ ClearFlags:
 	.uleb128 0x2e
 	.secrel32	.LASF12
 	.byte	0x1
-	.word	0x250
+	.word	0x258
 	.long	0x1453
 	.uleb128 0x2
 	.byte	0x91
@@ -5248,7 +5274,7 @@ ClearFlags:
 	.uleb128 0x2b
 	.ascii "BuildDeclarationStatement\0"
 	.byte	0x1
-	.word	0x241
+	.word	0x249
 	.quad	.LFB16
 	.quad	.LFE16-.LFB16
 	.uleb128 0x1
@@ -5257,7 +5283,7 @@ ClearFlags:
 	.uleb128 0x2c
 	.secrel32	.LASF8
 	.byte	0x1
-	.word	0x241
+	.word	0x249
 	.long	0x669
 	.uleb128 0x2
 	.byte	0x91
@@ -5265,7 +5291,7 @@ ClearFlags:
 	.uleb128 0x29
 	.ascii "temp2\0"
 	.byte	0x1
-	.word	0x241
+	.word	0x249
 	.long	0x669
 	.uleb128 0x2
 	.byte	0x91
@@ -5273,7 +5299,7 @@ ClearFlags:
 	.uleb128 0x2c
 	.secrel32	.LASF11
 	.byte	0x1
-	.word	0x241
+	.word	0x249
 	.long	0x16b7
 	.uleb128 0x2
 	.byte	0x91
@@ -5281,7 +5307,7 @@ ClearFlags:
 	.uleb128 0x2e
 	.secrel32	.LASF6
 	.byte	0x1
-	.word	0x243
+	.word	0x24b
 	.long	0x11ef
 	.uleb128 0x2
 	.byte	0x91
@@ -5289,7 +5315,7 @@ ClearFlags:
 	.uleb128 0x2e
 	.secrel32	.LASF13
 	.byte	0x1
-	.word	0x244
+	.word	0x24c
 	.long	0x14ad
 	.uleb128 0x2
 	.byte	0x91
@@ -5297,7 +5323,7 @@ ClearFlags:
 	.uleb128 0x2e
 	.secrel32	.LASF12
 	.byte	0x1
-	.word	0x245
+	.word	0x24d
 	.long	0x1453
 	.uleb128 0x2
 	.byte	0x91
@@ -5306,7 +5332,7 @@ ClearFlags:
 	.uleb128 0x2b
 	.ascii "BuildAssignAndCompareExprStatement\0"
 	.byte	0x1
-	.word	0x20e
+	.word	0x216
 	.quad	.LFB15
 	.quad	.LFE15-.LFB15
 	.uleb128 0x1
@@ -5315,7 +5341,7 @@ ClearFlags:
 	.uleb128 0x2c
 	.secrel32	.LASF8
 	.byte	0x1
-	.word	0x20e
+	.word	0x216
 	.long	0x669
 	.uleb128 0x2
 	.byte	0x91
@@ -5323,7 +5349,7 @@ ClearFlags:
 	.uleb128 0x29
 	.ascii "temp2\0"
 	.byte	0x1
-	.word	0x20e
+	.word	0x216
 	.long	0x669
 	.uleb128 0x2
 	.byte	0x91
@@ -5331,7 +5357,7 @@ ClearFlags:
 	.uleb128 0x2c
 	.secrel32	.LASF11
 	.byte	0x1
-	.word	0x20e
+	.word	0x216
 	.long	0x16b7
 	.uleb128 0x2
 	.byte	0x91
@@ -5339,7 +5365,7 @@ ClearFlags:
 	.uleb128 0x29
 	.ascii "operation\0"
 	.byte	0x1
-	.word	0x20e
+	.word	0x216
 	.long	0x12f
 	.uleb128 0x2
 	.byte	0x91
@@ -5347,7 +5373,7 @@ ClearFlags:
 	.uleb128 0x2c
 	.secrel32	.LASF14
 	.byte	0x1
-	.word	0x20e
+	.word	0x216
 	.long	0x12f
 	.uleb128 0x2
 	.byte	0x91
@@ -5355,7 +5381,7 @@ ClearFlags:
 	.uleb128 0x2e
 	.secrel32	.LASF15
 	.byte	0x1
-	.word	0x210
+	.word	0x218
 	.long	0x11ef
 	.uleb128 0x2
 	.byte	0x91
@@ -5363,7 +5389,7 @@ ClearFlags:
 	.uleb128 0x2e
 	.secrel32	.LASF16
 	.byte	0x1
-	.word	0x211
+	.word	0x219
 	.long	0x11ef
 	.uleb128 0x2
 	.byte	0x91
@@ -5371,7 +5397,7 @@ ClearFlags:
 	.uleb128 0x2e
 	.secrel32	.LASF6
 	.byte	0x1
-	.word	0x212
+	.word	0x21a
 	.long	0x11ef
 	.uleb128 0x2
 	.byte	0x91
@@ -5437,7 +5463,7 @@ ClearFlags:
 	.uleb128 0x2e
 	.secrel32	.LASF6
 	.byte	0x1
-	.word	0x207
+	.word	0x20f
 	.long	0x11ef
 	.uleb128 0x2
 	.byte	0x91
@@ -5445,7 +5471,7 @@ ClearFlags:
 	.uleb128 0x2e
 	.secrel32	.LASF13
 	.byte	0x1
-	.word	0x208
+	.word	0x210
 	.long	0x14ad
 	.uleb128 0x2
 	.byte	0x91
@@ -5453,7 +5479,7 @@ ClearFlags:
 	.uleb128 0x2e
 	.secrel32	.LASF12
 	.byte	0x1
-	.word	0x209
+	.word	0x211
 	.long	0x1453
 	.uleb128 0x2
 	.byte	0x91

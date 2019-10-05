@@ -510,12 +510,11 @@ void parsing(parse_state* current, command* commandNode) {
 			}
 			else if (strcmp(theStack[top], "[") == 0) {
 				doneFlag = 1;
+				int arrayType = 0;
 				theStack[0][top] = '\0';
 				pop(&top);
 				strcpy(temp, current->value);
 				strcpy(temp2, theStack[top]);
-				printf("The temp here : %s\n", temp);
-				printf("The temp2 here : %s\n", temp2);
 				theStack[0][top] = '\0';
 				pop(&top);
 				theStack[0][top] = '\0';
@@ -528,8 +527,10 @@ void parsing(parse_state* current, command* commandNode) {
 					current = current->next;
 					current = current->next;
 					printf("The array type : %s\n", current->value);
-					/* Check for type instead of passing it directly */
-					BuildDeclarationExprStatement(temp, commandNode, temp2, 13, sTypeOfMember);
+					if (strcmp(current->value, "int") == 0) arrayType = 13;
+					if (strcmp(current->value, "string") == 0) arrayType = 14;
+					if (strcmp(current->value, "float") == 0) arrayType = 15;
+					BuildDeclarationExprStatement(temp, commandNode, temp2, arrayType, sTypeOfMember);
 				} else { printf("Not a valid array.\n"); }
 			}
 			else if (strcmp(theStack[top], "+=") == 0) {

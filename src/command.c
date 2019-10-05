@@ -119,6 +119,16 @@ void print_commandList(command* commandNode) {
 						if (current->aStmt->decl->value != NULL)
 							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
 					}
+					else if (temp_type == 19) {
+						printf("	TYPE_STRING_ARRAY\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else if (temp_type == 20) {
+						printf("	TYPE_FLOAT_ARRAY\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
 					else;
 				}
 				if (current->aStmt->memberOf != -1) {

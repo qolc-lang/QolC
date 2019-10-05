@@ -1813,6 +1813,24 @@ void print_commandList(command* commandNode) {
                                             )
        printf("		size: %s\n", current->aStmt->decl->value->string_literal);
      }
+     else if (temp_type == 19) {
+      printf("	TYPE_STRING_ARRAY\n");
+      if (current->aStmt->decl->value != 
+# 124 "./src/command.c" 3 4
+                                        ((void *)0)
+# 124 "./src/command.c"
+                                            )
+       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 20) {
+      printf("	TYPE_FLOAT_ARRAY\n");
+      if (current->aStmt->decl->value != 
+# 129 "./src/command.c" 3 4
+                                        ((void *)0)
+# 129 "./src/command.c"
+                                            )
+       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
      else;
     }
     if (current->aStmt->memberOf != -1) {
@@ -1855,14 +1873,14 @@ void print_commandList(command* commandNode) {
    else if (value == 10) {
     printf("STMT_RETURN\n");
     if (current->aStmt->theExpr == 
-# 163 "./src/command.c" 3 4
+# 173 "./src/command.c" 3 4
                                   ((void *)0)
-# 163 "./src/command.c"
+# 173 "./src/command.c"
                                       ) {
      if (current->aStmt->expressionList == 
-# 164 "./src/command.c" 3 4
+# 174 "./src/command.c" 3 4
                                           ((void *)0)
-# 164 "./src/command.c"
+# 174 "./src/command.c"
                                               ) {
       current = current->next;
       continue;
@@ -1871,14 +1889,14 @@ void print_commandList(command* commandNode) {
       expr_list* currentList = current->aStmt->expressionList;
 
       while (currentList != 
-# 171 "./src/command.c" 3 4
+# 181 "./src/command.c" 3 4
                            ((void *)0)
-# 171 "./src/command.c"
+# 181 "./src/command.c"
                                ) {
        if (currentList->theExpr != 
-# 172 "./src/command.c" 3 4
+# 182 "./src/command.c" 3 4
                                   ((void *)0)
-# 172 "./src/command.c"
+# 182 "./src/command.c"
                                       ) {
         int ret_val = (int)currentList->theExpr->kind;
         if (ret_val == 0) {
@@ -2006,9 +2024,9 @@ void print_commandList(command* commandNode) {
    }
   }
   else if (current->anExpr != 
-# 298 "./src/command.c" 3 4
+# 308 "./src/command.c" 3 4
                              ((void *)0)
-# 298 "./src/command.c"
+# 308 "./src/command.c"
                                  ) {
    int val = (int)current->anExpr->kind;
    if (val == 4) {
