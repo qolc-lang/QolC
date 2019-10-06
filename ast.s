@@ -382,7 +382,7 @@ push_expressionList:
 	.file 7 "./src/../inc/ast.h"
 	.section	.debug_info,"dr"
 .Ldebug_info0:
-	.long	0x16d8
+	.long	0x16ea
 	.word	0x4
 	.secrel32	.Ldebug_abbrev0
 	.byte	0x8
@@ -1470,7 +1470,7 @@ push_expressionList:
 	.long	0x12a
 	.byte	0x7
 	.byte	0x9
-	.long	0xed8
+	.long	0xeea
 	.uleb128 0x24
 	.ascii "TYPE_VOID\0"
 	.byte	0
@@ -1526,129 +1526,132 @@ push_expressionList:
 	.ascii "TYPE_BOOLEAN_ARRAY\0"
 	.byte	0x11
 	.uleb128 0x24
-	.ascii "TYPE_INTEGER_ARRAY\0"
+	.ascii "TYPE_CHAR_ARRAY\0"
 	.byte	0x12
 	.uleb128 0x24
-	.ascii "TYPE_STRING_ARRAY\0"
+	.ascii "TYPE_INTEGER_ARRAY\0"
 	.byte	0x13
 	.uleb128 0x24
-	.ascii "TYPE_FLOAT_ARRAY\0"
+	.ascii "TYPE_STRING_ARRAY\0"
 	.byte	0x14
 	.uleb128 0x24
-	.ascii "TYPE_STRUCT_ARRAY\0"
+	.ascii "TYPE_FLOAT_ARRAY\0"
 	.byte	0x15
 	.uleb128 0x24
-	.ascii "TYPE_ENUM_ARRAY\0"
+	.ascii "TYPE_STRUCT_ARRAY\0"
 	.byte	0x16
 	.uleb128 0x24
-	.ascii "TYPE_UNION_ARRAY\0"
+	.ascii "TYPE_ENUM_ARRAY\0"
 	.byte	0x17
 	.uleb128 0x24
-	.ascii "TYPE_FLOAT_POINTER_ARRAY\0"
+	.ascii "TYPE_UNION_ARRAY\0"
 	.byte	0x18
 	.uleb128 0x24
-	.ascii "TYPE_INT_POINTER_ARRAY\0"
+	.ascii "TYPE_FLOAT_POINTER_ARRAY\0"
 	.byte	0x19
 	.uleb128 0x24
-	.ascii "TYPE_CHAR_POINTER_ARRAY\0"
+	.ascii "TYPE_INT_POINTER_ARRAY\0"
 	.byte	0x1a
 	.uleb128 0x24
-	.ascii "TYPE_STRING_POINTER_ARRAY\0"
+	.ascii "TYPE_CHAR_POINTER_ARRAY\0"
 	.byte	0x1b
 	.uleb128 0x24
-	.ascii "TYPE_VOID_POINTER_ARRAY\0"
+	.ascii "TYPE_STRING_POINTER_ARRAY\0"
 	.byte	0x1c
 	.uleb128 0x24
-	.ascii "TYPE_STRUCT_POINTER_ARRAY\0"
+	.ascii "TYPE_VOID_POINTER_ARRAY\0"
 	.byte	0x1d
 	.uleb128 0x24
-	.ascii "TYPE_ENUM_POINTER_ARRAY\0"
+	.ascii "TYPE_STRUCT_POINTER_ARRAY\0"
 	.byte	0x1e
 	.uleb128 0x24
-	.ascii "TYPE_UNION_POINTER_ARRAY\0"
+	.ascii "TYPE_ENUM_POINTER_ARRAY\0"
 	.byte	0x1f
+	.uleb128 0x24
+	.ascii "TYPE_UNION_POINTER_ARRAY\0"
+	.byte	0x20
 	.byte	0
 	.uleb128 0x3
 	.ascii "type_t\0"
 	.byte	0x7
-	.byte	0x2a
+	.byte	0x2b
 	.long	0xc58
 	.uleb128 0xd
 	.ascii "type\0"
 	.byte	0x18
 	.byte	0x7
-	.byte	0x2c
-	.long	0xf1f
+	.byte	0x2d
+	.long	0xf31
 	.uleb128 0x25
 	.secrel32	.LASF1
 	.byte	0x7
-	.byte	0x2d
-	.long	0xed8
+	.byte	0x2e
+	.long	0xeea
 	.byte	0
 	.uleb128 0xc
 	.ascii "subtype\0"
 	.byte	0x7
-	.byte	0x2e
-	.long	0xf1f
+	.byte	0x2f
+	.long	0xf31
 	.byte	0x8
 	.uleb128 0xc
 	.ascii "params\0"
 	.byte	0x7
-	.byte	0x2f
-	.long	0xf5c
+	.byte	0x30
+	.long	0xf6e
 	.byte	0x10
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xee6
+	.long	0xef8
 	.uleb128 0x26
 	.secrel32	.LASF2
 	.byte	0x18
 	.byte	0x7
-	.byte	0x33
-	.long	0xf5c
+	.byte	0x34
+	.long	0xf6e
 	.uleb128 0xc
 	.ascii "name\0"
 	.byte	0x7
-	.byte	0x34
+	.byte	0x35
 	.long	0x65d
 	.byte	0
 	.uleb128 0xc
 	.ascii "theType\0"
 	.byte	0x7
-	.byte	0x35
-	.long	0xf6e
+	.byte	0x36
+	.long	0xf80
 	.byte	0x8
 	.uleb128 0xc
 	.ascii "next\0"
 	.byte	0x7
-	.byte	0x36
-	.long	0xf5c
+	.byte	0x37
+	.long	0xf6e
 	.byte	0x10
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xf25
+	.long	0xf37
 	.uleb128 0x3
 	.ascii "type\0"
 	.byte	0x7
-	.byte	0x30
-	.long	0xee6
+	.byte	0x31
+	.long	0xef8
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xf62
+	.long	0xf74
 	.uleb128 0x27
 	.secrel32	.LASF2
 	.byte	0x7
-	.byte	0x37
-	.long	0xf25
+	.byte	0x38
+	.long	0xf37
 	.uleb128 0x23
 	.byte	0x7
 	.byte	0x4
 	.long	0x12a
 	.byte	0x7
-	.byte	0x3d
-	.long	0x10ac
+	.byte	0x3e
+	.long	0x10be
 	.uleb128 0x24
 	.ascii "EXPR_ADD\0"
 	.byte	0
@@ -1701,108 +1704,108 @@ push_expressionList:
 	.uleb128 0x3
 	.ascii "expr_t\0"
 	.byte	0x7
-	.byte	0x4e
-	.long	0xf7f
+	.byte	0x4f
+	.long	0xf91
 	.uleb128 0xd
 	.ascii "expr\0"
 	.byte	0x38
 	.byte	0x7
-	.byte	0x50
-	.long	0x1131
+	.byte	0x51
+	.long	0x1143
 	.uleb128 0x25
 	.secrel32	.LASF1
 	.byte	0x7
-	.byte	0x51
-	.long	0x10ac
+	.byte	0x52
+	.long	0x10be
 	.byte	0
 	.uleb128 0xc
 	.ascii "left\0"
 	.byte	0x7
-	.byte	0x52
-	.long	0x1131
+	.byte	0x53
+	.long	0x1143
 	.byte	0x8
 	.uleb128 0xc
 	.ascii "right\0"
 	.byte	0x7
-	.byte	0x53
-	.long	0x1131
+	.byte	0x54
+	.long	0x1143
 	.byte	0x10
 	.uleb128 0x25
 	.secrel32	.LASF3
 	.byte	0x7
-	.byte	0x54
+	.byte	0x55
 	.long	0x65d
 	.byte	0x18
 	.uleb128 0xc
 	.ascii "string_id\0"
 	.byte	0x7
-	.byte	0x55
+	.byte	0x56
 	.long	0x65d
 	.byte	0x20
 	.uleb128 0x25
 	.secrel32	.LASF4
 	.byte	0x7
-	.byte	0x56
+	.byte	0x57
 	.long	0x123
 	.byte	0x28
 	.uleb128 0x25
 	.secrel32	.LASF5
 	.byte	0x7
-	.byte	0x57
+	.byte	0x58
 	.long	0x169
 	.byte	0x2c
 	.uleb128 0x25
 	.secrel32	.LASF6
 	.byte	0x7
-	.byte	0x58
+	.byte	0x59
 	.long	0x123
 	.byte	0x30
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x10ba
+	.long	0x10cc
 	.uleb128 0x3
 	.ascii "expr\0"
 	.byte	0x7
-	.byte	0x59
-	.long	0x10ba
+	.byte	0x5a
+	.long	0x10cc
 	.uleb128 0x26
 	.secrel32	.LASF7
 	.byte	0x10
 	.byte	0x7
-	.byte	0x5b
-	.long	0x1169
+	.byte	0x5c
+	.long	0x117b
 	.uleb128 0x25
 	.secrel32	.LASF8
 	.byte	0x7
-	.byte	0x5d
-	.long	0x1169
+	.byte	0x5e
+	.long	0x117b
 	.byte	0
 	.uleb128 0xc
 	.ascii "next\0"
 	.byte	0x7
-	.byte	0x5e
-	.long	0x116f
+	.byte	0x5f
+	.long	0x1181
 	.byte	0x8
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x1137
+	.long	0x1149
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x1143
+	.long	0x1155
 	.uleb128 0x27
 	.secrel32	.LASF7
 	.byte	0x7
-	.byte	0x5f
-	.long	0x1143
+	.byte	0x60
+	.long	0x1155
 	.uleb128 0x23
 	.byte	0x7
 	.byte	0x4
 	.long	0x12a
 	.byte	0x7
-	.byte	0x65
-	.long	0x12ad
+	.byte	0x66
+	.long	0x12bf
 	.uleb128 0x24
 	.ascii "STMT_DECL\0"
 	.byte	0
@@ -1873,72 +1876,72 @@ push_expressionList:
 	.uleb128 0x3
 	.ascii "stmt_t\0"
 	.byte	0x7
-	.byte	0x7c
-	.long	0x1180
+	.byte	0x7d
+	.long	0x1192
 	.uleb128 0xd
 	.ascii "stmt\0"
 	.byte	0x50
 	.byte	0x7
-	.byte	0x7e
-	.long	0x1356
+	.byte	0x7f
+	.long	0x1368
 	.uleb128 0x25
 	.secrel32	.LASF1
 	.byte	0x7
-	.byte	0x7f
-	.long	0x12ad
+	.byte	0x80
+	.long	0x12bf
 	.byte	0
 	.uleb128 0xc
 	.ascii "decl\0"
 	.byte	0x7
-	.byte	0x80
-	.long	0x13a9
+	.byte	0x81
+	.long	0x13bb
 	.byte	0x8
 	.uleb128 0xc
 	.ascii "init_expr\0"
 	.byte	0x7
-	.byte	0x81
-	.long	0x1169
+	.byte	0x82
+	.long	0x117b
 	.byte	0x10
 	.uleb128 0x25
 	.secrel32	.LASF8
 	.byte	0x7
-	.byte	0x82
-	.long	0x1169
+	.byte	0x83
+	.long	0x117b
 	.byte	0x18
 	.uleb128 0xc
 	.ascii "next_expr\0"
 	.byte	0x7
-	.byte	0x83
-	.long	0x1169
+	.byte	0x84
+	.long	0x117b
 	.byte	0x20
 	.uleb128 0xc
 	.ascii "body\0"
 	.byte	0x7
-	.byte	0x84
-	.long	0x13af
+	.byte	0x85
+	.long	0x13c1
 	.byte	0x28
 	.uleb128 0xc
 	.ascii "else_body\0"
 	.byte	0x7
-	.byte	0x85
-	.long	0x13af
+	.byte	0x86
+	.long	0x13c1
 	.byte	0x30
 	.uleb128 0x25
 	.secrel32	.LASF9
 	.byte	0x7
-	.byte	0x86
-	.long	0x13b5
+	.byte	0x87
+	.long	0x13c7
 	.byte	0x38
 	.uleb128 0xc
 	.ascii "next\0"
 	.byte	0x7
-	.byte	0x87
-	.long	0x13af
+	.byte	0x88
+	.long	0x13c1
 	.byte	0x40
 	.uleb128 0x25
 	.secrel32	.LASF6
 	.byte	0x7
-	.byte	0x88
+	.byte	0x89
 	.long	0x123
 	.byte	0x48
 	.byte	0
@@ -1946,68 +1949,68 @@ push_expressionList:
 	.ascii "decl\0"
 	.byte	0x88
 	.byte	0x7
-	.byte	0x8e
-	.long	0x13a9
+	.byte	0x8f
+	.long	0x13bb
 	.uleb128 0xc
 	.ascii "name\0"
 	.byte	0x7
-	.byte	0x8f
-	.long	0x13c7
+	.byte	0x90
+	.long	0x13d9
 	.byte	0
 	.uleb128 0xc
 	.ascii "theType\0"
 	.byte	0x7
-	.byte	0x90
-	.long	0xf6e
+	.byte	0x91
+	.long	0xf80
 	.byte	0x68
 	.uleb128 0xc
 	.ascii "value\0"
 	.byte	0x7
-	.byte	0x91
-	.long	0x1169
+	.byte	0x92
+	.long	0x117b
 	.byte	0x70
 	.uleb128 0xc
 	.ascii "code\0"
 	.byte	0x7
-	.byte	0x92
-	.long	0x13d7
+	.byte	0x93
+	.long	0x13e9
 	.byte	0x78
 	.uleb128 0xc
 	.ascii "next\0"
 	.byte	0x7
-	.byte	0x93
-	.long	0x13a9
+	.byte	0x94
+	.long	0x13bb
 	.byte	0x80
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x1356
+	.long	0x1368
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x12bb
+	.long	0x12cd
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x1175
+	.long	0x1187
 	.uleb128 0x3
 	.ascii "stmt\0"
 	.byte	0x7
-	.byte	0x89
-	.long	0x12bb
+	.byte	0x8a
+	.long	0x12cd
 	.uleb128 0x9
 	.long	0x169
-	.long	0x13d7
+	.long	0x13e9
 	.uleb128 0xa
 	.long	0x146
 	.byte	0x63
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x13bb
+	.long	0x13cd
 	.uleb128 0x3
 	.ascii "decl\0"
 	.byte	0x7
-	.byte	0x94
-	.long	0x1356
+	.byte	0x95
+	.long	0x1368
 	.uleb128 0x28
 	.ascii "push_expressionList\0"
 	.byte	0x1
@@ -2016,12 +2019,12 @@ push_expressionList:
 	.quad	.LFE14-.LFB14
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1446
+	.long	0x1458
 	.uleb128 0x29
 	.ascii "node\0"
 	.byte	0x1
 	.byte	0x4d
-	.long	0x13b5
+	.long	0x13c7
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
@@ -2029,7 +2032,7 @@ push_expressionList:
 	.secrel32	.LASF8
 	.byte	0x1
 	.byte	0x4d
-	.long	0x1169
+	.long	0x117b
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
@@ -2037,7 +2040,7 @@ push_expressionList:
 	.ascii "current\0"
 	.byte	0x1
 	.byte	0x4e
-	.long	0x13b5
+	.long	0x13c7
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -24
@@ -2046,12 +2049,12 @@ push_expressionList:
 	.ascii "expr_create_string\0"
 	.byte	0x1
 	.byte	0x42
-	.long	0x1169
+	.long	0x117b
 	.quad	.LFB13
 	.quad	.LFE13-.LFB13
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1491
+	.long	0x14a3
 	.uleb128 0x2a
 	.secrel32	.LASF3
 	.byte	0x1
@@ -2064,7 +2067,7 @@ push_expressionList:
 	.ascii "e\0"
 	.byte	0x1
 	.byte	0x43
-	.long	0x1169
+	.long	0x117b
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -24
@@ -2073,17 +2076,17 @@ push_expressionList:
 	.ascii "type_create\0"
 	.byte	0x1
 	.byte	0x37
-	.long	0xf6e
+	.long	0xf80
 	.quad	.LFB12
 	.quad	.LFE12-.LFB12
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x14f8
+	.long	0x150a
 	.uleb128 0x2a
 	.secrel32	.LASF1
 	.byte	0x1
 	.byte	0x37
-	.long	0xed8
+	.long	0xeea
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
@@ -2091,7 +2094,7 @@ push_expressionList:
 	.ascii "subtype\0"
 	.byte	0x1
 	.byte	0x37
-	.long	0xf6e
+	.long	0xf80
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
@@ -2099,7 +2102,7 @@ push_expressionList:
 	.ascii "params\0"
 	.byte	0x1
 	.byte	0x37
-	.long	0x14f8
+	.long	0x150a
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
@@ -2107,29 +2110,29 @@ push_expressionList:
 	.ascii "t\0"
 	.byte	0x1
 	.byte	0x38
-	.long	0xf6e
+	.long	0xf80
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -24
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xf74
+	.long	0xf86
 	.uleb128 0x2c
 	.ascii "expr_create\0"
 	.byte	0x1
 	.byte	0x26
-	.long	0x1169
+	.long	0x117b
 	.quad	.LFB11
 	.quad	.LFE11-.LFB11
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1599
+	.long	0x15ab
 	.uleb128 0x2a
 	.secrel32	.LASF1
 	.byte	0x1
 	.byte	0x26
-	.long	0x10ac
+	.long	0x10be
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
@@ -2137,7 +2140,7 @@ push_expressionList:
 	.ascii "left\0"
 	.byte	0x1
 	.byte	0x26
-	.long	0x1169
+	.long	0x117b
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
@@ -2145,7 +2148,7 @@ push_expressionList:
 	.ascii "right\0"
 	.byte	0x1
 	.byte	0x26
-	.long	0x1169
+	.long	0x117b
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
@@ -2185,7 +2188,7 @@ push_expressionList:
 	.ascii "e\0"
 	.byte	0x1
 	.byte	0x27
-	.long	0x1169
+	.long	0x117b
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -24
@@ -2194,17 +2197,17 @@ push_expressionList:
 	.ascii "stmt_create\0"
 	.byte	0x1
 	.byte	0x14
-	.long	0x13d7
+	.long	0x13e9
 	.quad	.LFB10
 	.quad	.LFE10-.LFB10
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1666
+	.long	0x1678
 	.uleb128 0x2a
 	.secrel32	.LASF1
 	.byte	0x1
 	.byte	0x14
-	.long	0x12ad
+	.long	0x12bf
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
@@ -2212,7 +2215,7 @@ push_expressionList:
 	.ascii "decl\0"
 	.byte	0x1
 	.byte	0x14
-	.long	0x1666
+	.long	0x1678
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
@@ -2220,7 +2223,7 @@ push_expressionList:
 	.ascii "iexpr\0"
 	.byte	0x1
 	.byte	0x14
-	.long	0x1169
+	.long	0x117b
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
@@ -2228,7 +2231,7 @@ push_expressionList:
 	.secrel32	.LASF8
 	.byte	0x1
 	.byte	0x14
-	.long	0x1169
+	.long	0x117b
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 24
@@ -2236,7 +2239,7 @@ push_expressionList:
 	.ascii "nexpr\0"
 	.byte	0x1
 	.byte	0x14
-	.long	0x1169
+	.long	0x117b
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 32
@@ -2244,7 +2247,7 @@ push_expressionList:
 	.ascii "body\0"
 	.byte	0x1
 	.byte	0x14
-	.long	0x13d7
+	.long	0x13e9
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 40
@@ -2252,7 +2255,7 @@ push_expressionList:
 	.ascii "ebody\0"
 	.byte	0x1
 	.byte	0x14
-	.long	0x13d7
+	.long	0x13e9
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 48
@@ -2260,7 +2263,7 @@ push_expressionList:
 	.secrel32	.LASF9
 	.byte	0x1
 	.byte	0x14
-	.long	0x13b5
+	.long	0x13c7
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 56
@@ -2268,7 +2271,7 @@ push_expressionList:
 	.ascii "next\0"
 	.byte	0x1
 	.byte	0x14
-	.long	0x13d7
+	.long	0x13e9
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 64
@@ -2284,19 +2287,19 @@ push_expressionList:
 	.ascii "s\0"
 	.byte	0x1
 	.byte	0x15
-	.long	0x13d7
+	.long	0x13e9
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -24
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x13dd
+	.long	0x13ef
 	.uleb128 0x2d
 	.ascii "decl_create\0"
 	.byte	0x1
 	.byte	0x6
-	.long	0x1666
+	.long	0x1678
 	.quad	.LFB9
 	.quad	.LFE9-.LFB9
 	.uleb128 0x1
@@ -2313,7 +2316,7 @@ push_expressionList:
 	.ascii "type\0"
 	.byte	0x1
 	.byte	0x6
-	.long	0xf6e
+	.long	0xf80
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
@@ -2321,7 +2324,7 @@ push_expressionList:
 	.ascii "value\0"
 	.byte	0x1
 	.byte	0x6
-	.long	0x1169
+	.long	0x117b
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
@@ -2329,7 +2332,7 @@ push_expressionList:
 	.ascii "code\0"
 	.byte	0x1
 	.byte	0x6
-	.long	0x13d7
+	.long	0x13e9
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 24
@@ -2337,7 +2340,7 @@ push_expressionList:
 	.ascii "d\0"
 	.byte	0x1
 	.byte	0x7
-	.long	0x1666
+	.long	0x1678
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -24

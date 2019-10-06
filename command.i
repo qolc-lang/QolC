@@ -1475,6 +1475,7 @@ typedef enum {
  TYPE_UNION,
  TYPE_VOID_ARRAY,
  TYPE_BOOLEAN_ARRAY,
+ TYPE_CHAR_ARRAY,
  TYPE_INTEGER_ARRAY,
  TYPE_STRING_ARRAY,
  TYPE_FLOAT_ARRAY,
@@ -1804,8 +1805,8 @@ void print_commandList(command* commandNode) {
      else if (temp_type == 15) {
       printf("	TYPE_UNION\n");
      }
-     else if (temp_type == 18) {
-      printf("	TYPE_INTEGER_ARRAY\n");
+     else if (temp_type == 16) {
+      printf("	TYPE_VOID_ARRAY\n");
       if (current->aStmt->decl->value != 
 # 119 "./src/command.c" 3 4
                                         ((void *)0)
@@ -1813,8 +1814,8 @@ void print_commandList(command* commandNode) {
                                             )
        printf("		size: %s\n", current->aStmt->decl->value->string_literal);
      }
-     else if (temp_type == 19) {
-      printf("	TYPE_STRING_ARRAY\n");
+     else if (temp_type == 17) {
+      printf("	TYPE_BOOLEAN_ARRAY\n");
       if (current->aStmt->decl->value != 
 # 124 "./src/command.c" 3 4
                                         ((void *)0)
@@ -1822,12 +1823,39 @@ void print_commandList(command* commandNode) {
                                             )
        printf("		size: %s\n", current->aStmt->decl->value->string_literal);
      }
-     else if (temp_type == 20) {
-      printf("	TYPE_FLOAT_ARRAY\n");
+     else if (temp_type == 18) {
+      printf("	TYPE_CHAR_ARRAY\n");
       if (current->aStmt->decl->value != 
 # 129 "./src/command.c" 3 4
                                         ((void *)0)
 # 129 "./src/command.c"
+                                            )
+       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 19) {
+      printf("	TYPE_INTEGER_ARRAY\n");
+      if (current->aStmt->decl->value != 
+# 134 "./src/command.c" 3 4
+                                        ((void *)0)
+# 134 "./src/command.c"
+                                            )
+       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 20) {
+      printf("	TYPE_STRING_ARRAY\n");
+      if (current->aStmt->decl->value != 
+# 139 "./src/command.c" 3 4
+                                        ((void *)0)
+# 139 "./src/command.c"
+                                            )
+       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 21) {
+      printf("	TYPE_FLOAT_ARRAY\n");
+      if (current->aStmt->decl->value != 
+# 144 "./src/command.c" 3 4
+                                        ((void *)0)
+# 144 "./src/command.c"
                                             )
        printf("		size: %s\n", current->aStmt->decl->value->string_literal);
      }
@@ -1873,14 +1901,14 @@ void print_commandList(command* commandNode) {
    else if (value == 10) {
     printf("STMT_RETURN\n");
     if (current->aStmt->theExpr == 
-# 173 "./src/command.c" 3 4
+# 188 "./src/command.c" 3 4
                                   ((void *)0)
-# 173 "./src/command.c"
+# 188 "./src/command.c"
                                       ) {
      if (current->aStmt->expressionList == 
-# 174 "./src/command.c" 3 4
+# 189 "./src/command.c" 3 4
                                           ((void *)0)
-# 174 "./src/command.c"
+# 189 "./src/command.c"
                                               ) {
       current = current->next;
       continue;
@@ -1889,14 +1917,14 @@ void print_commandList(command* commandNode) {
       expr_list* currentList = current->aStmt->expressionList;
 
       while (currentList != 
-# 181 "./src/command.c" 3 4
+# 196 "./src/command.c" 3 4
                            ((void *)0)
-# 181 "./src/command.c"
+# 196 "./src/command.c"
                                ) {
        if (currentList->theExpr != 
-# 182 "./src/command.c" 3 4
+# 197 "./src/command.c" 3 4
                                   ((void *)0)
-# 182 "./src/command.c"
+# 197 "./src/command.c"
                                       ) {
         int ret_val = (int)currentList->theExpr->kind;
         if (ret_val == 0) {
@@ -2024,9 +2052,9 @@ void print_commandList(command* commandNode) {
    }
   }
   else if (current->anExpr != 
-# 308 "./src/command.c" 3 4
+# 323 "./src/command.c" 3 4
                              ((void *)0)
-# 308 "./src/command.c"
+# 323 "./src/command.c"
                                  ) {
    int val = (int)current->anExpr->kind;
    if (val == 4) {

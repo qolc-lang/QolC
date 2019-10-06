@@ -530,6 +530,9 @@ void parsing(parse_state* current, command* commandNode) {
 					if (strcmp(current->value, "int") == 0) arrayType = 13;
 					if (strcmp(current->value, "string") == 0) arrayType = 14;
 					if (strcmp(current->value, "float") == 0) arrayType = 15;
+					if (strcmp(current->value, "void") == 0) arrayType = 16;
+					if (strcmp(current->value, "bool") == 0) arrayType = 17;
+					if (strcmp(current->value, "char") == 0) arrayType = 18;
 					BuildDeclarationExprStatement(temp, commandNode, temp2, arrayType, sTypeOfMember);
 				} else { printf("Not a valid array.\n"); }
 			}

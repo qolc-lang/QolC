@@ -114,17 +114,32 @@ void print_commandList(command* commandNode) {
 					else if (temp_type == 15) {
 						printf("	TYPE_UNION\n");
 					}
+					else if (temp_type == 16) {
+						printf("	TYPE_VOID_ARRAY\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else if (temp_type == 17) {
+						printf("	TYPE_BOOLEAN_ARRAY\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
 					else if (temp_type == 18) {
-						printf("	TYPE_INTEGER_ARRAY\n");
+						printf("	TYPE_CHAR_ARRAY\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
 					}
 					else if (temp_type == 19) {
-						printf("	TYPE_STRING_ARRAY\n");
+						printf("	TYPE_INTEGER_ARRAY\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
 					}
 					else if (temp_type == 20) {
+						printf("	TYPE_STRING_ARRAY\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else if (temp_type == 21) {
 						printf("	TYPE_FLOAT_ARRAY\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
