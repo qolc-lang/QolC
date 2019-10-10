@@ -1859,6 +1859,51 @@ void print_commandList(command* commandNode) {
                                             )
        printf("		size: %s\n", current->aStmt->decl->value->string_literal);
      }
+     else if (temp_type == 25) {
+      printf("	TYPE_FLOAT_POINTER_ARRAY\n");
+      if (current->aStmt->decl->value != 
+# 149 "./src/command.c" 3 4
+                                        ((void *)0)
+# 149 "./src/command.c"
+                                            )
+       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 26) {
+      printf("	TYPE_INT_POINTER_ARRAY\n");
+      if (current->aStmt->decl->value != 
+# 154 "./src/command.c" 3 4
+                                        ((void *)0)
+# 154 "./src/command.c"
+                                            )
+       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 27) {
+      printf("	TYPE_CHAR_POINTER_ARRAY\n");
+      if (current->aStmt->decl->value != 
+# 159 "./src/command.c" 3 4
+                                        ((void *)0)
+# 159 "./src/command.c"
+                                            )
+       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 28) {
+      printf("	TYPE_STRING_POINTER_ARRAY\n");
+      if (current->aStmt->decl->value != 
+# 164 "./src/command.c" 3 4
+                                        ((void *)0)
+# 164 "./src/command.c"
+                                            )
+       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 29) {
+      printf("	TYPE_VOID_POINTER_ARRAY\n");
+      if (current->aStmt->decl->value != 
+# 169 "./src/command.c" 3 4
+                                        ((void *)0)
+# 169 "./src/command.c"
+                                            )
+       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
      else;
     }
     if (current->aStmt->memberOf != -1) {
@@ -1901,14 +1946,14 @@ void print_commandList(command* commandNode) {
    else if (value == 10) {
     printf("STMT_RETURN\n");
     if (current->aStmt->theExpr == 
-# 188 "./src/command.c" 3 4
+# 213 "./src/command.c" 3 4
                                   ((void *)0)
-# 188 "./src/command.c"
+# 213 "./src/command.c"
                                       ) {
      if (current->aStmt->expressionList == 
-# 189 "./src/command.c" 3 4
+# 214 "./src/command.c" 3 4
                                           ((void *)0)
-# 189 "./src/command.c"
+# 214 "./src/command.c"
                                               ) {
       current = current->next;
       continue;
@@ -1917,14 +1962,14 @@ void print_commandList(command* commandNode) {
       expr_list* currentList = current->aStmt->expressionList;
 
       while (currentList != 
-# 196 "./src/command.c" 3 4
+# 221 "./src/command.c" 3 4
                            ((void *)0)
-# 196 "./src/command.c"
+# 221 "./src/command.c"
                                ) {
        if (currentList->theExpr != 
-# 197 "./src/command.c" 3 4
+# 222 "./src/command.c" 3 4
                                   ((void *)0)
-# 197 "./src/command.c"
+# 222 "./src/command.c"
                                       ) {
         int ret_val = (int)currentList->theExpr->kind;
         if (ret_val == 0) {
@@ -2052,9 +2097,9 @@ void print_commandList(command* commandNode) {
    }
   }
   else if (current->anExpr != 
-# 323 "./src/command.c" 3 4
+# 348 "./src/command.c" 3 4
                              ((void *)0)
-# 323 "./src/command.c"
+# 348 "./src/command.c"
                                  ) {
    int val = (int)current->anExpr->kind;
    if (val == 4) {

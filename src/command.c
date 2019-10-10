@@ -144,6 +144,31 @@ void print_commandList(command* commandNode) {
 						if (current->aStmt->decl->value != NULL)
 							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
 					}
+					else if (temp_type == 25) {
+						printf("	TYPE_FLOAT_POINTER_ARRAY\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else if (temp_type == 26) {
+						printf("	TYPE_INT_POINTER_ARRAY\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else if (temp_type == 27) {
+						printf("	TYPE_CHAR_POINTER_ARRAY\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else if (temp_type == 28) {
+						printf("	TYPE_STRING_POINTER_ARRAY\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else if (temp_type == 29) {
+						printf("	TYPE_VOID_POINTER_ARRAY\n");
+						if (current->aStmt->decl->value != NULL)
+							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
 					else;
 				}
 				if (current->aStmt->memberOf != -1) {

@@ -532,6 +532,26 @@ void BuildDeclarationExprStatement(char* currentValue, command* commandNode, cha
 			printf("Going to build char array declaration statement.\n");
 			theType = type_create(TYPE_CHAR_ARRAY, NULL, NULL);
 			break;
+		case 19:
+			printf("Going to build int pointer array declaration statement.\n");
+			theType = type_create(TYPE_INT_POINTER_ARRAY, NULL, NULL);
+			break;
+		case 20:
+			printf("Going to build string pointer array declaration statement.\n");
+			theType = type_create(TYPE_STRING_POINTER_ARRAY, NULL, NULL);
+			break;
+		case 21:
+			printf("Going to build float pointer array declaration statement.\n");
+			theType = type_create(TYPE_FLOAT_POINTER_ARRAY, NULL, NULL);
+			break;
+		case 22:
+			printf("Going to build void pointer array declaration statement.\n");
+			theType = type_create(TYPE_VOID_POINTER_ARRAY, NULL, NULL);
+			break;
+		case 23:
+			printf("Going to build char pointer array declaration statement.\n");
+			theType = type_create(TYPE_CHAR_POINTER_ARRAY, NULL, NULL);
+			break;
 		default : 
 			break; 
 	}

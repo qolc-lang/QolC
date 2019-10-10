@@ -525,14 +525,24 @@ void parsing(parse_state* current, command* commandNode) {
 				{
 					printf("Valid array.\n");
 					current = current->next;
+					if (strcmp(current->type, "pointer symbol") == 0)
+					{
+						printf("Pointer type array.\n");
+						iIsPointer = 1;
+					}
 					current = current->next;
 					printf("The array type : %s\n", current->value);
-					if (strcmp(current->value, "int") == 0) arrayType = 13;
-					if (strcmp(current->value, "string") == 0) arrayType = 14;
-					if (strcmp(current->value, "float") == 0) arrayType = 15;
-					if (strcmp(current->value, "void") == 0) arrayType = 16;
+					if ((strcmp(current->value, "int") == 0) && (iIsPointer != 1)) arrayType = 13;
+					else if ((strcmp(current->value, "int") == 0) && (iIsPointer == 1)) arrayType = 19;
+					else if ((strcmp(current->value, "string") == 0) && (iIsPointer != 1)) arrayType = 14;
+					else if ((strcmp(current->value, "string") == 0) && (iIsPointer == 1)) arrayType = 20;
+					else if ((strcmp(current->value, "float") == 0) && (iIsPointer != 1)) arrayType = 15;
+					else if ((strcmp(current->value, "float") == 0) && (iIsPointer == 1)) arrayType = 21;
+					else if ((strcmp(current->value, "void") == 0) && (iIsPointer != 1)) arrayType = 16;
+					else if ((strcmp(current->value, "void") == 0) && (iIsPointer == 1)) arrayType = 22;
 					if (strcmp(current->value, "bool") == 0) arrayType = 17;
-					if (strcmp(current->value, "char") == 0) arrayType = 18;
+					else if ((strcmp(current->value, "char") == 0) && (iIsPointer != 1)) arrayType = 18;
+					else if ((strcmp(current->value, "char") == 0) && (iIsPointer == 1)) arrayType = 23;
 					BuildDeclarationExprStatement(temp, commandNode, temp2, arrayType, sTypeOfMember);
 				} else { printf("Not a valid array.\n"); }
 			}
