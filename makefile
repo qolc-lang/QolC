@@ -21,6 +21,7 @@ $(ObjDir)/command.o \
 $(ObjDir)/parserFunctions.o \
 $(ObjDir)/ast.o \
 $(ObjDir)/parse_state.o \
+$(ObjDir)/symbol_table.o \
 $(ObjDir)/lexer_node.o \
 $(ObjDir)/checking_functions.o \
 $(ObjDir)/main.o \
@@ -34,6 +35,9 @@ $(ObjDir)/lexer.o: $(SrcDir)/lexer.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/che
 
 $(ObjDir)/lexer_node.o: $(SrcDir)/lexer_node.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h $(PrjRoot)/inc/lexer_node.h
 	$(CC) $(BuildCommand) $(SrcDir)/lexer_node.c -o $(ObjDir)/lexer_node.o
+
+$(ObjDir)/symbol_table.o: $(SrcDir)/symbol_table.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h $(PrjRoot)/inc/lexer_node.h $(PrjRoot)/inc/parser.h $(PrjRoot)/inc/symbol_table.h
+	$(CC) $(BuildCommand) $(SrcDir)/symbol_table.c -o $(ObjDir)/symbol_table.o
 
 $(ObjDir)/parser.o: $(SrcDir)/parser.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h $(PrjRoot)/inc/lexer_node.h $(PrjRoot)/inc/parser.h
 	$(CC) $(BuildCommand) $(SrcDir)/parser.c -o $(ObjDir)/parser.o

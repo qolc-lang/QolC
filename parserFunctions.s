@@ -3508,6 +3508,243 @@ ClearFlags:
 	.cfi_endproc
 .LFE19:
 	.seh_endproc
+	.section .rdata,"dr"
+.LC119:
+	.ascii "pointer symbol\0"
+.LC120:
+	.ascii "Pointer type array.\0"
+.LC121:
+	.ascii "The array type : %s\12\0"
+.LC122:
+	.ascii "int\0"
+.LC123:
+	.ascii "string\0"
+.LC124:
+	.ascii "float\0"
+.LC125:
+	.ascii "void\0"
+.LC126:
+	.ascii "bool\0"
+.LC127:
+	.ascii "char\0"
+	.text
+	.globl	CheckArrayType
+	.def	CheckArrayType;	.scl	2;	.type	32;	.endef
+	.seh_proc	CheckArrayType
+CheckArrayType:
+.LFB20:
+	.loc 1 655 0
+	.cfi_startproc
+	pushq	%rbp
+	.seh_pushreg	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.seh_setframe	%rbp, 0
+	.cfi_def_cfa_register 6
+	subq	$48, %rsp
+	.seh_stackalloc	48
+	.seh_endprologue
+	movq	%rcx, 16(%rbp)
+	.loc 1 656 0
+	movl	$0, -8(%rbp)
+	.loc 1 657 0
+	movl	$0, -4(%rbp)
+	.loc 1 659 0
+	movq	16(%rbp), %rax
+	addq	$4, %rax
+	leaq	.LC119(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L147
+	.loc 1 661 0
+	leaq	.LC120(%rip), %rcx
+	call	puts
+	.loc 1 662 0
+	movl	$1, -8(%rbp)
+.L147:
+	.loc 1 664 0
+	movq	16(%rbp), %rax
+	movq	208(%rax), %rax
+	movq	%rax, 16(%rbp)
+	.loc 1 665 0
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	movq	%rax, %rdx
+	leaq	.LC121(%rip), %rcx
+	call	printf
+	.loc 1 666 0
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC122(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L148
+	.loc 1 666 0 is_stmt 0 discriminator 1
+	cmpl	$1, -8(%rbp)
+	je	.L148
+	.loc 1 666 0 discriminator 2
+	movl	$13, -4(%rbp)
+	jmp	.L149
+.L148:
+	.loc 1 667 0 is_stmt 1
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC122(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L150
+	.loc 1 667 0 is_stmt 0 discriminator 1
+	cmpl	$1, -8(%rbp)
+	jne	.L150
+	.loc 1 667 0 discriminator 2
+	movl	$19, -4(%rbp)
+	jmp	.L149
+.L150:
+	.loc 1 668 0 is_stmt 1
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC123(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L151
+	.loc 1 668 0 is_stmt 0 discriminator 1
+	cmpl	$1, -8(%rbp)
+	je	.L151
+	.loc 1 668 0 discriminator 2
+	movl	$14, -4(%rbp)
+	jmp	.L149
+.L151:
+	.loc 1 669 0 is_stmt 1
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC123(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L152
+	.loc 1 669 0 is_stmt 0 discriminator 1
+	cmpl	$1, -8(%rbp)
+	jne	.L152
+	.loc 1 669 0 discriminator 2
+	movl	$20, -4(%rbp)
+	jmp	.L149
+.L152:
+	.loc 1 670 0 is_stmt 1
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC124(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L153
+	.loc 1 670 0 is_stmt 0 discriminator 1
+	cmpl	$1, -8(%rbp)
+	je	.L153
+	.loc 1 670 0 discriminator 2
+	movl	$15, -4(%rbp)
+	jmp	.L149
+.L153:
+	.loc 1 671 0 is_stmt 1
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC124(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L154
+	.loc 1 671 0 is_stmt 0 discriminator 1
+	cmpl	$1, -8(%rbp)
+	jne	.L154
+	.loc 1 671 0 discriminator 2
+	movl	$21, -4(%rbp)
+	jmp	.L149
+.L154:
+	.loc 1 672 0 is_stmt 1
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC125(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L155
+	.loc 1 672 0 is_stmt 0 discriminator 1
+	cmpl	$1, -8(%rbp)
+	je	.L155
+	.loc 1 672 0 discriminator 2
+	movl	$16, -4(%rbp)
+	jmp	.L149
+.L155:
+	.loc 1 673 0 is_stmt 1
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC125(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L149
+	.loc 1 673 0 is_stmt 0 discriminator 1
+	cmpl	$1, -8(%rbp)
+	jne	.L149
+	.loc 1 673 0 discriminator 2
+	movl	$22, -4(%rbp)
+.L149:
+	.loc 1 674 0 is_stmt 1
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC126(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L156
+	.loc 1 674 0 is_stmt 0 discriminator 1
+	movl	$17, -4(%rbp)
+	jmp	.L157
+.L156:
+	.loc 1 675 0 is_stmt 1
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC127(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L158
+	.loc 1 675 0 is_stmt 0 discriminator 1
+	cmpl	$1, -8(%rbp)
+	je	.L158
+	.loc 1 675 0 discriminator 2
+	movl	$18, -4(%rbp)
+	jmp	.L157
+.L158:
+	.loc 1 676 0 is_stmt 1
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC127(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L157
+	.loc 1 676 0 is_stmt 0 discriminator 1
+	cmpl	$1, -8(%rbp)
+	jne	.L157
+	.loc 1 676 0 discriminator 2
+	movl	$23, -4(%rbp)
+.L157:
+	.loc 1 678 0 is_stmt 1
+	movl	-4(%rbp), %eax
+	.loc 1 679 0
+	addq	$48, %rsp
+	popq	%rbp
+	.cfi_restore 6
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE20:
+	.seh_endproc
 .Letext0:
 	.file 2 "/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/stddef.h"
 	.file 3 "/usr/include/sys/lock.h"
@@ -3520,7 +3757,7 @@ ClearFlags:
 	.file 10 "./src/../inc/parserFunctions.h"
 	.section	.debug_info,"dr"
 .Ldebug_info0:
-	.long	0x1d58
+	.long	0x1dbf
 	.word	0x4
 	.secrel32	.Ldebug_abbrev0
 	.byte	0x8
@@ -5305,6 +5542,44 @@ ClearFlags:
 	.byte	0x18
 	.long	0x153b
 	.uleb128 0x28
+	.ascii "CheckArrayType\0"
+	.byte	0x1
+	.word	0x28e
+	.long	0x12f
+	.quad	.LFB20
+	.quad	.LFE20-.LFB20
+	.uleb128 0x1
+	.byte	0x9c
+	.long	0x1617
+	.uleb128 0x29
+	.secrel32	.LASF10
+	.byte	0x1
+	.word	0x28e
+	.long	0x1617
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 0
+	.uleb128 0x2a
+	.ascii "isPointer\0"
+	.byte	0x1
+	.word	0x290
+	.long	0x12f
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -24
+	.uleb128 0x2a
+	.ascii "arrayType\0"
+	.byte	0x1
+	.word	0x291
+	.long	0x12f
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.byte	0
+	.uleb128 0xe
+	.byte	0x8
+	.long	0xcba
+	.uleb128 0x2b
 	.ascii "ClearFlags\0"
 	.byte	0x1
 	.word	0x286
@@ -5312,12 +5587,12 @@ ClearFlags:
 	.quad	.LFE19-.LFB19
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x15e8
-	.uleb128 0x29
+	.long	0x1655
+	.uleb128 0x2c
 	.ascii "mFlags\0"
 	.byte	0x1
 	.word	0x286
-	.long	0x15e8
+	.long	0x1655
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
@@ -5325,7 +5600,7 @@ ClearFlags:
 	.uleb128 0xe
 	.byte	0x8
 	.long	0x15a5
-	.uleb128 0x2a
+	.uleb128 0x2d
 	.ascii "CheckIfMemberOfStatement\0"
 	.byte	0x1
 	.word	0x27c
@@ -5334,8 +5609,8 @@ ClearFlags:
 	.quad	.LFE18-.LFB18
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1638
-	.uleb128 0x29
+	.long	0x16a5
+	.uleb128 0x2c
 	.ascii "mFlags\0"
 	.byte	0x1
 	.word	0x27c
@@ -5344,7 +5619,7 @@ ClearFlags:
 	.byte	0x91
 	.sleb128 -48
 	.byte	0
-	.uleb128 0x2b
+	.uleb128 0x2e
 	.ascii "BuildNewStatement\0"
 	.byte	0x1
 	.word	0x272
@@ -5352,24 +5627,24 @@ ClearFlags:
 	.quad	.LFE17-.LFB17
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x16c3
-	.uleb128 0x2c
+	.long	0x1730
+	.uleb128 0x29
 	.secrel32	.LASF10
 	.byte	0x1
 	.word	0x272
-	.long	0x16c3
+	.long	0x1617
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
-	.uleb128 0x2c
+	.uleb128 0x29
 	.secrel32	.LASF11
 	.byte	0x1
 	.word	0x272
-	.long	0x16c9
+	.long	0x1730
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
-	.uleb128 0x2c
+	.uleb128 0x29
 	.secrel32	.LASF8
 	.byte	0x1
 	.word	0x272
@@ -5377,7 +5652,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
-	.uleb128 0x2d
+	.uleb128 0x2a
 	.ascii "expr1\0"
 	.byte	0x1
 	.word	0x276
@@ -5385,7 +5660,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -40
-	.uleb128 0x2d
+	.uleb128 0x2a
 	.ascii "expr2\0"
 	.byte	0x1
 	.word	0x277
@@ -5393,7 +5668,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -32
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF12
 	.byte	0x1
 	.word	0x278
@@ -5404,11 +5679,8 @@ ClearFlags:
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xcba
-	.uleb128 0xe
-	.byte	0x8
 	.long	0x14cb
-	.uleb128 0x2b
+	.uleb128 0x2e
 	.ascii "BuildDeclarationStatement\0"
 	.byte	0x1
 	.word	0x269
@@ -5416,8 +5688,8 @@ ClearFlags:
 	.quad	.LFE16-.LFB16
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1760
-	.uleb128 0x2c
+	.long	0x17c7
+	.uleb128 0x29
 	.secrel32	.LASF8
 	.byte	0x1
 	.word	0x269
@@ -5425,7 +5697,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
-	.uleb128 0x29
+	.uleb128 0x2c
 	.ascii "temp2\0"
 	.byte	0x1
 	.word	0x269
@@ -5433,15 +5705,15 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
-	.uleb128 0x2c
+	.uleb128 0x29
 	.secrel32	.LASF11
 	.byte	0x1
 	.word	0x269
-	.long	0x16c9
+	.long	0x1730
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF6
 	.byte	0x1
 	.word	0x26b
@@ -5449,7 +5721,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -40
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF13
 	.byte	0x1
 	.word	0x26c
@@ -5457,7 +5729,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -32
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF12
 	.byte	0x1
 	.word	0x26d
@@ -5466,7 +5738,7 @@ ClearFlags:
 	.byte	0x91
 	.sleb128 -24
 	.byte	0
-	.uleb128 0x2b
+	.uleb128 0x2e
 	.ascii "BuildAssignAndCompareExprStatement\0"
 	.byte	0x1
 	.word	0x236
@@ -5474,8 +5746,8 @@ ClearFlags:
 	.quad	.LFE15-.LFB15
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x181e
-	.uleb128 0x2c
+	.long	0x1885
+	.uleb128 0x29
 	.secrel32	.LASF8
 	.byte	0x1
 	.word	0x236
@@ -5483,7 +5755,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
-	.uleb128 0x29
+	.uleb128 0x2c
 	.ascii "temp2\0"
 	.byte	0x1
 	.word	0x236
@@ -5491,15 +5763,15 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
-	.uleb128 0x2c
+	.uleb128 0x29
 	.secrel32	.LASF11
 	.byte	0x1
 	.word	0x236
-	.long	0x16c9
+	.long	0x1730
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
-	.uleb128 0x29
+	.uleb128 0x2c
 	.ascii "operation\0"
 	.byte	0x1
 	.word	0x236
@@ -5507,7 +5779,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 24
-	.uleb128 0x2c
+	.uleb128 0x29
 	.secrel32	.LASF14
 	.byte	0x1
 	.word	0x236
@@ -5515,7 +5787,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 32
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF15
 	.byte	0x1
 	.word	0x238
@@ -5523,7 +5795,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -32
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF16
 	.byte	0x1
 	.word	0x239
@@ -5531,7 +5803,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -24
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF6
 	.byte	0x1
 	.word	0x23a
@@ -5540,7 +5812,7 @@ ClearFlags:
 	.byte	0x91
 	.sleb128 -40
 	.byte	0
-	.uleb128 0x2b
+	.uleb128 0x2e
 	.ascii "BuildDeclarationExprStatement\0"
 	.byte	0x1
 	.word	0x1ca
@@ -5548,8 +5820,8 @@ ClearFlags:
 	.quad	.LFE14-.LFB14
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x18e5
-	.uleb128 0x2c
+	.long	0x194c
+	.uleb128 0x29
 	.secrel32	.LASF17
 	.byte	0x1
 	.word	0x1ca
@@ -5557,15 +5829,15 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
-	.uleb128 0x2c
+	.uleb128 0x29
 	.secrel32	.LASF11
 	.byte	0x1
 	.word	0x1ca
-	.long	0x16c9
+	.long	0x1730
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
-	.uleb128 0x2c
+	.uleb128 0x29
 	.secrel32	.LASF8
 	.byte	0x1
 	.word	0x1ca
@@ -5573,7 +5845,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
-	.uleb128 0x29
+	.uleb128 0x2c
 	.ascii "switchType\0"
 	.byte	0x1
 	.word	0x1ca
@@ -5581,7 +5853,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 24
-	.uleb128 0x2c
+	.uleb128 0x29
 	.secrel32	.LASF14
 	.byte	0x1
 	.word	0x1ca
@@ -5589,7 +5861,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 32
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF3
 	.byte	0x1
 	.word	0x1cc
@@ -5597,7 +5869,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -48
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF6
 	.byte	0x1
 	.word	0x22f
@@ -5605,7 +5877,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -40
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF13
 	.byte	0x1
 	.word	0x230
@@ -5613,7 +5885,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -32
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF12
 	.byte	0x1
 	.word	0x231
@@ -5622,7 +5894,7 @@ ClearFlags:
 	.byte	0x91
 	.sleb128 -24
 	.byte	0
-	.uleb128 0x2b
+	.uleb128 0x2e
 	.ascii "BuildDoubleExprStatement\0"
 	.byte	0x1
 	.word	0x1ad
@@ -5630,24 +5902,24 @@ ClearFlags:
 	.quad	.LFE13-.LFB13
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x19aa
-	.uleb128 0x2c
+	.long	0x1a11
+	.uleb128 0x29
 	.secrel32	.LASF10
 	.byte	0x1
 	.word	0x1ad
-	.long	0x16c3
+	.long	0x1617
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -280
-	.uleb128 0x2c
+	.uleb128 0x29
 	.secrel32	.LASF11
 	.byte	0x1
 	.word	0x1ad
-	.long	0x16c9
+	.long	0x1730
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -288
-	.uleb128 0x2c
+	.uleb128 0x29
 	.secrel32	.LASF18
 	.byte	0x1
 	.word	0x1ad
@@ -5655,7 +5927,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF8
 	.byte	0x1
 	.word	0x1ae
@@ -5663,7 +5935,7 @@ ClearFlags:
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -240
-	.uleb128 0x2d
+	.uleb128 0x2a
 	.ascii "temp2\0"
 	.byte	0x1
 	.word	0x1ae
@@ -5671,7 +5943,7 @@ ClearFlags:
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -128
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF12
 	.byte	0x1
 	.word	0x1af
@@ -5679,7 +5951,7 @@ ClearFlags:
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -264
-	.uleb128 0x2d
+	.uleb128 0x2a
 	.ascii "identifierExpr\0"
 	.byte	0x1
 	.word	0x1b7
@@ -5687,7 +5959,7 @@ ClearFlags:
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -256
-	.uleb128 0x2d
+	.uleb128 0x2a
 	.ascii "typeExpr\0"
 	.byte	0x1
 	.word	0x1b8
@@ -5696,7 +5968,7 @@ ClearFlags:
 	.byte	0x91
 	.sleb128 -248
 	.byte	0
-	.uleb128 0x2b
+	.uleb128 0x2e
 	.ascii "BuildSingleExprStatement\0"
 	.byte	0x1
 	.word	0x189
@@ -5704,8 +5976,8 @@ ClearFlags:
 	.quad	.LFE12-.LFB12
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1a29
-	.uleb128 0x2c
+	.long	0x1a90
+	.uleb128 0x29
 	.secrel32	.LASF17
 	.byte	0x1
 	.word	0x189
@@ -5713,15 +5985,15 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
-	.uleb128 0x2c
+	.uleb128 0x29
 	.secrel32	.LASF11
 	.byte	0x1
 	.word	0x189
-	.long	0x16c9
+	.long	0x1730
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
-	.uleb128 0x2c
+	.uleb128 0x29
 	.secrel32	.LASF18
 	.byte	0x1
 	.word	0x189
@@ -5729,7 +6001,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF6
 	.byte	0x1
 	.word	0x18a
@@ -5737,7 +6009,7 @@ ClearFlags:
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -24
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF12
 	.byte	0x1
 	.word	0x18b
@@ -5746,7 +6018,7 @@ ClearFlags:
 	.byte	0x91
 	.sleb128 -32
 	.byte	0
-	.uleb128 0x2f
+	.uleb128 0x28
 	.ascii "isNumberType\0"
 	.byte	0x1
 	.word	0x182
@@ -5755,8 +6027,8 @@ ClearFlags:
 	.quad	.LFE11-.LFB11
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1a64
-	.uleb128 0x2c
+	.long	0x1acb
+	.uleb128 0x29
 	.secrel32	.LASF19
 	.byte	0x1
 	.word	0x182
@@ -5765,7 +6037,7 @@ ClearFlags:
 	.byte	0x91
 	.sleb128 0
 	.byte	0
-	.uleb128 0x2f
+	.uleb128 0x28
 	.ascii "isIdentifierType\0"
 	.byte	0x1
 	.word	0x17b
@@ -5774,8 +6046,8 @@ ClearFlags:
 	.quad	.LFE10-.LFB10
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1aa3
-	.uleb128 0x2c
+	.long	0x1b0a
+	.uleb128 0x29
 	.secrel32	.LASF19
 	.byte	0x1
 	.word	0x17b
@@ -5788,17 +6060,17 @@ ClearFlags:
 	.ascii "checkForReturnOperator\0"
 	.byte	0x1
 	.byte	0x6
-	.long	0x16c3
+	.long	0x1617
 	.quad	.LFB9
 	.quad	.LFE9-.LFB9
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1d55
+	.long	0x1dbc
 	.uleb128 0x31
 	.secrel32	.LASF10
 	.byte	0x1
 	.byte	0x6
-	.long	0x16c3
+	.long	0x1617
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
@@ -5822,7 +6094,7 @@ ClearFlags:
 	.secrel32	.LASF11
 	.byte	0x1
 	.byte	0x6
-	.long	0x16c9
+	.long	0x1730
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 24
@@ -5830,7 +6102,7 @@ ClearFlags:
 	.ascii "tempNode\0"
 	.byte	0x1
 	.byte	0x6
-	.long	0x1d55
+	.long	0x1dbc
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 32
@@ -5854,14 +6126,14 @@ ClearFlags:
 	.ascii "checkCurrent\0"
 	.byte	0x1
 	.byte	0xa
-	.long	0x16c3
+	.long	0x1617
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -176
 	.uleb128 0x34
 	.quad	.LBB2
 	.quad	.LBE2-.LBB2
-	.long	0x1bde
+	.long	0x1c45
 	.uleb128 0x35
 	.secrel32	.LASF15
 	.byte	0x1
@@ -5902,7 +6174,7 @@ ClearFlags:
 	.uleb128 0x34
 	.quad	.LBB4
 	.quad	.LBE4-.LBB4
-	.long	0x1c45
+	.long	0x1cac
 	.uleb128 0x35
 	.secrel32	.LASF15
 	.byte	0x1
@@ -5943,7 +6215,7 @@ ClearFlags:
 	.uleb128 0x34
 	.quad	.LBB6
 	.quad	.LBE6-.LBB6
-	.long	0x1cd6
+	.long	0x1d3d
 	.uleb128 0x35
 	.secrel32	.LASF15
 	.byte	0x1
@@ -5971,7 +6243,7 @@ ClearFlags:
 	.uleb128 0x34
 	.quad	.LBB7
 	.quad	.LBE7-.LBB7
-	.long	0x1cb4
+	.long	0x1d1b
 	.uleb128 0x35
 	.secrel32	.LASF20
 	.byte	0x1
@@ -5984,7 +6256,7 @@ ClearFlags:
 	.uleb128 0x36
 	.quad	.LBB8
 	.quad	.LBE8-.LBB8
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF20
 	.byte	0x1
 	.word	0x106
@@ -5997,8 +6269,8 @@ ClearFlags:
 	.uleb128 0x34
 	.quad	.LBB9
 	.quad	.LBE9-.LBB9
-	.long	0x1d32
-	.uleb128 0x2e
+	.long	0x1d99
+	.uleb128 0x2f
 	.secrel32	.LASF15
 	.byte	0x1
 	.word	0x114
@@ -6006,7 +6278,7 @@ ClearFlags:
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -104
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF16
 	.byte	0x1
 	.word	0x115
@@ -6014,7 +6286,7 @@ ClearFlags:
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -96
-	.uleb128 0x2d
+	.uleb128 0x2a
 	.ascii "finalExpr\0"
 	.byte	0x1
 	.word	0x116
@@ -6022,7 +6294,7 @@ ClearFlags:
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -144
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF20
 	.byte	0x1
 	.word	0x146
@@ -6034,7 +6306,7 @@ ClearFlags:
 	.uleb128 0x36
 	.quad	.LBB10
 	.quad	.LBE10-.LBB10
-	.uleb128 0x2e
+	.uleb128 0x2f
 	.secrel32	.LASF20
 	.byte	0x1
 	.word	0x15e
@@ -6552,13 +6824,15 @@ ClearFlags:
 	.uleb128 0x5
 	.uleb128 0x27
 	.uleb128 0x19
+	.uleb128 0x49
+	.uleb128 0x13
 	.uleb128 0x11
 	.uleb128 0x1
 	.uleb128 0x12
 	.uleb128 0x7
 	.uleb128 0x40
 	.uleb128 0x18
-	.uleb128 0x2117
+	.uleb128 0x2116
 	.uleb128 0x19
 	.uleb128 0x1
 	.uleb128 0x13
@@ -6568,7 +6842,7 @@ ClearFlags:
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
-	.uleb128 0x8
+	.uleb128 0xe
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
@@ -6580,30 +6854,18 @@ ClearFlags:
 	.byte	0
 	.byte	0
 	.uleb128 0x2a
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0x19
+	.uleb128 0x34
+	.byte	0
 	.uleb128 0x3
 	.uleb128 0x8
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
 	.uleb128 0x5
-	.uleb128 0x27
-	.uleb128 0x19
 	.uleb128 0x49
 	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x7
-	.uleb128 0x40
+	.uleb128 0x2
 	.uleb128 0x18
-	.uleb128 0x2117
-	.uleb128 0x19
-	.uleb128 0x1
-	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x2b
@@ -6625,7 +6887,7 @@ ClearFlags:
 	.uleb128 0x7
 	.uleb128 0x40
 	.uleb128 0x18
-	.uleb128 0x2116
+	.uleb128 0x2117
 	.uleb128 0x19
 	.uleb128 0x1
 	.uleb128 0x13
@@ -6633,21 +6895,6 @@ ClearFlags:
 	.byte	0
 	.uleb128 0x2c
 	.uleb128 0x5
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0x18
-	.byte	0
-	.byte	0
-	.uleb128 0x2d
-	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
 	.uleb128 0x8
@@ -6661,22 +6908,7 @@ ClearFlags:
 	.uleb128 0x18
 	.byte	0
 	.byte	0
-	.uleb128 0x2e
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0x18
-	.byte	0
-	.byte	0
-	.uleb128 0x2f
+	.uleb128 0x2d
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -6697,10 +6929,50 @@ ClearFlags:
 	.uleb128 0x7
 	.uleb128 0x40
 	.uleb128 0x18
+	.uleb128 0x2117
+	.uleb128 0x19
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x2e
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x27
+	.uleb128 0x19
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x7
+	.uleb128 0x40
+	.uleb128 0x18
 	.uleb128 0x2116
 	.uleb128 0x19
 	.uleb128 0x1
 	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x2f
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x18
 	.byte	0
 	.byte	0
 	.uleb128 0x30

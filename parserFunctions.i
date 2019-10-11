@@ -1689,6 +1689,7 @@ void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* comman
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
 int CheckIfMemberOfStatement(memberFlags mFlags);
 void ClearFlags(memberFlags* mFlags);
+int CheckArrayType(parse_state* current);
 # 2 "./src/parserFunctions.c" 2
 
 
@@ -3360,4 +3361,31 @@ void ClearFlags(memberFlags* mFlags) {
  if (mFlags->nIsUnionMember == 1) mFlags->nIsUnionMember = 0;
  if (mFlags->nIsEnumMember == 1) mFlags->nIsEnumMember = 0;
  if (mFlags->nIsAssertMember == 1) mFlags->nIsAssertMember = 0;
+}
+
+int CheckArrayType(parse_state* current)
+{
+ int isPointer = 0;
+ int arrayType = 0;
+
+ if (strcmp(current->type, "pointer symbol") == 0)
+ {
+  printf("Pointer type array.\n");
+  isPointer = 1;
+ }
+ current = current->next;
+ printf("The array type : %s\n", current->value);
+ if ((strcmp(current->value, "int") == 0) && (isPointer != 1)) arrayType = 13;
+ else if ((strcmp(current->value, "int") == 0) && (isPointer == 1)) arrayType = 19;
+ else if ((strcmp(current->value, "string") == 0) && (isPointer != 1)) arrayType = 14;
+ else if ((strcmp(current->value, "string") == 0) && (isPointer == 1)) arrayType = 20;
+ else if ((strcmp(current->value, "float") == 0) && (isPointer != 1)) arrayType = 15;
+ else if ((strcmp(current->value, "float") == 0) && (isPointer == 1)) arrayType = 21;
+ else if ((strcmp(current->value, "void") == 0) && (isPointer != 1)) arrayType = 16;
+ else if ((strcmp(current->value, "void") == 0) && (isPointer == 1)) arrayType = 22;
+ if (strcmp(current->value, "bool") == 0) arrayType = 17;
+ else if ((strcmp(current->value, "char") == 0) && (isPointer != 1)) arrayType = 18;
+ else if ((strcmp(current->value, "char") == 0) && (isPointer == 1)) arrayType = 23;
+
+ return arrayType;
 }

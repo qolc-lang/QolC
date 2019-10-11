@@ -1,21 +1,25 @@
-# 1 "./src/main.c"
+# 1 "./src/symbol_table.c"
 # 1 "/cygdrive/c/Users/User/Documents/QolC//"
 # 1 "<built-in>"
 # 1 "<command-line>"
-# 1 "./src/main.c"
-# 1 "./src/../inc/checking_functions.h" 1
+# 1 "./src/symbol_table.c"
+# 1 "./src/../inc/parserFunctions.h" 1
 
 
 
-# 1 "./src/../inc/parse_state.h" 1
+# 1 "./src/../inc/../inc/parser.h" 1
 
 
 
-# 1 "./src/../inc/lexer_node.h" 1
+# 1 "./src/../inc/../inc/parse_state.h" 1
 
 
 
-# 1 "./src/../inc/headers.h" 1
+# 1 "./src/../inc/../inc/lexer_node.h" 1
+
+
+
+# 1 "./src/../inc/../inc/headers.h" 1
 
 
 
@@ -1182,7 +1186,7 @@ _putchar_unlocked(int _c)
 }
 # 797 "/usr/include/stdio.h" 3 4
 
-# 5 "./src/../inc/headers.h" 2
+# 5 "./src/../inc/../inc/headers.h" 2
 # 1 "/usr/include/stdlib.h" 1 3 4
 # 10 "/usr/include/stdlib.h" 3 4
 # 1 "/usr/include/machine/ieeefp.h" 1 3 4
@@ -1362,7 +1366,7 @@ void __eprintf (const char *, const char *, unsigned int, const char *);
 extern long double _strtold_r (struct _reent *, const char *, char **);
 # 339 "/usr/include/stdlib.h" 3 4
 
-# 6 "./src/../inc/headers.h" 2
+# 6 "./src/../inc/../inc/headers.h" 2
 # 1 "/usr/include/string.h" 1 3 4
 # 17 "/usr/include/string.h" 3 4
 # 1 "/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/stddef.h" 1 3 4
@@ -1413,7 +1417,7 @@ int strtosigno (const char *__name);
 # 176 "/usr/include/string.h" 2 3 4
 
 
-# 7 "./src/../inc/headers.h" 2
+# 7 "./src/../inc/../inc/headers.h" 2
 # 1 "/usr/include/ctype.h" 1 3 4
 # 11 "/usr/include/ctype.h" 3 4
 
@@ -1437,11 +1441,11 @@ const char *__locale_ctype_ptr (void);
 extern __attribute__((dllimport)) const char _ctype_[];
 
 
-# 8 "./src/../inc/headers.h" 2
-# 5 "./src/../inc/lexer_node.h" 2
+# 8 "./src/../inc/../inc/headers.h" 2
+# 5 "./src/../inc/../inc/lexer_node.h" 2
 
 
-# 6 "./src/../inc/lexer_node.h"
+# 6 "./src/../inc/../inc/lexer_node.h"
 typedef struct lexer_node
 {
  char token[150];
@@ -1451,7 +1455,7 @@ typedef struct lexer_node
 void pushForLex(char buffer[], char* typeToPush, lexer_node* myNode);
 void print_lexerList(lexer_node* node, char* fileName);
 void push_lexerList(lexer_node* node, char token[]);
-# 5 "./src/../inc/parse_state.h" 2
+# 5 "./src/../inc/../inc/parse_state.h" 2
 
 typedef struct parse_state
 {
@@ -1465,24 +1469,9 @@ parse_state* make_parse_stateList(lexer_node* tokens);
 void push_parseList(parse_state* node, int pos, char type[], char value[]);
 void print_parseStateList(parse_state* node);
 int removeLast(parse_state* head);
-# 5 "./src/../inc/checking_functions.h" 2
-
-int isKeyword(char buffer[]);
-int isNumber(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer);
-int isOperator(char buffer, lexer_node* myNode, char* temp_buffer);
-int isAtOperator(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer);
-int isStringLiteral(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer);
-int isSpecialSymbol(char buffer[], int pos, int len, int *flag, lexer_node* myNode, char* temp_buffer);
-int isChar(char buffer[], int pos, int len, lexer_node* myNode, char* temp_buffer);
-lexer_node lex(char fileName[]);
-# 2 "./src/main.c" 2
-# 1 "./src/../inc/parser.h" 1
-
-
-
-
-# 1 "./src/../inc/ast.h" 1
-# 9 "./src/../inc/ast.h"
+# 5 "./src/../inc/../inc/parser.h" 2
+# 1 "./src/../inc/../inc/ast.h" 1
+# 9 "./src/../inc/../inc/ast.h"
 typedef enum {
  TYPE_VOID,
  TYPE_BOOLEAN,
@@ -1632,8 +1621,8 @@ type* type_create(type_t kind, type *subtype, param_list *params);
 expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal, int memberOf);
 expr* expr_create_string(char* string_literal);
 void push_expressionList(expr_list* node, expr* theExpr);
-# 6 "./src/../inc/parser.h" 2
-# 1 "./src/../inc/command.h" 1
+# 6 "./src/../inc/../inc/parser.h" 2
+# 1 "./src/../inc/../inc/command.h" 1
 
 
 
@@ -1649,34 +1638,95 @@ typedef struct command
 
 void push_commandList(command* commandNode, decl* aDecl, stmt* aStmt, expr* anExpr);
 void print_commandList(command* commandNode);
-# 7 "./src/../inc/parser.h" 2
+# 7 "./src/../inc/../inc/parser.h" 2
 
 void parseProgram(parse_state* node);
 void parsing(parse_state* current, command* commandNode);
 parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, command* commandNode);
-# 3 "./src/main.c" 2
+# 5 "./src/../inc/parserFunctions.h" 2
+# 1 "./src/../inc/../inc/stack.h" 1
 
 
 
 
 
-int main(int argc, char const *argv[])
+void push(char* st, int* top, char* element);
+void pop(int* top);
+int full(int* top, const int size);
+int empty(int* top);
+void init(int* top);
+# 6 "./src/../inc/parserFunctions.h" 2
+# 1 "./src/../inc/../inc/ast.h" 1
+# 7 "./src/../inc/parserFunctions.h" 2
+# 1 "./src/../inc/../inc/command.h" 1
+# 8 "./src/../inc/parserFunctions.h" 2
+
+typedef struct tempVariables
 {
- lexer_node * myNode = malloc(sizeof(lexer_node));
- parse_state* myState = malloc(sizeof(parse_state));
+ char temp[100];
+ char tempOp[3];
+ char tempOp2[3];
+ char value[100];
+}tempVariables;
 
- char fileName[50];
- char outputFile[50];
- memset(fileName, 0, sizeof(fileName));
- memset(outputFile, 0, sizeof(outputFile));
 
- strcpy(fileName, "input/input_program.txt");
- strcpy(outputFile, "out/output_program.txt");
+typedef struct memberFlags
+{
+ int nIsStructMember;
+ int nIsUnionMember;
+ int nIsEnumMember;
+ int nIsAssertMember;
+}memberFlags;
 
- *myNode = lex(fileName);
- myState = make_parse_stateList(myNode);
- parseProgram(myState);
+parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode);
+int isIdentifierType(char* currentType);
+int isNumberType(char* currentType);
+void BuildSingleExprStatement(char* currentValue, command* commandNode, int statement);
+void BuildDoubleExprStatement(parse_state* current, command* commandNode, int statement);
+void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
+void BuildDeclarationExprStatement(char* currentValue, command* commandNode, char* temp, int type, int typeOfMember);
+void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* commandNode, int operation, int typeOfMember);
+void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
+int CheckIfMemberOfStatement(memberFlags mFlags);
+void ClearFlags(memberFlags* mFlags);
+int CheckArrayType(parse_state* current);
+# 2 "./src/symbol_table.c" 2
+# 1 "./src/../inc/symbol_table.h" 1
 
- printf("Exiting program\n");
+
+
+typedef struct symbolTable {
+ char variableName[100];
+ char variableType[100];
+ int isAlreadyDeclared;
+ int addr;
+ struct symbolTable* next, * first, * last;
+}symbolTable;
+
+void Insert();
+void Display();
+void Delete();
+int Search(char lab[]);
+void Modify();
+# 3 "./src/symbol_table.c" 2
+
+void Insert() {
+
+}
+
+void Display() {
+
+}
+
+void Delete() {
+
+}
+
+int Search(char lab[]) {
+
  return 0;
+}
+
+void Modify() {
+
 }
