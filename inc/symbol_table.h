@@ -5,14 +5,13 @@ typedef struct symbolTable {
 	char variableName[100];
 	char variableType[100];
 	int isAlreadyDeclared;
-	int addr;
-	struct symbolTable* next, * first, * last;
+	struct symbolTable* next;
 }symbolTable;
 
-void Insert();
+void Insert(parse_state* node, symbolTable* theSymbolTable);
 void Display();
 void Delete();
-int Search(char lab[]);
+int Search(char lab[], symbolTable* theSymbolTable);
 void Modify();
 
 

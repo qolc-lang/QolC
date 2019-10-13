@@ -2,6 +2,14 @@
 	.text
 .Ltext0:
 	.cfi_sections	.debug_frame
+	.section .rdata,"dr"
+	.align 8
+.LC0:
+	.ascii "The label exists already in the symbol table.\12Duplicate can\222t be inserted.\0"
+	.align 8
+.LC1:
+	.ascii "Label inserted in symbol table : %s\12\0"
+	.text
 	.globl	Insert
 	.def	Insert;	.scl	2;	.type	32;	.endef
 	.seh_proc	Insert
@@ -17,9 +25,81 @@ Insert:
 	movq	%rsp, %rbp
 	.seh_setframe	%rbp, 0
 	.cfi_def_cfa_register 6
+	subq	$48, %rsp
+	.seh_stackalloc	48
 	.seh_endprologue
+	movq	%rcx, 16(%rbp)
+	movq	%rdx, 24(%rbp)
+	.loc 1 5 0
+	movl	$0, -12(%rbp)
 	.loc 1 6 0
+	movq	16(%rbp), %rax
+	movq	%rax, -8(%rbp)
+	.loc 1 8 0
+	movq	-8(%rbp), %rax
+	leaq	104(%rax), %rcx
+	movq	24(%rbp), %rax
+	movq	%rax, %rdx
+	call	Search
+	movl	%eax, -12(%rbp)
+	.loc 1 9 0
+	cmpl	$1, -12(%rbp)
+	jne	.L4
+	.loc 1 10 0
+	leaq	.LC0(%rip), %rcx
+	call	puts
+	.loc 1 23 0
+	jmp	.L6
+.L5:
+	.loc 1 14 0
+	movq	24(%rbp), %rax
+	movq	208(%rax), %rax
+	movq	%rax, 24(%rbp)
+.L4:
+	.loc 1 13 0
+	movq	24(%rbp), %rax
+	movq	208(%rax), %rax
+	testq	%rax, %rax
+	jne	.L5
+	.loc 1 16 0
+	movl	$216, %ecx
+	call	malloc
+	movq	%rax, %rdx
+	movq	24(%rbp), %rax
+	movq	%rdx, 208(%rax)
+	.loc 1 17 0
+	movq	-8(%rbp), %rax
+	leaq	104(%rax), %rdx
+	movq	24(%rbp), %rax
+	movq	208(%rax), %rax
+	movq	%rax, %rcx
+	call	strcpy
+	.loc 1 18 0
+	movq	-8(%rbp), %rax
+	leaq	4(%rax), %rdx
+	movq	24(%rbp), %rax
+	movq	208(%rax), %rax
+	addq	$100, %rax
+	movq	%rax, %rcx
+	call	strcpy
+	.loc 1 19 0
+	movq	24(%rbp), %rax
+	movq	208(%rax), %rax
+	movl	$1, 200(%rax)
+	.loc 1 20 0
+	movq	24(%rbp), %rax
+	movq	208(%rax), %rax
+	movq	$0, 208(%rax)
+	.loc 1 21 0
+	movq	24(%rbp), %rax
+	movq	208(%rax), %rax
+	movq	%rax, %rdx
+	leaq	.LC1(%rip), %rcx
+	call	printf
+.L6:
+	.loc 1 23 0
 	nop
+	addq	$48, %rsp
 	popq	%rbp
 	.cfi_restore 6
 	.cfi_def_cfa 7, 8
@@ -32,7 +112,7 @@ Insert:
 	.seh_proc	Display
 Display:
 .LFB10:
-	.loc 1 8 0
+	.loc 1 25 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -42,7 +122,7 @@ Display:
 	.seh_setframe	%rbp, 0
 	.cfi_def_cfa_register 6
 	.seh_endprologue
-	.loc 1 10 0
+	.loc 1 27 0
 	nop
 	popq	%rbp
 	.cfi_restore 6
@@ -56,7 +136,7 @@ Display:
 	.seh_proc	Delete
 Delete:
 .LFB11:
-	.loc 1 12 0
+	.loc 1 29 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -66,7 +146,7 @@ Delete:
 	.seh_setframe	%rbp, 0
 	.cfi_def_cfa_register 6
 	.seh_endprologue
-	.loc 1 14 0
+	.loc 1 31 0
 	nop
 	popq	%rbp
 	.cfi_restore 6
@@ -80,7 +160,7 @@ Delete:
 	.seh_proc	Search
 Search:
 .LFB12:
-	.loc 1 16 0
+	.loc 1 33 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -89,11 +169,38 @@ Search:
 	movq	%rsp, %rbp
 	.seh_setframe	%rbp, 0
 	.cfi_def_cfa_register 6
+	subq	$48, %rsp
+	.seh_stackalloc	48
 	.seh_endprologue
 	movq	%rcx, 16(%rbp)
-	.loc 1 18 0
-	movl	$0, %eax
-	.loc 1 19 0
+	movq	%rdx, 24(%rbp)
+	.loc 1 35 0
+	movl	$0, -4(%rbp)
+	.loc 1 36 0
+	jmp	.L10
+.L12:
+	.loc 1 37 0
+	movq	24(%rbp), %rax
+	movq	16(%rbp), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L11
+	.loc 1 38 0
+	movl	$1, -4(%rbp)
+.L11:
+	.loc 1 39 0
+	movq	24(%rbp), %rax
+	movq	208(%rax), %rax
+	movq	%rax, 24(%rbp)
+.L10:
+	.loc 1 36 0
+	cmpq	$0, 24(%rbp)
+	jne	.L12
+	.loc 1 41 0
+	movl	-4(%rbp), %eax
+	.loc 1 42 0
+	addq	$48, %rsp
 	popq	%rbp
 	.cfi_restore 6
 	.cfi_def_cfa 7, 8
@@ -106,7 +213,7 @@ Search:
 	.seh_proc	Modify
 Modify:
 .LFB13:
-	.loc 1 21 0
+	.loc 1 44 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -116,7 +223,7 @@ Modify:
 	.seh_setframe	%rbp, 0
 	.cfi_def_cfa_register 6
 	.seh_endprologue
-	.loc 1 23 0
+	.loc 1 46 0
 	nop
 	popq	%rbp
 	.cfi_restore 6
@@ -131,9 +238,11 @@ Modify:
 	.file 4 "/usr/include/sys/_types.h"
 	.file 5 "/usr/include/sys/reent.h"
 	.file 6 "/usr/include/ctype.h"
+	.file 7 "./src/../inc/../inc/parse_state.h"
+	.file 8 "./src/../inc/symbol_table.h"
 	.section	.debug_info,"dr"
 .Ldebug_info0:
-	.long	0xd02
+	.long	0xe45
 	.word	0x4
 	.secrel32	.Ldebug_abbrev0
 	.byte	0x8
@@ -1216,49 +1325,153 @@ Modify:
 	.byte	0xae
 	.long	0xc4d
 	.uleb128 0x23
+	.secrel32	.LASF1
+	.byte	0xd8
+	.byte	0x7
+	.byte	0x6
+	.long	0xca2
+	.uleb128 0xc
+	.ascii "pos\0"
+	.byte	0x7
+	.byte	0x8
+	.long	0x12c
+	.byte	0
+	.uleb128 0xc
+	.ascii "type\0"
+	.byte	0x7
+	.byte	0x9
+	.long	0xca2
+	.byte	0x4
+	.uleb128 0xc
+	.ascii "value\0"
+	.byte	0x7
+	.byte	0xa
+	.long	0xca2
+	.byte	0x68
+	.uleb128 0xc
+	.ascii "next\0"
+	.byte	0x7
+	.byte	0xb
+	.long	0xcb2
+	.byte	0xd0
+	.byte	0
+	.uleb128 0x9
+	.long	0x172
+	.long	0xcb2
+	.uleb128 0xa
+	.long	0x14f
+	.byte	0x63
+	.byte	0
+	.uleb128 0xe
+	.byte	0x8
+	.long	0xc61
+	.uleb128 0x24
+	.secrel32	.LASF1
+	.byte	0x7
+	.byte	0xc
+	.long	0xc61
+	.uleb128 0x23
+	.secrel32	.LASF2
+	.byte	0xd8
+	.byte	0x8
+	.byte	0x4
+	.long	0xd21
+	.uleb128 0xc
+	.ascii "variableName\0"
+	.byte	0x8
+	.byte	0x5
+	.long	0xca2
+	.byte	0
+	.uleb128 0xc
+	.ascii "variableType\0"
+	.byte	0x8
+	.byte	0x6
+	.long	0xca2
+	.byte	0x64
+	.uleb128 0xc
+	.ascii "isAlreadyDeclared\0"
+	.byte	0x8
+	.byte	0x7
+	.long	0x12c
+	.byte	0xc8
+	.uleb128 0xc
+	.ascii "next\0"
+	.byte	0x8
+	.byte	0x8
+	.long	0xd21
+	.byte	0xd0
+	.byte	0
+	.uleb128 0xe
+	.byte	0x8
+	.long	0xcc3
+	.uleb128 0x24
+	.secrel32	.LASF2
+	.byte	0x8
+	.byte	0x9
+	.long	0xcc3
+	.uleb128 0x25
 	.ascii "Modify\0"
 	.byte	0x1
-	.byte	0x15
+	.byte	0x2c
 	.quad	.LFB13
 	.quad	.LFE13-.LFB13
 	.uleb128 0x1
 	.byte	0x9c
-	.uleb128 0x24
+	.uleb128 0x26
 	.ascii "Search\0"
 	.byte	0x1
-	.byte	0x10
+	.byte	0x21
 	.long	0x12c
 	.quad	.LFB12
 	.quad	.LFE12-.LFB12
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0xcb0
-	.uleb128 0x25
+	.long	0xd9e
+	.uleb128 0x27
 	.ascii "lab\0"
 	.byte	0x1
-	.byte	0x10
+	.byte	0x21
 	.long	0x666
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
+	.uleb128 0x28
+	.secrel32	.LASF3
+	.byte	0x1
+	.byte	0x21
+	.long	0xd9e
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 8
+	.uleb128 0x29
+	.ascii "flag\0"
+	.byte	0x1
+	.byte	0x23
+	.long	0x12c
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
 	.byte	0
-	.uleb128 0x23
+	.uleb128 0xe
+	.byte	0x8
+	.long	0xd27
+	.uleb128 0x25
 	.ascii "Delete\0"
 	.byte	0x1
-	.byte	0xc
+	.byte	0x1d
 	.quad	.LFB11
 	.quad	.LFE11-.LFB11
 	.uleb128 0x1
 	.byte	0x9c
-	.uleb128 0x23
+	.uleb128 0x25
 	.ascii "Display\0"
 	.byte	0x1
-	.byte	0x8
+	.byte	0x19
 	.quad	.LFB10
 	.quad	.LFE10-.LFB10
 	.uleb128 0x1
 	.byte	0x9c
-	.uleb128 0x23
+	.uleb128 0x2a
 	.ascii "Insert\0"
 	.byte	0x1
 	.byte	0x4
@@ -1266,6 +1479,43 @@ Modify:
 	.quad	.LFE9-.LFB9
 	.uleb128 0x1
 	.byte	0x9c
+	.long	0xe42
+	.uleb128 0x27
+	.ascii "node\0"
+	.byte	0x1
+	.byte	0x4
+	.long	0xe42
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 0
+	.uleb128 0x28
+	.secrel32	.LASF3
+	.byte	0x1
+	.byte	0x4
+	.long	0xd9e
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 8
+	.uleb128 0x29
+	.ascii "labelFound\0"
+	.byte	0x1
+	.byte	0x5
+	.long	0x12c
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -28
+	.uleb128 0x29
+	.ascii "current\0"
+	.byte	0x1
+	.byte	0x6
+	.long	0xe42
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -24
+	.byte	0
+	.uleb128 0xe
+	.byte	0x8
+	.long	0xcb8
 	.byte	0
 	.section	.debug_abbrev,"dr"
 .Ldebug_abbrev0:
@@ -1690,6 +1940,34 @@ Modify:
 	.byte	0
 	.byte	0
 	.uleb128 0x23
+	.uleb128 0x13
+	.byte	0x1
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x24
+	.uleb128 0x16
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x25
 	.uleb128 0x2e
 	.byte	0
 	.uleb128 0x3f
@@ -1710,7 +1988,7 @@ Modify:
 	.uleb128 0x19
 	.byte	0
 	.byte	0
-	.uleb128 0x24
+	.uleb128 0x26
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -1731,13 +2009,13 @@ Modify:
 	.uleb128 0x7
 	.uleb128 0x40
 	.uleb128 0x18
-	.uleb128 0x2117
+	.uleb128 0x2116
 	.uleb128 0x19
 	.uleb128 0x1
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x25
+	.uleb128 0x27
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -1750,6 +2028,61 @@ Modify:
 	.uleb128 0x13
 	.uleb128 0x2
 	.uleb128 0x18
+	.byte	0
+	.byte	0
+	.uleb128 0x28
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x18
+	.byte	0
+	.byte	0
+	.uleb128 0x29
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x18
+	.byte	0
+	.byte	0
+	.uleb128 0x2a
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x27
+	.uleb128 0x19
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x7
+	.uleb128 0x40
+	.uleb128 0x18
+	.uleb128 0x2116
+	.uleb128 0x19
+	.uleb128 0x1
+	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.byte	0
@@ -1768,6 +2101,17 @@ Modify:
 	.section	.debug_line,"dr"
 .Ldebug_line0:
 	.section	.debug_str,"dr"
+.LASF3:
+	.ascii "theSymbolTable\0"
+.LASF2:
+	.ascii "symbolTable\0"
+.LASF1:
+	.ascii "parse_state\0"
 .LASF0:
 	.ascii "_on_exit_args\0"
 	.ident	"GCC: (GNU) 7.4.0"
+	.def	puts;	.scl	2;	.type	32;	.endef
+	.def	malloc;	.scl	2;	.type	32;	.endef
+	.def	strcpy;	.scl	2;	.type	32;	.endef
+	.def	printf;	.scl	2;	.type	32;	.endef
+	.def	strcmp;	.scl	2;	.type	32;	.endef

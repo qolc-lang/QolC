@@ -1699,19 +1699,43 @@ typedef struct symbolTable {
  char variableName[100];
  char variableType[100];
  int isAlreadyDeclared;
- int addr;
- struct symbolTable* next, * first, * last;
+ struct symbolTable* next;
 }symbolTable;
 
-void Insert();
+void Insert(parse_state* node, symbolTable* theSymbolTable);
 void Display();
 void Delete();
-int Search(char lab[]);
+int Search(char lab[], symbolTable* theSymbolTable);
 void Modify();
 # 3 "./src/symbol_table.c" 2
 
-void Insert() {
+void Insert(parse_state* node, symbolTable* theSymbolTable) {
+ int labelFound = 0;
+ parse_state* current = node;
 
+ labelFound = Search(current->value, theSymbolTable);
+ if (labelFound == 1)
+  printf("The label exists already in the symbol table.\nDuplicate can’t be inserted.\n");
+ else
+ {
+  while (theSymbolTable->next != 
+# 13 "./src/symbol_table.c" 3 4
+                                ((void *)0)
+# 13 "./src/symbol_table.c"
+                                    ) {
+   theSymbolTable = theSymbolTable->next;
+  }
+  theSymbolTable->next = malloc(sizeof(symbolTable));
+  strcpy(theSymbolTable->next->variableName, current->value);
+  strcpy(theSymbolTable->next->variableType, current->type);
+  theSymbolTable->next->isAlreadyDeclared = 1;
+  theSymbolTable->next->next = 
+# 20 "./src/symbol_table.c" 3 4
+                              ((void *)0)
+# 20 "./src/symbol_table.c"
+                                  ;
+  printf("Label inserted in symbol table : %s\n", theSymbolTable->next->variableName);
+ }
 }
 
 void Display() {
@@ -1722,9 +1746,19 @@ void Delete() {
 
 }
 
-int Search(char lab[]) {
+int Search(char lab[], symbolTable* theSymbolTable) {
 
- return 0;
+ int flag = 0;
+ while (theSymbolTable != 
+# 36 "./src/symbol_table.c" 3 4
+                         ((void *)0)
+# 36 "./src/symbol_table.c"
+                             ) {
+  if (strcmp(theSymbolTable->variableName, lab) == 0)
+   flag = 1;
+  theSymbolTable = theSymbolTable->next;
+ }
+ return flag;
 }
 
 void Modify() {
