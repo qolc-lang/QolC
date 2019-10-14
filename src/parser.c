@@ -5,17 +5,19 @@
 	function to manage them
 */
 void parseProgram(parse_state* node) {
-	command* commandNode = malloc(sizeof(command) *2);
+	command* commandNode = malloc(sizeof(command));
+	symbolTable* symTable = malloc(sizeof(symbolTable));
 	parse_state * current = node;
-	parsing(current, commandNode);
+	parsing(current, commandNode, symTable);
 	print_commandList(commandNode);
+	DisplaySymbolTable(symTable);
 	return;
 }
 
 /*
 	Parsing the parsable list node and manages the found commands
 */
-void parsing(parse_state* current, command* commandNode) {
+void parsing(parse_state* current, command* commandNode, symbolTable* symTable) {
 	int top;
 	int partOfComment = 0;
 	int notTheEndFlag = 0;
@@ -681,6 +683,7 @@ void parsing(parse_state* current, command* commandNode) {
 				doneFlag = 1;
 				printf("Operator @ is in the stack now.\n");
 				printf("Going to insert the value : %s\n", current->value);
+				InsertSymbolTable(current, "main", symTable);
 				sTypeOfMember = CheckIfMemberOfStatement(flags);
 				if (sTypeOfMember != -1) {
 					printf("It is member of : %d\n", sTypeOfMember);

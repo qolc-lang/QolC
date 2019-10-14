@@ -10,13 +10,13 @@
 .LC1:
 	.ascii "Label inserted in symbol table : %s\12\0"
 	.text
-	.globl	Insert
-	.def	Insert;	.scl	2;	.type	32;	.endef
-	.seh_proc	Insert
-Insert:
+	.globl	InsertSymbolTable
+	.def	InsertSymbolTable;	.scl	2;	.type	32;	.endef
+	.seh_proc	InsertSymbolTable
+InsertSymbolTable:
 .LFB9:
 	.file 1 "./src/symbol_table.c"
-	.loc 1 4 0
+	.loc 1 3 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -30,69 +30,77 @@ Insert:
 	.seh_endprologue
 	movq	%rcx, 16(%rbp)
 	movq	%rdx, 24(%rbp)
-	.loc 1 5 0
+	movq	%r8, 32(%rbp)
+	.loc 1 4 0
 	movl	$0, -12(%rbp)
-	.loc 1 6 0
+	.loc 1 5 0
 	movq	16(%rbp), %rax
 	movq	%rax, -8(%rbp)
-	.loc 1 8 0
+	.loc 1 7 0
 	movq	-8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	movq	24(%rbp), %rax
+	movq	32(%rbp), %rax
 	movq	%rax, %rdx
-	call	Search
+	call	SearchSymbolTable
 	movl	%eax, -12(%rbp)
-	.loc 1 9 0
+	.loc 1 8 0
 	cmpl	$1, -12(%rbp)
 	jne	.L4
-	.loc 1 10 0
+	.loc 1 9 0
 	leaq	.LC0(%rip), %rcx
 	call	puts
 	.loc 1 23 0
 	jmp	.L6
 .L5:
-	.loc 1 14 0
-	movq	24(%rbp), %rax
-	movq	208(%rax), %rax
-	movq	%rax, 24(%rbp)
-.L4:
 	.loc 1 13 0
-	movq	24(%rbp), %rax
-	movq	208(%rax), %rax
+	movq	32(%rbp), %rax
+	movq	304(%rax), %rax
+	movq	%rax, 32(%rbp)
+.L4:
+	.loc 1 12 0
+	movq	32(%rbp), %rax
+	movq	304(%rax), %rax
 	testq	%rax, %rax
 	jne	.L5
-	.loc 1 16 0
-	movl	$216, %ecx
+	.loc 1 15 0
+	movl	$312, %ecx
 	call	malloc
 	movq	%rax, %rdx
-	movq	24(%rbp), %rax
-	movq	%rdx, 208(%rax)
-	.loc 1 17 0
+	movq	32(%rbp), %rax
+	movq	%rdx, 304(%rax)
+	.loc 1 16 0
 	movq	-8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	movq	24(%rbp), %rax
-	movq	208(%rax), %rax
+	movq	32(%rbp), %rax
+	movq	304(%rax), %rax
 	movq	%rax, %rcx
 	call	strcpy
-	.loc 1 18 0
+	.loc 1 17 0
 	movq	-8(%rbp), %rax
 	leaq	4(%rax), %rdx
-	movq	24(%rbp), %rax
-	movq	208(%rax), %rax
+	movq	32(%rbp), %rax
+	movq	304(%rax), %rax
 	addq	$100, %rax
 	movq	%rax, %rcx
 	call	strcpy
+	.loc 1 18 0
+	movq	32(%rbp), %rax
+	movq	304(%rax), %rax
+	leaq	200(%rax), %rcx
+	movq	24(%rbp), %rax
+	movq	%rax, %rdx
+	call	strcpy
 	.loc 1 19 0
-	movq	24(%rbp), %rax
-	movq	208(%rax), %rax
-	movl	$1, 200(%rax)
+	movq	32(%rbp), %rax
+	movq	304(%rax), %rax
+	movl	$1, 300(%rax)
 	.loc 1 20 0
-	movq	24(%rbp), %rax
-	movq	208(%rax), %rax
-	movq	$0, 208(%rax)
+	movq	32(%rbp), %rax
+	movq	304(%rax), %rax
+	movq	$0, 304(%rax)
 	.loc 1 21 0
-	movq	24(%rbp), %rax
-	movq	208(%rax), %rax
+	movq	32(%rbp), %rax
+	movq	304(%rax), %rax
 	movq	%rax, %rdx
 	leaq	.LC1(%rip), %rcx
 	call	printf
@@ -107,10 +115,21 @@ Insert:
 	.cfi_endproc
 .LFE9:
 	.seh_endproc
-	.globl	Display
-	.def	Display;	.scl	2;	.type	32;	.endef
-	.seh_proc	Display
-Display:
+	.section .rdata,"dr"
+	.align 8
+.LC2:
+	.ascii "----------------------------------------------------------\0"
+.LC3:
+	.ascii "Symbol's name : %s\12\0"
+.LC4:
+	.ascii "Symbol's type : %s\12\0"
+.LC5:
+	.ascii "Symbol's scope : %s\12\0"
+	.text
+	.globl	DisplaySymbolTable
+	.def	DisplaySymbolTable;	.scl	2;	.type	32;	.endef
+	.seh_proc	DisplaySymbolTable
+DisplaySymbolTable:
 .LFB10:
 	.loc 1 25 0
 	.cfi_startproc
@@ -121,9 +140,44 @@ Display:
 	movq	%rsp, %rbp
 	.seh_setframe	%rbp, 0
 	.cfi_def_cfa_register 6
+	subq	$32, %rsp
+	.seh_stackalloc	32
 	.seh_endprologue
+	movq	%rcx, 16(%rbp)
+	.loc 1 26 0
+	jmp	.L8
+.L9:
 	.loc 1 27 0
+	leaq	.LC2(%rip), %rcx
+	call	puts
+	.loc 1 28 0
+	movq	16(%rbp), %rax
+	movq	%rax, %rdx
+	leaq	.LC3(%rip), %rcx
+	call	printf
+	.loc 1 29 0
+	movq	16(%rbp), %rax
+	addq	$100, %rax
+	movq	%rax, %rdx
+	leaq	.LC4(%rip), %rcx
+	call	printf
+	.loc 1 30 0
+	movq	16(%rbp), %rax
+	addq	$200, %rax
+	movq	%rax, %rdx
+	leaq	.LC5(%rip), %rcx
+	call	printf
+	.loc 1 31 0
+	movq	16(%rbp), %rax
+	movq	304(%rax), %rax
+	movq	%rax, 16(%rbp)
+.L8:
+	.loc 1 26 0
+	cmpq	$0, 16(%rbp)
+	jne	.L9
+	.loc 1 33 0
 	nop
+	addq	$32, %rsp
 	popq	%rbp
 	.cfi_restore 6
 	.cfi_def_cfa 7, 8
@@ -131,36 +185,12 @@ Display:
 	.cfi_endproc
 .LFE10:
 	.seh_endproc
-	.globl	Delete
-	.def	Delete;	.scl	2;	.type	32;	.endef
-	.seh_proc	Delete
-Delete:
+	.globl	SearchSymbolTable
+	.def	SearchSymbolTable;	.scl	2;	.type	32;	.endef
+	.seh_proc	SearchSymbolTable
+SearchSymbolTable:
 .LFB11:
-	.loc 1 29 0
-	.cfi_startproc
-	pushq	%rbp
-	.seh_pushreg	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.seh_setframe	%rbp, 0
-	.cfi_def_cfa_register 6
-	.seh_endprologue
-	.loc 1 31 0
-	nop
-	popq	%rbp
-	.cfi_restore 6
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
-.LFE11:
-	.seh_endproc
-	.globl	Search
-	.def	Search;	.scl	2;	.type	32;	.endef
-	.seh_proc	Search
-Search:
-.LFB12:
-	.loc 1 33 0
+	.loc 1 35 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -174,63 +204,39 @@ Search:
 	.seh_endprologue
 	movq	%rcx, 16(%rbp)
 	movq	%rdx, 24(%rbp)
-	.loc 1 35 0
-	movl	$0, -4(%rbp)
 	.loc 1 36 0
-	jmp	.L10
-.L12:
+	movl	$0, -4(%rbp)
 	.loc 1 37 0
+	jmp	.L11
+.L13:
+	.loc 1 38 0
 	movq	24(%rbp), %rax
 	movq	16(%rbp), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L11
-	.loc 1 38 0
-	movl	$1, -4(%rbp)
-.L11:
-	.loc 1 39 0
-	movq	24(%rbp), %rax
-	movq	208(%rax), %rax
-	movq	%rax, 24(%rbp)
-.L10:
-	.loc 1 36 0
-	cmpq	$0, 24(%rbp)
 	jne	.L12
-	.loc 1 41 0
-	movl	-4(%rbp), %eax
+	.loc 1 39 0
+	movl	$1, -4(%rbp)
+.L12:
+	.loc 1 40 0
+	movq	24(%rbp), %rax
+	movq	304(%rax), %rax
+	movq	%rax, 24(%rbp)
+.L11:
+	.loc 1 37 0
+	cmpq	$0, 24(%rbp)
+	jne	.L13
 	.loc 1 42 0
+	movl	-4(%rbp), %eax
+	.loc 1 43 0
 	addq	$48, %rsp
 	popq	%rbp
 	.cfi_restore 6
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
-.LFE12:
-	.seh_endproc
-	.globl	Modify
-	.def	Modify;	.scl	2;	.type	32;	.endef
-	.seh_proc	Modify
-Modify:
-.LFB13:
-	.loc 1 44 0
-	.cfi_startproc
-	pushq	%rbp
-	.seh_pushreg	%rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	movq	%rsp, %rbp
-	.seh_setframe	%rbp, 0
-	.cfi_def_cfa_register 6
-	.seh_endprologue
-	.loc 1 46 0
-	nop
-	popq	%rbp
-	.cfi_restore 6
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
-.LFE13:
+.LFE11:
 	.seh_endproc
 .Letext0:
 	.file 2 "/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/stddef.h"
@@ -239,10 +245,10 @@ Modify:
 	.file 5 "/usr/include/sys/reent.h"
 	.file 6 "/usr/include/ctype.h"
 	.file 7 "./src/../inc/../inc/parse_state.h"
-	.file 8 "./src/../inc/symbol_table.h"
+	.file 8 "./src/../inc/../inc/../inc/symbol_table.h"
 	.section	.debug_info,"dr"
 .Ldebug_info0:
-	.long	0xe45
+	.long	0xe62
 	.word	0x4
 	.secrel32	.Ldebug_abbrev0
 	.byte	0x8
@@ -1370,12 +1376,12 @@ Modify:
 	.byte	0x7
 	.byte	0xc
 	.long	0xc61
-	.uleb128 0x23
+	.uleb128 0xf
 	.secrel32	.LASF2
-	.byte	0xd8
+	.word	0x138
 	.byte	0x8
 	.byte	0x4
-	.long	0xd21
+	.long	0xd32
 	.uleb128 0xc
 	.ascii "variableName\0"
 	.byte	0x8
@@ -1389,17 +1395,23 @@ Modify:
 	.long	0xca2
 	.byte	0x64
 	.uleb128 0xc
-	.ascii "isAlreadyDeclared\0"
+	.ascii "scope\0"
 	.byte	0x8
 	.byte	0x7
-	.long	0x12c
+	.long	0xca2
 	.byte	0xc8
-	.uleb128 0xc
+	.uleb128 0x10
+	.ascii "isAlreadyDeclared\0"
+	.byte	0x8
+	.byte	0x8
+	.long	0x12c
+	.word	0x12c
+	.uleb128 0x10
 	.ascii "next\0"
 	.byte	0x8
-	.byte	0x8
-	.long	0xd21
-	.byte	0xd0
+	.byte	0x9
+	.long	0xd32
+	.word	0x130
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
@@ -1407,46 +1419,38 @@ Modify:
 	.uleb128 0x24
 	.secrel32	.LASF2
 	.byte	0x8
-	.byte	0x9
+	.byte	0xa
 	.long	0xcc3
 	.uleb128 0x25
-	.ascii "Modify\0"
+	.ascii "SearchSymbolTable\0"
 	.byte	0x1
-	.byte	0x2c
-	.quad	.LFB13
-	.quad	.LFE13-.LFB13
-	.uleb128 0x1
-	.byte	0x9c
-	.uleb128 0x26
-	.ascii "Search\0"
-	.byte	0x1
-	.byte	0x21
+	.byte	0x23
 	.long	0x12c
-	.quad	.LFB12
-	.quad	.LFE12-.LFB12
+	.quad	.LFB11
+	.quad	.LFE11-.LFB11
 	.uleb128 0x1
 	.byte	0x9c
 	.long	0xd9e
-	.uleb128 0x27
+	.uleb128 0x26
 	.ascii "lab\0"
 	.byte	0x1
-	.byte	0x21
+	.byte	0x23
 	.long	0x666
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
-	.uleb128 0x28
+	.uleb128 0x27
 	.secrel32	.LASF3
 	.byte	0x1
-	.byte	0x21
+	.byte	0x23
 	.long	0xd9e
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
-	.uleb128 0x29
+	.uleb128 0x28
 	.ascii "flag\0"
 	.byte	0x1
-	.byte	0x23
+	.byte	0x24
 	.long	0x12c
 	.uleb128 0x2
 	.byte	0x91
@@ -1454,61 +1458,71 @@ Modify:
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0xd27
-	.uleb128 0x25
-	.ascii "Delete\0"
-	.byte	0x1
-	.byte	0x1d
-	.quad	.LFB11
-	.quad	.LFE11-.LFB11
-	.uleb128 0x1
-	.byte	0x9c
-	.uleb128 0x25
-	.ascii "Display\0"
+	.long	0xd38
+	.uleb128 0x29
+	.ascii "DisplaySymbolTable\0"
 	.byte	0x1
 	.byte	0x19
 	.quad	.LFB10
 	.quad	.LFE10-.LFB10
 	.uleb128 0x1
 	.byte	0x9c
-	.uleb128 0x2a
-	.ascii "Insert\0"
+	.long	0xddf
+	.uleb128 0x27
+	.secrel32	.LASF3
 	.byte	0x1
-	.byte	0x4
+	.byte	0x19
+	.long	0xd9e
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 0
+	.byte	0
+	.uleb128 0x29
+	.ascii "InsertSymbolTable\0"
+	.byte	0x1
+	.byte	0x3
 	.quad	.LFB9
 	.quad	.LFE9-.LFB9
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0xe42
-	.uleb128 0x27
+	.long	0xe5f
+	.uleb128 0x26
 	.ascii "node\0"
 	.byte	0x1
-	.byte	0x4
-	.long	0xe42
+	.byte	0x3
+	.long	0xe5f
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
-	.uleb128 0x28
-	.secrel32	.LASF3
+	.uleb128 0x26
+	.ascii "scope\0"
 	.byte	0x1
-	.byte	0x4
-	.long	0xd9e
+	.byte	0x3
+	.long	0x666
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
-	.uleb128 0x29
+	.uleb128 0x27
+	.secrel32	.LASF3
+	.byte	0x1
+	.byte	0x3
+	.long	0xd9e
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 16
+	.uleb128 0x28
 	.ascii "labelFound\0"
 	.byte	0x1
-	.byte	0x5
+	.byte	0x4
 	.long	0x12c
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -28
-	.uleb128 0x29
+	.uleb128 0x28
 	.ascii "current\0"
 	.byte	0x1
-	.byte	0x6
-	.long	0xe42
+	.byte	0x5
+	.long	0xe5f
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -24
@@ -1969,27 +1983,6 @@ Modify:
 	.byte	0
 	.uleb128 0x25
 	.uleb128 0x2e
-	.byte	0
-	.uleb128 0x3f
-	.uleb128 0x19
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x7
-	.uleb128 0x40
-	.uleb128 0x18
-	.uleb128 0x2117
-	.uleb128 0x19
-	.byte	0
-	.byte	0
-	.uleb128 0x26
-	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
 	.uleb128 0x19
@@ -2015,7 +2008,7 @@ Modify:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x27
+	.uleb128 0x26
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -2030,7 +2023,7 @@ Modify:
 	.uleb128 0x18
 	.byte	0
 	.byte	0
-	.uleb128 0x28
+	.uleb128 0x27
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -2045,7 +2038,7 @@ Modify:
 	.uleb128 0x18
 	.byte	0
 	.byte	0
-	.uleb128 0x29
+	.uleb128 0x28
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -2060,7 +2053,7 @@ Modify:
 	.uleb128 0x18
 	.byte	0
 	.byte	0
-	.uleb128 0x2a
+	.uleb128 0x29
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f

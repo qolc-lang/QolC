@@ -4,15 +4,14 @@
 typedef struct symbolTable {
 	char variableName[100];
 	char variableType[100];
+	char scope[100];
 	int isAlreadyDeclared;
 	struct symbolTable* next;
 }symbolTable;
 
-void Insert(parse_state* node, symbolTable* theSymbolTable);
-void Display();
-void Delete();
-int Search(char lab[], symbolTable* theSymbolTable);
-void Modify();
+void InsertSymbolTable(parse_state* node, char* scope, symbolTable* theSymbolTable);
+void DisplaySymbolTable(symbolTable* theSymbolTable);
+int SearchSymbolTable(char* lab, symbolTable* theSymbolTable);
 
 
 #endif

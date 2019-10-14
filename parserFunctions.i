@@ -1639,9 +1639,25 @@ typedef struct command
 void push_commandList(command* commandNode, decl* aDecl, stmt* aStmt, expr* anExpr);
 void print_commandList(command* commandNode);
 # 7 "./src/../inc/../inc/parser.h" 2
+# 1 "./src/../inc/../inc/../inc/symbol_table.h" 1
+
+
+
+typedef struct symbolTable {
+ char variableName[100];
+ char variableType[100];
+ char scope[100];
+ int isAlreadyDeclared;
+ struct symbolTable* next;
+}symbolTable;
+
+void Insert(parse_state* node, char* scope, symbolTable* theSymbolTable);
+void Display(symbolTable* theSymbolTable);
+int Search(char* lab, symbolTable* theSymbolTable);
+# 8 "./src/../inc/../inc/parser.h" 2
 
 void parseProgram(parse_state* node);
-void parsing(parse_state* current, command* commandNode);
+void parsing(parse_state* current, command* commandNode, symbolTable* symTable);
 parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, command* commandNode);
 # 5 "./src/../inc/parserFunctions.h" 2
 # 1 "./src/../inc/../inc/stack.h" 1
