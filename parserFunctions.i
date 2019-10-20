@@ -1651,9 +1651,9 @@ typedef struct symbolTable {
  struct symbolTable* next;
 }symbolTable;
 
-void Insert(parse_state* node, char* scope, symbolTable* theSymbolTable);
-void Display(symbolTable* theSymbolTable);
-int Search(char* lab, symbolTable* theSymbolTable);
+void InsertSymbolTable(parse_state* node, char* scope, symbolTable* theSymbolTable);
+void DisplaySymbolTable(symbolTable* theSymbolTable);
+int SearchSymbolTable(char* lab, symbolTable* theSymbolTable);
 # 8 "./src/../inc/../inc/parser.h" 2
 
 void parseProgram(parse_state* node);
@@ -1692,6 +1692,7 @@ typedef struct memberFlags
  int nIsUnionMember;
  int nIsEnumMember;
  int nIsAssertMember;
+ int nIsMainMember;
 }memberFlags;
 
 parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode);
@@ -3367,6 +3368,7 @@ int CheckIfMemberOfStatement(memberFlags mFlags) {
  else if (mFlags.nIsUnionMember == 1) return 2;
  else if (mFlags.nIsEnumMember == 1) return 3;
  else if (mFlags.nIsAssertMember == 1) return 4;
+ else if (mFlags.nIsMainMember == 1) return 5;
 
  return -1;
 }
@@ -3377,6 +3379,7 @@ void ClearFlags(memberFlags* mFlags) {
  if (mFlags->nIsUnionMember == 1) mFlags->nIsUnionMember = 0;
  if (mFlags->nIsEnumMember == 1) mFlags->nIsEnumMember = 0;
  if (mFlags->nIsAssertMember == 1) mFlags->nIsAssertMember = 0;
+ if (mFlags->nIsMainMember == 1) mFlags->nIsMainMember = 0;
 }
 
 int CheckArrayType(parse_state* current)

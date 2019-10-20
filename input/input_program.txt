@@ -39,7 +39,7 @@ m@float^|null|
 j@int^|null|
 k@void^|null|
 b@string^|null|
-v@char^|null|
+vlal@char^|null|
 delete my_node
 break
 continue
@@ -57,15 +57,15 @@ vector3 struct
 |@
 	nanan@string
 	a@int
-	b@float
-	c@float
+	blal@float
+	clalal@float
 	myint5@int
 	m74td@float
 	e8i9o2@int|78|
 	theNum3tyr33@53
 	_hi57_32doo3y5@float|65|
 	hello4537_npno212op33t1@float
-	d@'d
+	dmamam@'d
 @|
 
 marines union
@@ -77,14 +77,14 @@ marines union
 
 value enum
 |@
-	x@0,
-	y@1,
-	z@y,
-	v@f,				
+	xpop@0,
+	ydsffds@1,
+	zkerk@y,
+	vmamammama@f,				
 	g@10,
 @|
 
-s@string
+spopopopo@string
 
 sleep|4|
 
@@ -96,6 +96,6 @@ my_node@new node
 
 assert |5 @== 2|
 
-a@[50]char
+lokaokaja@[50]char
 
 @|

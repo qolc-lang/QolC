@@ -3389,20 +3389,13 @@ CheckIfMemberOfStatement:
 	.seh_pushreg	%rbx
 	.cfi_def_cfa_offset 24
 	.cfi_offset 3, -24
-	subq	$24, %rsp
-	.seh_stackalloc	24
-	.cfi_def_cfa_offset 48
-	leaq	128(%rsp), %rbp
-	.seh_setframe	%rbp, 128
-	.cfi_def_cfa 6, -80
+	movq	%rsp, %rbp
+	.seh_setframe	%rbp, 0
+	.cfi_def_cfa_register 6
 	.seh_endprologue
 	movq	%rcx, %rbx
-	movq	(%rbx), %rax
-	movq	8(%rbx), %rdx
-	movq	%rax, -128(%rbp)
-	movq	%rdx, -120(%rbp)
 	.loc 1 638 0
-	movl	-128(%rbp), %eax
+	movl	(%rbx), %eax
 	cmpl	$1, %eax
 	jne	.L135
 	.loc 1 638 0 is_stmt 0 discriminator 1
@@ -3410,7 +3403,7 @@ CheckIfMemberOfStatement:
 	jmp	.L136
 .L135:
 	.loc 1 639 0 is_stmt 1
-	movl	-124(%rbp), %eax
+	movl	4(%rbx), %eax
 	cmpl	$1, %eax
 	jne	.L137
 	.loc 1 639 0 is_stmt 0 discriminator 1
@@ -3418,7 +3411,7 @@ CheckIfMemberOfStatement:
 	jmp	.L136
 .L137:
 	.loc 1 640 0 is_stmt 1
-	movl	-120(%rbp), %eax
+	movl	8(%rbx), %eax
 	cmpl	$1, %eax
 	jne	.L138
 	.loc 1 640 0 is_stmt 0 discriminator 1
@@ -3426,23 +3419,30 @@ CheckIfMemberOfStatement:
 	jmp	.L136
 .L138:
 	.loc 1 641 0 is_stmt 1
-	movl	-116(%rbp), %eax
+	movl	12(%rbx), %eax
 	cmpl	$1, %eax
 	jne	.L139
 	.loc 1 641 0 is_stmt 0 discriminator 1
 	movl	$4, %eax
 	jmp	.L136
 .L139:
-	.loc 1 643 0 is_stmt 1
+	.loc 1 642 0 is_stmt 1
+	movl	16(%rbx), %eax
+	cmpl	$1, %eax
+	jne	.L140
+	.loc 1 642 0 is_stmt 0 discriminator 1
+	movl	$5, %eax
+	jmp	.L136
+.L140:
+	.loc 1 644 0 is_stmt 1
 	movl	$-1, %eax
 .L136:
-	.loc 1 644 0
-	addq	$24, %rsp
+	.loc 1 645 0
 	popq	%rbx
 	.cfi_restore 3
 	popq	%rbp
 	.cfi_restore 6
-	.cfi_def_cfa 7, -8
+	.cfi_def_cfa 7, 16
 	ret
 	.cfi_endproc
 .LFE18:
@@ -3452,7 +3452,7 @@ CheckIfMemberOfStatement:
 	.seh_proc	ClearFlags
 ClearFlags:
 .LFB19:
-	.loc 1 646 0
+	.loc 1 647 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -3463,43 +3463,52 @@ ClearFlags:
 	.cfi_def_cfa_register 6
 	.seh_endprologue
 	movq	%rcx, 16(%rbp)
-	.loc 1 648 0
+	.loc 1 649 0
 	movq	16(%rbp), %rax
 	movl	(%rax), %eax
-	cmpl	$1, %eax
-	jne	.L141
-	.loc 1 648 0 is_stmt 0 discriminator 1
-	movq	16(%rbp), %rax
-	movl	$0, (%rax)
-.L141:
-	.loc 1 649 0 is_stmt 1
-	movq	16(%rbp), %rax
-	movl	4(%rax), %eax
 	cmpl	$1, %eax
 	jne	.L142
 	.loc 1 649 0 is_stmt 0 discriminator 1
 	movq	16(%rbp), %rax
-	movl	$0, 4(%rax)
+	movl	$0, (%rax)
 .L142:
 	.loc 1 650 0 is_stmt 1
 	movq	16(%rbp), %rax
-	movl	8(%rax), %eax
+	movl	4(%rax), %eax
 	cmpl	$1, %eax
 	jne	.L143
 	.loc 1 650 0 is_stmt 0 discriminator 1
 	movq	16(%rbp), %rax
-	movl	$0, 8(%rax)
+	movl	$0, 4(%rax)
 .L143:
 	.loc 1 651 0 is_stmt 1
+	movq	16(%rbp), %rax
+	movl	8(%rax), %eax
+	cmpl	$1, %eax
+	jne	.L144
+	.loc 1 651 0 is_stmt 0 discriminator 1
+	movq	16(%rbp), %rax
+	movl	$0, 8(%rax)
+.L144:
+	.loc 1 652 0 is_stmt 1
 	movq	16(%rbp), %rax
 	movl	12(%rax), %eax
 	cmpl	$1, %eax
 	jne	.L145
-	.loc 1 651 0 is_stmt 0 discriminator 1
+	.loc 1 652 0 is_stmt 0 discriminator 1
 	movq	16(%rbp), %rax
 	movl	$0, 12(%rax)
 .L145:
-	.loc 1 652 0 is_stmt 1
+	.loc 1 653 0 is_stmt 1
+	movq	16(%rbp), %rax
+	movl	16(%rax), %eax
+	cmpl	$1, %eax
+	jne	.L147
+	.loc 1 653 0 is_stmt 0 discriminator 1
+	movq	16(%rbp), %rax
+	movl	$0, 16(%rax)
+.L147:
+	.loc 1 654 0 is_stmt 1
 	nop
 	popq	%rbp
 	.cfi_restore 6
@@ -3533,7 +3542,7 @@ ClearFlags:
 	.seh_proc	CheckArrayType
 CheckArrayType:
 .LFB20:
-	.loc 1 655 0
+	.loc 1 657 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -3546,50 +3555,35 @@ CheckArrayType:
 	.seh_stackalloc	48
 	.seh_endprologue
 	movq	%rcx, 16(%rbp)
-	.loc 1 656 0
+	.loc 1 658 0
 	movl	$0, -8(%rbp)
-	.loc 1 657 0
-	movl	$0, -4(%rbp)
 	.loc 1 659 0
+	movl	$0, -4(%rbp)
+	.loc 1 661 0
 	movq	16(%rbp), %rax
 	addq	$4, %rax
 	leaq	.LC119(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L147
-	.loc 1 661 0
+	jne	.L149
+	.loc 1 663 0
 	leaq	.LC120(%rip), %rcx
 	call	puts
-	.loc 1 662 0
-	movl	$1, -8(%rbp)
-.L147:
 	.loc 1 664 0
+	movl	$1, -8(%rbp)
+.L149:
+	.loc 1 666 0
 	movq	16(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, 16(%rbp)
-	.loc 1 665 0
+	.loc 1 667 0
 	movq	16(%rbp), %rax
 	addq	$104, %rax
 	movq	%rax, %rdx
 	leaq	.LC121(%rip), %rcx
 	call	printf
-	.loc 1 666 0
-	movq	16(%rbp), %rax
-	addq	$104, %rax
-	leaq	.LC122(%rip), %rdx
-	movq	%rax, %rcx
-	call	strcmp
-	testl	%eax, %eax
-	jne	.L148
-	.loc 1 666 0 is_stmt 0 discriminator 1
-	cmpl	$1, -8(%rbp)
-	je	.L148
-	.loc 1 666 0 discriminator 2
-	movl	$13, -4(%rbp)
-	jmp	.L149
-.L148:
-	.loc 1 667 0 is_stmt 1
+	.loc 1 668 0
 	movq	16(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC122(%rip), %rdx
@@ -3597,32 +3591,17 @@ CheckArrayType:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L150
-	.loc 1 667 0 is_stmt 0 discriminator 1
-	cmpl	$1, -8(%rbp)
-	jne	.L150
-	.loc 1 667 0 discriminator 2
-	movl	$19, -4(%rbp)
-	jmp	.L149
-.L150:
-	.loc 1 668 0 is_stmt 1
-	movq	16(%rbp), %rax
-	addq	$104, %rax
-	leaq	.LC123(%rip), %rdx
-	movq	%rax, %rcx
-	call	strcmp
-	testl	%eax, %eax
-	jne	.L151
 	.loc 1 668 0 is_stmt 0 discriminator 1
 	cmpl	$1, -8(%rbp)
-	je	.L151
+	je	.L150
 	.loc 1 668 0 discriminator 2
-	movl	$14, -4(%rbp)
-	jmp	.L149
-.L151:
+	movl	$13, -4(%rbp)
+	jmp	.L151
+.L150:
 	.loc 1 669 0 is_stmt 1
 	movq	16(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC123(%rip), %rdx
+	leaq	.LC122(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -3631,13 +3610,13 @@ CheckArrayType:
 	cmpl	$1, -8(%rbp)
 	jne	.L152
 	.loc 1 669 0 discriminator 2
-	movl	$20, -4(%rbp)
-	jmp	.L149
+	movl	$19, -4(%rbp)
+	jmp	.L151
 .L152:
 	.loc 1 670 0 is_stmt 1
 	movq	16(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC124(%rip), %rdx
+	leaq	.LC123(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -3646,13 +3625,13 @@ CheckArrayType:
 	cmpl	$1, -8(%rbp)
 	je	.L153
 	.loc 1 670 0 discriminator 2
-	movl	$15, -4(%rbp)
-	jmp	.L149
+	movl	$14, -4(%rbp)
+	jmp	.L151
 .L153:
 	.loc 1 671 0 is_stmt 1
 	movq	16(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC124(%rip), %rdx
+	leaq	.LC123(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -3661,13 +3640,13 @@ CheckArrayType:
 	cmpl	$1, -8(%rbp)
 	jne	.L154
 	.loc 1 671 0 discriminator 2
-	movl	$21, -4(%rbp)
-	jmp	.L149
+	movl	$20, -4(%rbp)
+	jmp	.L151
 .L154:
 	.loc 1 672 0 is_stmt 1
 	movq	16(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC125(%rip), %rdx
+	leaq	.LC124(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -3676,67 +3655,97 @@ CheckArrayType:
 	cmpl	$1, -8(%rbp)
 	je	.L155
 	.loc 1 672 0 discriminator 2
-	movl	$16, -4(%rbp)
-	jmp	.L149
+	movl	$15, -4(%rbp)
+	jmp	.L151
 .L155:
 	.loc 1 673 0 is_stmt 1
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC124(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L156
+	.loc 1 673 0 is_stmt 0 discriminator 1
+	cmpl	$1, -8(%rbp)
+	jne	.L156
+	.loc 1 673 0 discriminator 2
+	movl	$21, -4(%rbp)
+	jmp	.L151
+.L156:
+	.loc 1 674 0 is_stmt 1
 	movq	16(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC125(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L149
-	.loc 1 673 0 is_stmt 0 discriminator 1
+	jne	.L157
+	.loc 1 674 0 is_stmt 0 discriminator 1
 	cmpl	$1, -8(%rbp)
-	jne	.L149
-	.loc 1 673 0 discriminator 2
+	je	.L157
+	.loc 1 674 0 discriminator 2
+	movl	$16, -4(%rbp)
+	jmp	.L151
+.L157:
+	.loc 1 675 0 is_stmt 1
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC125(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L151
+	.loc 1 675 0 is_stmt 0 discriminator 1
+	cmpl	$1, -8(%rbp)
+	jne	.L151
+	.loc 1 675 0 discriminator 2
 	movl	$22, -4(%rbp)
-.L149:
-	.loc 1 674 0 is_stmt 1
+.L151:
+	.loc 1 676 0 is_stmt 1
 	movq	16(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC126(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L156
-	.loc 1 674 0 is_stmt 0 discriminator 1
-	movl	$17, -4(%rbp)
-	jmp	.L157
-.L156:
-	.loc 1 675 0 is_stmt 1
-	movq	16(%rbp), %rax
-	addq	$104, %rax
-	leaq	.LC127(%rip), %rdx
-	movq	%rax, %rcx
-	call	strcmp
-	testl	%eax, %eax
 	jne	.L158
-	.loc 1 675 0 is_stmt 0 discriminator 1
-	cmpl	$1, -8(%rbp)
-	je	.L158
-	.loc 1 675 0 discriminator 2
-	movl	$18, -4(%rbp)
-	jmp	.L157
+	.loc 1 676 0 is_stmt 0 discriminator 1
+	movl	$17, -4(%rbp)
+	jmp	.L159
 .L158:
-	.loc 1 676 0 is_stmt 1
+	.loc 1 677 0 is_stmt 1
 	movq	16(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC127(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L157
-	.loc 1 676 0 is_stmt 0 discriminator 1
+	jne	.L160
+	.loc 1 677 0 is_stmt 0 discriminator 1
 	cmpl	$1, -8(%rbp)
-	jne	.L157
-	.loc 1 676 0 discriminator 2
-	movl	$23, -4(%rbp)
-.L157:
+	je	.L160
+	.loc 1 677 0 discriminator 2
+	movl	$18, -4(%rbp)
+	jmp	.L159
+.L160:
 	.loc 1 678 0 is_stmt 1
+	movq	16(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC127(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L159
+	.loc 1 678 0 is_stmt 0 discriminator 1
+	cmpl	$1, -8(%rbp)
+	jne	.L159
+	.loc 1 678 0 discriminator 2
+	movl	$23, -4(%rbp)
+.L159:
+	.loc 1 680 0 is_stmt 1
 	movl	-4(%rbp), %eax
-	.loc 1 679 0
+	.loc 1 681 0
 	addq	$48, %rsp
 	popq	%rbp
 	.cfi_restore 6
@@ -3757,7 +3766,7 @@ CheckArrayType:
 	.file 10 "./src/../inc/parserFunctions.h"
 	.section	.debug_info,"dr"
 .Ldebug_info0:
-	.long	0x1dbf
+	.long	0x1dd5
 	.word	0x4
 	.secrel32	.Ldebug_abbrev0
 	.byte	0x8
@@ -5507,10 +5516,10 @@ CheckArrayType:
 	.long	0x14da
 	.uleb128 0x23
 	.secrel32	.LASF9
-	.byte	0x10
+	.byte	0x14
 	.byte	0xa
 	.byte	0x12
-	.long	0x15a5
+	.long	0x15bb
 	.uleb128 0xc
 	.ascii "nIsStructMember\0"
 	.byte	0xa
@@ -5535,34 +5544,40 @@ CheckArrayType:
 	.byte	0x17
 	.long	0x12f
 	.byte	0xc
+	.uleb128 0xc
+	.ascii "nIsMainMember\0"
+	.byte	0xa
+	.byte	0x18
+	.long	0x12f
+	.byte	0x10
 	.byte	0
 	.uleb128 0x25
 	.secrel32	.LASF9
 	.byte	0xa
-	.byte	0x18
+	.byte	0x19
 	.long	0x153b
 	.uleb128 0x28
 	.ascii "CheckArrayType\0"
 	.byte	0x1
-	.word	0x28e
+	.word	0x290
 	.long	0x12f
 	.quad	.LFB20
 	.quad	.LFE20-.LFB20
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1617
+	.long	0x162d
 	.uleb128 0x29
 	.secrel32	.LASF10
 	.byte	0x1
-	.word	0x28e
-	.long	0x1617
+	.word	0x290
+	.long	0x162d
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
 	.uleb128 0x2a
 	.ascii "isPointer\0"
 	.byte	0x1
-	.word	0x290
+	.word	0x292
 	.long	0x12f
 	.uleb128 0x2
 	.byte	0x91
@@ -5570,7 +5585,7 @@ CheckArrayType:
 	.uleb128 0x2a
 	.ascii "arrayType\0"
 	.byte	0x1
-	.word	0x291
+	.word	0x293
 	.long	0x12f
 	.uleb128 0x2
 	.byte	0x91
@@ -5582,24 +5597,24 @@ CheckArrayType:
 	.uleb128 0x2b
 	.ascii "ClearFlags\0"
 	.byte	0x1
-	.word	0x286
+	.word	0x287
 	.quad	.LFB19
 	.quad	.LFE19-.LFB19
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1655
+	.long	0x166b
 	.uleb128 0x2c
 	.ascii "mFlags\0"
 	.byte	0x1
-	.word	0x286
-	.long	0x1655
+	.word	0x287
+	.long	0x166b
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
 	.byte	0
 	.uleb128 0xe
 	.byte	0x8
-	.long	0x15a5
+	.long	0x15bb
 	.uleb128 0x2d
 	.ascii "CheckIfMemberOfStatement\0"
 	.byte	0x1
@@ -5609,15 +5624,15 @@ CheckArrayType:
 	.quad	.LFE18-.LFB18
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x16a5
+	.long	0x16bb
 	.uleb128 0x2c
 	.ascii "mFlags\0"
 	.byte	0x1
 	.word	0x27c
-	.long	0x15a5
+	.long	0x15bb
 	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -48
+	.byte	0x73
+	.sleb128 0
 	.byte	0
 	.uleb128 0x2e
 	.ascii "BuildNewStatement\0"
@@ -5627,12 +5642,12 @@ CheckArrayType:
 	.quad	.LFE17-.LFB17
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1730
+	.long	0x1746
 	.uleb128 0x29
 	.secrel32	.LASF10
 	.byte	0x1
 	.word	0x272
-	.long	0x1617
+	.long	0x162d
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
@@ -5640,7 +5655,7 @@ CheckArrayType:
 	.secrel32	.LASF11
 	.byte	0x1
 	.word	0x272
-	.long	0x1730
+	.long	0x1746
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
@@ -5688,7 +5703,7 @@ CheckArrayType:
 	.quad	.LFE16-.LFB16
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x17c7
+	.long	0x17dd
 	.uleb128 0x29
 	.secrel32	.LASF8
 	.byte	0x1
@@ -5709,7 +5724,7 @@ CheckArrayType:
 	.secrel32	.LASF11
 	.byte	0x1
 	.word	0x269
-	.long	0x1730
+	.long	0x1746
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
@@ -5746,7 +5761,7 @@ CheckArrayType:
 	.quad	.LFE15-.LFB15
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1885
+	.long	0x189b
 	.uleb128 0x29
 	.secrel32	.LASF8
 	.byte	0x1
@@ -5767,7 +5782,7 @@ CheckArrayType:
 	.secrel32	.LASF11
 	.byte	0x1
 	.word	0x236
-	.long	0x1730
+	.long	0x1746
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
@@ -5820,7 +5835,7 @@ CheckArrayType:
 	.quad	.LFE14-.LFB14
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x194c
+	.long	0x1962
 	.uleb128 0x29
 	.secrel32	.LASF17
 	.byte	0x1
@@ -5833,7 +5848,7 @@ CheckArrayType:
 	.secrel32	.LASF11
 	.byte	0x1
 	.word	0x1ca
-	.long	0x1730
+	.long	0x1746
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
@@ -5902,12 +5917,12 @@ CheckArrayType:
 	.quad	.LFE13-.LFB13
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1a11
+	.long	0x1a27
 	.uleb128 0x29
 	.secrel32	.LASF10
 	.byte	0x1
 	.word	0x1ad
-	.long	0x1617
+	.long	0x162d
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -280
@@ -5915,7 +5930,7 @@ CheckArrayType:
 	.secrel32	.LASF11
 	.byte	0x1
 	.word	0x1ad
-	.long	0x1730
+	.long	0x1746
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -288
@@ -5976,7 +5991,7 @@ CheckArrayType:
 	.quad	.LFE12-.LFB12
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1a90
+	.long	0x1aa6
 	.uleb128 0x29
 	.secrel32	.LASF17
 	.byte	0x1
@@ -5989,7 +6004,7 @@ CheckArrayType:
 	.secrel32	.LASF11
 	.byte	0x1
 	.word	0x189
-	.long	0x1730
+	.long	0x1746
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
@@ -6027,7 +6042,7 @@ CheckArrayType:
 	.quad	.LFE11-.LFB11
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1acb
+	.long	0x1ae1
 	.uleb128 0x29
 	.secrel32	.LASF19
 	.byte	0x1
@@ -6046,7 +6061,7 @@ CheckArrayType:
 	.quad	.LFE10-.LFB10
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1b0a
+	.long	0x1b20
 	.uleb128 0x29
 	.secrel32	.LASF19
 	.byte	0x1
@@ -6060,17 +6075,17 @@ CheckArrayType:
 	.ascii "checkForReturnOperator\0"
 	.byte	0x1
 	.byte	0x6
-	.long	0x1617
+	.long	0x162d
 	.quad	.LFB9
 	.quad	.LFE9-.LFB9
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1dbc
+	.long	0x1dd2
 	.uleb128 0x31
 	.secrel32	.LASF10
 	.byte	0x1
 	.byte	0x6
-	.long	0x1617
+	.long	0x162d
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
@@ -6094,7 +6109,7 @@ CheckArrayType:
 	.secrel32	.LASF11
 	.byte	0x1
 	.byte	0x6
-	.long	0x1730
+	.long	0x1746
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 24
@@ -6102,7 +6117,7 @@ CheckArrayType:
 	.ascii "tempNode\0"
 	.byte	0x1
 	.byte	0x6
-	.long	0x1dbc
+	.long	0x1dd2
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 32
@@ -6126,14 +6141,14 @@ CheckArrayType:
 	.ascii "checkCurrent\0"
 	.byte	0x1
 	.byte	0xa
-	.long	0x1617
+	.long	0x162d
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -176
 	.uleb128 0x34
 	.quad	.LBB2
 	.quad	.LBE2-.LBB2
-	.long	0x1c45
+	.long	0x1c5b
 	.uleb128 0x35
 	.secrel32	.LASF15
 	.byte	0x1
@@ -6174,7 +6189,7 @@ CheckArrayType:
 	.uleb128 0x34
 	.quad	.LBB4
 	.quad	.LBE4-.LBB4
-	.long	0x1cac
+	.long	0x1cc2
 	.uleb128 0x35
 	.secrel32	.LASF15
 	.byte	0x1
@@ -6215,7 +6230,7 @@ CheckArrayType:
 	.uleb128 0x34
 	.quad	.LBB6
 	.quad	.LBE6-.LBB6
-	.long	0x1d3d
+	.long	0x1d53
 	.uleb128 0x35
 	.secrel32	.LASF15
 	.byte	0x1
@@ -6243,7 +6258,7 @@ CheckArrayType:
 	.uleb128 0x34
 	.quad	.LBB7
 	.quad	.LBE7-.LBB7
-	.long	0x1d1b
+	.long	0x1d31
 	.uleb128 0x35
 	.secrel32	.LASF20
 	.byte	0x1
@@ -6269,7 +6284,7 @@ CheckArrayType:
 	.uleb128 0x34
 	.quad	.LBB9
 	.quad	.LBE9-.LBB9
-	.long	0x1d99
+	.long	0x1daf
 	.uleb128 0x2f
 	.secrel32	.LASF15
 	.byte	0x1

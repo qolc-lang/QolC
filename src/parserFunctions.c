@@ -639,6 +639,7 @@ int CheckIfMemberOfStatement(memberFlags mFlags) {
 	else if (mFlags.nIsUnionMember == 1) return 2;
 	else if (mFlags.nIsEnumMember == 1) return 3;
 	else if (mFlags.nIsAssertMember == 1) return 4;
+	else if (mFlags.nIsMainMember == 1) return 5;
 
 	return -1;
 }
@@ -649,6 +650,7 @@ void ClearFlags(memberFlags* mFlags) {
 	if (mFlags->nIsUnionMember == 1) mFlags->nIsUnionMember = 0;
 	if (mFlags->nIsEnumMember == 1) mFlags->nIsEnumMember = 0;
 	if (mFlags->nIsAssertMember == 1) mFlags->nIsAssertMember = 0;
+	if (mFlags->nIsMainMember == 1) mFlags->nIsMainMember = 0;
 }
 
 int CheckArrayType(parse_state* current)

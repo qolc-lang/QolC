@@ -47,6 +47,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			printf("Main statement to be built.\n");
 			stmt* main_stmt = stmt_create(STMT_MAIN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 			push_commandList(commandNode, NULL, main_stmt, NULL); 
+			flags.nIsMainMember = 1;
 			printf("**********************************************************\n");
 			current = current->next;
 			continue;
@@ -395,11 +396,13 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			if (strcmp(theStack[top], "import") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
+				InsertSymbolTable(current, "import", symTable);
 				BuildSingleExprStatement(current->value, commandNode, 1);
 			}
 			else if (strcmp(theStack[top], "load") == 0) {
 				doneFlag = 1;
 				theStack[0][top] = '\0';
+				InsertSymbolTable(current, "load", symTable);
 				BuildSingleExprStatement(current->value, commandNode, 2);
 			}
 			else if (strcmp(theStack[top], "print") == 0) {
@@ -683,10 +686,21 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 				doneFlag = 1;
 				printf("Operator @ is in the stack now.\n");
 				printf("Going to insert the value : %s\n", current->value);
-				InsertSymbolTable(current, "main", symTable);
 				sTypeOfMember = CheckIfMemberOfStatement(flags);
 				if (sTypeOfMember != -1) {
+					char memberOf[20];
+					memset(memberOf, 0, sizeof(memberOf));
 					printf("It is member of : %d\n", sTypeOfMember);
+					if (sTypeOfMember == 1) strcpy(memberOf, "struct");
+					else if (sTypeOfMember == 2) strcpy(memberOf, "union");
+					else if (sTypeOfMember == 3) strcpy(memberOf, "enum");
+					else if (sTypeOfMember == 4) strcpy(memberOf, "assert");
+					else if (sTypeOfMember == 5) strcpy(memberOf, "main");
+					else;
+					InsertSymbolTable(current, memberOf, symTable);
+				}
+				else {
+					InsertSymbolTable(current, "global", symTable);
 				}
 				++top;
 				push(theStack[top], &top, current->value);
