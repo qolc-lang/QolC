@@ -650,7 +650,6 @@ void ClearFlags(memberFlags* mFlags) {
 	if (mFlags->nIsUnionMember == 1) mFlags->nIsUnionMember = 0;
 	if (mFlags->nIsEnumMember == 1) mFlags->nIsEnumMember = 0;
 	if (mFlags->nIsAssertMember == 1) mFlags->nIsAssertMember = 0;
-	if (mFlags->nIsMainMember == 1) mFlags->nIsMainMember = 0;
 }
 
 int CheckArrayType(parse_state* current)
