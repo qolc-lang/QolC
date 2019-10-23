@@ -339,6 +339,12 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 		if (strcmp(current->value, "struct") == 0) {
 			printf("Struct statement to be built.\n");
 			printf("The struct variable : %s\n", temp);
+			char scope[20];
+			parse_state* tempParse = current;
+			(flags.nIsMainMember == 1) ? strcpy(scope, "main") : strcpy(scope, "global");
+			strcpy(tempParse->value, temp);
+			strcpy(tempParse->type, "struct");
+			InsertSymbolTable(tempParse, scope, symTable);
 			flags.nIsStructMember = 1;
 			type* theType = type_create(TYPE_STRUCT, NULL, NULL);
 			decl* theDeclaration = decl_create(temp, theType, NULL, NULL);
@@ -352,6 +358,12 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 		if (strcmp(current->value, "enum") == 0) {
 			printf("Enum statement to be built.\n");
 			printf("The enum variable : %s\n", temp);
+			char scope[20];
+			parse_state* tempParse = current;
+			(flags.nIsMainMember == 1) ? strcpy(scope, "main") : strcpy(scope, "global");
+			strcpy(tempParse->value, temp);
+			strcpy(tempParse->type, "enum");
+			InsertSymbolTable(tempParse, scope, symTable);
 			flags.nIsEnumMember = 1;
 			type* theType = type_create(TYPE_ENUM, NULL, NULL);
 			decl* theDeclaration = decl_create(temp, theType, NULL, NULL);
@@ -365,6 +377,12 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 		if (strcmp(current->value, "union") == 0) {
 			printf("Union statement to be built/\n");
 			printf("The union variable : %s\n", temp);
+			char scope[20];
+			parse_state* tempParse = current;
+			(flags.nIsMainMember == 1) ? strcpy(scope, "main") : strcpy(scope, "global");
+			strcpy(tempParse->value, temp);
+			strcpy(tempParse->type, "union");
+			InsertSymbolTable(tempParse, scope, symTable);
 			flags.nIsUnionMember = 1;
 			type* theType = type_create(TYPE_UNION, NULL, NULL);
 			decl* theDeclaration = decl_create(temp, theType, NULL, NULL);
