@@ -35,6 +35,6 @@ void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* comman
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
 int CheckIfMemberOfStatement(memberFlags mFlags);
 void ClearFlags(memberFlags* mFlags);
-int CheckArrayType(parse_state* current);
+int CheckArrayType(parse_state* current, symbolTable* symTable);
 
 #endif

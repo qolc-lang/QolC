@@ -238,6 +238,60 @@ SearchSymbolTable:
 	.cfi_endproc
 .LFE11:
 	.seh_endproc
+	.globl	SearchSymbolTable_TYPE
+	.def	SearchSymbolTable_TYPE;	.scl	2;	.type	32;	.endef
+	.seh_proc	SearchSymbolTable_TYPE
+SearchSymbolTable_TYPE:
+.LFB12:
+	.loc 1 45 0
+	.cfi_startproc
+	pushq	%rbp
+	.seh_pushreg	%rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	movq	%rsp, %rbp
+	.seh_setframe	%rbp, 0
+	.cfi_def_cfa_register 6
+	subq	$32, %rsp
+	.seh_stackalloc	32
+	.seh_endprologue
+	movq	%rcx, 16(%rbp)
+	movq	%rdx, 24(%rbp)
+	.loc 1 46 0
+	jmp	.L16
+.L19:
+	.loc 1 47 0
+	movq	24(%rbp), %rax
+	movq	16(%rbp), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L17
+	.loc 1 48 0
+	movq	24(%rbp), %rax
+	addq	$100, %rax
+	jmp	.L18
+.L17:
+	.loc 1 49 0
+	movq	24(%rbp), %rax
+	movq	304(%rax), %rax
+	movq	%rax, 24(%rbp)
+.L16:
+	.loc 1 46 0
+	cmpq	$0, 24(%rbp)
+	jne	.L19
+	.loc 1 51 0
+	movl	$0, %eax
+.L18:
+	.loc 1 52 0
+	addq	$32, %rsp
+	popq	%rbp
+	.cfi_restore 6
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE12:
+	.seh_endproc
 .Letext0:
 	.file 2 "/usr/lib/gcc/x86_64-pc-cygwin/7.4.0/include/stddef.h"
 	.file 3 "/usr/include/sys/lock.h"
@@ -248,7 +302,7 @@ SearchSymbolTable:
 	.file 8 "./src/../inc/../inc/../inc/symbol_table.h"
 	.section	.debug_info,"dr"
 .Ldebug_info0:
-	.long	0xe62
+	.long	0xeb3
 	.word	0x4
 	.secrel32	.Ldebug_abbrev0
 	.byte	0x8
@@ -1422,6 +1476,36 @@ SearchSymbolTable:
 	.byte	0xa
 	.long	0xcc3
 	.uleb128 0x25
+	.ascii "SearchSymbolTable_TYPE\0"
+	.byte	0x1
+	.byte	0x2d
+	.long	0x666
+	.quad	.LFB12
+	.quad	.LFE12-.LFB12
+	.uleb128 0x1
+	.byte	0x9c
+	.long	0xd94
+	.uleb128 0x26
+	.ascii "lab\0"
+	.byte	0x1
+	.byte	0x2d
+	.long	0x666
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 0
+	.uleb128 0x27
+	.secrel32	.LASF3
+	.byte	0x1
+	.byte	0x2d
+	.long	0xd94
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 8
+	.byte	0
+	.uleb128 0xe
+	.byte	0x8
+	.long	0xd38
+	.uleb128 0x25
 	.ascii "SearchSymbolTable\0"
 	.byte	0x1
 	.byte	0x23
@@ -1430,7 +1514,7 @@ SearchSymbolTable:
 	.quad	.LFE11-.LFB11
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0xd9e
+	.long	0xdf5
 	.uleb128 0x26
 	.ascii "lab\0"
 	.byte	0x1
@@ -1443,7 +1527,7 @@ SearchSymbolTable:
 	.secrel32	.LASF3
 	.byte	0x1
 	.byte	0x23
-	.long	0xd9e
+	.long	0xd94
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
@@ -1456,9 +1540,6 @@ SearchSymbolTable:
 	.byte	0x91
 	.sleb128 -20
 	.byte	0
-	.uleb128 0xe
-	.byte	0x8
-	.long	0xd38
 	.uleb128 0x29
 	.ascii "DisplaySymbolTable\0"
 	.byte	0x1
@@ -1467,12 +1548,12 @@ SearchSymbolTable:
 	.quad	.LFE10-.LFB10
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0xddf
+	.long	0xe30
 	.uleb128 0x27
 	.secrel32	.LASF3
 	.byte	0x1
 	.byte	0x19
-	.long	0xd9e
+	.long	0xd94
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
@@ -1485,12 +1566,12 @@ SearchSymbolTable:
 	.quad	.LFE9-.LFB9
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0xe5f
+	.long	0xeb0
 	.uleb128 0x26
 	.ascii "node\0"
 	.byte	0x1
 	.byte	0x3
-	.long	0xe5f
+	.long	0xeb0
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
@@ -1506,7 +1587,7 @@ SearchSymbolTable:
 	.secrel32	.LASF3
 	.byte	0x1
 	.byte	0x3
-	.long	0xd9e
+	.long	0xd94
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 16
@@ -1522,7 +1603,7 @@ SearchSymbolTable:
 	.ascii "current\0"
 	.byte	0x1
 	.byte	0x5
-	.long	0xe5f
+	.long	0xeb0
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -24

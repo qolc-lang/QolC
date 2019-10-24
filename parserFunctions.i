@@ -1654,6 +1654,7 @@ typedef struct symbolTable {
 void InsertSymbolTable(parse_state* node, char* scope, symbolTable* theSymbolTable);
 void DisplaySymbolTable(symbolTable* theSymbolTable);
 int SearchSymbolTable(char* lab, symbolTable* theSymbolTable);
+char* SearchSymbolTable_TYPE(char* lab, symbolTable* theSymbolTable);
 # 8 "./src/../inc/../inc/parser.h" 2
 
 void parseProgram(parse_state* node);
@@ -1706,7 +1707,7 @@ void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* comman
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
 int CheckIfMemberOfStatement(memberFlags mFlags);
 void ClearFlags(memberFlags* mFlags);
-int CheckArrayType(parse_state* current);
+int CheckArrayType(parse_state* current, symbolTable* symTable);
 # 2 "./src/parserFunctions.c" 2
 
 
@@ -3121,53 +3122,125 @@ void BuildDeclarationExprStatement(char* currentValue, command* commandNode, cha
 # 553 "./src/parserFunctions.c"
                                                            );
    break;
+  case 24:
+   printf("Going to build char pointer array declaration statement.\n");
+   theType = type_create(TYPE_STRUCT_ARRAY, 
+# 557 "./src/parserFunctions.c" 3 4
+                                           ((void *)0)
+# 557 "./src/parserFunctions.c"
+                                               , 
+# 557 "./src/parserFunctions.c" 3 4
+                                                 ((void *)0)
+# 557 "./src/parserFunctions.c"
+                                                     );
+   break;
+  case 25:
+   printf("Going to build char pointer array declaration statement.\n");
+   theType = type_create(TYPE_STRUCT_POINTER_ARRAY, 
+# 561 "./src/parserFunctions.c" 3 4
+                                                   ((void *)0)
+# 561 "./src/parserFunctions.c"
+                                                       , 
+# 561 "./src/parserFunctions.c" 3 4
+                                                         ((void *)0)
+# 561 "./src/parserFunctions.c"
+                                                             );
+   break;
+  case 26:
+   printf("Going to build char pointer array declaration statement.\n");
+   theType = type_create(TYPE_UNION_ARRAY, 
+# 565 "./src/parserFunctions.c" 3 4
+                                          ((void *)0)
+# 565 "./src/parserFunctions.c"
+                                              , 
+# 565 "./src/parserFunctions.c" 3 4
+                                                ((void *)0)
+# 565 "./src/parserFunctions.c"
+                                                    );
+   break;
+  case 27:
+   printf("Going to build char pointer array declaration statement.\n");
+   theType = type_create(TYPE_UNION_POINTER_ARRAY, 
+# 569 "./src/parserFunctions.c" 3 4
+                                                  ((void *)0)
+# 569 "./src/parserFunctions.c"
+                                                      , 
+# 569 "./src/parserFunctions.c" 3 4
+                                                        ((void *)0)
+# 569 "./src/parserFunctions.c"
+                                                            );
+   break;
+  case 28:
+   printf("Going to build char pointer array declaration statement.\n");
+   theType = type_create(TYPE_ENUM_ARRAY, 
+# 573 "./src/parserFunctions.c" 3 4
+                                         ((void *)0)
+# 573 "./src/parserFunctions.c"
+                                             , 
+# 573 "./src/parserFunctions.c" 3 4
+                                               ((void *)0)
+# 573 "./src/parserFunctions.c"
+                                                   );
+   break;
+  case 29:
+   printf("Going to build char pointer array declaration statement.\n");
+   theType = type_create(TYPE_ENUM_POINTER_ARRAY, 
+# 577 "./src/parserFunctions.c" 3 4
+                                                 ((void *)0)
+# 577 "./src/parserFunctions.c"
+                                                     , 
+# 577 "./src/parserFunctions.c" 3 4
+                                                       ((void *)0)
+# 577 "./src/parserFunctions.c"
+                                                           );
+   break;
   default :
    break;
  }
 
  expr* theExpr = expr_create_string(currentValue);
  decl* theDeclaration = decl_create(temp, theType, theExpr, 
-# 560 "./src/parserFunctions.c" 3 4
+# 584 "./src/parserFunctions.c" 3 4
                                                            ((void *)0)
-# 560 "./src/parserFunctions.c"
+# 584 "./src/parserFunctions.c"
                                                                );
  stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, 
-# 561 "./src/parserFunctions.c" 3 4
+# 585 "./src/parserFunctions.c" 3 4
                                                        ((void *)0)
-# 561 "./src/parserFunctions.c"
+# 585 "./src/parserFunctions.c"
                                                            , 
-# 561 "./src/parserFunctions.c" 3 4
+# 585 "./src/parserFunctions.c" 3 4
                                                              ((void *)0)
-# 561 "./src/parserFunctions.c"
+# 585 "./src/parserFunctions.c"
                                                                  , 
-# 561 "./src/parserFunctions.c" 3 4
+# 585 "./src/parserFunctions.c" 3 4
                                                                    ((void *)0)
-# 561 "./src/parserFunctions.c"
+# 585 "./src/parserFunctions.c"
                                                                        , 
-# 561 "./src/parserFunctions.c" 3 4
+# 585 "./src/parserFunctions.c" 3 4
                                                                          ((void *)0)
-# 561 "./src/parserFunctions.c"
+# 585 "./src/parserFunctions.c"
                                                                              , 
-# 561 "./src/parserFunctions.c" 3 4
+# 585 "./src/parserFunctions.c" 3 4
                                                                                ((void *)0)
-# 561 "./src/parserFunctions.c"
+# 585 "./src/parserFunctions.c"
                                                                                    , 
-# 561 "./src/parserFunctions.c" 3 4
+# 585 "./src/parserFunctions.c" 3 4
                                                                                      ((void *)0)
-# 561 "./src/parserFunctions.c"
+# 585 "./src/parserFunctions.c"
                                                                                          , 
-# 561 "./src/parserFunctions.c" 3 4
+# 585 "./src/parserFunctions.c" 3 4
                                                                                            ((void *)0)
-# 561 "./src/parserFunctions.c"
+# 585 "./src/parserFunctions.c"
                                                                                                , typeOfMember);
  push_commandList(commandNode, 
-# 562 "./src/parserFunctions.c" 3 4
+# 586 "./src/parserFunctions.c" 3 4
                               ((void *)0)
-# 562 "./src/parserFunctions.c"
+# 586 "./src/parserFunctions.c"
                                   , theStmt, 
-# 562 "./src/parserFunctions.c" 3 4
+# 586 "./src/parserFunctions.c" 3 4
                                              ((void *)0)
-# 562 "./src/parserFunctions.c"
+# 586 "./src/parserFunctions.c"
                                                  );
 }
 
@@ -3182,73 +3255,73 @@ void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* comman
   case 1 :
    printf("Going to build add assignment expression statement.\n");
    theExpr = expr_create(EXPR_ADD_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', 
-# 575 "./src/parserFunctions.c" 3 4
+# 599 "./src/parserFunctions.c" 3 4
                                                                            ((void *)0)
-# 575 "./src/parserFunctions.c"
+# 599 "./src/parserFunctions.c"
                                                                                , typeOfMember);
    break;
   case 2 :
    printf("Going to build sub assignment expression statement.\n");
    theExpr = expr_create(EXPR_SUB_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', 
-# 579 "./src/parserFunctions.c" 3 4
+# 603 "./src/parserFunctions.c" 3 4
                                                                            ((void *)0)
-# 579 "./src/parserFunctions.c"
+# 603 "./src/parserFunctions.c"
                                                                                , typeOfMember);
    break;
   case 3 :
    printf("Going to build mul assignment expression statement.\n");
    theExpr = expr_create(EXPR_MUL_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', 
-# 583 "./src/parserFunctions.c" 3 4
+# 607 "./src/parserFunctions.c" 3 4
                                                                            ((void *)0)
-# 583 "./src/parserFunctions.c"
+# 607 "./src/parserFunctions.c"
                                                                                , typeOfMember);
    break;
   case 4 :
    printf("Going to build div assignment expression statement.\n");
    theExpr = expr_create(EXPR_DIV_ASSIGNMENT, leftExpr, rightExpr, 0, '\0', 
-# 587 "./src/parserFunctions.c" 3 4
+# 611 "./src/parserFunctions.c" 3 4
                                                                            ((void *)0)
-# 587 "./src/parserFunctions.c"
+# 611 "./src/parserFunctions.c"
                                                                                , typeOfMember);
    break;
   case 5:
    printf("Going to build bigger expression statement.\n");
    theExpr = expr_create(EXPR_BIGGER_CMP, leftExpr, rightExpr, 0, '\0', 
-# 591 "./src/parserFunctions.c" 3 4
+# 615 "./src/parserFunctions.c" 3 4
                                                                        ((void *)0)
-# 591 "./src/parserFunctions.c"
+# 615 "./src/parserFunctions.c"
                                                                            , typeOfMember);
    break;
   case 6:
    printf("Going to build bigger or equal expression statement.\n");
    theExpr = expr_create(EXPR_BIGGEROREQ_CMP, leftExpr, rightExpr, 0, '\0', 
-# 595 "./src/parserFunctions.c" 3 4
+# 619 "./src/parserFunctions.c" 3 4
                                                                            ((void *)0)
-# 595 "./src/parserFunctions.c"
+# 619 "./src/parserFunctions.c"
                                                                                , typeOfMember);
    break;
   case 7:
    printf("Going to build smaller expression statement.\n");
    theExpr = expr_create(EXPR_SMALLER_CMP, leftExpr, rightExpr, 0, '\0', 
-# 599 "./src/parserFunctions.c" 3 4
+# 623 "./src/parserFunctions.c" 3 4
                                                                         ((void *)0)
-# 599 "./src/parserFunctions.c"
+# 623 "./src/parserFunctions.c"
                                                                             , typeOfMember);
    break;
   case 8:
    printf("Going to build smaller or equal expression statement.\n");
    theExpr = expr_create(EXPR_SMALLEROREQ_CMP, leftExpr, rightExpr, 0, '\0', 
-# 603 "./src/parserFunctions.c" 3 4
+# 627 "./src/parserFunctions.c" 3 4
                                                                             ((void *)0)
-# 603 "./src/parserFunctions.c"
+# 627 "./src/parserFunctions.c"
                                                                                 , typeOfMember);
    break;
   case 9:
    printf("Going to build equal expression statement.\n");
    theExpr = expr_create(EXPR_EQUAL_CMP, leftExpr, rightExpr, 0, '\0', 
-# 607 "./src/parserFunctions.c" 3 4
+# 631 "./src/parserFunctions.c" 3 4
                                                                       ((void *)0)
-# 607 "./src/parserFunctions.c"
+# 631 "./src/parserFunctions.c"
                                                                           , typeOfMember);
    break;
   default :
@@ -3256,13 +3329,13 @@ void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* comman
  }
 
  push_commandList(commandNode, 
-# 613 "./src/parserFunctions.c" 3 4
+# 637 "./src/parserFunctions.c" 3 4
                               ((void *)0)
-# 613 "./src/parserFunctions.c"
+# 637 "./src/parserFunctions.c"
                                   , 
-# 613 "./src/parserFunctions.c" 3 4
+# 637 "./src/parserFunctions.c" 3 4
                                     ((void *)0)
-# 613 "./src/parserFunctions.c"
+# 637 "./src/parserFunctions.c"
                                         , theExpr);
 }
 
@@ -3271,51 +3344,51 @@ void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode) {
  printf("Going to build add declaration statement.\n");
  expr* theExpr = expr_create_string(temp);
  decl* theDeclaration = decl_create(temp2, 
-# 620 "./src/parserFunctions.c" 3 4
+# 644 "./src/parserFunctions.c" 3 4
                                           ((void *)0)
-# 620 "./src/parserFunctions.c"
+# 644 "./src/parserFunctions.c"
                                               , theExpr, 
-# 620 "./src/parserFunctions.c" 3 4
+# 644 "./src/parserFunctions.c" 3 4
                                                          ((void *)0)
-# 620 "./src/parserFunctions.c"
+# 644 "./src/parserFunctions.c"
                                                              );
  stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, 
-# 621 "./src/parserFunctions.c" 3 4
+# 645 "./src/parserFunctions.c" 3 4
                                                        ((void *)0)
-# 621 "./src/parserFunctions.c"
+# 645 "./src/parserFunctions.c"
                                                            , 
-# 621 "./src/parserFunctions.c" 3 4
+# 645 "./src/parserFunctions.c" 3 4
                                                              ((void *)0)
-# 621 "./src/parserFunctions.c"
+# 645 "./src/parserFunctions.c"
                                                                  , 
-# 621 "./src/parserFunctions.c" 3 4
+# 645 "./src/parserFunctions.c" 3 4
                                                                    ((void *)0)
-# 621 "./src/parserFunctions.c"
+# 645 "./src/parserFunctions.c"
                                                                        , 
-# 621 "./src/parserFunctions.c" 3 4
+# 645 "./src/parserFunctions.c" 3 4
                                                                          ((void *)0)
-# 621 "./src/parserFunctions.c"
+# 645 "./src/parserFunctions.c"
                                                                              , 
-# 621 "./src/parserFunctions.c" 3 4
+# 645 "./src/parserFunctions.c" 3 4
                                                                                ((void *)0)
-# 621 "./src/parserFunctions.c"
+# 645 "./src/parserFunctions.c"
                                                                                    , 
-# 621 "./src/parserFunctions.c" 3 4
+# 645 "./src/parserFunctions.c" 3 4
                                                                                      ((void *)0)
-# 621 "./src/parserFunctions.c"
+# 645 "./src/parserFunctions.c"
                                                                                          , 
-# 621 "./src/parserFunctions.c" 3 4
+# 645 "./src/parserFunctions.c" 3 4
                                                                                            ((void *)0)
-# 621 "./src/parserFunctions.c"
+# 645 "./src/parserFunctions.c"
                                                                                                , -1);
  push_commandList(commandNode, 
-# 622 "./src/parserFunctions.c" 3 4
+# 646 "./src/parserFunctions.c" 3 4
                               ((void *)0)
-# 622 "./src/parserFunctions.c"
+# 646 "./src/parserFunctions.c"
                                   , theStmt, 
-# 622 "./src/parserFunctions.c" 3 4
+# 646 "./src/parserFunctions.c" 3 4
                                              ((void *)0)
-# 622 "./src/parserFunctions.c"
+# 646 "./src/parserFunctions.c"
                                                  );
 }
 
@@ -3327,38 +3400,38 @@ void BuildNewStatement(parse_state * current, command* commandNode, char* temp) 
  expr* expr1 = expr_create_string(temp);
  expr* expr2 = expr_create_string(current->value);
  stmt* theStmt = stmt_create(STMT_NEW, 
-# 632 "./src/parserFunctions.c" 3 4
+# 656 "./src/parserFunctions.c" 3 4
                                       ((void *)0)
-# 632 "./src/parserFunctions.c"
+# 656 "./src/parserFunctions.c"
                                           , 
-# 632 "./src/parserFunctions.c" 3 4
+# 656 "./src/parserFunctions.c" 3 4
                                             ((void *)0)
-# 632 "./src/parserFunctions.c"
+# 656 "./src/parserFunctions.c"
                                                 , expr1, expr2, 
-# 632 "./src/parserFunctions.c" 3 4
+# 656 "./src/parserFunctions.c" 3 4
                                                                 ((void *)0)
-# 632 "./src/parserFunctions.c"
+# 656 "./src/parserFunctions.c"
                                                                     , 
-# 632 "./src/parserFunctions.c" 3 4
+# 656 "./src/parserFunctions.c" 3 4
                                                                       ((void *)0)
-# 632 "./src/parserFunctions.c"
+# 656 "./src/parserFunctions.c"
                                                                           , 
-# 632 "./src/parserFunctions.c" 3 4
+# 656 "./src/parserFunctions.c" 3 4
                                                                             ((void *)0)
-# 632 "./src/parserFunctions.c"
+# 656 "./src/parserFunctions.c"
                                                                                 , 
-# 632 "./src/parserFunctions.c" 3 4
+# 656 "./src/parserFunctions.c" 3 4
                                                                                   ((void *)0)
-# 632 "./src/parserFunctions.c"
+# 656 "./src/parserFunctions.c"
                                                                                       , -1);
  push_commandList(commandNode, 
-# 633 "./src/parserFunctions.c" 3 4
+# 657 "./src/parserFunctions.c" 3 4
                               ((void *)0)
-# 633 "./src/parserFunctions.c"
+# 657 "./src/parserFunctions.c"
                                   , theStmt, 
-# 633 "./src/parserFunctions.c" 3 4
+# 657 "./src/parserFunctions.c" 3 4
                                              ((void *)0)
-# 633 "./src/parserFunctions.c"
+# 657 "./src/parserFunctions.c"
                                                  );
 }
 
@@ -3381,10 +3454,11 @@ void ClearFlags(memberFlags* mFlags) {
  if (mFlags->nIsAssertMember == 1) mFlags->nIsAssertMember = 0;
 }
 
-int CheckArrayType(parse_state* current)
+int CheckArrayType(parse_state* current, symbolTable* symTable)
 {
  int isPointer = 0;
  int arrayType = 0;
+ char trueArrayType[40];
 
  if (strcmp(current->type, "pointer symbol") == 0)
  {
@@ -3393,6 +3467,30 @@ int CheckArrayType(parse_state* current)
  }
  current = current->next;
  printf("The array type : %s\n", current->value);
+
+ if (strcmp(current->type, "end of command") == 0) {
+  current = current->next;
+  if (SearchSymbolTable_TYPE(current->value, symTable) != 
+# 695 "./src/parserFunctions.c" 3 4
+                                                         ((void *)0)
+# 695 "./src/parserFunctions.c"
+                                                             )
+  {
+   strcpy(trueArrayType, SearchSymbolTable_TYPE(current->value, symTable));
+
+   if ((strcmp(trueArrayType, "struct") == 0) && (isPointer != 1)) arrayType = 24;
+   else if ((strcmp(trueArrayType, "struct") == 0) && (isPointer == 1)) arrayType = 25;
+   else if ((strcmp(trueArrayType, "union") == 0) && (isPointer != 1)) arrayType = 26;
+   else if ((strcmp(trueArrayType, "union") == 0) && (isPointer == 1)) arrayType = 27;
+   else if ((strcmp(trueArrayType, "enum") == 0) && (isPointer != 1)) arrayType = 28;
+   else if ((strcmp(trueArrayType, "enum") == 0) && (isPointer == 1)) arrayType = 29;
+
+   printf("The true array type : %d : %s\n", arrayType, trueArrayType);
+
+   return arrayType;
+  }
+ }
+
  if ((strcmp(current->value, "int") == 0) && (isPointer != 1)) arrayType = 13;
  else if ((strcmp(current->value, "int") == 0) && (isPointer == 1)) arrayType = 19;
  else if ((strcmp(current->value, "string") == 0) && (isPointer != 1)) arrayType = 14;

@@ -1654,6 +1654,7 @@ typedef struct symbolTable {
 void InsertSymbolTable(parse_state* node, char* scope, symbolTable* theSymbolTable);
 void DisplaySymbolTable(symbolTable* theSymbolTable);
 int SearchSymbolTable(char* lab, symbolTable* theSymbolTable);
+char* SearchSymbolTable_TYPE(char* lab, symbolTable* theSymbolTable);
 # 8 "./src/../inc/../inc/parser.h" 2
 
 void parseProgram(parse_state* node);
@@ -1706,7 +1707,7 @@ void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* comman
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
 int CheckIfMemberOfStatement(memberFlags mFlags);
 void ClearFlags(memberFlags* mFlags);
-int CheckArrayType(parse_state* current);
+int CheckArrayType(parse_state* current, symbolTable* symTable);
 # 2 "./src/parser.c" 2
 
 
@@ -1719,7 +1720,7 @@ void parseProgram(parse_state* node) {
  parse_state * current = node;
  parsing(current, commandNode, symTable);
  print_commandList(commandNode);
- DisplaySymbolTable(symTable);
+
  return;
 }
 
@@ -2537,7 +2538,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
     {
      printf("Valid array.\n");
      current = current->next;
-     theArrayType = CheckArrayType(current);
+     theArrayType = CheckArrayType(current, symTable);
      BuildDeclarationExprStatement(temp, commandNode, temp2, theArrayType, sTypeOfMember);
      current = current->next;
     } else { printf("Not a valid array.\n"); }

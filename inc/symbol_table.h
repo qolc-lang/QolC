@@ -12,6 +12,6 @@ typedef struct symbolTable {
 void InsertSymbolTable(parse_state* node, char* scope, symbolTable* theSymbolTable);
 void DisplaySymbolTable(symbolTable* theSymbolTable);
 int SearchSymbolTable(char* lab, symbolTable* theSymbolTable);
-
+char* SearchSymbolTable_TYPE(char* lab, symbolTable* theSymbolTable);
 
 #endif

@@ -41,3 +41,12 @@ int SearchSymbolTable(char* lab, symbolTable* theSymbolTable) {
 	}
 	return flag;
 }
+
+char* SearchSymbolTable_TYPE(char* lab, symbolTable* theSymbolTable) {
+	while (theSymbolTable != NULL) {
+		if (strcmp(theSymbolTable->variableName, lab) == 0)
+			return theSymbolTable->variableType;
+		theSymbolTable = theSymbolTable->next;
+	}
+	return NULL;
+}

@@ -10,7 +10,7 @@ void parseProgram(parse_state* node) {
 	parse_state * current = node;
 	parsing(current, commandNode, symTable);
 	print_commandList(commandNode);
-	DisplaySymbolTable(symTable);
+	/* DisplaySymbolTable(symTable); */
 	return;
 }
 
@@ -548,7 +548,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 				{
 					printf("Valid array.\n");
 					current = current->next;
-					theArrayType = CheckArrayType(current);
+					theArrayType = CheckArrayType(current, symTable);
 					BuildDeclarationExprStatement(temp, commandNode, temp2, theArrayType, sTypeOfMember);
 					current = current->next;
 				} else { printf("Not a valid array.\n"); }

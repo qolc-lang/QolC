@@ -552,6 +552,30 @@ void BuildDeclarationExprStatement(char* currentValue, command* commandNode, cha
 			printf("Going to build char pointer array declaration statement.\n");
 			theType = type_create(TYPE_CHAR_POINTER_ARRAY, NULL, NULL);
 			break;
+		case 24:
+			printf("Going to build char pointer array declaration statement.\n");
+			theType = type_create(TYPE_STRUCT_ARRAY, NULL, NULL);
+			break;
+		case 25:
+			printf("Going to build char pointer array declaration statement.\n");
+			theType = type_create(TYPE_STRUCT_POINTER_ARRAY, NULL, NULL);
+			break;
+		case 26:
+			printf("Going to build char pointer array declaration statement.\n");
+			theType = type_create(TYPE_UNION_ARRAY, NULL, NULL);
+			break;
+		case 27:
+			printf("Going to build char pointer array declaration statement.\n");
+			theType = type_create(TYPE_UNION_POINTER_ARRAY, NULL, NULL);
+			break;
+		case 28:
+			printf("Going to build char pointer array declaration statement.\n");
+			theType = type_create(TYPE_ENUM_ARRAY, NULL, NULL);
+			break;
+		case 29:
+			printf("Going to build char pointer array declaration statement.\n");
+			theType = type_create(TYPE_ENUM_POINTER_ARRAY, NULL, NULL);
+			break;
 		default : 
 			break; 
 	}
@@ -652,10 +676,11 @@ void ClearFlags(memberFlags* mFlags) {
 	if (mFlags->nIsAssertMember == 1) mFlags->nIsAssertMember = 0;
 }
 
-int CheckArrayType(parse_state* current)
+int CheckArrayType(parse_state* current, symbolTable* symTable)
 {
 	int isPointer = 0;
 	int arrayType = 0;
+	char trueArrayType[40];
 
 	if (strcmp(current->type, "pointer symbol") == 0)
 	{
@@ -664,6 +689,26 @@ int CheckArrayType(parse_state* current)
 	}
 	current = current->next;
 	printf("The array type : %s\n", current->value);
+
+	if (strcmp(current->type, "end of command") == 0) {
+		current = current->next;
+		if (SearchSymbolTable_TYPE(current->value, symTable) != NULL)
+		{
+			strcpy(trueArrayType, SearchSymbolTable_TYPE(current->value, symTable));
+
+			if ((strcmp(trueArrayType, "struct") == 0) && (isPointer != 1)) arrayType = 24;
+			else if ((strcmp(trueArrayType, "struct") == 0) && (isPointer == 1)) arrayType = 25;
+			else if ((strcmp(trueArrayType, "union") == 0) && (isPointer != 1)) arrayType = 26;
+			else if ((strcmp(trueArrayType, "union") == 0) && (isPointer == 1)) arrayType = 27;
+			else if ((strcmp(trueArrayType, "enum") == 0) && (isPointer != 1)) arrayType = 28;
+			else if ((strcmp(trueArrayType, "enum") == 0) && (isPointer == 1)) arrayType = 29;
+
+			printf("The true array type : %d : %s\n", arrayType, trueArrayType);
+
+			return arrayType;
+		}
+	}
+
 	if ((strcmp(current->value, "int") == 0) && (isPointer != 1)) arrayType = 13;
 	else if ((strcmp(current->value, "int") == 0) && (isPointer == 1)) arrayType = 19;
 	else if ((strcmp(current->value, "string") == 0) && (isPointer != 1)) arrayType = 14;

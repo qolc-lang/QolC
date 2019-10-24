@@ -43,10 +43,6 @@ parseProgram:
 	movq	-24(%rbp), %rax
 	movq	%rax, %rcx
 	call	print_commandList
-	.loc 1 13 0
-	movq	-16(%rbp), %rax
-	movq	%rax, %rcx
-	call	DisplaySymbolTable
 	.loc 1 14 0
 	nop
 	.loc 1 15 0
@@ -3070,6 +3066,7 @@ parsing:
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
 	.loc 1 551 0
+	movq	-8(%rbp), %rdx
 	movq	8(%rbp), %rax
 	movq	%rax, %rcx
 	call	CheckArrayType
@@ -10587,7 +10584,6 @@ checkTheStack:
 	.ident	"GCC: (GNU) 7.4.0"
 	.def	malloc;	.scl	2;	.type	32;	.endef
 	.def	print_commandList;	.scl	2;	.type	32;	.endef
-	.def	DisplaySymbolTable;	.scl	2;	.type	32;	.endef
 	.def	init;	.scl	2;	.type	32;	.endef
 	.def	memset;	.scl	2;	.type	32;	.endef
 	.def	printf;	.scl	2;	.type	32;	.endef

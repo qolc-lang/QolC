@@ -96,6 +96,6 @@ my_node@new node
 
 assert |5 @== 2|
 
-lokaokaja@[50]char
+lokaokaja@[50]vector3
 
 @|

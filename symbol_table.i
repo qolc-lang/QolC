@@ -1654,6 +1654,7 @@ typedef struct symbolTable {
 void InsertSymbolTable(parse_state* node, char* scope, symbolTable* theSymbolTable);
 void DisplaySymbolTable(symbolTable* theSymbolTable);
 int SearchSymbolTable(char* lab, symbolTable* theSymbolTable);
+char* SearchSymbolTable_TYPE(char* lab, symbolTable* theSymbolTable);
 # 8 "./src/../inc/../inc/parser.h" 2
 
 void parseProgram(parse_state* node);
@@ -1692,6 +1693,7 @@ typedef struct memberFlags
  int nIsUnionMember;
  int nIsEnumMember;
  int nIsAssertMember;
+ int nIsMainMember;
 }memberFlags;
 
 parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode);
@@ -1764,4 +1766,21 @@ int SearchSymbolTable(char* lab, symbolTable* theSymbolTable) {
   theSymbolTable = theSymbolTable->next;
  }
  return flag;
+}
+
+char* SearchSymbolTable_TYPE(char* lab, symbolTable* theSymbolTable) {
+ while (theSymbolTable != 
+# 46 "./src/symbol_table.c" 3 4
+                         ((void *)0)
+# 46 "./src/symbol_table.c"
+                             ) {
+  if (strcmp(theSymbolTable->variableName, lab) == 0)
+   return theSymbolTable->variableType;
+  theSymbolTable = theSymbolTable->next;
+ }
+ return 
+# 51 "./src/symbol_table.c" 3 4
+       ((void *)0)
+# 51 "./src/symbol_table.c"
+           ;
 }
