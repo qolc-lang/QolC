@@ -5,7 +5,7 @@
 	.section .rdata,"dr"
 	.align 8
 .LC0:
-	.ascii "The label exists already in the symbol table.\12Duplicate can\222t be inserted.\0"
+	.ascii "The label exists already in the symbol table.\12Duplicate can\357\277\275t be inserted.\0"
 	.align 8
 .LC1:
 	.ascii "Label inserted in symbol table : %s\12\0"

@@ -1707,7 +1707,7 @@ void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* comman
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
 int CheckIfMemberOfStatement(memberFlags mFlags);
 void ClearFlags(memberFlags* mFlags);
-int CheckArrayType(parse_state* current);
+int CheckArrayType(parse_state* current, symbolTable* symTable);
 # 2 "./src/symbol_table.c" 2
 
 void InsertSymbolTable(parse_state* node, char* scope, symbolTable* theSymbolTable) {
@@ -1716,7 +1716,7 @@ void InsertSymbolTable(parse_state* node, char* scope, symbolTable* theSymbolTab
 
  labelFound = SearchSymbolTable(current->value, theSymbolTable);
  if (labelFound == 1)
-  printf("The label exists already in the symbol table.\nDuplicate can’t be inserted.\n");
+  printf("The label exists already in the symbol table.\nDuplicate canï¿½t be inserted.\n");
  else
  {
   while (theSymbolTable->next != 

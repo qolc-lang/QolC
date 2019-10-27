@@ -6,7 +6,7 @@ void InsertSymbolTable(parse_state* node, char* scope, symbolTable* theSymbolTab
 
 	labelFound = SearchSymbolTable(current->value, theSymbolTable);
 	if (labelFound == 1)
-		printf("The label exists already in the symbol table.\nDuplicate can’t be inserted.\n");
+		printf("The label exists already in the symbol table.\nDuplicate canï¿½t be inserted.\n");
 	else
 	{
 		while (theSymbolTable->next != NULL) {

@@ -1859,35 +1859,35 @@ void print_commandList(command* commandNode) {
                                             )
        printf("		size: %s\n", current->aStmt->decl->value->string_literal);
      }
+     else if (temp_type == 22) {
+     printf("	TYPE_STRUCT_ARRAY\n");
+     if (current->aStmt->decl->value != 
+# 149 "./src/command.c" 3 4
+                                       ((void *)0)
+# 149 "./src/command.c"
+                                           )
+      printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 23) {
+     printf("	TYPE_ENUM_ARRAY\n");
+     if (current->aStmt->decl->value != 
+# 154 "./src/command.c" 3 4
+                                       ((void *)0)
+# 154 "./src/command.c"
+                                           )
+      printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 24) {
+     printf("	TYPE_UNION_ARRAY\n");
+     if (current->aStmt->decl->value != 
+# 159 "./src/command.c" 3 4
+                                       ((void *)0)
+# 159 "./src/command.c"
+                                           )
+      printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
      else if (temp_type == 25) {
       printf("	TYPE_FLOAT_POINTER_ARRAY\n");
-      if (current->aStmt->decl->value != 
-# 149 "./src/command.c" 3 4
-                                        ((void *)0)
-# 149 "./src/command.c"
-                                            )
-       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
-     }
-     else if (temp_type == 26) {
-      printf("	TYPE_INT_POINTER_ARRAY\n");
-      if (current->aStmt->decl->value != 
-# 154 "./src/command.c" 3 4
-                                        ((void *)0)
-# 154 "./src/command.c"
-                                            )
-       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
-     }
-     else if (temp_type == 27) {
-      printf("	TYPE_CHAR_POINTER_ARRAY\n");
-      if (current->aStmt->decl->value != 
-# 159 "./src/command.c" 3 4
-                                        ((void *)0)
-# 159 "./src/command.c"
-                                            )
-       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
-     }
-     else if (temp_type == 28) {
-      printf("	TYPE_STRING_POINTER_ARRAY\n");
       if (current->aStmt->decl->value != 
 # 164 "./src/command.c" 3 4
                                         ((void *)0)
@@ -1895,14 +1895,68 @@ void print_commandList(command* commandNode) {
                                             )
        printf("		size: %s\n", current->aStmt->decl->value->string_literal);
      }
-     else if (temp_type == 29) {
-      printf("	TYPE_VOID_POINTER_ARRAY\n");
+     else if (temp_type == 26) {
+      printf("	TYPE_INT_POINTER_ARRAY\n");
       if (current->aStmt->decl->value != 
 # 169 "./src/command.c" 3 4
                                         ((void *)0)
 # 169 "./src/command.c"
                                             )
        printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 27) {
+      printf("	TYPE_CHAR_POINTER_ARRAY\n");
+      if (current->aStmt->decl->value != 
+# 174 "./src/command.c" 3 4
+                                        ((void *)0)
+# 174 "./src/command.c"
+                                            )
+       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 28) {
+      printf("	TYPE_STRING_POINTER_ARRAY\n");
+      if (current->aStmt->decl->value != 
+# 179 "./src/command.c" 3 4
+                                        ((void *)0)
+# 179 "./src/command.c"
+                                            )
+       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 29) {
+      printf("	TYPE_VOID_POINTER_ARRAY\n");
+      if (current->aStmt->decl->value != 
+# 184 "./src/command.c" 3 4
+                                        ((void *)0)
+# 184 "./src/command.c"
+                                            )
+       printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 30) {
+     printf("	TYPE_STRUCT_POINTER_ARRAY\n");
+     if (current->aStmt->decl->value != 
+# 189 "./src/command.c" 3 4
+                                       ((void *)0)
+# 189 "./src/command.c"
+                                           )
+      printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 31) {
+     printf("	TYPE_ENUM_POINTER_ARRAY\n");
+     if (current->aStmt->decl->value != 
+# 194 "./src/command.c" 3 4
+                                       ((void *)0)
+# 194 "./src/command.c"
+                                           )
+      printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+     }
+     else if (temp_type == 32) {
+     printf("	TYPE_UNION_POINTER_ARRAY\n");
+     if (current->aStmt->decl->value != 
+# 199 "./src/command.c" 3 4
+                                       ((void *)0)
+# 199 "./src/command.c"
+                                           )
+      printf("		size: %s\n", current->aStmt->decl->value->string_literal);
      }
      else;
     }
@@ -1946,14 +2000,14 @@ void print_commandList(command* commandNode) {
    else if (value == 10) {
     printf("STMT_RETURN\n");
     if (current->aStmt->theExpr == 
-# 213 "./src/command.c" 3 4
+# 243 "./src/command.c" 3 4
                                   ((void *)0)
-# 213 "./src/command.c"
+# 243 "./src/command.c"
                                       ) {
      if (current->aStmt->expressionList == 
-# 214 "./src/command.c" 3 4
+# 244 "./src/command.c" 3 4
                                           ((void *)0)
-# 214 "./src/command.c"
+# 244 "./src/command.c"
                                               ) {
       current = current->next;
       continue;
@@ -1962,14 +2016,14 @@ void print_commandList(command* commandNode) {
       expr_list* currentList = current->aStmt->expressionList;
 
       while (currentList != 
-# 221 "./src/command.c" 3 4
+# 251 "./src/command.c" 3 4
                            ((void *)0)
-# 221 "./src/command.c"
+# 251 "./src/command.c"
                                ) {
        if (currentList->theExpr != 
-# 222 "./src/command.c" 3 4
+# 252 "./src/command.c" 3 4
                                   ((void *)0)
-# 222 "./src/command.c"
+# 252 "./src/command.c"
                                       ) {
         int ret_val = (int)currentList->theExpr->kind;
         if (ret_val == 0) {
@@ -2097,9 +2151,9 @@ void print_commandList(command* commandNode) {
    }
   }
   else if (current->anExpr != 
-# 348 "./src/command.c" 3 4
+# 378 "./src/command.c" 3 4
                              ((void *)0)
-# 348 "./src/command.c"
+# 378 "./src/command.c"
                                  ) {
    int val = (int)current->anExpr->kind;
    if (val == 4) {

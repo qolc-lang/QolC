@@ -144,6 +144,21 @@ void print_commandList(command* commandNode) {
 						if (current->aStmt->decl->value != NULL)
 							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
 					}
+					else if (temp_type == 22) {
+					printf("	TYPE_STRUCT_ARRAY\n");
+					if (current->aStmt->decl->value != NULL)
+						printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else if (temp_type == 23) {
+					printf("	TYPE_ENUM_ARRAY\n");
+					if (current->aStmt->decl->value != NULL)
+						printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else if (temp_type == 24) {
+					printf("	TYPE_UNION_ARRAY\n");
+					if (current->aStmt->decl->value != NULL)
+						printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
 					else if (temp_type == 25) {
 						printf("	TYPE_FLOAT_POINTER_ARRAY\n");
 						if (current->aStmt->decl->value != NULL)
@@ -168,6 +183,21 @@ void print_commandList(command* commandNode) {
 						printf("	TYPE_VOID_POINTER_ARRAY\n");
 						if (current->aStmt->decl->value != NULL)
 							printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else if (temp_type == 30) {
+					printf("	TYPE_STRUCT_POINTER_ARRAY\n");
+					if (current->aStmt->decl->value != NULL)
+						printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else if (temp_type == 31) {
+					printf("	TYPE_ENUM_POINTER_ARRAY\n");
+					if (current->aStmt->decl->value != NULL)
+						printf("		size: %s\n", current->aStmt->decl->value->string_literal);
+					}
+					else if (temp_type == 32) {
+					printf("	TYPE_UNION_POINTER_ARRAY\n");
+					if (current->aStmt->decl->value != NULL)
+						printf("		size: %s\n", current->aStmt->decl->value->string_literal);
 					}
 					else;
 				}

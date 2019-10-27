@@ -3490,6 +3490,44 @@ int CheckArrayType(parse_state* current, symbolTable* symTable)
    return arrayType;
   }
  }
+ else if (strcmp(current->type, "identifier") == 0) {
+  if (SearchSymbolTable_TYPE(current->value, symTable) != 
+# 712 "./src/parserFunctions.c" 3 4
+                                                         ((void *)0)
+# 712 "./src/parserFunctions.c"
+                                                             )
+  {
+   strcpy(trueArrayType, SearchSymbolTable_TYPE(current->value, symTable));
+
+   if ((strcmp(trueArrayType, "struct") == 0) && (isPointer != 1)) arrayType = 24;
+   else if ((strcmp(trueArrayType, "struct") == 0) && (isPointer == 1)) arrayType = 25;
+   else if ((strcmp(trueArrayType, "union") == 0) && (isPointer != 1)) arrayType = 26;
+   else if ((strcmp(trueArrayType, "union") == 0) && (isPointer == 1)) arrayType = 27;
+   else if ((strcmp(trueArrayType, "enum") == 0) && (isPointer != 1)) arrayType = 28;
+   else if ((strcmp(trueArrayType, "enum") == 0) && (isPointer == 1)) arrayType = 29;
+
+   printf("The true array type : %d : %s\n", arrayType, trueArrayType);
+
+   return arrayType;
+  }
+ }
+ else if (strcmp(current->type, "pointer symbol") == 0) {
+  current = current->next;
+  isPointer = 1;
+  if (SearchSymbolTable_TYPE(current->value, symTable) != 
+# 731 "./src/parserFunctions.c" 3 4
+                                                         ((void *)0)
+# 731 "./src/parserFunctions.c"
+                                                             )
+  {
+   strcpy(trueArrayType, SearchSymbolTable_TYPE(current->value, symTable));
+   if ((strcmp(trueArrayType, "struct") == 0) && (isPointer == 1)) arrayType = 25;
+   else if ((strcmp(trueArrayType, "union") == 0) && (isPointer == 1)) arrayType = 27;
+   else if ((strcmp(trueArrayType, "enum") == 0) && (isPointer == 1)) arrayType = 29;
+   printf("The true array type : %d : %s\n", arrayType, trueArrayType);
+   return arrayType;
+  }
+ }
 
  if ((strcmp(current->value, "int") == 0) && (isPointer != 1)) arrayType = 13;
  else if ((strcmp(current->value, "int") == 0) && (isPointer == 1)) arrayType = 19;

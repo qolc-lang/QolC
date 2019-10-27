@@ -3686,7 +3686,7 @@ CheckArrayType:
 	movq	%rax, %rdx
 	call	SearchSymbolTable_TYPE
 	testq	%rax, %rax
-	je	.L155
+	je	.L156
 	.loc 1 697 0
 	movq	-72(%rbp), %rax
 	leaq	104(%rax), %rcx
@@ -3703,83 +3703,83 @@ CheckArrayType:
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L156
+	jne	.L157
 	.loc 1 699 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
-	je	.L156
+	je	.L157
 	.loc 1 699 0 discriminator 2
 	movl	$24, -52(%rbp)
-	jmp	.L157
-.L156:
+	jmp	.L158
+.L157:
 	.loc 1 700 0 is_stmt 1
 	leaq	-48(%rbp), %rax
 	leaq	.LC122(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L158
+	jne	.L159
 	.loc 1 700 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
-	jne	.L158
+	jne	.L159
 	.loc 1 700 0 discriminator 2
 	movl	$25, -52(%rbp)
-	jmp	.L157
-.L158:
+	jmp	.L158
+.L159:
 	.loc 1 701 0 is_stmt 1
 	leaq	-48(%rbp), %rax
 	leaq	.LC123(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L159
+	jne	.L160
 	.loc 1 701 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
-	je	.L159
+	je	.L160
 	.loc 1 701 0 discriminator 2
 	movl	$26, -52(%rbp)
-	jmp	.L157
-.L159:
+	jmp	.L158
+.L160:
 	.loc 1 702 0 is_stmt 1
 	leaq	-48(%rbp), %rax
 	leaq	.LC123(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L160
+	jne	.L161
 	.loc 1 702 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
-	jne	.L160
+	jne	.L161
 	.loc 1 702 0 discriminator 2
 	movl	$27, -52(%rbp)
-	jmp	.L157
-.L160:
+	jmp	.L158
+.L161:
 	.loc 1 703 0 is_stmt 1
 	leaq	-48(%rbp), %rax
 	leaq	.LC124(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L161
+	jne	.L162
 	.loc 1 703 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
-	je	.L161
+	je	.L162
 	.loc 1 703 0 discriminator 2
 	movl	$28, -52(%rbp)
-	jmp	.L157
-.L161:
+	jmp	.L158
+.L162:
 	.loc 1 704 0 is_stmt 1
 	leaq	-48(%rbp), %rax
 	leaq	.LC124(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L157
+	jne	.L158
 	.loc 1 704 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
-	jne	.L157
+	jne	.L158
 	.loc 1 704 0 discriminator 2
 	movl	$29, -52(%rbp)
-.L157:
+.L158:
 	.loc 1 706 0 is_stmt 1
 	leaq	-48(%rbp), %rdx
 	movl	-52(%rbp), %eax
@@ -3789,178 +3789,382 @@ CheckArrayType:
 	call	printf
 	.loc 1 708 0
 	movl	-52(%rbp), %eax
-	jmp	.L174
+	jmp	.L185
 .L155:
+	.loc 1 711 0
+	movq	-72(%rbp), %rax
+	addq	$4, %rax
+	leaq	.LC35(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L164
 	.loc 1 712 0
 	movq	-72(%rbp), %rax
-	addq	$104, %rax
-	leaq	.LC126(%rip), %rdx
-	movq	%rax, %rcx
-	call	strcmp
-	testl	%eax, %eax
-	jne	.L163
-	.loc 1 712 0 is_stmt 0 discriminator 1
-	cmpl	$1, -56(%rbp)
-	je	.L163
-	.loc 1 712 0 discriminator 2
-	movl	$13, -52(%rbp)
-	jmp	.L164
-.L163:
-	.loc 1 713 0 is_stmt 1
+	leaq	104(%rax), %rcx
+	movq	-80(%rbp), %rax
+	movq	%rax, %rdx
+	call	SearchSymbolTable_TYPE
+	testq	%rax, %rax
+	je	.L156
+	.loc 1 714 0
 	movq	-72(%rbp), %rax
-	addq	$104, %rax
-	leaq	.LC126(%rip), %rdx
+	leaq	104(%rax), %rcx
+	movq	-80(%rbp), %rax
+	movq	%rax, %rdx
+	call	SearchSymbolTable_TYPE
+	movq	%rax, %rdx
+	leaq	-48(%rbp), %rax
+	movq	%rax, %rcx
+	call	strcpy
+	.loc 1 716 0
+	leaq	-48(%rbp), %rax
+	leaq	.LC122(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L165
-	.loc 1 713 0 is_stmt 0 discriminator 1
+	.loc 1 716 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
-	jne	.L165
-	.loc 1 713 0 discriminator 2
-	movl	$19, -52(%rbp)
-	jmp	.L164
+	je	.L165
+	.loc 1 716 0 discriminator 2
+	movl	$24, -52(%rbp)
+	jmp	.L166
 .L165:
-	.loc 1 714 0 is_stmt 1
-	movq	-72(%rbp), %rax
-	addq	$104, %rax
-	leaq	.LC127(%rip), %rdx
-	movq	%rax, %rcx
-	call	strcmp
-	testl	%eax, %eax
-	jne	.L166
-	.loc 1 714 0 is_stmt 0 discriminator 1
-	cmpl	$1, -56(%rbp)
-	je	.L166
-	.loc 1 714 0 discriminator 2
-	movl	$14, -52(%rbp)
-	jmp	.L164
-.L166:
-	.loc 1 715 0 is_stmt 1
-	movq	-72(%rbp), %rax
-	addq	$104, %rax
-	leaq	.LC127(%rip), %rdx
+	.loc 1 717 0 is_stmt 1
+	leaq	-48(%rbp), %rax
+	leaq	.LC122(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L167
-	.loc 1 715 0 is_stmt 0 discriminator 1
+	.loc 1 717 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
 	jne	.L167
-	.loc 1 715 0 discriminator 2
-	movl	$20, -52(%rbp)
-	jmp	.L164
+	.loc 1 717 0 discriminator 2
+	movl	$25, -52(%rbp)
+	jmp	.L166
 .L167:
-	.loc 1 716 0 is_stmt 1
-	movq	-72(%rbp), %rax
-	addq	$104, %rax
-	leaq	.LC128(%rip), %rdx
+	.loc 1 718 0 is_stmt 1
+	leaq	-48(%rbp), %rax
+	leaq	.LC123(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L168
-	.loc 1 716 0 is_stmt 0 discriminator 1
+	.loc 1 718 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
 	je	.L168
-	.loc 1 716 0 discriminator 2
-	movl	$15, -52(%rbp)
-	jmp	.L164
+	.loc 1 718 0 discriminator 2
+	movl	$26, -52(%rbp)
+	jmp	.L166
 .L168:
-	.loc 1 717 0 is_stmt 1
+	.loc 1 719 0 is_stmt 1
+	leaq	-48(%rbp), %rax
+	leaq	.LC123(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L169
+	.loc 1 719 0 is_stmt 0 discriminator 1
+	cmpl	$1, -56(%rbp)
+	jne	.L169
+	.loc 1 719 0 discriminator 2
+	movl	$27, -52(%rbp)
+	jmp	.L166
+.L169:
+	.loc 1 720 0 is_stmt 1
+	leaq	-48(%rbp), %rax
+	leaq	.LC124(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L170
+	.loc 1 720 0 is_stmt 0 discriminator 1
+	cmpl	$1, -56(%rbp)
+	je	.L170
+	.loc 1 720 0 discriminator 2
+	movl	$28, -52(%rbp)
+	jmp	.L166
+.L170:
+	.loc 1 721 0 is_stmt 1
+	leaq	-48(%rbp), %rax
+	leaq	.LC124(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L166
+	.loc 1 721 0 is_stmt 0 discriminator 1
+	cmpl	$1, -56(%rbp)
+	jne	.L166
+	.loc 1 721 0 discriminator 2
+	movl	$29, -52(%rbp)
+.L166:
+	.loc 1 723 0 is_stmt 1
+	leaq	-48(%rbp), %rdx
+	movl	-52(%rbp), %eax
+	movq	%rdx, %r8
+	movl	%eax, %edx
+	leaq	.LC125(%rip), %rcx
+	call	printf
+	.loc 1 725 0
+	movl	-52(%rbp), %eax
+	jmp	.L185
+.L164:
+	.loc 1 728 0
+	movq	-72(%rbp), %rax
+	addq	$4, %rax
+	leaq	.LC119(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L156
+	.loc 1 729 0
+	movq	-72(%rbp), %rax
+	movq	208(%rax), %rax
+	movq	%rax, -72(%rbp)
+	.loc 1 730 0
+	movl	$1, -56(%rbp)
+	.loc 1 731 0
+	movq	-72(%rbp), %rax
+	leaq	104(%rax), %rcx
+	movq	-80(%rbp), %rax
+	movq	%rax, %rdx
+	call	SearchSymbolTable_TYPE
+	testq	%rax, %rax
+	je	.L156
+	.loc 1 733 0
+	movq	-72(%rbp), %rax
+	leaq	104(%rax), %rcx
+	movq	-80(%rbp), %rax
+	movq	%rax, %rdx
+	call	SearchSymbolTable_TYPE
+	movq	%rax, %rdx
+	leaq	-48(%rbp), %rax
+	movq	%rax, %rcx
+	call	strcpy
+	.loc 1 734 0
+	leaq	-48(%rbp), %rax
+	leaq	.LC122(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L171
+	.loc 1 734 0 is_stmt 0 discriminator 1
+	cmpl	$1, -56(%rbp)
+	jne	.L171
+	.loc 1 734 0 discriminator 2
+	movl	$25, -52(%rbp)
+	jmp	.L172
+.L171:
+	.loc 1 735 0 is_stmt 1
+	leaq	-48(%rbp), %rax
+	leaq	.LC123(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L173
+	.loc 1 735 0 is_stmt 0 discriminator 1
+	cmpl	$1, -56(%rbp)
+	jne	.L173
+	.loc 1 735 0 discriminator 2
+	movl	$27, -52(%rbp)
+	jmp	.L172
+.L173:
+	.loc 1 736 0 is_stmt 1
+	leaq	-48(%rbp), %rax
+	leaq	.LC124(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L172
+	.loc 1 736 0 is_stmt 0 discriminator 1
+	cmpl	$1, -56(%rbp)
+	jne	.L172
+	.loc 1 736 0 discriminator 2
+	movl	$29, -52(%rbp)
+.L172:
+	.loc 1 737 0 is_stmt 1
+	leaq	-48(%rbp), %rdx
+	movl	-52(%rbp), %eax
+	movq	%rdx, %r8
+	movl	%eax, %edx
+	leaq	.LC125(%rip), %rcx
+	call	printf
+	.loc 1 738 0
+	movl	-52(%rbp), %eax
+	jmp	.L185
+.L156:
+	.loc 1 742 0
+	movq	-72(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC126(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L174
+	.loc 1 742 0 is_stmt 0 discriminator 1
+	cmpl	$1, -56(%rbp)
+	je	.L174
+	.loc 1 742 0 discriminator 2
+	movl	$13, -52(%rbp)
+	jmp	.L175
+.L174:
+	.loc 1 743 0 is_stmt 1
+	movq	-72(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC126(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L176
+	.loc 1 743 0 is_stmt 0 discriminator 1
+	cmpl	$1, -56(%rbp)
+	jne	.L176
+	.loc 1 743 0 discriminator 2
+	movl	$19, -52(%rbp)
+	jmp	.L175
+.L176:
+	.loc 1 744 0 is_stmt 1
+	movq	-72(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC127(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L177
+	.loc 1 744 0 is_stmt 0 discriminator 1
+	cmpl	$1, -56(%rbp)
+	je	.L177
+	.loc 1 744 0 discriminator 2
+	movl	$14, -52(%rbp)
+	jmp	.L175
+.L177:
+	.loc 1 745 0 is_stmt 1
+	movq	-72(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC127(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L178
+	.loc 1 745 0 is_stmt 0 discriminator 1
+	cmpl	$1, -56(%rbp)
+	jne	.L178
+	.loc 1 745 0 discriminator 2
+	movl	$20, -52(%rbp)
+	jmp	.L175
+.L178:
+	.loc 1 746 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC128(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L169
-	.loc 1 717 0 is_stmt 0 discriminator 1
+	jne	.L179
+	.loc 1 746 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
-	jne	.L169
-	.loc 1 717 0 discriminator 2
+	je	.L179
+	.loc 1 746 0 discriminator 2
+	movl	$15, -52(%rbp)
+	jmp	.L175
+.L179:
+	.loc 1 747 0 is_stmt 1
+	movq	-72(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC128(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L180
+	.loc 1 747 0 is_stmt 0 discriminator 1
+	cmpl	$1, -56(%rbp)
+	jne	.L180
+	.loc 1 747 0 discriminator 2
 	movl	$21, -52(%rbp)
-	jmp	.L164
-.L169:
-	.loc 1 718 0 is_stmt 1
+	jmp	.L175
+.L180:
+	.loc 1 748 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC129(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L170
-	.loc 1 718 0 is_stmt 0 discriminator 1
+	jne	.L181
+	.loc 1 748 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
-	je	.L170
-	.loc 1 718 0 discriminator 2
+	je	.L181
+	.loc 1 748 0 discriminator 2
 	movl	$16, -52(%rbp)
-	jmp	.L164
-.L170:
-	.loc 1 719 0 is_stmt 1
+	jmp	.L175
+.L181:
+	.loc 1 749 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC129(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L164
-	.loc 1 719 0 is_stmt 0 discriminator 1
+	jne	.L175
+	.loc 1 749 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
-	jne	.L164
-	.loc 1 719 0 discriminator 2
+	jne	.L175
+	.loc 1 749 0 discriminator 2
 	movl	$22, -52(%rbp)
-.L164:
-	.loc 1 720 0 is_stmt 1
+.L175:
+	.loc 1 750 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC130(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L171
-	.loc 1 720 0 is_stmt 0 discriminator 1
+	jne	.L182
+	.loc 1 750 0 is_stmt 0 discriminator 1
 	movl	$17, -52(%rbp)
-	jmp	.L172
-.L171:
-	.loc 1 721 0 is_stmt 1
+	jmp	.L183
+.L182:
+	.loc 1 751 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC131(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L173
-	.loc 1 721 0 is_stmt 0 discriminator 1
+	jne	.L184
+	.loc 1 751 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
-	je	.L173
-	.loc 1 721 0 discriminator 2
+	je	.L184
+	.loc 1 751 0 discriminator 2
 	movl	$18, -52(%rbp)
-	jmp	.L172
-.L173:
-	.loc 1 722 0 is_stmt 1
+	jmp	.L183
+.L184:
+	.loc 1 752 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC131(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L172
-	.loc 1 722 0 is_stmt 0 discriminator 1
+	jne	.L183
+	.loc 1 752 0 is_stmt 0 discriminator 1
 	cmpl	$1, -56(%rbp)
-	jne	.L172
-	.loc 1 722 0 discriminator 2
+	jne	.L183
+	.loc 1 752 0 discriminator 2
 	movl	$23, -52(%rbp)
-.L172:
-	.loc 1 724 0 is_stmt 1
+.L183:
+	.loc 1 754 0 is_stmt 1
 	movl	-52(%rbp), %eax
-.L174:
-	.loc 1 725 0
+.L185:
+	.loc 1 755 0
 	movq	.refptr.__stack_chk_guard(%rip), %rdx
 	movq	-8(%rbp), %rcx
 	xorq	(%rdx), %rcx
-	je	.L175
+	je	.L186
 	call	__stack_chk_fail
-.L175:
+.L186:
 	addq	$112, %rsp
 	popq	%rbp
 	.cfi_restore 6
