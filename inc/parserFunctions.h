@@ -22,9 +22,9 @@ typedef struct memberFlags
 	int nIsEnumMember;
 	int nIsAssertMember;
 	int nIsMainMember;
+	int nIsReturnMember;
 }memberFlags;
 
-parse_state* checkForReturnOperator(parse_state* current, char* tempStack, int tempTop, command* commandNode, tempVariables* tempNode);
 int isIdentifierType(char* currentType);
 int isNumberType(char* currentType);
 void BuildSingleExprStatement(char* currentValue, command* commandNode, int statement);

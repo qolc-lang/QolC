@@ -1539,13 +1539,6 @@ typedef struct expr {
  int memberOf;
 }expr;
 
-typedef struct expr_list
-{
- expr* theExpr;
- struct expr_list* next;
-}expr_list;
-
-
 
 
 
@@ -1582,7 +1575,6 @@ typedef struct stmt {
  expr *next_expr;
  struct stmt *body;
  struct stmt *else_body;
- expr_list* expressionList;
  struct stmt *next;
  int memberOf;
 }stmt;
@@ -1600,11 +1592,10 @@ typedef struct decl {
 
 
 decl* decl_create(char *name, type *theType, expr *value, stmt *code);
-stmt* stmt_create(stmt_t kind, decl *theDecl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next, int memberOf);
+stmt* stmt_create(stmt_t kind, decl *theDecl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, stmt *next, int memberOf);
 type* type_create(type_t kind, type *subtype, param_list *params);
 expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal, int memberOf);
 expr* expr_create_string(char* string_literal);
-void push_expressionList(expr_list* node, expr* theExpr);
 # 5 "./inc/command.h" 2
 
 typedef struct command
@@ -1999,114 +1990,6 @@ void print_commandList(command* commandNode) {
    }
    else if (value == 10) {
     printf("STMT_RETURN\n");
-    if (current->aStmt->theExpr == 
-# 243 "./src/command.c" 3 4
-                                  ((void *)0)
-# 243 "./src/command.c"
-                                      ) {
-     if (current->aStmt->expressionList == 
-# 244 "./src/command.c" 3 4
-                                          ((void *)0)
-# 244 "./src/command.c"
-                                              ) {
-      current = current->next;
-      continue;
-     }
-     else {
-      expr_list* currentList = current->aStmt->expressionList;
-
-      while (currentList != 
-# 251 "./src/command.c" 3 4
-                           ((void *)0)
-# 251 "./src/command.c"
-                               ) {
-       if (currentList->theExpr != 
-# 252 "./src/command.c" 3 4
-                                  ((void *)0)
-# 252 "./src/command.c"
-                                      ) {
-        int ret_val = (int)currentList->theExpr->kind;
-        if (ret_val == 0) {
-         printf("	EXPR_ADD\n");
-         printf("		left : %s\n", currentList->theExpr->left->string_literal);
-         printf("		right : %s\n", currentList->theExpr->right->string_literal);
-        }
-        else if (ret_val == 1) {
-         printf("	EXPR_SUB\n");
-         printf("		left : %s\n", currentList->theExpr->left->string_literal);
-         printf("		right : %s\n", currentList->theExpr->right->string_literal);
-        }
-        else if (ret_val == 2) {
-         printf("	EXPR_MUL\n");
-         printf("		left : %s\n", currentList->theExpr->left->string_literal);
-         printf("		right : %s\n", currentList->theExpr->right->string_literal);
-        }
-        else if (ret_val == 3) {
-         printf("	EXPR_DIV\n");
-         printf("		left : %s\n", currentList->theExpr->left->string_literal);
-         printf("		right : %s\n", currentList->theExpr->right->string_literal);
-        }
-        else if (ret_val == 13) {
-         printf("	EXPR_BIGGER_CMP\n");
-         printf("		left : %s\n", currentList->theExpr->left->string_literal);
-         printf("		right : %s\n", currentList->theExpr->right->string_literal);
-        }
-        else if (ret_val == 14) {
-         printf("	EXPR_BIGGEROREQ_CMP\n");
-         printf("		left : %s\n", currentList->theExpr->left->string_literal);
-         printf("		right : %s\n", currentList->theExpr->right->string_literal);
-        }
-        else if (ret_val == 15) {
-         printf("	EXPR_SMALLER_CMP\n");
-         printf("		left : %s\n", currentList->theExpr->left->string_literal);
-         printf("		right : %s\n", currentList->theExpr->right->string_literal);
-        }
-        else if (ret_val == 16) {
-         printf("	EXPR_SMALLEROREQ_CMP\n");
-         printf("		left : %s\n", currentList->theExpr->left->string_literal);
-         printf("		right : %s\n", currentList->theExpr->right->string_literal);
-        }
-        else if (ret_val == 17) {
-         printf("	EXPR_EQUAL_CMP\n");
-         printf("		left : %s\n", currentList->theExpr->left->string_literal);
-         printf("		right : %s\n", currentList->theExpr->right->string_literal);
-        }
-       }
-       currentList = currentList->next;
-      }
-     }
-    }
-    else {
-     printf("Just a single expression to print\n");
-     int ret_val = (int)current->aStmt->theExpr->kind;
-     if (ret_val == 0) {
-      printf("	EXPR_ADD\n");
-      printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
-      printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
-     }
-     else if (ret_val == 1) {
-      printf("	EXPR_SUB\n");
-      printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
-      printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
-     }
-     else if (ret_val == 2) {
-      printf("	EXPR_MUL\n");
-      printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
-      printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
-     }
-     else if (ret_val == 3) {
-      printf("	EXPR_DIV\n");
-      printf("		left : %s\n", current->aStmt->theExpr->left->string_literal);
-      printf("		right : %s\n", current->aStmt->theExpr->right->string_literal);
-     }
-     else if (ret_val == 12) {
-      printf("	EXPR_STRING_LITERAL\n");
-      printf("		%s\n", current->aStmt->theExpr->string_literal);
-     }
-     else {
-
-     }
-    }
    }
    else if (value == 11) {
     printf("STMT_BREAK\n");
@@ -2151,9 +2034,9 @@ void print_commandList(command* commandNode) {
    }
   }
   else if (current->anExpr != 
-# 378 "./src/command.c" 3 4
+# 286 "./src/command.c" 3 4
                              ((void *)0)
-# 378 "./src/command.c"
+# 286 "./src/command.c"
                                  ) {
    int val = (int)current->anExpr->kind;
    if (val == 4) {

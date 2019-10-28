@@ -1535,13 +1535,6 @@ typedef struct expr {
  int memberOf;
 }expr;
 
-typedef struct expr_list
-{
- expr* theExpr;
- struct expr_list* next;
-}expr_list;
-
-
 
 
 
@@ -1578,7 +1571,6 @@ typedef struct stmt {
  expr *next_expr;
  struct stmt *body;
  struct stmt *else_body;
- expr_list* expressionList;
  struct stmt *next;
  int memberOf;
 }stmt;
@@ -1596,11 +1588,10 @@ typedef struct decl {
 
 
 decl* decl_create(char *name, type *theType, expr *value, stmt *code);
-stmt* stmt_create(stmt_t kind, decl *theDecl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next, int memberOf);
+stmt* stmt_create(stmt_t kind, decl *theDecl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, stmt *next, int memberOf);
 type* type_create(type_t kind, type *subtype, param_list *params);
 expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal, int memberOf);
 expr* expr_create_string(char* string_literal);
-void push_expressionList(expr_list* node, expr* theExpr);
 # 2 "./src/ast.c" 2
 
 
@@ -1624,7 +1615,7 @@ decl* decl_create(char *name, type *type, expr *value, stmt *code) {
 
 
 
-stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next, int memberOf) {
+stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nexpr, stmt *body, stmt *ebody, stmt *next, int memberOf) {
  stmt* s = malloc(sizeof(*s));
  s->kind = kind;
  s->decl = decl;
@@ -1633,11 +1624,10 @@ stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nex
  s->next_expr = nexpr;
  s->body = body;
  s->else_body = ebody;
- s->expressionList = expressionList;
  s->next = 
-# 30 "./src/ast.c" 3 4
+# 29 "./src/ast.c" 3 4
           ((void *)0)
-# 30 "./src/ast.c"
+# 29 "./src/ast.c"
               ;
  s->memberOf = memberOf;
  return s;
@@ -1655,9 +1645,9 @@ expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char 
  e->character_value = character_value;
  e->string_literal = malloc(sizeof(char) * 100);
  if (string_literal != 
-# 46 "./src/ast.c" 3 4
+# 45 "./src/ast.c" 3 4
                       ((void *)0)
-# 46 "./src/ast.c"
+# 45 "./src/ast.c"
                           )
   strcpy(e->string_literal, string_literal);
  e->memberOf = memberOf;
@@ -1684,25 +1674,4 @@ expr* expr_create_string(char* string_literal) {
  e->string_literal = malloc(sizeof(char) * 100);
  strcpy(e->string_literal, string_literal);
  return e;
-}
-
-
-
-
-void push_expressionList(expr_list* node, expr* theExpr) {
-    expr_list* current = node;
-    while (current->next != 
-# 79 "./src/ast.c" 3 4
-                           ((void *)0)
-# 79 "./src/ast.c"
-                               ) {
-        current = current->next;
-    }
-    current->next = malloc(sizeof(expr_list));
-    current->next->theExpr = theExpr;
-    current->next->next = 
-# 84 "./src/ast.c" 3 4
-                         ((void *)0)
-# 84 "./src/ast.c"
-                             ;
 }

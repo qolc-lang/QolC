@@ -17,7 +17,7 @@ decl* decl_create(char *name, type *type, expr *value, stmt *code) {
 /*
 	Creating and returning a statement
 */
-stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next, int memberOf) {
+stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nexpr, stmt *body, stmt *ebody, stmt *next, int memberOf) {
 	stmt* s = malloc(sizeof(*s));
 	s->kind = kind;
 	s->decl = decl;
@@ -26,7 +26,6 @@ stmt* stmt_create(stmt_t kind, decl *decl, expr *iexpr, expr *theExpr, expr *nex
 	s->next_expr = nexpr;
 	s->body = body;
 	s->else_body = ebody;
-	s->expressionList = expressionList;
 	s->next = NULL;
 	s->memberOf = memberOf;
 	return s;
@@ -69,17 +68,4 @@ expr* expr_create_string(char* string_literal) {
 	e->string_literal = malloc(sizeof(char) * 100);
 	strcpy(e->string_literal, string_literal);
 	return e;
-}
-
-/*
-	Creating a new list of expressions and pushing theExpr into that
-*/
-void push_expressionList(expr_list* node, expr* theExpr) {
-    expr_list* current = node;
-    while (current->next != NULL) {
-        current = current->next;
-    }
-    current->next = malloc(sizeof(expr_list));
-    current->next->theExpr = theExpr;
-    current->next->next = NULL;
 }

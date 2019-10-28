@@ -45,7 +45,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 		}
 		else if (strcmp(current->value, "main") == 0) {
 			printf("Main statement to be built.\n");
-			stmt* main_stmt = stmt_create(STMT_MAIN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+			stmt* main_stmt = stmt_create(STMT_MAIN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 			push_commandList(commandNode, NULL, main_stmt, NULL); 
 			flags.nIsMainMember = 1;
 			printf("**********************************************************\n");
@@ -159,14 +159,6 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			push(theStack[top], &top, current->value);
 			printf("**********************************************************\n");
 			current = current->next;
-			continue;
-		}
-		else if (strcmp(current->value, "return") == 0) {
-			printf("Return statement to be built.\n");
-			push(theStack[top], &top, current->value);
-			current = checkTheStack(current, theStack[0], top, commandNode);
-			pop(&top);
-			theStack[0][top] = '\0';
 			continue;
 		}
 		else if (strcmp(current->value, "if") == 0) {
@@ -348,7 +340,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			flags.nIsStructMember = 1;
 			type* theType = type_create(TYPE_STRUCT, NULL, NULL);
 			decl* theDeclaration = decl_create(temp, theType, NULL, NULL);
-			stmt* struct_stmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+			stmt* struct_stmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 			push_commandList(commandNode, NULL, struct_stmt, NULL);
 			printf("**********************************************************\n");
 			current = current->next;
@@ -367,7 +359,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			flags.nIsEnumMember = 1;
 			type* theType = type_create(TYPE_ENUM, NULL, NULL);
 			decl* theDeclaration = decl_create(temp, theType, NULL, NULL);
-			stmt* enum_stmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+			stmt* enum_stmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 			push_commandList(commandNode, NULL, enum_stmt, NULL);
 			printf("**********************************************************\n");
 			current = current->next;
@@ -386,7 +378,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			flags.nIsUnionMember = 1;
 			type* theType = type_create(TYPE_UNION, NULL, NULL);
 			decl* theDeclaration = decl_create(temp, theType, NULL, NULL);
-			stmt* union_stmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+			stmt* union_stmt = stmt_create(STMT_DECL, theDeclaration, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 			push_commandList(commandNode, NULL, union_stmt, NULL);
 			printf("**********************************************************\n");
 			current = current->next;
@@ -396,7 +388,17 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 		if (strcmp(current->value, "assert") == 0) {
 			printf("Assert statement to be built.\n");
 			flags.nIsAssertMember = 1;
-			stmt* theStmt = stmt_create(STMT_ASSERT, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+			stmt* theStmt = stmt_create(STMT_ASSERT, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+			push_commandList(commandNode, NULL, theStmt, NULL);
+			printf("**********************************************************\n");
+			current = current->next;
+			continue;
+		}
+
+		if (strcmp(current->value, "return") == 0) {
+			printf("Return statement to be built.\n");
+			flags.nIsAssertMember = 1;
+			stmt* theStmt = stmt_create(STMT_ASSERT, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 			push_commandList(commandNode, NULL, theStmt, NULL);
 			printf("**********************************************************\n");
 			current = current->next;
@@ -429,7 +431,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 				if (hasDefer == 1)
 				{
 					hasDefer = 0;
-					stmt* defer_stmt = stmt_create(STMT_DEFER, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+					stmt* defer_stmt = stmt_create(STMT_DEFER, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 					push_commandList(commandNode, NULL, defer_stmt, NULL); 
 					BuildSingleExprStatement(current->value, commandNode, 3);
 				}
@@ -930,14 +932,14 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 		/* Check for keyword type */
 		if (strcmp(current->type, "keyword") == 0) {
 			if (strcmp(current->value, "break") == 0) {
-				stmt* break_decl_stmt = stmt_create(STMT_BREAK, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+				stmt* break_decl_stmt = stmt_create(STMT_BREAK, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 				push_commandList(commandNode, NULL, break_decl_stmt, NULL); 
 				printf("**********************************************************\n");
 				current = current->next;
 				continue;
 			}
 			else if (strcmp(current->value, "continue") == 0) {
-				stmt* cont_decl_stmt = stmt_create(STMT_CONTINUE, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+				stmt* cont_decl_stmt = stmt_create(STMT_CONTINUE, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 				push_commandList(commandNode, NULL, cont_decl_stmt, NULL); 
 				printf("**********************************************************\n");
 				current = current->next;
@@ -1085,37 +1087,37 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 					if (strcmp(current->value, "int") == 0) {
 						type* int_type = type_create(TYPE_INTEGER, NULL, NULL);
 						decl* int_declaration = decl_create(temp, int_type, NULL, NULL);
-						stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
+						stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, int_decl_stmt, NULL);
 					}
 					else if (strcmp(current->value, "string") == 0) {
 						type* string_type = type_create(TYPE_STRING, NULL, NULL);
 						decl* string_declaration = decl_create(temp, string_type, NULL, NULL);
-						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
+						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, string_decl_stmt, NULL);
 					}
 					else if (strcmp(current->value, "float") == 0) {
 						type* float_type = type_create(TYPE_FLOAT, NULL, NULL);
 						decl* float_declaration = decl_create(temp, float_type, NULL, NULL);
-						stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
+						stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, float_decl_stmt, NULL);
 					}
 					else if (strcmp(current->value, "char") == 0) {
 						type* char_type = type_create(TYPE_CHARACTER, NULL, NULL);
 						decl* char_declaration = decl_create(temp, char_type, NULL, NULL);
-						stmt* char_decl_stmt = stmt_create(STMT_DECL, char_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
+						stmt* char_decl_stmt = stmt_create(STMT_DECL, char_declaration, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, char_decl_stmt, NULL);
 					}
 					else if (strcmp(current->value, "bool") == 0) {
 						type* bool_type = type_create(TYPE_BOOLEAN, NULL, NULL);
 						decl* bool_declaration = decl_create(temp, bool_type, NULL, NULL);
-						stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
+						stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, bool_decl_stmt, NULL);
 					}
 					else if (strcmp(current->value, "void") == 0) {
 						type* void_type = type_create(TYPE_VOID, NULL, NULL);
 						decl* void_declaration = decl_create(temp, void_type, NULL, NULL);
-						stmt* void_decl_stmt = stmt_create(STMT_DECL, void_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
+						stmt* void_decl_stmt = stmt_create(STMT_DECL, void_declaration, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, void_decl_stmt, NULL);
 					}
 					else if ((strcmp(current->value, "false") == 0) || (strcmp(current->value, "true") == 0)) {
@@ -1123,7 +1125,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 						theStack[0][top] = '\0';
 						expr* stringExpr = expr_create_string(current->value);
 						decl* string_declaration = decl_create(temp, NULL, stringExpr, NULL);
-						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
+						stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 						push_commandList(commandNode, NULL, string_decl_stmt, NULL);
 					}
 					else;
@@ -1135,7 +1137,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 					theStack[0][top] = '\0';
 					expr* stringExpr = expr_create_string(temp);
 					decl* string_declaration = decl_create(temp2, NULL, stringExpr, NULL);
-					stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
+					stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
 					push_commandList(commandNode, NULL, string_decl_stmt, NULL); 
 				}
 			}
@@ -1152,156 +1154,4 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 	}
 
 	return;
-}
-
-/*
-	Checking the stack top for complex commands
-*/
-parse_state* checkTheStack(parse_state* current, char* theStackTop, int top, command* commandNode) {
-
-	char tempStack[200][100];
-	int tempTop = 0;
-	parse_state* tempCurrent;
-	
-	/* Struct that holds any necessary temp variables */
-	tempVariables* tempVariablesNode = malloc(sizeof(tempVariables));
-	
-	if (strcmp(theStackTop, "return") == 0) {
-		printf("Going in return loop\n");
-		int operatorInsideStack = 0; 
-		int identifierCopiedInTemp = 0;
-
-		current = current->next;
-
-		while (1) {
-
-			if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (isIdentifierType(current->type) != 1) && (isNumberType(current->type) != 1) && (strcmp(current->type, "string") != 0) && (strcmp(current->type, "character") != 0) ) {
-				printf("Not the type we need : %s\n", current->type);
-				return current;
-			}
-
-			if (strcmp(current->type, "end of command") == 0) {
-				current = current->next;
-				if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0) && (isIdentifierType(current->type) != 1) && (isNumberType(current->type) != 1) && (strcmp(current->type, "string") != 0) && (strcmp(current->type, "character") != 0) ) {
-					stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
-					push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
-					return current;
-				}
-				else {
-					printf("now the starting eoc current : %s\n", current->value);
-					expr* stringExpr = expr_create_string(current->value);
-					stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL, -1);
-					push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
-					return current;
-				}
-
-			}
-
-			if (tempTop == 0) {
-
-				if (strcmp(current->type, "operator") == 0) {
-					strcpy(tempVariablesNode->tempOp, current->value);
-				}
-				else {
-					strcpy(tempVariablesNode->value, current->value);
-					identifierCopiedInTemp = 1;
-				}
-				++tempTop;
-				push(tempStack[tempTop], &tempTop, current->value);
-				strcpy(tempVariablesNode->temp, current->value);
-				current = current->next;
-				if ((current == NULL) || (strcmp(current->type, "end of command") == 0))
-				{
-					expr* stringExpr = expr_create_string(tempVariablesNode->temp);
-					stmt* ret_decl_stmt = stmt_create(STMT_RETURN, NULL, NULL, stringExpr, NULL, NULL, NULL, NULL, NULL, -1);
-					push_commandList(commandNode, NULL, ret_decl_stmt, NULL); 
-					return current;
-				}
-				else {
-					printf("now the current in tempTop 0 : %s\n", current->value);
-				}
-				continue;
-			}
-
-			if (strcmp(current->type, "operator") == 0) {
-
-				if (operatorInsideStack == 1) {
-					printf("an operator already in the stack\n");
-					/* Going to save this operator and continue */
-					strcpy(tempVariablesNode->tempOp2, current->value);
-					current = current->next;
-					continue;
-				}
-				else { 
-					printf("not an operator in\n");
-					operatorInsideStack = 1;
-					++tempTop;
-					push(tempStack[tempTop], &tempTop, current->value);
-					strcpy(tempVariablesNode->tempOp, current->value);
-					current = current->next;
-					continue;
-				}
-			}
-			else if ((isIdentifierType(current->type) == 1) || (isNumberType(current->type) == 1)) {
-				printf("before going in with value : %s\n", current->value);
-				if (identifierCopiedInTemp == 0)
-					strcpy(tempVariablesNode->value, current->value);
-				pop(&tempTop);
-				printf("now in the stack : %s\n", tempStack[tempTop]);
-
-				tempCurrent = current;
-				tempCurrent = checkForReturnOperator(current, tempStack[tempTop], tempTop, commandNode, tempVariablesNode);
-			}
-
-			printf("before hereeee\n");
-
-			if (tempCurrent == NULL) {
-				printf("going for null break 1 --- in return stmt\n");
-				break;
-			}
-
-			printf("the tempCurrent now : %s\n", tempCurrent->value);
-
-			if (tempCurrent == NULL) {
-				printf("going for null break 2 --- in return stmt\n");
-				break;
-			}
-
-			if (strcmp(tempCurrent->type, "end of command") == 0){
-				tempCurrent = tempCurrent->next; 
-				if (tempCurrent != NULL) {
-					printf("in return eoc loop with value : %s\n", tempCurrent->value);	
-				}
-
-				printf("going for eoc break --- in return stmt\n");
-				break;
-			}
-			else {
-				return tempCurrent;
-			}
-
-			tempCurrent = tempCurrent->next;
-
-			printf("the tempCurrent now 2 : %s\n", tempCurrent->value);
-
-			if (tempCurrent == NULL) {
-				printf("going for null break 2 --- in return stmt\n");
-				break;
-			}
-
-			if (strcmp(tempCurrent->type, "end of command") == 0){
-				tempCurrent = tempCurrent->next; 
-				if (tempCurrent != NULL) {
-					printf("in return eoc loop with value : %s\n", tempCurrent->value);	
-				}
-
-				printf("going for eoc break --- in return stmt\n");
-				break;
-			}
-			else {
-				return tempCurrent;
-			}
-		}
-	}
-	return current;
 }
