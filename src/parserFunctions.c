@@ -266,6 +266,28 @@ void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* comman
 	push_commandList(commandNode, NULL, NULL, theExpr);
 }
 
+void BuildSimpleExpressionStatement(char* temp, char* temp2, command* commandNode, int operation, int typeOfMember) {
+	
+	expr* leftExpr = expr_create_string(temp);
+	expr* rightExpr = expr_create_string(temp2);
+	expr* theExpr;
+
+	switch (operation) {
+		case 1 :
+			printf("Going to build add expression statement.\n");
+			theExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL, typeOfMember);
+			break;
+		case 2 :
+			printf("Going to build sub assignment expression statement.\n");
+			theExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL, typeOfMember);
+			break;
+		default : 
+			break; 
+	}
+
+	push_commandList(commandNode, NULL, NULL, theExpr);
+}
+
 
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode) {
 	printf("Going to build add declaration statement.\n");
@@ -292,8 +314,9 @@ int CheckIfMemberOfStatement(memberFlags mFlags) {
 	else if (mFlags.nIsUnionMember == 1) return 2;
 	else if (mFlags.nIsEnumMember == 1) return 3;
 	else if (mFlags.nIsAssertMember == 1) return 4;
+	else if (mFlags.nIsReturnMember == 1) return 6;
 	else if (mFlags.nIsMainMember == 1) return 5;
-
+	
 	return -1;
 }
 
@@ -303,6 +326,7 @@ void ClearFlags(memberFlags* mFlags) {
 	if (mFlags->nIsUnionMember == 1) mFlags->nIsUnionMember = 0;
 	if (mFlags->nIsEnumMember == 1) mFlags->nIsEnumMember = 0;
 	if (mFlags->nIsAssertMember == 1) mFlags->nIsAssertMember = 0;
+	if (mFlags->nIsReturnMember == 1) mFlags->nIsReturnMember = 0;
 }
 
 int CheckArrayType(parse_state* current, symbolTable* symTable)

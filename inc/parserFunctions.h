@@ -33,6 +33,7 @@ void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
 void BuildDeclarationExprStatement(char* currentValue, command* commandNode, char* temp, int type, int typeOfMember);
 void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* commandNode, int operation, int typeOfMember);
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
+void BuildSimpleExpressionStatement(char* temp, char* temp2, command* commandNode, int operation, int typeOfMember);
 int CheckIfMemberOfStatement(memberFlags mFlags);
 void ClearFlags(memberFlags* mFlags);
 int CheckArrayType(parse_state* current, symbolTable* symTable);

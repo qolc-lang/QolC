@@ -1696,6 +1696,7 @@ void BuildNewStatement(parse_state * current, command* commandNode, char* temp);
 void BuildDeclarationExprStatement(char* currentValue, command* commandNode, char* temp, int type, int typeOfMember);
 void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* commandNode, int operation, int typeOfMember);
 void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode);
+void BuildSimpleExpressionStatement(char* temp, char* temp2, command* commandNode, int operation, int typeOfMember);
 int CheckIfMemberOfStatement(memberFlags mFlags);
 void ClearFlags(memberFlags* mFlags);
 int CheckArrayType(parse_state* current, symbolTable* symTable);
@@ -2318,8 +2319,8 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 
   if (strcmp(current->value, "return") == 0) {
    printf("Return statement to be built.\n");
-   flags.nIsAssertMember = 1;
-   stmt* theStmt = stmt_create(STMT_ASSERT, 
+   flags.nIsReturnMember = 1;
+   stmt* theStmt = stmt_create(STMT_RETURN, 
 # 401 "./src/parser.c" 3 4
                                            ((void *)0)
 # 401 "./src/parser.c"
@@ -2751,26 +2752,50 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
     ++top;
     continue;
    }
+   else if (strcmp(theStack[top], "+") == 0) {
+    doneFlag = 1;
+    sTypeOfMember = CheckIfMemberOfStatement(flags);
+    if (sTypeOfMember != -1) {
+      printf("It is member of : %d\n", sTypeOfMember);
+    }
+    printf("Going to build a simple add expression\n");
+    strcpy(temp, current->value);
+    printf("The first parameter : %s\n", temp);
+
+    current = current->next;
+    if (strcmp(current->type, "end of command") == 0) {
+     current = current->next;
+     strcpy(temp2, current->value);
+     printf("The second parameter : %s\n", temp2);
+     BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+    }
+    else {
+     current = current->next;
+     strcpy(temp2, current->value);
+     printf("The second parameter : %s\n", temp2);
+     BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+    }
+   }
    else if (strcmp(theStack[top], "++") == 0) {
     doneFlag = 1;
     theStack[0][top] = '\0';
     expr* incrementExpr = expr_create(EXPR_INCREMENT, 
-# 764 "./src/parser.c" 3 4
+# 788 "./src/parser.c" 3 4
                                                      ((void *)0)
-# 764 "./src/parser.c"
+# 788 "./src/parser.c"
                                                          , 
-# 764 "./src/parser.c" 3 4
+# 788 "./src/parser.c" 3 4
                                                            ((void *)0)
-# 764 "./src/parser.c"
+# 788 "./src/parser.c"
                                                                , 0, '\0', current->value, sTypeOfMember);
     push_commandList(commandNode, 
-# 765 "./src/parser.c" 3 4
+# 789 "./src/parser.c" 3 4
                                  ((void *)0)
-# 765 "./src/parser.c"
+# 789 "./src/parser.c"
                                      , 
-# 765 "./src/parser.c" 3 4
+# 789 "./src/parser.c" 3 4
                                        ((void *)0)
-# 765 "./src/parser.c"
+# 789 "./src/parser.c"
                                            , incrementExpr);
     notTheEndFlag = 0;
    }
@@ -2778,22 +2803,22 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
     doneFlag = 1;
     theStack[0][top] = '\0';
     expr* decrementExpr = expr_create(EXPR_DECREMENT, 
-# 771 "./src/parser.c" 3 4
+# 795 "./src/parser.c" 3 4
                                                      ((void *)0)
-# 771 "./src/parser.c"
+# 795 "./src/parser.c"
                                                          , 
-# 771 "./src/parser.c" 3 4
+# 795 "./src/parser.c" 3 4
                                                            ((void *)0)
-# 771 "./src/parser.c"
+# 795 "./src/parser.c"
                                                                , 0, '\0', current->value, sTypeOfMember);
     push_commandList(commandNode, 
-# 772 "./src/parser.c" 3 4
+# 796 "./src/parser.c" 3 4
                                  ((void *)0)
-# 772 "./src/parser.c"
+# 796 "./src/parser.c"
                                      , 
-# 772 "./src/parser.c" 3 4
+# 796 "./src/parser.c" 3 4
                                        ((void *)0)
-# 772 "./src/parser.c"
+# 796 "./src/parser.c"
                                            , decrementExpr);
     notTheEndFlag = 0;
    }
@@ -2958,42 +2983,42 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
   if (strcmp(current->type, "keyword") == 0) {
    if (strcmp(current->value, "break") == 0) {
     stmt* break_decl_stmt = stmt_create(STMT_BREAK, 
-# 935 "./src/parser.c" 3 4
+# 959 "./src/parser.c" 3 4
                                                    ((void *)0)
-# 935 "./src/parser.c"
+# 959 "./src/parser.c"
                                                        , 
-# 935 "./src/parser.c" 3 4
+# 959 "./src/parser.c" 3 4
                                                          ((void *)0)
-# 935 "./src/parser.c"
+# 959 "./src/parser.c"
                                                              , 
-# 935 "./src/parser.c" 3 4
+# 959 "./src/parser.c" 3 4
                                                                ((void *)0)
-# 935 "./src/parser.c"
+# 959 "./src/parser.c"
                                                                    , 
-# 935 "./src/parser.c" 3 4
+# 959 "./src/parser.c" 3 4
                                                                      ((void *)0)
-# 935 "./src/parser.c"
+# 959 "./src/parser.c"
                                                                          , 
-# 935 "./src/parser.c" 3 4
+# 959 "./src/parser.c" 3 4
                                                                            ((void *)0)
-# 935 "./src/parser.c"
+# 959 "./src/parser.c"
                                                                                , 
-# 935 "./src/parser.c" 3 4
+# 959 "./src/parser.c" 3 4
                                                                                  ((void *)0)
-# 935 "./src/parser.c"
+# 959 "./src/parser.c"
                                                                                      , 
-# 935 "./src/parser.c" 3 4
+# 959 "./src/parser.c" 3 4
                                                                                        ((void *)0)
-# 935 "./src/parser.c"
+# 959 "./src/parser.c"
                                                                                            , -1);
     push_commandList(commandNode, 
-# 936 "./src/parser.c" 3 4
+# 960 "./src/parser.c" 3 4
                                  ((void *)0)
-# 936 "./src/parser.c"
+# 960 "./src/parser.c"
                                      , break_decl_stmt, 
-# 936 "./src/parser.c" 3 4
+# 960 "./src/parser.c" 3 4
                                                         ((void *)0)
-# 936 "./src/parser.c"
+# 960 "./src/parser.c"
                                                             );
     printf("**********************************************************\n");
     current = current->next;
@@ -3001,42 +3026,42 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
    }
    else if (strcmp(current->value, "continue") == 0) {
     stmt* cont_decl_stmt = stmt_create(STMT_CONTINUE, 
-# 942 "./src/parser.c" 3 4
+# 966 "./src/parser.c" 3 4
                                                      ((void *)0)
-# 942 "./src/parser.c"
+# 966 "./src/parser.c"
                                                          , 
-# 942 "./src/parser.c" 3 4
+# 966 "./src/parser.c" 3 4
                                                            ((void *)0)
-# 942 "./src/parser.c"
+# 966 "./src/parser.c"
                                                                , 
-# 942 "./src/parser.c" 3 4
+# 966 "./src/parser.c" 3 4
                                                                  ((void *)0)
-# 942 "./src/parser.c"
+# 966 "./src/parser.c"
                                                                      , 
-# 942 "./src/parser.c" 3 4
+# 966 "./src/parser.c" 3 4
                                                                        ((void *)0)
-# 942 "./src/parser.c"
+# 966 "./src/parser.c"
                                                                            , 
-# 942 "./src/parser.c" 3 4
+# 966 "./src/parser.c" 3 4
                                                                              ((void *)0)
-# 942 "./src/parser.c"
+# 966 "./src/parser.c"
                                                                                  , 
-# 942 "./src/parser.c" 3 4
+# 966 "./src/parser.c" 3 4
                                                                                    ((void *)0)
-# 942 "./src/parser.c"
+# 966 "./src/parser.c"
                                                                                        , 
-# 942 "./src/parser.c" 3 4
+# 966 "./src/parser.c" 3 4
                                                                                          ((void *)0)
-# 942 "./src/parser.c"
+# 966 "./src/parser.c"
                                                                                              , -1);
     push_commandList(commandNode, 
-# 943 "./src/parser.c" 3 4
+# 967 "./src/parser.c" 3 4
                                  ((void *)0)
-# 943 "./src/parser.c"
+# 967 "./src/parser.c"
                                      , cont_decl_stmt, 
-# 943 "./src/parser.c" 3 4
+# 967 "./src/parser.c" 3 4
                                                        ((void *)0)
-# 943 "./src/parser.c"
+# 967 "./src/parser.c"
                                                            );
     printf("**********************************************************\n");
     current = current->next;
@@ -3183,326 +3208,326 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
      current = current->next;
      if (strcmp(current->value, "int") == 0) {
       type* int_type = type_create(TYPE_INTEGER, 
-# 1088 "./src/parser.c" 3 4
+# 1112 "./src/parser.c" 3 4
                                                 ((void *)0)
-# 1088 "./src/parser.c"
+# 1112 "./src/parser.c"
                                                     , 
-# 1088 "./src/parser.c" 3 4
+# 1112 "./src/parser.c" 3 4
                                                       ((void *)0)
-# 1088 "./src/parser.c"
+# 1112 "./src/parser.c"
                                                           );
       decl* int_declaration = decl_create(temp, int_type, 
-# 1089 "./src/parser.c" 3 4
+# 1113 "./src/parser.c" 3 4
                                                          ((void *)0)
-# 1089 "./src/parser.c"
+# 1113 "./src/parser.c"
                                                              , 
-# 1089 "./src/parser.c" 3 4
+# 1113 "./src/parser.c" 3 4
                                                                ((void *)0)
-# 1089 "./src/parser.c"
+# 1113 "./src/parser.c"
                                                                    );
       stmt* int_decl_stmt = stmt_create(STMT_DECL, int_declaration, 
-# 1090 "./src/parser.c" 3 4
+# 1114 "./src/parser.c" 3 4
                                                                    ((void *)0)
-# 1090 "./src/parser.c"
+# 1114 "./src/parser.c"
                                                                        , 
-# 1090 "./src/parser.c" 3 4
+# 1114 "./src/parser.c" 3 4
                                                                          ((void *)0)
-# 1090 "./src/parser.c"
+# 1114 "./src/parser.c"
                                                                              , 
-# 1090 "./src/parser.c" 3 4
+# 1114 "./src/parser.c" 3 4
                                                                                ((void *)0)
-# 1090 "./src/parser.c"
+# 1114 "./src/parser.c"
                                                                                    , 
-# 1090 "./src/parser.c" 3 4
+# 1114 "./src/parser.c" 3 4
                                                                                      ((void *)0)
-# 1090 "./src/parser.c"
+# 1114 "./src/parser.c"
                                                                                          , 
-# 1090 "./src/parser.c" 3 4
+# 1114 "./src/parser.c" 3 4
                                                                                            ((void *)0)
-# 1090 "./src/parser.c"
+# 1114 "./src/parser.c"
                                                                                                , 
-# 1090 "./src/parser.c" 3 4
+# 1114 "./src/parser.c" 3 4
                                                                                                  ((void *)0)
-# 1090 "./src/parser.c"
+# 1114 "./src/parser.c"
                                                                                                      , sTypeOfMember);
       push_commandList(commandNode, 
-# 1091 "./src/parser.c" 3 4
+# 1115 "./src/parser.c" 3 4
                                    ((void *)0)
-# 1091 "./src/parser.c"
+# 1115 "./src/parser.c"
                                        , int_decl_stmt, 
-# 1091 "./src/parser.c" 3 4
+# 1115 "./src/parser.c" 3 4
                                                         ((void *)0)
-# 1091 "./src/parser.c"
+# 1115 "./src/parser.c"
                                                             );
      }
      else if (strcmp(current->value, "string") == 0) {
       type* string_type = type_create(TYPE_STRING, 
-# 1094 "./src/parser.c" 3 4
+# 1118 "./src/parser.c" 3 4
                                                   ((void *)0)
-# 1094 "./src/parser.c"
+# 1118 "./src/parser.c"
                                                       , 
-# 1094 "./src/parser.c" 3 4
+# 1118 "./src/parser.c" 3 4
                                                         ((void *)0)
-# 1094 "./src/parser.c"
+# 1118 "./src/parser.c"
                                                             );
       decl* string_declaration = decl_create(temp, string_type, 
-# 1095 "./src/parser.c" 3 4
+# 1119 "./src/parser.c" 3 4
                                                                ((void *)0)
-# 1095 "./src/parser.c"
+# 1119 "./src/parser.c"
                                                                    , 
-# 1095 "./src/parser.c" 3 4
+# 1119 "./src/parser.c" 3 4
                                                                      ((void *)0)
-# 1095 "./src/parser.c"
+# 1119 "./src/parser.c"
                                                                          );
       stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, 
-# 1096 "./src/parser.c" 3 4
+# 1120 "./src/parser.c" 3 4
                                                                          ((void *)0)
-# 1096 "./src/parser.c"
+# 1120 "./src/parser.c"
                                                                              , 
-# 1096 "./src/parser.c" 3 4
+# 1120 "./src/parser.c" 3 4
                                                                                ((void *)0)
-# 1096 "./src/parser.c"
+# 1120 "./src/parser.c"
                                                                                    , 
-# 1096 "./src/parser.c" 3 4
+# 1120 "./src/parser.c" 3 4
                                                                                      ((void *)0)
-# 1096 "./src/parser.c"
+# 1120 "./src/parser.c"
                                                                                          , 
-# 1096 "./src/parser.c" 3 4
+# 1120 "./src/parser.c" 3 4
                                                                                            ((void *)0)
-# 1096 "./src/parser.c"
+# 1120 "./src/parser.c"
                                                                                                , 
-# 1096 "./src/parser.c" 3 4
+# 1120 "./src/parser.c" 3 4
                                                                                                  ((void *)0)
-# 1096 "./src/parser.c"
+# 1120 "./src/parser.c"
                                                                                                      , 
-# 1096 "./src/parser.c" 3 4
+# 1120 "./src/parser.c" 3 4
                                                                                                        ((void *)0)
-# 1096 "./src/parser.c"
+# 1120 "./src/parser.c"
                                                                                                            , sTypeOfMember);
       push_commandList(commandNode, 
-# 1097 "./src/parser.c" 3 4
+# 1121 "./src/parser.c" 3 4
                                    ((void *)0)
-# 1097 "./src/parser.c"
+# 1121 "./src/parser.c"
                                        , string_decl_stmt, 
-# 1097 "./src/parser.c" 3 4
+# 1121 "./src/parser.c" 3 4
                                                            ((void *)0)
-# 1097 "./src/parser.c"
+# 1121 "./src/parser.c"
                                                                );
      }
      else if (strcmp(current->value, "float") == 0) {
       type* float_type = type_create(TYPE_FLOAT, 
-# 1100 "./src/parser.c" 3 4
+# 1124 "./src/parser.c" 3 4
                                                 ((void *)0)
-# 1100 "./src/parser.c"
+# 1124 "./src/parser.c"
                                                     , 
-# 1100 "./src/parser.c" 3 4
+# 1124 "./src/parser.c" 3 4
                                                       ((void *)0)
-# 1100 "./src/parser.c"
+# 1124 "./src/parser.c"
                                                           );
       decl* float_declaration = decl_create(temp, float_type, 
-# 1101 "./src/parser.c" 3 4
+# 1125 "./src/parser.c" 3 4
                                                              ((void *)0)
-# 1101 "./src/parser.c"
+# 1125 "./src/parser.c"
                                                                  , 
-# 1101 "./src/parser.c" 3 4
+# 1125 "./src/parser.c" 3 4
                                                                    ((void *)0)
-# 1101 "./src/parser.c"
+# 1125 "./src/parser.c"
                                                                        );
       stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, 
-# 1102 "./src/parser.c" 3 4
+# 1126 "./src/parser.c" 3 4
                                                                        ((void *)0)
-# 1102 "./src/parser.c"
+# 1126 "./src/parser.c"
                                                                            , 
-# 1102 "./src/parser.c" 3 4
+# 1126 "./src/parser.c" 3 4
                                                                              ((void *)0)
-# 1102 "./src/parser.c"
+# 1126 "./src/parser.c"
                                                                                  , 
-# 1102 "./src/parser.c" 3 4
+# 1126 "./src/parser.c" 3 4
                                                                                    ((void *)0)
-# 1102 "./src/parser.c"
+# 1126 "./src/parser.c"
                                                                                        , 
-# 1102 "./src/parser.c" 3 4
+# 1126 "./src/parser.c" 3 4
                                                                                          ((void *)0)
-# 1102 "./src/parser.c"
+# 1126 "./src/parser.c"
                                                                                              , 
-# 1102 "./src/parser.c" 3 4
+# 1126 "./src/parser.c" 3 4
                                                                                                ((void *)0)
-# 1102 "./src/parser.c"
+# 1126 "./src/parser.c"
                                                                                                    , 
-# 1102 "./src/parser.c" 3 4
+# 1126 "./src/parser.c" 3 4
                                                                                                      ((void *)0)
-# 1102 "./src/parser.c"
+# 1126 "./src/parser.c"
                                                                                                          , sTypeOfMember);
       push_commandList(commandNode, 
-# 1103 "./src/parser.c" 3 4
+# 1127 "./src/parser.c" 3 4
                                    ((void *)0)
-# 1103 "./src/parser.c"
+# 1127 "./src/parser.c"
                                        , float_decl_stmt, 
-# 1103 "./src/parser.c" 3 4
+# 1127 "./src/parser.c" 3 4
                                                           ((void *)0)
-# 1103 "./src/parser.c"
+# 1127 "./src/parser.c"
                                                               );
      }
      else if (strcmp(current->value, "char") == 0) {
       type* char_type = type_create(TYPE_CHARACTER, 
-# 1106 "./src/parser.c" 3 4
+# 1130 "./src/parser.c" 3 4
                                                    ((void *)0)
-# 1106 "./src/parser.c"
+# 1130 "./src/parser.c"
                                                        , 
-# 1106 "./src/parser.c" 3 4
+# 1130 "./src/parser.c" 3 4
                                                          ((void *)0)
-# 1106 "./src/parser.c"
+# 1130 "./src/parser.c"
                                                              );
       decl* char_declaration = decl_create(temp, char_type, 
-# 1107 "./src/parser.c" 3 4
+# 1131 "./src/parser.c" 3 4
                                                            ((void *)0)
-# 1107 "./src/parser.c"
+# 1131 "./src/parser.c"
                                                                , 
-# 1107 "./src/parser.c" 3 4
+# 1131 "./src/parser.c" 3 4
                                                                  ((void *)0)
-# 1107 "./src/parser.c"
+# 1131 "./src/parser.c"
                                                                      );
       stmt* char_decl_stmt = stmt_create(STMT_DECL, char_declaration, 
-# 1108 "./src/parser.c" 3 4
+# 1132 "./src/parser.c" 3 4
                                                                      ((void *)0)
-# 1108 "./src/parser.c"
+# 1132 "./src/parser.c"
                                                                          , 
-# 1108 "./src/parser.c" 3 4
+# 1132 "./src/parser.c" 3 4
                                                                            ((void *)0)
-# 1108 "./src/parser.c"
+# 1132 "./src/parser.c"
                                                                                , 
-# 1108 "./src/parser.c" 3 4
+# 1132 "./src/parser.c" 3 4
                                                                                  ((void *)0)
-# 1108 "./src/parser.c"
+# 1132 "./src/parser.c"
                                                                                      , 
-# 1108 "./src/parser.c" 3 4
+# 1132 "./src/parser.c" 3 4
                                                                                        ((void *)0)
-# 1108 "./src/parser.c"
+# 1132 "./src/parser.c"
                                                                                            , 
-# 1108 "./src/parser.c" 3 4
+# 1132 "./src/parser.c" 3 4
                                                                                              ((void *)0)
-# 1108 "./src/parser.c"
+# 1132 "./src/parser.c"
                                                                                                  , 
-# 1108 "./src/parser.c" 3 4
+# 1132 "./src/parser.c" 3 4
                                                                                                    ((void *)0)
-# 1108 "./src/parser.c"
+# 1132 "./src/parser.c"
                                                                                                        , sTypeOfMember);
       push_commandList(commandNode, 
-# 1109 "./src/parser.c" 3 4
+# 1133 "./src/parser.c" 3 4
                                    ((void *)0)
-# 1109 "./src/parser.c"
+# 1133 "./src/parser.c"
                                        , char_decl_stmt, 
-# 1109 "./src/parser.c" 3 4
+# 1133 "./src/parser.c" 3 4
                                                          ((void *)0)
-# 1109 "./src/parser.c"
+# 1133 "./src/parser.c"
                                                              );
      }
      else if (strcmp(current->value, "bool") == 0) {
       type* bool_type = type_create(TYPE_BOOLEAN, 
-# 1112 "./src/parser.c" 3 4
+# 1136 "./src/parser.c" 3 4
                                                  ((void *)0)
-# 1112 "./src/parser.c"
+# 1136 "./src/parser.c"
                                                      , 
-# 1112 "./src/parser.c" 3 4
+# 1136 "./src/parser.c" 3 4
                                                        ((void *)0)
-# 1112 "./src/parser.c"
+# 1136 "./src/parser.c"
                                                            );
       decl* bool_declaration = decl_create(temp, bool_type, 
-# 1113 "./src/parser.c" 3 4
+# 1137 "./src/parser.c" 3 4
                                                            ((void *)0)
-# 1113 "./src/parser.c"
+# 1137 "./src/parser.c"
                                                                , 
-# 1113 "./src/parser.c" 3 4
+# 1137 "./src/parser.c" 3 4
                                                                  ((void *)0)
-# 1113 "./src/parser.c"
+# 1137 "./src/parser.c"
                                                                      );
       stmt* bool_decl_stmt = stmt_create(STMT_DECL, bool_declaration, 
-# 1114 "./src/parser.c" 3 4
+# 1138 "./src/parser.c" 3 4
                                                                      ((void *)0)
-# 1114 "./src/parser.c"
+# 1138 "./src/parser.c"
                                                                          , 
-# 1114 "./src/parser.c" 3 4
+# 1138 "./src/parser.c" 3 4
                                                                            ((void *)0)
-# 1114 "./src/parser.c"
+# 1138 "./src/parser.c"
                                                                                , 
-# 1114 "./src/parser.c" 3 4
+# 1138 "./src/parser.c" 3 4
                                                                                  ((void *)0)
-# 1114 "./src/parser.c"
+# 1138 "./src/parser.c"
                                                                                      , 
-# 1114 "./src/parser.c" 3 4
+# 1138 "./src/parser.c" 3 4
                                                                                        ((void *)0)
-# 1114 "./src/parser.c"
+# 1138 "./src/parser.c"
                                                                                            , 
-# 1114 "./src/parser.c" 3 4
+# 1138 "./src/parser.c" 3 4
                                                                                              ((void *)0)
-# 1114 "./src/parser.c"
+# 1138 "./src/parser.c"
                                                                                                  , 
-# 1114 "./src/parser.c" 3 4
+# 1138 "./src/parser.c" 3 4
                                                                                                    ((void *)0)
-# 1114 "./src/parser.c"
+# 1138 "./src/parser.c"
                                                                                                        , sTypeOfMember);
       push_commandList(commandNode, 
-# 1115 "./src/parser.c" 3 4
+# 1139 "./src/parser.c" 3 4
                                    ((void *)0)
-# 1115 "./src/parser.c"
+# 1139 "./src/parser.c"
                                        , bool_decl_stmt, 
-# 1115 "./src/parser.c" 3 4
+# 1139 "./src/parser.c" 3 4
                                                          ((void *)0)
-# 1115 "./src/parser.c"
+# 1139 "./src/parser.c"
                                                              );
      }
      else if (strcmp(current->value, "void") == 0) {
       type* void_type = type_create(TYPE_VOID, 
-# 1118 "./src/parser.c" 3 4
+# 1142 "./src/parser.c" 3 4
                                               ((void *)0)
-# 1118 "./src/parser.c"
+# 1142 "./src/parser.c"
                                                   , 
-# 1118 "./src/parser.c" 3 4
+# 1142 "./src/parser.c" 3 4
                                                     ((void *)0)
-# 1118 "./src/parser.c"
+# 1142 "./src/parser.c"
                                                         );
       decl* void_declaration = decl_create(temp, void_type, 
-# 1119 "./src/parser.c" 3 4
+# 1143 "./src/parser.c" 3 4
                                                            ((void *)0)
-# 1119 "./src/parser.c"
+# 1143 "./src/parser.c"
                                                                , 
-# 1119 "./src/parser.c" 3 4
+# 1143 "./src/parser.c" 3 4
                                                                  ((void *)0)
-# 1119 "./src/parser.c"
+# 1143 "./src/parser.c"
                                                                      );
       stmt* void_decl_stmt = stmt_create(STMT_DECL, void_declaration, 
-# 1120 "./src/parser.c" 3 4
+# 1144 "./src/parser.c" 3 4
                                                                      ((void *)0)
-# 1120 "./src/parser.c"
+# 1144 "./src/parser.c"
                                                                          , 
-# 1120 "./src/parser.c" 3 4
+# 1144 "./src/parser.c" 3 4
                                                                            ((void *)0)
-# 1120 "./src/parser.c"
+# 1144 "./src/parser.c"
                                                                                , 
-# 1120 "./src/parser.c" 3 4
+# 1144 "./src/parser.c" 3 4
                                                                                  ((void *)0)
-# 1120 "./src/parser.c"
+# 1144 "./src/parser.c"
                                                                                      , 
-# 1120 "./src/parser.c" 3 4
+# 1144 "./src/parser.c" 3 4
                                                                                        ((void *)0)
-# 1120 "./src/parser.c"
+# 1144 "./src/parser.c"
                                                                                            , 
-# 1120 "./src/parser.c" 3 4
+# 1144 "./src/parser.c" 3 4
                                                                                              ((void *)0)
-# 1120 "./src/parser.c"
+# 1144 "./src/parser.c"
                                                                                                  , 
-# 1120 "./src/parser.c" 3 4
+# 1144 "./src/parser.c" 3 4
                                                                                                    ((void *)0)
-# 1120 "./src/parser.c"
+# 1144 "./src/parser.c"
                                                                                                        , sTypeOfMember);
       push_commandList(commandNode, 
-# 1121 "./src/parser.c" 3 4
+# 1145 "./src/parser.c" 3 4
                                    ((void *)0)
-# 1121 "./src/parser.c"
+# 1145 "./src/parser.c"
                                        , void_decl_stmt, 
-# 1121 "./src/parser.c" 3 4
+# 1145 "./src/parser.c" 3 4
                                                          ((void *)0)
-# 1121 "./src/parser.c"
+# 1145 "./src/parser.c"
                                                              );
      }
      else if ((strcmp(current->value, "false") == 0) || (strcmp(current->value, "true") == 0)) {
@@ -3510,47 +3535,47 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
       theStack[0][top] = '\0';
       expr* stringExpr = expr_create_string(current->value);
       decl* string_declaration = decl_create(temp, 
-# 1127 "./src/parser.c" 3 4
+# 1151 "./src/parser.c" 3 4
                                                   ((void *)0)
-# 1127 "./src/parser.c"
+# 1151 "./src/parser.c"
                                                       , stringExpr, 
-# 1127 "./src/parser.c" 3 4
+# 1151 "./src/parser.c" 3 4
                                                                     ((void *)0)
-# 1127 "./src/parser.c"
+# 1151 "./src/parser.c"
                                                                         );
       stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, 
-# 1128 "./src/parser.c" 3 4
+# 1152 "./src/parser.c" 3 4
                                                                          ((void *)0)
-# 1128 "./src/parser.c"
+# 1152 "./src/parser.c"
                                                                              , 
-# 1128 "./src/parser.c" 3 4
+# 1152 "./src/parser.c" 3 4
                                                                                ((void *)0)
-# 1128 "./src/parser.c"
+# 1152 "./src/parser.c"
                                                                                    , 
-# 1128 "./src/parser.c" 3 4
+# 1152 "./src/parser.c" 3 4
                                                                                      ((void *)0)
-# 1128 "./src/parser.c"
+# 1152 "./src/parser.c"
                                                                                          , 
-# 1128 "./src/parser.c" 3 4
+# 1152 "./src/parser.c" 3 4
                                                                                            ((void *)0)
-# 1128 "./src/parser.c"
+# 1152 "./src/parser.c"
                                                                                                , 
-# 1128 "./src/parser.c" 3 4
+# 1152 "./src/parser.c" 3 4
                                                                                                  ((void *)0)
-# 1128 "./src/parser.c"
+# 1152 "./src/parser.c"
                                                                                                      , 
-# 1128 "./src/parser.c" 3 4
+# 1152 "./src/parser.c" 3 4
                                                                                                        ((void *)0)
-# 1128 "./src/parser.c"
+# 1152 "./src/parser.c"
                                                                                                            , sTypeOfMember);
       push_commandList(commandNode, 
-# 1129 "./src/parser.c" 3 4
+# 1153 "./src/parser.c" 3 4
                                    ((void *)0)
-# 1129 "./src/parser.c"
+# 1153 "./src/parser.c"
                                        , string_decl_stmt, 
-# 1129 "./src/parser.c" 3 4
+# 1153 "./src/parser.c" 3 4
                                                            ((void *)0)
-# 1129 "./src/parser.c"
+# 1153 "./src/parser.c"
                                                                );
      }
      else;
@@ -3562,47 +3587,47 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
      theStack[0][top] = '\0';
      expr* stringExpr = expr_create_string(temp);
      decl* string_declaration = decl_create(temp2, 
-# 1139 "./src/parser.c" 3 4
+# 1163 "./src/parser.c" 3 4
                                                   ((void *)0)
-# 1139 "./src/parser.c"
+# 1163 "./src/parser.c"
                                                       , stringExpr, 
-# 1139 "./src/parser.c" 3 4
+# 1163 "./src/parser.c" 3 4
                                                                     ((void *)0)
-# 1139 "./src/parser.c"
+# 1163 "./src/parser.c"
                                                                         );
      stmt* string_decl_stmt = stmt_create(STMT_DECL, string_declaration, 
-# 1140 "./src/parser.c" 3 4
+# 1164 "./src/parser.c" 3 4
                                                                         ((void *)0)
-# 1140 "./src/parser.c"
+# 1164 "./src/parser.c"
                                                                             , 
-# 1140 "./src/parser.c" 3 4
+# 1164 "./src/parser.c" 3 4
                                                                               ((void *)0)
-# 1140 "./src/parser.c"
+# 1164 "./src/parser.c"
                                                                                   , 
-# 1140 "./src/parser.c" 3 4
+# 1164 "./src/parser.c" 3 4
                                                                                     ((void *)0)
-# 1140 "./src/parser.c"
+# 1164 "./src/parser.c"
                                                                                         , 
-# 1140 "./src/parser.c" 3 4
+# 1164 "./src/parser.c" 3 4
                                                                                           ((void *)0)
-# 1140 "./src/parser.c"
+# 1164 "./src/parser.c"
                                                                                               , 
-# 1140 "./src/parser.c" 3 4
+# 1164 "./src/parser.c" 3 4
                                                                                                 ((void *)0)
-# 1140 "./src/parser.c"
+# 1164 "./src/parser.c"
                                                                                                     , 
-# 1140 "./src/parser.c" 3 4
+# 1164 "./src/parser.c" 3 4
                                                                                                       ((void *)0)
-# 1140 "./src/parser.c"
+# 1164 "./src/parser.c"
                                                                                                           , sTypeOfMember);
      push_commandList(commandNode, 
-# 1141 "./src/parser.c" 3 4
+# 1165 "./src/parser.c" 3 4
                                   ((void *)0)
-# 1141 "./src/parser.c"
+# 1165 "./src/parser.c"
                                       , string_decl_stmt, 
-# 1141 "./src/parser.c" 3 4
+# 1165 "./src/parser.c" 3 4
                                                           ((void *)0)
-# 1141 "./src/parser.c"
+# 1165 "./src/parser.c"
                                                               );
     }
    }

@@ -1957,6 +1957,7 @@ void print_commandList(command* commandNode) {
      else if (current->aStmt->memberOf == 2) printf("		member of union\n");
      else if (current->aStmt->memberOf == 3) printf("		member of enum\n");
      else if (current->aStmt->memberOf == 4) printf("		member of assert\n");
+     else if (current->aStmt->memberOf == 6) printf("		member of return\n");
      else;
     }
    }
@@ -2034,12 +2035,32 @@ void print_commandList(command* commandNode) {
    }
   }
   else if (current->anExpr != 
-# 286 "./src/command.c" 3 4
+# 287 "./src/command.c" 3 4
                              ((void *)0)
-# 286 "./src/command.c"
+# 287 "./src/command.c"
                                  ) {
    int val = (int)current->anExpr->kind;
-   if (val == 4) {
+   if (val == 0) {
+    printf("EXPR_ADD\n");
+    printf("	left : %s\n", current->anExpr->left->string_literal);
+    printf("	right : %s\n", current->anExpr->right->string_literal);
+   }
+   else if (val == 1) {
+    printf("EXPR_SUB\n");
+    printf("	left : %s\n", current->anExpr->left->string_literal);
+    printf("	right : %s\n", current->anExpr->right->string_literal);
+   }
+   else if (val == 2) {
+    printf("EXPR_MUL\n");
+    printf("	left : %s\n", current->anExpr->left->string_literal);
+    printf("	right : %s\n", current->anExpr->right->string_literal);
+   }
+   else if (val == 3) {
+    printf("EXPR_DIV\n");
+    printf("	left : %s\n", current->anExpr->left->string_literal);
+    printf("	right : %s\n", current->anExpr->right->string_literal);
+   }
+   else if (val == 4) {
     printf("EXPR_ADD_ASSIGNMENT\n");
     printf("	left : %s\n", current->anExpr->left->string_literal);
     printf("	right : %s\n", current->anExpr->right->string_literal);
@@ -2101,6 +2122,7 @@ void print_commandList(command* commandNode) {
     else if (current->anExpr->memberOf == 2) printf("		member of union\n");
     else if (current->anExpr->memberOf == 3) printf("		member of enum\n");
     else if (current->anExpr->memberOf == 4) printf("		member of assert\n");
+    else if (current->anExpr->memberOf == 6) printf("		member of return\n");
     else;
    }
   }

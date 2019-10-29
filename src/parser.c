@@ -397,8 +397,8 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 
 		if (strcmp(current->value, "return") == 0) {
 			printf("Return statement to be built.\n");
-			flags.nIsAssertMember = 1;
-			stmt* theStmt = stmt_create(STMT_ASSERT, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
+			flags.nIsReturnMember = 1;
+			stmt* theStmt = stmt_create(STMT_RETURN, NULL, NULL, NULL, NULL, NULL, NULL, NULL, -1);
 			push_commandList(commandNode, NULL, theStmt, NULL);
 			printf("**********************************************************\n");
 			current = current->next;
@@ -757,6 +757,30 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 				current = current->next;
 				++top;
 				continue;
+			}
+			else if (strcmp(theStack[top], "+") == 0) {
+				doneFlag = 1;
+				sTypeOfMember = CheckIfMemberOfStatement(flags);
+				if (sTypeOfMember != -1) {
+						printf("It is member of : %d\n", sTypeOfMember);
+				}
+				printf("Going to build a simple add expression\n");
+				strcpy(temp, current->value);
+				printf("The first parameter : %s\n", temp);
+
+				current = current->next;
+				if (strcmp(current->type, "end of command") == 0) {
+					current = current->next;
+					strcpy(temp2, current->value);
+					printf("The second parameter : %s\n", temp2);
+					BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+				}
+				else {
+					current = current->next;
+					strcpy(temp2, current->value);
+					printf("The second parameter : %s\n", temp2);
+					BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+				}
 			}
 			else if (strcmp(theStack[top], "++") == 0) {
 				doneFlag = 1;
