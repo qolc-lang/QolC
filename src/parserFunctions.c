@@ -278,7 +278,7 @@ void BuildSimpleExpressionStatement(char* temp, char* temp2, command* commandNod
 			theExpr = expr_create(EXPR_ADD, leftExpr, rightExpr, 0, '\0', NULL, typeOfMember);
 			break;
 		case 2 :
-			printf("Going to build sub assignment expression statement.\n");
+			printf("Going to build sub expression statement.\n");
 			theExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL, typeOfMember);
 			break;
 		default : 

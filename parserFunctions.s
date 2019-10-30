@@ -1266,6 +1266,9 @@ BuildAssignAndCompareExprStatement:
 	.align 8
 .LC42:
 	.ascii "Going to build add expression statement.\0"
+	.align 8
+.LC43:
+	.ascii "Going to build sub expression statement.\0"
 	.text
 	.globl	BuildSimpleExpressionStatement
 	.def	BuildSimpleExpressionStatement;	.scl	2;	.type	32;	.endef
@@ -1326,7 +1329,7 @@ BuildSimpleExpressionStatement:
 	jmp	.L77
 .L76:
 	.loc 1 281 0
-	leaq	.LC34(%rip), %rcx
+	leaq	.LC43(%rip), %rcx
 	call	puts
 	.loc 1 282 0
 	movq	-8(%rbp), %rcx
@@ -1364,7 +1367,7 @@ BuildSimpleExpressionStatement:
 	.seh_endproc
 	.section .rdata,"dr"
 	.align 8
-.LC43:
+.LC44:
 	.ascii "Going to build add declaration statement.\0"
 	.text
 	.globl	BuildDeclarationStatement
@@ -1388,7 +1391,7 @@ BuildDeclarationStatement:
 	movq	%rdx, 24(%rbp)
 	movq	%r8, 32(%rbp)
 	.loc 1 293 0
-	leaq	.LC43(%rip), %rcx
+	leaq	.LC44(%rip), %rcx
 	call	puts
 	.loc 1 294 0
 	movq	16(%rbp), %rcx
@@ -1435,7 +1438,7 @@ BuildDeclarationStatement:
 .LFE16:
 	.seh_endproc
 	.section .rdata,"dr"
-.LC44:
+.LC45:
 	.ascii "Going to build statement new.\0"
 	.text
 	.globl	BuildNewStatement
@@ -1459,7 +1462,7 @@ BuildNewStatement:
 	movq	%rdx, 24(%rbp)
 	movq	%r8, 32(%rbp)
 	.loc 1 302 0
-	leaq	.LC44(%rip), %rcx
+	leaq	.LC45(%rip), %rcx
 	call	puts
 	.loc 1 303 0
 	movq	16(%rbp), %rax
@@ -1664,34 +1667,34 @@ ClearFlags:
 .LFE19:
 	.seh_endproc
 	.section .rdata,"dr"
-.LC45:
-	.ascii "pointer symbol\0"
 .LC46:
-	.ascii "Pointer type array.\0"
+	.ascii "pointer symbol\0"
 .LC47:
-	.ascii "The array type : %s\12\0"
+	.ascii "Pointer type array.\0"
 .LC48:
-	.ascii "end of command\0"
+	.ascii "The array type : %s\12\0"
 .LC49:
-	.ascii "struct\0"
+	.ascii "end of command\0"
 .LC50:
-	.ascii "union\0"
+	.ascii "struct\0"
 .LC51:
+	.ascii "union\0"
+.LC52:
 	.ascii "enum\0"
 	.align 8
-.LC52:
-	.ascii "The true array type : %d : %s\12\0"
 .LC53:
-	.ascii "int\0"
+	.ascii "The true array type : %d : %s\12\0"
 .LC54:
-	.ascii "string\0"
+	.ascii "int\0"
 .LC55:
-	.ascii "float\0"
+	.ascii "string\0"
 .LC56:
-	.ascii "void\0"
+	.ascii "float\0"
 .LC57:
-	.ascii "bool\0"
+	.ascii "void\0"
 .LC58:
+	.ascii "bool\0"
+.LC59:
 	.ascii "char\0"
 	.text
 	.globl	CheckArrayType
@@ -1725,13 +1728,13 @@ CheckArrayType:
 	.loc 1 338 0
 	movq	-72(%rbp), %rax
 	addq	$4, %rax
-	leaq	.LC45(%rip), %rdx
+	leaq	.LC46(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L96
 	.loc 1 340 0
-	leaq	.LC46(%rip), %rcx
+	leaq	.LC47(%rip), %rcx
 	call	puts
 	.loc 1 341 0
 	movl	$1, -56(%rbp)
@@ -1744,12 +1747,12 @@ CheckArrayType:
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
 	movq	%rax, %rdx
-	leaq	.LC47(%rip), %rcx
+	leaq	.LC48(%rip), %rcx
 	call	printf
 	.loc 1 346 0
 	movq	-72(%rbp), %rax
 	addq	$4, %rax
-	leaq	.LC48(%rip), %rdx
+	leaq	.LC49(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -1778,7 +1781,7 @@ CheckArrayType:
 	call	strcpy
 	.loc 1 352 0
 	leaq	-48(%rbp), %rax
-	leaq	.LC49(%rip), %rdx
+	leaq	.LC50(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -1792,7 +1795,7 @@ CheckArrayType:
 .L99:
 	.loc 1 353 0 is_stmt 1
 	leaq	-48(%rbp), %rax
-	leaq	.LC49(%rip), %rdx
+	leaq	.LC50(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -1806,7 +1809,7 @@ CheckArrayType:
 .L101:
 	.loc 1 354 0 is_stmt 1
 	leaq	-48(%rbp), %rax
-	leaq	.LC50(%rip), %rdx
+	leaq	.LC51(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -1820,7 +1823,7 @@ CheckArrayType:
 .L102:
 	.loc 1 355 0 is_stmt 1
 	leaq	-48(%rbp), %rax
-	leaq	.LC50(%rip), %rdx
+	leaq	.LC51(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -1834,7 +1837,7 @@ CheckArrayType:
 .L103:
 	.loc 1 356 0 is_stmt 1
 	leaq	-48(%rbp), %rax
-	leaq	.LC51(%rip), %rdx
+	leaq	.LC52(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -1848,7 +1851,7 @@ CheckArrayType:
 .L104:
 	.loc 1 357 0 is_stmt 1
 	leaq	-48(%rbp), %rax
-	leaq	.LC51(%rip), %rdx
+	leaq	.LC52(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -1864,7 +1867,7 @@ CheckArrayType:
 	movl	-52(%rbp), %eax
 	movq	%rdx, %r8
 	movl	%eax, %edx
-	leaq	.LC52(%rip), %rcx
+	leaq	.LC53(%rip), %rcx
 	call	printf
 	.loc 1 361 0
 	movl	-52(%rbp), %eax
@@ -1898,7 +1901,7 @@ CheckArrayType:
 	call	strcpy
 	.loc 1 369 0
 	leaq	-48(%rbp), %rax
-	leaq	.LC49(%rip), %rdx
+	leaq	.LC50(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -1912,7 +1915,7 @@ CheckArrayType:
 .L107:
 	.loc 1 370 0 is_stmt 1
 	leaq	-48(%rbp), %rax
-	leaq	.LC49(%rip), %rdx
+	leaq	.LC50(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -1926,7 +1929,7 @@ CheckArrayType:
 .L109:
 	.loc 1 371 0 is_stmt 1
 	leaq	-48(%rbp), %rax
-	leaq	.LC50(%rip), %rdx
+	leaq	.LC51(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -1940,7 +1943,7 @@ CheckArrayType:
 .L110:
 	.loc 1 372 0 is_stmt 1
 	leaq	-48(%rbp), %rax
-	leaq	.LC50(%rip), %rdx
+	leaq	.LC51(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -1954,7 +1957,7 @@ CheckArrayType:
 .L111:
 	.loc 1 373 0 is_stmt 1
 	leaq	-48(%rbp), %rax
-	leaq	.LC51(%rip), %rdx
+	leaq	.LC52(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -1968,7 +1971,7 @@ CheckArrayType:
 .L112:
 	.loc 1 374 0 is_stmt 1
 	leaq	-48(%rbp), %rax
-	leaq	.LC51(%rip), %rdx
+	leaq	.LC52(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -1984,7 +1987,7 @@ CheckArrayType:
 	movl	-52(%rbp), %eax
 	movq	%rdx, %r8
 	movl	%eax, %edx
-	leaq	.LC52(%rip), %rcx
+	leaq	.LC53(%rip), %rcx
 	call	printf
 	.loc 1 378 0
 	movl	-52(%rbp), %eax
@@ -1993,7 +1996,7 @@ CheckArrayType:
 	.loc 1 381 0
 	movq	-72(%rbp), %rax
 	addq	$4, %rax
-	leaq	.LC45(%rip), %rdx
+	leaq	.LC46(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2024,7 +2027,7 @@ CheckArrayType:
 	call	strcpy
 	.loc 1 387 0
 	leaq	-48(%rbp), %rax
-	leaq	.LC49(%rip), %rdx
+	leaq	.LC50(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2038,7 +2041,7 @@ CheckArrayType:
 .L113:
 	.loc 1 388 0 is_stmt 1
 	leaq	-48(%rbp), %rax
-	leaq	.LC50(%rip), %rdx
+	leaq	.LC51(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2052,7 +2055,7 @@ CheckArrayType:
 .L115:
 	.loc 1 389 0 is_stmt 1
 	leaq	-48(%rbp), %rax
-	leaq	.LC51(%rip), %rdx
+	leaq	.LC52(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2068,7 +2071,7 @@ CheckArrayType:
 	movl	-52(%rbp), %eax
 	movq	%rdx, %r8
 	movl	%eax, %edx
-	leaq	.LC52(%rip), %rcx
+	leaq	.LC53(%rip), %rcx
 	call	printf
 	.loc 1 391 0
 	movl	-52(%rbp), %eax
@@ -2077,7 +2080,7 @@ CheckArrayType:
 	.loc 1 395 0
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC53(%rip), %rdx
+	leaq	.LC54(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2092,7 +2095,7 @@ CheckArrayType:
 	.loc 1 396 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC53(%rip), %rdx
+	leaq	.LC54(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2107,7 +2110,7 @@ CheckArrayType:
 	.loc 1 397 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC54(%rip), %rdx
+	leaq	.LC55(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2122,7 +2125,7 @@ CheckArrayType:
 	.loc 1 398 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC54(%rip), %rdx
+	leaq	.LC55(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2137,7 +2140,7 @@ CheckArrayType:
 	.loc 1 399 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC55(%rip), %rdx
+	leaq	.LC56(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2152,7 +2155,7 @@ CheckArrayType:
 	.loc 1 400 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC55(%rip), %rdx
+	leaq	.LC56(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2167,7 +2170,7 @@ CheckArrayType:
 	.loc 1 401 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC56(%rip), %rdx
+	leaq	.LC57(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2182,7 +2185,7 @@ CheckArrayType:
 	.loc 1 402 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC56(%rip), %rdx
+	leaq	.LC57(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2196,7 +2199,7 @@ CheckArrayType:
 	.loc 1 403 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC57(%rip), %rdx
+	leaq	.LC58(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2208,7 +2211,7 @@ CheckArrayType:
 	.loc 1 404 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC58(%rip), %rdx
+	leaq	.LC59(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
@@ -2223,7 +2226,7 @@ CheckArrayType:
 	.loc 1 405 0 is_stmt 1
 	movq	-72(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC58(%rip), %rdx
+	leaq	.LC59(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax

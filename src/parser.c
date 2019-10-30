@@ -761,25 +761,33 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			else if (strcmp(theStack[top], "+") == 0) {
 				doneFlag = 1;
 				sTypeOfMember = CheckIfMemberOfStatement(flags);
-				if (sTypeOfMember != -1) {
-						printf("It is member of : %d\n", sTypeOfMember);
-				}
-				printf("Going to build a simple add expression\n");
 				strcpy(temp, current->value);
-				printf("The first parameter : %s\n", temp);
-
 				current = current->next;
 				if (strcmp(current->type, "end of command") == 0) {
 					current = current->next;
 					strcpy(temp2, current->value);
-					printf("The second parameter : %s\n", temp2);
 					BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
 				}
 				else {
 					current = current->next;
 					strcpy(temp2, current->value);
-					printf("The second parameter : %s\n", temp2);
 					BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+				}
+			}
+			else if (strcmp(theStack[top], "-") == 0) {
+				doneFlag = 1;
+				sTypeOfMember = CheckIfMemberOfStatement(flags);
+				strcpy(temp, current->value);
+				current = current->next;
+				if (strcmp(current->type, "end of command") == 0) {
+					current = current->next;
+					strcpy(temp2, current->value);
+					BuildSimpleExpressionStatement(temp, temp2, commandNode, 2, sTypeOfMember);
+				}
+				else {
+					current = current->next;
+					strcpy(temp2, current->value);
+					BuildSimpleExpressionStatement(temp, temp2, commandNode, 2, sTypeOfMember);
 				}
 			}
 			else if (strcmp(theStack[top], "++") == 0) {
@@ -901,6 +909,18 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 				notTheEndFlag = 0;
 			}
 			else {
+
+				if (strcmp(temp2, "+") == 0) {
+					doneFlag = 1;
+					sTypeOfMember = CheckIfMemberOfStatement(flags);
+					BuildSimpleExpressionStatement(temp, current->value, commandNode, 1, sTypeOfMember);
+				}
+				else if (strcmp(temp2, "-") == 0) {
+					doneFlag = 1;
+					sTypeOfMember = CheckIfMemberOfStatement(flags);
+					BuildSimpleExpressionStatement(temp, current->value, commandNode, 2, sTypeOfMember);
+				}
+
 				if ((empty(&top) == 0) && (doneFlag == 0)) {
 					printf("The stack at identifier type is not empty\n");
 					printf("Going to insert the value : %s\n", current->value);
@@ -912,6 +932,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 					sTypeOfMember = CheckIfMemberOfStatement(flags);
 					if (sTypeOfMember != -1) {
 						printf("It is member of : %d\n", sTypeOfMember);
+						if (sTypeOfMember == 6) strcpy(temp, current->value);
 					}
 					printf("Going to insert the value : %s\n", current->value);
 					++top;
@@ -1066,8 +1087,14 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 
 		/* Check for end of command type */
 		if (strcmp(current->type, "end of command") == 0) {
+
 			if (top != 0) {
 
+				if (flags.nIsReturnMember == 1) {
+					pop(&top);
+					strcpy(temp2, theStack[top]);
+				}
+			
 				if (notTheEndFlag == 1)
 				{
 					printf("**********************************************************\n");
