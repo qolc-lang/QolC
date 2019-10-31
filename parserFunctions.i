@@ -2503,18 +2503,34 @@ void BuildSimpleExpressionStatement(char* temp, char* temp2, command* commandNod
 # 282 "./src/parserFunctions.c"
                                                                     , typeOfMember);
    break;
+  case 3 :
+   printf("Going to build mul expression statement.\n");
+   theExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', 
+# 286 "./src/parserFunctions.c" 3 4
+                                                                ((void *)0)
+# 286 "./src/parserFunctions.c"
+                                                                    , typeOfMember);
+   break;
+  case 4 :
+   printf("Going to build div expression statement.\n");
+   theExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', 
+# 290 "./src/parserFunctions.c" 3 4
+                                                                ((void *)0)
+# 290 "./src/parserFunctions.c"
+                                                                    , typeOfMember);
+   break;
   default :
    break;
  }
 
  push_commandList(commandNode, 
-# 288 "./src/parserFunctions.c" 3 4
+# 296 "./src/parserFunctions.c" 3 4
                               ((void *)0)
-# 288 "./src/parserFunctions.c"
+# 296 "./src/parserFunctions.c"
                                   , 
-# 288 "./src/parserFunctions.c" 3 4
+# 296 "./src/parserFunctions.c" 3 4
                                     ((void *)0)
-# 288 "./src/parserFunctions.c"
+# 296 "./src/parserFunctions.c"
                                         , theExpr);
 }
 
@@ -2523,47 +2539,47 @@ void BuildDeclarationStatement(char* temp, char* temp2, command* commandNode) {
  printf("Going to build add declaration statement.\n");
  expr* theExpr = expr_create_string(temp);
  decl* theDeclaration = decl_create(temp2, 
-# 295 "./src/parserFunctions.c" 3 4
+# 303 "./src/parserFunctions.c" 3 4
                                           ((void *)0)
-# 295 "./src/parserFunctions.c"
+# 303 "./src/parserFunctions.c"
                                               , theExpr, 
-# 295 "./src/parserFunctions.c" 3 4
+# 303 "./src/parserFunctions.c" 3 4
                                                          ((void *)0)
-# 295 "./src/parserFunctions.c"
+# 303 "./src/parserFunctions.c"
                                                              );
  stmt* theStmt = stmt_create(STMT_DECL, theDeclaration, 
-# 296 "./src/parserFunctions.c" 3 4
+# 304 "./src/parserFunctions.c" 3 4
                                                        ((void *)0)
-# 296 "./src/parserFunctions.c"
+# 304 "./src/parserFunctions.c"
                                                            , 
-# 296 "./src/parserFunctions.c" 3 4
+# 304 "./src/parserFunctions.c" 3 4
                                                              ((void *)0)
-# 296 "./src/parserFunctions.c"
+# 304 "./src/parserFunctions.c"
                                                                  , 
-# 296 "./src/parserFunctions.c" 3 4
+# 304 "./src/parserFunctions.c" 3 4
                                                                    ((void *)0)
-# 296 "./src/parserFunctions.c"
+# 304 "./src/parserFunctions.c"
                                                                        , 
-# 296 "./src/parserFunctions.c" 3 4
+# 304 "./src/parserFunctions.c" 3 4
                                                                          ((void *)0)
-# 296 "./src/parserFunctions.c"
+# 304 "./src/parserFunctions.c"
                                                                              , 
-# 296 "./src/parserFunctions.c" 3 4
+# 304 "./src/parserFunctions.c" 3 4
                                                                                ((void *)0)
-# 296 "./src/parserFunctions.c"
+# 304 "./src/parserFunctions.c"
                                                                                    , 
-# 296 "./src/parserFunctions.c" 3 4
+# 304 "./src/parserFunctions.c" 3 4
                                                                                      ((void *)0)
-# 296 "./src/parserFunctions.c"
+# 304 "./src/parserFunctions.c"
                                                                                          , -1);
  push_commandList(commandNode, 
-# 297 "./src/parserFunctions.c" 3 4
+# 305 "./src/parserFunctions.c" 3 4
                               ((void *)0)
-# 297 "./src/parserFunctions.c"
+# 305 "./src/parserFunctions.c"
                                   , theStmt, 
-# 297 "./src/parserFunctions.c" 3 4
+# 305 "./src/parserFunctions.c" 3 4
                                              ((void *)0)
-# 297 "./src/parserFunctions.c"
+# 305 "./src/parserFunctions.c"
                                                  );
 }
 
@@ -2575,34 +2591,34 @@ void BuildNewStatement(parse_state * current, command* commandNode, char* temp) 
  expr* expr1 = expr_create_string(temp);
  expr* expr2 = expr_create_string(current->value);
  stmt* theStmt = stmt_create(STMT_NEW, 
-# 307 "./src/parserFunctions.c" 3 4
+# 315 "./src/parserFunctions.c" 3 4
                                       ((void *)0)
-# 307 "./src/parserFunctions.c"
+# 315 "./src/parserFunctions.c"
                                           , 
-# 307 "./src/parserFunctions.c" 3 4
+# 315 "./src/parserFunctions.c" 3 4
                                             ((void *)0)
-# 307 "./src/parserFunctions.c"
+# 315 "./src/parserFunctions.c"
                                                 , expr1, expr2, 
-# 307 "./src/parserFunctions.c" 3 4
+# 315 "./src/parserFunctions.c" 3 4
                                                                 ((void *)0)
-# 307 "./src/parserFunctions.c"
+# 315 "./src/parserFunctions.c"
                                                                     , 
-# 307 "./src/parserFunctions.c" 3 4
+# 315 "./src/parserFunctions.c" 3 4
                                                                       ((void *)0)
-# 307 "./src/parserFunctions.c"
+# 315 "./src/parserFunctions.c"
                                                                           , 
-# 307 "./src/parserFunctions.c" 3 4
+# 315 "./src/parserFunctions.c" 3 4
                                                                             ((void *)0)
-# 307 "./src/parserFunctions.c"
+# 315 "./src/parserFunctions.c"
                                                                                 , -1);
  push_commandList(commandNode, 
-# 308 "./src/parserFunctions.c" 3 4
+# 316 "./src/parserFunctions.c" 3 4
                               ((void *)0)
-# 308 "./src/parserFunctions.c"
+# 316 "./src/parserFunctions.c"
                                   , theStmt, 
-# 308 "./src/parserFunctions.c" 3 4
+# 316 "./src/parserFunctions.c" 3 4
                                              ((void *)0)
-# 308 "./src/parserFunctions.c"
+# 316 "./src/parserFunctions.c"
                                                  );
 }
 
@@ -2644,9 +2660,9 @@ int CheckArrayType(parse_state* current, symbolTable* symTable)
  if (strcmp(current->type, "end of command") == 0) {
   current = current->next;
   if (SearchSymbolTable_TYPE(current->value, symTable) != 
-# 348 "./src/parserFunctions.c" 3 4
+# 356 "./src/parserFunctions.c" 3 4
                                                          ((void *)0)
-# 348 "./src/parserFunctions.c"
+# 356 "./src/parserFunctions.c"
                                                              )
   {
    strcpy(trueArrayType, SearchSymbolTable_TYPE(current->value, symTable));
@@ -2665,9 +2681,9 @@ int CheckArrayType(parse_state* current, symbolTable* symTable)
  }
  else if (strcmp(current->type, "identifier") == 0) {
   if (SearchSymbolTable_TYPE(current->value, symTable) != 
-# 365 "./src/parserFunctions.c" 3 4
+# 373 "./src/parserFunctions.c" 3 4
                                                          ((void *)0)
-# 365 "./src/parserFunctions.c"
+# 373 "./src/parserFunctions.c"
                                                              )
   {
    strcpy(trueArrayType, SearchSymbolTable_TYPE(current->value, symTable));
@@ -2688,9 +2704,9 @@ int CheckArrayType(parse_state* current, symbolTable* symTable)
   current = current->next;
   isPointer = 1;
   if (SearchSymbolTable_TYPE(current->value, symTable) != 
-# 384 "./src/parserFunctions.c" 3 4
+# 392 "./src/parserFunctions.c" 3 4
                                                          ((void *)0)
-# 384 "./src/parserFunctions.c"
+# 392 "./src/parserFunctions.c"
                                                              )
   {
    strcpy(trueArrayType, SearchSymbolTable_TYPE(current->value, symTable));

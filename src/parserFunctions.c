@@ -281,6 +281,14 @@ void BuildSimpleExpressionStatement(char* temp, char* temp2, command* commandNod
 			printf("Going to build sub expression statement.\n");
 			theExpr = expr_create(EXPR_SUB, leftExpr, rightExpr, 0, '\0', NULL, typeOfMember);
 			break;
+		case 3 :
+			printf("Going to build mul expression statement.\n");
+			theExpr = expr_create(EXPR_MUL, leftExpr, rightExpr, 0, '\0', NULL, typeOfMember);
+			break;
+		case 4 :
+			printf("Going to build div expression statement.\n");
+			theExpr = expr_create(EXPR_DIV, leftExpr, rightExpr, 0, '\0', NULL, typeOfMember);
+			break;
 		default : 
 			break; 
 	}
