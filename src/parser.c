@@ -777,10 +777,28 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 				sTypeOfMember = CheckIfMemberOfStatement(flags);
 				strcpy(temp, current->value);
 				current = current->next;
+				printf("The CURRENT NOW 1 : %s\n", current->value);
 				if (strcmp(current->type, "end of command") == 0) {
 					current = current->next;
 					strcpy(temp2, current->value);
 					BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+				}
+				else if (strcmp(current->value, "-") == 0) {
+					current = current->next;
+					if (strcmp(current->type, "end of command") == 0){
+						pop(&top);
+						strcpy(temp2, theStack[top]);
+						current = current->next;
+						BuildSimpleExpressionStatement(temp2, temp, commandNode, 1, sTypeOfMember);
+						BuildSimpleExpressionStatement(temp, current->value, commandNode, 2, sTypeOfMember);
+					}
+					else {
+						strcpy(temp2, current->value);
+						current = current->next;
+						current = current->next;
+						BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+						BuildSimpleExpressionStatement(temp, temp2, commandNode, 2, sTypeOfMember);
+					}
 				}
 				else {
 					current = current->next;
