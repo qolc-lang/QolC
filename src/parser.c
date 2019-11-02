@@ -198,9 +198,28 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 		}
 		else if (strcmp(current->value, "+") == 0) {
 			printf("Operator + going in.\n");
-			push(theStack[top], &top, current->value);
+			parse_state* tempCurrent = current;
+			tempCurrent = tempCurrent->next;
+			if (strcmp(tempCurrent->type, "operator") == 0) {
+				pop(&top);
+				printf("Now the stack top : %s\n", theStack[top]);
+				current = current->next;
+				strcpy(temp, current->value);
+				current = current->next;
+				strcpy(temp2, current->value);
+				BuildSimpleExpressionStatement(theStack[top], temp2, commandNode, 1, sTypeOfMember);
+				current = current->next;
+				current = current->next;
+				if (strcmp(temp, "-") == 0)
+				{
+					BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
+				}
+			}
+			else {
+				push(theStack[top], &top, current->value);
+				current = current->next;
+			}
 			printf("**********************************************************\n");
-			current = current->next;
 			continue;
 		}
 		else if (strcmp(current->value, "-") == 0) {
@@ -797,13 +816,18 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 						current = current->next;
 						current = current->next;
 						BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
-						BuildSimpleExpressionStatement(temp, temp2, commandNode, 2, sTypeOfMember);
+						BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
 					}
 				}
 				else {
-					current = current->next;
 					strcpy(temp2, current->value);
 					BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+					current = current->next;
+					if (strcmp(current->value, "-") == 0) {
+						current = current->next;
+						current = current->next;
+						BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
+					}
 				}
 			}
 			else if (strcmp(theStack[top], "-") == 0) {
