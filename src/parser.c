@@ -890,6 +890,17 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 						BuildSimpleExpressionStatement(temp2, temp, commandNode, 1, sTypeOfMember);
 						BuildSimpleExpressionStatement(temp, current->value, commandNode, 2, sTypeOfMember);
 					}
+					else if (strcmp(current->value, "-") == 0) {
+						current = current->next;
+						strcpy(temp2, current->value);
+						printf("The CURRENT NOW 3.1 : %s\n", temp2);
+						current = current->next;
+						printf("The CURRENT NOW 3.2 : %s\n", current->value);
+						if (myFlag == 1) BuildSimpleExpressionStatement(temp, temp2, commandNode, 2, sTypeOfMember);
+						else BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+						BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
+						strcpy(temp3, current->value);
+					}
 					else {
 						strcpy(temp2, current->value);
 						current = current->next;
@@ -947,7 +958,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 					else if (strcmp(current->value, "+") == 0) {
 						current = current->next;
 						current = current->next;
-						printf("The CURRENT NOW 18: %s\n", current->value);
+						printf("The CURRENT NOW 18 little add: %s\n", current->value);
 						BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
 					}
 				}
@@ -1187,6 +1198,8 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 				if (strcmp(temp2, "+") == 0) {
 					doneFlag = 1;
 					printf("The CURRENT NOW 18: %s\n", current->value);
+					printf("The CURRENT NOW 18.1: %s\n", temp);
+					printf("The CURRENT NOW 18.2: %s\n", temp3);
 					sTypeOfMember = CheckIfMemberOfStatement(flags);
 					if (temp[0] == '\0') BuildSimpleExpressionStatement(temp3, current->value, commandNode, 1, sTypeOfMember);
 					else BuildSimpleExpressionStatement(temp, current->value, commandNode, 1, sTypeOfMember);
