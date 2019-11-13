@@ -884,7 +884,11 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 					printf("The CURRENT NOW 3 : %s\n", current->value);
 					if (strcmp(current->type, "end of command") == 0){
 						pop(&top);
-						strcpy(temp2, theStack[top]);
+						if ((strcmp(theStack[top], "-") != 0) && (strcmp(theStack[top], "+") != 0) && (strcmp(theStack[top], "*") != 0) && (strcmp(theStack[top], "/") != 0))
+						{
+							strcpy(temp2, theStack[top]);
+						}
+						else;
 						current = current->next;
 						printf("The CURRENT NOW 4 : %s\n", current->value);
 						BuildSimpleExpressionStatement(temp2, temp, commandNode, 1, sTypeOfMember);
@@ -1034,7 +1038,11 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 					printf("The CURRENT NOW 3 SUB : %s\n", current->value);
 					if (strcmp(current->type, "end of command") == 0){
 						pop(&top);
-						strcpy(temp2, theStack[top]);
+						if ((strcmp(theStack[top], "-") != 0) && (strcmp(theStack[top], "+") != 0) && (strcmp(theStack[top], "*") != 0) && (strcmp(theStack[top], "/") != 0))
+						{
+							strcpy(temp2, theStack[top]);
+						}
+						else;
 						current = current->next;
 						printf("The CURRENT NOW 4 SUB : %s\n", current->value);
 						BuildSimpleExpressionStatement(temp2, temp, commandNode, 2, sTypeOfMember);
