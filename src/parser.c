@@ -891,7 +891,9 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 						else;
 						current = current->next;
 						printf("The CURRENT NOW 4 : %s\n", current->value);
-						BuildSimpleExpressionStatement(temp2, temp, commandNode, 1, sTypeOfMember);
+						printf("The CURRENT NOW 4.1 : %s\n", temp3);
+						if (temp2[0] == '\0') BuildSimpleExpressionStatement(temp3, temp, commandNode, 1, sTypeOfMember);
+						else BuildSimpleExpressionStatement(temp2, temp, commandNode, 1, sTypeOfMember);
 						BuildSimpleExpressionStatement(temp, current->value, commandNode, 2, sTypeOfMember);
 					}
 					else if (strcmp(current->value, "-") == 0) {
@@ -1045,7 +1047,9 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 						else;
 						current = current->next;
 						printf("The CURRENT NOW 4 SUB : %s\n", current->value);
-						BuildSimpleExpressionStatement(temp2, temp, commandNode, 2, sTypeOfMember);
+						printf("The CURRENT NOW 4.1 SUB : %s\n", temp3);
+						if (temp2[0] == '\0') BuildSimpleExpressionStatement(temp3, temp, commandNode, 2, sTypeOfMember);
+						else BuildSimpleExpressionStatement(temp2, temp, commandNode, 2, sTypeOfMember);
 						BuildSimpleExpressionStatement(temp, current->value, commandNode, 1, sTypeOfMember);
 					}
 					else if (strcmp(current->value, "+") == 0) {
