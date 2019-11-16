@@ -213,7 +213,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 				BuildSimpleExpressionStatement(theStack[top], temp2, commandNode, 1, sTypeOfMember);
 				current = current->next;
 				printf("The CURRENT NOW UP ADD 3 : %s\n", current->value);
-				if (strcmp(current->type, "end of command") != 0){
+				if ((strcmp(current->type, "end of command") != 0) && (strcmp(current->type, "operator") != 0)){
 					strcpy(temp3, current->value);
 					if (strcmp(temp, "-") == 0)
 					{
@@ -224,6 +224,21 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 						BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
 					}
 					current = current->next;
+				}
+				else if (strcmp(current->value, "-") == 0) {
+					current = current->next;
+					printf("The CURRENT NOW UP ADD 5 : %s\n", current->value);
+					if (strcmp(temp, "-") == 0)
+					{
+						BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
+					}
+					else if (strcmp(temp, "+") == 0)
+					{
+						BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
+					}
+					strcpy(temp2, current->value);
+					current = current->next;
+					BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
 				}
 				else {
 					current = current->next;
