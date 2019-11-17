@@ -274,7 +274,8 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 				current = current->next;
 				printf("The CURRENT NOW UP SUB 2: %s\n", current->value);
 				if ((strcmp(theStack[top], "+") != 0) || (strcmp(theStack[top], "-") != 0) || (strcmp(theStack[top], "*") != 0) || (strcmp(theStack[top], "/") != 0)) {
-					BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
+					if (temp3[0] == '\0') BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
+					else BuildSimpleExpressionStatement(temp3, current->value, commandNode, 2, sTypeOfMember);
 				}
 				else {
 					BuildSimpleExpressionStatement(theStack[top], current->value, commandNode, 2, sTypeOfMember);
