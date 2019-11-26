@@ -23,7 +23,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 	int notTheEndFlag = 0;
 	int hasDefer = 0;
 	char theStack[200][100];
-	char temp[100], temp2[100], temp3[100];
+	char temp[100], temp2[100], temp3[100], temp4[100];
 	int sTypeOfMember;
 	int iIsPointer = 0;
 	
@@ -894,6 +894,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 				}
 				current = current->next;
 				printf("The CURRENT NOW 1 : %s\n", current->value);
+				strcpy(temp4, current->value);
 				if (strcmp(current->type, "end of command") == 0) {
 					current = current->next;
 					printf("The CURRENT NOW 2 : %s\n", current->value);
@@ -958,6 +959,19 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 								BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
 								strcpy(temp3, current->value);
 								strcpy(temp2, current->value);
+								if (strcmp(temp4, "-") == 0) {
+									current = current->next;
+									if (strcmp(current->value, "+") == 0) {
+										current = current->next;
+										BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
+										strcpy(temp2, current->value);
+										current = current->next;
+										if (strcmp(current->type, "identifier") != 0) {
+											current = current->next;
+										}
+										BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
+									}
+								}
 							}
 							else if (strcmp(current->value, "+") == 0) {
 								current = current->next;
