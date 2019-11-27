@@ -961,15 +961,22 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 								strcpy(temp2, current->value);
 								if (strcmp(temp4, "-") == 0) {
 									current = current->next;
+									printf("The CURRENT NOW 5.6 : %s\n", current->value);
 									if (strcmp(current->value, "+") == 0) {
 										current = current->next;
+										printf("The CURRENT NOW 5.7 : %s\n", current->value);
 										BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
 										strcpy(temp2, current->value);
 										current = current->next;
 										if (strcmp(current->type, "identifier") != 0) {
 											current = current->next;
+											printf("The CURRENT NOW 5.8 : %s\n", current->value);
 										}
 										BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
+									}
+									else if (strcmp(current->type, "identifier") == 0) {
+										BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
+										strcpy(temp3, current->value);
 									}
 								}
 							}
