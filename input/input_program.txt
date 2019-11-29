@@ -95,6 +95,6 @@ assert |5 @== 2|
 
 lokaokaja@[50]vector3
 
-return x+c-p-r+v
+return x + c - p - r + v
 
 @|

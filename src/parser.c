@@ -881,12 +881,14 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			else if (strcmp(theStack[top], "+") == 0) {
 				doneFlag = 1;
 				int myFlag = 0;
+				int stackOperatorUsedFlag = 0;
 				sTypeOfMember = CheckIfMemberOfStatement(flags);
 				printf("The top now : %d\n", top);
 				if (top == 2) {
 					myFlag = 1;
 					pop(&top);
 					BuildSimpleExpressionStatement(theStack[top], current->value, commandNode, 1, sTypeOfMember);
+					stackOperatorUsedFlag = 1;
 					strcpy(temp, current->value);
 				}
 				else {
@@ -901,6 +903,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 					if (strcmp(current->type, "identifier") == 0) {
 						strcpy(temp2, current->value);
 						BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+						stackOperatorUsedFlag = 1;
 					}
 				}
 				else if (strcmp(current->value, "-") == 0) {
@@ -919,6 +922,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 						if (temp2[0] == '\0') BuildSimpleExpressionStatement(temp3, temp, commandNode, 1, sTypeOfMember);
 						else BuildSimpleExpressionStatement(temp2, temp, commandNode, 1, sTypeOfMember);
 						BuildSimpleExpressionStatement(temp, current->value, commandNode, 2, sTypeOfMember);
+						stackOperatorUsedFlag = 1;
 					}
 					else if (strcmp(current->value, "-") == 0) {
 						current = current->next;
@@ -928,6 +932,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 						printf("The CURRENT NOW 3.2 : %s\n", current->value);
 						if (myFlag == 1) BuildSimpleExpressionStatement(temp, temp2, commandNode, 2, sTypeOfMember);
 						else BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+						stackOperatorUsedFlag = 1;
 						if (strcmp(current->value, "+") == 0) {
 							current = current->next;
 							printf("The CURRENT NOW 3.3 : %s\n", current->value);
@@ -955,8 +960,13 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 							current = current->next;
 							if (strcmp(current->type, "operator") != 0) {
 								printf("The CURRENT NOW 5.5 : %s\n", current->value);
-								if (strcmp(temp4, "-") == 0) BuildSimpleExpressionStatement(temp, temp2, commandNode, 2, sTypeOfMember);
-								else if (strcmp(temp4, "+") == 0) BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+								if(stackOperatorUsedFlag == 1) {
+									if (strcmp(temp4, "-") == 0) BuildSimpleExpressionStatement(temp, temp2, commandNode, 2, sTypeOfMember);
+									else if (strcmp(temp4, "+") == 0) BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+								}
+								else {
+									BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+								}
 								BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
 								strcpy(temp3, current->value);
 								strcpy(temp2, current->value);
@@ -1081,159 +1091,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			}
 			/* SUB */
 			else if (strcmp(theStack[top], "-") == 0) {
-				doneFlag = 1;
-				int myFlag = 0;
-				sTypeOfMember = CheckIfMemberOfStatement(flags);
-				printf("The top now sub : %d\n", top);
-				if (top == 2) {
-					myFlag = 1;
-					pop(&top);
-					BuildSimpleExpressionStatement(theStack[top], current->value, commandNode, 2, sTypeOfMember);
-					strcpy(temp, current->value);
-				}
-				else {
-					strcpy(temp, current->value);
-				}
-				current = current->next;
-				printf("The CURRENT NOW SUB 1 : %s\n", current->value);
-				if (strcmp(current->type, "end of command") == 0) {
-					current = current->next;
-					printf("The CURRENT NOW 2 SUB : %s\n", current->value);
-					strcpy(temp2, current->value);
-					BuildSimpleExpressionStatement(temp, temp2, commandNode, 2, sTypeOfMember);
-				}
-				else if (strcmp(current->value, "+") == 0) {
-					current = current->next;
-					printf("The CURRENT NOW 3 SUB : %s\n", current->value);
-					if (strcmp(current->type, "end of command") == 0){
-						pop(&top);
-						if ((strcmp(theStack[top], "-") != 0) && (strcmp(theStack[top], "+") != 0) && (strcmp(theStack[top], "*") != 0) && (strcmp(theStack[top], "/") != 0))
-						{
-							strcpy(temp2, theStack[top]);
-						}
-						else;
-						current = current->next;
-						printf("The CURRENT NOW 4 SUB : %s\n", current->value);
-						printf("The CURRENT NOW 4.1 SUB : %s\n", temp3);
-						if (temp2[0] == '\0') BuildSimpleExpressionStatement(temp3, temp, commandNode, 2, sTypeOfMember);
-						else BuildSimpleExpressionStatement(temp2, temp, commandNode, 2, sTypeOfMember);
-						BuildSimpleExpressionStatement(temp, current->value, commandNode, 1, sTypeOfMember);
-					}
-					else if (strcmp(current->value, "+") == 0) {
-						current = current->next;
-						strcpy(temp2, current->value);
-						printf("The CURRENT NOW 3.1 SUB : %s\n", temp2);
-						current = current->next;
-						printf("The CURRENT NOW 3.2 SUB : %s\n", current->value);
-						if (myFlag == 1) BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
-						else BuildSimpleExpressionStatement(temp, temp2, commandNode, 2, sTypeOfMember);
-						BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
-						strcpy(temp3, current->value);
-					}
-					else {
-						strcpy(temp2, current->value);
-						current = current->next;
-						printf("The CURRENT NOW 5.1 SUB : %s\n", current->value);
-						if (strcmp(current->value, "+") == 0) {
-							doneFlag = 0;
-							current = current->next;
-							if (strcmp(current->type, "operator") != 0) {
-								printf("The CURRENT NOW 5.5 SUB : %s\n", current->value);
-								BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
-								BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
-								strcpy(temp3, current->value);
-							}
-							else if (strcmp(current->value, "-") == 0) {
-								current = current->next;
-								printf("The CURRENT NOW 5.2 SUB : %s\n", current->value);
-								strcpy(temp3, current->value);
-								BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
-								BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
-								current = current->next;
-								printf("The CURRENT NOW 5.4 SUB : %s\n", current->value);
-								current = current->next;
-								printf("The CURRENT NOW 5.3 SUB : %s\n", current->value);
-								BuildSimpleExpressionStatement(temp3, current->value, commandNode, 2, sTypeOfMember);
-							}
-						}
-						else {
-							doneFlag = 0;
-							if (myFlag == 1) BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
-							else BuildSimpleExpressionStatement(temp, temp2, commandNode, 2, sTypeOfMember);
-							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
-							strcpy(temp2, current->value);
-						}
-						if (doneFlag == 1)
-						{
-							current = current->next;
-							printf("The CURRENT NOW 5 SUB : %s\n", current->value);
-							if (myFlag == 1) BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
-							else BuildSimpleExpressionStatement(temp, temp2, commandNode, 2, sTypeOfMember);
-							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
-							strcpy(temp3, current->value);
-						}
-
-					}
-				}
-				else if (strcmp(current->value, "+") == 0) {
-					current = current->next;
-					printf("The CURRENT NOW 15 SUB : %s\n", current->value);
-					if (strcmp(current->type, "end of command") == 0){
-						pop(&top);
-						if ((strcmp(theStack[top], "-") != 0) && (strcmp(theStack[top], "+") != 0)){
-							strcpy(temp2, theStack[top]);
-						}
-						current = current->next;
-						printf("The CURRENT NOW 16 SUB : %s\n", current->value);
-						BuildSimpleExpressionStatement(temp2, temp, commandNode, 2, sTypeOfMember);
-						BuildSimpleExpressionStatement(temp, current->value, commandNode, 1, sTypeOfMember);
-					}
-					else {
-						strcpy(temp2, current->value);
-						current = current->next;
-						current = current->next;
-						printf("The CURRENT NOW 17 SUB : %s\n", current->value);
-						BuildSimpleExpressionStatement(temp, temp2, commandNode, 2, sTypeOfMember);
-						BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
-					}
-				}
-				else {
-					strcpy(temp2, current->value);
-					printf("The CURRENT NOW 19 SUB : %s\n", current->value);
-					BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
-					current = current->next;
-					printf("The CURRENT NOW 6 SUB : %s\n", current->value);
-					if (strcmp(current->value, "-") == 0) {
-						current = current->next;
-						printf("The CURRENT NOW 20 SUB : %s\n", current->value);
-						if (strcmp(current->type, "end of command") == 0){
-							current = current->next;
-							printf("The CURRENT NOW 7 SUB : %s\n", current->value);
-							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
-							strcpy(temp2, current->value);
-						}
-						else if (strcmp(current->value, "-") == 0){
-							current = current->next;
-							printf("The CURRENT NOW 7.1 SUB : %s\n", current->value);
-							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
-							strcpy(temp2, current->value);
-							current = current->next;
-							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
-							strcpy(temp3, current->value);
-						}
-						else {
-							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
-							strcpy(temp2, current->value);
-						}
-						
-					}
-					else if (strcmp(current->value, "+") == 0) {
-						current = current->next;
-						current = current->next;
-						printf("The CURRENT NOW 18 little add SUB: %s\n", current->value);
-						BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
-					}
-				}
+				
 			}
 			/* MUL */
 			else if (strcmp(theStack[top], "*") == 0) {
