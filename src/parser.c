@@ -1142,10 +1142,199 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 1, sTypeOfMember);
 						}
 						else if (strcmp(current->value, "-") == 0) {
-							
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 2, sTypeOfMember);
+						}
+						else if (strcmp(current->value, "*") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 3, sTypeOfMember);
+						}
+						else if (strcmp(current->value, "/") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 4, sTypeOfMember);
 						}
 						else {
 							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 2, sTypeOfMember);
+							strcpy(temp3, current->value);
+						}
+					}
+					else if (strcmp(current->value, "+") == 0) {
+						current = current->next;
+						strcpy(temp2, current->value);
+						printf("The CURRENT NOW 3.1 : %s\n", temp2);
+						current = current->next;
+						printf("The CURRENT NOW 3.2 : %s\n", current->value);
+						if (myFlag == 1) BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+						else BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+						stackOperatorUsedFlag = 1;
+						if (strcmp(current->value, "+") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 1, sTypeOfMember);
+						}
+						else if (strcmp(current->value, "-") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 2, sTypeOfMember);
+						}
+						else if (strcmp(current->value, "*") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 3, sTypeOfMember);
+						}
+						else if (strcmp(current->value, "/") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 4, sTypeOfMember);
+						}
+						else {
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 1, sTypeOfMember);
+							strcpy(temp3, current->value);
+						}
+					}
+					else if (strcmp(current->value, "*") == 0) {
+						current = current->next;
+						strcpy(temp2, current->value);
+						printf("The CURRENT NOW 3.1 : %s\n", temp2);
+						current = current->next;
+						printf("The CURRENT NOW 3.2 : %s\n", current->value);
+						if (myFlag == 1) BuildSimpleExpressionStatement(temp, temp2, commandNode, 3, sTypeOfMember);
+						else BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+						stackOperatorUsedFlag = 1;
+						if (strcmp(current->value, "+") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 3, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 1, sTypeOfMember);
+						}
+						else if (strcmp(current->value, "-") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 3, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 2, sTypeOfMember);
+						}
+						else if (strcmp(current->value, "*") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 3, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 3, sTypeOfMember);
+						}
+						else if (strcmp(current->value, "/") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 3, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 4, sTypeOfMember);
+						}
+						else {
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 3, sTypeOfMember);
+							strcpy(temp3, current->value);
+						}
+					}
+					else if (strcmp(current->value, "/") == 0) {
+						current = current->next;
+						strcpy(temp2, current->value);
+						printf("The CURRENT NOW 3.1 : %s\n", temp2);
+						current = current->next;
+						printf("The CURRENT NOW 3.2 : %s\n", current->value);
+						if (myFlag == 1) BuildSimpleExpressionStatement(temp, temp2, commandNode, 4, sTypeOfMember);
+						else BuildSimpleExpressionStatement(temp, temp2, commandNode, 1, sTypeOfMember);
+						stackOperatorUsedFlag = 1;
+						if (strcmp(current->value, "+") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 4, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 1, sTypeOfMember);
+						}
+						else if (strcmp(current->value, "-") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 4, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 2, sTypeOfMember);
+						}
+						else if (strcmp(current->value, "*") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 4, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 3, sTypeOfMember);
+						}
+						else if (strcmp(current->value, "/") == 0) {
+							current = current->next;
+							printf("The CURRENT NOW 3.3 : %s\n", current->value);
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 4, sTypeOfMember);
+							strcpy(temp3, current->value);
+							current = current->next;
+							current = current->next;
+							printf("The CURRENT NOW 3.4: %s\n", current->value);
+							BuildSimpleExpressionStatement(temp3, current->value, commandNode, 4, sTypeOfMember);
+						}
+						else {
+							BuildSimpleExpressionStatement(temp2, current->value, commandNode, 4, sTypeOfMember);
 							strcpy(temp3, current->value);
 						}
 					}
