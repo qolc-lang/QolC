@@ -1519,6 +1519,20 @@ lexer_node lex(char fileName[]) {
 
 
 
+   if (reading_buffer[pos] == ' ')
+   {
+    if(isKeyword(buffer) == 1) {
+        pushForLex(buffer, "keyword", myNode);
+     memset(buffer, 0, sizeof(buffer));
+    }
+    continue;
+   }
+
+
+
+
+
+
    if ((new_pos = isAtOperator(reading_buffer, pos, strlen(reading_buffer), myNode, temp_buffer)) != -1) {
     pos += new_pos;
     buffer[index] = '\0';
@@ -1540,9 +1554,9 @@ lexer_node lex(char fileName[]) {
 
    if (reading_buffer[pos] == '\n') {
     pushForLex(
-# 57 "./src/lexer.c" 3 4
+# 71 "./src/lexer.c" 3 4
               ((void *)0)
-# 57 "./src/lexer.c"
+# 71 "./src/lexer.c"
                   , "end of command", myNode);
 
     buffer[index] = '\0';
@@ -1564,17 +1578,17 @@ lexer_node lex(char fileName[]) {
    if ((num_pos = isNumber(reading_buffer, pos, strlen(reading_buffer), myNode, temp_buffer)) != -1) {
     temp_pos = --pos;
     if (
-# 77 "./src/lexer.c" 3 4
+# 91 "./src/lexer.c" 3 4
        ((((__locale_ctype_ptr ())+sizeof(""[
-# 77 "./src/lexer.c"
+# 91 "./src/lexer.c"
        reading_buffer[temp_pos]
-# 77 "./src/lexer.c" 3 4
+# 91 "./src/lexer.c" 3 4
        ]))[(int)(
-# 77 "./src/lexer.c"
+# 91 "./src/lexer.c"
        reading_buffer[temp_pos]
-# 77 "./src/lexer.c" 3 4
+# 91 "./src/lexer.c" 3 4
        )])&(01|02|04)) 
-# 77 "./src/lexer.c"
+# 91 "./src/lexer.c"
                                          || reading_buffer[temp_pos] == '_') {
      int temp;
      ++pos;
@@ -1590,9 +1604,9 @@ lexer_node lex(char fileName[]) {
      pos += num_pos;
      if (reading_buffer[pos] == '\n') {
       pushForLex(
-# 91 "./src/lexer.c" 3 4
+# 105 "./src/lexer.c" 3 4
                 ((void *)0)
-# 91 "./src/lexer.c"
+# 105 "./src/lexer.c"
                     , "end of command", myNode);
 
       buffer[index] = '\0';
@@ -1649,9 +1663,9 @@ lexer_node lex(char fileName[]) {
     pos += char_pos;
     if (reading_buffer[pos] == '\n') {
      pushForLex(
-# 146 "./src/lexer.c" 3 4
+# 160 "./src/lexer.c" 3 4
                ((void *)0)
-# 146 "./src/lexer.c"
+# 160 "./src/lexer.c"
                    , "end of command", myNode);
 
      buffer[index] = '\0';
@@ -1679,29 +1693,29 @@ lexer_node lex(char fileName[]) {
    }
 
    if (
-# 172 "./src/lexer.c" 3 4
+# 186 "./src/lexer.c" 3 4
       ((((__locale_ctype_ptr ())+sizeof(""[
-# 172 "./src/lexer.c"
+# 186 "./src/lexer.c"
       reading_buffer[pos]
-# 172 "./src/lexer.c" 3 4
+# 186 "./src/lexer.c" 3 4
       ]))[(int)(
-# 172 "./src/lexer.c"
+# 186 "./src/lexer.c"
       reading_buffer[pos]
-# 172 "./src/lexer.c" 3 4
+# 186 "./src/lexer.c" 3 4
       )])&(01|02|04)) 
-# 172 "./src/lexer.c"
+# 186 "./src/lexer.c"
                                    || reading_buffer[pos] == '_' || 
-# 172 "./src/lexer.c" 3 4
+# 186 "./src/lexer.c" 3 4
                                                                     ((((__locale_ctype_ptr ())+sizeof(""[
-# 172 "./src/lexer.c"
+# 186 "./src/lexer.c"
                                                                     reading_buffer[pos]
-# 172 "./src/lexer.c" 3 4
+# 186 "./src/lexer.c" 3 4
                                                                     ]))[(int)(
-# 172 "./src/lexer.c"
+# 186 "./src/lexer.c"
                                                                     reading_buffer[pos]
-# 172 "./src/lexer.c" 3 4
+# 186 "./src/lexer.c" 3 4
                                                                     )])&04)
-# 172 "./src/lexer.c"
+# 186 "./src/lexer.c"
                                                                                                 )
     buffer[index++] = reading_buffer[pos];
    else if ((reading_buffer[pos] == ' '
@@ -1725,13 +1739,13 @@ lexer_node lex(char fileName[]) {
 
 
  if (
-# 194 "./src/lexer.c" 3 4
+# 208 "./src/lexer.c" 3 4
     ((int)(((
-# 194 "./src/lexer.c"
+# 208 "./src/lexer.c"
     fp
-# 194 "./src/lexer.c" 3 4
+# 208 "./src/lexer.c" 3 4
     )->_flags & 0x0020) != 0))
-# 194 "./src/lexer.c"
+# 208 "./src/lexer.c"
             ) {
      if (index != 0) {
    buffer[index] = '\0';

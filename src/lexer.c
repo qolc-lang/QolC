@@ -30,6 +30,20 @@ lexer_node lex(char fileName[]) {
 		for (pos = 0; pos < strlen(reading_buffer); ++pos) {
 			printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
 
+			/* 	
+				Ignore any whitespaces for the buffer. They cause extra problems in parsing. 
+				Also needs to check for keyword.
+			*/
+			if (reading_buffer[pos] == ' ')
+			{
+				if(isKeyword(buffer) == 1) {
+	   				pushForLex(buffer, "keyword", myNode);
+					memset(buffer, 0, sizeof(buffer));
+				}
+				continue;
+			}
+
+
 			/* 
 				Checking for @ operations. After new position in buffer, also checking for 
 				keyword, number, or identifier. 

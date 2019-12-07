@@ -1566,13 +1566,6 @@ typedef struct expr {
  int memberOf;
 }expr;
 
-typedef struct expr_list
-{
- expr* theExpr;
- struct expr_list* next;
-}expr_list;
-
-
 
 
 
@@ -1609,7 +1602,6 @@ typedef struct stmt {
  expr *next_expr;
  struct stmt *body;
  struct stmt *else_body;
- expr_list* expressionList;
  struct stmt *next;
  int memberOf;
 }stmt;
@@ -1627,11 +1619,10 @@ typedef struct decl {
 
 
 decl* decl_create(char *name, type *theType, expr *value, stmt *code);
-stmt* stmt_create(stmt_t kind, decl *theDecl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, expr_list* expressionList, stmt *next, int memberOf);
+stmt* stmt_create(stmt_t kind, decl *theDecl, expr *iexpr, expr* theExpr, expr *nexpr, stmt *body, stmt *ebody, stmt *next, int memberOf);
 type* type_create(type_t kind, type *subtype, param_list *params);
 expr* expr_create(expr_t kind, expr *left, expr *right, int integer_value, char character_value, const char * string_literal, int memberOf);
 expr* expr_create_string(char* string_literal);
-void push_expressionList(expr_list* node, expr* theExpr);
 # 6 "./src/../inc/parser.h" 2
 # 1 "./src/../inc/command.h" 1
 
@@ -1662,9 +1653,10 @@ typedef struct symbolTable {
  struct symbolTable* next;
 }symbolTable;
 
-void Insert(parse_state* node, char* scope, symbolTable* theSymbolTable);
-void Display(symbolTable* theSymbolTable);
-int Search(char* lab, symbolTable* theSymbolTable);
+void InsertSymbolTable(parse_state* node, char* scope, symbolTable* theSymbolTable);
+void DisplaySymbolTable(symbolTable* theSymbolTable);
+int SearchSymbolTable(char* lab, symbolTable* theSymbolTable);
+char* SearchSymbolTable_TYPE(char* lab, symbolTable* theSymbolTable);
 # 8 "./src/../inc/parser.h" 2
 
 void parseProgram(parse_state* node);
