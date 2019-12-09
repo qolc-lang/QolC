@@ -4,6 +4,7 @@ PrjRoot  = .
 SrcDir  = $(PrjRoot)/src
 ObjDir  = $(PrjRoot)/obj
 OutDir  = $(PrjRoot)/out
+GenDir  = $(PrjRoot)/generated
 IncludeDir = $(PrjRoot)/inc
 
 Includes = -I $(IncludeDir) -I $(PrjRoot)
@@ -29,6 +30,9 @@ $(ObjDir)/main.o \
 
 $(OutDir)/mainout.out : $(AppObjects)
 	$(CC) $(linkOptions) $(AppObjects) -o $(OutDir)/mainout
+	mkdir -p $(GenDir)
+	mv $(PrjRoot)/*.i $(GenDir)
+	mv $(PrjRoot)/*.s $(GenDir)
 
 $(ObjDir)/lexer.o: $(SrcDir)/lexer.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h $(PrjRoot)/inc/lexer_node.h
 	$(CC) $(BuildCommand) $(SrcDir)/lexer.c -o $(ObjDir)/lexer.o
@@ -68,6 +72,11 @@ $(ObjDir)/main.o: $(SrcDir)/main.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/check
 clean:
 	rm -rf $(ObjDir)/*.o
 	rm $(OutDir)/*.exe
+	rm -rf $(PrjRoot)/*.i
+	rm -rf $(PrjRoot)/*.s
+	rm -rf $(GenDir)/*.i
+	rm -rf $(GenDir)/*.s
+	rm -d $(GenDir)
 
 #accounting
 count:
