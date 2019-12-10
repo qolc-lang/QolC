@@ -8,7 +8,6 @@ reading_buffer[pos] :
 typeToPush to push is : keyword
 reading_buffer[pos] : "
 typeToPush to push is : string
-reading_buffer[pos] :  
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -1941,16 +1940,8 @@ Push in the stack completed, with element : +=
 **********************************************************
 Type in the loop : identifier
 Value in the loop : g
+Now the current is : d
 Going to build add assignment expression statement.
-**********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
-**********************************************************
-Type in the loop : identifier
-Value in the loop : d
-The stack at identifier type is empty.
-Going to insert the value : d
-Push in the stack completed, with element : d
 **********************************************************
 Type in the loop : operator
 Operator += going in.
@@ -1958,10 +1949,8 @@ Push in the stack completed, with element : +=
 **********************************************************
 Type in the loop : identifier
 Value in the loop : y
+Now the current is : 6
 Going to build add assignment expression statement.
-**********************************************************
-Type in the loop : number
-Value in the loop : 6
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
@@ -1972,16 +1961,8 @@ Push in the stack completed, with element : -=
 **********************************************************
 Type in the loop : identifier
 Value in the loop : l
+Now the current is : r
 Going to build sub assignment expression statement.
-**********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
-**********************************************************
-Type in the loop : identifier
-Value in the loop : r
-The stack at identifier type is empty.
-Going to insert the value : r
-Push in the stack completed, with element : r
 **********************************************************
 Type in the loop : operator
 Operator -= going in.
@@ -1989,10 +1970,8 @@ Push in the stack completed, with element : -=
 **********************************************************
 Type in the loop : identifier
 Value in the loop : v
+Now the current is : 2
 Going to build sub assignment expression statement.
-**********************************************************
-Type in the loop : number
-Value in the loop : 2
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
@@ -2003,16 +1982,8 @@ Push in the stack completed, with element : *=
 **********************************************************
 Type in the loop : identifier
 Value in the loop : t
+Now the current is : w
 Going to build mul assignment expression statement.
-**********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
-**********************************************************
-Type in the loop : identifier
-Value in the loop : w
-The stack at identifier type is empty.
-Going to insert the value : w
-Push in the stack completed, with element : w
 **********************************************************
 Type in the loop : operator
 Operator *= going in.
@@ -2020,10 +1991,8 @@ Push in the stack completed, with element : *=
 **********************************************************
 Type in the loop : identifier
 Value in the loop : g
+Now the current is : 3
 Going to build mul assignment expression statement.
-**********************************************************
-Type in the loop : number
-Value in the loop : 3
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
@@ -2034,16 +2003,8 @@ Push in the stack completed, with element : /=
 **********************************************************
 Type in the loop : identifier
 Value in the loop : s
+Now the current is : k
 Going to build div assignment expression statement.
-**********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
-**********************************************************
-Type in the loop : identifier
-Value in the loop : k
-The stack at identifier type is empty.
-Going to insert the value : k
-Push in the stack completed, with element : k
 **********************************************************
 Type in the loop : operator
 Operator /= going in.
@@ -2051,10 +2012,8 @@ Push in the stack completed, with element : /=
 **********************************************************
 Type in the loop : identifier
 Value in the loop : z
+Now the current is : 76
 Going to build div assignment expression statement.
-**********************************************************
-Type in the loop : number
-Value in the loop : 76
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
@@ -3201,29 +3160,29 @@ EXPR_DECREMENT
 EXPR_INCREMENT
 	identifier : g
 EXPR_ADD_ASSIGNMENT
-	left : 
-	right : g
+	left : g
+	right : d
 EXPR_ADD_ASSIGNMENT
-	left : d
-	right : y
+	left : y
+	right : 6
 EXPR_SUB_ASSIGNMENT
-	left : 
-	right : l
+	left : l
+	right : r
 EXPR_SUB_ASSIGNMENT
-	left : r
-	right : v
+	left : v
+	right : 2
 EXPR_MUL_ASSIGNMENT
-	left : 
-	right : t
+	left : t
+	right : w
 EXPR_MUL_ASSIGNMENT
-	left : w
-	right : g
+	left : g
+	right : 3
 EXPR_DIV_ASSIGNMENT
-	left : 
-	right : s
+	left : s
+	right : k
 EXPR_DIV_ASSIGNMENT
-	left : k
-	right : z
+	left : z
+	right : 76
 STMT_DECL
 name: m
 	TYPE_FLOAT_POINTER
@@ -3334,8 +3293,8 @@ STMT_ARRAYDADD
 	element to be added : k
 STMT_ASSERT
 EXPR_EQUAL_CMP
-	left : 5
-	right : 2
+	left : 2
+	right : 5
 		member of assert
 STMT_DECL
 name: lokaokaja

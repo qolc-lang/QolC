@@ -2388,8 +2388,8 @@ void BuildDeclarationExprStatement(char* currentValue, command* commandNode, cha
 
 void BuildAssignAndCompareExprStatement(char* temp, char* temp2, command* commandNode, int operation, int typeOfMember) {
 
- expr* leftExpr = expr_create_string(temp2);
- expr* rightExpr = expr_create_string(temp);
+ expr* leftExpr = expr_create_string(temp);
+ expr* rightExpr = expr_create_string(temp2);
  expr* theExpr;
 
  switch (operation) {

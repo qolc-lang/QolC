@@ -572,10 +572,14 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			}
 			else if (strcmp(theStack[top], "+=") == 0) {
 				doneFlag = 1;
-				theStack[0][top] = '\0';
-				pop(&top);
 				strcpy(temp, current->value);
-				strcpy(temp2, theStack[top]);
+				current = current->next;
+				if (strcmp(current->type, "end of command") == 0)
+				{
+					current = current->next;
+				}
+				printf("Now the current is : %s\n", current->value);
+				strcpy(temp2, current->value);
 				theStack[0][top] = '\0';
 				pop(&top);
 				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 1, sTypeOfMember);
@@ -583,10 +587,14 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			}
 			else if (strcmp(theStack[top], "-=") == 0) {
 				doneFlag = 1;
-				theStack[0][top] = '\0';
-				pop(&top);
 				strcpy(temp, current->value);
-				strcpy(temp2, theStack[top]);
+				current = current->next;
+				if (strcmp(current->type, "end of command") == 0)
+				{
+					current = current->next;
+				}
+				printf("Now the current is : %s\n", current->value);
+				strcpy(temp2, current->value);
 				theStack[0][top] = '\0';
 				pop(&top);
 				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 2, sTypeOfMember);
@@ -594,10 +602,14 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			}
 			else if (strcmp(theStack[top], "*=") == 0) {
 				doneFlag = 1;
-				theStack[0][top] = '\0';
-				pop(&top);
 				strcpy(temp, current->value);
-				strcpy(temp2, theStack[top]);
+				current = current->next;
+				if (strcmp(current->type, "end of command") == 0)
+				{
+					current = current->next;
+				}
+				printf("Now the current is : %s\n", current->value);
+				strcpy(temp2, current->value);
 				theStack[0][top] = '\0';
 				pop(&top);
 				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 3, sTypeOfMember);
@@ -605,10 +617,14 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			}
 			else if (strcmp(theStack[top], "/=") == 0) {
 				doneFlag = 1;
-				theStack[0][top] = '\0';
-				pop(&top);
 				strcpy(temp, current->value);
-				strcpy(temp2, theStack[top]);
+				current = current->next;
+				if (strcmp(current->type, "end of command") == 0)
+				{
+					current = current->next;
+				}
+				printf("Now the current is : %s\n", current->value);
+				strcpy(temp2, current->value);
 				theStack[0][top] = '\0';
 				pop(&top);
 				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 4, sTypeOfMember);
@@ -805,45 +821,61 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			}
 			else if (strcmp(theStack[top], "+=") == 0) {
 				doneFlag = 1;
-				theStack[0][top] = '\0';
-				pop(&top);
 				strcpy(temp, current->value);
-				strcpy(temp2, theStack[top]);
-				pop(&top);
+				current = current->next;
+				if (strcmp(current->type, "end of command") == 0)
+				{
+					current = current->next;
+				}
+				printf("Now the current is : %s\n", current->value);
+				strcpy(temp2, current->value);
 				theStack[0][top] = '\0';
+				pop(&top);
 				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 1, sTypeOfMember);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "-=") == 0) {
 				doneFlag = 1;
-				theStack[0][top] = '\0';
-				pop(&top);
 				strcpy(temp, current->value);
-				strcpy(temp2, theStack[top]);
-				pop(&top);
+				current = current->next;
+				if (strcmp(current->type, "end of command") == 0)
+				{
+					current = current->next;
+				}
+				printf("Now the current is : %s\n", current->value);
+				strcpy(temp2, current->value);
 				theStack[0][top] = '\0';
+				pop(&top);
 				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 2, sTypeOfMember);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "*=") == 0) {
 				doneFlag = 1;
-				theStack[0][top] = '\0';
-				pop(&top);
 				strcpy(temp, current->value);
-				strcpy(temp2, theStack[top]);
-				pop(&top);
+				current = current->next;
+				if (strcmp(current->type, "end of command") == 0)
+				{
+					current = current->next;
+				}
+				printf("Now the current is : %s\n", current->value);
+				strcpy(temp2, current->value);
 				theStack[0][top] = '\0';
+				pop(&top);
 				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 3, sTypeOfMember);
 				notTheEndFlag = 0;
 			}
 			else if (strcmp(theStack[top], "/=") == 0) {
 				doneFlag = 1;
-				theStack[0][top] = '\0';
-				pop(&top);
 				strcpy(temp, current->value);
-				strcpy(temp2, theStack[top]);
-				pop(&top);
+				current = current->next;
+				if (strcmp(current->type, "end of command") == 0)
+				{
+					current = current->next;
+				}
+				printf("Now the current is : %s\n", current->value);
+				strcpy(temp2, current->value);
 				theStack[0][top] = '\0';
+				pop(&top);
 				BuildAssignAndCompareExprStatement(temp, temp2, commandNode, 4, sTypeOfMember);
 				notTheEndFlag = 0;
 			}

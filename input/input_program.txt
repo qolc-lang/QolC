@@ -1,4 +1,4 @@
-import "mylib" 
+import "mylib"
 load "myFile"
 /@ sample comment jdenjfne fjrnjfnr frnjfr
 hello@string|"Hello World!"|

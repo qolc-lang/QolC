@@ -1036,12 +1036,12 @@ BuildAssignAndCompareExprStatement:
 	movq	%r8, 32(%rbp)
 	movl	%r9d, 40(%rbp)
 	.loc 1 221 0
-	movq	24(%rbp), %rax
-	movq	%rax, %rcx
+	movq	16(%rbp), %rcx
 	call	expr_create_string
 	movq	%rax, -16(%rbp)
 	.loc 1 222 0
-	movq	16(%rbp), %rcx
+	movq	24(%rbp), %rax
+	movq	%rax, %rcx
 	call	expr_create_string
 	movq	%rax, -8(%rbp)
 	.loc 1 225 0
