@@ -30,6 +30,24 @@ lexer_node lex(char fileName[]) {
 		for (pos = 0; pos < strlen(reading_buffer); ++pos) {
 			printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
 
+
+			if (isalnum(reading_buffer[pos]) || reading_buffer[pos] == '_' || isdigit(reading_buffer[pos]))
+				buffer[index++] = reading_buffer[pos];
+			else if ((reading_buffer[pos] == ' ' 
+				     || reading_buffer[pos] == '\n' 
+				     || reading_buffer[pos] == ';'
+				     || isOperator(reading_buffer[pos], myNode, temp_buffer)) 
+				     && (index!=0)) {
+				buffer[index] = '\0';
+				index = 0;
+
+				if(isKeyword(buffer) == 1) 
+	   				pushForLex(buffer, "keyword", myNode);
+   				else
+   					pushForLex(buffer, "identifier", myNode);
+			}
+			else;
+
 			/* 	
 				Ignore any whitespaces for the buffer. They cause extra problems in parsing. 
 				Also needs to check for keyword.
@@ -42,7 +60,6 @@ lexer_node lex(char fileName[]) {
 				}
 				continue;
 			}
-
 
 			/* 
 				Checking for @ operations. After new position in buffer, also checking for 
@@ -182,23 +199,6 @@ lexer_node lex(char fileName[]) {
 				pos += new_string_pos;
 				continue;
 			}
-
-			if (isalnum(reading_buffer[pos]) || reading_buffer[pos] == '_' || isdigit(reading_buffer[pos]))
-				buffer[index++] = reading_buffer[pos];
-			else if ((reading_buffer[pos] == ' ' 
-				     || reading_buffer[pos] == '\n' 
-				     || reading_buffer[pos] == ';'
-				     || isOperator(reading_buffer[pos], myNode, temp_buffer)) 
-				     && (index!=0)) {
-				buffer[index] = '\0';
-				index = 0;
-
-				if(isKeyword(buffer) == 1) 
-	   				pushForLex(buffer, "keyword", myNode);
-   				else
-   					pushForLex(buffer, "identifier", myNode);
-			}
-			else;
 		}
 	}
 

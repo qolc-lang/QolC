@@ -6,6 +6,7 @@ reading_buffer[pos] : r
 reading_buffer[pos] : t
 reading_buffer[pos] :  
 typeToPush to push is : keyword
+typeToPush to push is : keyword
 reading_buffer[pos] : "
 typeToPush to push is : string
 reading_buffer[pos] : 
@@ -17,6 +18,7 @@ reading_buffer[pos] : o
 reading_buffer[pos] : a
 reading_buffer[pos] : d
 reading_buffer[pos] :  
+typeToPush to push is : keyword
 typeToPush to push is : keyword
 reading_buffer[pos] : "
 typeToPush to push is : string
@@ -34,6 +36,7 @@ reading_buffer[pos] : p
 reading_buffer[pos] : l
 reading_buffer[pos] : e
 reading_buffer[pos] :  
+typeToPush to push is : identifier
 reading_buffer[pos] : c
 reading_buffer[pos] : o
 reading_buffer[pos] : m
@@ -42,6 +45,7 @@ reading_buffer[pos] : e
 reading_buffer[pos] : n
 reading_buffer[pos] : t
 reading_buffer[pos] :  
+typeToPush to push is : identifier
 reading_buffer[pos] : j
 reading_buffer[pos] : d
 reading_buffer[pos] : e
@@ -51,6 +55,7 @@ reading_buffer[pos] : f
 reading_buffer[pos] : n
 reading_buffer[pos] : e
 reading_buffer[pos] :  
+typeToPush to push is : identifier
 reading_buffer[pos] : f
 reading_buffer[pos] : j
 reading_buffer[pos] : r
@@ -60,6 +65,7 @@ reading_buffer[pos] : f
 reading_buffer[pos] : n
 reading_buffer[pos] : r
 reading_buffer[pos] :  
+typeToPush to push is : identifier
 reading_buffer[pos] : f
 reading_buffer[pos] : r
 reading_buffer[pos] : n
@@ -69,8 +75,8 @@ reading_buffer[pos] : r
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : identifier
+typeToPush to push is : end of command
 reading_buffer[pos] : h
 reading_buffer[pos] : e
 reading_buffer[pos] : l
@@ -105,8 +111,8 @@ reading_buffer[pos] : g
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : f
 reading_buffer[pos] : l
 reading_buffer[pos] : a
@@ -120,8 +126,8 @@ reading_buffer[pos] : l
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : u
 reading_buffer[pos] : @
 typeToPush to push is : identifier
@@ -132,8 +138,8 @@ reading_buffer[pos] : d
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : c
 reading_buffer[pos] : @
 typeToPush to push is : identifier
@@ -144,8 +150,8 @@ reading_buffer[pos] : r
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : x
 reading_buffer[pos] : @
 typeToPush to push is : identifier
@@ -156,6 +162,7 @@ reading_buffer[pos] : |
 typeToPush to push is : keyword
 reading_buffer[pos] : 0
 typeToPush to push is : number
+typeToPush to push is : identifier
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -172,6 +179,7 @@ reading_buffer[pos] : |
 typeToPush to push is : keyword
 reading_buffer[pos] : 0
 typeToPush to push is : number
+typeToPush to push is : identifier
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -251,8 +259,8 @@ reading_buffer[pos] : t
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : f
 reading_buffer[pos] : @
 typeToPush to push is : identifier
@@ -260,6 +268,7 @@ reading_buffer[pos] : 0
 typeToPush to push is : number
 reading_buffer[pos] : 
 
+typeToPush to push is : identifier
 typeToPush to push is : end of command
 reading_buffer[pos] : v
 reading_buffer[pos] : @
@@ -272,8 +281,8 @@ reading_buffer[pos] : e
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : d
 reading_buffer[pos] : @
 typeToPush to push is : identifier
@@ -287,11 +296,13 @@ reading_buffer[pos] :
 reading_buffer[pos] : 4
 typeToPush to push is : number
 reading_buffer[pos] : +
+typeToPush to push is : identifier
 reading_buffer[pos] :  
 reading_buffer[pos] : 2
 typeToPush to push is : number
 reading_buffer[pos] : 
 
+typeToPush to push is : identifier
 typeToPush to push is : end of command
 reading_buffer[pos] : z
 reading_buffer[pos] : @
@@ -300,6 +311,7 @@ reading_buffer[pos] : 0
 typeToPush to push is : number
 reading_buffer[pos] : 
 
+typeToPush to push is : identifier
 typeToPush to push is : end of command
 reading_buffer[pos] : t
 reading_buffer[pos] : @
@@ -310,8 +322,8 @@ reading_buffer[pos] : t
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : m
 reading_buffer[pos] : y
 reading_buffer[pos] : v
@@ -352,6 +364,7 @@ reading_buffer[pos] : |
 typeToPush to push is : keyword
 reading_buffer[pos] : 1
 typeToPush to push is : number
+typeToPush to push is : identifier
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -389,15 +402,15 @@ reading_buffer[pos] : d
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : identifier
+typeToPush to push is : end of command
 reading_buffer[pos] : +
 reading_buffer[pos] : y
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : identifier
+typeToPush to push is : end of command
 reading_buffer[pos] : x
 reading_buffer[pos] : -
 typeToPush to push is : identifier
@@ -414,87 +427,91 @@ reading_buffer[pos] :
 typeToPush to push is : end of command
 reading_buffer[pos] : g
 reading_buffer[pos] :  
-reading_buffer[pos] : +
 typeToPush to push is : identifier
+reading_buffer[pos] : +
 reading_buffer[pos] :  
 reading_buffer[pos] : d
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : identifier
+typeToPush to push is : end of command
 reading_buffer[pos] : y
 reading_buffer[pos] :  
-reading_buffer[pos] : +
 typeToPush to push is : identifier
+reading_buffer[pos] : +
 reading_buffer[pos] :  
 reading_buffer[pos] : 6
 typeToPush to push is : number
 reading_buffer[pos] : 
 
+typeToPush to push is : identifier
 typeToPush to push is : end of command
 reading_buffer[pos] : l
 reading_buffer[pos] :  
-reading_buffer[pos] : -
 typeToPush to push is : identifier
+reading_buffer[pos] : -
 reading_buffer[pos] :  
 reading_buffer[pos] : r
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : identifier
+typeToPush to push is : end of command
 reading_buffer[pos] : v
 reading_buffer[pos] :  
-reading_buffer[pos] : -
 typeToPush to push is : identifier
+reading_buffer[pos] : -
 reading_buffer[pos] :  
 reading_buffer[pos] : 2
 typeToPush to push is : number
 reading_buffer[pos] : 
 
+typeToPush to push is : identifier
 typeToPush to push is : end of command
 reading_buffer[pos] : t
 reading_buffer[pos] :  
-reading_buffer[pos] : *
 typeToPush to push is : identifier
+reading_buffer[pos] : *
 reading_buffer[pos] :  
 reading_buffer[pos] : w
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : identifier
+typeToPush to push is : end of command
 reading_buffer[pos] : g
 reading_buffer[pos] :  
-reading_buffer[pos] : *
 typeToPush to push is : identifier
+reading_buffer[pos] : *
 reading_buffer[pos] :  
 reading_buffer[pos] : 3
 typeToPush to push is : number
 reading_buffer[pos] : 
 
+typeToPush to push is : identifier
 typeToPush to push is : end of command
 reading_buffer[pos] : s
 reading_buffer[pos] :  
-reading_buffer[pos] : /
 typeToPush to push is : identifier
+reading_buffer[pos] : /
 reading_buffer[pos] :  
 reading_buffer[pos] : k
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : identifier
+typeToPush to push is : end of command
 reading_buffer[pos] : z
 reading_buffer[pos] :  
-reading_buffer[pos] : /
 typeToPush to push is : identifier
+reading_buffer[pos] : /
 reading_buffer[pos] :  
 reading_buffer[pos] : 7
 typeToPush to push is : number
 reading_buffer[pos] : 
 
+typeToPush to push is : identifier
 typeToPush to push is : end of command
 reading_buffer[pos] : m
 reading_buffer[pos] : @
@@ -609,6 +626,7 @@ reading_buffer[pos] : t
 reading_buffer[pos] : e
 reading_buffer[pos] :  
 typeToPush to push is : keyword
+typeToPush to push is : keyword
 reading_buffer[pos] : m
 reading_buffer[pos] : y
 reading_buffer[pos] : _
@@ -619,6 +637,7 @@ reading_buffer[pos] : e
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
+typeToPush to push is : identifier
 typeToPush to push is : end of command
 reading_buffer[pos] : b
 reading_buffer[pos] : r
@@ -628,8 +647,8 @@ reading_buffer[pos] : k
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : c
 reading_buffer[pos] : o
 reading_buffer[pos] : n
@@ -641,21 +660,23 @@ reading_buffer[pos] : e
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : d
 reading_buffer[pos] : e
 reading_buffer[pos] : f
 reading_buffer[pos] : e
 reading_buffer[pos] : r
 reading_buffer[pos] :  
+typeToPush to push is : keyword
+typeToPush to push is : keyword
 reading_buffer[pos] : p
 reading_buffer[pos] : r
 reading_buffer[pos] : i
 reading_buffer[pos] : n
 reading_buffer[pos] : t
 reading_buffer[pos] : |
-typeToPush to push is : identifier
+typeToPush to push is : keyword
 reading_buffer[pos] : "
 typeToPush to push is : string
 reading_buffer[pos] : |
@@ -675,6 +696,7 @@ reading_buffer[pos] : 0
 typeToPush to push is : hexadecimal number
 reading_buffer[pos] : 
 
+typeToPush to push is : identifier
 typeToPush to push is : end of command
 reading_buffer[pos] : s
 reading_buffer[pos] : l
@@ -685,6 +707,7 @@ reading_buffer[pos] : |
 typeToPush to push is : keyword
 reading_buffer[pos] : 2
 typeToPush to push is : number
+typeToPush to push is : identifier
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -698,8 +721,9 @@ reading_buffer[pos] : a
 reading_buffer[pos] : i
 reading_buffer[pos] : n
 reading_buffer[pos] :  
-reading_buffer[pos] : |
 typeToPush to push is : keyword
+typeToPush to push is : keyword
+reading_buffer[pos] : |
 reading_buffer[pos] : |
 reading_buffer[pos] : 
 reading_buffer[pos] : 
@@ -722,6 +746,7 @@ reading_buffer[pos] : r
 reading_buffer[pos] : 3
 typeToPush to push is : number
 reading_buffer[pos] :  
+typeToPush to push is : identifier
 reading_buffer[pos] : s
 reading_buffer[pos] : t
 reading_buffer[pos] : r
@@ -731,8 +756,8 @@ reading_buffer[pos] : t
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
+typeToPush to push is : keyword
 typeToPush to push is : end of command
-typeToPush to push is : identifier
 reading_buffer[pos] : |
 reading_buffer[pos] : 
 
@@ -754,8 +779,8 @@ reading_buffer[pos] : g
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : 	
 reading_buffer[pos] : a
 reading_buffer[pos] : @
@@ -766,8 +791,8 @@ reading_buffer[pos] : t
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : 	
 reading_buffer[pos] : b
 reading_buffer[pos] : l
@@ -783,8 +808,8 @@ reading_buffer[pos] : t
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : 	
 reading_buffer[pos] : c
 reading_buffer[pos] : l
@@ -802,8 +827,8 @@ reading_buffer[pos] : t
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : 	
 reading_buffer[pos] : m
 reading_buffer[pos] : y
@@ -820,8 +845,8 @@ reading_buffer[pos] : t
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : 	
 reading_buffer[pos] : m
 reading_buffer[pos] : 7
@@ -838,8 +863,8 @@ reading_buffer[pos] : t
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : 	
 reading_buffer[pos] : e
 reading_buffer[pos] : 8
@@ -859,6 +884,7 @@ reading_buffer[pos] : |
 typeToPush to push is : keyword
 reading_buffer[pos] : 7
 typeToPush to push is : number
+typeToPush to push is : identifier
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -883,6 +909,7 @@ reading_buffer[pos] : 5
 typeToPush to push is : number
 reading_buffer[pos] : 
 
+typeToPush to push is : identifier
 typeToPush to push is : end of command
 reading_buffer[pos] : 	
 reading_buffer[pos] : _
@@ -912,6 +939,7 @@ reading_buffer[pos] : |
 typeToPush to push is : keyword
 reading_buffer[pos] : 6
 typeToPush to push is : number
+typeToPush to push is : identifier
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -948,8 +976,8 @@ reading_buffer[pos] : t
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : 	
 reading_buffer[pos] : d
 reading_buffer[pos] : m
@@ -979,6 +1007,7 @@ reading_buffer[pos] : n
 reading_buffer[pos] : e
 reading_buffer[pos] : s
 reading_buffer[pos] :  
+typeToPush to push is : identifier
 reading_buffer[pos] : u
 reading_buffer[pos] : n
 reading_buffer[pos] : i
@@ -987,8 +1016,8 @@ reading_buffer[pos] : n
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
+typeToPush to push is : keyword
 typeToPush to push is : end of command
-typeToPush to push is : identifier
 reading_buffer[pos] : |
 reading_buffer[pos] : 
 
@@ -1011,8 +1040,8 @@ reading_buffer[pos] : t
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : 	
 reading_buffer[pos] : s
 reading_buffer[pos] : h
@@ -1029,6 +1058,7 @@ reading_buffer[pos] : |
 typeToPush to push is : keyword
 reading_buffer[pos] : 1
 typeToPush to push is : number
+typeToPush to push is : identifier
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -1070,6 +1100,7 @@ reading_buffer[pos] : l
 reading_buffer[pos] : u
 reading_buffer[pos] : e
 reading_buffer[pos] :  
+typeToPush to push is : identifier
 reading_buffer[pos] : e
 reading_buffer[pos] : n
 reading_buffer[pos] : u
@@ -1077,8 +1108,8 @@ reading_buffer[pos] : m
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
+typeToPush to push is : keyword
 typeToPush to push is : end of command
-typeToPush to push is : identifier
 reading_buffer[pos] : |
 reading_buffer[pos] : 
 
@@ -1092,6 +1123,7 @@ reading_buffer[pos] : @
 typeToPush to push is : identifier
 reading_buffer[pos] : 0
 typeToPush to push is : number
+typeToPush to push is : identifier
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -1108,6 +1140,7 @@ reading_buffer[pos] : @
 typeToPush to push is : identifier
 reading_buffer[pos] : 1
 typeToPush to push is : number
+typeToPush to push is : identifier
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -1157,6 +1190,7 @@ reading_buffer[pos] : @
 typeToPush to push is : identifier
 reading_buffer[pos] : 1
 typeToPush to push is : number
+typeToPush to push is : identifier
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -1190,8 +1224,8 @@ reading_buffer[pos] : g
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : keyword
+typeToPush to push is : end of command
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -1205,6 +1239,7 @@ reading_buffer[pos] : |
 typeToPush to push is : keyword
 reading_buffer[pos] : 4
 typeToPush to push is : number
+typeToPush to push is : identifier
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -1295,6 +1330,8 @@ reading_buffer[pos] : n
 reading_buffer[pos] : e
 reading_buffer[pos] : w
 reading_buffer[pos] :  
+typeToPush to push is : keyword
+typeToPush to push is : keyword
 reading_buffer[pos] : n
 reading_buffer[pos] : o
 reading_buffer[pos] : d
@@ -1302,8 +1339,8 @@ reading_buffer[pos] : e
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : identifier
+typeToPush to push is : end of command
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -1315,14 +1352,17 @@ reading_buffer[pos] : e
 reading_buffer[pos] : r
 reading_buffer[pos] : t
 reading_buffer[pos] :  
-reading_buffer[pos] : |
 typeToPush to push is : keyword
+typeToPush to push is : keyword
+reading_buffer[pos] : |
 reading_buffer[pos] : 5
 typeToPush to push is : number
 reading_buffer[pos] : @
+typeToPush to push is : identifier
 reading_buffer[pos] :  
 reading_buffer[pos] : 2
 typeToPush to push is : number
+typeToPush to push is : identifier
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -1345,6 +1385,7 @@ typeToPush to push is : identifier
 reading_buffer[pos] : [
 reading_buffer[pos] : 5
 typeToPush to push is : number
+typeToPush to push is : identifier
 reading_buffer[pos] : v
 reading_buffer[pos] : e
 reading_buffer[pos] : c
@@ -1356,8 +1397,8 @@ typeToPush to push is : number
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : identifier
+typeToPush to push is : end of command
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -1369,32 +1410,34 @@ reading_buffer[pos] : u
 reading_buffer[pos] : r
 reading_buffer[pos] : n
 reading_buffer[pos] :  
+typeToPush to push is : keyword
+typeToPush to push is : keyword
 reading_buffer[pos] : x
 reading_buffer[pos] :  
-reading_buffer[pos] : +
 typeToPush to push is : identifier
+reading_buffer[pos] : +
 reading_buffer[pos] :  
 reading_buffer[pos] : c
 reading_buffer[pos] :  
-reading_buffer[pos] : -
 typeToPush to push is : identifier
+reading_buffer[pos] : -
 reading_buffer[pos] :  
 reading_buffer[pos] : p
 reading_buffer[pos] :  
-reading_buffer[pos] : -
 typeToPush to push is : identifier
+reading_buffer[pos] : -
 reading_buffer[pos] :  
 reading_buffer[pos] : r
 reading_buffer[pos] :  
-reading_buffer[pos] : +
 typeToPush to push is : identifier
+reading_buffer[pos] : +
 reading_buffer[pos] :  
 reading_buffer[pos] : v
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
-typeToPush to push is : end of command
 typeToPush to push is : identifier
+typeToPush to push is : end of command
 reading_buffer[pos] : 
 reading_buffer[pos] : 
 
@@ -1407,6 +1450,10 @@ Type in the loop : keyword
 Import statement to be built.
 Push in the stack completed, with element : import
 **********************************************************
+Type in the loop : keyword
+Import statement to be built.
+Push in the stack completed, with element : import
+**********************************************************
 Type in the loop : string
 Value in the loop : mylib
 Label inserted in symbol table : mylib
@@ -1414,6 +1461,12 @@ Going to build import statement with string : mylib
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
+Type in the loop : end of command
+Value in the loop : '\n'
+**********************************************************
+Type in the loop : keyword
+Load statement to be built.
+Push in the stack completed, with element : load
 **********************************************************
 Type in the loop : keyword
 Load statement to be built.
@@ -1426,6 +1479,8 @@ Going to build load statement with string : myFile
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : comment start
 Comment symbol going in.
@@ -1434,13 +1489,29 @@ Push in the stack completed, with element : /@
 Type in the loop : operator
 Part of comment @.
 **********************************************************
+Type in the loop : identifier
+Value in the loop : sample
+This is part of a comment sample
+**********************************************************
+Type in the loop : identifier
+Value in the loop : comment
+This is part of a comment comment
+**********************************************************
+Type in the loop : identifier
+Value in the loop : jdenjfne
+This is part of a comment jdenjfne
+**********************************************************
+Type in the loop : identifier
+Value in the loop : fjrnjfnr
+This is part of a comment fjrnjfnr
+**********************************************************
+Type in the loop : identifier
+Value in the loop : frnjfr
+This is part of a comment frnjfr
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
 End of the comment.
-**********************************************************
-Type in the loop : identifier
-Value in the loop : samplecommentjdenjfnefjrnjfnrfrnjfr
-This is the last part of the comment
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -1448,10 +1519,7 @@ Push in the stack completed, with element : @
 **********************************************************
 Type in the loop : identifier
 Value in the loop : hello
-Operator @ is in the stack now.
-Going to insert the value : hello
-Label inserted in symbol table : hello
-Push in the stack completed, with element : hello
+This is the last part of the comment
 **********************************************************
 Type in the loop : parenthesis
 Value in the loop : |
@@ -1481,9 +1549,12 @@ Going to insert the value : s
 Label inserted in symbol table : s
 Push in the stack completed, with element : s
 **********************************************************
+Type in the loop : keyword
+String keyword going in.
+Push in the stack completed, with element : string
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -1496,9 +1567,12 @@ Going to insert the value : flag
 Label inserted in symbol table : flag
 Push in the stack completed, with element : flag
 **********************************************************
+Type in the loop : keyword
+Bool keyword going in.
+Push in the stack completed, with element : bool
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -1511,9 +1585,12 @@ Going to insert the value : u
 Label inserted in symbol table : u
 Push in the stack completed, with element : u
 **********************************************************
+Type in the loop : keyword
+Void keyword going in.
+Push in the stack completed, with element : void
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -1526,9 +1603,12 @@ Going to insert the value : c
 Label inserted in symbol table : c
 Push in the stack completed, with element : c
 **********************************************************
+Type in the loop : keyword
+Char keyword going in.
+Push in the stack completed, with element : char
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -1555,6 +1635,14 @@ Going to build int declaration statement.
 Type in the loop : parenthesis
 Value in the loop : |
 **********************************************************
+Type in the loop : identifier
+Value in the loop : 0
+The stack at identifier type is empty.
+Going to insert the value : 0
+Push in the stack completed, with element : 0
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
@@ -1583,6 +1671,14 @@ Going to build float declaration statement.
 Type in the loop : parenthesis
 Value in the loop : |
 **********************************************************
+Type in the loop : identifier
+Value in the loop : 0
+The stack at identifier type is empty.
+Going to insert the value : 0
+Push in the stack completed, with element : 0
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
@@ -1594,11 +1690,11 @@ Operator @ going in.
 Push in the stack completed, with element : @
 **********************************************************
 Type in the loop : identifier
-Value in the loop : my_b1
+Value in the loop : my_b11
 Operator @ is in the stack now.
-Going to insert the value : my_b1
-Label inserted in symbol table : my_b1
-Push in the stack completed, with element : my_b1
+Going to insert the value : my_b11
+Label inserted in symbol table : my_b11
+Push in the stack completed, with element : my_b11
 **********************************************************
 Type in the loop : parenthesis
 Value in the loop : |
@@ -1684,9 +1780,12 @@ Going to insert the value : p
 Label inserted in symbol table : p
 Push in the stack completed, with element : p
 **********************************************************
+Type in the loop : keyword
+Float keyword going in.
+Push in the stack completed, with element : float
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -1705,6 +1804,12 @@ The stack at number type is not empty.
 Going to insert the value : 0.5
 Push in the stack completed, with element : 0.5
 **********************************************************
+Type in the loop : identifier
+Value in the loop : 0
+The stack at identifier type is not empty
+Going to insert the value : 0
+Push in the stack completed, with element : 0
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
@@ -1719,9 +1824,13 @@ Going to insert the value : v
 Label inserted in symbol table : v
 Push in the stack completed, with element : v
 **********************************************************
+Type in the loop : keyword
+Value in the loop : false
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -1764,9 +1873,20 @@ Type in the loop : operator
 Operator + going in.
 Push in the stack completed, with element : +
 **********************************************************
+Type in the loop : identifier
+Value in the loop : 4
+**********************************************************
 Type in the loop : number
 Value in the loop : 2
-Going to build add declaration statement.
+The stack at number type is not empty.
+Going to insert the value : 2
+Push in the stack completed, with element : 2
+**********************************************************
+Type in the loop : identifier
+Value in the loop : 2
+The stack at identifier type is not empty
+Going to insert the value : 2
+Push in the stack completed, with element : 2
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
@@ -1788,6 +1908,12 @@ The stack at number type is not empty.
 Going to insert the value : 0
 Push in the stack completed, with element : 0
 **********************************************************
+Type in the loop : identifier
+Value in the loop : 0
+The stack at identifier type is not empty
+Going to insert the value : 0
+Push in the stack completed, with element : 0
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
@@ -1802,9 +1928,12 @@ Going to insert the value : t
 Label inserted in symbol table : t
 Push in the stack completed, with element : t
 **********************************************************
+Type in the loop : keyword
+Int keyword going in.
+Push in the stack completed, with element : int
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -1814,7 +1943,6 @@ Type in the loop : identifier
 Value in the loop : myvar
 Operator @ is in the stack now.
 Going to insert the value : myvar
-Label inserted in symbol table : myvar
 Push in the stack completed, with element : myvar
 **********************************************************
 Type in the loop : string
@@ -1842,6 +1970,8 @@ Going to build print statement with string : hello
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : parenthesis
 Value in the loop : |
@@ -1857,6 +1987,14 @@ Going to build print statement with string : 10
 Type in the loop : parenthesis
 Value in the loop : |
 **********************************************************
+Type in the loop : identifier
+Value in the loop : 1
+The stack at identifier type is empty.
+Going to insert the value : 1
+Push in the stack completed, with element : 1
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
@@ -1898,21 +2036,21 @@ Type in the loop : operator
 Operator -- going in.
 Push in the stack completed, with element : --
 **********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
-**********************************************************
 Type in the loop : identifier
 Value in the loop : d
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : operator
 Operator ++ going in.
 Push in the stack completed, with element : ++
 **********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
-**********************************************************
 Type in the loop : identifier
 Value in the loop : y
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : operator
 Operator -- going in.
@@ -1934,87 +2072,131 @@ Value in the loop : g
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
-Type in the loop : operator
-Operator += going in.
-Push in the stack completed, with element : +=
-**********************************************************
 Type in the loop : identifier
 Value in the loop : g
-Now the current is : d
-Going to build add assignment expression statement.
+The stack at identifier type is empty.
+Going to insert the value : g
+Push in the stack completed, with element : g
 **********************************************************
 Type in the loop : operator
 Operator += going in.
 Push in the stack completed, with element : +=
 **********************************************************
 Type in the loop : identifier
-Value in the loop : y
+Value in the loop : d
+Now the current is : y
+Going to build add assignment expression statement.
+**********************************************************
+Type in the loop : operator
+Operator += going in.
+Push in the stack completed, with element : +=
+**********************************************************
+Type in the loop : number
+Value in the loop : 6
 Now the current is : 6
 Going to build add assignment expression statement.
+The stack at identifier type is empty.
+Going to insert the value : 6
+Push in the stack completed, with element : 6
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-**********************************************************
-Type in the loop : operator
-Operator -= going in.
-Push in the stack completed, with element : -=
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : identifier
 Value in the loop : l
-Now the current is : r
-Going to build sub assignment expression statement.
+The stack at identifier type is empty.
+Going to insert the value : l
+Push in the stack completed, with element : l
 **********************************************************
 Type in the loop : operator
 Operator -= going in.
 Push in the stack completed, with element : -=
 **********************************************************
 Type in the loop : identifier
-Value in the loop : v
+Value in the loop : r
+Now the current is : v
+Going to build sub assignment expression statement.
+**********************************************************
+Type in the loop : operator
+Operator -= going in.
+Push in the stack completed, with element : -=
+**********************************************************
+Type in the loop : number
+Value in the loop : 2
 Now the current is : 2
 Going to build sub assignment expression statement.
+The stack at identifier type is empty.
+Going to insert the value : 2
+Push in the stack completed, with element : 2
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-**********************************************************
-Type in the loop : operator
-Operator *= going in.
-Push in the stack completed, with element : *=
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : identifier
 Value in the loop : t
-Now the current is : w
-Going to build mul assignment expression statement.
+The stack at identifier type is empty.
+Going to insert the value : t
+Push in the stack completed, with element : t
 **********************************************************
 Type in the loop : operator
 Operator *= going in.
 Push in the stack completed, with element : *=
 **********************************************************
 Type in the loop : identifier
-Value in the loop : g
+Value in the loop : w
+Now the current is : g
+Going to build mul assignment expression statement.
+**********************************************************
+Type in the loop : operator
+Operator *= going in.
+Push in the stack completed, with element : *=
+**********************************************************
+Type in the loop : number
+Value in the loop : 3
 Now the current is : 3
 Going to build mul assignment expression statement.
+The stack at identifier type is empty.
+Going to insert the value : 3
+Push in the stack completed, with element : 3
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-**********************************************************
-Type in the loop : operator
-Operator /= going in.
-Push in the stack completed, with element : /=
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : identifier
 Value in the loop : s
-Now the current is : k
-Going to build div assignment expression statement.
+The stack at identifier type is empty.
+Going to insert the value : s
+Push in the stack completed, with element : s
 **********************************************************
 Type in the loop : operator
 Operator /= going in.
 Push in the stack completed, with element : /=
 **********************************************************
 Type in the loop : identifier
-Value in the loop : z
-Now the current is : 76
+Value in the loop : k
+Now the current is : z
 Going to build div assignment expression statement.
 **********************************************************
+Type in the loop : operator
+Operator /= going in.
+Push in the stack completed, with element : /=
+**********************************************************
+Type in the loop : number
+Value in the loop : 76
+Now the current is : 7
+Going to build div assignment expression statement.
+The stack at identifier type is empty.
+Going to insert the value : 7
+Push in the stack completed, with element : 7
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
@@ -2182,10 +2364,18 @@ Type in the loop : keyword
 Delete statement to be built.
 Push in the stack completed, with element : delete
 **********************************************************
+Type in the loop : keyword
+Delete statement to be built.
+Push in the stack completed, with element : delete
+**********************************************************
+Type in the loop : identifier
+Value in the loop : my_node
+Going to build delete statement with string : my_node
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going to build delete statement.
-Going to build delete statement with string : '\n'
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : keyword
 Value in the loop : break
@@ -2196,20 +2386,25 @@ Value in the loop : '\n'
 Type in the loop : keyword
 Value in the loop : continue
 **********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
+**********************************************************
+Type in the loop : keyword
+Defer statement to be built.
+**********************************************************
+Type in the loop : keyword
+Defer statement to be built.
+**********************************************************
 Type in the loop : parenthesis
 Value in the loop : |
 **********************************************************
-Type in the loop : identifier
-Value in the loop : deferprint
-The stack at identifier type is empty.
-Going to insert the value : deferprint
-Push in the stack completed, with element : deferprint
+Type in the loop : keyword
+Print statement to be built.
+Push in the stack completed, with element : print
 **********************************************************
 Type in the loop : string
 Value in the loop : hello there
-The stack at string type is not empty
-Going to push the value : hello there
-Push in the stack completed, with element : hello there
+Going to build print statement with string : hello there
 **********************************************************
 Type in the loop : parenthesis
 Value in the loop : |
@@ -2232,6 +2427,14 @@ Type in the loop : hexadecimal number
 Value in the loop : 0xfedcba9876543210
 Going to build hexadecimal number declaration statement.
 **********************************************************
+Type in the loop : identifier
+Value in the loop : 0
+The stack at identifier type is empty.
+Going to insert the value : 0
+Push in the stack completed, with element : 0
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
@@ -2249,17 +2452,28 @@ Going to build sleep statement with string : 2
 Type in the loop : parenthesis
 Value in the loop : |
 **********************************************************
+Type in the loop : identifier
+Value in the loop : 2
+The stack at identifier type is empty.
+Going to insert the value : 2
+Push in the stack completed, with element : 2
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-**********************************************************
-Type in the loop : parenthesis
-Value in the loop : |
 **********************************************************
 Type in the loop : keyword
 Main statement to be built.
+**********************************************************
+Type in the loop : keyword
+Main statement to be built.
+**********************************************************
+Type in the loop : parenthesis
+Value in the loop : |
 **********************************************************
 Type in the loop : parenthesis
 Value in the loop : |
@@ -2280,21 +2494,27 @@ Type in the loop : number
 Value in the loop : 3
 It is member of : 5
 **********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
-**********************************************************
 Type in the loop : identifier
-Value in the loop : vector3struct
+Value in the loop : vector33
 The stack at identifier type is empty.
 It is member of : 5
-Going to insert the value : vector3struct
-Push in the stack completed, with element : vector3struct
+Going to insert the value : vector33
+Push in the stack completed, with element : vector33
+**********************************************************
+Type in the loop : keyword
+Value in the loop : struct
+Struct statement to be built.
+The struct variable : 2
+Label inserted in symbol table : 2
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : block start
 Value in the loop : |@
 **********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
@@ -2306,13 +2526,16 @@ Type in the loop : identifier
 Value in the loop : nanan
 Operator @ is in the stack now.
 Going to insert the value : nanan
-It is member of : 5
+It is member of : 1
 Label inserted in symbol table : nanan
 Push in the stack completed, with element : nanan
 **********************************************************
+Type in the loop : keyword
+String keyword going in.
+Push in the stack completed, with element : string
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -2322,13 +2545,16 @@ Type in the loop : identifier
 Value in the loop : a
 Operator @ is in the stack now.
 Going to insert the value : a
-It is member of : 5
+It is member of : 1
 Label inserted in symbol table : a
 Push in the stack completed, with element : a
 **********************************************************
+Type in the loop : keyword
+Int keyword going in.
+Push in the stack completed, with element : int
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -2338,13 +2564,16 @@ Type in the loop : identifier
 Value in the loop : blal
 Operator @ is in the stack now.
 Going to insert the value : blal
-It is member of : 5
+It is member of : 1
 Label inserted in symbol table : blal
 Push in the stack completed, with element : blal
 **********************************************************
+Type in the loop : keyword
+Float keyword going in.
+Push in the stack completed, with element : float
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -2354,77 +2583,86 @@ Type in the loop : identifier
 Value in the loop : clalal
 Operator @ is in the stack now.
 Going to insert the value : clalal
-It is member of : 5
+It is member of : 1
 Label inserted in symbol table : clalal
 Push in the stack completed, with element : clalal
 **********************************************************
+Type in the loop : keyword
+Float keyword going in.
+Push in the stack completed, with element : float
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : number
 Value in the loop : 5
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
 Push in the stack completed, with element : @
 **********************************************************
 Type in the loop : identifier
-Value in the loop : myint5
+Value in the loop : myint55
 Operator @ is in the stack now.
-Going to insert the value : myint5
-It is member of : 5
-Label inserted in symbol table : myint5
-Push in the stack completed, with element : myint5
+Going to insert the value : myint55
+It is member of : 1
+Label inserted in symbol table : myint55
+Push in the stack completed, with element : myint55
+**********************************************************
+Type in the loop : keyword
+Int keyword going in.
+Push in the stack completed, with element : int
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : number
 Value in the loop : 74
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
 Push in the stack completed, with element : @
 **********************************************************
 Type in the loop : identifier
-Value in the loop : m74td
+Value in the loop : m774td
 Operator @ is in the stack now.
-Going to insert the value : m74td
-It is member of : 5
-Label inserted in symbol table : m74td
-Push in the stack completed, with element : m74td
+Going to insert the value : m774td
+It is member of : 1
+Label inserted in symbol table : m774td
+Push in the stack completed, with element : m774td
+**********************************************************
+Type in the loop : keyword
+Float keyword going in.
+Push in the stack completed, with element : float
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : number
 Value in the loop : 8
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : number
 Value in the loop : 9
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : number
 Value in the loop : 2
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
 Push in the stack completed, with element : @
 **********************************************************
 Type in the loop : identifier
-Value in the loop : e8i9o2
+Value in the loop : e88i99o22
 Operator @ is in the stack now.
-Going to insert the value : e8i9o2
-It is member of : 5
-Label inserted in symbol table : e8i9o2
-Push in the stack completed, with element : e8i9o2
+Going to insert the value : e88i99o22
+It is member of : 1
+Label inserted in symbol table : e88i99o22
+Push in the stack completed, with element : e88i99o22
 **********************************************************
 Type in the loop : parenthesis
 Value in the loop : |
@@ -2435,72 +2673,87 @@ Push in the stack completed, with element : int
 **********************************************************
 Type in the loop : number
 Value in the loop : 78
-It is member of : 5
+It is member of : 1
 Going to build int declaration statement.
 **********************************************************
 Type in the loop : parenthesis
 Value in the loop : |
 **********************************************************
+Type in the loop : identifier
+Value in the loop : 7
+The stack at identifier type is empty.
+It is member of : 1
+Going to insert the value : 7
+Push in the stack completed, with element : 7
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
 Type in the loop : number
 Value in the loop : 3
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : number
 Value in the loop : 33
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
 Push in the stack completed, with element : @
 **********************************************************
 Type in the loop : identifier
-Value in the loop : theNum3tyr33
+Value in the loop : theNum33tyr333
 Operator @ is in the stack now.
-Going to insert the value : theNum3tyr33
-It is member of : 5
-Label inserted in symbol table : theNum3tyr33
-Push in the stack completed, with element : theNum3tyr33
+Going to insert the value : theNum33tyr333
+It is member of : 1
+Label inserted in symbol table : theNum33tyr333
+Push in the stack completed, with element : theNum33tyr333
 **********************************************************
 Type in the loop : number
 Value in the loop : 53
-It is member of : 5
+It is member of : 1
 The stack at number type is not empty.
 Going to insert the value : 53
 Push in the stack completed, with element : 53
+**********************************************************
+Type in the loop : identifier
+Value in the loop : 5
+The stack at identifier type is not empty
+Going to insert the value : 5
+Push in the stack completed, with element : 5
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
 Type in the loop : number
 Value in the loop : 57
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : number
 Value in the loop : 32
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : number
 Value in the loop : 3
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : number
 Value in the loop : 5
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
 Push in the stack completed, with element : @
 **********************************************************
 Type in the loop : identifier
-Value in the loop : _hi57_32doo3y5
+Value in the loop : _hi557_332doo33y55
 Operator @ is in the stack now.
-Going to insert the value : _hi57_32doo3y5
-It is member of : 5
-Label inserted in symbol table : _hi57_32doo3y5
-Push in the stack completed, with element : _hi57_32doo3y5
+Going to insert the value : _hi557_332doo33y55
+It is member of : 1
+Label inserted in symbol table : _hi557_332doo33y55
+Push in the stack completed, with element : _hi557_332doo33y55
 **********************************************************
 Type in the loop : parenthesis
 Value in the loop : |
@@ -2511,46 +2764,58 @@ Push in the stack completed, with element : float
 **********************************************************
 Type in the loop : number
 Value in the loop : 65
-It is member of : 5
+It is member of : 1
 Going to build float declaration statement.
 **********************************************************
 Type in the loop : parenthesis
 Value in the loop : |
 **********************************************************
+Type in the loop : identifier
+Value in the loop : 6
+The stack at identifier type is empty.
+It is member of : 1
+Going to insert the value : 6
+Push in the stack completed, with element : 6
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
 Type in the loop : number
 Value in the loop : 4537
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : number
 Value in the loop : 212
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : number
 Value in the loop : 33
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : number
 Value in the loop : 1
-It is member of : 5
+It is member of : 1
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
 Push in the stack completed, with element : @
 **********************************************************
 Type in the loop : identifier
-Value in the loop : hello4537_npno212op33t1
+Value in the loop : hello44537_npno2212op333t11
 Operator @ is in the stack now.
-Going to insert the value : hello4537_npno212op33t1
-It is member of : 5
-Label inserted in symbol table : hello4537_npno212op33t1
-Push in the stack completed, with element : hello4537_npno212op33t1
+Going to insert the value : hello44537_npno2212op333t11
+It is member of : 1
+Label inserted in symbol table : hello44537_npno2212op333t11
+Push in the stack completed, with element : hello44537_npno2212op333t11
+**********************************************************
+Type in the loop : keyword
+Float keyword going in.
+Push in the stack completed, with element : float
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -2560,7 +2825,7 @@ Type in the loop : identifier
 Value in the loop : dmamam
 Operator @ is in the stack now.
 Going to insert the value : dmamam
-It is member of : 5
+It is member of : 1
 Label inserted in symbol table : dmamam
 Push in the stack completed, with element : dmamam
 **********************************************************
@@ -2583,21 +2848,27 @@ Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
-**********************************************************
 Type in the loop : identifier
-Value in the loop : marinesunion
+Value in the loop : marines
 The stack at identifier type is empty.
 It is member of : 5
-Going to insert the value : marinesunion
-Push in the stack completed, with element : marinesunion
+Going to insert the value : marines
+Push in the stack completed, with element : marines
+**********************************************************
+Type in the loop : keyword
+Value in the loop : union
+Union statement to be built/
+The union variable : 'd
+Label inserted in symbol table : 'd
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : block start
 Value in the loop : |@
 **********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
@@ -2609,13 +2880,16 @@ Type in the loop : identifier
 Value in the loop : decimal
 Operator @ is in the stack now.
 Going to insert the value : decimal
-It is member of : 5
+It is member of : 2
 Label inserted in symbol table : decimal
 Push in the stack completed, with element : decimal
 **********************************************************
+Type in the loop : keyword
+Float keyword going in.
+Push in the stack completed, with element : float
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -2625,7 +2899,7 @@ Type in the loop : identifier
 Value in the loop : shield
 Operator @ is in the stack now.
 Going to insert the value : shield
-It is member of : 5
+It is member of : 2
 Label inserted in symbol table : shield
 Push in the stack completed, with element : shield
 **********************************************************
@@ -2638,12 +2912,21 @@ Push in the stack completed, with element : int
 **********************************************************
 Type in the loop : number
 Value in the loop : 100
-It is member of : 5
+It is member of : 2
 Going to build int declaration statement.
 **********************************************************
 Type in the loop : parenthesis
 Value in the loop : |
 **********************************************************
+Type in the loop : identifier
+Value in the loop : 1
+The stack at identifier type is empty.
+It is member of : 2
+Going to insert the value : 1
+Push in the stack completed, with element : 1
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
@@ -2655,7 +2938,7 @@ Type in the loop : identifier
 Value in the loop : name
 Operator @ is in the stack now.
 Going to insert the value : name
-It is member of : 5
+It is member of : 2
 Label inserted in symbol table : name
 Push in the stack completed, with element : name
 **********************************************************
@@ -2686,21 +2969,28 @@ Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
-**********************************************************
 Type in the loop : identifier
-Value in the loop : valueenum
+Value in the loop : value
 The stack at identifier type is empty.
 It is member of : 5
-Going to insert the value : valueenum
-Push in the stack completed, with element : valueenum
+Going to insert the value : value
+Push in the stack completed, with element : value
+**********************************************************
+Type in the loop : keyword
+Value in the loop : enum
+Enum statement to be built.
+The enum variable : name
+The label exists already in the symbol table.
+Duplicate can�t be inserted.
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : block start
 Value in the loop : |@
 **********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
@@ -2712,19 +3002,25 @@ Type in the loop : identifier
 Value in the loop : xpop
 Operator @ is in the stack now.
 Going to insert the value : xpop
-It is member of : 5
+It is member of : 3
 Label inserted in symbol table : xpop
 Push in the stack completed, with element : xpop
 **********************************************************
 Type in the loop : number
 Value in the loop : 0
-It is member of : 5
+It is member of : 3
 The stack at number type is not empty.
 Going to insert the value : 0
 Push in the stack completed, with element : 0
 **********************************************************
 Type in the loop : comma
 Value in the loop : ','
+**********************************************************
+Type in the loop : identifier
+Value in the loop : 0
+The stack at identifier type is not empty
+Going to insert the value : 0
+Push in the stack completed, with element : 0
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
@@ -2737,19 +3033,25 @@ Type in the loop : identifier
 Value in the loop : ydsffds
 Operator @ is in the stack now.
 Going to insert the value : ydsffds
-It is member of : 5
+It is member of : 3
 Label inserted in symbol table : ydsffds
 Push in the stack completed, with element : ydsffds
 **********************************************************
 Type in the loop : number
 Value in the loop : 1
-It is member of : 5
+It is member of : 3
 The stack at number type is not empty.
 Going to insert the value : 1
 Push in the stack completed, with element : 1
 **********************************************************
 Type in the loop : comma
 Value in the loop : ','
+**********************************************************
+Type in the loop : identifier
+Value in the loop : 1
+The stack at identifier type is not empty
+Going to insert the value : 1
+Push in the stack completed, with element : 1
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
@@ -2762,7 +3064,7 @@ Type in the loop : identifier
 Value in the loop : zkerk
 Operator @ is in the stack now.
 Going to insert the value : zkerk
-It is member of : 5
+It is member of : 3
 Label inserted in symbol table : zkerk
 Push in the stack completed, with element : zkerk
 **********************************************************
@@ -2786,7 +3088,7 @@ Type in the loop : identifier
 Value in the loop : vmamammama
 Operator @ is in the stack now.
 Going to insert the value : vmamammama
-It is member of : 5
+It is member of : 3
 Label inserted in symbol table : vmamammama
 Push in the stack completed, with element : vmamammama
 **********************************************************
@@ -2810,19 +3112,25 @@ Type in the loop : identifier
 Value in the loop : g
 Operator @ is in the stack now.
 Going to insert the value : g
-It is member of : 5
+It is member of : 3
 Label inserted in symbol table : g
 Push in the stack completed, with element : g
 **********************************************************
 Type in the loop : number
 Value in the loop : 10
-It is member of : 5
+It is member of : 3
 The stack at number type is not empty.
 Going to insert the value : 10
 Push in the stack completed, with element : 10
 **********************************************************
 Type in the loop : comma
 Value in the loop : ','
+**********************************************************
+Type in the loop : identifier
+Value in the loop : 1
+The stack at identifier type is not empty
+Going to insert the value : 1
+Push in the stack completed, with element : 1
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
@@ -2831,6 +3139,8 @@ Type in the loop : block end
 Value in the loop : @|
 Going to clear the flags.
 **********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
@@ -2849,9 +3159,12 @@ It is member of : 5
 Label inserted in symbol table : spopopopo
 Push in the stack completed, with element : spopopopo
 **********************************************************
+Type in the loop : keyword
+String keyword going in.
+Push in the stack completed, with element : string
+**********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Going for just a declaration
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
@@ -2871,6 +3184,15 @@ Going to build sleep statement with string : 4
 Type in the loop : parenthesis
 Value in the loop : |
 **********************************************************
+Type in the loop : identifier
+Value in the loop : 4
+The stack at identifier type is empty.
+It is member of : 5
+Going to insert the value : 4
+Push in the stack completed, with element : 4
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
 **********************************************************
@@ -2964,19 +3286,39 @@ It is member of : 5
 Label inserted in symbol table : my_node
 Push in the stack completed, with element : my_node
 **********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
-Going for just a declaration
+Type in the loop : keyword
+Value in the loop : new
+Going to build statement new.
+**********************************************************
+Type in the loop : keyword
+Value in the loop : new
+Going to build statement new.
+**********************************************************
+Type in the loop : identifier
+Value in the loop : node
+The stack at identifier type is empty.
+It is member of : 5
+Going to insert the value : node
+Push in the stack completed, with element : node
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
-Type in the loop : parenthesis
-Value in the loop : |
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : keyword
 Value in the loop : assert
 Assert statement to be built.
+**********************************************************
+Type in the loop : keyword
+Value in the loop : assert
+Assert statement to be built.
+**********************************************************
+Type in the loop : parenthesis
+Value in the loop : |
 **********************************************************
 Type in the loop : number
 Value in the loop : 5
@@ -2989,13 +3331,25 @@ Type in the loop : operator
 Operator @== going in.
 Push in the stack completed, with element : @==
 **********************************************************
+Type in the loop : identifier
+Value in the loop : 5
+Going to build equal expression statement.
+**********************************************************
 Type in the loop : number
 Value in the loop : 2
 It is member of : 4
-Going to build equal expression statement.
+The stack at number type is empty.
+Going to insert the value : 2
+Push in the stack completed, with element : 2
 **********************************************************
 Type in the loop : parenthesis
 Value in the loop : |
+**********************************************************
+Type in the loop : identifier
+Value in the loop : 2
+The stack at identifier type is not empty
+Going to insert the value : 2
+Push in the stack completed, with element : 2
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
@@ -3024,30 +3378,41 @@ Type in the loop : number
 Value in the loop : 50
 It is member of : 5
 Valid array.
-The array type : '\n'
+The array type : 3
 **********************************************************
 Type in the loop : identifier
-Value in the loop : vector3
+Value in the loop : vector33
 The stack at identifier type is empty.
 It is member of : 5
-Going to insert the value : vector3
-Push in the stack completed, with element : vector3
+Going to insert the value : vector33
+Push in the stack completed, with element : vector33
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
 Type in the loop : end of command
 Value in the loop : '\n'
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
+**********************************************************
+Type in the loop : keyword
+Value in the loop : return
+Return statement to be built.
+**********************************************************
+Type in the loop : keyword
+Value in the loop : return
+Return statement to be built.
+**********************************************************
+Type in the loop : identifier
+Value in the loop : x
+The stack at identifier type is empty.
+It is member of : 6
+Going to insert the value : x
+Push in the stack completed, with element : x
 **********************************************************
 Type in the loop : operator
 Operator + going in.
 Push in the stack completed, with element : +
-**********************************************************
-Type in the loop : identifier
-Value in the loop : returnx
-**********************************************************
-Type in the loop : operator
-Operator - going in.
-Push in the stack completed, with element : -
 **********************************************************
 Type in the loop : identifier
 Value in the loop : c
@@ -3060,17 +3425,23 @@ Type in the loop : identifier
 Value in the loop : p
 **********************************************************
 Type in the loop : operator
-Operator + going in.
-Push in the stack completed, with element : +
+Operator - going in.
+Push in the stack completed, with element : -
 **********************************************************
 Type in the loop : identifier
 Value in the loop : r
 **********************************************************
-Type in the loop : end of command
-Value in the loop : '\n'
+Type in the loop : operator
+Operator + going in.
+Push in the stack completed, with element : +
 **********************************************************
 Type in the loop : identifier
 Value in the loop : v
+**********************************************************
+Type in the loop : end of command
+Value in the loop : '\n'
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
@@ -3084,21 +3455,21 @@ STMT_IMPORT
 STMT_LOAD
 	expr: myFile
 STMT_DECL
-name: hello
+name: @
 	TYPE_STRING
 		value: Hello World!
 STMT_DECL
 name: s
-	TYPE_STRING
+		value: string
 STMT_DECL
 name: flag
-	TYPE_BOOLEAN
+		value: bool
 STMT_DECL
 name: u
-	TYPE_VOID
+		value: void
 STMT_DECL
 name: c
-	TYPE_CHARACTER
+		value: char
 STMT_DECL
 name: x
 	TYPE_INTEGER
@@ -3108,7 +3479,7 @@ name: o
 	TYPE_FLOAT
 		value: 0.5
 STMT_DECL
-name: my_b1
+name: my_b11
 	TYPE_BOOLEAN
 		value: true
 STMT_DECL
@@ -3121,25 +3492,22 @@ name: e
 		value: 'g
 STMT_DECL
 name: p
-	TYPE_FLOAT
+		value: float
 STMT_DECL
-name: f
-		value: 0.5
-STMT_DECL
-name: v
-		value: false
+name: 0.5
+		value: 0
 STMT_DECL
 name: d
 		value: 'd
 STMT_DECL
-name: y
-		value: 6
+name: 2
+		value: 2
 STMT_DECL
-name: z
+name: 0
 		value: 0
 STMT_DECL
 name: t
-	TYPE_INTEGER
+		value: int
 STMT_DECL
 name: myvar
 		value: a string
@@ -3160,29 +3528,29 @@ EXPR_DECREMENT
 EXPR_INCREMENT
 	identifier : g
 EXPR_ADD_ASSIGNMENT
-	left : g
-	right : d
+	left : d
+	right : y
 EXPR_ADD_ASSIGNMENT
-	left : y
+	left : 6
 	right : 6
 EXPR_SUB_ASSIGNMENT
-	left : l
-	right : r
+	left : r
+	right : v
 EXPR_SUB_ASSIGNMENT
-	left : v
+	left : 2
 	right : 2
 EXPR_MUL_ASSIGNMENT
-	left : t
-	right : w
+	left : w
+	right : g
 EXPR_MUL_ASSIGNMENT
-	left : g
+	left : 3
 	right : 3
 EXPR_DIV_ASSIGNMENT
-	left : s
-	right : k
+	left : k
+	right : z
 EXPR_DIV_ASSIGNMENT
-	left : z
-	right : 76
+	left : 76
+	right : 7
 STMT_DECL
 name: m
 	TYPE_FLOAT_POINTER
@@ -3204,12 +3572,12 @@ name: vlal
 	TYPE_CHAR_POINTER
 		value: null
 STMT_DELETE
-	expr: '\n'
+	expr: my_node
 STMT_BREAK
 STMT_CONTINUE
-STMT_DECL
-name: deferprint
-		value: hello there
+STMT_DEFER
+STMT_PRINT
+	expr: hello there
 STMT_DECL
 name: hexNum
 	TYPE_HEXNUM
@@ -3217,70 +3585,99 @@ name: hexNum
 STMT_SLEEP
 	expr: 2
 STMT_MAIN
+STMT_MAIN
+STMT_DECL
+name: 2
+	TYPE_STRUCT
 STMT_DECL
 name: nanan
-	TYPE_STRING
+		value: string
+		member of struct
 STMT_DECL
 name: a
-	TYPE_INTEGER
+		value: int
+		member of struct
 STMT_DECL
 name: blal
-	TYPE_FLOAT
+		value: float
+		member of struct
 STMT_DECL
 name: clalal
-	TYPE_FLOAT
+		value: float
+		member of struct
 STMT_DECL
-name: myint5
-	TYPE_INTEGER
+name: myint55
+		value: int
+		member of struct
 STMT_DECL
-name: m74td
-	TYPE_FLOAT
+name: m774td
+		value: float
+		member of struct
 STMT_DECL
-name: e8i9o2
+name: e88i99o22
 	TYPE_INTEGER
 		value: 78
+		member of struct
 STMT_DECL
-name: theNum3tyr33
-		value: 53
+name: 53
+		value: 5
+		member of struct
 STMT_DECL
-name: _hi57_32doo3y5
+name: _hi557_332doo33y55
 	TYPE_FLOAT
 		value: 65
+		member of struct
 STMT_DECL
-name: hello4537_npno212op33t1
-	TYPE_FLOAT
+name: hello44537_npno2212op333t11
+		value: float
+		member of struct
 STMT_DECL
 name: dmamam
 		value: 'd
+		member of struct
+STMT_DECL
+name: 'd
+	TYPE_UNION
 STMT_DECL
 name: decimal
-	TYPE_FLOAT
+		value: float
+		member of union
 STMT_DECL
 name: shield
 	TYPE_INTEGER
 		value: 100
+		member of union
 STMT_DECL
 name: name
 	TYPE_STRING
 		value: Jake
+		member of union
 STMT_DECL
-name: xpop
+name: name
+	TYPE_ENUM
+STMT_DECL
+name: 0
 		value: 0
+		member of enum
 STMT_DECL
-name: ydsffds
+name: 1
 		value: 1
+		member of enum
 STMT_DECL
 name: zkerk
 		value: y
+		member of enum
 STMT_DECL
 name: vmamammama
 		value: f
+		member of enum
 STMT_DECL
-name: g
-		value: 10
+name: 10
+		value: 1
+		member of enum
 STMT_DECL
 name: spopopopo
-	TYPE_STRING
+		value: string
 STMT_SLEEP
 	expr: 4
 STMT_SCAN
@@ -3291,13 +3688,26 @@ STMT_CAST
 STMT_ARRAYDADD
 	the array : myArray
 	element to be added : k
+STMT_NEW
+	expr: my_node
+	type: node
+STMT_NEW
+	expr: 
+	type: '\n'
+STMT_ASSERT
 STMT_ASSERT
 EXPR_EQUAL_CMP
-	left : 2
+	left : 5
 	right : 5
+		member of assert
+STMT_DECL
+name: 2
+		value: 2
 		member of assert
 STMT_DECL
 name: lokaokaja
 	TYPE_VOID_POINTER
 		value: 50
+STMT_RETURN
+STMT_RETURN
 Exiting program

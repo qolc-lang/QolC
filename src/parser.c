@@ -1155,7 +1155,9 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 
 				if (strcmp(theStack[top], "delete") == 0) {
 					printf("Going to build delete statement.\n");
+					printf("The current before delete %s\n", current->value);
 					current = current->next;
+					printf("The current after delete 1 %s\n", current->value);
 					theStack[0][top] = '\0';
 					BuildSingleExprStatement(current->value, commandNode, 6);
 					printf("**********************************************************\n");

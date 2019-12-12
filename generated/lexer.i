@@ -1516,6 +1516,48 @@ lexer_node lex(char fileName[]) {
    printf("reading_buffer[pos] : %c\n", reading_buffer[pos]);
 
 
+   if (
+# 34 "./src/lexer.c" 3 4
+      ((((__locale_ctype_ptr ())+sizeof(""[
+# 34 "./src/lexer.c"
+      reading_buffer[pos]
+# 34 "./src/lexer.c" 3 4
+      ]))[(int)(
+# 34 "./src/lexer.c"
+      reading_buffer[pos]
+# 34 "./src/lexer.c" 3 4
+      )])&(01|02|04)) 
+# 34 "./src/lexer.c"
+                                   || reading_buffer[pos] == '_' || 
+# 34 "./src/lexer.c" 3 4
+                                                                    ((((__locale_ctype_ptr ())+sizeof(""[
+# 34 "./src/lexer.c"
+                                                                    reading_buffer[pos]
+# 34 "./src/lexer.c" 3 4
+                                                                    ]))[(int)(
+# 34 "./src/lexer.c"
+                                                                    reading_buffer[pos]
+# 34 "./src/lexer.c" 3 4
+                                                                    )])&04)
+# 34 "./src/lexer.c"
+                                                                                                )
+    buffer[index++] = reading_buffer[pos];
+   else if ((reading_buffer[pos] == ' '
+         || reading_buffer[pos] == '\n'
+         || reading_buffer[pos] == ';'
+         || isOperator(reading_buffer[pos], myNode, temp_buffer))
+         && (index!=0)) {
+    buffer[index] = '\0';
+    index = 0;
+
+    if(isKeyword(buffer) == 1)
+        pushForLex(buffer, "keyword", myNode);
+       else
+        pushForLex(buffer, "identifier", myNode);
+   }
+   else;
+
+
 
 
 
@@ -1527,7 +1569,6 @@ lexer_node lex(char fileName[]) {
     }
     continue;
    }
-
 
 
 
@@ -1554,9 +1595,9 @@ lexer_node lex(char fileName[]) {
 
    if (reading_buffer[pos] == '\n') {
     pushForLex(
-# 71 "./src/lexer.c" 3 4
+# 88 "./src/lexer.c" 3 4
               ((void *)0)
-# 71 "./src/lexer.c"
+# 88 "./src/lexer.c"
                   , "end of command", myNode);
 
     buffer[index] = '\0';
@@ -1578,17 +1619,17 @@ lexer_node lex(char fileName[]) {
    if ((num_pos = isNumber(reading_buffer, pos, strlen(reading_buffer), myNode, temp_buffer)) != -1) {
     temp_pos = --pos;
     if (
-# 91 "./src/lexer.c" 3 4
+# 108 "./src/lexer.c" 3 4
        ((((__locale_ctype_ptr ())+sizeof(""[
-# 91 "./src/lexer.c"
+# 108 "./src/lexer.c"
        reading_buffer[temp_pos]
-# 91 "./src/lexer.c" 3 4
+# 108 "./src/lexer.c" 3 4
        ]))[(int)(
-# 91 "./src/lexer.c"
+# 108 "./src/lexer.c"
        reading_buffer[temp_pos]
-# 91 "./src/lexer.c" 3 4
+# 108 "./src/lexer.c" 3 4
        )])&(01|02|04)) 
-# 91 "./src/lexer.c"
+# 108 "./src/lexer.c"
                                          || reading_buffer[temp_pos] == '_') {
      int temp;
      ++pos;
@@ -1604,9 +1645,9 @@ lexer_node lex(char fileName[]) {
      pos += num_pos;
      if (reading_buffer[pos] == '\n') {
       pushForLex(
-# 105 "./src/lexer.c" 3 4
+# 122 "./src/lexer.c" 3 4
                 ((void *)0)
-# 105 "./src/lexer.c"
+# 122 "./src/lexer.c"
                     , "end of command", myNode);
 
       buffer[index] = '\0';
@@ -1663,9 +1704,9 @@ lexer_node lex(char fileName[]) {
     pos += char_pos;
     if (reading_buffer[pos] == '\n') {
      pushForLex(
-# 160 "./src/lexer.c" 3 4
+# 177 "./src/lexer.c" 3 4
                ((void *)0)
-# 160 "./src/lexer.c"
+# 177 "./src/lexer.c"
                    , "end of command", myNode);
 
      buffer[index] = '\0';
@@ -1691,47 +1732,6 @@ lexer_node lex(char fileName[]) {
     pos += new_string_pos;
     continue;
    }
-
-   if (
-# 186 "./src/lexer.c" 3 4
-      ((((__locale_ctype_ptr ())+sizeof(""[
-# 186 "./src/lexer.c"
-      reading_buffer[pos]
-# 186 "./src/lexer.c" 3 4
-      ]))[(int)(
-# 186 "./src/lexer.c"
-      reading_buffer[pos]
-# 186 "./src/lexer.c" 3 4
-      )])&(01|02|04)) 
-# 186 "./src/lexer.c"
-                                   || reading_buffer[pos] == '_' || 
-# 186 "./src/lexer.c" 3 4
-                                                                    ((((__locale_ctype_ptr ())+sizeof(""[
-# 186 "./src/lexer.c"
-                                                                    reading_buffer[pos]
-# 186 "./src/lexer.c" 3 4
-                                                                    ]))[(int)(
-# 186 "./src/lexer.c"
-                                                                    reading_buffer[pos]
-# 186 "./src/lexer.c" 3 4
-                                                                    )])&04)
-# 186 "./src/lexer.c"
-                                                                                                )
-    buffer[index++] = reading_buffer[pos];
-   else if ((reading_buffer[pos] == ' '
-         || reading_buffer[pos] == '\n'
-         || reading_buffer[pos] == ';'
-         || isOperator(reading_buffer[pos], myNode, temp_buffer))
-         && (index!=0)) {
-    buffer[index] = '\0';
-    index = 0;
-
-    if(isKeyword(buffer) == 1)
-        pushForLex(buffer, "keyword", myNode);
-       else
-        pushForLex(buffer, "identifier", myNode);
-   }
-   else;
   }
  }
 
