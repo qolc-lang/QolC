@@ -1147,9 +1147,8 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 					printf("End of the comment.\n");
 					theStack[0][top] = '\0';
 					printf("**********************************************************\n");
+					partOfComment = 0;
 					current = current->next;
-					/* Next value is a part of comment so need to be flagged */
-					partOfComment = 1;
 					continue;
 				}
 

@@ -1519,7 +1519,10 @@ Push in the stack completed, with element : @
 **********************************************************
 Type in the loop : identifier
 Value in the loop : hello
-This is the last part of the comment
+Operator @ is in the stack now.
+Going to insert the value : hello
+Label inserted in symbol table : hello
+Push in the stack completed, with element : hello
 **********************************************************
 Type in the loop : parenthesis
 Value in the loop : |
@@ -3455,7 +3458,7 @@ STMT_IMPORT
 STMT_LOAD
 	expr: myFile
 STMT_DECL
-name: @
+name: hello
 	TYPE_STRING
 		value: Hello World!
 STMT_DECL
