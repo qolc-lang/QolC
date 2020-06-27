@@ -1453,7 +1453,7 @@ void pushForLex(char buffer[], char* typeToPush, lexer_node* myNode)
  char temp_buffer[200];
  memset(temp_buffer, 0, sizeof(temp_buffer));
 
- printf("typeToPush to push is : %s\n", typeToPush);
+ printf("typeToPush to push is : %s - %s\n", typeToPush, buffer);
 
  if (strcmp(typeToPush, "keyword") == 0)
  {

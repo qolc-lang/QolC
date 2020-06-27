@@ -22,11 +22,13 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 
 	while (current != NULL)  {
 		thePos = counter;
+		printf("The current in statelist : %s \n", current->token);
 		theSplit = strtok (current->token,",");
 		strcpy(theType, theSplit);
 
 		if (strcmp(theType, "comma") == 0) {
 			strcpy(theValue, "','");
+			printf("The value in statelist : %s \n", current->token);
 			theSplit = strtok (NULL,",");
 			theSplit = strtok (NULL,",");
 			current = current->next;

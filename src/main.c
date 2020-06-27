@@ -19,6 +19,8 @@ int main(int argc, char const *argv[])
 	strcpy(outputFile, "out/output_program.txt");
 
 	*myNode = lex(fileName);
+	print_lexerList(myNode, outputFile);
+
 	myState = make_parse_stateList(myNode);
 	parseProgram(myState);
 	

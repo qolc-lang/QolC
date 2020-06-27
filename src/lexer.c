@@ -6,7 +6,7 @@ lexer_node lex(char fileName[]) {
 	char reading_buffer[150];
 	int new_pos = 0, new_string_pos = 0, special_pos=0, num_pos = 0, char_pos = 0;
 	int index=0;
-	int temp_pos = 0;
+	/* int temp_pos = 0; */
 	int flag = 0;
 	size_t pos;
 	FILE *fp;
@@ -103,6 +103,7 @@ lexer_node lex(char fileName[]) {
 			/* 
 				Checking for number.
 			*/
+			/*
 			if ((num_pos = isNumber(reading_buffer, pos, strlen(reading_buffer),  myNode, temp_buffer)) != -1) {
 				temp_pos = --pos;
 				if (isalnum(reading_buffer[temp_pos]) || reading_buffer[temp_pos] == '_') {
@@ -135,6 +136,7 @@ lexer_node lex(char fileName[]) {
 					}
 				}
 			}
+			*/
 
 			/* 
 				Checking for special symbol.

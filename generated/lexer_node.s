@@ -3,8 +3,9 @@
 .Ltext0:
 	.cfi_sections	.debug_frame
 	.section .rdata,"dr"
+	.align 8
 .LC0:
-	.ascii "typeToPush to push is : %s\12\0"
+	.ascii "typeToPush to push is : %s - %s\12\0"
 .LC1:
 	.ascii "keyword\0"
 .LC2:
@@ -44,9 +45,9 @@ pushForLex:
 	movq	%r8, -88(%rbp)
 	.loc 1 7 0
 	movq	.refptr.__stack_chk_guard(%rip), %rax
-	movq	(%rax), %rcx
-	movq	%rcx, 136(%rbp)
-	xorl	%ecx, %ecx
+	movq	(%rax), %rdx
+	movq	%rdx, 136(%rbp)
+	xorl	%edx, %edx
 	.loc 1 9 0
 	leaq	-64(%rbp), %rax
 	movl	$200, %r8d
@@ -54,7 +55,9 @@ pushForLex:
 	movq	%rax, %rcx
 	call	memset
 	.loc 1 11 0
+	movq	-72(%rbp), %rdx
 	movq	-80(%rbp), %rax
+	movq	%rdx, %r8
 	movq	%rax, %rdx
 	leaq	.LC0(%rip), %rcx
 	call	printf
@@ -94,8 +97,8 @@ pushForLex:
 	jne	.L5
 	.loc 1 23 0
 	leaq	-64(%rbp), %rax
-	movabsq	$7594873770396181609, %rdx
-	movq	%rdx, (%rax)
+	movabsq	$7594873770396181609, %rcx
+	movq	%rcx, (%rax)
 	movl	$2912869, 8(%rax)
 	jmp	.L3
 .L5:
@@ -124,8 +127,8 @@ pushForLex:
 	jne	.L7
 	.loc 1 31 0
 	leaq	-64(%rbp), %rax
-	movabsq	$12498622888440947, %rcx
-	movq	%rcx, (%rax)
+	movabsq	$12498622888440947, %rdx
+	movq	%rdx, (%rax)
 	jmp	.L3
 .L7:
 	.loc 1 33 0
@@ -137,8 +140,8 @@ pushForLex:
 	jne	.L8
 	.loc 1 35 0
 	leaq	-64(%rbp), %rax
-	movabsq	$7310577365311121507, %rdx
-	movq	%rdx, (%rax)
+	movabsq	$7310577365311121507, %rcx
+	movq	%rcx, (%rax)
 	movw	$11378, 8(%rax)
 	movb	$0, 10(%rax)
 	jmp	.L3
@@ -152,8 +155,8 @@ pushForLex:
 	jne	.L3
 	.loc 1 39 0
 	leaq	-64(%rbp), %rax
-	movabsq	$8245937404618567791, %rcx
-	movq	%rcx, (%rax)
+	movabsq	$8245937404618567791, %rdx
+	movq	%rdx, (%rax)
 	movw	$44, 8(%rax)
 .L3:
 	.loc 1 43 0
@@ -168,8 +171,8 @@ pushForLex:
 .L9:
 	.loc 1 46 0
 	leaq	-64(%rbp), %rax
-	movabsq	$7142821636480462437, %rdx
-	movq	%rdx, (%rax)
+	movabsq	$7142821636480462437, %rcx
+	movq	%rcx, (%rax)
 	movl	$1634561391, 8(%rax)
 	movw	$25710, 12(%rax)
 	movb	$0, 14(%rax)

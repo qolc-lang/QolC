@@ -3,11 +3,16 @@
 .Ltext0:
 	.cfi_sections	.debug_frame
 	.section .rdata,"dr"
+	.align 8
 .LC0:
-	.ascii ",\0"
+	.ascii "The current in statelist : %s \12\0"
 .LC1:
-	.ascii "comma\0"
+	.ascii ",\0"
 .LC2:
+	.ascii "comma\0"
+.LC3:
+	.ascii "The value in statelist : %s \12\0"
+.LC4:
 	.ascii "end of command\0"
 	.text
 	.globl	make_parse_stateList
@@ -70,40 +75,50 @@ make_parse_stateList:
 	movl	%eax, -60(%rbp)
 	.loc 1 25 0
 	movq	-56(%rbp), %rax
-	leaq	.LC0(%rip), %rdx
+	movq	%rax, %rdx
+	leaq	.LC0(%rip), %rcx
+	call	printf
+	.loc 1 26 0
+	movq	-56(%rbp), %rax
+	leaq	.LC1(%rip), %rdx
 	movq	%rax, %rcx
 	call	strtok
 	movq	%rax, -40(%rbp)
-	.loc 1 26 0
+	.loc 1 27 0
 	movq	-40(%rbp), %rdx
 	leaq	-32(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
-	.loc 1 28 0
+	.loc 1 29 0
 	leaq	-32(%rbp), %rax
-	leaq	.LC1(%rip), %rdx
+	leaq	.LC2(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L3
-	.loc 1 29 0
+	.loc 1 30 0
 	leaq	80(%rbp), %rax
 	movl	$2567207, (%rax)
-	.loc 1 30 0
-	leaq	.LC0(%rip), %rdx
-	movl	$0, %ecx
-	call	strtok
-	movq	%rax, -40(%rbp)
 	.loc 1 31 0
-	leaq	.LC0(%rip), %rdx
+	movq	-56(%rbp), %rax
+	movq	%rax, %rdx
+	leaq	.LC3(%rip), %rcx
+	call	printf
+	.loc 1 32 0
+	leaq	.LC1(%rip), %rdx
 	movl	$0, %ecx
 	call	strtok
 	movq	%rax, -40(%rbp)
-	.loc 1 32 0
+	.loc 1 33 0
+	leaq	.LC1(%rip), %rdx
+	movl	$0, %ecx
+	call	strtok
+	movq	%rax, -40(%rbp)
+	.loc 1 34 0
 	movq	-56(%rbp), %rax
 	movq	152(%rax), %rax
 	movq	%rax, -56(%rbp)
-	.loc 1 33 0
+	.loc 1 35 0
 	leaq	80(%rbp), %r8
 	leaq	-32(%rbp), %rcx
 	movl	-60(%rbp), %edx
@@ -112,67 +127,67 @@ make_parse_stateList:
 	movq	%rcx, %r8
 	movq	%rax, %rcx
 	call	push_parseList
-	.loc 1 34 0
+	.loc 1 36 0
 	leaq	-32(%rbp), %rax
 	movl	$100, %r8d
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	memset
-	.loc 1 35 0
+	.loc 1 37 0
 	leaq	80(%rbp), %rax
 	movl	$100, %r8d
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	memset
-	.loc 1 36 0
+	.loc 1 38 0
 	addl	$1, -68(%rbp)
-	.loc 1 37 0
+	.loc 1 39 0
 	jmp	.L2
 .L3:
-	.loc 1 40 0
-	leaq	.LC0(%rip), %rdx
+	.loc 1 42 0
+	leaq	.LC1(%rip), %rdx
 	movl	$0, %ecx
 	call	strtok
 	movq	%rax, -40(%rbp)
-	.loc 1 42 0
+	.loc 1 44 0
 	cmpq	$0, -40(%rbp)
 	je	.L4
-	.loc 1 43 0
+	.loc 1 45 0
 	movq	-40(%rbp), %rdx
 	leaq	80(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	jmp	.L5
 .L4:
-	.loc 1 46 0
+	.loc 1 48 0
 	leaq	-32(%rbp), %rax
-	leaq	.LC2(%rip), %rdx
+	leaq	.LC4(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L6
-	.loc 1 47 0
+	.loc 1 49 0
 	leaq	80(%rbp), %rax
 	movl	$661543975, (%rax)
 	movb	$0, 4(%rax)
 	jmp	.L5
 .L6:
-	.loc 1 50 0
+	.loc 1 52 0
 	movl	$1, -64(%rbp)
 .L5:
-	.loc 1 54 0
+	.loc 1 56 0
 	cmpl	$0, -64(%rbp)
 	jne	.L12
-	.loc 1 58 0
-	leaq	.LC0(%rip), %rdx
+	.loc 1 60 0
+	leaq	.LC1(%rip), %rdx
 	movl	$0, %ecx
 	call	strtok
 	movq	%rax, -40(%rbp)
-	.loc 1 60 0
+	.loc 1 62 0
 	movq	-56(%rbp), %rax
 	movq	152(%rax), %rax
 	movq	%rax, -56(%rbp)
-	.loc 1 61 0
+	.loc 1 63 0
 	leaq	80(%rbp), %r8
 	leaq	-32(%rbp), %rcx
 	movl	-60(%rbp), %edx
@@ -181,19 +196,19 @@ make_parse_stateList:
 	movq	%rcx, %r8
 	movq	%rax, %rcx
 	call	push_parseList
-	.loc 1 62 0
+	.loc 1 64 0
 	leaq	-32(%rbp), %rax
 	movl	$100, %r8d
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	memset
-	.loc 1 63 0
+	.loc 1 65 0
 	leaq	80(%rbp), %rax
 	movl	$100, %r8d
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	memset
-	.loc 1 64 0
+	.loc 1 66 0
 	addl	$1, -68(%rbp)
 .L2:
 	.loc 1 23 0
@@ -201,12 +216,12 @@ make_parse_stateList:
 	jne	.L9
 	jmp	.L8
 .L12:
-	.loc 1 55 0
+	.loc 1 57 0
 	nop
 .L8:
-	.loc 1 67 0
+	.loc 1 69 0
 	movq	-48(%rbp), %rax
-	.loc 1 68 0
+	.loc 1 70 0
 	movq	.refptr.__stack_chk_guard(%rip), %rdx
 	movq	184(%rbp), %rcx
 	xorq	(%rdx), %rcx
@@ -226,7 +241,7 @@ make_parse_stateList:
 	.seh_proc	removeLast
 removeLast:
 .LFB10:
-	.loc 1 73 0
+	.loc 1 75 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -239,58 +254,58 @@ removeLast:
 	.seh_stackalloc	48
 	.seh_endprologue
 	movq	%rcx, 16(%rbp)
-	.loc 1 74 0
-	movl	$0, -12(%rbp)
 	.loc 1 76 0
+	movl	$0, -12(%rbp)
+	.loc 1 78 0
 	movq	16(%rbp), %rax
 	movq	208(%rax), %rax
 	testq	%rax, %rax
 	jne	.L14
-	.loc 1 77 0
+	.loc 1 79 0
 	movq	16(%rbp), %rax
 	movl	(%rax), %eax
 	movl	%eax, -12(%rbp)
-	.loc 1 78 0
+	.loc 1 80 0
 	movq	16(%rbp), %rcx
 	call	free
-	.loc 1 79 0
+	.loc 1 81 0
 	movl	-12(%rbp), %eax
 	jmp	.L15
 .L14:
-	.loc 1 82 0
+	.loc 1 84 0
 	movq	16(%rbp), %rax
 	movq	%rax, -8(%rbp)
-	.loc 1 83 0
+	.loc 1 85 0
 	jmp	.L16
 .L17:
-	.loc 1 84 0
+	.loc 1 86 0
 	movq	-8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, -8(%rbp)
 .L16:
-	.loc 1 83 0
+	.loc 1 85 0
 	movq	-8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	208(%rax), %rax
 	testq	%rax, %rax
 	jne	.L17
-	.loc 1 87 0
+	.loc 1 89 0
 	movq	-8(%rbp), %rax
 	movq	208(%rax), %rax
 	movl	(%rax), %eax
 	movl	%eax, -12(%rbp)
-	.loc 1 88 0
+	.loc 1 90 0
 	movq	-8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, %rcx
 	call	free
-	.loc 1 89 0
+	.loc 1 91 0
 	movq	-8(%rbp), %rax
 	movq	$0, 208(%rax)
-	.loc 1 90 0
+	.loc 1 92 0
 	movl	-12(%rbp), %eax
 .L15:
-	.loc 1 91 0
+	.loc 1 93 0
 	addq	$48, %rsp
 	popq	%rbp
 	.cfi_restore 6
@@ -300,11 +315,11 @@ removeLast:
 .LFE10:
 	.seh_endproc
 	.section .rdata,"dr"
-.LC3:
-	.ascii "Counter-Position %d : %d\12\0"
-.LC4:
-	.ascii "Counter-Type %d : %s\12\0"
 .LC5:
+	.ascii "Counter-Position %d : %d\12\0"
+.LC6:
+	.ascii "Counter-Type %d : %s\12\0"
+.LC7:
 	.ascii "Counter-Value %d : %s\12\0"
 	.text
 	.globl	print_parseStateList
@@ -312,7 +327,7 @@ removeLast:
 	.seh_proc	print_parseStateList
 print_parseStateList:
 .LFB11:
-	.loc 1 96 0
+	.loc 1 98 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -325,49 +340,49 @@ print_parseStateList:
 	.seh_stackalloc	48
 	.seh_endprologue
 	movq	%rcx, 16(%rbp)
-	.loc 1 97 0
+	.loc 1 99 0
 	movq	16(%rbp), %rax
 	movq	%rax, -8(%rbp)
-	.loc 1 98 0
+	.loc 1 100 0
 	movl	$0, -12(%rbp)
-	.loc 1 101 0
+	.loc 1 103 0
 	jmp	.L19
 .L20:
-	.loc 1 102 0
+	.loc 1 104 0
 	addl	$1, -12(%rbp)
-	.loc 1 103 0
+	.loc 1 105 0
 	movq	-8(%rbp), %rax
 	movl	(%rax), %edx
 	movl	-12(%rbp), %eax
 	movl	%edx, %r8d
 	movl	%eax, %edx
-	leaq	.LC3(%rip), %rcx
+	leaq	.LC5(%rip), %rcx
 	call	printf
-	.loc 1 104 0
+	.loc 1 106 0
 	movq	-8(%rbp), %rax
 	leaq	4(%rax), %rdx
 	movl	-12(%rbp), %eax
 	movq	%rdx, %r8
 	movl	%eax, %edx
-	leaq	.LC4(%rip), %rcx
+	leaq	.LC6(%rip), %rcx
 	call	printf
-	.loc 1 105 0
+	.loc 1 107 0
 	movq	-8(%rbp), %rax
 	leaq	104(%rax), %rdx
 	movl	-12(%rbp), %eax
 	movq	%rdx, %r8
 	movl	%eax, %edx
-	leaq	.LC5(%rip), %rcx
+	leaq	.LC7(%rip), %rcx
 	call	printf
-	.loc 1 106 0
+	.loc 1 108 0
 	movq	-8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, -8(%rbp)
 .L19:
-	.loc 1 101 0
+	.loc 1 103 0
 	cmpq	$0, -8(%rbp)
 	jne	.L20
-	.loc 1 108 0
+	.loc 1 110 0
 	nop
 	addq	$48, %rsp
 	popq	%rbp
@@ -382,7 +397,7 @@ print_parseStateList:
 	.seh_proc	push_parseList
 push_parseList:
 .LFB12:
-	.loc 1 113 0
+	.loc 1 115 0
 	.cfi_startproc
 	pushq	%rbp
 	.seh_pushreg	%rbp
@@ -398,52 +413,52 @@ push_parseList:
 	movl	%edx, 24(%rbp)
 	movq	%r8, 32(%rbp)
 	movq	%r9, 40(%rbp)
-	.loc 1 114 0
+	.loc 1 116 0
 	movq	16(%rbp), %rax
 	movq	%rax, -8(%rbp)
-	.loc 1 115 0
+	.loc 1 117 0
 	jmp	.L22
 .L23:
-	.loc 1 116 0
+	.loc 1 118 0
 	movq	-8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, -8(%rbp)
 .L22:
-	.loc 1 115 0
+	.loc 1 117 0
 	movq	-8(%rbp), %rax
 	movq	208(%rax), %rax
 	testq	%rax, %rax
 	jne	.L23
-	.loc 1 118 0
+	.loc 1 120 0
 	movl	$216, %ecx
 	call	malloc
 	movq	%rax, %rdx
 	movq	-8(%rbp), %rax
 	movq	%rdx, 208(%rax)
-	.loc 1 119 0
+	.loc 1 121 0
 	movq	-8(%rbp), %rax
 	movq	208(%rax), %rax
 	movl	24(%rbp), %edx
 	movl	%edx, (%rax)
-	.loc 1 120 0
+	.loc 1 122 0
 	movq	-8(%rbp), %rax
 	movq	208(%rax), %rax
 	leaq	4(%rax), %rcx
 	movq	32(%rbp), %rax
 	movq	%rax, %rdx
 	call	strcpy
-	.loc 1 121 0
+	.loc 1 123 0
 	movq	-8(%rbp), %rax
 	movq	208(%rax), %rax
 	leaq	104(%rax), %rcx
 	movq	40(%rbp), %rax
 	movq	%rax, %rdx
 	call	strcpy
-	.loc 1 122 0
+	.loc 1 124 0
 	movq	-8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	$0, 208(%rax)
-	.loc 1 123 0
+	.loc 1 125 0
 	nop
 	addq	$48, %rsp
 	popq	%rbp
@@ -1628,7 +1643,7 @@ push_parseList:
 	.uleb128 0x25
 	.ascii "push_parseList\0"
 	.byte	0x1
-	.byte	0x71
+	.byte	0x73
 	.quad	.LFB12
 	.quad	.LFE12-.LFB12
 	.uleb128 0x1
@@ -1637,7 +1652,7 @@ push_parseList:
 	.uleb128 0x26
 	.ascii "node\0"
 	.byte	0x1
-	.byte	0x71
+	.byte	0x73
 	.long	0xd7e
 	.uleb128 0x2
 	.byte	0x91
@@ -1645,7 +1660,7 @@ push_parseList:
 	.uleb128 0x26
 	.ascii "pos\0"
 	.byte	0x1
-	.byte	0x71
+	.byte	0x73
 	.long	0x12b
 	.uleb128 0x2
 	.byte	0x91
@@ -1653,7 +1668,7 @@ push_parseList:
 	.uleb128 0x26
 	.ascii "type\0"
 	.byte	0x1
-	.byte	0x71
+	.byte	0x73
 	.long	0x665
 	.uleb128 0x2
 	.byte	0x91
@@ -1661,7 +1676,7 @@ push_parseList:
 	.uleb128 0x26
 	.ascii "value\0"
 	.byte	0x1
-	.byte	0x71
+	.byte	0x73
 	.long	0x665
 	.uleb128 0x2
 	.byte	0x91
@@ -1669,7 +1684,7 @@ push_parseList:
 	.uleb128 0x27
 	.secrel32	.LASF3
 	.byte	0x1
-	.byte	0x72
+	.byte	0x74
 	.long	0xd7e
 	.uleb128 0x2
 	.byte	0x91
@@ -1681,7 +1696,7 @@ push_parseList:
 	.uleb128 0x25
 	.ascii "print_parseStateList\0"
 	.byte	0x1
-	.byte	0x60
+	.byte	0x62
 	.quad	.LFB11
 	.quad	.LFE11-.LFB11
 	.uleb128 0x1
@@ -1690,7 +1705,7 @@ push_parseList:
 	.uleb128 0x26
 	.ascii "node\0"
 	.byte	0x1
-	.byte	0x60
+	.byte	0x62
 	.long	0xd7e
 	.uleb128 0x2
 	.byte	0x91
@@ -1698,7 +1713,7 @@ push_parseList:
 	.uleb128 0x27
 	.secrel32	.LASF3
 	.byte	0x1
-	.byte	0x61
+	.byte	0x63
 	.long	0xd7e
 	.uleb128 0x2
 	.byte	0x91
@@ -1706,7 +1721,7 @@ push_parseList:
 	.uleb128 0x28
 	.ascii "counter\0"
 	.byte	0x1
-	.byte	0x62
+	.byte	0x64
 	.long	0x12b
 	.uleb128 0x2
 	.byte	0x91
@@ -1715,7 +1730,7 @@ push_parseList:
 	.uleb128 0x29
 	.ascii "removeLast\0"
 	.byte	0x1
-	.byte	0x49
+	.byte	0x4b
 	.long	0x12b
 	.quad	.LFB10
 	.quad	.LFE10-.LFB10
@@ -1725,7 +1740,7 @@ push_parseList:
 	.uleb128 0x26
 	.ascii "head\0"
 	.byte	0x1
-	.byte	0x49
+	.byte	0x4b
 	.long	0xd7e
 	.uleb128 0x2
 	.byte	0x91
@@ -1733,7 +1748,7 @@ push_parseList:
 	.uleb128 0x28
 	.ascii "retval\0"
 	.byte	0x1
-	.byte	0x4a
+	.byte	0x4c
 	.long	0x12b
 	.uleb128 0x2
 	.byte	0x91
@@ -1741,7 +1756,7 @@ push_parseList:
 	.uleb128 0x27
 	.secrel32	.LASF3
 	.byte	0x1
-	.byte	0x52
+	.byte	0x54
 	.long	0xd7e
 	.uleb128 0x2
 	.byte	0x91
@@ -2408,12 +2423,12 @@ push_parseList:
 	.ident	"GCC: (GNU) 7.4.0"
 	.def	malloc;	.scl	2;	.type	32;	.endef
 	.def	memset;	.scl	2;	.type	32;	.endef
+	.def	printf;	.scl	2;	.type	32;	.endef
 	.def	strtok;	.scl	2;	.type	32;	.endef
 	.def	strcpy;	.scl	2;	.type	32;	.endef
 	.def	strcmp;	.scl	2;	.type	32;	.endef
 	.def	__stack_chk_fail;	.scl	2;	.type	32;	.endef
 	.def	free;	.scl	2;	.type	32;	.endef
-	.def	printf;	.scl	2;	.type	32;	.endef
 	.section	.rdata$.refptr.__stack_chk_guard, "dr"
 	.globl	.refptr.__stack_chk_guard
 	.linkonce	discard

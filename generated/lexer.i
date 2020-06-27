@@ -1483,7 +1483,7 @@ lexer_node lex(char fileName[]) {
  char reading_buffer[150];
  int new_pos = 0, new_string_pos = 0, special_pos=0, num_pos = 0, char_pos = 0;
  int index=0;
- int temp_pos = 0;
+
  int flag = 0;
  size_t pos;
  FILE *fp;
@@ -1612,62 +1612,7 @@ lexer_node lex(char fileName[]) {
        }
     continue;
    }
-
-
-
-
-   if ((num_pos = isNumber(reading_buffer, pos, strlen(reading_buffer), myNode, temp_buffer)) != -1) {
-    temp_pos = --pos;
-    if (
-# 108 "./src/lexer.c" 3 4
-       ((((__locale_ctype_ptr ())+sizeof(""[
-# 108 "./src/lexer.c"
-       reading_buffer[temp_pos]
-# 108 "./src/lexer.c" 3 4
-       ]))[(int)(
-# 108 "./src/lexer.c"
-       reading_buffer[temp_pos]
-# 108 "./src/lexer.c" 3 4
-       )])&(01|02|04)) 
-# 108 "./src/lexer.c"
-                                         || reading_buffer[temp_pos] == '_') {
-     int temp;
-     ++pos;
-     for (temp = 0; temp < num_pos; ++temp) {
-      buffer[index++] = reading_buffer[pos];
-      ++pos;
-     }
-     --pos;
-     continue;
-    }
-    else {
-     ++pos;
-     pos += num_pos;
-     if (reading_buffer[pos] == '\n') {
-      pushForLex(
-# 122 "./src/lexer.c" 3 4
-                ((void *)0)
-# 122 "./src/lexer.c"
-                    , "end of command", myNode);
-
-      buffer[index] = '\0';
-      index = 0;
-
-      if(isKeyword(buffer) == 1)
-       pushForLex(buffer, "keyword", myNode);
-         else {
-          if (buffer[0] == '\0')
-           continue;
-          pushForLex(buffer, "identifier", myNode);
-         }
-      continue;
-     }
-    }
-   }
-
-
-
-
+# 144 "./src/lexer.c"
    if ((special_pos = isSpecialSymbol(reading_buffer, pos, strlen(reading_buffer), &flag, myNode, temp_buffer)) != -1) {
     pos += special_pos;
     if (flag == 1) {
@@ -1704,9 +1649,9 @@ lexer_node lex(char fileName[]) {
     pos += char_pos;
     if (reading_buffer[pos] == '\n') {
      pushForLex(
-# 177 "./src/lexer.c" 3 4
+# 179 "./src/lexer.c" 3 4
                ((void *)0)
-# 177 "./src/lexer.c"
+# 179 "./src/lexer.c"
                    , "end of command", myNode);
 
      buffer[index] = '\0';
@@ -1739,13 +1684,13 @@ lexer_node lex(char fileName[]) {
 
 
  if (
-# 208 "./src/lexer.c" 3 4
+# 210 "./src/lexer.c" 3 4
     ((int)(((
-# 208 "./src/lexer.c"
+# 210 "./src/lexer.c"
     fp
-# 208 "./src/lexer.c" 3 4
+# 210 "./src/lexer.c" 3 4
     )->_flags & 0x0020) != 0))
-# 208 "./src/lexer.c"
+# 210 "./src/lexer.c"
             ) {
      if (index != 0) {
    buffer[index] = '\0';

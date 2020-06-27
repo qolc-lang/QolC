@@ -36,9 +36,9 @@ main:
 	call	__main
 .LVL0:
 	movq	.refptr.__stack_chk_guard(%rip), %rax
-	movq	(%rax), %rdx
-	movq	%rdx, 216(%rbp)
-	xorl	%edx, %edx
+	movq	(%rax), %rbx
+	movq	%rbx, 216(%rbp)
+	xorl	%ebx, %ebx
 	.loc 1 10 0
 	movl	$160, %ecx
 	call	malloc
@@ -61,12 +61,12 @@ main:
 	call	memset
 	.loc 1 18 0
 	leaq	96(%rbp), %rax
-	movabsq	$7955942393959706217, %rdx
-	movabsq	$7453301735284831600, %rcx
-	movq	%rdx, (%rax)
-	movq	%rcx, 8(%rax)
-	movabsq	$32783537688895858, %rbx
-	movq	%rbx, 16(%rax)
+	movabsq	$7955942393959706217, %rcx
+	movabsq	$7453301735284831600, %rbx
+	movq	%rcx, (%rax)
+	movq	%rbx, 8(%rax)
+	movabsq	$32783537688895858, %rdx
+	movq	%rdx, 16(%rax)
 	.loc 1 19 0
 	leaq	160(%rbp), %rax
 	movabsq	$8103230749944345967, %rdx
@@ -123,20 +123,25 @@ main:
 	movq	%rax, 144(%rbx)
 	movq	%rdx, 152(%rbx)
 	.loc 1 22 0
+	leaq	160(%rbp), %rdx
+	movq	80(%rbp), %rax
+	movq	%rax, %rcx
+	call	print_lexerList
+	.loc 1 24 0
 	movq	80(%rbp), %rax
 	movq	%rax, %rcx
 	call	make_parse_stateList
 	movq	%rax, 88(%rbp)
-	.loc 1 23 0
+	.loc 1 25 0
 	movq	88(%rbp), %rax
 	movq	%rax, %rcx
 	call	parseProgram
-	.loc 1 25 0
+	.loc 1 27 0
 	leaq	.LC0(%rip), %rcx
 	call	puts
-	.loc 1 26 0
+	.loc 1 28 0
 	movl	$0, %eax
-	.loc 1 27 0
+	.loc 1 29 0
 	movq	.refptr.__stack_chk_guard(%rip), %rdx
 	movq	216(%rbp), %rcx
 	xorq	(%rdx), %rcx
@@ -1940,6 +1945,7 @@ main:
 	.def	malloc;	.scl	2;	.type	32;	.endef
 	.def	memset;	.scl	2;	.type	32;	.endef
 	.def	lex;	.scl	2;	.type	32;	.endef
+	.def	print_lexerList;	.scl	2;	.type	32;	.endef
 	.def	make_parse_stateList;	.scl	2;	.type	32;	.endef
 	.def	parseProgram;	.scl	2;	.type	32;	.endef
 	.def	puts;	.scl	2;	.type	32;	.endef

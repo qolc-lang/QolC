@@ -1489,20 +1489,22 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
 # 23 "./src/parse_state.c"
                       ) {
   thePos = counter;
+  printf("The current in statelist : %s \n", current->token);
   theSplit = strtok (current->token,",");
   strcpy(theType, theSplit);
 
   if (strcmp(theType, "comma") == 0) {
    strcpy(theValue, "','");
+   printf("The value in statelist : %s \n", current->token);
    theSplit = strtok (
-# 30 "./src/parse_state.c" 3 4
+# 32 "./src/parse_state.c" 3 4
                      ((void *)0)
-# 30 "./src/parse_state.c"
+# 32 "./src/parse_state.c"
                          ,",");
    theSplit = strtok (
-# 31 "./src/parse_state.c" 3 4
+# 33 "./src/parse_state.c" 3 4
                      ((void *)0)
-# 31 "./src/parse_state.c"
+# 33 "./src/parse_state.c"
                          ,",");
    current = current->next;
    push_parseList(my_parse_state, thePos, theType, theValue);
@@ -1513,15 +1515,15 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
   }
 
   theSplit = strtok (
-# 40 "./src/parse_state.c" 3 4
+# 42 "./src/parse_state.c" 3 4
                     ((void *)0)
-# 40 "./src/parse_state.c"
+# 42 "./src/parse_state.c"
                         ,",");
 
   if (theSplit != 
-# 42 "./src/parse_state.c" 3 4
+# 44 "./src/parse_state.c" 3 4
                  ((void *)0)
-# 42 "./src/parse_state.c"
+# 44 "./src/parse_state.c"
                      ) {
    strcpy(theValue, theSplit);
   }
@@ -1539,9 +1541,9 @@ parse_state* make_parse_stateList(lexer_node* tokens) {
   }
 
   theSplit = strtok (
-# 58 "./src/parse_state.c" 3 4
+# 60 "./src/parse_state.c" 3 4
                     ((void *)0)
-# 58 "./src/parse_state.c"
+# 60 "./src/parse_state.c"
                         ,",");
 
   current = current->next;
@@ -1561,9 +1563,9 @@ int removeLast(parse_state * head) {
     int retval = 0;
 
     if (head->next == 
-# 76 "./src/parse_state.c" 3 4
+# 78 "./src/parse_state.c" 3 4
                      ((void *)0)
-# 76 "./src/parse_state.c"
+# 78 "./src/parse_state.c"
                          ) {
         retval = head->pos;
         free(head);
@@ -1572,9 +1574,9 @@ int removeLast(parse_state * head) {
 
     parse_state * current = head;
     while (current->next->next != 
-# 83 "./src/parse_state.c" 3 4
+# 85 "./src/parse_state.c" 3 4
                                  ((void *)0)
-# 83 "./src/parse_state.c"
+# 85 "./src/parse_state.c"
                                      ) {
         current = current->next;
     }
@@ -1582,9 +1584,9 @@ int removeLast(parse_state * head) {
     retval = current->next->pos;
     free(current->next);
     current->next = 
-# 89 "./src/parse_state.c" 3 4
+# 91 "./src/parse_state.c" 3 4
                    ((void *)0)
-# 89 "./src/parse_state.c"
+# 91 "./src/parse_state.c"
                        ;
     return retval;
 }
@@ -1598,9 +1600,9 @@ void print_parseStateList(parse_state* node) {
 
 
  while (current != 
-# 101 "./src/parse_state.c" 3 4
+# 103 "./src/parse_state.c" 3 4
                   ((void *)0)
-# 101 "./src/parse_state.c"
+# 103 "./src/parse_state.c"
                       ) {
   ++counter;
   printf("Counter-Position %d : %d\n", counter, current->pos);
@@ -1616,9 +1618,9 @@ void print_parseStateList(parse_state* node) {
 void push_parseList(parse_state* node, int pos, char type[], char value[]) {
     parse_state * current = node;
     while (current->next != 
-# 115 "./src/parse_state.c" 3 4
+# 117 "./src/parse_state.c" 3 4
                            ((void *)0)
-# 115 "./src/parse_state.c"
+# 117 "./src/parse_state.c"
                                ) {
         current = current->next;
     }
@@ -1627,8 +1629,8 @@ void push_parseList(parse_state* node, int pos, char type[], char value[]) {
     strcpy(current->next->type, type);
     strcpy(current->next->value, value);
     current->next->next = 
-# 122 "./src/parse_state.c" 3 4
+# 124 "./src/parse_state.c" 3 4
                          ((void *)0)
-# 122 "./src/parse_state.c"
+# 124 "./src/parse_state.c"
                              ;
 }
