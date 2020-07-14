@@ -1,0 +1,436 @@
+counter-1 : p
+counter-2 : keyword,import
+counter-3 : keyword,import
+counter-4 : string,mylib
+counter-5 : end of command
+counter-6 : keyword,load
+counter-7 : keyword,load
+counter-8 : string,myFile
+counter-9 : end of command
+counter-10 : comment start,/@
+counter-11 : operator,@
+counter-12 : identifier,sample
+counter-13 : identifier,comment
+counter-14 : identifier,jdenjfne
+counter-15 : identifier,fjrnjfnr
+counter-16 : identifier,frnjfr
+counter-17 : end of command
+counter-18 : operator,@
+counter-19 : identifier,hello
+counter-20 : parenthesis,|
+counter-21 : keyword,string
+counter-22 : string,Hello World!
+counter-23 : parenthesis,|
+counter-24 : end of command
+counter-25 : operator,@
+counter-26 : identifier,s
+counter-27 : keyword,string
+counter-28 : end of command
+counter-29 : operator,@
+counter-30 : identifier,flag
+counter-31 : keyword,bool
+counter-32 : end of command
+counter-33 : operator,@
+counter-34 : identifier,u
+counter-35 : keyword,void
+counter-36 : end of command
+counter-37 : operator,@
+counter-38 : identifier,c
+counter-39 : keyword,char
+counter-40 : end of command
+counter-41 : operator,@
+counter-42 : identifier,x
+counter-43 : parenthesis,|
+counter-44 : keyword,int
+counter-45 : parenthesis,|
+counter-46 : identifier,0
+counter-47 : end of command
+counter-48 : operator,@
+counter-49 : identifier,o
+counter-50 : parenthesis,|
+counter-51 : keyword,float
+counter-52 : operator,.
+counter-53 : identifier,0
+counter-54 : parenthesis,|
+counter-55 : identifier,5
+counter-56 : end of command
+counter-57 : operator,@
+counter-58 : identifier,my_b1
+counter-59 : parenthesis,|
+counter-60 : keyword,bool
+counter-61 : parenthesis,|
+counter-62 : keyword,true
+counter-63 : end of command
+counter-64 : operator,@
+counter-65 : identifier,myVoid
+counter-66 : parenthesis,|
+counter-67 : keyword,void
+counter-68 : parenthesis,|
+counter-69 : keyword,null
+counter-70 : end of command
+counter-71 : operator,@
+counter-72 : identifier,e
+counter-73 : parenthesis,|
+counter-74 : keyword,char
+counter-75 : character,'g
+counter-76 : parenthesis,|
+counter-77 : end of command
+counter-78 : operator,@
+counter-79 : identifier,p
+counter-80 : keyword,float
+counter-81 : end of command
+counter-82 : operator,@
+counter-83 : identifier,f
+counter-84 : operator,.
+counter-85 : identifier,0
+counter-86 : identifier,5
+counter-87 : end of command
+counter-88 : operator,@
+counter-89 : identifier,v
+counter-90 : keyword,false
+counter-91 : end of command
+counter-92 : operator,@
+counter-93 : identifier,d
+counter-94 : character,'d
+counter-95 : end of command
+counter-96 : operator,@
+counter-97 : identifier,y
+counter-98 : identifier,4
+counter-99 : operator,+
+counter-100 : identifier,2
+counter-101 : end of command
+counter-102 : operator,@
+counter-103 : identifier,z
+counter-104 : identifier,0
+counter-105 : end of command
+counter-106 : operator,@
+counter-107 : identifier,t
+counter-108 : keyword,int
+counter-109 : end of command
+counter-110 : operator,@
+counter-111 : identifier,myvar
+counter-112 : string,a string
+counter-113 : end of command
+counter-114 : parenthesis,|
+counter-115 : keyword,print
+counter-116 : parenthesis,|
+counter-117 : identifier,hello
+counter-118 : end of command
+counter-119 : parenthesis,|
+counter-120 : keyword,print
+counter-121 : parenthesis,|
+counter-122 : identifier,10
+counter-123 : end of command
+counter-124 : parenthesis,|
+counter-125 : keyword,print
+counter-126 : parenthesis,|
+counter-127 : identifier,x
+counter-128 : end of command
+counter-129 : parenthesis,|
+counter-130 : keyword,print
+counter-131 : string,end
+counter-132 : parenthesis,|
+counter-133 : end of command
+counter-134 : operator,--
+counter-135 : identifier,d
+counter-136 : end of command
+counter-137 : operator,++
+counter-138 : identifier,y
+counter-139 : end of command
+counter-140 : operator,--
+counter-141 : identifier,x
+counter-142 : end of command
+counter-143 : operator,++
+counter-144 : identifier,g
+counter-145 : end of command
+counter-146 : identifier,g
+counter-147 : operator,+=
+counter-148 : identifier,d
+counter-149 : end of command
+counter-150 : identifier,y
+counter-151 : operator,+=
+counter-152 : identifier,6
+counter-153 : end of command
+counter-154 : identifier,l
+counter-155 : operator,-=
+counter-156 : identifier,r
+counter-157 : end of command
+counter-158 : identifier,v
+counter-159 : operator,-=
+counter-160 : identifier,2
+counter-161 : end of command
+counter-162 : identifier,t
+counter-163 : operator,*=
+counter-164 : identifier,w
+counter-165 : end of command
+counter-166 : identifier,g
+counter-167 : operator,*=
+counter-168 : identifier,3
+counter-169 : end of command
+counter-170 : identifier,s
+counter-171 : operator,/=
+counter-172 : identifier,k
+counter-173 : end of command
+counter-174 : identifier,z
+counter-175 : operator,/=
+counter-176 : identifier,76
+counter-177 : end of command
+counter-178 : operator,@
+counter-179 : identifier,m
+counter-180 : pointer symbol,^
+counter-181 : keyword,float
+counter-182 : parenthesis,|
+counter-183 : parenthesis,|
+counter-184 : keyword,null
+counter-185 : end of command
+counter-186 : operator,@
+counter-187 : identifier,j
+counter-188 : pointer symbol,^
+counter-189 : keyword,int
+counter-190 : parenthesis,|
+counter-191 : parenthesis,|
+counter-192 : keyword,null
+counter-193 : end of command
+counter-194 : operator,@
+counter-195 : identifier,k
+counter-196 : pointer symbol,^
+counter-197 : keyword,void
+counter-198 : parenthesis,|
+counter-199 : parenthesis,|
+counter-200 : keyword,null
+counter-201 : end of command
+counter-202 : operator,@
+counter-203 : identifier,b
+counter-204 : pointer symbol,^
+counter-205 : keyword,string
+counter-206 : parenthesis,|
+counter-207 : parenthesis,|
+counter-208 : keyword,null
+counter-209 : end of command
+counter-210 : operator,@
+counter-211 : identifier,vlal
+counter-212 : pointer symbol,^
+counter-213 : keyword,char
+counter-214 : parenthesis,|
+counter-215 : parenthesis,|
+counter-216 : keyword,null
+counter-217 : end of command
+counter-218 : keyword,delete
+counter-219 : keyword,delete
+counter-220 : identifier,my_node
+counter-221 : end of command
+counter-222 : keyword,break
+counter-223 : end of command
+counter-224 : keyword,continue
+counter-225 : end of command
+counter-226 : keyword,defer
+counter-227 : keyword,defer
+counter-228 : parenthesis,|
+counter-229 : keyword,print
+counter-230 : string,hello there
+counter-231 : parenthesis,|
+counter-232 : end of command
+counter-233 : operator,@
+counter-234 : identifier,hexNum
+counter-235 : identifier,0xfedcba9876543210
+counter-236 : end of command
+counter-237 : parenthesis,|
+counter-238 : keyword,sleep
+counter-239 : parenthesis,|
+counter-240 : identifier,2
+counter-241 : end of command
+counter-242 : end of command
+counter-243 : keyword,main
+counter-244 : keyword,main
+counter-245 : parenthesis,|
+counter-246 : parenthesis,|
+counter-247 : end of command
+counter-248 : block start,|@
+counter-249 : end of command
+counter-250 : end of command
+counter-251 : identifier,vector3
+counter-252 : keyword,struct
+counter-253 : end of command
+counter-254 : block start,|@
+counter-255 : end of command
+counter-256 : operator,@
+counter-257 : identifier,nanan
+counter-258 : keyword,string
+counter-259 : end of command
+counter-260 : operator,@
+counter-261 : identifier,a
+counter-262 : keyword,int
+counter-263 : end of command
+counter-264 : operator,@
+counter-265 : identifier,blal
+counter-266 : keyword,float
+counter-267 : end of command
+counter-268 : operator,@
+counter-269 : identifier,clalal
+counter-270 : keyword,float
+counter-271 : end of command
+counter-272 : operator,@
+counter-273 : identifier,myint5
+counter-274 : keyword,int
+counter-275 : end of command
+counter-276 : operator,@
+counter-277 : identifier,m74td
+counter-278 : keyword,float
+counter-279 : end of command
+counter-280 : operator,@
+counter-281 : identifier,e8i9o2
+counter-282 : parenthesis,|
+counter-283 : keyword,int
+counter-284 : parenthesis,|
+counter-285 : identifier,78
+counter-286 : end of command
+counter-287 : operator,@
+counter-288 : identifier,theNum3tyr33
+counter-289 : identifier,53
+counter-290 : end of command
+counter-291 : operator,@
+counter-292 : identifier,_hi57_32doo3y5
+counter-293 : parenthesis,|
+counter-294 : keyword,float
+counter-295 : parenthesis,|
+counter-296 : identifier,65
+counter-297 : end of command
+counter-298 : operator,@
+counter-299 : identifier,hello4537_npno212op33t1
+counter-300 : keyword,float
+counter-301 : end of command
+counter-302 : operator,@
+counter-303 : identifier,dmamam
+counter-304 : character,'d
+counter-305 : end of command
+counter-306 : block end,@|
+counter-307 : end of command
+counter-308 : end of command
+counter-309 : identifier,marines
+counter-310 : keyword,union
+counter-311 : end of command
+counter-312 : block start,|@
+counter-313 : end of command
+counter-314 : operator,@
+counter-315 : identifier,decimal
+counter-316 : keyword,float
+counter-317 : end of command
+counter-318 : operator,@
+counter-319 : identifier,shield
+counter-320 : parenthesis,|
+counter-321 : keyword,int
+counter-322 : parenthesis,|
+counter-323 : identifier,100
+counter-324 : end of command
+counter-325 : operator,@
+counter-326 : identifier,name
+counter-327 : parenthesis,|
+counter-328 : keyword,string
+counter-329 : string,Jake
+counter-330 : parenthesis,|
+counter-331 : end of command
+counter-332 : block end,@|
+counter-333 : end of command
+counter-334 : end of command
+counter-335 : identifier,value
+counter-336 : keyword,enum
+counter-337 : end of command
+counter-338 : block start,|@
+counter-339 : end of command
+counter-340 : operator,@
+counter-341 : identifier,xpop
+counter-342 : comma,,
+counter-343 : identifier,0
+counter-344 : end of command
+counter-345 : operator,@
+counter-346 : identifier,ydsffds
+counter-347 : comma,,
+counter-348 : identifier,1
+counter-349 : end of command
+counter-350 : operator,@
+counter-351 : identifier,zkerk
+counter-352 : comma,,
+counter-353 : identifier,y
+counter-354 : end of command
+counter-355 : operator,@
+counter-356 : identifier,vmamammama
+counter-357 : comma,,
+counter-358 : identifier,f
+counter-359 : end of command
+counter-360 : operator,@
+counter-361 : identifier,g
+counter-362 : comma,,
+counter-363 : identifier,10
+counter-364 : end of command
+counter-365 : block end,@|
+counter-366 : end of command
+counter-367 : end of command
+counter-368 : operator,@
+counter-369 : identifier,spopopopo
+counter-370 : keyword,string
+counter-371 : end of command
+counter-372 : end of command
+counter-373 : parenthesis,|
+counter-374 : keyword,sleep
+counter-375 : parenthesis,|
+counter-376 : identifier,4
+counter-377 : end of command
+counter-378 : end of command
+counter-379 : parenthesis,|
+counter-380 : keyword,scan
+counter-381 : parenthesis,|
+counter-382 : identifier,input
+counter-383 : end of command
+counter-384 : parenthesis,|
+counter-385 : keyword,cast
+counter-386 : comma,,
+counter-387 : identifier,i
+counter-388 : parenthesis,|
+counter-389 : keyword,bool
+counter-390 : end of command
+counter-391 : parenthesis,|
+counter-392 : keyword,array_add
+counter-393 : comma,,
+counter-394 : identifier,myArray
+counter-395 : parenthesis,|
+counter-396 : identifier,k
+counter-397 : end of command
+counter-398 : end of command
+counter-399 : operator,@
+counter-400 : identifier,my_node
+counter-401 : keyword,new
+counter-402 : keyword,new
+counter-403 : identifier,node
+counter-404 : end of command
+counter-405 : end of command
+counter-406 : keyword,assert
+counter-407 : keyword,assert
+counter-408 : parenthesis,|
+counter-409 : identifier,5
+counter-410 : operator,@==
+counter-411 : parenthesis,|
+counter-412 : identifier,2
+counter-413 : end of command
+counter-414 : end of command
+counter-415 : operator,@
+counter-416 : identifier,lokaokaja
+counter-417 : array start,[
+counter-418 : array end,]
+counter-419 : identifier,50
+counter-420 : identifier,vector3
+counter-421 : end of command
+counter-422 : end of command
+counter-423 : keyword,return
+counter-424 : keyword,return
+counter-425 : identifier,x
+counter-426 : operator,+
+counter-427 : identifier,c
+counter-428 : operator,-
+counter-429 : identifier,p
+counter-430 : operator,-
+counter-431 : identifier,r
+counter-432 : operator,+
+counter-433 : identifier,v
+counter-434 : end of command
+counter-435 : end of command
+counter-436 : block end,@|

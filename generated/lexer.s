@@ -37,48 +37,47 @@ lex:
 	.seh_pushreg	%rbx
 	.cfi_def_cfa_offset 24
 	.cfi_offset 3, -24
-	subq	$664, %rsp
-	.seh_stackalloc	664
-	.cfi_def_cfa_offset 688
+	subq	$648, %rsp
+	.seh_stackalloc	648
+	.cfi_def_cfa_offset 672
 	leaq	128(%rsp), %rbp
 	.seh_setframe	%rbp, 128
-	.cfi_def_cfa 6, 560
+	.cfi_def_cfa 6, 544
 	.seh_endprologue
 	movq	%rcx, -72(%rbp)
 	movq	%rdx, -80(%rbp)
 	.loc 1 3 0
 	movq	.refptr.__stack_chk_guard(%rip), %rax
 	movq	(%rax), %rbx
-	movq	%rbx, 520(%rbp)
+	movq	%rbx, 504(%rbp)
 	xorl	%ebx, %ebx
 	.loc 1 7 0
-	movl	$0, -44(%rbp)
-	movl	$0, -40(%rbp)
-	movl	$0, -36(%rbp)
-	movl	$0, -32(%rbp)
-	movl	$0, -28(%rbp)
-	.loc 1 8 0
-	movl	$0, -48(%rbp)
-	.loc 1 10 0
+	movl	$0, -56(%rbp)
 	movl	$0, -52(%rbp)
+	movl	$0, -48(%rbp)
+	movl	$0, -44(%rbp)
+	.loc 1 8 0
+	movl	$0, -60(%rbp)
+	.loc 1 10 0
+	movl	$0, -64(%rbp)
 	.loc 1 13 0
 	movl	$32000, %ecx
 	call	malloc
-	movq	%rax, -16(%rbp)
+	movq	%rax, -32(%rbp)
 	.loc 1 15 0
-	movq	%rbp, %rax
+	leaq	-16(%rbp), %rax
 	movl	$150, %r8d
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	memset
 	.loc 1 16 0
-	leaq	320(%rbp), %rax
+	leaq	304(%rbp), %rax
 	movl	$200, %r8d
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	memset
 	.loc 1 17 0
-	leaq	160(%rbp), %rax
+	leaq	144(%rbp), %rax
 	movl	$150, %r8d
 	movl	$0, %edx
 	movq	%rax, %rcx
@@ -88,9 +87,9 @@ lex:
 	leaq	.LC0(%rip), %rdx
 	movq	%rax, %rcx
 	call	fopen
-	movq	%rax, -8(%rbp)
+	movq	%rax, -24(%rbp)
 	.loc 1 21 0
-	cmpq	$0, -8(%rbp)
+	cmpq	$0, -24(%rbp)
 	jne	.L3
 	.loc 1 22 0
 	leaq	.LC1(%rip), %rcx
@@ -100,12 +99,12 @@ lex:
 	call	exit
 .L38:
 	.loc 1 30 0
-	movq	$0, -24(%rbp)
+	movq	$0, -40(%rbp)
 	jmp	.L4
 .L37:
 	.loc 1 31 0
-	leaq	160(%rbp), %rdx
-	movq	-24(%rbp), %rax
+	leaq	144(%rbp), %rdx
+	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
 	movzbl	%al, %eax
@@ -116,8 +115,8 @@ lex:
 	call	__locale_ctype_ptr
 	movq	%rax, %rcx
 	.loc 1 34 0
-	leaq	160(%rbp), %rdx
-	movq	-24(%rbp), %rax
+	leaq	144(%rbp), %rdx
+	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
 	.loc 1 34 0
@@ -132,8 +131,8 @@ lex:
 	testl	%eax, %eax
 	jne	.L5
 	.loc 1 34 0 discriminator 2
-	leaq	160(%rbp), %rdx
-	movq	-24(%rbp), %rax
+	leaq	144(%rbp), %rdx
+	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
 	cmpb	$95, %al
@@ -142,8 +141,8 @@ lex:
 	call	__locale_ctype_ptr
 	movq	%rax, %rcx
 	.loc 1 34 0 discriminator 3
-	leaq	160(%rbp), %rdx
-	movq	-24(%rbp), %rax
+	leaq	144(%rbp), %rdx
+	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
 	.loc 1 34 0 discriminator 3
@@ -159,46 +158,46 @@ lex:
 	je	.L6
 .L5:
 	.loc 1 35 0
-	movl	-48(%rbp), %eax
+	movl	-60(%rbp), %eax
 	leal	1(%rax), %edx
-	movl	%edx, -48(%rbp)
-	leaq	160(%rbp), %rcx
-	movq	-24(%rbp), %rdx
+	movl	%edx, -60(%rbp)
+	leaq	144(%rbp), %rcx
+	movq	-40(%rbp), %rdx
 	addq	%rcx, %rdx
 	movzbl	(%rdx), %edx
 	cltq
-	movb	%dl, 0(%rbp,%rax)
+	movb	%dl, -16(%rbp,%rax)
 	jmp	.L7
 .L6:
 	.loc 1 36 0
-	leaq	160(%rbp), %rdx
-	movq	-24(%rbp), %rax
+	leaq	144(%rbp), %rdx
+	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
 	cmpb	$32, %al
 	je	.L8
 	.loc 1 37 0
-	leaq	160(%rbp), %rdx
-	movq	-24(%rbp), %rax
+	leaq	144(%rbp), %rdx
+	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
 	cmpb	$10, %al
 	je	.L8
 	.loc 1 38 0
-	leaq	160(%rbp), %rdx
-	movq	-24(%rbp), %rax
+	leaq	144(%rbp), %rdx
+	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
 	cmpb	$59, %al
 	je	.L8
 	.loc 1 39 0
-	leaq	160(%rbp), %rdx
-	movq	-24(%rbp), %rax
+	leaq	144(%rbp), %rdx
+	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
 	movzbl	%al, %eax
-	leaq	320(%rbp), %rcx
-	movq	-16(%rbp), %rdx
+	leaq	304(%rbp), %rcx
+	movq	-32(%rbp), %rdx
 	movq	%rcx, %r8
 	movl	%eax, %ecx
 	call	isOperator
@@ -206,23 +205,23 @@ lex:
 	je	.L7
 .L8:
 	.loc 1 40 0
-	cmpl	$0, -48(%rbp)
+	cmpl	$0, -60(%rbp)
 	je	.L7
 	.loc 1 41 0
-	movl	-48(%rbp), %eax
+	movl	-60(%rbp), %eax
 	cltq
-	movb	$0, 0(%rbp,%rax)
+	movb	$0, -16(%rbp,%rax)
 	.loc 1 42 0
-	movl	$0, -48(%rbp)
+	movl	$0, -60(%rbp)
 	.loc 1 44 0
-	movq	%rbp, %rax
+	leaq	-16(%rbp), %rax
 	movq	%rax, %rcx
 	call	isKeyword
 	cmpl	$1, %eax
 	jne	.L9
 	.loc 1 45 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC3(%rip), %rdx
 	movq	%rax, %rcx
@@ -230,35 +229,35 @@ lex:
 	jmp	.L7
 .L9:
 	.loc 1 47 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC4(%rip), %rdx
 	movq	%rax, %rcx
 	call	pushForLex
 .L7:
 	.loc 1 55 0
-	leaq	160(%rbp), %rdx
-	movq	-24(%rbp), %rax
+	leaq	144(%rbp), %rdx
+	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
 	cmpb	$32, %al
 	jne	.L11
 	.loc 1 57 0
-	movq	%rbp, %rax
+	leaq	-16(%rbp), %rax
 	movq	%rax, %rcx
 	call	isKeyword
 	cmpl	$1, %eax
 	jne	.L46
 	.loc 1 58 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC3(%rip), %rdx
 	movq	%rax, %rcx
 	call	pushForLex
 	.loc 1 59 0
-	movq	%rbp, %rax
+	leaq	-16(%rbp), %rax
 	movl	$150, %r8d
 	movl	$0, %edx
 	movq	%rax, %rcx
@@ -267,42 +266,42 @@ lex:
 	jmp	.L46
 .L11:
 	.loc 1 68 0
-	leaq	160(%rbp), %rax
+	leaq	144(%rbp), %rax
 	movq	%rax, %rcx
 	call	strlen
 	movl	%eax, %r8d
-	movq	-24(%rbp), %rax
+	movq	-40(%rbp), %rax
 	movl	%eax, %r10d
-	movq	-16(%rbp), %rcx
-	leaq	160(%rbp), %rax
-	leaq	320(%rbp), %rdx
+	movq	-32(%rbp), %rcx
+	leaq	144(%rbp), %rax
+	leaq	304(%rbp), %rdx
 	movq	%rdx, 32(%rsp)
 	movq	%rcx, %r9
 	movl	%r10d, %edx
 	movq	%rax, %rcx
 	call	isAtOperator
-	movl	%eax, -44(%rbp)
-	cmpl	$-1, -44(%rbp)
+	movl	%eax, -56(%rbp)
+	cmpl	$-1, -56(%rbp)
 	je	.L14
 	.loc 1 69 0
-	movl	-44(%rbp), %eax
+	movl	-56(%rbp), %eax
 	cltq
-	addq	%rax, -24(%rbp)
+	addq	%rax, -40(%rbp)
 	.loc 1 70 0
-	movl	-48(%rbp), %eax
+	movl	-60(%rbp), %eax
 	cltq
-	movb	$0, 0(%rbp,%rax)
+	movb	$0, -16(%rbp,%rax)
 	.loc 1 71 0
-	movl	$0, -48(%rbp)
+	movl	$0, -60(%rbp)
 	.loc 1 72 0
-	movq	%rbp, %rax
+	leaq	-16(%rbp), %rax
 	movq	%rax, %rcx
 	call	isKeyword
 	cmpl	$1, %eax
 	jne	.L15
 	.loc 1 73 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC3(%rip), %rdx
 	movq	%rax, %rcx
@@ -311,15 +310,15 @@ lex:
 	jmp	.L13
 .L15:
 	.loc 1 74 0
-	leaq	160(%rbp), %rax
+	leaq	144(%rbp), %rax
 	movq	%rax, %rcx
 	call	strlen
 	movl	%eax, %r8d
-	movq	-24(%rbp), %rax
+	movq	-40(%rbp), %rax
 	movl	%eax, %r10d
-	movq	-16(%rbp), %rcx
-	leaq	160(%rbp), %rax
-	leaq	320(%rbp), %rdx
+	movq	-32(%rbp), %rcx
+	leaq	144(%rbp), %rax
+	leaq	304(%rbp), %rdx
 	movq	%rdx, 32(%rsp)
 	movq	%rcx, %r9
 	movl	%r10d, %edx
@@ -328,8 +327,8 @@ lex:
 	cmpl	$-1, %eax
 	je	.L17
 	.loc 1 75 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC5(%rip), %rdx
 	movq	%rax, %rcx
@@ -338,12 +337,12 @@ lex:
 	jmp	.L13
 .L17:
 	.loc 1 77 0
-	movzbl	0(%rbp), %eax
+	movzbl	-16(%rbp), %eax
 	testb	%al, %al
 	je	.L47
 	.loc 1 79 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC4(%rip), %rdx
 	movq	%rax, %rcx
@@ -352,33 +351,33 @@ lex:
 	jmp	.L13
 .L14:
 	.loc 1 87 0
-	leaq	160(%rbp), %rdx
-	movq	-24(%rbp), %rax
+	leaq	144(%rbp), %rdx
+	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
 	cmpb	$10, %al
 	jne	.L19
 	.loc 1 88 0
-	movq	-16(%rbp), %rax
+	movq	-32(%rbp), %rax
 	movq	%rax, %r8
 	leaq	.LC6(%rip), %rdx
 	movl	$0, %ecx
 	call	pushForLex
 	.loc 1 90 0
-	movl	-48(%rbp), %eax
+	movl	-60(%rbp), %eax
 	cltq
-	movb	$0, 0(%rbp,%rax)
+	movb	$0, -16(%rbp,%rax)
 	.loc 1 91 0
-	movl	$0, -48(%rbp)
+	movl	$0, -60(%rbp)
 	.loc 1 93 0
-	movq	%rbp, %rax
+	leaq	-16(%rbp), %rax
 	movq	%rax, %rcx
 	call	isKeyword
 	cmpl	$1, %eax
 	jne	.L20
 	.loc 1 94 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC3(%rip), %rdx
 	movq	%rax, %rcx
@@ -387,12 +386,12 @@ lex:
 	jmp	.L13
 .L20:
 	.loc 1 96 0
-	movzbl	0(%rbp), %eax
+	movzbl	-16(%rbp), %eax
 	testb	%al, %al
 	je	.L48
 	.loc 1 98 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC4(%rip), %rdx
 	movq	%rax, %rcx
@@ -401,52 +400,52 @@ lex:
 	jmp	.L13
 .L19:
 	.loc 1 144 0
-	leaq	160(%rbp), %rax
+	leaq	144(%rbp), %rax
 	movq	%rax, %rcx
 	call	strlen
 	movl	%eax, %r8d
-	movq	-24(%rbp), %rax
+	movq	-40(%rbp), %rax
 	movl	%eax, %r10d
-	leaq	-52(%rbp), %rcx
-	leaq	160(%rbp), %rax
-	leaq	320(%rbp), %rdx
+	leaq	-64(%rbp), %rcx
+	leaq	144(%rbp), %rax
+	leaq	304(%rbp), %rdx
 	movq	%rdx, 40(%rsp)
-	movq	-16(%rbp), %rdx
+	movq	-32(%rbp), %rdx
 	movq	%rdx, 32(%rsp)
 	movq	%rcx, %r9
 	movl	%r10d, %edx
 	movq	%rax, %rcx
 	call	isSpecialSymbol
-	movl	%eax, -36(%rbp)
-	cmpl	$-1, -36(%rbp)
+	movl	%eax, -48(%rbp)
+	cmpl	$-1, -48(%rbp)
 	je	.L23
 	.loc 1 145 0
-	movl	-36(%rbp), %eax
+	movl	-48(%rbp), %eax
 	cltq
-	addq	%rax, -24(%rbp)
+	addq	%rax, -40(%rbp)
 	.loc 1 146 0
-	movl	-52(%rbp), %eax
+	movl	-64(%rbp), %eax
 	cmpl	$1, %eax
 	jne	.L24
 	.loc 1 147 0
-	movl	-48(%rbp), %eax
+	movl	-60(%rbp), %eax
 	cltq
-	movb	$0, 0(%rbp,%rax)
+	movb	$0, -16(%rbp,%rax)
 	.loc 1 148 0
-	movl	$0, -48(%rbp)
+	movl	$0, -60(%rbp)
 	.loc 1 149 0
-	movzbl	0(%rbp), %eax
+	movzbl	-16(%rbp), %eax
 	testb	%al, %al
 	je	.L49
 	.loc 1 151 0
-	movq	%rbp, %rax
+	leaq	-16(%rbp), %rax
 	movq	%rax, %rcx
 	call	isKeyword
 	cmpl	$1, %eax
 	jne	.L26
 	.loc 1 152 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC3(%rip), %rdx
 	movq	%rax, %rcx
@@ -455,8 +454,8 @@ lex:
 	jmp	.L13
 .L26:
 	.loc 1 154 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC4(%rip), %rdx
 	movq	%rax, %rcx
@@ -465,30 +464,30 @@ lex:
 	jmp	.L13
 .L24:
 	.loc 1 157 0
-	movl	-52(%rbp), %eax
+	movl	-64(%rbp), %eax
 	cmpl	$2, %eax
 	jne	.L50
 	.loc 1 158 0
-	subq	$1, -24(%rbp)
+	subq	$1, -40(%rbp)
 	.loc 1 159 0
-	movl	-48(%rbp), %eax
+	movl	-60(%rbp), %eax
 	cltq
-	movb	$0, 0(%rbp,%rax)
+	movb	$0, -16(%rbp,%rax)
 	.loc 1 160 0
-	movl	$0, -48(%rbp)
+	movl	$0, -60(%rbp)
 	.loc 1 161 0
-	movzbl	0(%rbp), %eax
+	movzbl	-16(%rbp), %eax
 	testb	%al, %al
 	je	.L51
 	.loc 1 163 0
-	movq	%rbp, %rax
+	leaq	-16(%rbp), %rax
 	movq	%rax, %rcx
 	call	isKeyword
 	cmpl	$1, %eax
 	jne	.L30
 	.loc 1 164 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC3(%rip), %rdx
 	movq	%rax, %rcx
@@ -497,8 +496,8 @@ lex:
 	jmp	.L13
 .L30:
 	.loc 1 166 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC4(%rip), %rdx
 	movq	%rax, %rcx
@@ -507,55 +506,55 @@ lex:
 	jmp	.L13
 .L23:
 	.loc 1 176 0
-	leaq	160(%rbp), %rax
+	leaq	144(%rbp), %rax
 	movq	%rax, %rcx
 	call	strlen
 	movl	%eax, %r8d
-	movq	-24(%rbp), %rax
+	movq	-40(%rbp), %rax
 	movl	%eax, %r10d
-	movq	-16(%rbp), %rcx
-	leaq	160(%rbp), %rax
-	leaq	320(%rbp), %rdx
+	movq	-32(%rbp), %rcx
+	leaq	144(%rbp), %rax
+	leaq	304(%rbp), %rdx
 	movq	%rdx, 32(%rsp)
 	movq	%rcx, %r9
 	movl	%r10d, %edx
 	movq	%rax, %rcx
 	call	isChar
-	movl	%eax, -28(%rbp)
-	cmpl	$-1, -28(%rbp)
+	movl	%eax, -44(%rbp)
+	cmpl	$-1, -44(%rbp)
 	je	.L32
 	.loc 1 177 0
-	movl	-28(%rbp), %eax
+	movl	-44(%rbp), %eax
 	cltq
-	addq	%rax, -24(%rbp)
+	addq	%rax, -40(%rbp)
 	.loc 1 178 0
-	leaq	160(%rbp), %rdx
-	movq	-24(%rbp), %rax
+	leaq	144(%rbp), %rdx
+	movq	-40(%rbp), %rax
 	addq	%rdx, %rax
 	movzbl	(%rax), %eax
 	cmpb	$10, %al
 	jne	.L52
 	.loc 1 179 0
-	movq	-16(%rbp), %rax
+	movq	-32(%rbp), %rax
 	movq	%rax, %r8
 	leaq	.LC6(%rip), %rdx
 	movl	$0, %ecx
 	call	pushForLex
 	.loc 1 181 0
-	movl	-48(%rbp), %eax
+	movl	-60(%rbp), %eax
 	cltq
-	movb	$0, 0(%rbp,%rax)
+	movb	$0, -16(%rbp,%rax)
 	.loc 1 182 0
-	movl	$0, -48(%rbp)
+	movl	$0, -60(%rbp)
 	.loc 1 184 0
-	movq	%rbp, %rax
+	leaq	-16(%rbp), %rax
 	movq	%rax, %rcx
 	call	isKeyword
 	cmpl	$1, %eax
 	jne	.L34
 	.loc 1 185 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC3(%rip), %rdx
 	movq	%rax, %rcx
@@ -564,12 +563,12 @@ lex:
 	jmp	.L13
 .L34:
 	.loc 1 187 0
-	movzbl	0(%rbp), %eax
+	movzbl	-16(%rbp), %eax
 	testb	%al, %al
 	je	.L53
 	.loc 1 189 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC4(%rip), %rdx
 	movq	%rax, %rcx
@@ -578,27 +577,27 @@ lex:
 	jmp	.L13
 .L32:
 	.loc 1 200 0
-	leaq	160(%rbp), %rax
+	leaq	144(%rbp), %rax
 	movq	%rax, %rcx
 	call	strlen
 	movl	%eax, %r8d
-	movq	-24(%rbp), %rax
+	movq	-40(%rbp), %rax
 	movl	%eax, %r10d
-	movq	-16(%rbp), %rcx
-	leaq	160(%rbp), %rax
-	leaq	320(%rbp), %rdx
+	movq	-32(%rbp), %rcx
+	leaq	144(%rbp), %rax
+	leaq	304(%rbp), %rdx
 	movq	%rdx, 32(%rsp)
 	movq	%rcx, %r9
 	movl	%r10d, %edx
 	movq	%rax, %rcx
 	call	isStringLiteral
-	movl	%eax, -40(%rbp)
-	cmpl	$-1, -40(%rbp)
+	movl	%eax, -52(%rbp)
+	cmpl	$-1, -52(%rbp)
 	je	.L13
 	.loc 1 201 0
-	movl	-40(%rbp), %eax
+	movl	-52(%rbp), %eax
 	cltq
-	addq	%rax, -24(%rbp)
+	addq	%rax, -40(%rbp)
 	.loc 1 202 0
 	jmp	.L13
 .L46:
@@ -634,18 +633,18 @@ lex:
 	nop
 .L13:
 	.loc 1 30 0 discriminator 2
-	addq	$1, -24(%rbp)
+	addq	$1, -40(%rbp)
 .L4:
 	.loc 1 30 0 is_stmt 0 discriminator 1
-	leaq	160(%rbp), %rax
+	leaq	144(%rbp), %rax
 	movq	%rax, %rcx
 	call	strlen
-	cmpq	%rax, -24(%rbp)
+	cmpq	%rax, -40(%rbp)
 	jb	.L37
 .L3:
 	.loc 1 26 0 is_stmt 1
-	movq	-8(%rbp), %rdx
-	leaq	160(%rbp), %rax
+	movq	-24(%rbp), %rdx
+	leaq	144(%rbp), %rax
 	movq	%rdx, %r8
 	movl	$150, %edx
 	movq	%rax, %rcx
@@ -653,7 +652,7 @@ lex:
 	testq	%rax, %rax
 	jne	.L38
 	.loc 1 210 0
-	movq	-8(%rbp), %rax
+	movq	-24(%rbp), %rax
 	movzwl	16(%rax), %eax
 	cwtl
 	andl	$32, %eax
@@ -661,23 +660,23 @@ lex:
 	testl	%eax, %eax
 	je	.L39
 	.loc 1 211 0
-	cmpl	$0, -48(%rbp)
+	cmpl	$0, -60(%rbp)
 	je	.L43
 	.loc 1 212 0
-	movl	-48(%rbp), %eax
+	movl	-60(%rbp), %eax
 	cltq
-	movb	$0, 0(%rbp,%rax)
+	movb	$0, -16(%rbp,%rax)
 	.loc 1 213 0
-	movl	$0, -48(%rbp)
+	movl	$0, -60(%rbp)
 	.loc 1 215 0
-	movq	%rbp, %rax
+	leaq	-16(%rbp), %rax
 	movq	%rax, %rcx
 	call	isKeyword
 	cmpl	$1, %eax
 	jne	.L41
 	.loc 1 216 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC3(%rip), %rdx
 	movq	%rax, %rcx
@@ -685,15 +684,15 @@ lex:
 	jmp	.L43
 .L41:
 	.loc 1 217 0
-	leaq	160(%rbp), %rax
+	leaq	144(%rbp), %rax
 	movq	%rax, %rcx
 	call	strlen
 	movl	%eax, %r8d
-	movq	-24(%rbp), %rax
+	movq	-40(%rbp), %rax
 	movl	%eax, %r10d
-	movq	-16(%rbp), %rcx
-	leaq	160(%rbp), %rax
-	leaq	320(%rbp), %rdx
+	movq	-32(%rbp), %rcx
+	leaq	144(%rbp), %rax
+	leaq	304(%rbp), %rdx
 	movq	%rdx, 32(%rsp)
 	movq	%rcx, %r9
 	movl	%r10d, %edx
@@ -702,8 +701,8 @@ lex:
 	cmpl	$-1, %eax
 	je	.L42
 	.loc 1 218 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC5(%rip), %rdx
 	movq	%rax, %rcx
@@ -711,8 +710,8 @@ lex:
 	jmp	.L43
 .L42:
 	.loc 1 220 0
-	movq	-16(%rbp), %rdx
-	movq	%rbp, %rax
+	movq	-32(%rbp), %rdx
+	leaq	-16(%rbp), %rax
 	movq	%rdx, %r8
 	leaq	.LC4(%rip), %rdx
 	movq	%rax, %rcx
@@ -724,16 +723,16 @@ lex:
 	call	puts
 .L43:
 	.loc 1 226 0
-	movq	-16(%rbp), %rax
+	movq	-32(%rbp), %rax
 	movq	%rax, %rcx
 	call	free
 	.loc 1 227 0
-	movq	-8(%rbp), %rax
+	movq	-24(%rbp), %rax
 	movq	%rax, %rcx
 	call	fclose
 	.loc 1 228 0
 	movq	-72(%rbp), %rax
-	movq	-16(%rbp), %rdx
+	movq	-32(%rbp), %rdx
 	movq	(%rdx), %rcx
 	movq	8(%rdx), %rbx
 	movq	%rcx, (%rax)
@@ -777,17 +776,17 @@ lex:
 	.loc 1 229 0
 	movq	-72(%rbp), %rax
 	movq	.refptr.__stack_chk_guard(%rip), %rdx
-	movq	520(%rbp), %rbx
+	movq	504(%rbp), %rbx
 	xorq	(%rdx), %rbx
 	je	.L45
 	call	__stack_chk_fail
 .L45:
-	addq	$664, %rsp
+	addq	$648, %rsp
 	popq	%rbx
 	.cfi_restore 3
 	popq	%rbp
 	.cfi_restore 6
-	.cfi_def_cfa 7, -648
+	.cfi_def_cfa 7, -632
 	ret
 	.cfi_endproc
 .LFE9:
@@ -802,7 +801,7 @@ lex:
 	.file 8 "./src/../inc/lexer_node.h"
 	.section	.debug_info,"dr"
 .Ldebug_info0:
-	.long	0xdfc
+	.long	0xde9
 	.word	0x4
 	.secrel32	.Ldebug_abbrev0
 	.byte	0x8
@@ -1932,7 +1931,7 @@ lex:
 	.quad	.LFE9-.LFB9
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0xde3
+	.long	0xdd0
 	.uleb128 0x26
 	.ascii "fileName\0"
 	.byte	0x1
@@ -1940,7 +1939,7 @@ lex:
 	.long	0x65f
 	.uleb128 0x3
 	.byte	0x91
-	.sleb128 -640
+	.sleb128 -624
 	.uleb128 0x27
 	.ascii "buffer\0"
 	.byte	0x1
@@ -1953,7 +1952,7 @@ lex:
 	.ascii "temp_buffer\0"
 	.byte	0x1
 	.byte	0x5
-	.long	0xde3
+	.long	0xdd0
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -240
@@ -1972,7 +1971,7 @@ lex:
 	.long	0x125
 	.uleb128 0x3
 	.byte	0x91
-	.sleb128 -604
+	.sleb128 -600
 	.uleb128 0x27
 	.ascii "new_string_pos\0"
 	.byte	0x1
@@ -1980,17 +1979,9 @@ lex:
 	.long	0x125
 	.uleb128 0x3
 	.byte	0x91
-	.sleb128 -600
-	.uleb128 0x27
-	.ascii "special_pos\0"
-	.byte	0x1
-	.byte	0x7
-	.long	0x125
-	.uleb128 0x3
-	.byte	0x91
 	.sleb128 -596
 	.uleb128 0x27
-	.ascii "num_pos\0"
+	.ascii "special_pos\0"
 	.byte	0x1
 	.byte	0x7
 	.long	0x125
@@ -2012,7 +2003,7 @@ lex:
 	.long	0x125
 	.uleb128 0x3
 	.byte	0x91
-	.sleb128 -608
+	.sleb128 -604
 	.uleb128 0x27
 	.ascii "flag\0"
 	.byte	0x1
@@ -2020,7 +2011,7 @@ lex:
 	.long	0x125
 	.uleb128 0x3
 	.byte	0x91
-	.sleb128 -612
+	.sleb128 -608
 	.uleb128 0x27
 	.ascii "pos\0"
 	.byte	0x1
@@ -2033,7 +2024,7 @@ lex:
 	.ascii "fp\0"
 	.byte	0x1
 	.byte	0xc
-	.long	0xdf3
+	.long	0xde0
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -568
@@ -2041,14 +2032,14 @@ lex:
 	.ascii "myNode\0"
 	.byte	0x1
 	.byte	0xd
-	.long	0xdf9
+	.long	0xde6
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -576
 	.byte	0
 	.uleb128 0x9
 	.long	0x16b
-	.long	0xdf3
+	.long	0xde0
 	.uleb128 0xa
 	.long	0x148
 	.byte	0xc7

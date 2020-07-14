@@ -4,7 +4,7 @@ lexer_node lex(char fileName[]) {
 	char buffer[150];
 	char temp_buffer[200];
 	char reading_buffer[150];
-	int new_pos = 0, new_string_pos = 0, special_pos=0, num_pos = 0, char_pos = 0;
+	int new_pos = 0, new_string_pos = 0, special_pos=0, char_pos = 0;
 	int index=0;
 	/* int temp_pos = 0; */
 	int flag = 0;
