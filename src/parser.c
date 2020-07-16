@@ -964,9 +964,22 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 
 				if ((empty(&top) == 0) && (doneFlag == 0)) {
 					printf("The stack at identifier type is not empty\n");
-					printf("Going to insert the value : %s\n", current->value);
-					++top;
-					push(theStack[top], &top, current->value);
+
+					if (strcmp(theStack[top], "int") == 0) {
+						doneFlag = 1;
+						theStack[0][top] = '\0';
+						pop(&top);
+						strcpy(temp, theStack[top]);
+						theStack[0][top] = '\0';
+						pop(&top);
+						theStack[0][top] = '\0';
+						BuildDeclarationExprStatement(current->value, commandNode, temp, 2, sTypeOfMember);
+					}
+					else { 
+						printf("Going to insert the value : %s\n", current->value);
+						++top;
+						push(theStack[top], &top, current->value);
+					}
 				}
 				else {
 					printf("The stack at identifier type is empty.\n");
