@@ -1005,6 +1005,16 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 						theStack[0][top] = '\0';
 						BuildDeclarationExprStatement(current->value, commandNode, temp, 5, sTypeOfMember);
 					}
+					else if (strcmp(theStack[top], "bool") == 0) {
+						doneFlag = 1;
+						theStack[0][top] = '\0';
+						pop(&top);
+						strcpy(temp, theStack[top]);
+						theStack[0][top] = '\0';
+						pop(&top);
+						theStack[0][top] = '\0';
+						BuildDeclarationExprStatement(current->value, commandNode, temp, 10, sTypeOfMember);
+					}
 					else { 
 						printf("Going to insert the value : %s\n", current->value);
 						++top;
