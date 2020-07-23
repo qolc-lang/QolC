@@ -23,7 +23,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 	int notTheEndFlag = 0;
 	int hasDefer = 0;
 	char theStack[200][100];
-	char temp[100], temp2[100], temp3[100];
+	char temp[100], temp2[100], temp3[100], floatValue[100];
 	int sTypeOfMember;
 	int iIsPointer = 0;
 	
@@ -31,6 +31,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 	memset(temp, 0, sizeof(temp));
 	memset(temp2, 0, sizeof(temp2));
 	memset(temp3, 0, sizeof(temp2));
+	memset(floatValue, 0, sizeof(floatValue));
 
 	memberFlags flags;
 
@@ -342,6 +343,33 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 		else;
 
 		printf("Value in the loop : %s\n", current->value);
+
+		if (strcmp(current->value, ".") == 0) {
+			printf("We spotted a dot. \n");
+			strcpy(temp, current->value);
+			pop(&top);
+			if (strcmp(theStack[top], "float") == 0) {
+				current = current->next;
+				strcpy(temp2, current->value);
+				printf("Now the current is : %s\n", current->value);
+				current = current->next;
+				if (strcmp(current->type, "identifier") == 0) {
+					printf("Now the current is : %s\n", current->value);
+				}
+				else { 
+					current = current->next;
+					if (strcmp(current->type, "identifier") == 0) {
+					printf("Now the current is : %s\n", current->value);
+
+					/* fix the float value */
+					strcpy(floatValue, temp2);
+					strcat(floatValue, temp);
+					strcat(floatValue, current->value);
+					printf("Now the float value is : %s\n", floatValue);
+					}
+				}
+			}
+		}
 
 		if (strcmp(current->value, "struct") == 0) {
 			printf("Struct statement to be built.\n");
