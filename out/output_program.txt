@@ -1,4 +1,4 @@
-counter-1 : p
+counter-1 : `
 counter-2 : keyword,import
 counter-3 : keyword,import
 counter-4 : string,mylib
@@ -52,7 +52,7 @@ counter-51 : keyword,float
 counter-52 : operator,.
 counter-53 : identifier,0
 counter-54 : parenthesis,|
-counter-55 : identifier,5
+counter-55 : identifier,53
 counter-56 : end of command
 counter-57 : operator,@
 counter-58 : identifier,my_b1

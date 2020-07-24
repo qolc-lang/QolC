@@ -353,19 +353,18 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 				strcpy(temp2, current->value);
 				printf("Now the current is : %s\n", current->value);
 				current = current->next;
+				/* fix the float value */
+				strcpy(floatValue, temp2);
+				strcat(floatValue, temp);
 				if (strcmp(current->type, "identifier") == 0) {
 					printf("Now the current is : %s\n", current->value);
 				}
 				else { 
 					current = current->next;
 					if (strcmp(current->type, "identifier") == 0) {
-					printf("Now the current is : %s\n", current->value);
-
-					/* fix the float value */
-					strcpy(floatValue, temp2);
-					strcat(floatValue, temp);
-					strcat(floatValue, current->value);
-					printf("Now the float value is : %s\n", floatValue);
+						printf("Now the current is : %s\n", current->value);
+						strcat(floatValue, current->value);
+						printf("Now the float value is : %s\n", floatValue);
 					}
 				}
 			}
@@ -1054,9 +1053,18 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 						BuildDeclarationExprStatement(current->value, commandNode, temp, 12, sTypeOfMember);
 					}
 					else { 
-						printf("Going to insert the value : %s\n", current->value);
-						++top;
-						push(theStack[top], &top, current->value);
+						if (floatValue[0] != '\0') {
+							printf("Going to insert the value : %s\n", floatValue);
+							++top;
+							push(theStack[top], &top, floatValue);
+							floatValue[0] ='\0';
+						}
+						else { 
+							printf("Going to insert the value : %s\n", current->value);
+							++top;
+							push(theStack[top], &top, current->value);
+						}
+
 					}
 				}
 				else {

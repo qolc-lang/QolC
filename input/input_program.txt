@@ -7,7 +7,7 @@ flag@bool
 u@void
 c@char
 x@int|0|
-o@float|0.5|
+o@float|0.53|
 my_b1@bool|true|
 myVoid@void|null|
 e@char|'g|
