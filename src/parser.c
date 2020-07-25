@@ -1054,10 +1054,16 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 					}
 					else { 
 						if (floatValue[0] != '\0') {
-							printf("Going to insert the value : %s\n", floatValue);
-							++top;
-							push(theStack[top], &top, floatValue);
-							floatValue[0] ='\0';
+							printf("Now the floatValue : %s\n", floatValue);
+							printf("Now in the stack 1 : %s\n", theStack[top]);
+							BuildDeclarationExprStatement(floatValue, commandNode, theStack[top], 3, sTypeOfMember);
+							theStack[0][top] = '\0';
+							pop(&top);
+							theStack[0][top] = '\0';
+							pop(&top);
+							theStack[0][top] = '\0';
+							pop(&top);
+							
 						}
 						else { 
 							printf("Going to insert the value : %s\n", current->value);
