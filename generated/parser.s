@@ -333,19 +333,21 @@ parseProgram:
 .LC132:
 	.ascii "false\0"
 .LC133:
+	.ascii "Now in the end of COmmand %s\12\0"
+.LC134:
 	.ascii "End of the comment.\0"
 	.align 8
-.LC134:
-	.ascii "Going to build delete statement.\0"
 .LC135:
+	.ascii "Going to build delete statement.\0"
+.LC136:
 	.ascii "The current before delete %s\12\0"
 	.align 8
-.LC136:
-	.ascii "The current after delete 1 %s\12\0"
 .LC137:
+	.ascii "The current after delete 1 %s\12\0"
+.LC138:
 	.ascii "Going for just a declaration\0"
 	.align 8
-.LC138:
+.LC139:
 	.ascii "Going to clear assert flags at the end of command.\0"
 	.text
 	.globl	parsing
@@ -363,14 +365,14 @@ parsing:
 	.seh_pushreg	%rbx
 	.cfi_def_cfa_offset 24
 	.cfi_offset 3, -24
-	movl	$21080, %eax
+	movl	$21096, %eax
 	call	___chkstk_ms
 	subq	%rax, %rsp
-	.seh_stackalloc	21080
-	.cfi_def_cfa_offset 21104
+	.seh_stackalloc	21096
+	.cfi_def_cfa_offset 21120
 	leaq	128(%rsp), %rbp
 	.seh_setframe	%rbp, 128
-	.cfi_def_cfa 6, 20976
+	.cfi_def_cfa 6, 20992
 	.seh_endprologue
 	movq	%rcx, 8(%rbp)
 	movq	%rdx, 0(%rbp)
@@ -378,47 +380,47 @@ parsing:
 	.loc 1 20 0
 	movq	.refptr.__stack_chk_guard(%rip), %rax
 	movq	(%rax), %rbx
-	movq	%rbx, 20936(%rbp)
+	movq	%rbx, 20952(%rbp)
 	xorl	%ebx, %ebx
 	.loc 1 22 0
-	movl	$0, 32(%rbp)
+	movl	$0, 24(%rbp)
 	.loc 1 23 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	.loc 1 24 0
-	movl	$0, 40(%rbp)
+	movl	$0, 32(%rbp)
 	.loc 1 28 0
-	movl	$0, 48(%rbp)
+	movl	$0, 40(%rbp)
 	.loc 1 30 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	init
 	.loc 1 31 0
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movl	$100, %r8d
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	memset
 	.loc 1 32 0
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movl	$100, %r8d
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	memset
 	.loc 1 33 0
-	leaq	20720(%rbp), %rax
+	leaq	20736(%rbp), %rax
 	movl	$100, %r8d
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	memset
 	.loc 1 34 0
-	leaq	20832(%rbp), %rax
+	leaq	20848(%rbp), %rax
 	movl	$100, %r8d
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	memset
 	.loc 1 38 0
 	jmp	.L4
-.L170:
+.L171:
 	.loc 1 39 0
 	movq	8(%rbp), %rax
 	addq	$4, %rax
@@ -439,8 +441,8 @@ parsing:
 	.loc 1 43 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -449,7 +451,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 44 0
@@ -485,9 +487,9 @@ parsing:
 	movl	$0, %edx
 	movl	$16, %ecx
 	call	stmt_create
-	movq	%rax, 424(%rbp)
+	movq	%rax, 440(%rbp)
 	.loc 1 51 0
-	movq	424(%rbp), %rdx
+	movq	440(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -495,7 +497,7 @@ parsing:
 	movq	%rax, %rcx
 	call	push_commandList
 	.loc 1 52 0
-	movl	$1, 448(%rbp)
+	movl	$1, 464(%rbp)
 	.loc 1 53 0
 	leaq	.LC3(%rip), %rcx
 	call	puts
@@ -521,8 +523,8 @@ parsing:
 	.loc 1 59 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -531,7 +533,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 60 0
@@ -558,8 +560,8 @@ parsing:
 	.loc 1 66 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -568,7 +570,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 67 0
@@ -595,8 +597,8 @@ parsing:
 	.loc 1 73 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -605,7 +607,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 74 0
@@ -632,8 +634,8 @@ parsing:
 	.loc 1 80 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -642,7 +644,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 81 0
@@ -669,8 +671,8 @@ parsing:
 	.loc 1 87 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -679,7 +681,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 88 0
@@ -706,8 +708,8 @@ parsing:
 	.loc 1 94 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -716,7 +718,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 95 0
@@ -743,8 +745,8 @@ parsing:
 	.loc 1 101 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -753,7 +755,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 102 0
@@ -780,8 +782,8 @@ parsing:
 	.loc 1 108 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -790,7 +792,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 109 0
@@ -817,8 +819,8 @@ parsing:
 	.loc 1 115 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -827,7 +829,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 116 0
@@ -854,8 +856,8 @@ parsing:
 	.loc 1 122 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -864,7 +866,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 123 0
@@ -891,8 +893,8 @@ parsing:
 	.loc 1 129 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -901,7 +903,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 130 0
@@ -928,8 +930,8 @@ parsing:
 	.loc 1 136 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -938,7 +940,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 137 0
@@ -965,8 +967,8 @@ parsing:
 	.loc 1 143 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -975,7 +977,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 144 0
@@ -997,12 +999,12 @@ parsing:
 	testl	%eax, %eax
 	jne	.L20
 	.loc 1 151 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 152 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1030,9 +1032,9 @@ parsing:
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
 	.loc 1 157 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	addl	$1, %eax
-	movl	%eax, 28(%rbp)
+	movl	%eax, 20(%rbp)
 	.loc 1 158 0
 	jmp	.L4
 .L21:
@@ -1042,8 +1044,8 @@ parsing:
 	.loc 1 161 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1052,7 +1054,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 162 0
@@ -1079,8 +1081,8 @@ parsing:
 	.loc 1 168 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1089,7 +1091,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 169 0
@@ -1116,8 +1118,8 @@ parsing:
 	.loc 1 175 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1126,7 +1128,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 176 0
@@ -1153,8 +1155,8 @@ parsing:
 	.loc 1 182 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1163,7 +1165,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 183 0
@@ -1190,8 +1192,8 @@ parsing:
 	.loc 1 189 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1200,7 +1202,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 190 0
@@ -1225,7 +1227,7 @@ parsing:
 	leaq	.LC45(%rip), %rcx
 	call	puts
 	.loc 1 196 0
-	movl	$1, 40(%rbp)
+	movl	$1, 32(%rbp)
 	.loc 1 197 0
 	leaq	.LC3(%rip), %rcx
 	call	puts
@@ -1250,8 +1252,8 @@ parsing:
 	.loc 1 203 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1260,7 +1262,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 204 0
@@ -1287,8 +1289,8 @@ parsing:
 	.loc 1 210 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1297,7 +1299,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 211 0
@@ -1324,8 +1326,8 @@ parsing:
 	.loc 1 217 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1334,7 +1336,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 218 0
@@ -1361,8 +1363,8 @@ parsing:
 	.loc 1 224 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1371,7 +1373,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 225 0
@@ -1398,8 +1400,8 @@ parsing:
 	.loc 1 231 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1408,7 +1410,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 232 0
@@ -1419,7 +1421,7 @@ parsing:
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
 	.loc 1 234 0
-	movl	$1, 36(%rbp)
+	movl	$1, 28(%rbp)
 	.loc 1 235 0
 	jmp	.L4
 .L31:
@@ -1437,8 +1439,8 @@ parsing:
 	.loc 1 239 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1447,7 +1449,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 240 0
@@ -1458,7 +1460,7 @@ parsing:
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
 	.loc 1 242 0
-	movl	$1, 36(%rbp)
+	movl	$1, 28(%rbp)
 	.loc 1 243 0
 	jmp	.L4
 .L32:
@@ -1476,8 +1478,8 @@ parsing:
 	.loc 1 247 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1486,7 +1488,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 248 0
@@ -1497,7 +1499,7 @@ parsing:
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
 	.loc 1 250 0
-	movl	$1, 36(%rbp)
+	movl	$1, 28(%rbp)
 	.loc 1 251 0
 	jmp	.L4
 .L33:
@@ -1515,8 +1517,8 @@ parsing:
 	.loc 1 255 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1525,7 +1527,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 256 0
@@ -1536,7 +1538,7 @@ parsing:
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
 	.loc 1 258 0
-	movl	$1, 36(%rbp)
+	movl	$1, 28(%rbp)
 	.loc 1 259 0
 	jmp	.L4
 .L34:
@@ -1554,8 +1556,8 @@ parsing:
 	.loc 1 263 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1564,7 +1566,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 264 0
@@ -1575,7 +1577,7 @@ parsing:
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
 	.loc 1 266 0
-	movl	$1, 36(%rbp)
+	movl	$1, 28(%rbp)
 	.loc 1 267 0
 	jmp	.L4
 .L35:
@@ -1593,8 +1595,8 @@ parsing:
 	.loc 1 271 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1603,7 +1605,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 272 0
@@ -1614,7 +1616,7 @@ parsing:
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
 	.loc 1 274 0
-	movl	$1, 36(%rbp)
+	movl	$1, 28(%rbp)
 	.loc 1 275 0
 	jmp	.L4
 .L36:
@@ -1632,8 +1634,8 @@ parsing:
 	.loc 1 279 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1642,7 +1644,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 280 0
@@ -1669,8 +1671,8 @@ parsing:
 	.loc 1 286 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1679,7 +1681,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 287 0
@@ -1706,8 +1708,8 @@ parsing:
 	.loc 1 293 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1716,7 +1718,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 294 0
@@ -1743,8 +1745,8 @@ parsing:
 	.loc 1 300 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1753,7 +1755,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 301 0
@@ -1780,8 +1782,8 @@ parsing:
 	.loc 1 307 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1790,7 +1792,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 308 0
@@ -1817,8 +1819,8 @@ parsing:
 	.loc 1 314 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1827,7 +1829,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 315 0
@@ -1854,8 +1856,8 @@ parsing:
 	.loc 1 321 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1864,7 +1866,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 322 0
@@ -1912,8 +1914,8 @@ parsing:
 	.loc 1 337 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1922,11 +1924,11 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 338 0
-	movl	$1, 48(%rbp)
+	movl	$1, 40(%rbp)
 	.loc 1 339 0
 	leaq	.LC3(%rip), %rcx
 	call	puts
@@ -1957,16 +1959,16 @@ parsing:
 	.loc 1 349 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 350 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 351 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -1987,7 +1989,7 @@ parsing:
 	.loc 1 353 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 354 0
@@ -2001,13 +2003,13 @@ parsing:
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
 	.loc 1 357 0
-	leaq	20608(%rbp), %rdx
-	leaq	20832(%rbp), %rax
+	leaq	20624(%rbp), %rdx
+	leaq	20848(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 358 0
-	leaq	20496(%rbp), %rdx
-	leaq	20832(%rbp), %rax
+	leaq	20512(%rbp), %rdx
+	leaq	20848(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcat
 	.loc 1 359 0
@@ -2047,11 +2049,11 @@ parsing:
 	.loc 1 366 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20832(%rbp), %rax
+	leaq	20848(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcat
 	.loc 1 367 0
-	leaq	20832(%rbp), %rax
+	leaq	20848(%rbp), %rax
 	movq	%rax, %rdx
 	leaq	.LC88(%rip), %rcx
 	call	printf
@@ -2069,66 +2071,66 @@ parsing:
 	leaq	.LC90(%rip), %rcx
 	call	puts
 	.loc 1 375 0
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rdx
 	leaq	.LC91(%rip), %rcx
 	call	printf
 	.loc 1 377 0
 	movq	8(%rbp), %rax
-	movq	%rax, 392(%rbp)
+	movq	%rax, 408(%rbp)
 	.loc 1 378 0
-	movl	448(%rbp), %eax
+	movl	464(%rbp), %eax
 	cmpl	$1, %eax
 	jne	.L49
 	.loc 1 378 0 is_stmt 0 discriminator 1
-	leaq	20464(%rbp), %rax
+	leaq	20480(%rbp), %rax
 	movl	$1852399981, (%rax)
 	movb	$0, 4(%rax)
 	jmp	.L50
 .L49:
 	.loc 1 378 0 discriminator 2
-	leaq	20464(%rbp), %rax
+	leaq	20480(%rbp), %rax
 	movl	$1651469415, (%rax)
 	movw	$27745, 4(%rax)
 	movb	$0, 6(%rax)
 .L50:
 	.loc 1 379 0 is_stmt 1
-	movq	392(%rbp), %rax
+	movq	408(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rdx
 	call	strcpy
 	.loc 1 380 0
-	movq	392(%rbp), %rax
+	movq	408(%rbp), %rax
 	addq	$4, %rax
 	movl	$1970435187, (%rax)
 	movw	$29795, 4(%rax)
 	movb	$0, 6(%rax)
 	.loc 1 381 0
 	movq	-8(%rbp), %rcx
-	leaq	20464(%rbp), %rdx
-	movq	392(%rbp), %rax
+	leaq	20480(%rbp), %rdx
+	movq	408(%rbp), %rax
 	movq	%rcx, %r8
 	movq	%rax, %rcx
 	call	InsertSymbolTable
 	.loc 1 382 0
-	movl	$1, 432(%rbp)
+	movl	$1, 448(%rbp)
 	.loc 1 383 0
 	movl	$0, %r8d
 	movl	$0, %edx
 	movl	$13, %ecx
 	call	type_create
-	movq	%rax, 400(%rbp)
+	movq	%rax, 416(%rbp)
 	.loc 1 384 0
-	movq	400(%rbp), %rdx
-	leaq	20496(%rbp), %rax
+	movq	416(%rbp), %rdx
+	leaq	20512(%rbp), %rax
 	movl	$0, %r9d
 	movl	$0, %r8d
 	movq	%rax, %rcx
 	call	decl_create
-	movq	%rax, 408(%rbp)
+	movq	%rax, 424(%rbp)
 	.loc 1 385 0
-	movq	408(%rbp), %rax
+	movq	424(%rbp), %rax
 	movl	$-1, 64(%rsp)
 	movq	$0, 56(%rsp)
 	movq	$0, 48(%rsp)
@@ -2139,9 +2141,9 @@ parsing:
 	movq	%rax, %rdx
 	movl	$0, %ecx
 	call	stmt_create
-	movq	%rax, 416(%rbp)
+	movq	%rax, 432(%rbp)
 	.loc 1 386 0
-	movq	416(%rbp), %rdx
+	movq	432(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -2171,65 +2173,65 @@ parsing:
 	leaq	.LC93(%rip), %rcx
 	call	puts
 	.loc 1 394 0
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rdx
 	leaq	.LC94(%rip), %rcx
 	call	printf
 	.loc 1 396 0
 	movq	8(%rbp), %rax
-	movq	%rax, 360(%rbp)
+	movq	%rax, 376(%rbp)
 	.loc 1 397 0
-	movl	448(%rbp), %eax
+	movl	464(%rbp), %eax
 	cmpl	$1, %eax
 	jne	.L52
 	.loc 1 397 0 is_stmt 0 discriminator 1
-	leaq	20464(%rbp), %rax
+	leaq	20480(%rbp), %rax
 	movl	$1852399981, (%rax)
 	movb	$0, 4(%rax)
 	jmp	.L53
 .L52:
 	.loc 1 397 0 discriminator 2
-	leaq	20464(%rbp), %rax
+	leaq	20480(%rbp), %rax
 	movl	$1651469415, (%rax)
 	movw	$27745, 4(%rax)
 	movb	$0, 6(%rax)
 .L53:
 	.loc 1 398 0 is_stmt 1
-	movq	360(%rbp), %rax
+	movq	376(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rdx
 	call	strcpy
 	.loc 1 399 0
-	movq	360(%rbp), %rax
+	movq	376(%rbp), %rax
 	addq	$4, %rax
 	movl	$1836412517, (%rax)
 	movb	$0, 4(%rax)
 	.loc 1 400 0
 	movq	-8(%rbp), %rcx
-	leaq	20464(%rbp), %rdx
-	movq	360(%rbp), %rax
+	leaq	20480(%rbp), %rdx
+	movq	376(%rbp), %rax
 	movq	%rcx, %r8
 	movq	%rax, %rcx
 	call	InsertSymbolTable
 	.loc 1 401 0
-	movl	$1, 440(%rbp)
+	movl	$1, 456(%rbp)
 	.loc 1 402 0
 	movl	$0, %r8d
 	movl	$0, %edx
 	movl	$14, %ecx
 	call	type_create
-	movq	%rax, 368(%rbp)
+	movq	%rax, 384(%rbp)
 	.loc 1 403 0
-	movq	368(%rbp), %rdx
-	leaq	20496(%rbp), %rax
+	movq	384(%rbp), %rdx
+	leaq	20512(%rbp), %rax
 	movl	$0, %r9d
 	movl	$0, %r8d
 	movq	%rax, %rcx
 	call	decl_create
-	movq	%rax, 376(%rbp)
+	movq	%rax, 392(%rbp)
 	.loc 1 404 0
-	movq	376(%rbp), %rax
+	movq	392(%rbp), %rax
 	movl	$-1, 64(%rsp)
 	movq	$0, 56(%rsp)
 	movq	$0, 48(%rsp)
@@ -2240,9 +2242,9 @@ parsing:
 	movq	%rax, %rdx
 	movl	$0, %ecx
 	call	stmt_create
-	movq	%rax, 384(%rbp)
+	movq	%rax, 400(%rbp)
 	.loc 1 405 0
-	movq	384(%rbp), %rdx
+	movq	400(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -2272,65 +2274,65 @@ parsing:
 	leaq	.LC96(%rip), %rcx
 	call	puts
 	.loc 1 413 0
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rdx
 	leaq	.LC97(%rip), %rcx
 	call	printf
 	.loc 1 415 0
 	movq	8(%rbp), %rax
-	movq	%rax, 328(%rbp)
+	movq	%rax, 344(%rbp)
 	.loc 1 416 0
-	movl	448(%rbp), %eax
+	movl	464(%rbp), %eax
 	cmpl	$1, %eax
 	jne	.L55
 	.loc 1 416 0 is_stmt 0 discriminator 1
-	leaq	20464(%rbp), %rax
+	leaq	20480(%rbp), %rax
 	movl	$1852399981, (%rax)
 	movb	$0, 4(%rax)
 	jmp	.L56
 .L55:
 	.loc 1 416 0 discriminator 2
-	leaq	20464(%rbp), %rax
+	leaq	20480(%rbp), %rax
 	movl	$1651469415, (%rax)
 	movw	$27745, 4(%rax)
 	movb	$0, 6(%rax)
 .L56:
 	.loc 1 417 0 is_stmt 1
-	movq	328(%rbp), %rax
+	movq	344(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rdx
 	call	strcpy
 	.loc 1 418 0
-	movq	328(%rbp), %rax
+	movq	344(%rbp), %rax
 	addq	$4, %rax
 	movl	$1869180533, (%rax)
 	movw	$110, 4(%rax)
 	.loc 1 419 0
 	movq	-8(%rbp), %rcx
-	leaq	20464(%rbp), %rdx
-	movq	328(%rbp), %rax
+	leaq	20480(%rbp), %rdx
+	movq	344(%rbp), %rax
 	movq	%rcx, %r8
 	movq	%rax, %rcx
 	call	InsertSymbolTable
 	.loc 1 420 0
-	movl	$1, 436(%rbp)
+	movl	$1, 452(%rbp)
 	.loc 1 421 0
 	movl	$0, %r8d
 	movl	$0, %edx
 	movl	$15, %ecx
 	call	type_create
-	movq	%rax, 336(%rbp)
+	movq	%rax, 352(%rbp)
 	.loc 1 422 0
-	movq	336(%rbp), %rdx
-	leaq	20496(%rbp), %rax
+	movq	352(%rbp), %rdx
+	leaq	20512(%rbp), %rax
 	movl	$0, %r9d
 	movl	$0, %r8d
 	movq	%rax, %rcx
 	call	decl_create
-	movq	%rax, 344(%rbp)
+	movq	%rax, 360(%rbp)
 	.loc 1 423 0
-	movq	344(%rbp), %rax
+	movq	360(%rbp), %rax
 	movl	$-1, 64(%rsp)
 	movq	$0, 56(%rsp)
 	movq	$0, 48(%rsp)
@@ -2341,9 +2343,9 @@ parsing:
 	movq	%rax, %rdx
 	movl	$0, %ecx
 	call	stmt_create
-	movq	%rax, 352(%rbp)
+	movq	%rax, 368(%rbp)
 	.loc 1 424 0
-	movq	352(%rbp), %rdx
+	movq	368(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -2373,7 +2375,7 @@ parsing:
 	leaq	.LC99(%rip), %rcx
 	call	puts
 	.loc 1 432 0
-	movl	$1, 444(%rbp)
+	movl	$1, 460(%rbp)
 	.loc 1 433 0
 	movl	$-1, 64(%rsp)
 	movq	$0, 56(%rsp)
@@ -2385,9 +2387,9 @@ parsing:
 	movl	$0, %edx
 	movl	$9, %ecx
 	call	stmt_create
-	movq	%rax, 320(%rbp)
+	movq	%rax, 336(%rbp)
 	.loc 1 434 0
-	movq	320(%rbp), %rdx
+	movq	336(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -2418,7 +2420,7 @@ parsing:
 	leaq	.LC101(%rip), %rcx
 	call	puts
 	.loc 1 442 0
-	movl	$1, 452(%rbp)
+	movl	$1, 468(%rbp)
 	.loc 1 443 0
 	movl	$-1, 64(%rsp)
 	movq	$0, 56(%rsp)
@@ -2430,9 +2432,9 @@ parsing:
 	movl	$0, %edx
 	movl	$10, %ecx
 	call	stmt_create
-	movq	%rax, 312(%rbp)
+	movq	%rax, 328(%rbp)
 	.loc 1 444 0
-	movq	312(%rbp), %rdx
+	movq	328(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -2462,7 +2464,7 @@ parsing:
 	leaq	.LC103(%rip), %rcx
 	call	puts
 	.loc 1 452 0
-	leaq	432(%rbp), %rax
+	leaq	448(%rbp), %rax
 	movq	%rax, %rcx
 	call	ClearFlags
 .L59:
@@ -2476,14 +2478,14 @@ parsing:
 	jne	.L60
 .LBB8:
 	.loc 1 456 0
-	movl	$0, 56(%rbp)
+	movl	$0, 48(%rbp)
 	.loc 1 457 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 458 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -2498,11 +2500,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L61
 	.loc 1 459 0
-	movl	$1, 56(%rbp)
+	movl	$1, 48(%rbp)
 	.loc 1 460 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 461 0
 	movq	-8(%rbp), %rdx
 	movq	8(%rbp), %rax
@@ -2520,8 +2522,8 @@ parsing:
 	jmp	.L60
 .L61:
 	.loc 1 464 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -2536,11 +2538,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L62
 	.loc 1 465 0
-	movl	$1, 56(%rbp)
+	movl	$1, 48(%rbp)
 	.loc 1 466 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 467 0
 	movq	-8(%rbp), %rdx
 	movq	8(%rbp), %rax
@@ -2558,8 +2560,8 @@ parsing:
 	jmp	.L60
 .L62:
 	.loc 1 470 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -2574,17 +2576,17 @@ parsing:
 	testl	%eax, %eax
 	jne	.L63
 	.loc 1 471 0
-	movl	$1, 56(%rbp)
+	movl	$1, 48(%rbp)
 	.loc 1 472 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 473 0
-	cmpl	$1, 40(%rbp)
+	cmpl	$1, 32(%rbp)
 	jne	.L64
 .LBB9:
 	.loc 1 475 0
-	movl	$0, 40(%rbp)
+	movl	$0, 32(%rbp)
 	.loc 1 476 0
 	movl	$-1, 64(%rsp)
 	movq	$0, 56(%rsp)
@@ -2596,9 +2598,9 @@ parsing:
 	movl	$0, %edx
 	movl	$8, %ecx
 	call	stmt_create
-	movq	%rax, 80(%rbp)
+	movq	%rax, 72(%rbp)
 	.loc 1 477 0
-	movq	80(%rbp), %rdx
+	movq	72(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -2625,8 +2627,8 @@ parsing:
 	jmp	.L60
 .L63:
 	.loc 1 483 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -2641,18 +2643,18 @@ parsing:
 	testl	%eax, %eax
 	jne	.L66
 	.loc 1 484 0
-	movl	$1, 56(%rbp)
+	movl	$1, 48(%rbp)
 	.loc 1 485 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 486 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 487 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -2661,27 +2663,27 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 488 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 489 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 490 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 491 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$5, %r9d
 	movq	%rax, %rdx
@@ -2689,13 +2691,13 @@ parsing:
 	jmp	.L60
 .L66:
 	.loc 1 494 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	empty
 	testl	%eax, %eax
 	jne	.L60
 	.loc 1 494 0 is_stmt 0 discriminator 2
-	cmpl	$0, 56(%rbp)
+	cmpl	$0, 48(%rbp)
 	jne	.L60
 	.loc 1 495 0 is_stmt 1
 	leaq	.LC104(%rip), %rcx
@@ -2707,14 +2709,14 @@ parsing:
 	leaq	.LC105(%rip), %rcx
 	call	printf
 	.loc 1 497 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	addl	$1, %eax
-	movl	%eax, 28(%rbp)
+	movl	%eax, 20(%rbp)
 	.loc 1 498 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -2723,7 +2725,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 .L60:
@@ -2737,12 +2739,12 @@ parsing:
 	testl	%eax, %eax
 	jne	.L67
 	.loc 1 504 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 505 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -2751,23 +2753,23 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 506 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 507 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 508 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$1, %r9d
 	movq	%rax, %rdx
@@ -2782,34 +2784,34 @@ parsing:
 	jne	.L68
 .LBB10:
 	.loc 1 512 0
-	movl	$0, 60(%rbp)
+	movl	$0, 52(%rbp)
 	.loc 1 513 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 515 0
-	movq	432(%rbp), %rax
-	movq	440(%rbp), %rdx
+	movq	448(%rbp), %rax
+	movq	456(%rbp), %rdx
 	movq	%rax, -48(%rbp)
 	movq	%rdx, -40(%rbp)
-	movq	448(%rbp), %rax
+	movq	464(%rbp), %rax
 	movq	%rax, -32(%rbp)
 	leaq	-48(%rbp), %rax
 	movq	%rax, %rcx
 	call	CheckIfMemberOfStatement
-	movl	%eax, 44(%rbp)
+	movl	%eax, 36(%rbp)
 	.loc 1 516 0
-	cmpl	$-1, 44(%rbp)
+	cmpl	$-1, 36(%rbp)
 	je	.L69
 	.loc 1 517 0
-	movl	44(%rbp), %eax
+	movl	36(%rbp), %eax
 	movl	%eax, %edx
 	leaq	.LC107(%rip), %rcx
 	call	printf
 .L69:
 	.loc 1 520 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -2824,11 +2826,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L70
 	.loc 1 521 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 522 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 523 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
@@ -2839,8 +2841,8 @@ parsing:
 	jmp	.L68
 .L70:
 	.loc 1 525 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -2855,11 +2857,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L71
 	.loc 1 526 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 527 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 528 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
@@ -2870,8 +2872,8 @@ parsing:
 	jmp	.L68
 .L71:
 	.loc 1 530 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -2886,18 +2888,18 @@ parsing:
 	testl	%eax, %eax
 	jne	.L72
 	.loc 1 531 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 532 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 533 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 534 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -2906,27 +2908,27 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 535 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 536 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 537 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 538 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$2, %r9d
 	movq	%rax, %rdx
@@ -2934,8 +2936,8 @@ parsing:
 	jmp	.L68
 .L72:
 	.loc 1 540 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -2950,18 +2952,18 @@ parsing:
 	testl	%eax, %eax
 	jne	.L73
 	.loc 1 541 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 542 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 543 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 544 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -2970,27 +2972,27 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 545 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 546 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 547 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 548 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$3, %r9d
 	movq	%rax, %rdx
@@ -2998,8 +3000,8 @@ parsing:
 	jmp	.L68
 .L73:
 	.loc 1 550 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3015,18 +3017,18 @@ parsing:
 	jne	.L74
 .LBB11:
 	.loc 1 551 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 552 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 553 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 554 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3043,25 +3045,25 @@ parsing:
 	movq	%rax, %rcx
 	call	atoi
 	addl	%ebx, %eax
-	movl	%eax, 72(%rbp)
+	movl	%eax, 64(%rbp)
 	.loc 1 555 0
-	movl	72(%rbp), %edx
-	leaq	20496(%rbp), %rax
+	movl	64(%rbp), %edx
+	leaq	20512(%rbp), %rax
 	movl	%edx, %r8d
 	leaq	.LC108(%rip), %rdx
 	movq	%rax, %rcx
 	call	sprintf
 	.loc 1 556 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 557 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 558 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3070,25 +3072,25 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 559 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 560 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 561 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 562 0
 	movq	0(%rbp), %rcx
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
 	movq	%rcx, %r8
 	movq	%rax, %rcx
 	call	BuildDeclarationStatement
@@ -3096,8 +3098,8 @@ parsing:
 	jmp	.L68
 .L74:
 	.loc 1 564 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3113,18 +3115,18 @@ parsing:
 	jne	.L75
 .LBB12:
 	.loc 1 565 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 566 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 567 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 568 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3142,25 +3144,25 @@ parsing:
 	call	atoi
 	subl	%eax, %ebx
 	movl	%ebx, %eax
-	movl	%eax, 68(%rbp)
+	movl	%eax, 60(%rbp)
 	.loc 1 569 0
-	movl	68(%rbp), %edx
-	leaq	20496(%rbp), %rax
+	movl	60(%rbp), %edx
+	leaq	20512(%rbp), %rax
 	movl	%edx, %r8d
 	leaq	.LC108(%rip), %rdx
 	movq	%rax, %rcx
 	call	sprintf
 	.loc 1 570 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 571 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 572 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3169,25 +3171,25 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 573 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 574 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 575 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 576 0
 	movq	0(%rbp), %rcx
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
 	movq	%rcx, %r8
 	movq	%rax, %rcx
 	call	BuildDeclarationStatement
@@ -3195,8 +3197,8 @@ parsing:
 	jmp	.L68
 .L75:
 	.loc 1 578 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3212,26 +3214,26 @@ parsing:
 	jne	.L76
 .LBB13:
 	.loc 1 579 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 580 0
-	movl	$0, 64(%rbp)
+	movl	$0, 56(%rbp)
 	.loc 1 581 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 582 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 583 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 584 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3240,29 +3242,29 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 585 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 586 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 587 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 588 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 589 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 590 0
 	movq	8(%rbp), %rax
 	movq	208(%rax), %rax
@@ -3287,13 +3289,13 @@ parsing:
 	movq	8(%rbp), %rax
 	movq	%rax, %rcx
 	call	CheckArrayType
-	movl	%eax, 64(%rbp)
+	movl	%eax, 56(%rbp)
 	.loc 1 596 0
-	movl	64(%rbp), %r9d
-	leaq	20608(%rbp), %r8
+	movl	56(%rbp), %r9d
+	leaq	20624(%rbp), %r8
 	movq	0(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movq	%rax, %rcx
 	call	BuildDeclarationExprStatement
@@ -3310,8 +3312,8 @@ parsing:
 .L76:
 .LBE13:
 	.loc 1 600 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3326,11 +3328,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L79
 	.loc 1 601 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 602 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 603 0
@@ -3359,33 +3361,33 @@ parsing:
 	.loc 1 609 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 610 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 611 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 612 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$1, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 613 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L68
 .L79:
 	.loc 1 615 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3400,11 +3402,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L81
 	.loc 1 616 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 617 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 618 0
@@ -3433,33 +3435,33 @@ parsing:
 	.loc 1 624 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 625 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 626 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 627 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$2, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 628 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L68
 .L81:
 	.loc 1 630 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3474,11 +3476,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L83
 	.loc 1 631 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 632 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 633 0
@@ -3507,33 +3509,33 @@ parsing:
 	.loc 1 639 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 640 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 641 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 642 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$3, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 643 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L68
 .L83:
 	.loc 1 645 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3548,11 +3550,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L85
 	.loc 1 646 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 647 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 648 0
@@ -3581,33 +3583,33 @@ parsing:
 	.loc 1 654 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 655 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 656 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 657 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$4, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 658 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L68
 .L85:
 	.loc 1 660 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3622,24 +3624,24 @@ parsing:
 	testl	%eax, %eax
 	jne	.L87
 	.loc 1 662 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 663 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 664 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 665 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 666 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3648,33 +3650,33 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 667 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 668 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 669 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$5, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 670 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L68
 .L87:
 	.loc 1 672 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3689,24 +3691,24 @@ parsing:
 	testl	%eax, %eax
 	jne	.L88
 	.loc 1 674 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 675 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 676 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 677 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 678 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3715,33 +3717,33 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 679 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 680 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 681 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$6, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 682 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L68
 .L88:
 	.loc 1 684 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3756,24 +3758,24 @@ parsing:
 	testl	%eax, %eax
 	jne	.L89
 	.loc 1 686 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 687 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 688 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 689 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 690 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3782,33 +3784,33 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 691 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 692 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 693 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$7, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 694 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L68
 .L89:
 	.loc 1 696 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3823,24 +3825,24 @@ parsing:
 	testl	%eax, %eax
 	jne	.L90
 	.loc 1 698 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 699 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 700 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 701 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 702 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3849,33 +3851,33 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 703 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 704 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 705 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$8, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 706 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L68
 .L90:
 	.loc 1 708 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3890,24 +3892,24 @@ parsing:
 	testl	%eax, %eax
 	jne	.L91
 	.loc 1 710 0
-	movl	$1, 60(%rbp)
+	movl	$1, 52(%rbp)
 	.loc 1 711 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 712 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 713 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 714 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3916,38 +3918,38 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 715 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 716 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 717 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$9, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 718 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L68
 .L91:
 	.loc 1 721 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	empty
 	testl	%eax, %eax
 	jne	.L92
 	.loc 1 721 0 is_stmt 0 discriminator 2
-	cmpl	$0, 60(%rbp)
+	cmpl	$0, 52(%rbp)
 	jne	.L92
 	.loc 1 722 0 is_stmt 1
 	leaq	.LC113(%rip), %rcx
@@ -3959,14 +3961,14 @@ parsing:
 	leaq	.LC114(%rip), %rcx
 	call	printf
 	.loc 1 724 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	addl	$1, %eax
-	movl	%eax, 28(%rbp)
+	movl	%eax, 20(%rbp)
 	.loc 1 725 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -3975,13 +3977,13 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	jmp	.L68
 .L92:
 	.loc 1 728 0
-	movl	444(%rbp), %eax
+	movl	460(%rbp), %eax
 	cmpl	$1, %eax
 	jne	.L68
 	.loc 1 729 0
@@ -3994,14 +3996,14 @@ parsing:
 	leaq	.LC114(%rip), %rcx
 	call	printf
 	.loc 1 731 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	addl	$1, %eax
-	movl	%eax, 28(%rbp)
+	movl	%eax, 20(%rbp)
 	.loc 1 732 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4010,7 +4012,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 .L68:
@@ -4024,9 +4026,9 @@ parsing:
 	jne	.L93
 .LBB14:
 	.loc 1 740 0
-	movl	$0, 52(%rbp)
+	movl	$0, 44(%rbp)
 	.loc 1 742 0
-	cmpl	$1, 32(%rbp)
+	cmpl	$1, 24(%rbp)
 	jne	.L94
 	.loc 1 743 0
 	leaq	.LC116(%rip), %rcx
@@ -4039,13 +4041,13 @@ parsing:
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
 	.loc 1 746 0
-	movl	$0, 32(%rbp)
+	movl	$0, 24(%rbp)
 	.loc 1 747 0
 	jmp	.L4
 .L94:
 	.loc 1 751 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4069,14 +4071,14 @@ parsing:
 	leaq	.LC114(%rip), %rcx
 	call	printf
 	.loc 1 754 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	addl	$1, %eax
-	movl	%eax, 28(%rbp)
+	movl	%eax, 20(%rbp)
 	.loc 1 755 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4085,7 +4087,7 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 756 0
@@ -4099,12 +4101,12 @@ parsing:
 	jmp	.L4
 .L95:
 	.loc 1 761 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 763 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4119,7 +4121,7 @@ parsing:
 	testl	%eax, %eax
 	jne	.L96
 	.loc 1 764 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 765 0
 	leaq	.LC117(%rip), %rcx
 	call	puts
@@ -4130,80 +4132,80 @@ parsing:
 	leaq	.LC114(%rip), %rcx
 	call	printf
 	.loc 1 767 0
-	movq	432(%rbp), %rax
-	movq	440(%rbp), %rdx
+	movq	448(%rbp), %rax
+	movq	456(%rbp), %rdx
 	movq	%rax, -48(%rbp)
 	movq	%rdx, -40(%rbp)
-	movq	448(%rbp), %rax
+	movq	464(%rbp), %rax
 	movq	%rax, -32(%rbp)
 	leaq	-48(%rbp), %rax
 	movq	%rax, %rcx
 	call	CheckIfMemberOfStatement
-	movl	%eax, 44(%rbp)
+	movl	%eax, 36(%rbp)
 	.loc 1 768 0
-	cmpl	$-1, 44(%rbp)
+	cmpl	$-1, 36(%rbp)
 	je	.L97
 .LBB15:
 	.loc 1 770 0
-	leaq	20464(%rbp), %rax
+	leaq	20480(%rbp), %rax
 	movl	$20, %r8d
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	memset
 	.loc 1 771 0
-	movl	44(%rbp), %eax
+	movl	36(%rbp), %eax
 	movl	%eax, %edx
 	leaq	.LC107(%rip), %rcx
 	call	printf
 	.loc 1 772 0
-	cmpl	$1, 44(%rbp)
+	cmpl	$1, 36(%rbp)
 	jne	.L98
 	.loc 1 772 0 is_stmt 0 discriminator 1
-	leaq	20464(%rbp), %rax
+	leaq	20480(%rbp), %rax
 	movl	$1970435187, (%rax)
 	movw	$29795, 4(%rax)
 	movb	$0, 6(%rax)
 	jmp	.L99
 .L98:
 	.loc 1 773 0 is_stmt 1
-	cmpl	$2, 44(%rbp)
+	cmpl	$2, 36(%rbp)
 	jne	.L100
 	.loc 1 773 0 is_stmt 0 discriminator 1
-	leaq	20464(%rbp), %rax
+	leaq	20480(%rbp), %rax
 	movl	$1869180533, (%rax)
 	movw	$110, 4(%rax)
 	jmp	.L99
 .L100:
 	.loc 1 774 0 is_stmt 1
-	cmpl	$3, 44(%rbp)
+	cmpl	$3, 36(%rbp)
 	jne	.L101
 	.loc 1 774 0 is_stmt 0 discriminator 1
-	leaq	20464(%rbp), %rax
+	leaq	20480(%rbp), %rax
 	movl	$1836412517, (%rax)
 	movb	$0, 4(%rax)
 	jmp	.L99
 .L101:
 	.loc 1 775 0 is_stmt 1
-	cmpl	$4, 44(%rbp)
+	cmpl	$4, 36(%rbp)
 	jne	.L102
 	.loc 1 775 0 is_stmt 0 discriminator 1
-	leaq	20464(%rbp), %rax
+	leaq	20480(%rbp), %rax
 	movl	$1702064993, (%rax)
 	movw	$29810, 4(%rax)
 	movb	$0, 6(%rax)
 	jmp	.L99
 .L102:
 	.loc 1 776 0 is_stmt 1
-	cmpl	$5, 44(%rbp)
+	cmpl	$5, 36(%rbp)
 	jne	.L99
 	.loc 1 776 0 is_stmt 0 discriminator 1
-	leaq	20464(%rbp), %rax
+	leaq	20480(%rbp), %rax
 	movl	$1852399981, (%rax)
 	movb	$0, 4(%rax)
 .L99:
 	.loc 1 778 0 is_stmt 1
 	movq	-8(%rbp), %rcx
-	leaq	20464(%rbp), %rdx
+	leaq	20480(%rbp), %rdx
 	movq	8(%rbp), %rax
 	movq	%rcx, %r8
 	movq	%rax, %rcx
@@ -4220,14 +4222,14 @@ parsing:
 	call	InsertSymbolTable
 .L103:
 	.loc 1 783 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	addl	$1, %eax
-	movl	%eax, 28(%rbp)
+	movl	%eax, 20(%rbp)
 	.loc 1 784 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4236,14 +4238,14 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	jmp	.L93
 .L96:
 	.loc 1 786 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4258,11 +4260,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L104
 	.loc 1 787 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 788 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 789 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
@@ -4273,8 +4275,8 @@ parsing:
 	jmp	.L93
 .L104:
 	.loc 1 791 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4289,11 +4291,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L105
 	.loc 1 792 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 793 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 794 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
@@ -4304,8 +4306,8 @@ parsing:
 	jmp	.L93
 .L105:
 	.loc 1 796 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4320,11 +4322,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L106
 	.loc 1 797 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 798 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 799 0
 	movq	0(%rbp), %rdx
 	movq	8(%rbp), %rax
@@ -4334,8 +4336,8 @@ parsing:
 	jmp	.L93
 .L106:
 	.loc 1 801 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4350,11 +4352,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L107
 	.loc 1 802 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 803 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 804 0
 	movq	0(%rbp), %rdx
 	movq	8(%rbp), %rax
@@ -4364,8 +4366,8 @@ parsing:
 	jmp	.L93
 .L107:
 	.loc 1 806 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4380,11 +4382,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L108
 	.loc 1 807 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 808 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 809 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
@@ -4395,8 +4397,8 @@ parsing:
 	jmp	.L93
 .L108:
 	.loc 1 811 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4411,7 +4413,7 @@ parsing:
 	testl	%eax, %eax
 	jne	.L109
 	.loc 1 812 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 813 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
@@ -4426,15 +4428,15 @@ parsing:
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
 	.loc 1 816 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	addl	$1, %eax
-	movl	%eax, 28(%rbp)
+	movl	%eax, 20(%rbp)
 	.loc 1 817 0
 	jmp	.L4
 .L109:
 	.loc 1 820 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4449,8 +4451,8 @@ parsing:
 	testl	%eax, %eax
 	je	.L93
 	.loc 1 824 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4465,8 +4467,8 @@ parsing:
 	testl	%eax, %eax
 	je	.L93
 	.loc 1 828 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4481,8 +4483,8 @@ parsing:
 	testl	%eax, %eax
 	je	.L93
 	.loc 1 832 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4497,8 +4499,8 @@ parsing:
 	testl	%eax, %eax
 	je	.L93
 	.loc 1 835 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4514,16 +4516,16 @@ parsing:
 	jne	.L110
 .LBB16:
 	.loc 1 836 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 837 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 838 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
 	.loc 1 838 0
-	movl	44(%rbp), %eax
+	movl	36(%rbp), %eax
 	movl	%eax, 48(%rsp)
 	movq	%rdx, 40(%rsp)
 	movl	$0, 32(%rsp)
@@ -4532,9 +4534,9 @@ parsing:
 	movl	$0, %edx
 	movl	$8, %ecx
 	call	expr_create
-	movq	%rax, 96(%rbp)
+	movq	%rax, 88(%rbp)
 	.loc 1 839 0
-	movq	96(%rbp), %rdx
+	movq	88(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movq	%rdx, %r9
 	movl	$0, %r8d
@@ -4542,13 +4544,13 @@ parsing:
 	movq	%rax, %rcx
 	call	push_commandList
 	.loc 1 840 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 .LBE16:
 	jmp	.L93
 .L110:
 	.loc 1 842 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4564,16 +4566,16 @@ parsing:
 	jne	.L111
 .LBB17:
 	.loc 1 843 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 844 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 845 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
 	.loc 1 845 0
-	movl	44(%rbp), %eax
+	movl	36(%rbp), %eax
 	movl	%eax, 48(%rsp)
 	movq	%rdx, 40(%rsp)
 	movl	$0, 32(%rsp)
@@ -4582,9 +4584,9 @@ parsing:
 	movl	$0, %edx
 	movl	$9, %ecx
 	call	expr_create
-	movq	%rax, 88(%rbp)
+	movq	%rax, 80(%rbp)
 	.loc 1 846 0
-	movq	88(%rbp), %rdx
+	movq	80(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movq	%rdx, %r9
 	movl	$0, %r8d
@@ -4592,13 +4594,13 @@ parsing:
 	movq	%rax, %rcx
 	call	push_commandList
 	.loc 1 847 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 .LBE17:
 	jmp	.L93
 .L111:
 	.loc 1 849 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4613,11 +4615,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L112
 	.loc 1 850 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 851 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 852 0
@@ -4646,33 +4648,33 @@ parsing:
 	.loc 1 858 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 859 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 860 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 861 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$1, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 862 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L93
 .L112:
 	.loc 1 864 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4687,11 +4689,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L114
 	.loc 1 865 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 866 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 867 0
@@ -4720,33 +4722,33 @@ parsing:
 	.loc 1 873 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 874 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 875 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 876 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$2, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 877 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L93
 .L114:
 	.loc 1 879 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4761,11 +4763,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L116
 	.loc 1 880 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 881 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 882 0
@@ -4794,33 +4796,33 @@ parsing:
 	.loc 1 888 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 889 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 890 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 891 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$3, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 892 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L93
 .L116:
 	.loc 1 894 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4835,11 +4837,11 @@ parsing:
 	testl	%eax, %eax
 	jne	.L118
 	.loc 1 895 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 896 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 897 0
@@ -4868,33 +4870,33 @@ parsing:
 	.loc 1 903 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 904 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 905 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 906 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$4, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 907 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L93
 .L118:
 	.loc 1 909 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4909,24 +4911,24 @@ parsing:
 	testl	%eax, %eax
 	jne	.L120
 	.loc 1 911 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 912 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 913 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 914 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 915 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4935,33 +4937,33 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 916 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 917 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 918 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$5, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 919 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L93
 .L120:
 	.loc 1 921 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -4976,24 +4978,24 @@ parsing:
 	testl	%eax, %eax
 	jne	.L121
 	.loc 1 923 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 924 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 925 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 926 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 927 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5002,33 +5004,33 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 928 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 929 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 930 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$6, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 931 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L93
 .L121:
 	.loc 1 933 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5043,24 +5045,24 @@ parsing:
 	testl	%eax, %eax
 	jne	.L122
 	.loc 1 935 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 936 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 937 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 938 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 939 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5069,33 +5071,33 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 940 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 941 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 942 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$7, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 943 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L93
 .L122:
 	.loc 1 945 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5110,24 +5112,24 @@ parsing:
 	testl	%eax, %eax
 	jne	.L123
 	.loc 1 947 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 948 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 949 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 950 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 951 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5136,33 +5138,33 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 952 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 953 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 954 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$8, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 955 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L93
 .L123:
 	.loc 1 957 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5177,24 +5179,24 @@ parsing:
 	testl	%eax, %eax
 	jne	.L124
 	.loc 1 959 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 960 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 961 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 962 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 963 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5203,56 +5205,56 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 964 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 965 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 966 0
 	movq	0(%rbp), %r8
-	leaq	20608(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20624(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$9, %r9d
 	movq	%rax, %rcx
 	call	BuildAssignAndCompareExprStatement
 	.loc 1 967 0
-	movl	$0, 36(%rbp)
+	movl	$0, 28(%rbp)
 	jmp	.L93
 .L124:
 	.loc 1 971 0
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	leaq	.LC46(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L125
 	.loc 1 972 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 973 0
-	movq	432(%rbp), %rax
-	movq	440(%rbp), %rdx
+	movq	448(%rbp), %rax
+	movq	456(%rbp), %rdx
 	movq	%rax, -48(%rbp)
 	movq	%rdx, -40(%rbp)
-	movq	448(%rbp), %rax
+	movq	464(%rbp), %rax
 	movq	%rax, -32(%rbp)
 	leaq	-48(%rbp), %rax
 	movq	%rax, %rcx
 	call	CheckIfMemberOfStatement
-	movl	%eax, 44(%rbp)
+	movl	%eax, 36(%rbp)
 	.loc 1 974 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
 	movq	0(%rbp), %r8
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %edx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$1, %r9d
 	movq	%rcx, %rdx
@@ -5261,31 +5263,31 @@ parsing:
 	jmp	.L126
 .L125:
 	.loc 1 976 0
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	leaq	.LC48(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L127
 	.loc 1 977 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 978 0
-	movq	432(%rbp), %rax
-	movq	440(%rbp), %rdx
+	movq	448(%rbp), %rax
+	movq	456(%rbp), %rdx
 	movq	%rax, -48(%rbp)
 	movq	%rdx, -40(%rbp)
-	movq	448(%rbp), %rax
+	movq	464(%rbp), %rax
 	movq	%rax, -32(%rbp)
 	leaq	-48(%rbp), %rax
 	movq	%rax, %rcx
 	call	CheckIfMemberOfStatement
-	movl	%eax, 44(%rbp)
+	movl	%eax, 36(%rbp)
 	.loc 1 979 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
 	movq	0(%rbp), %r8
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %edx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$2, %r9d
 	movq	%rcx, %rdx
@@ -5294,31 +5296,31 @@ parsing:
 	jmp	.L126
 .L127:
 	.loc 1 981 0
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	leaq	.LC50(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L128
 	.loc 1 982 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 983 0
-	movq	432(%rbp), %rax
-	movq	440(%rbp), %rdx
+	movq	448(%rbp), %rax
+	movq	456(%rbp), %rdx
 	movq	%rax, -48(%rbp)
 	movq	%rdx, -40(%rbp)
-	movq	448(%rbp), %rax
+	movq	464(%rbp), %rax
 	movq	%rax, -32(%rbp)
 	leaq	-48(%rbp), %rax
 	movq	%rax, %rcx
 	call	CheckIfMemberOfStatement
-	movl	%eax, 44(%rbp)
+	movl	%eax, 36(%rbp)
 	.loc 1 984 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
 	movq	0(%rbp), %r8
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %edx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$3, %r9d
 	movq	%rcx, %rdx
@@ -5327,31 +5329,31 @@ parsing:
 	jmp	.L126
 .L128:
 	.loc 1 986 0
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	leaq	.LC52(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L126
 	.loc 1 987 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 988 0
-	movq	432(%rbp), %rax
-	movq	440(%rbp), %rdx
+	movq	448(%rbp), %rax
+	movq	456(%rbp), %rdx
 	movq	%rax, -48(%rbp)
 	movq	%rdx, -40(%rbp)
-	movq	448(%rbp), %rax
+	movq	464(%rbp), %rax
 	movq	%rax, -32(%rbp)
 	leaq	-48(%rbp), %rax
 	movq	%rax, %rcx
 	call	CheckIfMemberOfStatement
-	movl	%eax, 44(%rbp)
+	movl	%eax, 36(%rbp)
 	.loc 1 989 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
 	movq	0(%rbp), %r8
-	leaq	20496(%rbp), %rax
-	movl	44(%rbp), %edx
+	leaq	20512(%rbp), %rax
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$4, %r9d
 	movq	%rcx, %rdx
@@ -5359,20 +5361,20 @@ parsing:
 	call	BuildSimpleExpressionStatement
 .L126:
 	.loc 1 992 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	empty
 	testl	%eax, %eax
 	jne	.L129
 	.loc 1 992 0 is_stmt 0 discriminator 2
-	cmpl	$0, 52(%rbp)
+	cmpl	$0, 44(%rbp)
 	jne	.L129
 	.loc 1 993 0 is_stmt 1
 	leaq	.LC120(%rip), %rcx
 	call	puts
 	.loc 1 995 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5387,18 +5389,18 @@ parsing:
 	testl	%eax, %eax
 	jne	.L130
 	.loc 1 996 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 997 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 998 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 999 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5407,27 +5409,27 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 1000 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1001 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1002 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1003 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$2, %r9d
 	movq	%rax, %rdx
@@ -5436,8 +5438,8 @@ parsing:
 	jmp	.L93
 .L130:
 	.loc 1 1005 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5452,18 +5454,18 @@ parsing:
 	testl	%eax, %eax
 	jne	.L132
 	.loc 1 1006 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 1007 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1008 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1009 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5472,27 +5474,27 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 1010 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1011 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1012 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1013 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$3, %r9d
 	movq	%rax, %rdx
@@ -5501,8 +5503,8 @@ parsing:
 	jmp	.L93
 .L132:
 	.loc 1 1015 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5517,18 +5519,18 @@ parsing:
 	testl	%eax, %eax
 	jne	.L133
 	.loc 1 1016 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 1017 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1018 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1019 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5537,27 +5539,27 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 1020 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1021 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1022 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1023 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$4, %r9d
 	movq	%rax, %rdx
@@ -5566,8 +5568,8 @@ parsing:
 	jmp	.L93
 .L133:
 	.loc 1 1025 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5582,18 +5584,18 @@ parsing:
 	testl	%eax, %eax
 	jne	.L134
 	.loc 1 1026 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 1027 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1028 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1029 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5602,27 +5604,27 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 1030 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1031 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1032 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1033 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$5, %r9d
 	movq	%rax, %rdx
@@ -5631,8 +5633,8 @@ parsing:
 	jmp	.L93
 .L134:
 	.loc 1 1035 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5647,18 +5649,18 @@ parsing:
 	testl	%eax, %eax
 	jne	.L135
 	.loc 1 1036 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 1037 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1038 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1039 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5667,27 +5669,27 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 1040 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1041 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1042 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1043 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$10, %r9d
 	movq	%rax, %rdx
@@ -5696,8 +5698,8 @@ parsing:
 	jmp	.L93
 .L135:
 	.loc 1 1045 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5712,18 +5714,18 @@ parsing:
 	testl	%eax, %eax
 	jne	.L136
 	.loc 1 1046 0
-	movl	$1, 52(%rbp)
+	movl	$1, 44(%rbp)
 	.loc 1 1047 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1048 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1049 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5732,27 +5734,27 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 	.loc 1 1050 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1051 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1052 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1053 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$12, %r9d
 	movq	%rax, %rdx
@@ -5761,17 +5763,17 @@ parsing:
 	jmp	.L93
 .L136:
 	.loc 1 1056 0
-	movzbl	20832(%rbp), %eax
+	movzbl	20848(%rbp), %eax
 	testb	%al, %al
 	je	.L137
 	.loc 1 1057 0
-	leaq	20832(%rbp), %rax
+	leaq	20848(%rbp), %rax
 	movq	%rax, %rdx
 	leaq	.LC121(%rip), %rcx
 	call	printf
 	.loc 1 1058 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5784,8 +5786,8 @@ parsing:
 	leaq	.LC122(%rip), %rcx
 	call	printf
 	.loc 1 1059 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5795,56 +5797,56 @@ parsing:
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %r8
 	movq	0(%rbp), %rdx
-	leaq	20832(%rbp), %rax
-	movl	44(%rbp), %ecx
+	leaq	20848(%rbp), %rax
+	movl	36(%rbp), %ecx
 	movl	%ecx, 32(%rsp)
 	movl	$3, %r9d
 	movq	%rax, %rcx
 	call	BuildDeclarationExprStatement
 	.loc 1 1060 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1061 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1062 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1063 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1064 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1065 0
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
 	.loc 1 1066 0
-	movb	$0, 20832(%rbp)
+	movb	$0, 20848(%rbp)
 	.loc 1 995 0
 	jmp	.L93
 .L137:
-	.loc 1 1069 0
+	.loc 1 1070 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
 	movq	%rax, %rdx
 	leaq	.LC114(%rip), %rcx
 	call	printf
-	.loc 1 1070 0
-	movl	28(%rbp), %eax
-	addl	$1, %eax
-	movl	%eax, 28(%rbp)
 	.loc 1 1071 0
+	movl	20(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, 20(%rbp)
+	.loc 1 1072 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5853,59 +5855,59 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	.loc 1 995 0
 	jmp	.L93
 .L129:
-	.loc 1 1077 0
+	.loc 1 1078 0
 	leaq	.LC123(%rip), %rcx
 	call	puts
-	.loc 1 1078 0
-	movq	432(%rbp), %rax
-	movq	440(%rbp), %rdx
+	.loc 1 1079 0
+	movq	448(%rbp), %rax
+	movq	456(%rbp), %rdx
 	movq	%rax, -48(%rbp)
 	movq	%rdx, -40(%rbp)
-	movq	448(%rbp), %rax
+	movq	464(%rbp), %rax
 	movq	%rax, -32(%rbp)
 	leaq	-48(%rbp), %rax
 	movq	%rax, %rcx
 	call	CheckIfMemberOfStatement
-	movl	%eax, 44(%rbp)
-	.loc 1 1079 0
-	cmpl	$-1, 44(%rbp)
-	je	.L138
+	movl	%eax, 36(%rbp)
 	.loc 1 1080 0
-	movl	44(%rbp), %eax
+	cmpl	$-1, 36(%rbp)
+	je	.L138
+	.loc 1 1081 0
+	movl	36(%rbp), %eax
 	movl	%eax, %edx
 	leaq	.LC107(%rip), %rcx
 	call	printf
-	.loc 1 1081 0
-	cmpl	$6, 44(%rbp)
+	.loc 1 1082 0
+	cmpl	$6, 36(%rbp)
 	jne	.L138
-	.loc 1 1081 0 is_stmt 0 discriminator 1
+	.loc 1 1082 0 is_stmt 0 discriminator 1
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 .L138:
-	.loc 1 1083 0 is_stmt 1
+	.loc 1 1084 0 is_stmt 1
 	movq	8(%rbp), %rax
 	addq	$104, %rax
 	movq	%rax, %rdx
 	leaq	.LC114(%rip), %rcx
 	call	printf
-	.loc 1 1084 0
-	movl	28(%rbp), %eax
-	addl	$1, %eax
-	movl	%eax, 28(%rbp)
 	.loc 1 1085 0
+	movl	20(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, 20(%rbp)
+	.loc 1 1086 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5914,12 +5916,12 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 .L93:
 .LBE14:
-	.loc 1 1091 0
+	.loc 1 1092 0
 	movq	8(%rbp), %rax
 	addq	$4, %rax
 	leaq	.LC124(%rip), %rdx
@@ -5928,15 +5930,15 @@ parsing:
 	testl	%eax, %eax
 	jne	.L139
 .LBB18:
-	.loc 1 1092 0
-	leaq	28(%rbp), %rax
+	.loc 1 1093 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1093 0
-	movl	$0, 76(%rbp)
 	.loc 1 1094 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	$0, 68(%rbp)
+	.loc 1 1095 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5950,24 +5952,24 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L140
-	.loc 1 1095 0
+	.loc 1 1096 0
 	leaq	.LC117(%rip), %rcx
 	call	puts
-	.loc 1 1096 0
+	.loc 1 1097 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
 	movq	%rax, %rdx
 	leaq	.LC114(%rip), %rcx
 	call	printf
-	.loc 1 1097 0
-	movl	28(%rbp), %eax
-	addl	$1, %eax
-	movl	%eax, 28(%rbp)
 	.loc 1 1098 0
+	movl	20(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, 20(%rbp)
+	.loc 1 1099 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5976,14 +5978,14 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 	jmp	.L139
 .L140:
-	.loc 1 1100 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1101 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -5997,19 +5999,19 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L141
-	.loc 1 1101 0
-	movl	$1, 76(%rbp)
 	.loc 1 1102 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
+	movl	$1, 68(%rbp)
 	.loc 1 1103 0
-	leaq	28(%rbp), %rax
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1104 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1104 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1105 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6018,36 +6020,36 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
-	.loc 1 1105 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1106 0
-	leaq	28(%rbp), %rax
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1107 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1107 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1108 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1109 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$4, %r9d
 	movq	%rax, %rdx
 	call	BuildDeclarationExprStatement
 	jmp	.L139
 .L141:
-	.loc 1 1110 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1111 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6061,33 +6063,33 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	je	.L139
-	.loc 1 1113 0
-	leaq	28(%rbp), %rax
+	.loc 1 1114 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	empty
 	testl	%eax, %eax
 	jne	.L139
-	.loc 1 1113 0 is_stmt 0 discriminator 2
-	cmpl	$0, 76(%rbp)
+	.loc 1 1114 0 is_stmt 0 discriminator 2
+	cmpl	$0, 68(%rbp)
 	jne	.L139
-	.loc 1 1114 0 is_stmt 1
+	.loc 1 1115 0 is_stmt 1
 	leaq	.LC125(%rip), %rcx
 	call	puts
-	.loc 1 1115 0
+	.loc 1 1116 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
 	movq	%rax, %rdx
 	leaq	.LC114(%rip), %rcx
 	call	printf
-	.loc 1 1116 0
-	movl	28(%rbp), %eax
-	addl	$1, %eax
-	movl	%eax, 28(%rbp)
 	.loc 1 1117 0
+	movl	20(%rbp), %eax
+	addl	$1, %eax
+	movl	%eax, 20(%rbp)
+	.loc 1 1118 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %r8
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6096,12 +6098,12 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	addq	%rax, %rcx
-	leaq	28(%rbp), %rax
+	leaq	20(%rbp), %rax
 	movq	%rax, %rdx
 	call	push
 .L139:
 .LBE18:
-	.loc 1 1123 0
+	.loc 1 1124 0
 	movq	8(%rbp), %rax
 	addq	$4, %rax
 	leaq	.LC126(%rip), %rdx
@@ -6109,7 +6111,7 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L142
-	.loc 1 1124 0
+	.loc 1 1125 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC127(%rip), %rdx
@@ -6118,7 +6120,7 @@ parsing:
 	testl	%eax, %eax
 	jne	.L143
 .LBB19:
-	.loc 1 1125 0
+	.loc 1 1126 0
 	movl	$-1, 64(%rsp)
 	movq	$0, 56(%rsp)
 	movq	$0, 48(%rsp)
@@ -6129,27 +6131,27 @@ parsing:
 	movl	$0, %edx
 	movl	$11, %ecx
 	call	stmt_create
-	movq	%rax, 112(%rbp)
-	.loc 1 1126 0
-	movq	112(%rbp), %rdx
+	movq	%rax, 104(%rbp)
+	.loc 1 1127 0
+	movq	104(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	push_commandList
-	.loc 1 1127 0
+	.loc 1 1128 0
 	leaq	.LC3(%rip), %rcx
 	call	puts
-	.loc 1 1128 0
+	.loc 1 1129 0
 	movq	8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
-	.loc 1 1129 0
+	.loc 1 1130 0
 	jmp	.L4
 .L143:
 .LBE19:
-	.loc 1 1131 0
+	.loc 1 1132 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC128(%rip), %rdx
@@ -6158,7 +6160,7 @@ parsing:
 	testl	%eax, %eax
 	jne	.L144
 .LBB20:
-	.loc 1 1132 0
+	.loc 1 1133 0
 	movl	$-1, 64(%rsp)
 	movq	$0, 56(%rsp)
 	movq	$0, 48(%rsp)
@@ -6169,27 +6171,27 @@ parsing:
 	movl	$0, %edx
 	movl	$12, %ecx
 	call	stmt_create
-	movq	%rax, 104(%rbp)
-	.loc 1 1133 0
-	movq	104(%rbp), %rdx
+	movq	%rax, 96(%rbp)
+	.loc 1 1134 0
+	movq	96(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	push_commandList
-	.loc 1 1134 0
+	.loc 1 1135 0
 	leaq	.LC3(%rip), %rcx
 	call	puts
-	.loc 1 1135 0
+	.loc 1 1136 0
 	movq	8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
-	.loc 1 1136 0
+	.loc 1 1137 0
 	jmp	.L4
 .L144:
 .LBE20:
-	.loc 1 1138 0
+	.loc 1 1139 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC129(%rip), %rdx
@@ -6197,13 +6199,13 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L145
-	.loc 1 1139 0
-	leaq	28(%rbp), %rax
+	.loc 1 1140 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1140 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1141 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6212,39 +6214,39 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
-	.loc 1 1141 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1142 0
-	leaq	28(%rbp), %rax
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1143 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1143 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1144 0
-	leaq	20496(%rbp), %rcx
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1145 0
+	leaq	20512(%rbp), %rcx
 	movq	0(%rbp), %rdx
 	movq	8(%rbp), %rax
 	movq	%rcx, %r8
 	movq	%rax, %rcx
 	call	BuildNewStatement
-	.loc 1 1145 0
+	.loc 1 1146 0
 	leaq	.LC3(%rip), %rcx
 	call	puts
-	.loc 1 1146 0
+	.loc 1 1147 0
 	movq	8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
-	.loc 1 1147 0
+	.loc 1 1148 0
 	jmp	.L4
 .L145:
-	.loc 1 1149 0
+	.loc 1 1150 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC130(%rip), %rdx
@@ -6252,13 +6254,13 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L146
-	.loc 1 1150 0
-	leaq	28(%rbp), %rax
+	.loc 1 1151 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1151 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1152 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6272,25 +6274,25 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L147
-	.loc 1 1152 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1153 0
-	leaq	28(%rbp), %rax
-	movq	%rax, %rcx
-	call	pop
-	.loc 1 1154 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
-	.loc 1 1155 0
-	leaq	28(%rbp), %rax
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1154 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
+	.loc 1 1155 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1156 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	leaq	20(%rbp), %rax
+	movq	%rax, %rcx
+	call	pop
+	.loc 1 1157 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6299,36 +6301,36 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
-	.loc 1 1157 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1158 0
-	leaq	28(%rbp), %rax
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1159 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1159 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1160 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1161 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$7, %r9d
 	movq	%rax, %rdx
 	call	BuildDeclarationExprStatement
 	jmp	.L142
 .L147:
-	.loc 1 1162 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1163 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6342,25 +6344,25 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L149
-	.loc 1 1163 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1164 0
-	leaq	28(%rbp), %rax
-	movq	%rax, %rcx
-	call	pop
-	.loc 1 1165 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
-	.loc 1 1166 0
-	leaq	28(%rbp), %rax
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1165 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
+	.loc 1 1166 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1167 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	leaq	20(%rbp), %rax
+	movq	%rax, %rcx
+	call	pop
+	.loc 1 1168 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6369,36 +6371,36 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
-	.loc 1 1168 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1169 0
-	leaq	28(%rbp), %rax
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1170 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1170 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1171 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1172 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$8, %r9d
 	movq	%rax, %rdx
 	call	BuildDeclarationExprStatement
 	jmp	.L142
 .L149:
-	.loc 1 1173 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1174 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6412,25 +6414,25 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L150
-	.loc 1 1174 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1175 0
-	leaq	28(%rbp), %rax
-	movq	%rax, %rcx
-	call	pop
-	.loc 1 1176 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
-	.loc 1 1177 0
-	leaq	28(%rbp), %rax
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1176 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
+	.loc 1 1177 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1178 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	leaq	20(%rbp), %rax
+	movq	%rax, %rcx
+	call	pop
+	.loc 1 1179 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6439,36 +6441,36 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
-	.loc 1 1179 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1180 0
-	leaq	28(%rbp), %rax
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1181 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1181 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1182 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1183 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$9, %r9d
 	movq	%rax, %rdx
 	call	BuildDeclarationExprStatement
 	jmp	.L142
 .L150:
-	.loc 1 1184 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1185 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6482,25 +6484,25 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L151
-	.loc 1 1185 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1186 0
-	leaq	28(%rbp), %rax
-	movq	%rax, %rcx
-	call	pop
-	.loc 1 1187 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
-	.loc 1 1188 0
-	leaq	28(%rbp), %rax
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1187 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
+	.loc 1 1188 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1189 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	leaq	20(%rbp), %rax
+	movq	%rax, %rcx
+	call	pop
+	.loc 1 1190 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6509,36 +6511,36 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
-	.loc 1 1190 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1191 0
-	leaq	28(%rbp), %rax
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1192 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1192 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1193 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1194 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$6, %r9d
 	movq	%rax, %rdx
 	call	BuildDeclarationExprStatement
 	jmp	.L142
 .L151:
-	.loc 1 1195 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1196 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6552,30 +6554,30 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L152
-	.loc 1 1195 0 is_stmt 0 discriminator 1
-	cmpl	$1, 48(%rbp)
+	.loc 1 1196 0 is_stmt 0 discriminator 1
+	cmpl	$1, 40(%rbp)
 	jne	.L152
-	.loc 1 1196 0 is_stmt 1
-	movl	$0, 48(%rbp)
-	.loc 1 1197 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
+	.loc 1 1197 0 is_stmt 1
+	movl	$0, 40(%rbp)
 	.loc 1 1198 0
-	leaq	28(%rbp), %rax
-	movq	%rax, %rcx
-	call	pop
-	.loc 1 1199 0
-	movl	28(%rbp), %eax
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
-	.loc 1 1200 0
-	leaq	28(%rbp), %rax
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1199 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
+	.loc 1 1200 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
 	.loc 1 1201 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	leaq	20(%rbp), %rax
+	movq	%rax, %rcx
+	call	pop
+	.loc 1 1202 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6584,36 +6586,36 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
-	.loc 1 1202 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1203 0
-	leaq	28(%rbp), %rax
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1204 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1204 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1205 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1206 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$11, %r9d
 	movq	%rax, %rdx
 	call	BuildDeclarationExprStatement
 	jmp	.L142
 .L152:
-	.loc 1 1207 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1208 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6627,20 +6629,20 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L142
-	.loc 1 1207 0 is_stmt 0 discriminator 1
-	cmpl	$0, 48(%rbp)
+	.loc 1 1208 0 is_stmt 0 discriminator 1
+	cmpl	$0, 40(%rbp)
 	jne	.L142
-	.loc 1 1208 0 is_stmt 1
-	movl	28(%rbp), %eax
+	.loc 1 1209 0 is_stmt 1
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
-	.loc 1 1209 0
-	leaq	28(%rbp), %rax
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1210 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1210 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1211 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6649,34 +6651,34 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
-	.loc 1 1211 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1212 0
-	leaq	28(%rbp), %rax
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1213 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1213 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1214 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1215 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$12, %r9d
 	movq	%rax, %rdx
 	call	BuildDeclarationExprStatement
 	jmp	.L142
 .L146:
-	.loc 1 1217 0
+	.loc 1 1218 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC131(%rip), %rdx
@@ -6684,7 +6686,7 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	je	.L153
-	.loc 1 1217 0 is_stmt 0 discriminator 1
+	.loc 1 1218 0 is_stmt 0 discriminator 1
 	movq	8(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC132(%rip), %rdx
@@ -6693,13 +6695,13 @@ parsing:
 	testl	%eax, %eax
 	jne	.L142
 .L153:
-	.loc 1 1218 0 is_stmt 1
-	leaq	28(%rbp), %rax
+	.loc 1 1219 0 is_stmt 1
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1219 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1220 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6713,17 +6715,17 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L142
-	.loc 1 1220 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1221 0
-	leaq	28(%rbp), %rax
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1222 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1222 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1223 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6732,33 +6734,33 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
-	.loc 1 1223 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1224 0
-	leaq	28(%rbp), %rax
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1225 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1225 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
 	.loc 1 1226 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1227 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
-	leaq	20496(%rbp), %r8
+	leaq	20512(%rbp), %r8
 	movq	0(%rbp), %rax
-	movl	44(%rbp), %edx
+	movl	36(%rbp), %edx
 	movl	%edx, 32(%rsp)
 	movl	$10, %r9d
 	movq	%rax, %rdx
 	call	BuildDeclarationExprStatement
 .L142:
-	.loc 1 1234 0
+	.loc 1 1235 0
 	movq	8(%rbp), %rax
 	addq	$4, %rax
 	leaq	.LC112(%rip), %rdx
@@ -6766,21 +6768,21 @@ parsing:
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L154
-	.loc 1 1236 0
-	movl	28(%rbp), %eax
+	.loc 1 1237 0
+	movl	20(%rbp), %eax
 	testl	%eax, %eax
 	je	.L155
-	.loc 1 1238 0
-	movl	452(%rbp), %eax
+	.loc 1 1239 0
+	movl	468(%rbp), %eax
 	cmpl	$1, %eax
 	jne	.L156
-	.loc 1 1239 0
-	leaq	28(%rbp), %rax
+	.loc 1 1240 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1240 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1241 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6789,30 +6791,124 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
 .L156:
-	.loc 1 1243 0
-	cmpl	$1, 36(%rbp)
+	.loc 1 1244 0
+	cmpl	$1, 28(%rbp)
 	jne	.L157
-	.loc 1 1245 0
+	.loc 1 1246 0
 	leaq	.LC3(%rip), %rcx
 	call	puts
-	.loc 1 1246 0
+	.loc 1 1247 0
 	movq	8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
-	.loc 1 1247 0
+	.loc 1 1248 0
 	jmp	.L4
 .L157:
-	.loc 1 1250 0
-	leaq	28(%rbp), %rax
+	.loc 1 1251 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1251 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1253 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
+	movslq	%eax, %rdx
+	movq	%rdx, %rax
+	salq	$2, %rax
+	addq	%rdx, %rax
+	leaq	0(,%rax,4), %rdx
+	addq	%rdx, %rax
+	salq	$2, %rax
+	addq	%rcx, %rax
+	movq	%rax, %rdx
+	leaq	.LC133(%rip), %rcx
+	call	printf
+	.loc 1 1255 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
+	movslq	%eax, %rdx
+	movq	%rdx, %rax
+	salq	$2, %rax
+	addq	%rdx, %rax
+	leaq	0(,%rax,4), %rdx
+	addq	%rdx, %rax
+	salq	$2, %rax
+	addq	%rcx, %rax
+	leaq	.LC24(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L158
+.LBB21:
+	.loc 1 1256 0
+	leaq	20(%rbp), %rax
+	movq	%rax, %rcx
+	call	pop
+	.loc 1 1257 0
+	movl	$0, %r8d
+	movl	$0, %edx
+	movl	$5, %ecx
+	call	type_create
+	movq	%rax, 112(%rbp)
+	.loc 1 1258 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
+	movslq	%eax, %rdx
+	movq	%rdx, %rax
+	salq	$2, %rax
+	addq	%rdx, %rax
+	leaq	0(,%rax,4), %rdx
+	addq	%rdx, %rax
+	salq	$2, %rax
+	addq	%rax, %rcx
+	movq	112(%rbp), %rax
+	movl	$0, %r9d
+	movl	$0, %r8d
+	movq	%rax, %rdx
+	call	decl_create
+	movq	%rax, 120(%rbp)
+	.loc 1 1259 0
+	movq	120(%rbp), %rax
+	movl	36(%rbp), %edx
+	movl	%edx, 64(%rsp)
+	movq	$0, 56(%rsp)
+	movq	$0, 48(%rsp)
+	movq	$0, 40(%rsp)
+	movq	$0, 32(%rsp)
+	movl	$0, %r9d
+	movl	$0, %r8d
+	movq	%rax, %rdx
+	movl	$0, %ecx
+	call	stmt_create
+	movq	%rax, 128(%rbp)
+	.loc 1 1260 0
+	movq	128(%rbp), %rdx
+	movq	0(%rbp), %rax
+	movl	$0, %r9d
+	movq	%rdx, %r8
+	movl	$0, %edx
+	movq	%rax, %rcx
+	call	push_commandList
+	.loc 1 1261 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1262 0
+	leaq	20(%rbp), %rax
+	movq	%rax, %rcx
+	call	pop
+	.loc 1 1263 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+.L158:
+.LBE21:
+	.loc 1 1266 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6825,29 +6921,29 @@ parsing:
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L158
-	.loc 1 1252 0
-	leaq	.LC133(%rip), %rcx
+	jne	.L159
+	.loc 1 1267 0
+	leaq	.LC134(%rip), %rcx
 	call	puts
-	.loc 1 1253 0
-	movl	28(%rbp), %eax
+	.loc 1 1268 0
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
-	.loc 1 1254 0
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1269 0
 	leaq	.LC3(%rip), %rcx
 	call	puts
-	.loc 1 1255 0
-	movl	$0, 32(%rbp)
-	.loc 1 1256 0
+	.loc 1 1270 0
+	movl	$0, 24(%rbp)
+	.loc 1 1271 0
 	movq	8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
-	.loc 1 1257 0
+	.loc 1 1272 0
 	jmp	.L4
-.L158:
-	.loc 1 1260 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+.L159:
+	.loc 1 1275 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6860,54 +6956,54 @@ parsing:
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L159
-	.loc 1 1261 0
-	leaq	.LC134(%rip), %rcx
-	call	puts
-	.loc 1 1262 0
-	movq	8(%rbp), %rax
-	addq	$104, %rax
-	movq	%rax, %rdx
+	jne	.L160
+	.loc 1 1276 0
 	leaq	.LC135(%rip), %rcx
-	call	printf
-	.loc 1 1263 0
-	movq	8(%rbp), %rax
-	movq	208(%rax), %rax
-	movq	%rax, 8(%rbp)
-	.loc 1 1264 0
+	call	puts
+	.loc 1 1277 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
 	movq	%rax, %rdx
 	leaq	.LC136(%rip), %rcx
 	call	printf
-	.loc 1 1265 0
-	movl	28(%rbp), %eax
+	.loc 1 1278 0
+	movq	8(%rbp), %rax
+	movq	208(%rax), %rax
+	movq	%rax, 8(%rbp)
+	.loc 1 1279 0
+	movq	8(%rbp), %rax
+	addq	$104, %rax
+	movq	%rax, %rdx
+	leaq	.LC137(%rip), %rcx
+	call	printf
+	.loc 1 1280 0
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
-	.loc 1 1266 0
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1281 0
 	movq	8(%rbp), %rax
 	leaq	104(%rax), %rcx
 	movq	0(%rbp), %rax
 	movl	$6, %r8d
 	movq	%rax, %rdx
 	call	BuildSingleExprStatement
-	.loc 1 1267 0
+	.loc 1 1282 0
 	leaq	.LC3(%rip), %rcx
 	call	puts
-	.loc 1 1268 0
+	.loc 1 1283 0
 	movq	8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
-	.loc 1 1269 0
+	.loc 1 1284 0
 	jmp	.L4
-.L159:
-	.loc 1 1272 0
-	movl	28(%rbp), %eax
+.L160:
+	.loc 1 1287 0
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
-	.loc 1 1273 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1288 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6916,20 +7012,20 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
-	.loc 1 1274 0
-	movl	28(%rbp), %eax
+	.loc 1 1289 0
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
-	.loc 1 1275 0
-	leaq	28(%rbp), %rax
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1290 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1277 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+	.loc 1 1292 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6940,13 +7036,13 @@ parsing:
 	addq	%rcx, %rax
 	movzbl	(%rax), %eax
 	testb	%al, %al
-	jne	.L160
-	.loc 1 1278 0
+	jne	.L161
+	.loc 1 1293 0
 	jmp	.L4
-.L160:
-	.loc 1 1281 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+.L161:
+	.loc 1 1296 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -6959,88 +7055,40 @@ parsing:
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L161
-	.loc 1 1282 0
-	leaq	.LC137(%rip), %rcx
+	jne	.L162
+	.loc 1 1297 0
+	leaq	.LC138(%rip), %rcx
 	call	puts
-	.loc 1 1283 0
+	.loc 1 1298 0
 	movq	8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
-	.loc 1 1284 0
+	.loc 1 1299 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
 	leaq	.LC22(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	jne	.L162
-.LBB21:
-	.loc 1 1285 0
+	jne	.L163
+.LBB22:
+	.loc 1 1300 0
 	movl	$0, %r8d
 	movl	$0, %edx
 	movl	$3, %ecx
 	call	type_create
-	movq	%rax, 288(%rbp)
-	.loc 1 1286 0
-	movq	288(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	$0, %r9d
-	movl	$0, %r8d
-	movq	%rax, %rcx
-	call	decl_create
-	movq	%rax, 296(%rbp)
-	.loc 1 1287 0
-	movq	296(%rbp), %rax
-	movl	44(%rbp), %edx
-	movl	%edx, 64(%rsp)
-	movq	$0, 56(%rsp)
-	movq	$0, 48(%rsp)
-	movq	$0, 40(%rsp)
-	movq	$0, 32(%rsp)
-	movl	$0, %r9d
-	movl	$0, %r8d
-	movq	%rax, %rdx
-	movl	$0, %ecx
-	call	stmt_create
 	movq	%rax, 304(%rbp)
-	.loc 1 1288 0
+	.loc 1 1301 0
 	movq	304(%rbp), %rdx
-	movq	0(%rbp), %rax
-	movl	$0, %r9d
-	movq	%rdx, %r8
-	movl	$0, %edx
-	movq	%rax, %rcx
-	call	push_commandList
-.LBE21:
-	jmp	.L155
-.L162:
-	.loc 1 1290 0
-	movq	8(%rbp), %rax
-	addq	$104, %rax
-	leaq	.LC20(%rip), %rdx
-	movq	%rax, %rcx
-	call	strcmp
-	testl	%eax, %eax
-	jne	.L164
-.LBB22:
-	.loc 1 1291 0
-	movl	$0, %r8d
-	movl	$0, %edx
-	movl	$4, %ecx
-	call	type_create
-	movq	%rax, 264(%rbp)
-	.loc 1 1292 0
-	movq	264(%rbp), %rdx
-	leaq	20496(%rbp), %rax
+	leaq	20512(%rbp), %rax
 	movl	$0, %r9d
 	movl	$0, %r8d
 	movq	%rax, %rcx
 	call	decl_create
-	movq	%rax, 272(%rbp)
-	.loc 1 1293 0
-	movq	272(%rbp), %rax
-	movl	44(%rbp), %edx
+	movq	%rax, 312(%rbp)
+	.loc 1 1302 0
+	movq	312(%rbp), %rax
+	movl	36(%rbp), %edx
 	movl	%edx, 64(%rsp)
 	movq	$0, 56(%rsp)
 	movq	$0, 48(%rsp)
@@ -7051,9 +7099,9 @@ parsing:
 	movq	%rax, %rdx
 	movl	$0, %ecx
 	call	stmt_create
-	movq	%rax, 280(%rbp)
-	.loc 1 1294 0
-	movq	280(%rbp), %rdx
+	movq	%rax, 320(%rbp)
+	.loc 1 1303 0
+	movq	320(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -7062,33 +7110,33 @@ parsing:
 	call	push_commandList
 .LBE22:
 	jmp	.L155
-.L164:
-	.loc 1 1296 0
+.L163:
+	.loc 1 1305 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC24(%rip), %rdx
+	leaq	.LC20(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L165
 .LBB23:
-	.loc 1 1297 0
+	.loc 1 1306 0
 	movl	$0, %r8d
 	movl	$0, %edx
-	movl	$5, %ecx
+	movl	$4, %ecx
 	call	type_create
-	movq	%rax, 240(%rbp)
-	.loc 1 1298 0
-	movq	240(%rbp), %rdx
-	leaq	20496(%rbp), %rax
+	movq	%rax, 280(%rbp)
+	.loc 1 1307 0
+	movq	280(%rbp), %rdx
+	leaq	20512(%rbp), %rax
 	movl	$0, %r9d
 	movl	$0, %r8d
 	movq	%rax, %rcx
 	call	decl_create
-	movq	%rax, 248(%rbp)
-	.loc 1 1299 0
-	movq	248(%rbp), %rax
-	movl	44(%rbp), %edx
+	movq	%rax, 288(%rbp)
+	.loc 1 1308 0
+	movq	288(%rbp), %rax
+	movl	36(%rbp), %edx
 	movl	%edx, 64(%rsp)
 	movq	$0, 56(%rsp)
 	movq	$0, 48(%rsp)
@@ -7099,9 +7147,9 @@ parsing:
 	movq	%rax, %rdx
 	movl	$0, %ecx
 	call	stmt_create
-	movq	%rax, 256(%rbp)
-	.loc 1 1300 0
-	movq	256(%rbp), %rdx
+	movq	%rax, 296(%rbp)
+	.loc 1 1309 0
+	movq	296(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -7111,32 +7159,32 @@ parsing:
 .LBE23:
 	jmp	.L155
 .L165:
-	.loc 1 1302 0
+	.loc 1 1311 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC26(%rip), %rdx
+	leaq	.LC24(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L166
 .LBB24:
-	.loc 1 1303 0
+	.loc 1 1312 0
 	movl	$0, %r8d
 	movl	$0, %edx
-	movl	$2, %ecx
+	movl	$5, %ecx
 	call	type_create
-	movq	%rax, 216(%rbp)
-	.loc 1 1304 0
-	movq	216(%rbp), %rdx
-	leaq	20496(%rbp), %rax
+	movq	%rax, 256(%rbp)
+	.loc 1 1313 0
+	movq	256(%rbp), %rdx
+	leaq	20512(%rbp), %rax
 	movl	$0, %r9d
 	movl	$0, %r8d
 	movq	%rax, %rcx
 	call	decl_create
-	movq	%rax, 224(%rbp)
-	.loc 1 1305 0
-	movq	224(%rbp), %rax
-	movl	44(%rbp), %edx
+	movq	%rax, 264(%rbp)
+	.loc 1 1314 0
+	movq	264(%rbp), %rax
+	movl	36(%rbp), %edx
 	movl	%edx, 64(%rsp)
 	movq	$0, 56(%rsp)
 	movq	$0, 48(%rsp)
@@ -7147,9 +7195,9 @@ parsing:
 	movq	%rax, %rdx
 	movl	$0, %ecx
 	call	stmt_create
-	movq	%rax, 232(%rbp)
-	.loc 1 1306 0
-	movq	232(%rbp), %rdx
+	movq	%rax, 272(%rbp)
+	.loc 1 1315 0
+	movq	272(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -7159,32 +7207,32 @@ parsing:
 .LBE24:
 	jmp	.L155
 .L166:
-	.loc 1 1308 0
+	.loc 1 1317 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC28(%rip), %rdx
+	leaq	.LC26(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L167
 .LBB25:
-	.loc 1 1309 0
+	.loc 1 1318 0
 	movl	$0, %r8d
 	movl	$0, %edx
-	movl	$1, %ecx
+	movl	$2, %ecx
 	call	type_create
-	movq	%rax, 192(%rbp)
-	.loc 1 1310 0
-	movq	192(%rbp), %rdx
-	leaq	20496(%rbp), %rax
+	movq	%rax, 232(%rbp)
+	.loc 1 1319 0
+	movq	232(%rbp), %rdx
+	leaq	20512(%rbp), %rax
 	movl	$0, %r9d
 	movl	$0, %r8d
 	movq	%rax, %rcx
 	call	decl_create
-	movq	%rax, 200(%rbp)
-	.loc 1 1311 0
-	movq	200(%rbp), %rax
-	movl	44(%rbp), %edx
+	movq	%rax, 240(%rbp)
+	.loc 1 1320 0
+	movq	240(%rbp), %rax
+	movl	36(%rbp), %edx
 	movl	%edx, 64(%rsp)
 	movq	$0, 56(%rsp)
 	movq	$0, 48(%rsp)
@@ -7195,9 +7243,9 @@ parsing:
 	movq	%rax, %rdx
 	movl	$0, %ecx
 	call	stmt_create
-	movq	%rax, 208(%rbp)
-	.loc 1 1312 0
-	movq	208(%rbp), %rdx
+	movq	%rax, 248(%rbp)
+	.loc 1 1321 0
+	movq	248(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -7207,32 +7255,32 @@ parsing:
 .LBE25:
 	jmp	.L155
 .L167:
-	.loc 1 1314 0
+	.loc 1 1323 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC30(%rip), %rdx
+	leaq	.LC28(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
 	jne	.L168
 .LBB26:
-	.loc 1 1315 0
+	.loc 1 1324 0
 	movl	$0, %r8d
 	movl	$0, %edx
-	movl	$0, %ecx
+	movl	$1, %ecx
 	call	type_create
-	movq	%rax, 168(%rbp)
-	.loc 1 1316 0
-	movq	168(%rbp), %rdx
-	leaq	20496(%rbp), %rax
+	movq	%rax, 208(%rbp)
+	.loc 1 1325 0
+	movq	208(%rbp), %rdx
+	leaq	20512(%rbp), %rax
 	movl	$0, %r9d
 	movl	$0, %r8d
 	movq	%rax, %rcx
 	call	decl_create
-	movq	%rax, 176(%rbp)
-	.loc 1 1317 0
-	movq	176(%rbp), %rax
-	movl	44(%rbp), %edx
+	movq	%rax, 216(%rbp)
+	.loc 1 1326 0
+	movq	216(%rbp), %rax
+	movl	36(%rbp), %edx
 	movl	%edx, 64(%rsp)
 	movq	$0, 56(%rsp)
 	movq	$0, 48(%rsp)
@@ -7243,9 +7291,9 @@ parsing:
 	movq	%rax, %rdx
 	movl	$0, %ecx
 	call	stmt_create
-	movq	%rax, 184(%rbp)
-	.loc 1 1318 0
-	movq	184(%rbp), %rdx
+	movq	%rax, 224(%rbp)
+	.loc 1 1327 0
+	movq	224(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -7255,50 +7303,32 @@ parsing:
 .LBE26:
 	jmp	.L155
 .L168:
-	.loc 1 1320 0
+	.loc 1 1329 0
 	movq	8(%rbp), %rax
 	addq	$104, %rax
-	leaq	.LC132(%rip), %rdx
+	leaq	.LC30(%rip), %rdx
 	movq	%rax, %rcx
 	call	strcmp
 	testl	%eax, %eax
-	je	.L169
-	.loc 1 1320 0 is_stmt 0 discriminator 1
-	movq	8(%rbp), %rax
-	addq	$104, %rax
-	leaq	.LC131(%rip), %rdx
-	movq	%rax, %rcx
-	call	strcmp
-	testl	%eax, %eax
-	jne	.L155
-.L169:
+	jne	.L169
 .LBB27:
-	.loc 1 1321 0 is_stmt 1
-	leaq	28(%rbp), %rax
-	movq	%rax, %rcx
-	call	pop
-	.loc 1 1322 0
-	movl	28(%rbp), %eax
-	cltq
-	movb	$0, 464(%rbp,%rax)
-	.loc 1 1323 0
-	movq	8(%rbp), %rax
-	addq	$104, %rax
-	movq	%rax, %rcx
-	call	expr_create_string
-	movq	%rax, 144(%rbp)
-	.loc 1 1324 0
-	movq	144(%rbp), %rdx
-	leaq	20496(%rbp), %rax
-	movl	$0, %r9d
-	movq	%rdx, %r8
+	.loc 1 1330 0
+	movl	$0, %r8d
 	movl	$0, %edx
+	movl	$0, %ecx
+	call	type_create
+	movq	%rax, 184(%rbp)
+	.loc 1 1331 0
+	movq	184(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	$0, %r9d
+	movl	$0, %r8d
 	movq	%rax, %rcx
 	call	decl_create
-	movq	%rax, 152(%rbp)
-	.loc 1 1325 0
-	movq	152(%rbp), %rax
-	movl	44(%rbp), %edx
+	movq	%rax, 192(%rbp)
+	.loc 1 1332 0
+	movq	192(%rbp), %rax
+	movl	36(%rbp), %edx
 	movl	%edx, 64(%rsp)
 	movq	$0, 56(%rsp)
 	movq	$0, 48(%rsp)
@@ -7309,9 +7339,75 @@ parsing:
 	movq	%rax, %rdx
 	movl	$0, %ecx
 	call	stmt_create
+	movq	%rax, 200(%rbp)
+	.loc 1 1333 0
+	movq	200(%rbp), %rdx
+	movq	0(%rbp), %rax
+	movl	$0, %r9d
+	movq	%rdx, %r8
+	movl	$0, %edx
+	movq	%rax, %rcx
+	call	push_commandList
+.LBE27:
+	jmp	.L155
+.L169:
+	.loc 1 1335 0
+	movq	8(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC132(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	je	.L170
+	.loc 1 1335 0 is_stmt 0 discriminator 1
+	movq	8(%rbp), %rax
+	addq	$104, %rax
+	leaq	.LC131(%rip), %rdx
+	movq	%rax, %rcx
+	call	strcmp
+	testl	%eax, %eax
+	jne	.L155
+.L170:
+.LBB28:
+	.loc 1 1336 0 is_stmt 1
+	leaq	20(%rbp), %rax
+	movq	%rax, %rcx
+	call	pop
+	.loc 1 1337 0
+	movl	20(%rbp), %eax
+	cltq
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1338 0
+	movq	8(%rbp), %rax
+	addq	$104, %rax
+	movq	%rax, %rcx
+	call	expr_create_string
 	movq	%rax, 160(%rbp)
-	.loc 1 1326 0
+	.loc 1 1339 0
 	movq	160(%rbp), %rdx
+	leaq	20512(%rbp), %rax
+	movl	$0, %r9d
+	movq	%rdx, %r8
+	movl	$0, %edx
+	movq	%rax, %rcx
+	call	decl_create
+	movq	%rax, 168(%rbp)
+	.loc 1 1340 0
+	movq	168(%rbp), %rax
+	movl	36(%rbp), %edx
+	movl	%edx, 64(%rsp)
+	movq	$0, 56(%rsp)
+	movq	$0, 48(%rsp)
+	movq	$0, 40(%rsp)
+	movq	$0, 32(%rsp)
+	movl	$0, %r9d
+	movl	$0, %r8d
+	movq	%rax, %rdx
+	movl	$0, %ecx
+	call	stmt_create
+	movq	%rax, 176(%rbp)
+	.loc 1 1341 0
+	movq	176(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -7319,12 +7415,12 @@ parsing:
 	movq	%rax, %rcx
 	call	push_commandList
 	jmp	.L155
-.L161:
-.LBE27:
-.LBB28:
-	.loc 1 1331 0
-	movl	28(%rbp), %eax
-	leaq	464(%rbp), %rcx
+.L162:
+.LBE28:
+.LBB29:
+	.loc 1 1346 0
+	movl	20(%rbp), %eax
+	leaq	480(%rbp), %rcx
 	movslq	%eax, %rdx
 	movq	%rdx, %rax
 	salq	$2, %rax
@@ -7333,38 +7429,38 @@ parsing:
 	addq	%rdx, %rax
 	salq	$2, %rax
 	leaq	(%rcx,%rax), %rdx
-	leaq	20608(%rbp), %rax
+	leaq	20624(%rbp), %rax
 	movq	%rax, %rcx
 	call	strcpy
-	.loc 1 1332 0
-	movl	28(%rbp), %eax
+	.loc 1 1347 0
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
-	.loc 1 1333 0
-	leaq	28(%rbp), %rax
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1348 0
+	leaq	20(%rbp), %rax
 	movq	%rax, %rcx
 	call	pop
-	.loc 1 1334 0
-	movl	28(%rbp), %eax
+	.loc 1 1349 0
+	movl	20(%rbp), %eax
 	cltq
-	movb	$0, 464(%rbp,%rax)
-	.loc 1 1335 0
-	leaq	20496(%rbp), %rax
+	movb	$0, 480(%rbp,%rax)
+	.loc 1 1350 0
+	leaq	20512(%rbp), %rax
 	movq	%rax, %rcx
 	call	expr_create_string
-	movq	%rax, 120(%rbp)
-	.loc 1 1336 0
-	movq	120(%rbp), %rdx
-	leaq	20608(%rbp), %rax
+	movq	%rax, 136(%rbp)
+	.loc 1 1351 0
+	movq	136(%rbp), %rdx
+	leaq	20624(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
 	movl	$0, %edx
 	movq	%rax, %rcx
 	call	decl_create
-	movq	%rax, 128(%rbp)
-	.loc 1 1337 0
-	movq	128(%rbp), %rax
-	movl	44(%rbp), %edx
+	movq	%rax, 144(%rbp)
+	.loc 1 1352 0
+	movq	144(%rbp), %rax
+	movl	36(%rbp), %edx
 	movl	%edx, 64(%rsp)
 	movq	$0, 56(%rsp)
 	movq	$0, 48(%rsp)
@@ -7375,9 +7471,9 @@ parsing:
 	movq	%rax, %rdx
 	movl	$0, %ecx
 	call	stmt_create
-	movq	%rax, 136(%rbp)
-	.loc 1 1338 0
-	movq	136(%rbp), %rdx
+	movq	%rax, 152(%rbp)
+	.loc 1 1353 0
+	movq	152(%rbp), %rdx
 	movq	0(%rbp), %rax
 	movl	$0, %r9d
 	movq	%rdx, %r8
@@ -7385,44 +7481,44 @@ parsing:
 	movq	%rax, %rcx
 	call	push_commandList
 .L155:
-.LBE28:
-	.loc 1 1342 0
-	movl	444(%rbp), %eax
+.LBE29:
+	.loc 1 1357 0
+	movl	460(%rbp), %eax
 	cmpl	$1, %eax
 	jne	.L154
-	.loc 1 1344 0
-	leaq	.LC138(%rip), %rcx
+	.loc 1 1359 0
+	leaq	.LC139(%rip), %rcx
 	call	puts
-	.loc 1 1345 0
-	movl	$0, 444(%rbp)
+	.loc 1 1360 0
+	movl	$0, 460(%rbp)
 .L154:
-	.loc 1 1349 0
+	.loc 1 1364 0
 	leaq	.LC3(%rip), %rcx
 	call	puts
-	.loc 1 1350 0
+	.loc 1 1365 0
 	movq	8(%rbp), %rax
 	movq	208(%rax), %rax
 	movq	%rax, 8(%rbp)
 .L4:
 	.loc 1 38 0
 	cmpq	$0, 8(%rbp)
-	jne	.L170
-	.loc 1 1353 0
+	jne	.L171
+	.loc 1 1368 0
 	nop
-	.loc 1 1354 0
+	.loc 1 1369 0
 	movq	.refptr.__stack_chk_guard(%rip), %rax
-	movq	20936(%rbp), %rbx
+	movq	20952(%rbp), %rbx
 	xorq	(%rax), %rbx
-	je	.L172
+	je	.L173
 	call	__stack_chk_fail
 	nop
-.L172:
-	addq	$21080, %rsp
+.L173:
+	addq	$21096, %rsp
 	popq	%rbx
 	.cfi_restore 3
 	popq	%rbp
 	.cfi_restore 6
-	.cfi_def_cfa 7, 21096
+	.cfi_def_cfa 7, 21112
 	ret
 	.cfi_endproc
 .LFE10:
@@ -7440,7 +7536,7 @@ parsing:
 	.file 11 "./src/../inc/parserFunctions.h"
 	.section	.debug_info,"dr"
 .Ldebug_info0:
-	.long	0x1e66
+	.long	0x1e8e
 	.word	0x4
 	.secrel32	.Ldebug_abbrev0
 	.byte	0x8
@@ -9210,31 +9306,31 @@ parsing:
 	.quad	.LFE10-.LFB10
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x1dd1
+	.long	0x1df9
 	.uleb128 0x29
 	.ascii "current\0"
 	.byte	0x1
 	.byte	0x14
-	.long	0x1dd1
+	.long	0x1df9
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20968
+	.sleb128 -20984
 	.uleb128 0x2a
 	.secrel32	.LASF8
 	.byte	0x1
 	.byte	0x14
-	.long	0x1dd7
+	.long	0x1dff
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20976
+	.sleb128 -20992
 	.uleb128 0x2a
 	.secrel32	.LASF9
 	.byte	0x1
 	.byte	0x14
-	.long	0x1ddd
+	.long	0x1e05
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20984
+	.sleb128 -21000
 	.uleb128 0x2b
 	.ascii "top\0"
 	.byte	0x1
@@ -9242,7 +9338,7 @@ parsing:
 	.long	0x126
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20948
+	.sleb128 -20972
 	.uleb128 0x2b
 	.ascii "partOfComment\0"
 	.byte	0x1
@@ -9250,7 +9346,7 @@ parsing:
 	.long	0x126
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20944
+	.sleb128 -20968
 	.uleb128 0x2b
 	.ascii "notTheEndFlag\0"
 	.byte	0x1
@@ -9258,7 +9354,7 @@ parsing:
 	.long	0x126
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20940
+	.sleb128 -20964
 	.uleb128 0x2b
 	.ascii "hasDefer\0"
 	.byte	0x1
@@ -9266,12 +9362,12 @@ parsing:
 	.long	0x126
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20936
+	.sleb128 -20960
 	.uleb128 0x2b
 	.ascii "theStack\0"
 	.byte	0x1
 	.byte	0x19
-	.long	0x1de3
+	.long	0x1e0b
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20512
@@ -9314,7 +9410,7 @@ parsing:
 	.long	0x126
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20932
+	.sleb128 -20956
 	.uleb128 0x2b
 	.ascii "iIsPointer\0"
 	.byte	0x1
@@ -9322,7 +9418,7 @@ parsing:
 	.long	0x126
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20928
+	.sleb128 -20952
 	.uleb128 0x2b
 	.ascii "flags\0"
 	.byte	0x1
@@ -9352,7 +9448,7 @@ parsing:
 	.secrel32	.LASF6
 	.byte	0x1
 	.word	0x178
-	.long	0x1df9
+	.long	0x1e21
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -512
@@ -9360,7 +9456,7 @@ parsing:
 	.secrel32	.LASF10
 	.byte	0x1
 	.word	0x179
-	.long	0x1dd1
+	.long	0x1df9
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20584
@@ -9397,7 +9493,7 @@ parsing:
 	.secrel32	.LASF6
 	.byte	0x1
 	.word	0x18b
-	.long	0x1df9
+	.long	0x1e21
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -512
@@ -9405,7 +9501,7 @@ parsing:
 	.secrel32	.LASF10
 	.byte	0x1
 	.word	0x18c
-	.long	0x1dd1
+	.long	0x1df9
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20616
@@ -9442,7 +9538,7 @@ parsing:
 	.secrel32	.LASF6
 	.byte	0x1
 	.word	0x19e
-	.long	0x1df9
+	.long	0x1e21
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -512
@@ -9450,7 +9546,7 @@ parsing:
 	.secrel32	.LASF10
 	.byte	0x1
 	.word	0x19f
-	.long	0x1dd1
+	.long	0x1df9
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20648
@@ -9516,7 +9612,7 @@ parsing:
 	.long	0x126
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20920
+	.sleb128 -20944
 	.uleb128 0x2f
 	.quad	.LBB9
 	.quad	.LBE9-.LBB9
@@ -9527,7 +9623,7 @@ parsing:
 	.long	0x140d
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20896
+	.sleb128 -20920
 	.byte	0
 	.byte	0
 	.uleb128 0x2c
@@ -9541,7 +9637,7 @@ parsing:
 	.long	0x126
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20916
+	.sleb128 -20940
 	.uleb128 0x2c
 	.quad	.LBB11
 	.quad	.LBE11-.LBB11
@@ -9553,7 +9649,7 @@ parsing:
 	.long	0x126
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20904
+	.sleb128 -20928
 	.byte	0
 	.uleb128 0x2c
 	.quad	.LBB12
@@ -9566,7 +9662,7 @@ parsing:
 	.long	0x126
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20908
+	.sleb128 -20932
 	.byte	0
 	.uleb128 0x2f
 	.quad	.LBB13
@@ -9578,7 +9674,7 @@ parsing:
 	.long	0x126
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20912
+	.sleb128 -20936
 	.byte	0
 	.byte	0
 	.uleb128 0x2c
@@ -9592,7 +9688,7 @@ parsing:
 	.long	0x126
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20924
+	.sleb128 -20948
 	.uleb128 0x2c
 	.quad	.LBB15
 	.quad	.LBE15-.LBB15
@@ -9601,7 +9697,7 @@ parsing:
 	.secrel32	.LASF4
 	.byte	0x1
 	.word	0x301
-	.long	0x1df9
+	.long	0x1e21
 	.uleb128 0x3
 	.byte	0x91
 	.sleb128 -512
@@ -9617,7 +9713,7 @@ parsing:
 	.long	0x13f5
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20880
+	.sleb128 -20904
 	.byte	0
 	.uleb128 0x2f
 	.quad	.LBB17
@@ -9629,7 +9725,7 @@ parsing:
 	.long	0x13f5
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20888
+	.sleb128 -20912
 	.byte	0
 	.byte	0
 	.uleb128 0x2c
@@ -9639,11 +9735,11 @@ parsing:
 	.uleb128 0x2d
 	.secrel32	.LASF12
 	.byte	0x1
-	.word	0x445
+	.word	0x446
 	.long	0x126
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20900
+	.sleb128 -20924
 	.byte	0
 	.uleb128 0x2c
 	.quad	.LBB19
@@ -9652,11 +9748,11 @@ parsing:
 	.uleb128 0x2e
 	.ascii "break_decl_stmt\0"
 	.byte	0x1
-	.word	0x465
+	.word	0x466
 	.long	0x140d
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20864
+	.sleb128 -20888
 	.byte	0
 	.uleb128 0x2c
 	.quad	.LBB20
@@ -9665,20 +9761,49 @@ parsing:
 	.uleb128 0x2e
 	.ascii "cont_decl_stmt\0"
 	.byte	0x1
-	.word	0x46c
+	.word	0x46d
 	.long	0x140d
 	.uleb128 0x4
 	.byte	0x91
-	.sleb128 -20872
+	.sleb128 -20896
 	.byte	0
 	.uleb128 0x2c
 	.quad	.LBB21
 	.quad	.LBE21-.LBB21
-	.long	0x1b52
+	.long	0x1b37
+	.uleb128 0x2d
+	.secrel32	.LASF14
+	.byte	0x1
+	.word	0x4e9
+	.long	0xfe7
+	.uleb128 0x4
+	.byte	0x91
+	.sleb128 -20880
+	.uleb128 0x2d
+	.secrel32	.LASF15
+	.byte	0x1
+	.word	0x4ea
+	.long	0x1467
+	.uleb128 0x4
+	.byte	0x91
+	.sleb128 -20872
+	.uleb128 0x2d
+	.secrel32	.LASF16
+	.byte	0x1
+	.word	0x4eb
+	.long	0x140d
+	.uleb128 0x4
+	.byte	0x91
+	.sleb128 -20864
+	.byte	0
+	.uleb128 0x2c
+	.quad	.LBB22
+	.quad	.LBE22-.LBB22
+	.long	0x1b9b
 	.uleb128 0x2e
 	.ascii "int_type\0"
 	.byte	0x1
-	.word	0x505
+	.word	0x514
 	.long	0xfe7
 	.uleb128 0x4
 	.byte	0x91
@@ -9686,7 +9811,7 @@ parsing:
 	.uleb128 0x2e
 	.ascii "int_declaration\0"
 	.byte	0x1
-	.word	0x506
+	.word	0x515
 	.long	0x1467
 	.uleb128 0x4
 	.byte	0x91
@@ -9694,78 +9819,78 @@ parsing:
 	.uleb128 0x2e
 	.ascii "int_decl_stmt\0"
 	.byte	0x1
-	.word	0x507
+	.word	0x516
 	.long	0x140d
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20672
 	.byte	0
 	.uleb128 0x2c
-	.quad	.LBB22
-	.quad	.LBE22-.LBB22
-	.long	0x1ba3
+	.quad	.LBB23
+	.quad	.LBE23-.LBB23
+	.long	0x1bec
 	.uleb128 0x2e
 	.ascii "string_type\0"
 	.byte	0x1
-	.word	0x50b
+	.word	0x51a
 	.long	0xfe7
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20712
 	.uleb128 0x2d
-	.secrel32	.LASF14
+	.secrel32	.LASF17
 	.byte	0x1
-	.word	0x50c
+	.word	0x51b
 	.long	0x1467
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20704
 	.uleb128 0x2d
-	.secrel32	.LASF15
+	.secrel32	.LASF18
 	.byte	0x1
-	.word	0x50d
+	.word	0x51c
 	.long	0x140d
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20696
 	.byte	0
 	.uleb128 0x2c
-	.quad	.LBB23
-	.quad	.LBE23-.LBB23
-	.long	0x1c0d
-	.uleb128 0x2e
-	.ascii "float_type\0"
+	.quad	.LBB24
+	.quad	.LBE24-.LBB24
+	.long	0x1c35
+	.uleb128 0x2d
+	.secrel32	.LASF14
 	.byte	0x1
-	.word	0x511
+	.word	0x520
 	.long	0xfe7
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20736
-	.uleb128 0x2e
-	.ascii "float_declaration\0"
+	.uleb128 0x2d
+	.secrel32	.LASF15
 	.byte	0x1
-	.word	0x512
+	.word	0x521
 	.long	0x1467
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20728
-	.uleb128 0x2e
-	.ascii "float_decl_stmt\0"
+	.uleb128 0x2d
+	.secrel32	.LASF16
 	.byte	0x1
-	.word	0x513
+	.word	0x522
 	.long	0x140d
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20720
 	.byte	0
 	.uleb128 0x2c
-	.quad	.LBB24
-	.quad	.LBE24-.LBB24
-	.long	0x1c74
+	.quad	.LBB25
+	.quad	.LBE25-.LBB25
+	.long	0x1c9c
 	.uleb128 0x2e
 	.ascii "char_type\0"
 	.byte	0x1
-	.word	0x517
+	.word	0x526
 	.long	0xfe7
 	.uleb128 0x4
 	.byte	0x91
@@ -9773,7 +9898,7 @@ parsing:
 	.uleb128 0x2e
 	.ascii "char_declaration\0"
 	.byte	0x1
-	.word	0x518
+	.word	0x527
 	.long	0x1467
 	.uleb128 0x4
 	.byte	0x91
@@ -9781,20 +9906,20 @@ parsing:
 	.uleb128 0x2e
 	.ascii "char_decl_stmt\0"
 	.byte	0x1
-	.word	0x519
+	.word	0x528
 	.long	0x140d
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20744
 	.byte	0
 	.uleb128 0x2c
-	.quad	.LBB25
-	.quad	.LBE25-.LBB25
-	.long	0x1cdb
+	.quad	.LBB26
+	.quad	.LBE26-.LBB26
+	.long	0x1d03
 	.uleb128 0x2e
 	.ascii "bool_type\0"
 	.byte	0x1
-	.word	0x51d
+	.word	0x52c
 	.long	0xfe7
 	.uleb128 0x4
 	.byte	0x91
@@ -9802,7 +9927,7 @@ parsing:
 	.uleb128 0x2e
 	.ascii "bool_declaration\0"
 	.byte	0x1
-	.word	0x51e
+	.word	0x52d
 	.long	0x1467
 	.uleb128 0x4
 	.byte	0x91
@@ -9810,20 +9935,20 @@ parsing:
 	.uleb128 0x2e
 	.ascii "bool_decl_stmt\0"
 	.byte	0x1
-	.word	0x51f
+	.word	0x52e
 	.long	0x140d
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20768
 	.byte	0
 	.uleb128 0x2c
-	.quad	.LBB26
-	.quad	.LBE26-.LBB26
-	.long	0x1d42
+	.quad	.LBB27
+	.quad	.LBE27-.LBB27
+	.long	0x1d6a
 	.uleb128 0x2e
 	.ascii "void_type\0"
 	.byte	0x1
-	.word	0x523
+	.word	0x532
 	.long	0xfe7
 	.uleb128 0x4
 	.byte	0x91
@@ -9831,7 +9956,7 @@ parsing:
 	.uleb128 0x2e
 	.ascii "void_declaration\0"
 	.byte	0x1
-	.word	0x524
+	.word	0x533
 	.long	0x1467
 	.uleb128 0x4
 	.byte	0x91
@@ -9839,64 +9964,64 @@ parsing:
 	.uleb128 0x2e
 	.ascii "void_decl_stmt\0"
 	.byte	0x1
-	.word	0x525
+	.word	0x534
 	.long	0x140d
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20792
 	.byte	0
 	.uleb128 0x2c
-	.quad	.LBB27
-	.quad	.LBE27-.LBB27
-	.long	0x1d8b
+	.quad	.LBB28
+	.quad	.LBE28-.LBB28
+	.long	0x1db3
 	.uleb128 0x2d
-	.secrel32	.LASF16
+	.secrel32	.LASF19
 	.byte	0x1
-	.word	0x52b
+	.word	0x53a
 	.long	0x13f5
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20832
 	.uleb128 0x2d
-	.secrel32	.LASF14
+	.secrel32	.LASF17
 	.byte	0x1
-	.word	0x52c
+	.word	0x53b
 	.long	0x1467
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20824
 	.uleb128 0x2d
-	.secrel32	.LASF15
+	.secrel32	.LASF18
 	.byte	0x1
-	.word	0x52d
+	.word	0x53c
 	.long	0x140d
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20816
 	.byte	0
 	.uleb128 0x2f
-	.quad	.LBB28
-	.quad	.LBE28-.LBB28
+	.quad	.LBB29
+	.quad	.LBE29-.LBB29
 	.uleb128 0x2d
-	.secrel32	.LASF16
+	.secrel32	.LASF19
 	.byte	0x1
-	.word	0x537
+	.word	0x546
 	.long	0x13f5
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20856
 	.uleb128 0x2d
-	.secrel32	.LASF14
+	.secrel32	.LASF17
 	.byte	0x1
-	.word	0x538
+	.word	0x547
 	.long	0x1467
 	.uleb128 0x4
 	.byte	0x91
 	.sleb128 -20848
 	.uleb128 0x2d
-	.secrel32	.LASF15
+	.secrel32	.LASF18
 	.byte	0x1
-	.word	0x539
+	.word	0x548
 	.long	0x140d
 	.uleb128 0x4
 	.byte	0x91
@@ -9914,7 +10039,7 @@ parsing:
 	.long	0x14f4
 	.uleb128 0x9
 	.long	0x16c
-	.long	0x1df9
+	.long	0x1e21
 	.uleb128 0xa
 	.long	0x149
 	.byte	0xc7
@@ -9924,7 +10049,7 @@ parsing:
 	.byte	0
 	.uleb128 0x9
 	.long	0x16c
-	.long	0x1e09
+	.long	0x1e31
 	.uleb128 0xa
 	.long	0x149
 	.byte	0x13
@@ -9941,7 +10066,7 @@ parsing:
 	.ascii "node\0"
 	.byte	0x1
 	.byte	0x7
-	.long	0x1dd1
+	.long	0x1df9
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 0
@@ -9949,7 +10074,7 @@ parsing:
 	.secrel32	.LASF8
 	.byte	0x1
 	.byte	0x8
-	.long	0x1dd7
+	.long	0x1dff
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -40
@@ -9957,7 +10082,7 @@ parsing:
 	.secrel32	.LASF9
 	.byte	0x1
 	.byte	0x9
-	.long	0x1ddd
+	.long	0x1e05
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -32
@@ -9965,7 +10090,7 @@ parsing:
 	.ascii "current\0"
 	.byte	0x1
 	.byte	0xa
-	.long	0x1dd1
+	.long	0x1df9
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -24
@@ -10636,40 +10761,46 @@ parsing:
 	.section	.debug_line,"dr"
 .Ldebug_line0:
 	.section	.debug_str,"dr"
-.LASF5:
-	.ascii "symbolTable\0"
-.LASF8:
-	.ascii "commandNode\0"
-.LASF13:
-	.ascii "theResult\0"
-.LASF9:
-	.ascii "symTable\0"
-.LASF14:
-	.ascii "string_declaration\0"
-.LASF3:
-	.ascii "theType\0"
-.LASF6:
-	.ascii "scope\0"
-.LASF16:
-	.ascii "stringExpr\0"
-.LASF7:
-	.ascii "memberFlags\0"
-.LASF15:
-	.ascii "string_decl_stmt\0"
-.LASF10:
-	.ascii "tempParse\0"
-.LASF12:
-	.ascii "doneFlag\0"
-.LASF11:
-	.ascii "theDeclaration\0"
 .LASF0:
 	.ascii "_on_exit_args\0"
-.LASF4:
-	.ascii "memberOf\0"
 .LASF1:
 	.ascii "parse_state\0"
+.LASF14:
+	.ascii "float_type\0"
+.LASF13:
+	.ascii "theResult\0"
 .LASF2:
 	.ascii "next\0"
+.LASF11:
+	.ascii "theDeclaration\0"
+.LASF15:
+	.ascii "float_declaration\0"
+.LASF7:
+	.ascii "memberFlags\0"
+.LASF6:
+	.ascii "scope\0"
+.LASF19:
+	.ascii "stringExpr\0"
+.LASF8:
+	.ascii "commandNode\0"
+.LASF18:
+	.ascii "string_decl_stmt\0"
+.LASF5:
+	.ascii "symbolTable\0"
+.LASF3:
+	.ascii "theType\0"
+.LASF17:
+	.ascii "string_declaration\0"
+.LASF4:
+	.ascii "memberOf\0"
+.LASF12:
+	.ascii "doneFlag\0"
+.LASF9:
+	.ascii "symTable\0"
+.LASF10:
+	.ascii "tempParse\0"
+.LASF16:
+	.ascii "float_decl_stmt\0"
 	.ident	"GCC: (GNU) 7.4.0"
 	.def	malloc;	.scl	2;	.type	32;	.endef
 	.def	print_commandList;	.scl	2;	.type	32;	.endef

@@ -1063,6 +1063,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 							pop(&top);
 							theStack[0][top] = '\0';
 							pop(&top);
+							floatValue[0] = '\0';
 							
 						}
 						else { 
@@ -1248,6 +1249,20 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 				}
 
 				pop(&top);
+
+				printf("Now in the end of COmmand %s\n", theStack[top]);
+
+				if (strcmp(theStack[top], "float") == 0) {
+					pop(&top);
+					type* float_type = type_create(TYPE_FLOAT, NULL, NULL);
+					decl* float_declaration = decl_create(theStack[top], float_type, NULL, NULL);
+					stmt* float_decl_stmt = stmt_create(STMT_DECL, float_declaration, NULL, NULL, NULL, NULL, NULL, NULL, sTypeOfMember);
+					push_commandList(commandNode, NULL, float_decl_stmt, NULL);
+					theStack[0][top] = '\0';
+					pop(&top);
+					theStack[0][top] = '\0';
+				}
+
 				if (strcmp(theStack[top], "/@") == 0) {
 					printf("End of the comment.\n");
 					theStack[0][top] = '\0';

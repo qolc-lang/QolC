@@ -33,6 +33,7 @@ $(OutDir)/mainout.out : $(AppObjects)
 	mkdir -p $(GenDir)
 	mv $(PrjRoot)/*.i $(GenDir)
 	mv $(PrjRoot)/*.s $(GenDir)
+	rm -f compile_results.txt
 
 $(ObjDir)/lexer.o: $(SrcDir)/lexer.c $(PrjRoot)/inc/headers.h $(PrjRoot)/inc/checking_functions.h $(PrjRoot)/inc/lexer_node.h
 	$(CC) $(BuildCommand) $(SrcDir)/lexer.c -o $(ObjDir)/lexer.o
