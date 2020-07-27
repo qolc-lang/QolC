@@ -348,7 +348,7 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 			printf("We spotted a dot. \n");
 			strcpy(temp, current->value);
 			pop(&top);
-			if (strcmp(theStack[top], "float") == 0) {
+			if ((strcmp(theStack[top], "float") == 0) || (theStack[top][0] != '\0')) {
 				current = current->next;
 				strcpy(temp2, current->value);
 				printf("Now the current is : %s\n", current->value);
@@ -358,6 +358,14 @@ void parsing(parse_state* current, command* commandNode, symbolTable* symTable) 
 				strcat(floatValue, temp);
 				if (strcmp(current->type, "identifier") == 0) {
 					printf("Now the current is : %s\n", current->value);
+					strcat(floatValue, current->value);
+					printf("Now the float value is : %s\n", floatValue);
+					printf("Now in the stack : %s\n", theStack[top]);
+					BuildDeclarationExprStatement(floatValue, commandNode, theStack[top], 3, sTypeOfMember);
+					theStack[0][top] = '\0';
+					pop(&top);
+					theStack[0][top] = '\0';
+					pop(&top);
 				}
 				else { 
 					current = current->next;

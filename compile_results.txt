@@ -1563,8 +1563,7 @@ The current in statelist : keyword,false
 The current in statelist : end of command 
 The current in statelist : operator,@ 
 The current in statelist : identifier,d 
-The current in statelist : character,'d
- 
+The current in statelist : character,'d 
 The current in statelist : end of command 
 The current in statelist : operator,@ 
 The current in statelist : identifier,y 
@@ -1774,8 +1773,7 @@ The current in statelist : keyword,float
 The current in statelist : end of command 
 The current in statelist : operator,@ 
 The current in statelist : identifier,dmamam 
-The current in statelist : character,'d
- 
+The current in statelist : character,'d 
 The current in statelist : end of command 
 The current in statelist : block end,@| 
 The current in statelist : end of command 
@@ -2272,23 +2270,20 @@ Push in the stack completed, with element : f
 Type in the loop : operator
 Value in the loop : .
 We spotted a dot. 
-**********************************************************
-Type in the loop : identifier
-Value in the loop : 0
-Operator @ is in the stack now.
-Going to insert the value : 0
-Label inserted in symbol table : 0
-Push in the stack completed, with element : 0
-**********************************************************
-Type in the loop : identifier
-Value in the loop : 5
-The stack at identifier type is not empty
+Now the current is : 0
+Now the current is : 5
+Now the float value is : 0.5
+Now in the stack : f
+Going to build float declaration statement.
+The stack at identifier type is empty.
 Going to insert the value : 5
 Push in the stack completed, with element : 5
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
 Now in the end of COmmand 5
+Type in the loop : end of command
+Value in the loop : '\n'
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -2345,8 +2340,9 @@ Push in the stack completed, with element : y
 Type in the loop : identifier
 Value in the loop : 4
 The stack at identifier type is not empty
-Going to insert the value : 4
-Push in the stack completed, with element : 4
+Now the floatValue : 0.5
+Now in the stack 1 : y
+Going to build float declaration statement.
 **********************************************************
 Type in the loop : operator
 Operator + going in.
@@ -2357,7 +2353,6 @@ Value in the loop : 2
 **********************************************************
 Type in the loop : end of command
 Value in the loop : '\n'
-Now in the end of COmmand 4
 **********************************************************
 Type in the loop : operator
 Operator @ going in.
@@ -3777,14 +3772,16 @@ STMT_DECL
 name: p
 	TYPE_FLOAT
 STMT_DECL
-name: 0
-		value: 5
+name: f
+	TYPE_FLOAT
+		value: 0.5
 STMT_DECL
 name: d
 		value: 'd
 STMT_DECL
 name: y
-		value: 4
+	TYPE_FLOAT
+		value: 0.5
 STMT_DECL
 name: z
 		value: 0
